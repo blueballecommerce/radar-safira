@@ -243,6 +243,34 @@ ul.clean li{margin:3px 0}
 
 body.locked{overflow:hidden}
 
+/* ---------- categorias alternativas ---------- */
+.alts{margin-top:14px;border-top:1px solid var(--line);padding-top:12px}
+.alt{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;background:var(--bg);border:1px solid var(--line);
+  border-radius:9px;padding:8px 10px;margin-bottom:6px}
+.alt .altp{font-size:.86rem;font-weight:600;line-height:1.3}
+.alt .altm{font-size:.76rem;color:var(--ink3);margin-top:2px}
+.alt .altv{display:flex;gap:5px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+
+/* ---------- pizza do score (aparece ao passar o mouse) ---------- */
+.meter{position:relative}
+.scorepop{position:absolute;z-index:30;right:0;top:calc(100% + 8px);width:290px;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:12px;padding:12px 13px;box-shadow:var(--shadow);opacity:0;visibility:hidden;transform:translateY(-4px);
+  transition:opacity .16s ease,transform .16s ease,visibility .16s;pointer-events:none}
+.meter:hover .scorepop,.meter:focus-within .scorepop,.row:focus-visible .scorepop{opacity:1;visibility:visible;transform:translateY(0)}
+.scorepop .hd{display:flex;align-items:center;gap:12px}
+.scorepop .tot{font-family:var(--display);font-weight:800;font-size:1.05rem;line-height:1.1}
+.scorepop .tot span{display:block;font-family:var(--body);font-weight:400;font-size:.74rem;color:var(--ink3)}
+.scorepop ul{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:5px}
+.scorepop li{display:grid;grid-template-columns:11px 1fr auto;gap:8px;align-items:center;font-size:.8rem}
+.scorepop .dot{width:11px;height:11px;border-radius:3px}
+.scorepop .pts{font-family:var(--mono);font-size:.76rem;color:var(--ink2)}
+.scorepop .lost{font-size:.75rem;color:var(--ink3);margin-top:9px;padding-top:8px;border-top:1px solid var(--line);line-height:1.4}
+/* a pizza "enche" ao aparecer */
+.meter .pieseg{stroke-dasharray:0 999;transition:stroke-dasharray .6s cubic-bezier(.4,0,.2,1)}
+.meter:hover .pieseg,.meter:focus-within .pieseg{stroke-dasharray:var(--dash)}
+@media (prefers-reduced-motion:reduce){ .meter .pieseg{transition:none;stroke-dasharray:var(--dash)} .scorepop{transition:none} }
+@media (max-width:980px){ .scorepop{display:none} }
+
 /* ---------- tiles com leitura mais clara ---------- */
 .tile.accent{background:linear-gradient(180deg,var(--acc2),var(--bg2) 70%);border-color:var(--acc)}
 .tile.accent .v{color:var(--acc)}
@@ -320,8 +348,10 @@ body.locked{overflow:hidden}
       <button class="chip" data-sig="comp" aria-pressed="false">Baixa concorrência</button>
       <button class="chip" data-sig="grow" aria-pressed="false">Categoria em alta</button>
       <button class="chip" data-sig="new" aria-pressed="false">Novo e vendendo</button>
+      <button class="chip" data-sig="solo" aria-pressed="false">Fora do catálogo</button>
     </div>
     <span class="count" id="ml-count"></span>
+    <button class="btn" id="ml-hide"></button>
     <button class="btn" id="ml-csv" hidden>Exportar CSV</button>
   </div>
   <div class="list" id="ml-list"></div>
@@ -448,6 +478,17 @@ const $ = (s, el=document) => el.querySelector(s);
 const $$ = (s, el=document) => Array.from(el.querySelectorAll(s));
 const BRL = new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'});
 const NUM = new Intl.NumberFormat('pt-BR');
+/* ============ ajustes rápidos da página ============
+   NEW_MAX_DAYS  — o que conta como "novo e vendendo".
+   HIDE_RULES    — nichos temporariamente fora da lista. Para trazer de volta,
+                   apague a linha correspondente (ou clique em "mostrar tudo" na página). */
+const NEW_MAX_DAYS = 30;
+const HIDE_RULES = [
+  { label:'Suplementos', test:p => /suplement/i.test(`${p.l1} ${p.l2||''} ${p.l3||''}`) },
+  { label:'Roupas e calçados', test:p => p.l1==='Calçados, Roupas e Bolsas' },
+];
+const isHidden = p => HIDE_RULES.some(r=>r.test(p));
+
 const PCT = v => (v>0?'+':'') + (v*100).toFixed(1).replace('.',',') + '%';
 const fmtBRL = v => v==null ? '—' : BRL.format(v);
 const fmtN = v => v==null ? '—' : NUM.format(Math.round(v));
@@ -481,7 +522,8 @@ function computeAll(){
     const c = catOf(p); p._cat = c;
     p._dp = p.sd ?? 0; p._comp = p.sc ?? 0; p._growth = p.sg ?? 0; p._nov = p.sn ?? 0;
     const t12 = c && c.t12!=null ? c.t12 : 0, gG = c && c.gG!=null ? c.gG : 0, d = p.d ?? 999;
-    p.flags = { vol: p._dp>=.8, comp: p._comp>=.8, grow: (t12>=.08 || gG>=.15) && (c?.opp!=='low'), new: d<=90 };
+    p.flags = { vol: p._dp>=.8, comp: p._comp>=.8, grow: (t12>=.08 || gG>=.15) && (c?.opp!=='low'),
+                new: d<=NEW_MAX_DAYS, solo: !p.c };   // solo = anuncio proprio, fora do catalogo
     p.move = p.prev==null ? null : p.prev - p.rank;   // positivo = subiu
   }
   S.products.sort((a,b)=>a.rank-b.rank);
@@ -505,7 +547,7 @@ function showTab(t){
 }
 
 /* ===================== ML tab ===================== */
-const ml = { q:'', l1:'', sort:'score', bands:new Set(), sigs:new Set(), shown:50 };
+const ml = { q:'', l1:'', sort:'score', bands:new Set(), sigs:new Set(), shown:50, hide:true };
 function inBand(price, bands){
   if(!bands.size) return true;
   for(const b of bands){ const [lo,hi]=b.split('-'); if(price>=+lo && (hi===''||price<+hi)) return true; }
@@ -514,6 +556,7 @@ function inBand(price, bands){
 function mlFiltered(){
   const q = ml.q.trim().toLowerCase();
   let rows = S.products.filter(p =>
+    (!ml.hide || !isHidden(p)) &&
     (!ml.l1 || p.l1===ml.l1) && inBand(p.pr??0, ml.bands) &&
     [...ml.sigs].every(s=>p.flags[s]) &&
     (!q || (p.n+' '+(p.b||'')+' '+(p.s||'')+' '+(p.l2||'')+' '+(p.l3||'')).toLowerCase().includes(q)));
@@ -548,7 +591,10 @@ function renderML(reset){
   if (reset) ml.shown = 50;
   const rows = mlFiltered();
   const show = rows.slice(0, ml.shown);
-  $('#ml-count').textContent = `${rows.length} produtos · mostrando ${show.length}`;
+  const cut = ml.hide ? S.products.filter(isHidden).length : 0;
+  $('#ml-count').textContent = `${rows.length} produtos · mostrando ${show.length}`
+    + (cut ? ` · ${cut} ocultos (${HIDE_RULES.map(r=>r.label).join(', ')})` : '');
+  $('#ml-hide').textContent = ml.hide ? 'Mostrar tudo' : `Ocultar ${HIDE_RULES.map(r=>r.label.toLowerCase()).join(' e ')}`;
   $('#ml-more').hidden = rows.length <= ml.shown;
   $('#ml-list').innerHTML = show.length ? show.map((p,i)=>`
    <article class="row" data-id="${esc(p.i)}" tabindex="0" role="button">
@@ -557,12 +603,107 @@ function renderML(reset){
     <div><div class="name">${esc(p.n)}</div>
       <div class="path">${esc(p.l1)} › ${esc(p.l2||'')}${p.l3?' › '+esc(p.l3):''} · ${esc(p.s||'')}${p.b?' · '+esc(p.b):''}</div>
       <div class="tags">${prodTags(p)}</div></div>
-    <div class="meter"><div class="sc">${p.score.toFixed(0)}<small>/100</small></div><div class="bar"><i style="width:${p.score}%"></i></div></div>
+    <div class="meter" tabindex="0"><div class="sc">${p.score.toFixed(0)}<small>/100</small></div><div class="bar"><i style="width:${p.score}%"></i></div>${scorePie(p)}</div>
     <div class="cell"><div class="k">Vendas/sem</div><div class="v big">${fmtN(p.w)}</div><div class="k">${fmtN(p.m)} / mês</div></div>
     <div class="cell"><div class="k">Preço</div><div class="v big">${fmtBRL(p.pr)}</div><div class="k">${p.rc?(p.rr?p.rr.toFixed(1)+'★ · ':'')+fmtN(p.rc)+' aval.':'sem avaliações'}</div></div>
     <div class="links"><a href="${mlLink(p)}" target="_blank" rel="noopener">Abrir no Mercado Livre ↗</a><a href="${pulseLink(p)}" target="_blank" rel="noopener">Ficha JoomPulse ↗</a></div>
    </article>`).join('') : `<div class="empty">Nenhum produto com esses filtros. Tire um filtro ou mude a faixa de preço.</div>`;
 }
+/* ---------- pizza do score ----------
+   Cada fatia é o que o produto CONQUISTOU naquele componente (0..peso).
+   O cinza no fim é o que ele deixou na mesa — junto, fecha 100. */
+const SCORE_PARTS = [
+  { k:'_dp',     w:35, label:'Volume de vendas',   color:'#2f6bff' },
+  { k:'_comp',   w:25, label:'Pouca concorrência', color:'#18b57a' },
+  { k:'_growth', w:25, label:'Categoria crescendo',color:'#f0a02a' },
+  { k:'_nov',    w:15, label:'Novo e vendendo',    color:'#b166f5' },
+];
+function scorePie(p){
+  const R=32, C=2*Math.PI*R, parts=SCORE_PARTS.map(s=>({...s, pts:(p[s.k]||0)*s.w}));
+  const lost = Math.max(0, 100 - parts.reduce((a,s)=>a+s.pts,0));
+  let off = 0;
+  const seg = (pts,color,cls) => {
+    const len = pts/100*C, el = `<circle class="${cls}" cx="40" cy="40" r="${R}" fill="none" stroke="${color}"
+      stroke-width="16" style="--dash:${len.toFixed(2)} ${(C-len).toFixed(2)}"
+      stroke-dasharray="${cls?'0 999':len.toFixed(2)+' '+(C-len).toFixed(2)}"
+      stroke-dashoffset="${(-off).toFixed(2)}" transform="rotate(-90 40 40)"></circle>`;
+    off += len; return el;
+  };
+  const arcs = parts.map(s=>seg(s.pts, s.color, 'pieseg')).join('') + seg(lost, 'var(--meterBg)', '');
+  return `<div class="scorepop" role="tooltip">
+    <div class="hd">
+      <svg width="80" height="80" viewBox="0 0 80 80" aria-hidden="true">${arcs}</svg>
+      <div class="tot">${p.score.toFixed(0)}<span>de 100 pontos</span></div>
+    </div>
+    <ul>${parts.map(s=>`<li><i class="dot" style="background:${s.color}"></i>
+      <span>${s.label}</span><span class="pts">${s.pts.toFixed(0)}/${s.w}</span></li>`).join('')}</ul>
+    <div class="lost">Faltaram <b>${lost.toFixed(0)} pontos</b> — quanto menor essa sobra, mais redonda é a oportunidade.</div>
+  </div>`;
+}
+
+/* ---------- "onde mais dá para vender isto" ----------
+   O radar não traz a árvore de categorias possíveis de cada anúncio, então a resposta
+   é construída pelo que o mercado já faz: procuramos produtos parecidos (palavras em
+   comum no título) e listamos as subcategorias onde ELES estão anunciados, com o
+   veredito da categoria ao lado. */
+const STOP = new Set(['para','com','sem','dos','das','uma','uns','umas','por','the','and','kit','pcs','und','unidades',
+  'cor','tamanho','preto','branco','azul','verde','vermelho','rosa','cinza','original','novo','nova','pro','max','plus']);
+const tokens = s => (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'')
+  .replace(/[^a-z0-9\s]/g,' ').split(/\s+/).filter(w=>w.length>3 && !STOP.has(w) && !/^\d+$/.test(w));
+
+/* índice de tokens: quantos anúncios contêm cada palavra (para saber o que é raro) */
+let TOKIDX = null;
+function tokIndex(){
+  if (TOKIDX) return TOKIDX;
+  TOKIDX = { df:new Map(), toks:new Map(), n:S.products.length };
+  for (const o of S.products){
+    const t = [...new Set(tokens(o.n))];
+    TOKIDX.toks.set(o.i, t);
+    for (const w of t) TOKIDX.df.set(w, (TOKIDX.df.get(w)||0)+1);
+  }
+  return TOKIDX;
+}
+function alsoSellIn(p){
+  const ix = tokIndex(), mine = new Set(ix.toks.get(p.i) || tokens(p.n));
+  if (!mine.size) return [];
+  const rare = w => (ix.df.get(w)||0) <= Math.max(3, ix.n*0.02);   // palavra específica do produto
+  const here = [p.l1,p.l2,p.l3].join('|');
+  const buckets = new Map();
+  for (const o of mlVisible()){
+    if (o.i===p.i) continue;
+    const common = (ix.toks.get(o.i)||[]).filter(w=>mine.has(w));
+    // exige uma palavra específica em comum — só palavras genéricas ("controle", "capa") casam com tudo
+    if (!common.some(rare)) continue;
+    if (!(common.length>=2 || rare(common[0]))) continue;
+    const key = [o.l1,o.l2,o.l3].join('|');
+    if (key===here) continue;                     // já é a categoria dele
+    const b = buckets.get(key) || {l1:o.l1,l2:o.l2,l3:o.l3,n:0,hits:0,best:0,cat:catOf(o)};
+    b.n++; b.hits=Math.max(b.hits,common.length); b.best=Math.max(b.best,o.score);
+    buckets.set(key,b);
+  }
+  // dois anúncios confirmam o padrão; um só vale quando veio de palavra rara (match forte)
+  return [...buckets.values()].filter(b=>b.n>=2 || b.hits>=2)
+    .sort((a,b)=>(b.cat?.cs??0)-(a.cat?.cs??0) || b.n-a.n).slice(0,8);
+}
+function renderAlsoSell(p){
+  const list = alsoSellIn(p);
+  const cur = catOf(p);
+  const line = (l1,l2,l3,c,extra) => `<div class="alt">
+      <div><div class="altp">${esc(l1)}${l2?' › '+esc(l2):''}${l3?' › '+esc(l3):''}</div>
+        <div class="altm">${extra}</div></div>
+      <div class="altv">${c?`<span class="pill ${c.opp||'na'}">${({high:'Alta',medium:'Média',low:'Baixa'})[c.opp]||'—'}</span>
+        <span class="pill mono ${c.mono||'na'}">mono ${({low:'baixa',medium:'média',high:'alta'})[c.mono]||'—'}</span>
+        <span class="num small">${c.t12!=null?PCT(c.t12):'—'}</span>`:'<span class="muted small">sem dados</span>'}</div></div>`;
+  return `<div class="alts">
+    <div class="small muted" style="margin-bottom:6px">Onde este anúncio está hoje</div>
+    ${line(p.l1,p.l2,p.l3,cur,'categoria atual')}
+    <div class="small muted" style="margin:12px 0 6px">Onde produtos parecidos também são vendidos${list.length?'':' — nada parecido no radar desta rodada'}</div>
+    ${list.map(b=>line(b.l1,b.l2,b.l3,b.cat,`${b.n} anúncio${b.n>1?'s':''} parecido${b.n>1?'s':''} · melhor score ${b.best.toFixed(0)}`)).join('')}
+    <p class="small muted" style="margin:10px 0 0;line-height:1.45">Baseado nos ${S.products.length} anúncios desta rodada, por semelhança de título.
+    Serve para achar categoria com menos disputa — confirme a categoria certa na hora de anunciar.</p>
+  </div>`;
+}
+
 /* motivo curto, em português claro, para os cards de destaque */
 function whyShort(p){
   const c = p._cat, bits = [];
@@ -573,8 +714,11 @@ function whyShort(p){
   if (c && c.t12 != null && c.t12 > 0) bits.push(`numa categoria subindo <b>${PCT(c.t12)}</b> em 12 meses`);
   return bits.join(', ') + '.';
 }
+/* produtos que a página está considerando agora (respeita os nichos ocultos) */
+const mlVisible = () => ml.hide ? S.products.filter(p=>!isHidden(p)) : S.products;
+
 function mlPicks(){
-  const top = S.products.slice(0,3);
+  const top = mlVisible().slice(0,3);
   const rot = ['Nº 1 desta rodada','Nº 2','Nº 3'];
   $('#ml-picks').innerHTML = top.map((p,i)=>`
     <article class="pick ${i===0?'lead':''}" data-id="${esc(p.i)}" tabindex="0" role="button" aria-label="${esc(p.n)}">
@@ -596,11 +740,11 @@ $('#ml-picks').addEventListener('click', e=>{ const c=e.target.closest('.pick');
 $('#ml-picks').addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ const c=e.target.closest('.pick'); if(c){ e.preventDefault(); openProduct(c.dataset.id);} } });
 
 function mlTiles(){
-  const P=S.products; const news=P.filter(p=>p.flags.new).length, low=P.filter(p=>p.flags.comp).length, grow=P.filter(p=>p.flags.grow).length;
+  const P=mlVisible(); const news=P.filter(p=>p.flags.new).length, low=P.filter(p=>p.flags.comp).length, grow=P.filter(p=>p.flags.grow).length;
   const top=P[0];
   $('#ml-tiles').innerHTML = `
    <div class="tile accent"><div class="k">No radar</div><div class="v">${P.length}</div><div class="s">produtos com venda na semana</div></div>
-   <div class="tile"><div class="k">Novos e vendendo</div><div class="v">${news}</div><div class="s">até 90 dias no ar</div></div>
+   <div class="tile"><div class="k">Novos e vendendo</div><div class="v">${news}</div><div class="s">até ${NEW_MAX_DAYS} dias no ar</div></div>
    <div class="tile"><div class="k">Baixa concorrência</div><div class="v">${low}</div><div class="s">poucos vendedores fortes</div></div>
    <div class="tile"><div class="k">Categoria em alta</div><div class="v">${grow}</div><div class="s">tendência positiva</div></div>
    <div class="tile"><div class="k">Entraram nesta rodada</div><div class="v">${P.filter(p=>(p.runs??1)<=1).length}</div><div class="s">primeira vez no radar</div></div>
@@ -612,6 +756,7 @@ $('#ml-sort').addEventListener('change', e=>{ ml.sort=e.target.value; renderML(t
 $('#ml-price').addEventListener('click', e=>{ const b=e.target.closest('.chip'); if(!b) return; const on=b.getAttribute('aria-pressed')!=='true'; b.setAttribute('aria-pressed',on); on?ml.bands.add(b.dataset.band):ml.bands.delete(b.dataset.band); renderML(true); });
 $('#ml-sig').addEventListener('click', e=>{ const b=e.target.closest('.chip'); if(!b) return; const on=b.getAttribute('aria-pressed')!=='true'; b.setAttribute('aria-pressed',on); on?ml.sigs.add(b.dataset.sig):ml.sigs.delete(b.dataset.sig); renderML(true); });
 $('#ml-more').addEventListener('click', ()=>{ ml.shown+=50; renderML(false); });
+$('#ml-hide').addEventListener('click', ()=>{ ml.hide=!ml.hide; mlPicks(); mlTiles(); renderML(true); });
 $('#ml-list').addEventListener('click', e=>{ const r=e.target.closest('.row'); if(!r || e.target.closest('a')) return; openProduct(r.dataset.id); });
 $('#ml-list').addEventListener('keydown', e=>{ if(e.key==='Enter'){ const r=e.target.closest('.row'); if(r) openProduct(r.dataset.id);} });
 
@@ -663,13 +808,22 @@ function openProduct(id){
       <a class="btn primary" href="${mlLink(p)}" target="_blank" rel="noopener">Abrir no Mercado Livre ↗</a>
       <a class="btn" href="${pulseLink(p)}" target="_blank" rel="noopener">Ficha JoomPulse ↗</a>
       <button class="btn" id="psim">Simular com este preço</button>
+      <button class="btn" id="palt">Em que categorias dá para vender ↓</button>
       <a class="btn ghost" href="https://lista.mercadolivre.com.br/${encodeURIComponent(p.n.split(' ').slice(0,5).join(' '))}" target="_blank" rel="noopener">Ver concorrentes na busca ↗</a>
-    </div>`;
+    </div>
+    <div id="paltbox" hidden></div>`;
   $('#drawer').classList.add('open');
   document.body.classList.add('locked');   // impede a página de fundo de rolar junto
   $('#panel').scrollTop = 0;
   $('#pclose').onclick = closeDrawer;
   $('#psim').onclick = ()=>{ closeDrawer(); $('#s-price').value = p.pr; if (L1S.includes(p.l1)) $('#s-cat').value = p.l1; simulate(); showTab('sim'); };
+  $('#palt').onclick = ()=>{
+    const box = $('#paltbox'), btn = $('#palt');
+    if (!box.innerHTML) box.innerHTML = renderAlsoSell(p);
+    box.hidden = !box.hidden;
+    btn.textContent = box.hidden ? 'Em que categorias dá para vender ↓' : 'Esconder categorias ↑';
+    if (!box.hidden) box.scrollIntoView({behavior:'smooth', block:'nearest'});
+  };
 }
 function spark(h){
   const W=480,H=90,n=h.length, xs=i=>10+i*(W-20)/Math.max(1,n-1);

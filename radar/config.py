@@ -44,7 +44,7 @@ L1_CATEGORIES: list[str] = [
 
 DISCOVERY_MAIN_LIMIT = int(os.environ.get("RADAR_MAIN_LIMIT", "50"))   # top vendas por L1
 DISCOVERY_NEW_LIMIT = int(os.environ.get("RADAR_NEW_LIMIT", "30"))     # anúncios novos vendendo por L1
-NEW_LISTING_MAX_DAYS = 90
+NEW_LISTING_MAX_DAYS = 30   # "novo e vendendo": anuncios com ate 30 dias no ar
 TRACK_BATCH = 50            # ids por consulta de acompanhamento
 CATEGORY_L3_MAX_PAGES = 8   # 800 subcategorias nível 3 (ordenadas por receita)
 JOOMPRO_PAGES = 3           # 300 pares
