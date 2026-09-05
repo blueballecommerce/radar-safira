@@ -117,7 +117,8 @@ class _CallbackServer:
     def start(self):
         self.thread.start()
 
-    def wait(self, timeout: float = 300) -> dict:
+    def wait(self, timeout: float | None = None) -> dict:
+        timeout = config.OAUTH_WAIT_S if timeout is None else timeout
         self._event.wait(timeout)
         self.httpd.shutdown()
         if not self.result:

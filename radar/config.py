@@ -25,6 +25,8 @@ CLIENT_METADATA_URL = os.environ.get("RADAR_CLIENT_METADATA_URL", "")
 CLIENT_ID = os.environ.get("RADAR_CLIENT_ID", "")
 OAUTH_CALLBACK_PORT = int(os.environ.get("RADAR_OAUTH_PORT", "8765"))
 OAUTH_REDIRECT_URI = f"http://localhost:{OAUTH_CALLBACK_PORT}/callback"
+# Tempo de espera pelo redirect do navegador no comando `login` (a JoomPulse pede codigo por e-mail).
+OAUTH_WAIT_S = float(os.environ.get("RADAR_OAUTH_TIMEOUT", "900"))
 
 TOOL_MELI = "query_cubejs_meli"
 TOOL_JOOMPRO = "query_cubejs_joompro"

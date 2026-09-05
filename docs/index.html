@@ -204,6 +204,48 @@ ul.clean li{margin:3px 0}
 .toast.show{opacity:1}
 .foot{margin-top:28px;font-size:.78rem;color:var(--ink3);line-height:1.5;max-width:90ch}
 .empty{padding:40px;text-align:center;color:var(--ink3);background:var(--bg2);border:1px dashed var(--line2);border-radius:var(--r)}
+
+/* ---------- destaques da rodada ("comece por aqui") ---------- */
+.picks-h{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:18px 0 10px}
+.picks-h h3{font-family:var(--display);font-size:1.12rem;font-weight:700;margin:0;letter-spacing:-.01em}
+.picks-h .hint{font-size:.85rem;color:var(--ink3)}
+.picks{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:22px}
+@media (max-width:1040px){ .picks{grid-template-columns:1fr} }
+.pick{position:relative;display:grid;grid-template-columns:84px 1fr;gap:14px;background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:14px;cursor:pointer;transition:border-color .15s,transform .15s,box-shadow .15s}
+.pick:hover,.pick:focus-visible{border-color:var(--acc);transform:translateY(-2px);box-shadow:var(--shadow)}
+.pick.lead{border-color:var(--acc);background:linear-gradient(180deg,var(--acc2),var(--bg2) 62%)}
+.pick .medal{position:absolute;top:-9px;left:12px;font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;background:var(--acc);color:var(--accInk);border-radius:999px;padding:3px 9px;font-weight:600}
+.pick .shot{width:84px;height:84px;border-radius:10px;object-fit:contain;background:var(--bg3);border:1px solid var(--line)}
+.pick .nm{font-weight:600;line-height:1.3;font-size:.95rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-top:2px}
+.pick .why-s{font-size:.85rem;color:var(--ink2);line-height:1.45;margin-top:6px}
+.pick .why-s b{color:var(--ink);font-weight:600}
+.pick .foot-s{display:flex;align-items:center;gap:10px;margin-top:10px;flex-wrap:wrap}
+.pick .big-sc{font-family:var(--display);font-weight:800;font-size:1.5rem;line-height:1}
+.pick .big-sc small{font-size:.66rem;font-family:var(--mono);color:var(--ink3);font-weight:500;margin-left:2px}
+.pick .money{font-family:var(--mono);font-size:.85rem;color:var(--ink2)}
+
+/* ---------- legenda do score ---------- */
+.legend{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:0 14px;margin:0 0 18px}
+.legend summary{list-style:none;padding:11px 0;font-weight:600;color:var(--ink);display:flex;align-items:center;gap:8px}
+.legend summary::-webkit-details-marker{display:none}
+.legend summary::before{content:"?";display:grid;place-items:center;width:19px;height:19px;border-radius:50%;background:var(--acc);color:var(--accInk);font-size:.72rem;font-weight:700;flex:none}
+.legend summary .m{font-weight:400;color:var(--ink3);font-size:.86rem}
+.legend[open] summary{border-bottom:1px solid var(--line)}
+.legend .body{padding:12px 0 15px}
+.legend .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media (max-width:860px){ .legend .grid4{grid-template-columns:1fr 1fr} }
+@media (max-width:520px){ .legend .grid4{grid-template-columns:1fr} }
+.legend .it{background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:10px 12px}
+.legend .it .w{font-family:var(--mono);font-size:.68rem;color:var(--acc);letter-spacing:.05em;font-weight:600}
+.legend .it .t{font-weight:600;margin:2px 0 3px;font-size:.92rem}
+.legend .it p{margin:0;font-size:.83rem;color:var(--ink2);line-height:1.45}
+.legend .tail{font-size:.84rem;color:var(--ink3);margin:11px 0 0;line-height:1.5}
+
+body.locked{overflow:hidden}
+
+/* ---------- tiles com leitura mais clara ---------- */
+.tile.accent{background:linear-gradient(180deg,var(--acc2),var(--bg2) 70%);border-color:var(--acc)}
+.tile.accent .v{color:var(--acc)}
 </style>
 </head>
 <body>
@@ -226,6 +268,31 @@ ul.clean li{margin:3px 0}
 <section id="tab-ml">
   <h2>Produtos fora da curva no Mercado Livre</h2>
   <p class="lead">Ranking único de 0 a 100 que combina volume de vendas, pouca concorrência, categoria em crescimento e anúncios novos que já vendem. Clique num produto para ver por que ele pontuou e simular o preço.</p>
+
+  <div class="picks-h">
+    <h3>Comece por aqui</h3>
+    <span class="hint">os três maiores scores desta rodada — clique para ver a conta completa</span>
+  </div>
+  <div class="picks" id="ml-picks"></div>
+
+  <details class="legend">
+    <summary>Como ler o score <span class="m">— 0 a 100, quanto maior, mais a oportunidade se destaca</span></summary>
+    <div class="body">
+      <div class="grid4">
+        <div class="it"><div class="w">PESO 35</div><div class="t">Volume de vendas</div>
+          <p>Quantas unidades o anúncio vende por semana, comparado com todos os outros do radar.</p></div>
+        <div class="it"><div class="w">PESO 25</div><div class="t">Pouca concorrência</div>
+          <p>Quantos vendedores disputam o mesmo produto e o quanto a subcategoria está dominada por poucos.</p></div>
+        <div class="it"><div class="w">PESO 25</div><div class="t">Categoria crescendo</div>
+          <p>Se a subcategoria vem subindo nos últimos 12 meses e no último mês.</p></div>
+        <div class="it"><div class="w">PESO 15</div><div class="t">Novo e vendendo</div>
+          <p>Anúncio recente que já vende bem — sinal de demanda ainda não disputada.</p></div>
+      </div>
+      <p class="tail">Score alto não é garantia de lucro: ele mede <b>atratividade da oportunidade</b>, não a sua margem.
+      Use o <b>Simulador de preço</b> para saber quanto sobra depois da comissão do Mercado Livre, frete e imposto.</p>
+    </div>
+  </details>
+
   <div class="tiles" id="ml-tiles"></div>
   <div class="filters">
     <input type="search" id="ml-q" placeholder="Buscar produto, marca ou vendedor…">
@@ -384,6 +451,12 @@ const NUM = new Intl.NumberFormat('pt-BR');
 const PCT = v => (v>0?'+':'') + (v*100).toFixed(1).replace('.',',') + '%';
 const fmtBRL = v => v==null ? '—' : BRL.format(v);
 const fmtN = v => v==null ? '—' : NUM.format(Math.round(v));
+/* valores grandes de forma legivel num cartao: R$ 5,0 mi em vez de R$ 4.997.508,00 */
+const fmtBRLc = v => v==null ? '—'
+  : v>=1e9 ? 'R$ '+(v/1e9).toFixed(2).replace('.',',')+' bi'
+  : v>=1e6 ? 'R$ '+(v/1e6).toFixed(1).replace('.',',')+' mi'
+  : v>=1e3 ? 'R$ '+(v/1e3).toFixed(0)+' mil'
+  : fmtBRL(v);
 const esc = s => String(s??'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const clamp = (x,a=0,b=1) => Math.max(a,Math.min(b,x));
 const L1S = ['Acessórios para Veículos','Agro','Alimentos e Bebidas','Arte, Papelaria e Armarinho','Bebês','Beleza e Cuidado Pessoal','Brinquedos e Hobbies','Calçados, Roupas e Bolsas','Câmeras e Acessórios','Casa, Móveis e Decoração','Celulares e Telefones','Construção','Eletrodomésticos','Eletrônicos, Áudio e Vídeo','Esportes e Fitness','Ferramentas','Festas e Lembrancinhas','Games','Indústria e Comércio','Informática','Instrumentos Musicais','Joias e Relógios','Livros, Revistas e Comics','Mais Categorias','Música, Filmes e Seriados','Pet Shop','Saúde'];
@@ -490,16 +563,48 @@ function renderML(reset){
     <div class="links"><a href="${mlLink(p)}" target="_blank" rel="noopener">Abrir no Mercado Livre ↗</a><a href="${pulseLink(p)}" target="_blank" rel="noopener">Ficha JoomPulse ↗</a></div>
    </article>`).join('') : `<div class="empty">Nenhum produto com esses filtros. Tire um filtro ou mude a faixa de preço.</div>`;
 }
+/* motivo curto, em português claro, para os cards de destaque */
+function whyShort(p){
+  const c = p._cat, bits = [];
+  bits.push(`vende <b>${fmtN(p.w)}/semana</b>`);
+  if (p.c && p.bb) bits.push(p.bb===1 ? 'e é o <b>único vendedor</b> do catálogo' : `com só <b>${p.bb} vendedores</b> disputando`);
+  else if (p.flags.comp) bits.push('e a concorrência é <b>fraca</b>');
+  if (p.flags.new) bits.push(`num anúncio de <b>${p.d} dias</b>`);
+  if (c && c.t12 != null && c.t12 > 0) bits.push(`numa categoria subindo <b>${PCT(c.t12)}</b> em 12 meses`);
+  return bits.join(', ') + '.';
+}
+function mlPicks(){
+  const top = S.products.slice(0,3);
+  const rot = ['Nº 1 desta rodada','Nº 2','Nº 3'];
+  $('#ml-picks').innerHTML = top.map((p,i)=>`
+    <article class="pick ${i===0?'lead':''}" data-id="${esc(p.i)}" tabindex="0" role="button" aria-label="${esc(p.n)}">
+      <span class="medal">${rot[i]}</span>
+      <img class="shot" loading="lazy" src="${esc(p.img||'')}" alt="">
+      <div>
+        <div class="path">${esc(p.l1)}${p.l2?' › '+esc(p.l2):''}</div>
+        <div class="nm">${esc(p.n)}</div>
+        <div class="why-s">${whyShort(p)}</div>
+        <div class="foot-s">
+          <span class="big-sc">${p.score.toFixed(0)}<small>/100</small></span>
+          <span class="money">${fmtBRL(p.pr)}</span>
+          <span class="money muted">${fmtBRLc(p.g)}/mês est.</span>
+        </div>
+      </div>
+    </article>`).join('');
+}
+$('#ml-picks').addEventListener('click', e=>{ const c=e.target.closest('.pick'); if(c) openProduct(c.dataset.id); });
+$('#ml-picks').addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ const c=e.target.closest('.pick'); if(c){ e.preventDefault(); openProduct(c.dataset.id);} } });
+
 function mlTiles(){
   const P=S.products; const news=P.filter(p=>p.flags.new).length, low=P.filter(p=>p.flags.comp).length, grow=P.filter(p=>p.flags.grow).length;
   const top=P[0];
   $('#ml-tiles').innerHTML = `
-   <div class="tile"><div class="k">No radar</div><div class="v">${P.length}</div><div class="s">produtos com venda na semana</div></div>
+   <div class="tile accent"><div class="k">No radar</div><div class="v">${P.length}</div><div class="s">produtos com venda na semana</div></div>
    <div class="tile"><div class="k">Novos e vendendo</div><div class="v">${news}</div><div class="s">até 90 dias no ar</div></div>
    <div class="tile"><div class="k">Baixa concorrência</div><div class="v">${low}</div><div class="s">poucos vendedores fortes</div></div>
    <div class="tile"><div class="k">Categoria em alta</div><div class="v">${grow}</div><div class="s">tendência positiva</div></div>
    <div class="tile"><div class="k">Entraram nesta rodada</div><div class="v">${P.filter(p=>(p.runs??1)<=1).length}</div><div class="s">primeira vez no radar</div></div>
-   <div class="tile"><div class="k">Nº 1 hoje</div><div class="v">${top?top.score.toFixed(0):'—'}</div><div class="s">${top?esc(top.n).slice(0,48):''}</div></div>`;
+   <div class="tile"><div class="k">Receita no radar</div><div class="v">${fmtBRLc(P.reduce((a,p)=>a+(p.g||0),0))}</div><div class="s">soma estimada por mês</div></div>`;
 }
 $('#ml-q').addEventListener('input', e=>{ ml.q=e.target.value; renderML(true); });
 $('#ml-l1').addEventListener('change', e=>{ ml.l1=e.target.value; renderML(true); });
@@ -561,6 +666,8 @@ function openProduct(id){
       <a class="btn ghost" href="https://lista.mercadolivre.com.br/${encodeURIComponent(p.n.split(' ').slice(0,5).join(' '))}" target="_blank" rel="noopener">Ver concorrentes na busca ↗</a>
     </div>`;
   $('#drawer').classList.add('open');
+  document.body.classList.add('locked');   // impede a página de fundo de rolar junto
+  $('#panel').scrollTop = 0;
   $('#pclose').onclick = closeDrawer;
   $('#psim').onclick = ()=>{ closeDrawer(); $('#s-price').value = p.pr; if (L1S.includes(p.l1)) $('#s-cat').value = p.l1; simulate(); showTab('sim'); };
 }
@@ -572,7 +679,7 @@ function spark(h){
   const dots=h.map((x,i)=>`<circle cx="${xs(i)}" cy="${10+((x[1]||maxR)-1)/Math.max(1,maxR-1)*60}" r="3" fill="var(--acc)"><title>#${x[1]} · ${x[2]} vendas/sem · ${fmtDT(x[0])}</title></circle>`).join('');
   return `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" role="img">${bars}<polyline points="${pts}" fill="none" stroke="var(--acc)" stroke-width="2"/>${dots}<text x="10" y="${H-1}" font-size="9" fill="var(--ink3)">#1 no topo · ${fmtDT(h[0][0])}</text><text x="${W-10}" y="${H-1}" font-size="9" text-anchor="end" fill="var(--ink3)">${fmtDT(h[n-1][0])}</text></svg>`;
 }
-function closeDrawer(){ $('#drawer').classList.remove('open'); }
+function closeDrawer(){ $('#drawer').classList.remove('open'); document.body.classList.remove('locked'); }
 $('#drawer .veil').addEventListener('click', closeDrawer);
 document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeDrawer(); });
 
@@ -786,7 +893,7 @@ function fillSelects(){
 }
 function renderAll(){
   computeAll(); renderFresh(false);
-  mlTiles(); renderML(true); catTiles(); renderCats(); impTiles(); renderImp(true);
+  mlTiles(); mlPicks(); renderML(true); catTiles(); renderCats(); impTiles(); renderImp(true);
 }
 fillSelects(); initSim();
 try{ const t=localStorage.getItem('radar.tab'); if(t && $('#tab-'+t)) showTab(t);}catch(e){}
