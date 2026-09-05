@@ -1,0 +1,801 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Radar Safira</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+html{color-scheme:light dark}
+:root{
+  --bg:#f5f4ef; --bg2:#ffffff; --bg3:#ecebe4; --line:#d9d7cc; --line2:#c5c3b6;
+  --ink:#1c1f2b; --ink2:#4a4e5c; --ink3:#7b7f8c;
+  --acc:#2f4fd1; --acc2:#e6eaff; --accInk:#ffffff;
+  --good:#1f8a5b; --goodBg:#dff3e8; --warn:#b8690f; --warnBg:#fbeed7; --bad:#c0392b; --badBg:#fae0dc;
+  --meter:#2f4fd1; --meterBg:#dcdbd1;
+  --shadow:0 1px 2px rgba(20,24,40,.06),0 6px 20px rgba(20,24,40,.06);
+  --r:10px;
+  --display:"Bricolage Grotesque","IBM Plex Sans",system-ui,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#12141c; --bg2:#1a1d27; --bg3:#222633; --line:#2c3040; --line2:#3a3f52;
+  --ink:#eceef5; --ink2:#b3b7c6; --ink3:#7f8497;
+  --acc:#7c96ff; --acc2:#232b4d; --accInk:#0e1330;
+  --good:#4fcf8f; --goodBg:#163326; --warn:#f0a94a; --warnBg:#3a2a12; --bad:#ff7b6b; --badBg:#3d1c19;
+  --meter:#7c96ff; --meterBg:#2c3040;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+}}
+:root[data-theme="dark"]{
+  --bg:#12141c; --bg2:#1a1d27; --bg3:#222633; --line:#2c3040; --line2:#3a3f52;
+  --ink:#eceef5; --ink2:#b3b7c6; --ink3:#7f8497;
+  --acc:#7c96ff; --acc2:#232b4d; --accInk:#0e1330;
+  --good:#4fcf8f; --goodBg:#163326; --warn:#f0a94a; --warnBg:#3a2a12; --bad:#ff7b6b; --badBg:#3d1c19;
+  --meter:#7c96ff; --meterBg:#2c3040;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{font-size:15px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.45;-webkit-font-smoothing:antialiased}
+a{color:var(--acc);text-decoration:none}
+a:hover{text-decoration:underline}
+button,select,input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.muted{color:var(--ink3)}
+.small{font-size:.82rem}
+
+/* header */
+.top{background:var(--bg2);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.top-in{max-width:1380px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.brand{display:flex;align-items:baseline;gap:10px}
+.brand h1{font-family:var(--display);font-weight:800;font-size:1.35rem;letter-spacing:-.01em;margin:0}
+.brand span{font-family:var(--mono);font-size:.72rem;color:var(--ink3);letter-spacing:.06em;text-transform:uppercase}
+nav.tabs{display:flex;gap:2px;flex-wrap:wrap}
+nav.tabs button{background:none;border:0;padding:8px 12px;border-radius:8px;color:var(--ink2);cursor:pointer;font-weight:500}
+nav.tabs button:hover{background:var(--bg3)}
+nav.tabs button[aria-selected="true"]{background:var(--acc);color:var(--accInk);font-weight:600}
+nav.tabs button .soon{font-size:.65rem;font-family:var(--mono);letter-spacing:.05em;margin-left:6px;opacity:.7;text-transform:uppercase}
+.fresh{margin-left:auto;font-family:var(--mono);font-size:.72rem;color:var(--ink3);text-align:right;line-height:1.35}
+.fresh b{color:var(--ink2);font-weight:500}
+.fresh .live{color:var(--good)}
+
+main{max-width:1380px;margin:0 auto;padding:18px 20px 60px}
+section[hidden]{display:none}
+h2{font-family:var(--display);font-weight:700;font-size:1.5rem;margin:0 0 4px;letter-spacing:-.01em;text-wrap:balance}
+.lead{color:var(--ink2);margin:0 0 16px;max-width:70ch}
+
+/* tiles */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:0 0 16px}
+.tile{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:10px 12px}
+.tile .k{font-size:.72rem;color:var(--ink3);text-transform:uppercase;letter-spacing:.06em}
+.tile .v{font-family:var(--display);font-size:1.45rem;font-weight:700;line-height:1.2;margin-top:2px}
+.tile .s{font-size:.78rem;color:var(--ink2)}
+
+/* filters */
+.filters{display:flex;gap:8px;flex-wrap:wrap;align-items:center;background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:10px 12px;margin-bottom:12px}
+.filters input[type=search],.filters select{background:var(--bg);border:1px solid var(--line2);border-radius:8px;padding:7px 10px;min-width:150px}
+.filters input[type=search]{flex:1 1 220px}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{border:1px solid var(--line2);background:var(--bg);border-radius:999px;padding:5px 11px;font-size:.82rem;cursor:pointer;color:var(--ink2)}
+.chip[aria-pressed="true"]{background:var(--acc2);border-color:var(--acc);color:var(--acc);font-weight:600}
+.filters .sep{width:1px;height:22px;background:var(--line)}
+.btn{border:1px solid var(--line2);background:var(--bg);border-radius:8px;padding:7px 12px;cursor:pointer;font-weight:500}
+.btn:hover{background:var(--bg3)}
+.btn.primary{background:var(--acc);border-color:var(--acc);color:var(--accInk);font-weight:600}
+.btn.ghost{border-color:transparent;color:var(--acc)}
+.count{font-family:var(--mono);font-size:.78rem;color:var(--ink3);margin-left:auto}
+
+/* product list */
+.list{display:flex;flex-direction:column;gap:8px}
+.row{display:grid;grid-template-columns:44px 64px 1fr 150px 120px 110px 120px;gap:14px;align-items:center;background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:10px 12px;cursor:pointer;transition:border-color .15s}
+.row:hover{border-color:var(--acc)}
+.row .rank{font-family:var(--display);font-weight:800;font-size:1.15rem;color:var(--ink3);text-align:center}
+.row .rank.top{color:var(--acc)}
+.thumb{width:64px;height:64px;border-radius:8px;background:var(--bg3);object-fit:contain;border:1px solid var(--line)}
+.row .name{font-weight:600;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.row .path{font-size:.78rem;color:var(--ink3);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}
+.tag{font-size:.7rem;padding:2px 7px;border-radius:5px;background:var(--bg3);color:var(--ink2);white-space:nowrap}
+.tag.good{background:var(--goodBg);color:var(--good)}
+.tag.warn{background:var(--warnBg);color:var(--warn)}
+.tag.bad{background:var(--badBg);color:var(--bad)}
+.tag.acc{background:var(--acc2);color:var(--acc)}
+.meter{display:flex;flex-direction:column;gap:4px}
+.meter .sc{font-family:var(--display);font-weight:800;font-size:1.35rem;line-height:1}
+.meter .sc small{font-size:.7rem;font-weight:500;color:var(--ink3);margin-left:3px;font-family:var(--mono)}
+.bar{height:6px;background:var(--meterBg);border-radius:3px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--meter);border-radius:3px}
+.cell .k{font-size:.68rem;color:var(--ink3);text-transform:uppercase;letter-spacing:.05em}
+.cell .v{font-family:var(--mono);font-size:.95rem;font-weight:500}
+.cell .v.big{font-size:1.05rem}
+.links{display:flex;flex-direction:column;gap:4px;font-size:.8rem}
+.links a{white-space:nowrap}
+@media (max-width:980px){
+  .row{grid-template-columns:34px 56px 1fr 120px;grid-auto-rows:auto}
+  .row .cell{display:none}
+}
+@media (max-width:640px){
+  .row{grid-template-columns:48px 1fr;gap:10px}
+  .row .rank,.row .links{display:none}
+  .row .meter{grid-column:1/-1}
+}
+.more{display:flex;justify-content:center;margin:14px 0}
+
+/* drawer */
+.drawer{position:fixed;inset:0;z-index:40;display:none}
+.drawer.open{display:block}
+.drawer .veil{position:absolute;inset:0;background:rgba(10,12,20,.45)}
+.drawer .panel{position:absolute;top:0;right:0;bottom:0;width:min(560px,100%);background:var(--bg2);border-left:1px solid var(--line);overflow:auto;padding:20px 22px 40px;box-shadow:var(--shadow)}
+.panel h3{font-family:var(--display);font-size:1.2rem;margin:10px 0 4px;line-height:1.25;text-wrap:balance}
+.panel .close{position:absolute;top:12px;right:12px}
+.panel img.big{width:100%;max-height:260px;object-fit:contain;background:var(--bg3);border-radius:8px;border:1px solid var(--line)}
+.kv{display:grid;grid-template-columns:1fr 1fr;gap:8px 14px;margin:12px 0}
+.kv>div{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 10px}
+.kv .k{font-size:.68rem;color:var(--ink3);text-transform:uppercase;letter-spacing:.05em}
+.kv .v{font-family:var(--mono);font-weight:500}
+.break{margin:14px 0}
+.break .li{display:grid;grid-template-columns:150px 1fr 48px;gap:10px;align-items:center;font-size:.85rem;margin:6px 0}
+.break .li .num{text-align:right}
+.why{background:var(--acc2);color:var(--ink);border-radius:8px;padding:10px 12px;font-size:.9rem;margin:10px 0}
+.why b{color:var(--acc)}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+
+/* tables */
+.tbl-wrap{overflow-x:auto;background:var(--bg2);border:1px solid var(--line);border-radius:var(--r)}
+table{border-collapse:collapse;width:100%;font-size:.86rem;min-width:900px}
+th,td{padding:9px 10px;text-align:left;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink3);font-weight:600;background:var(--bg3);position:sticky;top:0;cursor:pointer;white-space:nowrap}
+th.on{color:var(--acc)}
+td.n{font-family:var(--mono);text-align:right;white-space:nowrap}
+th.n{text-align:right}
+tr.clk{cursor:pointer}
+tr.clk:hover td{background:var(--bg3)}
+.pill{display:inline-block;font-size:.7rem;padding:2px 8px;border-radius:999px;font-weight:600;letter-spacing:.02em}
+.pill.high,.pill.low.mono{background:var(--goodBg);color:var(--good)}
+.pill.medium{background:var(--warnBg);color:var(--warn)}
+.pill.low,.pill.high.mono{background:var(--badBg);color:var(--bad)}
+.pill.medium.mono{background:var(--warnBg);color:var(--warn)}
+.pill.na{background:var(--bg3);color:var(--ink3)}
+.delta.up{color:var(--good)} .delta.down{color:var(--bad)}
+
+/* import rows */
+.imp{display:grid;grid-template-columns:64px 1.3fr 1fr 130px 130px 120px;gap:14px;align-items:center;background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:10px 12px}
+.imp .t{font-weight:600;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.imp .sub{font-size:.78rem;color:var(--ink3);margin-top:2px}
+@media (max-width:980px){ .imp{grid-template-columns:56px 1fr 1fr} .imp .cell{display:none} }
+
+/* simulator */
+.sim{display:grid;grid-template-columns:minmax(300px,420px) 1fr;gap:18px;align-items:start}
+@media (max-width:900px){ .sim{grid-template-columns:1fr} }
+.card{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px}
+.card h3{font-family:var(--display);font-size:1.05rem;margin:0 0 10px}
+.field{display:grid;grid-template-columns:1fr 150px;gap:8px;align-items:center;margin:8px 0}
+.field label{font-size:.88rem;color:var(--ink2)}
+.field input,.field select{background:var(--bg);border:1px solid var(--line2);border-radius:8px;padding:7px 10px;width:100%;font-family:var(--mono)}
+.field select{font-family:var(--body)}
+.res{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:12px}
+.res .tile .v{font-size:1.3rem}
+.res .tile.hero{background:var(--acc2);border-color:var(--acc)}
+.res .tile.hero .v{color:var(--acc)}
+.led{width:100%;border-collapse:collapse;font-size:.86rem;min-width:0}
+.led td{padding:6px 4px;border-bottom:1px dashed var(--line)}
+.led td.n{text-align:right;font-family:var(--mono)}
+.led tr.tot td{font-weight:700;border-bottom:0;border-top:2px solid var(--line2)}
+details{margin-top:12px}
+summary{cursor:pointer;font-weight:600;color:var(--acc)}
+.fee-grid{display:grid;grid-template-columns:1fr 100px;gap:6px;align-items:center;margin-top:8px;font-size:.85rem}
+.fee-grid input{width:100%;background:var(--bg);border:1px solid var(--line2);border-radius:6px;padding:5px 8px;font-family:var(--mono)}
+.note{font-size:.8rem;color:var(--ink3);margin-top:8px;line-height:1.4}
+
+/* roadmap */
+.road{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.step{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px}
+.step h3{font-family:var(--display);font-size:1rem;margin:0 0 6px}
+.step p{margin:0;font-size:.88rem;color:var(--ink2)}
+.step .st{font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);margin-bottom:6px}
+.step .st.on{color:var(--good)}
+ul.clean{margin:8px 0 0;padding-left:18px;font-size:.88rem;color:var(--ink2)}
+ul.clean li{margin:3px 0}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:999px;font-size:.85rem;box-shadow:var(--shadow);z-index:50;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.show{opacity:1}
+.foot{margin-top:28px;font-size:.78rem;color:var(--ink3);line-height:1.5;max-width:90ch}
+.empty{padding:40px;text-align:center;color:var(--ink3);background:var(--bg2);border:1px dashed var(--line2);border-radius:var(--r)}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="top-in">
+  <div class="brand"><h1>Radar Safira</h1><span>oportunidades · mercado livre</span></div>
+  <nav class="tabs" role="tablist">
+    <button role="tab" data-tab="ml" aria-selected="true">Oportunidades ML</button>
+    <button role="tab" data-tab="cats" aria-selected="false">Categorias em alta</button>
+    <button role="tab" data-tab="imp" aria-selected="false">Importação JoomPro</button>
+    <button role="tab" data-tab="sim" aria-selected="false">Simulador de preço</button>
+    <button role="tab" data-tab="forn" aria-selected="false">Fornecedores<span class="soon">fase 2</span></button>
+    <button role="tab" data-tab="shp" aria-selected="false">Shopee<span class="soon">em breve</span></button>
+  </nav>
+  <div class="fresh" id="fresh"></div>
+</div></header>
+
+<main>
+<!-- ================= ML ================= -->
+<section id="tab-ml">
+  <h2>Produtos fora da curva no Mercado Livre</h2>
+  <p class="lead">Ranking único de 0 a 100 que combina volume de vendas, pouca concorrência, categoria em crescimento e anúncios novos que já vendem. Clique num produto para ver por que ele pontuou e simular o preço.</p>
+  <div class="tiles" id="ml-tiles"></div>
+  <div class="filters">
+    <input type="search" id="ml-q" placeholder="Buscar produto, marca ou vendedor…">
+    <select id="ml-l1"><option value="">Todas as categorias</option></select>
+    <select id="ml-sort">
+      <option value="score">Ordenar: Score</option>
+      <option value="w">Ordenar: Vendas/semana</option>
+      <option value="g">Ordenar: Receita/mês</option>
+      <option value="pr_asc">Ordenar: Preço ↑</option>
+      <option value="pr_desc">Ordenar: Preço ↓</option>
+      <option value="d">Ordenar: Mais novos</option>
+      <option value="move">Ordenar: Quem mais subiu</option>
+    </select>
+    <span class="sep"></span>
+    <div class="chips" id="ml-price">
+      <button class="chip" data-band="0-50" aria-pressed="false">até R$ 50</button>
+      <button class="chip" data-band="50-100" aria-pressed="false">R$ 50–100</button>
+      <button class="chip" data-band="100-300" aria-pressed="false">R$ 100–300</button>
+      <button class="chip" data-band="300-1000" aria-pressed="false">R$ 300–1.000</button>
+      <button class="chip" data-band="1000-" aria-pressed="false">R$ 1.000+</button>
+    </div>
+    <span class="sep"></span>
+    <div class="chips" id="ml-sig">
+      <button class="chip" data-sig="vol" aria-pressed="false">Alto volume</button>
+      <button class="chip" data-sig="comp" aria-pressed="false">Baixa concorrência</button>
+      <button class="chip" data-sig="grow" aria-pressed="false">Categoria em alta</button>
+      <button class="chip" data-sig="new" aria-pressed="false">Novo e vendendo</button>
+    </div>
+    <span class="count" id="ml-count"></span>
+    <button class="btn" id="ml-csv" hidden>Exportar CSV</button>
+  </div>
+  <div class="list" id="ml-list"></div>
+  <div class="more"><button class="btn" id="ml-more">Mostrar mais 50</button></div>
+</section>
+
+<!-- ================= CATEGORIES ================= -->
+<section id="tab-cats" hidden>
+  <h2>Categorias em alta e com espaço para entrar</h2>
+  <p class="lead">Subcategorias (níveis 2 e 3) ranqueadas por oportunidade, baixa monopolização e tendência de 12 meses. Clique numa categoria para ver os produtos dela que estão no radar.</p>
+  <div class="tiles" id="cat-tiles"></div>
+  <div class="filters">
+    <input type="search" id="cat-q" placeholder="Buscar categoria…">
+    <select id="cat-l1"><option value="">Todas as categorias</option></select>
+    <select id="cat-lv"><option value="">Níveis 2 e 3</option><option value="2">Só nível 2</option><option value="3">Só nível 3</option></select>
+    <div class="chips" id="cat-sig">
+      <button class="chip" data-sig="opp" aria-pressed="true">Oportunidade alta</button>
+      <button class="chip" data-sig="mono" aria-pressed="true">Monopolização baixa/média</button>
+      <button class="chip" data-sig="grow" aria-pressed="false">Tendência 12m positiva</button>
+    </div>
+    <span class="count" id="cat-count"></span>
+  </div>
+  <div class="tbl-wrap"><table id="cat-tbl"><thead><tr>
+    <th data-k="name">Categoria</th><th data-k="cs" class="n">Score</th><th data-k="opp">Oportunidade</th><th data-k="mono">Monopolização</th>
+    <th data-k="t12" class="n">Tend. 12m</th><th data-k="gG" class="n">Receita vs mês ant.</th><th data-k="gmv" class="n">Receita est. (mês)</th>
+    <th data-k="oc" class="n">Vendas est.</th><th data-k="nss" class="n">Vendedores c/ venda</th><th data-k="tk" class="n">Ticket médio</th><th data-k="seas">Sazonalidade</th>
+  </tr></thead><tbody></tbody></table></div>
+</section>
+
+<!-- ================= IMPORT ================= -->
+<section id="tab-imp" hidden>
+  <h2>Importação via JoomPro com margem contra o Mercado Livre</h2>
+  <p class="lead">Produtos do catálogo JoomPro pareados automaticamente com um produto do Mercado Livre. O preço JoomPro já é o custo posto no Brasil (frete, impostos de importação e tributos inclusos), no melhor nível de quantidade. A margem <b>não</b> desconta a comissão do ML nem o seu Simples — use o simulador para o número final.</p>
+  <div class="tiles" id="imp-tiles"></div>
+  <div class="filters">
+    <input type="search" id="imp-q" placeholder="Buscar produto…">
+    <select id="imp-l1"><option value="">Todas as categorias ML</option></select>
+    <select id="imp-sort">
+      <option value="is">Ordenar: Score de importação</option>
+      <option value="mg">Ordenar: Margem %</option>
+      <option value="mo">Ordenar: Demanda no ML</option>
+      <option value="pf">Ordenar: Lucro bruto R$</option>
+      <option value="sc">Ordenar: Confiança do par</option>
+    </select>
+    <div class="chips" id="imp-price">
+      <button class="chip" data-band="0-50" aria-pressed="false">ML até R$ 50</button>
+      <button class="chip" data-band="50-100" aria-pressed="false">R$ 50–100</button>
+      <button class="chip" data-band="100-300" aria-pressed="false">R$ 100–300</button>
+      <button class="chip" data-band="300-" aria-pressed="false">R$ 300+</button>
+    </div>
+    <div class="chips" id="imp-sig">
+      <button class="chip" data-sig="sb" aria-pressed="false">Lote pequeno disponível</button>
+      <button class="chip" data-sig="sc" aria-pressed="false">Par confiável (≥ 0,90)</button>
+      <button class="chip" data-sig="ve" aria-pressed="false">Frete eficiente</button>
+    </div>
+    <span class="count" id="imp-count"></span>
+  </div>
+  <div class="list" id="imp-list"></div>
+  <div class="more"><button class="btn" id="imp-more">Mostrar mais 50</button></div>
+  <p class="foot">Cada par JoomPro ↔ Mercado Livre foi feito automaticamente por semelhança de imagem e título. Mesmo com confiança alta, cerca de um em cada três pares é de fato o mesmo produto — confira os dois anúncios antes de decidir. A demanda mostrada é uma estimativa JoomPulse do produto no Mercado Livre, não do JoomPro.</p>
+</section>
+
+<!-- ================= SIMULATOR ================= -->
+<section id="tab-sim" hidden>
+  <h2>Simulador de preço e margem no Mercado Livre</h2>
+  <p class="lead">Informe o custo e o preço de venda; o simulador aplica comissão por categoria, custo fixo por unidade, frete e imposto, e mostra o lucro por unidade. Também calcula o preço mínimo para a margem que você quer.</p>
+  <div class="sim">
+    <div class="card">
+      <h3>Entradas</h3>
+      <div class="field"><label>Custo do produto (unidade)</label><input id="s-cost" type="number" step="0.01" value="16"></div>
+      <div class="field"><label>Preço de venda</label><input id="s-price" type="number" step="0.01" value="59.90"></div>
+      <div class="field"><label>Categoria (define a comissão)</label><select id="s-cat"></select></div>
+      <div class="field"><label>Tipo de anúncio</label><select id="s-type"><option value="c">Clássico</option><option value="p">Premium (12x sem juros)</option></select></div>
+      <div class="field"><label>Peso com embalagem</label><select id="s-weight"></select></div>
+      <div class="field"><label>Desconto no frete pela reputação</label><select id="s-rep"><option value="0">0% (vendedor novo)</option><option value="0.25">25%</option><option value="0.5" selected>50% (reputação verde)</option><option value="0.7">70% (MercadoLíder)</option></select></div>
+      <div class="field"><label>Imposto sobre a venda (Simples) %</label><input id="s-tax" type="number" step="0.1" value="6"></div>
+      <div class="field"><label>Embalagem e outros custos por unidade</label><input id="s-other" type="number" step="0.01" value="1.50"></div>
+      <div class="field"><label>Anúncios (Ads) % da venda</label><input id="s-ads" type="number" step="0.1" value="0"></div>
+      <div class="field"><label>Margem desejada (sobre a venda) %</label><input id="s-target" type="number" step="1" value="25"></div>
+      <details><summary>Tabela de taxas (editável)</summary>
+        <div class="note">Comissões por categoria e custos fixos por faixa de preço abaixo de R$ 79. O Mercado Livre passou a variar o custo fixo também por peso em 2026 — confira o valor exato no Simulador de Custos da sua conta e ajuste aqui.</div>
+        <div class="fee-grid" id="fee-grid"></div>
+      </details>
+    </div>
+    <div>
+      <div class="res" id="s-res"></div>
+      <div class="card"><h3>Extrato por unidade</h3><table class="led" id="s-led"></table>
+        <div class="note" id="s-note"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SUPPLIERS ================= -->
+<section id="tab-forn" hidden>
+  <h2>Fornecedores: da foto ao produto vendável</h2>
+  <p class="lead">Fase 2 do Radar. O fluxo abaixo já está desenhado; entra em operação quando os cadastros e as fotos dos fornecedores estiverem prontos.</p>
+  <div class="road">
+    <div class="step"><div class="st">Loja física</div><h3>Foto na loja → similares no ML</h3><p>Você fotografa o produto com a etiqueta de preço e envia no chat. Claude identifica o item, busca similares no Mercado Livre (mesma cor e características), traz preço praticado, vendas estimadas e concorrência, e roda o simulador com o custo da etiqueta.</p></div>
+    <div class="step"><div class="st">Sites de fornecedores</div><h3>Link → comparação automática</h3><p>Você envia a lista de links. Claude abre cada página, extrai nome, preço e fotos, e cruza com o Mercado Livre da mesma forma que o fluxo por foto.</p></div>
+    <div class="step"><div class="st">Catálogos</div><h3>PDF ou planilha → lote de análise</h3><p>Catálogos inteiros entram como arquivo; cada item vira uma linha com preço de custo, preço ML, margem simulada e um veredito.</p></div>
+    <div class="step"><div class="st on">Pronto agora</div><h3>Simulador com as taxas do ML</h3><p>Já dá para usar: pegue o preço da etiqueta, coloque no simulador e veja quanto precisa vender para ter a margem que quer.</p>
+      <ul class="clean"><li>Checklist de visita: foto do produto, foto da etiqueta, marca/modelo, quantidade mínima, prazo.</li><li>Envie as fotos no chat com o Radar aberto — o resultado volta como lista de similares com links.</li></ul></div>
+  </div>
+</section>
+
+<!-- ================= SHOPEE ================= -->
+<section id="tab-shp" hidden>
+  <h2>Shopee Brasil</h2>
+  <p class="lead">A JoomPulse cobre a Shopee desde maio de 2026, ainda sem palavras-chave, sazonalidade ou tendência de 12 meses. Esta aba será ligada quando o Mercado Livre estiver rodando redondo, com a mesma lógica de score adaptada aos sinais que a Shopee oferece (vendas 30 dias, tendência do item, favoritos, tipo de loja).</p>
+  <div class="empty">Aba reservada — sem dados ainda.</div>
+</section>
+
+<p class="foot" id="foot"></p>
+</main>
+
+<div class="drawer" id="drawer"><div class="veil"></div><div class="panel" id="panel"></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ===================== data ===================== */
+let S = {meta:{generatedAt:null,counts:{products:0,categories:0,joompro:0}},products:[],categories:[],joompro:[]};
+const $ = (s, el=document) => el.querySelector(s);
+const $$ = (s, el=document) => Array.from(el.querySelectorAll(s));
+const BRL = new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'});
+const NUM = new Intl.NumberFormat('pt-BR');
+const PCT = v => (v>0?'+':'') + (v*100).toFixed(1).replace('.',',') + '%';
+const fmtBRL = v => v==null ? '—' : BRL.format(v);
+const fmtN = v => v==null ? '—' : NUM.format(Math.round(v));
+const esc = s => String(s??'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const clamp = (x,a=0,b=1) => Math.max(a,Math.min(b,x));
+const L1S = ['Acessórios para Veículos','Agro','Alimentos e Bebidas','Arte, Papelaria e Armarinho','Bebês','Beleza e Cuidado Pessoal','Brinquedos e Hobbies','Calçados, Roupas e Bolsas','Câmeras e Acessórios','Casa, Móveis e Decoração','Celulares e Telefones','Construção','Eletrodomésticos','Eletrônicos, Áudio e Vídeo','Esportes e Fitness','Ferramentas','Festas e Lembrancinhas','Games','Indústria e Comércio','Informática','Instrumentos Musicais','Joias e Relógios','Livros, Revistas e Comics','Mais Categorias','Música, Filmes e Seriados','Pet Shop','Saúde'];
+
+function mlLink(p){
+  if (p.u) return 'https://www.mercadolivre.com.br/up/'+p.u;
+  if (p.c && p.p && !p.p.includes('-')) return 'https://www.mercadolivre.com.br/p/'+p.p;
+  return 'https://produto.mercadolivre.com.br/'+(p.p || p.i.replace('MLB','MLB-'));
+}
+const pulseLink = p => 'https://joompulse.com/dashboard/beginner-products/'+p.i;
+
+/* ===================== scoring ===================== */
+let CAT_L3 = {}, CAT_L2 = {};
+function indexCats(){
+  CAT_L3 = {}; CAT_L2 = {};
+  for (const c of S.categories){ if (c.lv===3) CAT_L3[[c.l1,c.l2,c.l3].join('|')] = c; else if (c.lv===2) CAT_L2[c.id] = c; }
+}
+function catOf(p){ return CAT_L3[[p.l1,p.l2,p.l3].join('|')] || CAT_L2[p.l2id] || null; }
+function computeAll(){
+  indexCats();
+  for (const p of S.products){
+    const c = catOf(p); p._cat = c;
+    p._dp = p.sd ?? 0; p._comp = p.sc ?? 0; p._growth = p.sg ?? 0; p._nov = p.sn ?? 0;
+    const t12 = c && c.t12!=null ? c.t12 : 0, gG = c && c.gG!=null ? c.gG : 0, d = p.d ?? 999;
+    p.flags = { vol: p._dp>=.8, comp: p._comp>=.8, grow: (t12>=.08 || gG>=.15) && (c?.opp!=='low'), new: d<=90 };
+    p.move = p.prev==null ? null : p.prev - p.rank;   // positivo = subiu
+  }
+  S.products.sort((a,b)=>a.rank-b.rank);
+}
+
+/* ===================== header / freshness ===================== */
+function fmtDT(iso){ if(!iso) return '—'; const d=new Date(iso); return d.toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo',day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}); }
+function fmtMonth(ym){ if(!ym) return '—'; const [y,m]=ym.split('-'); return ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'][+m-1]+'/'+y; }
+function renderFresh(live){
+  $('#fresh').innerHTML = `Rodada <b>#${S.meta.runId??'—'}</b> · produtos ML <b>${fmtDT(S.meta.generatedAt)}</b> · categorias <b>${fmtMonth(S.meta.catMonth)}</b> · JoomPro <b>${S.meta.joomproAsOf||'—'}</b><br><span class="live">automático</span> às 8h e 15h · ${S.meta.counts.new_this_run??0} novos nesta rodada`;
+  $('#foot').textContent = `Vendas e receitas são estimativas da JoomPulse a partir de dados públicos dos anúncios — não são números oficiais do Mercado Livre. Preços são reais (buy box no momento da coleta). Dados de categoria têm até um mês de atraso; dados de produto, até 24 horas. ${S.meta.counts.products} produtos, ${S.meta.counts.categories} subcategorias e ${S.meta.counts.joompro} pares JoomPro nesta leitura.`;
+}
+
+/* ===================== tabs ===================== */
+$$('nav.tabs button').forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.tab)));
+function showTab(t){
+  $$('nav.tabs button').forEach(b=>b.setAttribute('aria-selected', b.dataset.tab===t));
+  $$('main > section').forEach(s=>s.hidden = s.id!=='tab-'+t);
+  try{ localStorage.setItem('radar.tab', t);}catch(e){}
+  window.scrollTo({top:0});
+}
+
+/* ===================== ML tab ===================== */
+const ml = { q:'', l1:'', sort:'score', bands:new Set(), sigs:new Set(), shown:50 };
+function inBand(price, bands){
+  if(!bands.size) return true;
+  for(const b of bands){ const [lo,hi]=b.split('-'); if(price>=+lo && (hi===''||price<+hi)) return true; }
+  return false;
+}
+function mlFiltered(){
+  const q = ml.q.trim().toLowerCase();
+  let rows = S.products.filter(p =>
+    (!ml.l1 || p.l1===ml.l1) && inBand(p.pr??0, ml.bands) &&
+    [...ml.sigs].every(s=>p.flags[s]) &&
+    (!q || (p.n+' '+(p.b||'')+' '+(p.s||'')+' '+(p.l2||'')+' '+(p.l3||'')).toLowerCase().includes(q)));
+  const k = ml.sort;
+  if (k==='score') rows.sort((a,b)=>b.score-a.score);
+  else if (k==='w') rows.sort((a,b)=>(b.w||0)-(a.w||0));
+  else if (k==='g') rows.sort((a,b)=>(b.g||0)-(a.g||0));
+  else if (k==='pr_asc') rows.sort((a,b)=>(a.pr||0)-(b.pr||0));
+  else if (k==='pr_desc') rows.sort((a,b)=>(b.pr||0)-(a.pr||0));
+  else if (k==='d') rows.sort((a,b)=>(a.d??9e9)-(b.d??9e9) || b.score-a.score);
+  else if (k==='move') rows.sort((a,b)=>((b.move??-1e9)-(a.move??-1e9)) || a.rank-b.rank);
+  return rows;
+}
+const MEDAL = {platinum:'MercadoLíder Platinum', gold:'MercadoLíder Gold', silver:'MercadoLíder'};
+const COMPL = {low:'Concorrência baixa', mid:'Concorrência média', high:'Concorrência alta'};
+function prodTags(p){
+  const t=[];
+  if (p.move==null && (p.runs??1)<=1) t.push(`<span class="tag acc">Entrou agora</span>`);
+  else if (p.move>0) t.push(`<span class="tag good">↑ ${p.move}</span>`);
+  else if (p.move<0) t.push(`<span class="tag bad">↓ ${-p.move}</span>`);
+  if (p.runs>1) t.push(`<span class="tag">${p.runs} rodadas · melhor #${p.best}</span>`);
+  if (p.flags.new) t.push(`<span class="tag good">Novo · ${p.d} dias</span>`);
+  if (p.cl) t.push(`<span class="tag ${p.cl==='low'?'good':p.cl==='high'?'bad':'warn'}">${COMPL[p.cl]}</span>`);
+  if (p.flags.grow) t.push(`<span class="tag acc">Categoria em alta</span>`);
+  if (p.c && p.bb) t.push(`<span class="tag">${p.bb} vendedor${p.bb>1?'es':''} no catálogo</span>`);
+  if (!p.c) t.push(`<span class="tag">Anúncio próprio</span>`);
+  if (p.full) t.push(`<span class="tag">Full</span>`);
+  if (p.md) t.push(`<span class="tag">${MEDAL[p.md]||p.md}</span>`);
+  return t.join('');
+}
+function renderML(reset){
+  if (reset) ml.shown = 50;
+  const rows = mlFiltered();
+  const show = rows.slice(0, ml.shown);
+  $('#ml-count').textContent = `${rows.length} produtos · mostrando ${show.length}`;
+  $('#ml-more').hidden = rows.length <= ml.shown;
+  $('#ml-list').innerHTML = show.length ? show.map((p,i)=>`
+   <article class="row" data-id="${esc(p.i)}" tabindex="0" role="button">
+    <div class="rank ${i<3?'top':''}">${i+1}</div>
+    <img class="thumb" loading="lazy" src="${esc(p.img||'')}" alt="">
+    <div><div class="name">${esc(p.n)}</div>
+      <div class="path">${esc(p.l1)} › ${esc(p.l2||'')}${p.l3?' › '+esc(p.l3):''} · ${esc(p.s||'')}${p.b?' · '+esc(p.b):''}</div>
+      <div class="tags">${prodTags(p)}</div></div>
+    <div class="meter"><div class="sc">${p.score.toFixed(0)}<small>/100</small></div><div class="bar"><i style="width:${p.score}%"></i></div></div>
+    <div class="cell"><div class="k">Vendas/sem</div><div class="v big">${fmtN(p.w)}</div><div class="k">${fmtN(p.m)} / mês</div></div>
+    <div class="cell"><div class="k">Preço</div><div class="v big">${fmtBRL(p.pr)}</div><div class="k">${p.rc?(p.rr?p.rr.toFixed(1)+'★ · ':'')+fmtN(p.rc)+' aval.':'sem avaliações'}</div></div>
+    <div class="links"><a href="${mlLink(p)}" target="_blank" rel="noopener">Abrir no Mercado Livre ↗</a><a href="${pulseLink(p)}" target="_blank" rel="noopener">Ficha JoomPulse ↗</a></div>
+   </article>`).join('') : `<div class="empty">Nenhum produto com esses filtros. Tire um filtro ou mude a faixa de preço.</div>`;
+}
+function mlTiles(){
+  const P=S.products; const news=P.filter(p=>p.flags.new).length, low=P.filter(p=>p.flags.comp).length, grow=P.filter(p=>p.flags.grow).length;
+  const top=P[0];
+  $('#ml-tiles').innerHTML = `
+   <div class="tile"><div class="k">No radar</div><div class="v">${P.length}</div><div class="s">produtos com venda na semana</div></div>
+   <div class="tile"><div class="k">Novos e vendendo</div><div class="v">${news}</div><div class="s">até 90 dias no ar</div></div>
+   <div class="tile"><div class="k">Baixa concorrência</div><div class="v">${low}</div><div class="s">poucos vendedores fortes</div></div>
+   <div class="tile"><div class="k">Categoria em alta</div><div class="v">${grow}</div><div class="s">tendência positiva</div></div>
+   <div class="tile"><div class="k">Entraram nesta rodada</div><div class="v">${P.filter(p=>(p.runs??1)<=1).length}</div><div class="s">primeira vez no radar</div></div>
+   <div class="tile"><div class="k">Nº 1 hoje</div><div class="v">${top?top.score.toFixed(0):'—'}</div><div class="s">${top?esc(top.n).slice(0,48):''}</div></div>`;
+}
+$('#ml-q').addEventListener('input', e=>{ ml.q=e.target.value; renderML(true); });
+$('#ml-l1').addEventListener('change', e=>{ ml.l1=e.target.value; renderML(true); });
+$('#ml-sort').addEventListener('change', e=>{ ml.sort=e.target.value; renderML(true); });
+$('#ml-price').addEventListener('click', e=>{ const b=e.target.closest('.chip'); if(!b) return; const on=b.getAttribute('aria-pressed')!=='true'; b.setAttribute('aria-pressed',on); on?ml.bands.add(b.dataset.band):ml.bands.delete(b.dataset.band); renderML(true); });
+$('#ml-sig').addEventListener('click', e=>{ const b=e.target.closest('.chip'); if(!b) return; const on=b.getAttribute('aria-pressed')!=='true'; b.setAttribute('aria-pressed',on); on?ml.sigs.add(b.dataset.sig):ml.sigs.delete(b.dataset.sig); renderML(true); });
+$('#ml-more').addEventListener('click', ()=>{ ml.shown+=50; renderML(false); });
+$('#ml-list').addEventListener('click', e=>{ const r=e.target.closest('.row'); if(!r || e.target.closest('a')) return; openProduct(r.dataset.id); });
+$('#ml-list').addEventListener('keydown', e=>{ if(e.key==='Enter'){ const r=e.target.closest('.row'); if(r) openProduct(r.dataset.id);} });
+
+/* ===================== drawer ===================== */
+function openProduct(id){
+  const p = S.products.find(x=>x.i===id); if(!p) return;
+  const c = p._cat;
+  const why = [];
+  why.push(`<b>${fmtN(p.w)} vendas/semana</b> (top ${Math.max(1,Math.round((1-p._dp)*100))}% do radar)`);
+  if (p.flags.comp) why.push(`concorrência fraca (${p.cl?COMPL[p.cl].toLowerCase():'sem nível'}${p.c&&p.bb?', '+p.bb+' no catálogo':''}${c?', monopolização '+(({low:'baixa',medium:'média',high:'alta'})[c.mono]||'—'):''})`);
+  if (c && c.t12!=null) why.push(`categoria ${c.t12>=0?'crescendo':'caindo'} <b>${PCT(c.t12)}</b> em 12 meses`);
+  if (p.flags.new) why.push(`anúncio com só <b>${p.d} dias</b> no ar e já vendendo`);
+  const seas = c && c.seasM && c.seasM!=='[]' ? 'pico nos meses '+c.seasM.replace(/[\[\]"]/g,'') : (c&&c.seas==='non_seasonal'?'sem sazonalidade':'—');
+  $('#panel').innerHTML = `
+    <button class="btn close" id="pclose">Fechar</button>
+    <div class="small muted">#${p.rank} no ranking · ${esc(p.l1)} › ${esc(p.l2||'')}${p.l3?' › '+esc(p.l3):''}</div>
+    <h3>${esc(p.n)}</h3>
+    <img class="big" src="${esc(p.img||'')}" alt="">
+    <div class="why">Por que está aqui: ${why.join(' · ')}.</div>
+    <div class="break">
+      ${[['Volume de vendas',p._dp,35],['Pouca concorrência',p._comp,25],['Categoria crescendo',p._growth,25],['Novo e vendendo',p._nov,15]].map(([k,v,w])=>`
+      <div class="li"><span>${k} <span class="muted small">(peso ${w})</span></span><div class="bar"><i style="width:${Math.round(v*100)}%"></i></div><span class="num">${Math.round(v*w)}/${w}</span></div>`).join('')}
+      <div class="li"><b>Score</b><span></span><b class="num">${p.score.toFixed(0)}</b></div>
+    </div>
+    <div class="kv">
+      <div><div class="k">Preço atual</div><div class="v">${fmtBRL(p.pr)}</div></div>
+      <div><div class="k">Receita est. / mês</div><div class="v">${fmtBRL(p.g)}</div></div>
+      <div><div class="k">Vendas est. / mês</div><div class="v">${fmtN(p.m)}</div></div>
+      <div><div class="k">Tempo no ar</div><div class="v">${p.d??'—'} dias</div></div>
+      <div><div class="k">Avaliações</div><div class="v">${p.rc?fmtN(p.rc)+(p.rr?' · '+p.rr.toFixed(1)+'★':''):'sem avaliações'}</div></div>
+      <div><div class="k">Vendedor</div><div class="v">${esc(p.s||'—')}${p.md?' · '+(MEDAL[p.md]||p.md):''}</div></div>
+      <div><div class="k">Tipo de anúncio</div><div class="v">${{gold_pro:'Premium',gold_special:'Clássico',silver:'Clássico',free:'Grátis'}[p.lt]||p.lt||'—'}${p.full?' · Full':''}${p.fs?' · Frete grátis':''}</div></div>
+      <div><div class="k">Catálogo</div><div class="v">${p.c?(p.bb||'?')+' vendedor(es) disputando':'anúncio próprio (sem catálogo)'}</div></div>
+    </div>
+    ${c?`<div class="kv">
+      <div><div class="k">Categoria (${c.lv===3?'nível 3':'nível 2'})</div><div class="v">${esc(c.name)}</div></div>
+      <div><div class="k">Oportunidade</div><div class="v"><span class="pill ${c.opp||'na'}">${({high:'Alta',medium:'Média',low:'Baixa'})[c.opp]||'—'}</span></div></div>
+      <div><div class="k">Monopolização</div><div class="v"><span class="pill mono ${c.mono||'na'}">${({low:'Baixa',medium:'Média',high:'Alta'})[c.mono]||'—'}</span> ${c.monoV!=null?'('+(c.monoV*100).toFixed(0)+'% top vendedor)':''}</div></div>
+      <div><div class="k">Tendência 12m / mês</div><div class="v">${c.t12!=null?PCT(c.t12):'—'} · ${c.gG!=null?PCT(c.gG):'—'}</div></div>
+      <div><div class="k">Receita est. categoria/mês</div><div class="v">${fmtBRL(c.gmv)}</div></div>
+      <div><div class="k">Sazonalidade</div><div class="v">${seas}</div></div>
+    </div>`:''}
+    ${p.hist && p.hist.length>1 ? `<div class="break"><div class="small muted" style="margin-bottom:4px">Histórico no radar — posição (linha) e vendas/semana (barras), últimas ${p.hist.length} rodadas</div>${spark(p.hist)}</div>` : ''}
+    <div class="kv">
+      <div><div class="k">No radar desde</div><div class="v">${fmtDT(p.first)}</div></div>
+      <div><div class="k">Posição anterior → atual</div><div class="v">${p.prev??'—'} → ${p.rank}${p.best?' · melhor #'+p.best:''}</div></div>
+    </div>
+    <div class="actions">
+      <a class="btn primary" href="${mlLink(p)}" target="_blank" rel="noopener">Abrir no Mercado Livre ↗</a>
+      <a class="btn" href="${pulseLink(p)}" target="_blank" rel="noopener">Ficha JoomPulse ↗</a>
+      <button class="btn" id="psim">Simular com este preço</button>
+      <a class="btn ghost" href="https://lista.mercadolivre.com.br/${encodeURIComponent(p.n.split(' ').slice(0,5).join(' '))}" target="_blank" rel="noopener">Ver concorrentes na busca ↗</a>
+    </div>`;
+  $('#drawer').classList.add('open');
+  $('#pclose').onclick = closeDrawer;
+  $('#psim').onclick = ()=>{ closeDrawer(); $('#s-price').value = p.pr; if (L1S.includes(p.l1)) $('#s-cat').value = p.l1; simulate(); showTab('sim'); };
+}
+function spark(h){
+  const W=480,H=90,n=h.length, xs=i=>10+i*(W-20)/Math.max(1,n-1);
+  const ranks=h.map(x=>x[1]||0), ws=h.map(x=>x[2]||0), maxR=Math.max(...ranks,1), maxW=Math.max(...ws,1);
+  const bars=h.map((x,i)=>`<rect x="${xs(i)-6}" y="${H-10-(x[2]||0)/maxW*60}" width="12" height="${(x[2]||0)/maxW*60}" fill="var(--meterBg)"/>`).join('');
+  const pts=h.map((x,i)=>`${xs(i)},${10+((x[1]||maxR)-1)/Math.max(1,maxR-1)*60}`).join(' ');
+  const dots=h.map((x,i)=>`<circle cx="${xs(i)}" cy="${10+((x[1]||maxR)-1)/Math.max(1,maxR-1)*60}" r="3" fill="var(--acc)"><title>#${x[1]} · ${x[2]} vendas/sem · ${fmtDT(x[0])}</title></circle>`).join('');
+  return `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" role="img">${bars}<polyline points="${pts}" fill="none" stroke="var(--acc)" stroke-width="2"/>${dots}<text x="10" y="${H-1}" font-size="9" fill="var(--ink3)">#1 no topo · ${fmtDT(h[0][0])}</text><text x="${W-10}" y="${H-1}" font-size="9" text-anchor="end" fill="var(--ink3)">${fmtDT(h[n-1][0])}</text></svg>`;
+}
+function closeDrawer(){ $('#drawer').classList.remove('open'); }
+$('#drawer .veil').addEventListener('click', closeDrawer);
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeDrawer(); });
+
+/* ===================== categories tab ===================== */
+const ct = { q:'', l1:'', lv:'', sigs:new Set(['opp','mono']), sort:'cs', dir:-1 };
+function catFiltered(){
+  const q = ct.q.trim().toLowerCase();
+  let rows = S.categories.filter(c =>
+    (!ct.l1 || c.l1===ct.l1) && (!ct.lv || String(c.lv)===ct.lv) &&
+    (!ct.sigs.has('opp') || c.opp==='high') &&
+    (!ct.sigs.has('mono') || c.mono==='low' || c.mono==='medium') &&
+    (!ct.sigs.has('grow') || (c.t12??-1) > 0) &&
+    (!q || (c.name+' '+c.l1+' '+(c.l2||'')).toLowerCase().includes(q)));
+  const k = ct.sort;
+  rows.sort((a,b)=>{ const x=a[k], y=b[k]; if(typeof x==='string'||typeof y==='string') return String(x??'').localeCompare(String(y??''))*ct.dir; return ((x??-1e18)-(y??-1e18))*ct.dir; });
+  return rows;
+}
+const OPPL = {high:'Alta',medium:'Média',low:'Baixa'};
+const MONL = {low:'Baixa',medium:'Média',high:'Alta'};
+function renderCats(){
+  const rows = catFiltered();
+  $('#cat-count').textContent = `${rows.length} subcategorias`;
+  $$('#cat-tbl th').forEach(th=>th.classList.toggle('on', th.dataset.k===ct.sort));
+  $('#cat-tbl tbody').innerHTML = rows.slice(0,200).map(c=>`
+   <tr class="clk" data-id="${esc(c.id)}">
+    <td><b>${esc(c.name)}</b><br><span class="small muted">${esc(c.l1)}${c.lv===3?' › '+esc(c.l2||''):''} · nível ${c.lv}</span></td>
+    <td class="n"><b>${c.cs}</b></td>
+    <td><span class="pill ${c.opp||'na'}">${OPPL[c.opp]||'—'}</span></td>
+    <td><span class="pill mono ${c.mono||'na'}">${MONL[c.mono]||'—'}</span>${c.monoV!=null?` <span class="small muted num">${(c.monoV*100).toFixed(0)}%</span>`:''}</td>
+    <td class="n ${c.t12>0?'delta up':c.t12<0?'delta down':''}">${c.t12!=null?PCT(c.t12):'—'}</td>
+    <td class="n ${c.gG>0?'delta up':c.gG<0?'delta down':''}">${c.gG!=null?PCT(c.gG):'—'}</td>
+    <td class="n">${fmtBRL(c.gmv)}</td>
+    <td class="n">${fmtN(c.oc)}</td>
+    <td class="n">${fmtN(c.nss)}</td>
+    <td class="n">${fmtBRL(c.tk)}</td>
+    <td class="small">${c.seasM && c.seasM!=='[]' ? 'meses '+c.seasM.replace(/[\[\]"]/g,'') : (c.seas==='non_seasonal'?'estável':'—')}</td>
+   </tr>`).join('') || `<tr><td colspan="11" class="muted">Nenhuma categoria com esses filtros.</td></tr>`;
+}
+function catTiles(){
+  const C=S.categories; const hi=C.filter(c=>c.opp==='high').length, ok=C.filter(c=>c.opp==='high'&&(c.mono==='low'||c.mono==='medium')&&(c.t12??0)>0).length;
+  const best=[...C].sort((a,b)=>b.cs-a.cs)[0];
+  $('#cat-tiles').innerHTML = `
+   <div class="tile"><div class="k">Subcategorias lidas</div><div class="v">${C.length}</div><div class="s">níveis 2 e 3, mês ${fmtMonth(S.meta.catMonth)}</div></div>
+   <div class="tile"><div class="k">Oportunidade alta</div><div class="v">${hi}</div><div class="s">veredito JoomPulse</div></div>
+   <div class="tile"><div class="k">Alta + pouca monopolização + crescendo</div><div class="v">${ok}</div><div class="s">os três sinais juntos</div></div>
+   <div class="tile"><div class="k">Melhor score</div><div class="v">${best?best.cs:'—'}</div><div class="s">${best?esc(best.name):''}</div></div>`;
+}
+$('#cat-q').addEventListener('input', e=>{ ct.q=e.target.value; renderCats(); });
+$('#cat-l1').addEventListener('change', e=>{ ct.l1=e.target.value; renderCats(); });
+$('#cat-lv').addEventListener('change', e=>{ ct.lv=e.target.value; renderCats(); });
+$('#cat-sig').addEventListener('click', e=>{ const b=e.target.closest('.chip'); if(!b) return; const on=b.getAttribute('aria-pressed')!=='true'; b.setAttribute('aria-pressed',on); on?ct.sigs.add(b.dataset.sig):ct.sigs.delete(b.dataset.sig); renderCats(); });
+$('#cat-tbl thead').addEventListener('click', e=>{ const th=e.target.closest('th'); if(!th) return; if(ct.sort===th.dataset.k) ct.dir*=-1; else { ct.sort=th.dataset.k; ct.dir = th.dataset.k==='name'||th.dataset.k==='opp'||th.dataset.k==='mono'||th.dataset.k==='seas'?1:-1; } renderCats(); });
+$('#cat-tbl tbody').addEventListener('click', e=>{ const tr=e.target.closest('tr.clk'); if(!tr) return; const c=S.categories.find(x=>x.id===tr.dataset.id); if(!c) return;
+  ml.q = c.lv===3 ? c.name : c.name; ml.l1 = c.l1; $('#ml-q').value = ml.q; $('#ml-l1').value = c.l1; renderML(true); showTab('ml'); toast(`Produtos do radar em “${c.name}”`); });
+
+/* ===================== import tab ===================== */
+const im = { q:'', l1:'', sort:'is', bands:new Set(), sigs:new Set(), shown:50 };
+function impFiltered(){
+  const q = im.q.trim().toLowerCase();
+  let rows = S.joompro.filter(j =>
+    (!im.l1 || j.ml1===im.l1) && inBand(j.mmin??0, im.bands) &&
+    (!im.sigs.has('sb') || j.sb) && (!im.sigs.has('sc') || (j.sc??0)>=.9) && (!im.sigs.has('ve') || j.ve===true) &&
+    (!q || ((j.t||'')+' '+(j.mt||'')+' '+(j.mcat||'')).toLowerCase().includes(q)));
+  const k = im.sort;
+  rows.sort((a,b)=>((b[k]??-1)-(a[k]??-1)));
+  return rows;
+}
+function renderImp(reset){
+  if (reset) im.shown=50;
+  const rows = impFiltered(); const show = rows.slice(0, im.shown);
+  $('#imp-count').textContent = `${rows.length} pares · mostrando ${show.length}`;
+  $('#imp-more').hidden = rows.length <= im.shown;
+  $('#imp-list').innerHTML = show.length ? show.map(j=>`
+   <article class="imp">
+    <img class="thumb" loading="lazy" src="${esc(j.img||'')}" alt="">
+    <div><div class="t"><a href="${esc(j.ju)}" target="_blank" rel="noopener">${esc(j.t||'(sem título)')}</a></div>
+      <div class="sub">JoomPro · ${esc(j.jl1||'')}${j.jcat?' › '+esc(j.jcat):''}</div>
+      <div class="tags">${j.sb?`<span class="tag good">Lote pequeno${j.sbm?' · '+j.sbm+' un.':''}</span>`:`<span class="tag warn">Só lote grande</span>`}${j.ve===true?'<span class="tag">Frete eficiente</span>':''}${j.bq?`<span class="tag">${j.bq} por caixa</span>`:''}</div></div>
+    <div><div class="t"><a href="${esc(j.mu||'#')}" target="_blank" rel="noopener">${esc(j.mt||'—')}</a></div>
+      <div class="sub">ML · ${esc(j.ml1||'')}${j.mcat?' › '+esc(j.mcat):''}${j.pu?` · <a href="${esc(j.pu)}" target="_blank" rel="noopener">JoomPulse ↗</a>`:''}</div>
+      <div class="tags">${(j.sc??0)>=.9?`<span class="tag good">Par confiável · ${j.sc.toFixed(2)}</span>`:`<span class="tag warn">Verificar par · ${(j.sc??0).toFixed(2)}</span>`}${j.c?`<span class="tag">Catálogo · ${j.nl||'?'} anúncios</span>`:'<span class="tag">Anúncio único</span>'}</div></div>
+    <div class="cell"><div class="k">Custo JoomPro</div><div class="v big">${fmtBRL(j.jp)}</div><div class="k">mín. ${fmtN(j.moq)} un.</div></div>
+    <div class="cell"><div class="k">Preço ML (mín.)</div><div class="v big">${fmtBRL(j.mmin)}</div><div class="k">${fmtN(j.mo)} vendas/mês est.</div></div>
+    <div class="meter"><div class="sc">${j.mg!=null?Math.round(j.mg*100)+'%':'—'}<small>margem bruta</small></div><div class="bar"><i style="width:${clamp((j.mg||0)/.9)*100}%"></i></div><div class="k small muted">lucro ${fmtBRL(j.pf)} · score ${j.is}</div></div>
+   </article>`).join('') : `<div class="empty">Nenhum par com esses filtros.</div>`;
+}
+function impTiles(){
+  const J=S.joompro; const sb=J.filter(j=>j.sb).length, hi=J.filter(j=>(j.sc??0)>=.9).length;
+  const mg=[...J.map(j=>j.mg).filter(x=>x!=null)].sort((a,b)=>a-b); const med=mg.length?mg[Math.floor(mg.length/2)]:null;
+  $('#imp-tiles').innerHTML = `
+   <div class="tile"><div class="k">Pares analisados</div><div class="v">${J.length}</div><div class="s">margem ≥ 25%, ≥ 20 vendas/mês no ML</div></div>
+   <div class="tile"><div class="k">Lote pequeno</div><div class="v">${sb}</div><div class="s">dá para testar em volume baixo</div></div>
+   <div class="tile"><div class="k">Par confiável</div><div class="v">${hi}</div><div class="s">semelhança ≥ 0,90</div></div>
+   <div class="tile"><div class="k">Margem bruta mediana</div><div class="v">${med!=null?Math.round(med*100)+'%':'—'}</div><div class="s">antes de comissão e imposto</div></div>`;
+}
+$('#imp-q').addEventListener('input', e=>{ im.q=e.target.value; renderImp(true); });
+$('#imp-l1').addEventListener('change', e=>{ im.l1=e.target.value; renderImp(true); });
+$('#imp-sort').addEventListener('change', e=>{ im.sort=e.target.value; renderImp(true); });
+$('#imp-price').addEventListener('click', e=>{ const b=e.target.closest('.chip'); if(!b) return; const on=b.getAttribute('aria-pressed')!=='true'; b.setAttribute('aria-pressed',on); on?im.bands.add(b.dataset.band):im.bands.delete(b.dataset.band); renderImp(true); });
+$('#imp-sig').addEventListener('click', e=>{ const b=e.target.closest('.chip'); if(!b) return; const on=b.getAttribute('aria-pressed')!=='true'; b.setAttribute('aria-pressed',on); on?im.sigs.add(b.dataset.sig):im.sigs.delete(b.dataset.sig); renderImp(true); });
+$('#imp-more').addEventListener('click', ()=>{ im.shown+=50; renderImp(false); });
+
+/* ===================== simulator ===================== */
+const FEES = {
+  comm: { // Clássico / Premium por categoria (referência 2026)
+    'Câmeras e Acessórios':[11,16],'Eletrodomésticos':[11,16],'Informática':[11,16],'Celulares e Telefones':[11,16],
+    'Agro':[11.5,16.5],'Arte, Papelaria e Armarinho':[11.5,16.5],'Brinquedos e Hobbies':[11.5,16.5],'Casa, Móveis e Decoração':[11.5,16.5],'Construção':[11.5,16.5],'Festas e Lembrancinhas':[11.5,16.5],'Instrumentos Musicais':[11.5,16.5],
+    'Acessórios para Veículos':[12,17],'Indústria e Comércio':[12,17],'Livros, Revistas e Comics':[12,17],'Música, Filmes e Seriados':[12,17],'Saúde':[12,17],'Mais Categorias':[12,17],
+    'Joias e Relógios':[12.5,17.5],'Pet Shop':[12.5,17.5],'Ferramentas':[12.5,17.5],
+    'Eletrônicos, Áudio e Vídeo':[13,18],'Games':[13,18],
+    'Alimentos e Bebidas':[14,19],'Bebês':[14,19],'Beleza e Cuidado Pessoal':[14,19],'Calçados, Roupas e Bolsas':[14,19],'Esportes e Fitness':[14,19],
+  },
+  fixed: [ // custo fixo por unidade abaixo de R$ 79 (referência)
+    {lo:0, hi:12.5, pct:50, val:0, label:'até R$ 12,49 — % do preço'},
+    {lo:12.5, hi:29, pct:0, val:6.25, label:'R$ 12,50 a 28,99'},
+    {lo:29, hi:50, pct:0, val:6.50, label:'R$ 29,00 a 49,99'},
+    {lo:50, hi:79, pct:0, val:6.75, label:'R$ 50,00 a 78,99'},
+  ],
+  freeFrom: 79,
+  ship: [ // frete pago pelo vendedor em anúncios ≥ R$ 79, tabela de referência por peso (antes do desconto por reputação)
+    {label:'até 300 g', val:20.90},{label:'300 g a 500 g', val:21.90},{label:'500 g a 1 kg', val:23.90},{label:'1 a 2 kg', val:25.90},
+    {label:'2 a 3 kg', val:27.90},{label:'3 a 4 kg', val:31.90},{label:'4 a 5 kg', val:34.90},{label:'5 a 9 kg', val:41.90},{label:'9 a 13 kg', val:52.90},
+  ],
+};
+function feeGrid(){
+  const g=$('#fee-grid'); let h='';
+  h+=`<div><b>Comissão da categoria selecionada</b></div><div></div>`;
+  h+=`<div>Clássico %</div><div><input id="f-cc" type="number" step="0.1"></div><div>Premium %</div><div><input id="f-cp" type="number" step="0.1"></div>`;
+  h+=`<div><b>Custo fixo por unidade (abaixo de R$ ${FEES.freeFrom})</b></div><div></div>`;
+  FEES.fixed.forEach((f,i)=>{ h+=`<div>${f.label}</div><div><input data-fix="${i}" type="number" step="0.01" value="${f.pct||f.val}"></div>`; });
+  h+=`<div>Preço a partir do qual o frete grátis é obrigatório</div><div><input id="f-free" type="number" step="1" value="${FEES.freeFrom}"></div>`;
+  h+=`<div><b>Frete pago pelo vendedor (≥ R$ ${FEES.freeFrom}), por peso</b></div><div></div>`;
+  FEES.ship.forEach((f,i)=>{ h+=`<div>${f.label}</div><div><input data-ship="${i}" type="number" step="0.01" value="${f.val}"></div>`; });
+  g.innerHTML=h;
+  g.addEventListener('input', e=>{
+    const t=e.target;
+    if (t.dataset.fix!=null){ const f=FEES.fixed[+t.dataset.fix]; if(f.pct) f.pct=+t.value; else f.val=+t.value; }
+    if (t.dataset.ship!=null){ FEES.ship[+t.dataset.ship].val=+t.value; $('#s-weight').options[+t.dataset.ship].text = FEES.ship[+t.dataset.ship].label+' — '+fmtBRL(+t.value); }
+    if (t.id==='f-free') FEES.freeFrom=+t.value;
+    if (t.id==='f-cc'||t.id==='f-cp'){ const c=$('#s-cat').value; FEES.comm[c]=[+$('#f-cc').value,+$('#f-cp').value]; }
+    simulate();
+  });
+}
+function syncComm(){ const c=FEES.comm[$('#s-cat').value]||[12,17]; $('#f-cc').value=c[0]; $('#f-cp').value=c[1]; }
+function calc(price, cost, cat, type, wi, rep, tax, other, ads){
+  const comm = (FEES.comm[cat]||[12,17])[type==='p'?1:0]/100 * price;
+  let fixed=0, ship=0, fixedLabel='';
+  if (price < FEES.freeFrom){
+    const f = FEES.fixed.find(x=>price>=x.lo && price<x.hi) || FEES.fixed[FEES.fixed.length-1];
+    fixed = f.pct ? price*f.pct/100 : f.val; fixedLabel = f.pct? f.pct+'% do preço' : 'custo fixo';
+  } else {
+    ship = (FEES.ship[wi]?.val||0)*(1-rep);
+  }
+  const taxV = price*tax/100, adsV = price*ads/100;
+  const total = cost + comm + fixed + ship + taxV + other + adsV;
+  const profit = price - total;
+  return {comm, fixed, fixedLabel, ship, taxV, adsV, total, profit, margin: price? profit/price : 0, roi: cost? profit/cost : 0};
+}
+function priceForMargin(target, cost, cat, type, wi, rep, tax, other, ads){
+  let lo=cost, hi=Math.max(cost*10, 200);
+  for(let i=0;i<60;i++){ const mid=(lo+hi)/2; const r=calc(mid,cost,cat,type,wi,rep,tax,other,ads); if(r.margin>=target) hi=mid; else lo=mid; }
+  return hi;
+}
+function simulate(){
+  const price=+$('#s-price').value||0, cost=+$('#s-cost').value||0, cat=$('#s-cat').value, type=$('#s-type').value, wi=+$('#s-weight').value, rep=+$('#s-rep').value;
+  const tax=+$('#s-tax').value||0, other=+$('#s-other').value||0, ads=+$('#s-ads').value||0, target=(+$('#s-target').value||0)/100;
+  syncComm();
+  const r = calc(price,cost,cat,type,wi,rep,tax,other,ads);
+  const need = priceForMargin(target,cost,cat,type,wi,rep,tax,other,ads);
+  const cls = r.margin>=target?'good':r.margin>0?'warn':'bad';
+  $('#s-res').innerHTML = `
+   <div class="tile hero"><div class="k">Lucro por unidade</div><div class="v" style="color:var(--${cls})">${fmtBRL(r.profit)}</div><div class="s">margem ${(r.margin*100).toFixed(1).replace('.',',')}% sobre a venda</div></div>
+   <div class="tile"><div class="k">Retorno sobre o custo</div><div class="v">${(r.roi*100).toFixed(0)}%</div><div class="s">lucro ÷ custo do produto</div></div>
+   <div class="tile"><div class="k">Preço mínimo p/ ${Math.round(target*100)}%</div><div class="v">${fmtBRL(need)}</div><div class="s">${need>price?'suba o preço ou reduza custo':'seu preço já cobre a meta'}</div></div>
+   <div class="tile"><div class="k">Você recebe (líquido do ML)</div><div class="v">${fmtBRL(price-r.comm-r.fixed-r.ship)}</div><div class="s">antes de imposto e custos seus</div></div>`;
+  const comm=(FEES.comm[cat]||[12,17])[type==='p'?1:0];
+  $('#s-led').innerHTML = `
+   <tr><td>Preço de venda</td><td class="n">${fmtBRL(price)}</td></tr>
+   <tr><td>Comissão ${type==='p'?'Premium':'Clássico'} (${comm}%)</td><td class="n">− ${fmtBRL(r.comm)}</td></tr>
+   ${price<FEES.freeFrom?`<tr><td>Custo fixo por unidade (${r.fixedLabel})</td><td class="n">− ${fmtBRL(r.fixed)}</td></tr>`:`<tr><td>Frete grátis pago por você (${FEES.ship[wi]?.label||''}, desconto ${Math.round(rep*100)}%)</td><td class="n">− ${fmtBRL(r.ship)}</td></tr>`}
+   <tr><td>Imposto (${tax}%)</td><td class="n">− ${fmtBRL(r.taxV)}</td></tr>
+   ${ads?`<tr><td>Ads (${ads}%)</td><td class="n">− ${fmtBRL(r.adsV)}</td></tr>`:''}
+   <tr><td>Embalagem e outros</td><td class="n">− ${fmtBRL(other)}</td></tr>
+   <tr><td>Custo do produto</td><td class="n">− ${fmtBRL(cost)}</td></tr>
+   <tr class="tot"><td>Lucro por unidade</td><td class="n">${fmtBRL(r.profit)}</td></tr>`;
+  const alt = price<FEES.freeFrom ? `Abaixo de R$ ${FEES.freeFrom} o Mercado Livre cobra custo fixo por unidade; a partir de R$ ${FEES.freeFrom} o custo fixo some, mas o frete grátis passa a ser obrigatório e sai do seu bolso (com desconto pela reputação). Teste os dois lados da linha dos R$ ${FEES.freeFrom}.` : `A partir de R$ ${FEES.freeFrom} não há custo fixo, mas o frete grátis é obrigatório e você paga a parte não subsidiada. Vendedores novos pagam a tabela cheia.`;
+  $('#s-note').textContent = alt + ' Valores de comissão, custo fixo e frete são referência de 2026 e podem variar por categoria exata, peso e dimensões — confira no Simulador de Custos do ML e ajuste na tabela editável.';
+}
+function initSim(){
+  $('#s-cat').innerHTML = L1S.map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join('');
+  $('#s-cat').value = 'Casa, Móveis e Decoração';
+  $('#s-weight').innerHTML = FEES.ship.map((s,i)=>`<option value="${i}">${s.label} — ${fmtBRL(s.val)}</option>`).join('');
+  feeGrid(); syncComm();
+  $$('#tab-sim input, #tab-sim select').forEach(el=>{ if(!el.closest('#fee-grid')) el.addEventListener('input', simulate); });
+  $('#s-cat').addEventListener('change', ()=>{ syncComm(); simulate(); });
+  simulate();
+}
+
+/* ===================== toast / csv ===================== */
+let toastT; function toast(m){ const t=$('#toast'); t.textContent=m; t.classList.add('show'); clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove('show'),2600); }
+function csvOf(rows){
+  const H=['rank','score','produto','categoria_l1','categoria_l2','categoria_l3','preco','vendas_semana','vendas_mes','receita_mes','dias_no_ar','avaliacoes','nota','vendedor','marca','concorrencia_l2','vendedores_catalogo','link_ml','link_joompulse'];
+  const q=v=>`"${String(v??'').replace(/"/g,'""')}"`;
+  return [H.join(';')].concat(rows.map((p,i)=>[i+1,p.score,p.n,p.l1,p.l2,p.l3,p.pr,p.w,p.m,p.g,p.d,p.rc,p.rr,p.s,p.b,p.cl,p.bb,mlLink(p),pulseLink(p)].map(q).join(';'))).join('\n');
+}
+
+/* ===================== boot ===================== */
+function fillSelects(){
+  const opts = L1S.map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join('');
+  ['#ml-l1','#cat-l1','#imp-l1'].forEach(s=>{ const el=$(s); el.innerHTML = el.options[0].outerHTML + opts; });
+}
+function renderAll(){
+  computeAll(); renderFresh(false);
+  mlTiles(); renderML(true); catTiles(); renderCats(); impTiles(); renderImp(true);
+}
+fillSelects(); initSim();
+try{ const t=localStorage.getItem('radar.tab'); if(t && $('#tab-'+t)) showTab(t);}catch(e){}
+$('#ml-list').innerHTML = '<div class="empty">Carregando a última rodada…</div>';
+fetch('data.json?_='+Date.now(), {cache:'no-store'}).then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); }).then(d=>{ S=d; renderAll(); })
+  .catch(e=>{ $('#ml-list').innerHTML = '<div class="empty">Não consegui carregar data.json ('+esc(e.message)+'). Se for a primeira publicação, espere a primeira rodada do coletor.</div>'; });
+const csvBtn=$('#ml-csv'); csvBtn.hidden=false;
+csvBtn.addEventListener('click', ()=>{ const blob=new Blob(['\ufeff'+csvOf(mlFiltered())],{type:'text/csv;charset=utf-8'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='radar-safira-ml.csv'; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),2000); toast('CSV gerado'); });
+</script>
+
+</body>
+</html>

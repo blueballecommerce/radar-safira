@@ -1,0 +1,44 @@
+name: Radar Safira — coleta
+
+on:
+  schedule:
+    - cron: "0 11 * * *"   # 08:00 America/Sao_Paulo
+    - cron: "0 18 * * *"   # 15:00 America/Sao_Paulo
+  workflow_dispatch:
+
+concurrency:
+  group: radar-run
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      RADAR_TOKEN_KEY: ${{ secrets.RADAR_TOKEN_KEY }}
+      RADAR_CLIENT_METADATA_URL: ${{ vars.RADAR_CLIENT_METADATA_URL }}
+      RADAR_CLIENT_ID: ${{ vars.RADAR_CLIENT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Restaurar token da JoomPulse
+        run: python -m radar token decrypt
+      - name: Rodada do radar
+        run: python -m radar run
+      - name: Guardar token renovado
+        run: python -m radar token encrypt
+      - name: Publicar dados
+        run: |
+          git config user.name "radar-bot"
+          git config user.email "radar-bot@users.noreply.github.com"
+          git add data/radar.db data/token.enc docs/data.json
+          git commit -m "radar: rodada $(date -u +'%Y-%m-%d %H:%M UTC')" || echo "nada a publicar"
+          git pull --rebase --autostash origin ${{ github.ref_name }}
+          git push
