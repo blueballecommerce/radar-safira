@@ -55,6 +55,9 @@ def exportar() -> dict:
             "url": it["url"], "nome": it["nome"], "img": it.get("img"),
             "unit": it.get("unit"), "caixa": it.get("caixa"), "total": it.get("total"),
             "unidade": it.get("unidade"), "tags": it.get("tags") or [],
+            # preço do site quando o catálogo (PDF) trouxe outro; página do catálogo
+            "unit_site": it.get("unit_site"), "caixa_site": it.get("caixa_site"), "pagina": it.get("pagina"),
+            "nome_catalogo": it.get("nome_catalogo"),
             "pesquisado": it["url"] in buscas,
             "anuncios": anuncios,
             "iguais": sum(1 for a in anuncios if a["veredito"] == "igual"),
