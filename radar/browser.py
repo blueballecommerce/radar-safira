@@ -36,6 +36,13 @@ CATEGORIES = f"{BASE}/dashboard/categories"
 PAGE_PAUSE_S = float(os.environ.get("RADAR_BROWSER_PAUSE", "2.5"))
 # Teto para abrir a árvore de categorias — ela é grande e só interessa até o 3º nível.
 EXPAND_BUDGET_S = float(os.environ.get("RADAR_EXPAND_BUDGET", "150"))
+# Varredura por subcategoria: são centenas, então cada uma rende poucos produtos.
+# 0 em RADAR_L2_LIMIT = todas as subcategorias.
+L2_LIMIT = int(os.environ.get("RADAR_L2_LIMIT", "0"))
+L2_MAIN_LIMIT = int(os.environ.get("RADAR_L2_MAIN", "25"))
+# Segunda varredura só para anúncios novos: dobra o tempo da rodada e rende pouco,
+# porque num recorte de subcategoria os novos que vendem já sobem no top. 0 = desligada.
+L2_NEW_LIMIT = int(os.environ.get("RADAR_L2_NEW", "0"))
 NAV_TIMEOUT_MS = 60_000
 
 
@@ -262,7 +269,7 @@ def catalog_key(r: dict) -> str:
 
 
 def to_product(r: dict, l1: str | None = None, l2: str | None = None, l3: str | None = None,
-               bb: int | None = None) -> dict:
+               bb: int | None = None, l2id: str | None = None) -> dict:
     """Uma linha da tabela vira o mesmo dicionário que o CubeJS devolveria.
 
     O site não expõe subcategoria nem nível de concorrência: quando a busca foi
@@ -284,8 +291,10 @@ def to_product(r: dict, l1: str | None = None, l2: str | None = None, l3: str | 
         "productImage": r.get("img"),
         "merchantName": (r.get("vendedor") or "").split("\n")[0].strip() or None,
         "brand": (r.get("marca") or "").strip() or None,
-        "categoryId": None,
-        "merchantCategoryIdL2": None,
+        "categoryId": l2id,
+        # o Scorer casa a subcategoria por este id — é ele que liga o produto aos
+        # dados de oportunidade, monopolização e crescimento da categoria
+        "merchantCategoryIdL2": l2id,
         "merchantCategoryL1": l1 or cat or None,
         "merchantCategoryL2": l2,
         "merchantCategoryL3": l3,
@@ -368,8 +377,14 @@ _SCRAPE_CATS = r"""() => {
     const nome = cell(tds[0]);
     if (!nome.length || nome[0] === 'Categoria') continue;
     const m = tr.className.match(/ant-table-row-level-(\d)/);
+    // o link da categoria carrega nível e id: /dashboard/categories/2/MLB1747/products
+    const a = tds[0].querySelector('a');
+    const href = a ? (a.getAttribute('href') || '') : '';
+    const idm = href.match(/\/categories\/(\d+)\/(MLB\d+)\//);
     out.push({
       depth: m ? Number(m[1]) : 0,
+      catId: idm ? idm[2] : null,
+      catLevel: idm ? Number(idm[1]) : null,
       nome: nome[0],
       opp: cell(tds[1])[0] || null,
       receita: cell(tds[2]),
@@ -397,8 +412,8 @@ def cat_to_row(c: dict, l1: str, l2: str | None, l3: str | None = None, depth: i
     g = lambda lst, i: lst[i] if len(lst) > i else None
     lvl = 2 if depth == 1 else 3            # 2 = subcategoria; 3 = qualquer folha abaixo
     return {
-        # o site não expõe o id da categoria; a chave é o caminho, que é único
-        "categoryId": "|".join(x for x in [l1, l2, l3] if x),
+        # id verdadeiro quando o link da linha o revela; senão, o caminho
+        "categoryId": c.get("catId") or "|".join(x for x in [l1, l2, l3] if x),
         "categoryName": nome,
         "level": lvl,
         "parentId": l1 if lvl == 2 else f"{l1}|{l2}",
@@ -440,41 +455,85 @@ async def scrape_categories(page, expand_l2: bool = True) -> list[dict]:
 
     n = await page.evaluate("() => document.querySelectorAll('.ant-table-row-expand-icon').length")
     log.info("categorias: %d linhas de nível 1", n)
-    if expand_l2:
-        # Abrimos a árvore clicando sempre no primeiro ramo ainda fechado. Ela é
-        # mais funda do que os dois níveis que o radar pontua, então paramos por
-        # tempo: o que deu para abrir já descreve o mercado, e uma categoria
-        # teimosa não pode segurar a rodada.
-        limite = time.monotonic() + EXPAND_BUDGET_S
-        abertos = 0
-        while time.monotonic() < limite:
-            icons = page.locator(".ant-table-row-expand-icon-collapsed")
-            if not await icons.count():
-                break
-            try:
-                await icons.first.click(timeout=6000)
-                abertos += 1
-                await page.wait_for_timeout(700)
-            except Exception:
-                break                       # a lista mudou embaixo do clique; o que temos serve
-        log.info("categorias expandidas: %d ramos em %.0fs", abertos,
-                 EXPAND_BUDGET_S - max(0, limite - time.monotonic()))
-        await page.wait_for_timeout(2000)
 
-    raw = await page.evaluate(_SCRAPE_CATS)
+    # A tabela funciona como acordeão — abrir uma categoria fecha a anterior — e
+    # ainda é virtualizada. Então abrimos uma por vez, lemos as subcategorias que
+    # ela revela, e passamos para a próxima.
+    raw: list[dict] = []
+    vistos: set[tuple] = set()
+
+    def guardar(lote, pai=None):
+        """Anota o pai na hora da leitura.
+
+        Reconstruir a hierarquia pela ordem das linhas não funciona: como lemos em
+        várias passadas (uma por categoria aberta), a ordem final mistura tudo e
+        toda subcategoria acabaria herdando a última categoria vista.
+        """
+        novos = 0
+        for c in lote:
+            k = (c["depth"], c["nome"], c.get("catId"))
+            if k in vistos:
+                continue
+            vistos.add(k)
+            c["pai"] = pai if c["depth"] > 0 else None
+            raw.append(c)
+            novos += 1
+        return novos
+
+    guardar(await page.evaluate(_SCRAPE_CATS))          # as 28 de nível 1
+    nomes_l1 = [c["nome"] for c in raw if c["depth"] == 0]
+
+    if expand_l2:
+        limite = time.monotonic() + EXPAND_BUDGET_S
+        for nome in nomes_l1:
+            if time.monotonic() > limite:
+                log.info("tempo de expansão esgotado; %d de %d categorias abertas",
+                         nomes_l1.index(nome), len(nomes_l1))
+                break
+            # Localizar por nome, e não por índice: a tabela é virtualizada, então
+            # "a i-ésima linha" é a i-ésima RENDERIZADA — ao rolar, o índice deixa
+            # de corresponder à categoria e as subcategorias vão para o pai errado.
+            linha = page.locator("tr.ant-table-row-level-0").filter(has_text=nome).first
+            try:
+                await linha.scroll_into_view_if_needed(timeout=6000)
+                await linha.locator(".ant-table-row-expand-icon").click(timeout=6000)
+                await page.wait_for_timeout(900)
+            except Exception:
+                log.debug("não abriu %s", nome)
+                continue
+            guardar(await page.evaluate(_SCRAPE_CATS), nome)
+            for _ in range(10):
+                fim_pagina = await page.evaluate(
+                    "() => { const y = window.scrollY;"
+                    " window.scrollBy(0, window.innerHeight * 0.85); return window.scrollY === y; }")
+                await page.wait_for_timeout(350)
+                guardar(await page.evaluate(_SCRAPE_CATS), nome)
+                if fim_pagina:
+                    break
+            # fecha antes da próxima: garante que o que estiver aberto no DOM
+            # pertence sempre à categoria que acabamos de nomear
+            try:
+                await linha.scroll_into_view_if_needed(timeout=4000)
+                await linha.locator(".ant-table-row-expand-icon").click(timeout=4000)
+                await page.wait_for_timeout(400)
+            except Exception:
+                pass
+            await page.evaluate("() => window.scrollTo(0, 0)")
+            await page.wait_for_timeout(250)
+        log.info("categorias no DOM após varredura: %d", len(raw))
+
     # A tabela vem achatada, com a profundidade em cada linha. Uma pilha reconstrói
     # o caminho: quem está em depth 2 pertence ao último depth 1, e assim por diante.
     # O radar só pontua nível 2 e 3; abaixo disso a linha vira nível 3 do seu ramo.
-    rows, path = [], []
+    rows = []
     for c in raw:
         d = c["depth"]
-        del path[d:]
-        path.append(c["nome"])
-        if d == 0:
+        if d == 0 or not c.get("pai"):
             continue                        # L1 não entra no ranking de subcategoria
-        l1 = path[0]
-        l2 = path[1] if len(path) > 1 else None
-        l3 = path[2] if len(path) > 2 else None
+        if d == 1:
+            l1, l2, l3 = c["pai"], c["nome"], None
+        else:
+            l1, l2, l3 = c["pai"], None, c["nome"]
         rows.append(cat_to_row(c, l1, l2, l3, depth=d))
     log.info("categorias lidas: %d (níveis %s)", len(rows), sorted({r["level"] for r in rows}))
     return rows
@@ -538,6 +597,38 @@ class BrowserSource:
         p.update(extra or {})
         return p
 
+    async def l2_targets(self) -> list[tuple[str, str, str]]:
+        """(l1, nome da subcategoria, id) para cada nível 2 conhecido.
+
+        A busca só devolve a categoria pela qual você filtrou, então é filtrando
+        por subcategoria que o produto ganha um L2 — e é o L2 que casa com os
+        dados de oportunidade e monopolização no score.
+        """
+        if not hasattr(self, "_cats"):
+            self.calls += 1
+            self._cats = await scrape_categories(self.page)
+        alvos = [(c["merchantCategoryL1"], c["merchantCategoryL2"], c["categoryId"])
+                 for c in self._cats
+                 if c["level"] == 2 and str(c["categoryId"]).startswith("MLB")]
+        # maiores primeiro: se o tempo apertar, o que fica de fora é o que menos pesa
+        peso = {c["categoryId"]: (c.get("orderGmv") or 0) for c in self._cats}
+        alvos.sort(key=lambda t: -peso.get(t[2], 0))
+        if L2_LIMIT:
+            alvos = alvos[:L2_LIMIT]
+        log.info("subcategorias a varrer: %d", len(alvos))
+        return alvos
+
+    async def _search_l2(self, l1: str, l2: str, cid: str, extra: dict, limit: int) -> list[dict]:
+        self.calls += 1
+        try:
+            params = {"monthlySalesFrom": "30", "category": f"2,{cid}", **extra}
+            raw = await scrape_search(self.page, params, limit)
+        except Exception as e:
+            log.warning("falha lendo %s › %s: %s", l1, l2, type(e).__name__)
+            return []
+        bb = count_buybox(raw)
+        return [to_product(r, l1=l1, l2=l2, bb=bb.get(r["id"]), l2id=cid) for r in raw]
+
     async def _search(self, l1: str, extra: dict, limit: int) -> list[dict]:
         self.calls += 1
         try:
@@ -550,12 +641,23 @@ class BrowserSource:
         bb = count_buybox(raw)
         return [to_product(r, l1=l1, bb=bb.get(r["id"])) for r in raw]
 
+    async def _por_subcategoria(self, l1: str, extra: dict, limit: int) -> list[dict]:
+        alvos = [t for t in await self.l2_targets() if t[0] == l1]
+        if not alvos:                                   # sem subcategoria conhecida, cai no L1
+            return await self._search(l1, extra, limit)
+        out: list[dict] = []
+        for _, l2, cid in alvos:
+            out.extend(await self._search_l2(l1, l2, cid, extra, limit))
+        return out
+
     async def products_top(self, l1: str) -> list[dict]:
-        return await self._search(l1, {}, config.DISCOVERY_MAIN_LIMIT)
+        return await self._por_subcategoria(l1, {}, L2_MAIN_LIMIT)
 
     async def products_new(self, l1: str) -> list[dict]:
-        return await self._search(l1, {"adFrom": "0", "adTo": str(config.NEW_LISTING_MAX_DAYS)},
-                                  config.DISCOVERY_NEW_LIMIT)
+        if not L2_NEW_LIMIT:
+            return []
+        return await self._por_subcategoria(
+            l1, {"adFrom": "0", "adTo": str(config.NEW_LISTING_MAX_DAYS)}, L2_NEW_LIMIT)
 
     async def products_by_ids(self, ids: list[str]) -> list[dict]:
         return []                            # a tela não permite reler por lista de ids
