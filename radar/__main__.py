@@ -124,6 +124,20 @@ def cmd_fornecedor(a):
     if not F.SAIDA.exists():
         raise SystemExit("Sem catálogo. Rode `python -m radar fornecedor coletar` antes.")
     cat = json.loads(F.SAIDA.read_text("utf-8"))
+    if a.op == "pesquisar":
+        from . import browser as B
+        itens = [i for i in cat if "mais_vendidos" in (i.get("tags") or [])] or cat[:15]
+
+        async def _run():
+            src, close = await B.open_source(B.L1_IDS)
+            try:
+                return await F.pesquisar(itens, src.page)
+            finally:
+                await close()
+        res = asyncio.run(_run())
+        print(json.dumps({"itens": len(res), "anuncios": sum(len(r["anuncios"]) for r in res),
+                          "arquivo": str(F.BUSCA)}, ensure_ascii=False))
+        return
     dados = json.loads((config.DOCS_DIR / "data.json").read_text("utf-8"))
     pares = F.cruzar(cat, dados.get("products", []))
     print(json.dumps({"itens": len(cat), "com_candidato": len(pares), "arquivo": str(F.PARES)},
@@ -154,7 +168,7 @@ def main(argv=None):
     t.add_argument("op", choices=["encrypt", "decrypt"])
     sub.add_parser("client-metadata")
     f = sub.add_parser("fornecedor")
-    f.add_argument("op", choices=["coletar", "cruzar"])
+    f.add_argument("op", choices=["coletar", "cruzar", "pesquisar"])
     a = ap.parse_args(argv)
     if a.cmd == "login":
         asyncio.run(cmd_login(a))

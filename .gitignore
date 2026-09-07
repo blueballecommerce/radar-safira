@@ -8,3 +8,5 @@ docs/*.tmp
 .venv/
 data/fornecedor.json
 data/pares.json
+data/fornecedor_busca.json
+data/pranchas/

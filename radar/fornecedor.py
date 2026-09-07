@@ -218,3 +218,62 @@ def cruzar(catalogo: list[dict], produtos: list[dict], corte: float = 0.62,
     PARES.write_text(json.dumps(pares, ensure_ascii=False, indent=1), "utf-8")
     log.info("pares levantados: %d de %d itens do fornecedor", len(pares), len(catalogo))
     return pares
+
+
+# ------------------------------------------------------- pesquisa na JoomPulse
+BUSCA = config.DATA_DIR / "fornecedor_busca.json"
+CAND_POR_ITEM = 12               # anúncios por produto do fornecedor
+
+
+def _consulta(nome: str) -> list[str]:
+    """Variações do nome para a busca: o título inteiro e uma versão curta.
+
+    O fornecedor escreve "Par Luva Motoqueiro Térmica E Impermeável Com Touch
+    Screen"; a JoomPulse acha mais coisa com "luva motoqueiro térmica".
+    """
+    limpo = re.sub(r"\s+", " ", nome or "").strip()
+    palavras = [w for w in re.split(r"[^\wÀ-ÿ]+", limpo) if len(w) > 2 and w.lower() not in _STOP]
+    curto = " ".join(palavras[:4])
+    return [q for q in dict.fromkeys([limpo, curto]) if q]
+
+
+async def pesquisar(itens: list[dict], page) -> list[dict]:
+    """Para cada item do fornecedor, os anúncios que a JoomPulse devolve pelo nome.
+
+    Usa a sessão do navegador (a mesma da coleta), no modo desagrupado — assim
+    cada anúncio vem com vendedor, preço, tempo no ar e a foto, que é o que
+    permite conferir depois se é o mesmo produto.
+    """
+    from . import browser as B
+
+    saida = []
+    for it in itens:
+        achados: dict[str, dict] = {}
+        for q in _consulta(it["nome"]):
+            try:
+                rows = await B.scrape_search(page, {"query": q}, CAND_POR_ITEM)
+            except Exception as e:
+                log.warning("busca falhou para %r: %s", q, type(e).__name__)
+                continue
+            for r in rows:
+                if r["id"] not in achados:
+                    achados[r["id"]] = r
+            if len(achados) >= CAND_POR_ITEM:
+                break
+        bb = B.count_buybox(list(achados.values()))
+        cands = []
+        for r in list(achados.values())[:CAND_POR_ITEM]:
+            p = B.to_product(r, bb=bb.get(r["id"]))
+            cands.append({
+                "id": p["id"], "nome": p["productName"], "img": p["productImage"],
+                "preco": p["priceAmount"], "vendas_sem": p["orderCount1w"], "receita_mes": p["orderGmv1m"],
+                "dias": p["daysInAd"], "vendedor": p["merchantName"], "catalogo": p["catalogProduct"],
+                "bb": p["numBuyBoxSellers"], "avaliacoes": p["reviewsCount"], "nota": p["reviewsRating"],
+                "tipo": p["listingType"], "frete_gratis": p["isFreeShipping"],
+                "margem": (round((p["priceAmount"] - it["unit"]) / p["priceAmount"], 3)
+                           if p.get("priceAmount") and it.get("unit") else None),
+            })
+        log.info("%s: %d anúncios", it["nome"][:40], len(cands))
+        saida.append({"fornecedor": it, "anuncios": cands})
+    BUSCA.write_text(json.dumps(saida, ensure_ascii=False, indent=1), "utf-8")
+    return saida

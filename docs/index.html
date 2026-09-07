@@ -251,6 +251,42 @@ body.locked{overflow:hidden}
 .alt .altm{font-size:.76rem;color:var(--ink3);margin-top:2px}
 .alt .altv{display:flex;gap:5px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
 
+/* ---------- fornecedores ---------- */
+.sup{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;margin:14px 0}
+.supc{display:grid;grid-template-columns:64px 1fr;gap:14px;align-items:center;background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:16px;cursor:pointer;transition:border-color .15s,transform .15s}
+.supc:hover{border-color:var(--acc);transform:translateY(-2px)}
+.supc .logo{width:64px;height:64px;border-radius:12px;object-fit:contain;background:#fff;border:1px solid var(--line);padding:4px}
+.supc .mono{width:64px;height:64px;border-radius:12px;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:1.3rem;background:var(--acc2);color:var(--acc)}
+.supc h3{font-family:var(--display);font-size:1.1rem;margin:0 0 3px}
+.supc .meta{font-size:.82rem;color:var(--ink3);line-height:1.45}
+.supc .nums{display:flex;gap:12px;margin-top:8px;font-family:var(--mono);font-size:.78rem;color:var(--ink2)}
+.crumb{display:flex;align-items:center;gap:8px;font-size:.86rem;color:var(--ink3);margin:6px 0 12px;flex-wrap:wrap}
+.crumb a{cursor:pointer}
+.fp{display:grid;grid-template-columns:64px 1fr 120px 110px 130px 150px;gap:14px;align-items:center;background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:10px 12px;cursor:pointer;transition:border-color .15s}
+.fp:hover{border-color:var(--acc)}
+.fp .k{font-size:.66rem;color:var(--ink3);text-transform:uppercase;letter-spacing:.05em}
+.fp .v{font-family:var(--mono);font-weight:500}
+.fp .v.big{font-size:1.05rem}
+@media (max-width:980px){ .fp{grid-template-columns:56px 1fr 120px} .fp .cell{display:none} }
+.fhead{display:grid;grid-template-columns:160px 1fr;gap:18px;background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:16px}
+.fhead img{width:160px;height:160px;object-fit:contain;border-radius:10px;background:#fff;border:1px solid var(--line)}
+.fhead h3{font-family:var(--display);font-size:1.25rem;margin:0 0 6px;line-height:1.25}
+.fhead .kv{margin:8px 0 0}
+@media (max-width:640px){ .fhead{grid-template-columns:1fr} .fhead img{width:100%;height:auto} }
+.grp{margin:18px 0 8px;display:flex;align-items:baseline;gap:10px}
+.grp h3{font-family:var(--display);font-size:1.05rem;margin:0}
+.grp .hint{font-size:.82rem;color:var(--ink3)}
+.an{display:grid;grid-template-columns:64px 1fr 120px 110px 120px 110px;gap:12px;align-items:center;background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:10px 12px;margin-bottom:8px}
+.an.igual{border-color:var(--good)} .an.parecido{border-color:var(--warn)} .an.diferente{opacity:.6}
+.an .thumb{width:64px;height:64px}
+.an .obs{font-size:.8rem;color:var(--ink2);margin-top:4px;line-height:1.4}
+.an .obs b{color:var(--ink)}
+@media (max-width:980px){ .an{grid-template-columns:56px 1fr 110px} .an .cell{display:none} }
+.marg{font-family:var(--display);font-weight:800;font-size:1.2rem;line-height:1}
+.marg.boa{color:var(--good)} .marg.media{color:var(--warn)} .marg.ruim{color:var(--bad)}
+.veredito{background:var(--acc2);border-radius:10px;padding:12px 14px;margin:0 0 14px;font-size:.92rem;line-height:1.5}
+.veredito b{color:var(--acc)}
+
 /* ---------- pizza do score (aparece ao passar o mouse) ---------- */
 .meter{position:relative}
 .scorepop{position:absolute;z-index:30;right:0;top:calc(100% + 8px);width:290px;background:var(--bg2);border:1px solid var(--line2);
@@ -285,7 +321,7 @@ body.locked{overflow:hidden}
     <button role="tab" data-tab="cats" aria-selected="false">Categorias em alta</button>
     <button role="tab" data-tab="imp" aria-selected="false">Importação JoomPro</button>
     <button role="tab" data-tab="sim" aria-selected="false">Simulador de preço</button>
-    <button role="tab" data-tab="forn" aria-selected="false">Fornecedores<span class="soon">fase 2</span></button>
+    <button role="tab" data-tab="forn" aria-selected="false">Fornecedores</button>
     <button role="tab" data-tab="shp" aria-selected="false">Shopee<span class="soon">em breve</span></button>
   </nav>
   <div class="fresh" id="fresh"></div>
@@ -447,15 +483,9 @@ body.locked{overflow:hidden}
 
 <!-- ================= SUPPLIERS ================= -->
 <section id="tab-forn" hidden>
-  <h2>Fornecedores: da foto ao produto vendável</h2>
-  <p class="lead">Fase 2 do Radar. O fluxo abaixo já está desenhado; entra em operação quando os cadastros e as fotos dos fornecedores estiverem prontos.</p>
-  <div class="road">
-    <div class="step"><div class="st">Loja física</div><h3>Foto na loja → similares no ML</h3><p>Você fotografa o produto com a etiqueta de preço e envia no chat. Claude identifica o item, busca similares no Mercado Livre (mesma cor e características), traz preço praticado, vendas estimadas e concorrência, e roda o simulador com o custo da etiqueta.</p></div>
-    <div class="step"><div class="st">Sites de fornecedores</div><h3>Link → comparação automática</h3><p>Você envia a lista de links. Claude abre cada página, extrai nome, preço e fotos, e cruza com o Mercado Livre da mesma forma que o fluxo por foto.</p></div>
-    <div class="step"><div class="st">Catálogos</div><h3>PDF ou planilha → lote de análise</h3><p>Catálogos inteiros entram como arquivo; cada item vira uma linha com preço de custo, preço ML, margem simulada e um veredito.</p></div>
-    <div class="step"><div class="st on">Pronto agora</div><h3>Simulador com as taxas do ML</h3><p>Já dá para usar: pegue o preço da etiqueta, coloque no simulador e veja quanto precisa vender para ter a margem que quer.</p>
-      <ul class="clean"><li>Checklist de visita: foto do produto, foto da etiqueta, marca/modelo, quantidade mínima, prazo.</li><li>Envie as fotos no chat com o Radar aberto — o resultado volta como lista de similares com links.</li></ul></div>
-  </div>
+  <h2>Fornecedores</h2>
+  <p class="lead">Cada produto do fornecedor com o custo por unidade, o tamanho da caixa e o que você paga para fechar uma. Clique num produto para ver os anúncios do Mercado Livre que vendem a mesma coisa — conferidos foto a foto — com preço praticado, vendas por semana, tempo no ar e a margem bruta que sobra sobre o custo.</p>
+  <div id="forn-root"><div class="empty">Carregando fornecedores…</div></div>
 </section>
 
 <!-- ================= SHOPEE ================= -->
@@ -541,6 +571,7 @@ function renderFresh(live){
 /* ===================== tabs ===================== */
 $$('nav.tabs button').forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.tab)));
 function showTab(t){
+  if (t==='forn') fornLoad();
   $$('nav.tabs button').forEach(b=>b.setAttribute('aria-selected', b.dataset.tab===t));
   $$('main > section').forEach(s=>s.hidden = s.id!=='tab-'+t);
   try{ localStorage.setItem('radar.tab', t);}catch(e){}
@@ -1113,6 +1144,134 @@ fetch('data.json?_='+Date.now(), {cache:'no-store'}).then(r=>{ if(!r.ok) throw n
   .catch(e=>{ $('#ml-list').innerHTML = '<div class="empty">Não consegui carregar data.json ('+esc(e.message)+'). Se for a primeira publicação, espere a primeira rodada do coletor.</div>'; });
 const csvBtn=$('#ml-csv'); csvBtn.hidden=false;
 csvBtn.addEventListener('click', ()=>{ const blob=new Blob(['\ufeff'+csvOf(mlFiltered())],{type:'text/csv;charset=utf-8'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='radar-safira-ml.csv'; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),2000); toast('CSV gerado'); });
+
+/* ===================== fornecedores ===================== */
+const forn = { data:null, view:'lista', sup:null, prod:null, q:'', soMV:true, soIgual:false };
+async function fornLoad(){
+  if (forn.data) return fornRender();
+  try{
+    const r = await fetch('fornecedores.json?'+Date.now()); if(!r.ok) throw new Error(r.status);
+    forn.data = await r.json();
+  }catch(e){
+    $('#forn-root').innerHTML = `<div class="empty">Ainda não há catálogo de fornecedor publicado.<br><span class="small muted">Rode <code>python -m radar fornecedor coletar</code> e depois <code>python -m radar.fornecedor_export</code>.</span></div>`;
+    return;
+  }
+  fornRender();
+}
+const fornLink = a => 'https://produto.mercadolivre.com.br/' + String(a.id||'').replace('MLB','MLB-');
+const fornPulse = a => 'https://joompulse.com/dashboard/beginner-products/' + a.id;
+const TIPO = {gold_pro:'Premium', gold_special:'Clássico', free:'Grátis'};
+function margClass(m){ return m==null?'':(m>=.55?'boa':m>=.35?'media':'ruim'); }
+function fmtPct(m){ return m==null?'—':Math.round(m*100)+'%'; }
+function melhor(L){ return L.reduce((x,y)=>(y.margem??-1)>(x.margem??-1)?y:x); }
+
+function fornRender(){
+  const root = $('#forn-root'); const D = forn.data;
+  if (forn.view==='lista'){
+    root.innerHTML = `<div class="sup">${D.fornecedores.map(f=>`
+      <div class="supc" data-sup="${f.id}">
+        <img class="logo" src="${esc(f.logo)}" alt="" onerror="this.outerHTML='<div class=mono>${esc(f.nome.split(' ').map(w=>w[0]).join('').slice(0,2))}</div>'">
+        <div><h3>${esc(f.nome)}</h3>
+          <div class="meta">${esc(f.regra)} · ${esc(f.contato)}<br><a href="${esc(f.site)}" target="_blank" rel="noopener">${esc(f.site.replace(/^https?:\/\/(www\.)?/,'').replace(/\/$/,''))} ↗</a></div>
+          <div class="nums"><span><b>${f.produtos}</b> produtos</span><span><b>${f.pesquisados}</b> pesquisados no ML</span></div>
+        </div></div>`).join('')}</div>
+      <p class="small muted">Clique no fornecedor para ver o catálogo. Os produtos <b>pesquisados</b> já têm os anúncios do Mercado Livre conferidos foto a foto.</p>`;
+    root.querySelectorAll('.supc').forEach(el=>el.onclick=()=>{ forn.sup=el.dataset.sup; forn.view='produtos'; fornRender(); });
+    return;
+  }
+  const F = D.fornecedores.find(f=>f.id===forn.sup);
+  if (forn.view==='produtos'){
+    const q = forn.q.trim().toLowerCase();
+    let rows = D.produtos.filter(p=>p.fornecedor===forn.sup)
+      .filter(p=>!forn.soMV || p.tags.includes('mais_vendidos'))
+      .filter(p=>!forn.soIgual || p.iguais>0)
+      .filter(p=>!q || p.nome.toLowerCase().includes(q));
+    rows.sort((a,b)=>(b.iguais-a.iguais)||(b.parecidos-a.parecidos)||((b.pesquisado?1:0)-(a.pesquisado?1:0))||a.nome.localeCompare(b.nome));
+    root.innerHTML = `
+      <div class="crumb"><a id="f-back">← Fornecedores</a> <span>›</span> <b>${esc(F.nome)}</b></div>
+      <div class="filters">
+        <input type="search" id="f-q" placeholder="Buscar produto…" value="${esc(forn.q)}">
+        <div class="chips">
+          <button class="chip" id="f-mv" aria-pressed="${forn.soMV}">Mais vendidos do último mês</button>
+          <button class="chip" id="f-ig" aria-pressed="${forn.soIgual}">Só com anúncio igual no ML</button>
+        </div>
+        <span class="count">${rows.length} produtos</span>
+      </div>
+      <div class="list">${rows.length? rows.map(p=>{
+        const ig = p.anuncios.filter(a=>a.veredito==='igual');
+        const best = ig.length ? melhor(ig) : null;
+        return `
+        <article class="fp" data-url="${esc(p.url)}" tabindex="0" role="button">
+          <img class="thumb" loading="lazy" src="${esc(p.img||'')}" alt="">
+          <div><div class="name">${esc(p.nome)}</div>
+            <div class="tags">${p.tags.includes('mais_vendidos')?'<span class="tag acc">Mais vendido</span>':''}
+              ${p.pesquisado ? (p.iguais?`<span class="tag good">${p.iguais} igual${p.iguais>1?'is':''} no ML</span>`:'')+(p.parecidos?`<span class="tag warn">${p.parecidos} parecido${p.parecidos>1?'s':''}</span>`:'')+(!p.iguais&&!p.parecidos?'<span class="tag">pesquisado · nenhum igual</span>':'') : '<span class="tag">não pesquisado</span>'}
+            </div></div>
+          <div class="cell"><div class="k">Custo unitário</div><div class="v big">${fmtBRL(p.unit)}</div></div>
+          <div class="cell"><div class="k">Na caixa</div><div class="v big">${p.caixa??'—'} <span class="small muted">${esc(p.unidade||'un')}</span></div></div>
+          <div class="cell"><div class="k">Fecha a caixa por</div><div class="v big">${fmtBRL(p.total)}</div></div>
+          <div class="cell">${best ? `<div class="k">Melhor margem bruta</div><div class="marg ${margClass(best.margem)}">${fmtPct(best.margem)}</div><div class="k">ML a ${fmtBRL(best.preco)}</div>` : '<div class="k">Margem</div><div class="v muted">—</div>'}</div>
+        </article>`; }).join('') : '<div class="empty">Nenhum produto com esses filtros.</div>'}</div>`;
+    $('#f-back').onclick=()=>{ forn.view='lista'; fornRender(); };
+    $('#f-q').oninput=e=>{ forn.q=e.target.value; fornRender(); const v=$('#f-q'); v.focus(); v.setSelectionRange(v.value.length,v.value.length); };
+    $('#f-mv').onclick=()=>{ forn.soMV=!forn.soMV; fornRender(); };
+    $('#f-ig').onclick=()=>{ forn.soIgual=!forn.soIgual; fornRender(); };
+    root.querySelectorAll('.fp').forEach(el=>{ const go=()=>{ forn.prod=el.dataset.url; forn.view='produto'; fornRender(); }; el.onclick=go; el.onkeydown=e=>{ if(e.key==='Enter') go(); }; });
+    return;
+  }
+  // detalhe do produto
+  const p = D.produtos.find(x=>x.url===forn.prod); if(!p){ forn.view='produtos'; return fornRender(); }
+  const grupos = [['igual','Mesmo produto no Mercado Livre','conferido pela foto: cor, formato e material batem'],
+                  ['parecido','Parecidos — vale conferir','mesma família, com alguma diferença visível'],
+                  [null,'Sem conferência','a busca achou, ninguém olhou a foto ainda'],
+                  ['diferente','Descartados','a foto mostrou que é outro produto']];
+  const iguais = p.anuncios.filter(a=>a.veredito==='igual');
+  let veredito = '';
+  if (!p.pesquisado) veredito = `<div class="veredito">Este produto ainda <b>não foi pesquisado</b> no Mercado Livre.</div>`;
+  else if (!iguais.length) veredito = `<div class="veredito">A busca trouxe ${p.anuncios.length} anúncio${p.anuncios.length!==1?'s':''}, mas <b>nenhum é o mesmo produto</b>${p.parecidos?` — ${p.parecidos} parecido${p.parecidos>1?'s':''} para você olhar`:''}.</div>`;
+  else {
+    const best = melhor(iguais);
+    const vend = iguais.reduce((s,a)=>s+(a.vendas_sem||0),0);
+    const novos = iguais.filter(a=>(a.dias??999)<=NEW_MAX_DAYS).length;
+    const minP = Math.min(...iguais.map(a=>a.preco).filter(x=>x!=null));
+    veredito = `<div class="veredito"><b>${iguais.length} anúncio${iguais.length>1?'s':''} vendendo exatamente este produto</b>, somando <b>${fmtN(vend)} vendas/semana</b>.
+      Preço mais baixo no ML: <b>${fmtBRL(minP)}</b> contra <b>${fmtBRL(p.unit)}</b> de custo — margem bruta de <b>${fmtPct(best.margem)}</b> no melhor caso, antes de comissão, frete e imposto.
+      ${novos?`<b>${novos}</b> ${novos>1?'anúncios entraram':'anúncio entrou'} há menos de ${NEW_MAX_DAYS} dias — demanda ainda em formação.`:'Todos os anúncios têm mais de um mês: mercado já estabelecido.'}
+      Use o <a href="#" id="f-sim">Simulador de preço</a> com ${fmtBRL(p.unit)} de custo para o número líquido.</div>`;
+  }
+  root.innerHTML = `
+    <div class="crumb"><a id="f-back0">← Fornecedores</a> <span>›</span> <a id="f-back1">${esc(F.nome)}</a> <span>›</span> <b>${esc(p.nome)}</b></div>
+    <div class="fhead"><img src="${esc(p.img||'')}" alt="">
+      <div><div class="small muted">${p.tags.includes('mais_vendidos')?'Mais vendido do último mês · ':''}${esc(F.nome)}</div>
+        <h3>${esc(p.nome)}</h3>
+        <div class="kv">
+          <div><div class="k">Custo por unidade</div><div class="v">${fmtBRL(p.unit)}</div></div>
+          <div><div class="k">Unidades na caixa</div><div class="v">${p.caixa??'—'} ${esc(p.unidade||'un')}</div></div>
+          <div><div class="k">Para fechar uma caixa</div><div class="v">${fmtBRL(p.total)}</div></div>
+          <div><div class="k">No site do fornecedor</div><div class="v"><a href="${esc(p.url)}" target="_blank" rel="noopener">abrir ↗</a></div></div>
+        </div></div></div>
+    ${veredito}
+    ${grupos.map(([v,titulo,hint])=>{ const L=p.anuncios.filter(a=>a.veredito===v); if(!L.length) return '';
+      const inner = L.map(a=>`
+        <div class="an ${a.veredito||''}">
+          <img class="thumb" loading="lazy" src="${esc(a.img||'')}" alt="">
+          <div><div class="name">${esc(a.nome)}</div>
+            <div class="path">${esc(a.vendedor||'—')}${a.catalogo?` · ${a.bb||1} vendedor${(a.bb||1)>1?'es':''} no catálogo`:' · anúncio próprio'}${a.tipo?' · '+(TIPO[a.tipo]||a.tipo):''}${a.frete_gratis?' · frete grátis':''}</div>
+            <div class="tags"><span class="tag ${(a.dias??999)<=NEW_MAX_DAYS?'good':''}">${idade(a.dias)}</span>${a.avaliacoes?`<span class="tag">${fmtN(a.avaliacoes)} aval.${a.nota?' · '+a.nota.toFixed(1)+'★':''}</span>`:''}</div>
+            ${a.obs?`<div class="obs">${esc(a.obs)}</div>`:''}</div>
+          <div class="cell"><div class="k">Preço no ML</div><div class="v big">${fmtBRL(a.preco)}</div></div>
+          <div class="cell"><div class="k">Vendas/sem</div><div class="v big">${fmtN(a.vendas_sem)}</div><div class="k">${fmtBRLc(a.receita_mes)}/mês</div></div>
+          <div class="cell"><div class="k">Margem bruta</div><div class="marg ${margClass(a.margem)}">${fmtPct(a.margem)}</div></div>
+          <div class="links"><a href="${fornLink(a)}" target="_blank" rel="noopener">Mercado Livre ↗</a><a href="${fornPulse(a)}" target="_blank" rel="noopener">JoomPulse ↗</a></div>
+        </div>`).join('');
+      return v==='diferente' ? `<details><summary>${titulo} (${L.length})</summary><div style="margin-top:8px">${inner}</div></details>`
+        : `<div class="grp"><h3>${titulo}</h3><span class="hint">${L.length} · ${hint}</span></div>${inner}`; }).join('')}`;
+  $('#f-back0').onclick=()=>{ forn.view='lista'; fornRender(); };
+  $('#f-back1').onclick=()=>{ forn.view='produtos'; fornRender(); };
+  const sim=$('#f-sim'); if(sim) sim.onclick=e=>{ e.preventDefault(); $('#s-cost').value=p.unit; const best=melhor(iguais); if(best&&best.preco) $('#s-price').value=best.preco; simulate(); showTab('sim'); };
+  window.scrollTo({top:0});
+}
+
 </script>
 
 </body>
