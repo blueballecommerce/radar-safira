@@ -259,6 +259,7 @@ def _agrupa_por_catalogo(rows: list[dict], custo: float | None) -> list[dict]:
         precos = [p["priceAmount"] for p in prods if p["priceAmount"]]
         saida.append({
             "id": rep["id"], "nome": rep["productName"], "img": rep["productImage"], "chave": chave,
+            "l1": rep["merchantCategoryL1"],        # a comissão do ML depende da categoria
             "preco": rep["priceAmount"], "vendas_sem": rep["orderCount1w"], "receita_mes": rep["orderGmv1m"],
             "dias": rep["daysInAd"], "vendedor": rep["merchantName"], "catalogo": rep["catalogProduct"],
             "bb": len(prods) if rep["catalogProduct"] else None,

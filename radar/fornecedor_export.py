@@ -24,8 +24,8 @@ FORNECEDORES = [{
     "id": "flexx",
     "nome": "Flexx Imports",
     "site": "https://www.flexximports.com.br/",
-    "logo": "https://app.procatalogo.com.br/flexximports/wp-content/uploads/sites/4951/2026/01/"
-            "Produtividade-Conforto-e-Seguran%C3%A7a-em-um-s%C3%B3-produto.webp",
+    # cópia local (docs/img): o CDN deles recusa o arquivo fora do site
+    "logo": "img/flexx-logo.webp",
     "contato": "(11) 98820-8112",
     "regra": "Vende apenas caixa fechada",
 }]

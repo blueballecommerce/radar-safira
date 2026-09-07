@@ -287,6 +287,33 @@ body.locked{overflow:hidden}
 .veredito{background:var(--acc2);border-radius:10px;padding:12px 14px;margin:0 0 14px;font-size:.92rem;line-height:1.5}
 .veredito b{color:var(--acc)}
 
+/* ---------- preços-alvo, calculadora e extrato ---------- */
+.tbl-alvos{width:100%;border-collapse:collapse;background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;min-width:0;font-size:.9rem}
+.tbl-alvos th{background:var(--bg3);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink3);padding:9px 12px;text-align:left;position:static;cursor:default}
+.tbl-alvos td{padding:8px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+.alvo{display:flex;flex-direction:column;align-items:flex-start;gap:2px;background:var(--bg);border:1px solid var(--line2);border-radius:9px;padding:7px 12px;cursor:pointer;width:100%;text-align:left}
+.alvo:hover{border-color:var(--acc);background:var(--acc2)}
+.alvo b{font-family:var(--mono);font-size:1.05rem}
+.alvo span{font-size:.75rem;color:var(--ink3)}
+.calc{display:grid;grid-template-columns:minmax(280px,380px) 1fr;gap:14px;align-items:start;margin-bottom:6px}
+@media (max-width:900px){ .calc{grid-template-columns:1fr} }
+.calc-in{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px}
+.calc-in .field{grid-template-columns:1fr 160px}
+.calc-in .cmp{margin-top:10px;background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:9px 11px}
+.calc-in .cmp .k{font-size:.68rem;color:var(--ink3);text-transform:uppercase;letter-spacing:.05em}
+.calc-in .cmp .v{font-family:var(--mono);font-size:.9rem;margin:2px 0}
+.calc-out{display:grid;gap:10px}
+.veredito.ok{background:var(--goodBg)} .veredito.ok b{color:var(--good)}
+.veredito.ruim{background:var(--badBg)} .veredito.ruim b{color:var(--bad)}
+.ext-card{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px}
+.ext-card .tot,.scorepop .tot{font-family:var(--display);font-weight:800;font-size:1.15rem;line-height:1.1}
+.ext-card .tot span,.scorepop .tot span{display:block;font-family:var(--body);font-weight:400;font-size:.76rem;color:var(--ink3)}
+ul.ext{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:5px}
+ul.ext li{display:flex;justify-content:space-between;gap:12px;font-size:.84rem;border-bottom:1px dashed var(--line);padding-bottom:4px}
+ul.ext li b{font-family:var(--mono);font-weight:500;white-space:nowrap}
+.an .scorepop{width:330px;right:auto;left:0}
+.an .links .btn{padding:5px 9px;font-size:.8rem}
+
 /* ---------- pizza do score (aparece ao passar o mouse) ---------- */
 .meter{position:relative}
 .scorepop{position:absolute;z-index:30;right:0;top:calc(100% + 8px);width:290px;background:var(--bg2);border:1px solid var(--line2);
@@ -684,7 +711,7 @@ function renderML(reset){
     <div class="meter" tabindex="0"><div class="sc">${p.score.toFixed(0)}<small>/100</small></div><div class="bar"><i style="width:${p.score}%"></i></div>${scorePie(p)}</div>
     <div class="cell"><div class="k">Vendas/sem</div><div class="v big">${fmtN(p.w)}</div><div class="k">${fmtN(p.m)} / mês</div></div>
     <div class="cell"><div class="k">Preço</div><div class="v big">${fmtBRL(p.pr)}</div><div class="k">${p.rc?(p.rr?p.rr.toFixed(1)+'★ · ':'')+fmtN(p.rc)+' aval.':'sem avaliações'}</div></div>
-    <div class="links"><a href="${mlLink(p)}" target="_blank" rel="noopener">Abrir no Mercado Livre ↗</a><a href="${pulseLink(p)}" target="_blank" rel="noopener">Ficha JoomPulse ↗</a></div>
+    <div class="links"><a href="${mlLink(p)}" target="_blank" rel="noopener">Abrir no Mercado Livre ↗</a></div>
    </article>`).join('') : `<div class="empty">Nenhum produto com esses filtros. Tire um filtro ou mude a faixa de preço.</div>`;
 }
 /* ---------- pizza do score ----------
@@ -885,7 +912,6 @@ function openProduct(id){
     ${rivaisHTML(p)}
     <div class="actions">
       <a class="btn primary" href="${mlLink(p)}" target="_blank" rel="noopener">Abrir no Mercado Livre ↗</a>
-      <a class="btn" href="${pulseLink(p)}" target="_blank" rel="noopener">Ficha JoomPulse ↗</a>
       <button class="btn" id="psim">Simular com este preço</button>
       <button class="btn" id="palt">Em que categorias dá para vender ↓</button>
       <a class="btn ghost" href="https://lista.mercadolivre.com.br/${encodeURIComponent(p.n.split(' ').slice(0,5).join(' '))}" target="_blank" rel="noopener">Ver concorrentes na busca ↗</a>
@@ -1148,7 +1174,7 @@ const csvBtn=$('#ml-csv'); csvBtn.hidden=false;
 csvBtn.addEventListener('click', ()=>{ const blob=new Blob(['\ufeff'+csvOf(mlFiltered())],{type:'text/csv;charset=utf-8'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='radar-safira-ml.csv'; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),2000); toast('CSV gerado'); });
 
 /* ===================== fornecedores ===================== */
-const forn = { data:null, view:'lista', sup:null, prod:null, q:'', soMV:true, soIgual:false };
+const forn = { data:null, view:'lista', sup:null, prod:null, q:'', soMV:true, soIgual:false, calc:{} };
 async function fornLoad(){
   if (forn.data) return fornRender();
   try{
@@ -1161,11 +1187,64 @@ async function fornLoad(){
   fornRender();
 }
 const fornLink = a => 'https://produto.mercadolivre.com.br/' + String(a.id||'').replace('MLB','MLB-');
-const fornPulse = a => 'https://joompulse.com/dashboard/beginner-products/' + a.id;
 const TIPO = {gold_pro:'Premium', gold_special:'Clássico', free:'Grátis'};
-function margClass(m){ return m==null?'':(m>=.55?'boa':m>=.35?'media':'ruim'); }
+const tipoDe = a => a.tipo==='gold_pro' ? 'p' : 'c';
+const tipoNome = t => t==='p' ? 'Premium' : 'Clássico';
 function fmtPct(m){ return m==null?'—':Math.round(m*100)+'%'; }
-function melhor(L){ return L.reduce((x,y)=>(y.margem??-1)>(x.margem??-1)?y:x); }
+/* lucro líquido sobre a venda: 25% já é muito bom no ML; abaixo de 12% vira aperto */
+function margClass(m){ return m==null?'':(m>=.25?'boa':m>=.12?'media':'ruim'); }
+function melhor(L){ return L.reduce((x,y)=>(y.lucro?.margin??-9)>(x.lucro?.margin??-9)?y:x); }
+
+/* ---------- taxas do Mercado Livre: reaproveita o simulador ----------
+   As premissas (peso, reputação, imposto, embalagem, ads) são as do Simulador
+   de preço — mude lá e tudo aqui recalcula. */
+function simOpts(){
+  return { wi:+($('#s-weight')?.value||0), rep:+($('#s-rep')?.value||0.5), tax:+($('#s-tax')?.value||6),
+           other:+($('#s-other')?.value||1.5), ads:+($('#s-ads')?.value||0) };
+}
+function catDe(a, p){
+  if (a && a.l1 && FEES.comm[a.l1]) return a.l1;
+  const m = {}; (p.anuncios||[]).forEach(x=>{ if(x.l1 && FEES.comm[x.l1]) m[x.l1]=(m[x.l1]||0)+1; });
+  const top = Object.entries(m).sort((x,y)=>y[1]-x[1])[0];
+  return top ? top[0] : 'Casa, Móveis e Decoração';
+}
+/* extrato de uma venda: preço − comissão − custo fixo/frete − imposto − embalagem − custo = lucro */
+function extrato(preco, tipo, cat, custo, freteGratis){
+  const o = simOpts();
+  const r = calc(preco, custo, cat, tipo, o.wi, o.rep, o.tax, o.other, o.ads);
+  // frete grátis oferecido abaixo da linha dos R$ 79 é opcional — e sai do bolso de quem oferece
+  const extra = (preco < FEES.freeFrom && freteGratis) ? (FEES.ship[o.wi]?.val||0)*(1-o.rep) : 0;
+  const profit = r.profit - extra;
+  return {...r, ship: r.ship + extra, profit, margin: preco ? profit/preco : 0,
+          comPct:(FEES.comm[cat]||[12,17])[tipo==='p'?1:0], peso:FEES.ship[o.wi]?.label||'', o};
+}
+function precoAlvo(m, tipo, cat, custo){ const o=simOpts(); return priceForMargin(m, custo, cat, tipo, o.wi, o.rep, o.tax, o.other, o.ads); }
+function extratoHTML(e, preco, tipo, custo, titulo){
+  const linhaFrete = preco < FEES.freeFrom
+    ? (e.ship ? `<li><span>Frete grátis oferecido (${e.peso}, ${Math.round(e.o.rep*100)}% desc.)</span><b>− ${fmtBRL(e.ship)}</b></li>` : `<li><span>Frete</span><b>pago pelo comprador</b></li>`)
+    : `<li><span>Frete grátis obrigatório (${e.peso}, ${Math.round(e.o.rep*100)}% desc.)</span><b>− ${fmtBRL(e.ship)}</b></li>`;
+  return `<div class="hd"><div class="tot">${fmtBRL(e.profit)}<span>lucro por unidade · ${fmtPct(e.margin)} da venda</span></div></div>
+    <ul class="ext">
+      <li><span>Preço de venda (${tipoNome(tipo)})</span><b>${fmtBRL(preco)}</b></li>
+      <li><span>Comissão do ML (${e.comPct}%)</span><b>− ${fmtBRL(e.comm)}</b></li>
+      ${preco < FEES.freeFrom ? `<li><span>Custo fixo por unidade (${e.fixedLabel})</span><b>− ${fmtBRL(e.fixed)}</b></li>` : ''}
+      ${linhaFrete}
+      <li><span>Imposto (${e.o.tax}%)</span><b>− ${fmtBRL(e.taxV)}</b></li>
+      ${e.adsV ? `<li><span>Ads (${e.o.ads}%)</span><b>− ${fmtBRL(e.adsV)}</b></li>` : ''}
+      <li><span>Embalagem e outros</span><b>− ${fmtBRL(e.o.other)}</b></li>
+      <li><span>Custo do produto no fornecedor</span><b>− ${fmtBRL(custo)}</b></li>
+    </ul>
+    <div class="lost">Comissão, custo fixo e frete são a tabela de referência do ML; peso e reputação vêm do Simulador de preço.</div>`;
+}
+/* média, mínimo e máximo do que os concorrentes IGUAIS estão cobrando */
+function concorrencia(p){
+  const ig = p.anuncios.filter(a=>a.veredito==='igual'); const precos = [];
+  ig.forEach(a=>{ if(a.preco!=null) precos.push(a.preco); (a.outros||[]).forEach(o=>{ if(o.preco!=null) precos.push(o.preco); }); });
+  if (!precos.length) return null;
+  precos.sort((a,b)=>a-b);
+  return { n:precos.length, catalogos:ig.length, media:precos.reduce((s,x)=>s+x,0)/precos.length,
+           min:precos[0], max:precos[precos.length-1], mediana:precos[Math.floor(precos.length/2)] };
+}
 
 function fornRender(){
   const root = $('#forn-root'); const D = forn.data;
@@ -1200,7 +1279,7 @@ function fornRender(){
         <span class="count">${rows.length} produtos</span>
       </div>
       <div class="list">${rows.length? rows.map(p=>{
-        const ig = p.anuncios.filter(a=>a.veredito==='igual');
+        const ig = p.anuncios.filter(a=>a.veredito==='igual').map(a=>({...a, lucro: extrato(a.preco||0, tipoDe(a), catDe(a,p), p.unit||0, a.frete_gratis)}));
         const best = ig.length ? melhor(ig) : null;
         return `
         <article class="fp" data-url="${esc(p.url)}" tabindex="0" role="button">
@@ -1212,7 +1291,7 @@ function fornRender(){
           <div class="cell"><div class="k">Custo unitário</div><div class="v big">${fmtBRL(p.unit)}</div></div>
           <div class="cell"><div class="k">Na caixa</div><div class="v big">${p.caixa??'—'} <span class="small muted">${esc(p.unidade||'un')}</span></div></div>
           <div class="cell"><div class="k">Fecha a caixa por</div><div class="v big">${fmtBRL(p.total)}</div></div>
-          <div class="cell">${best ? `<div class="k">Melhor margem bruta</div><div class="marg ${margClass(best.margem)}">${fmtPct(best.margem)}</div><div class="k">ML a ${fmtBRL(best.preco)}</div>` : '<div class="k">Margem</div><div class="v muted">—</div>'}</div>
+          <div class="cell">${best ? `<div class="k">Melhor lucro líquido</div><div class="marg ${margClass(best.lucro.margin)}">${fmtPct(best.lucro.margin)}</div><div class="k">${fmtBRL(best.lucro.profit)}/un vendendo a ${fmtBRL(best.preco)}</div>` : '<div class="k">Lucro</div><div class="v muted">—</div>'}</div>
         </article>`; }).join('') : '<div class="empty">Nenhum produto com esses filtros.</div>'}</div>`;
     $('#f-back').onclick=()=>{ forn.view='lista'; fornRender(); };
     $('#f-q').oninput=e=>{ forn.q=e.target.value; fornRender(); const v=$('#f-q'); v.focus(); v.setSelectionRange(v.value.length,v.value.length); };
@@ -1221,26 +1300,35 @@ function fornRender(){
     root.querySelectorAll('.fp').forEach(el=>{ const go=()=>{ forn.prod=el.dataset.url; forn.view='produto'; fornRender(); }; el.onclick=go; el.onkeydown=e=>{ if(e.key==='Enter') go(); }; });
     return;
   }
-  // detalhe do produto
+  fornProduto(root, F);
+}
+
+/* ---------- detalhe do produto do fornecedor ---------- */
+function fornProduto(root, F){
+  const D = forn.data;
   const p = D.produtos.find(x=>x.url===forn.prod); if(!p){ forn.view='produtos'; return fornRender(); }
+  const custo = p.unit||0;
+  const st = forn.calc[p.url] || (forn.calc[p.url] = { tipo:'c', cat:catDe(null,p), preco:null });
+  const cc = concorrencia(p);
+  if (st.preco==null) st.preco = Math.round((cc ? cc.media : precoAlvo(0.15,'c',st.cat,custo))*100)/100;
+
   const grupos = [['igual','Mesmo produto no Mercado Livre','conferido pela foto: cor, formato e material batem'],
                   ['parecido','Parecidos — vale conferir','mesma família, com alguma diferença visível'],
                   [null,'Sem conferência','a busca achou, ninguém olhou a foto ainda'],
                   ['diferente','Descartados','a foto mostrou que é outro produto']];
   const iguais = p.anuncios.filter(a=>a.veredito==='igual');
-  let veredito = '';
-  if (!p.pesquisado) veredito = `<div class="veredito">Este produto ainda <b>não foi pesquisado</b> no Mercado Livre.</div>`;
-  else if (!iguais.length) veredito = `<div class="veredito">A busca trouxe ${p.anuncios.length} anúncio${p.anuncios.length!==1?'s':''}, mas <b>nenhum é o mesmo produto</b>${p.parecidos?` — ${p.parecidos} parecido${p.parecidos>1?'s':''} para você olhar`:''}.</div>`;
+
+  let resumo = '';
+  if (!p.pesquisado) resumo = `<div class="veredito">Este produto ainda <b>não foi pesquisado</b> no Mercado Livre.</div>`;
+  else if (!iguais.length) resumo = `<div class="veredito">A busca trouxe ${p.anuncios.length} catálogo${p.anuncios.length!==1?'s':''}, mas <b>nenhum é o mesmo produto</b>${p.parecidos?` — ${p.parecidos} parecido${p.parecidos>1?'s':''} para você olhar`:''}.</div>`;
   else {
-    const best = melhor(iguais);
     const vend = iguais.reduce((s,a)=>s+(a.vendas_sem||0),0);
     const novos = iguais.filter(a=>(a.dias??999)<=NEW_MAX_DAYS).length;
-    const minP = Math.min(...iguais.map(a=>a.preco).filter(x=>x!=null));
-    veredito = `<div class="veredito"><b>${iguais.length} anúncio${iguais.length>1?'s':''} vendendo exatamente este produto</b>, somando <b>${fmtN(vend)} vendas/semana</b>.
-      Preço mais baixo no ML: <b>${fmtBRL(minP)}</b> contra <b>${fmtBRL(p.unit)}</b> de custo — margem bruta de <b>${fmtPct(best.margem)}</b> no melhor caso, antes de comissão, frete e imposto.
-      ${novos?`<b>${novos}</b> ${novos>1?'anúncios entraram':'anúncio entrou'} há menos de ${NEW_MAX_DAYS} dias — demanda ainda em formação.`:'Todos os anúncios têm mais de um mês: mercado já estabelecido.'}
-      Use o <a href="#" id="f-sim">Simulador de preço</a> com ${fmtBRL(p.unit)} de custo para o número líquido.</div>`;
+    resumo = `<div class="veredito"><b>${iguais.length} catálogo${iguais.length>1?'s':''} vendendo exatamente este produto</b>, somando <b>${fmtN(vend)} vendas/semana</b>.
+      ${cc?`Os concorrentes cobram em média <b>${fmtBRL(cc.media)}</b> (${cc.n} anúncio${cc.n>1?'s':''}, de ${fmtBRL(cc.min)} a ${fmtBRL(cc.max)}) contra <b>${fmtBRL(custo)}</b> de custo.`:''}
+      ${novos?`<b>${novos}</b> ${novos>1?'catálogos entraram':'catálogo entrou'} há menos de ${NEW_MAX_DAYS} dias — demanda ainda em formação.`:'Todos têm mais de um mês: mercado já estabelecido.'}</div>`;
   }
+
   root.innerHTML = `
     <div class="crumb"><a id="f-back0">← Fornecedores</a> <span>›</span> <a id="f-back1">${esc(F.nome)}</a> <span>›</span> <b>${esc(p.nome)}</b></div>
     <div class="fhead"><img src="${esc(p.img||'')}" alt="">
@@ -1252,30 +1340,126 @@ function fornRender(){
           <div><div class="k">Para fechar uma caixa</div><div class="v">${fmtBRL(p.total)}</div></div>
           <div><div class="k">No site do fornecedor</div><div class="v"><a href="${esc(p.url)}" target="_blank" rel="noopener">abrir ↗</a></div></div>
         </div></div></div>
-    ${veredito}
+    ${resumo}
+    <div class="grp"><h3>Quanto cobrar para ganhar</h3><span class="hint">lucro líquido sobre a venda, já descontando comissão, custo fixo ou frete, imposto e embalagem · clique para levar à calculadora</span></div>
+    <div class="alvos" id="f-alvos"></div>
+    <div class="grp"><h3>Calcule o seu preço</h3><span class="hint">escolha o tipo de anúncio, digite o preço e compare com o que os concorrentes cobram</span></div>
+    <div class="calc" id="f-calc"></div>
     ${grupos.map(([v,titulo,hint])=>{ const L=p.anuncios.filter(a=>a.veredito===v); if(!L.length) return '';
-      const inner = L.map(a=>`
-        <div class="an ${a.veredito||''}">
-          <img class="thumb" loading="lazy" src="${esc(a.img||'')}" alt="">
-          <div><div class="name">${esc(a.nome)}</div>
-            <div class="path">${a.catalogo
-              ? `catálogo com <b>${a.bb||1} vendedor${(a.bb||1)>1?'es':''}</b> · quem mais vende: ${esc(a.vendedor||'—')}${a.preco_min!=null&&a.preco_max!=null&&a.preco_min!==a.preco_max?` · de ${fmtBRL(a.preco_min)} a ${fmtBRL(a.preco_max)}`:''}`
-              : `anúncio próprio de ${esc(a.vendedor||'—')}`}${a.tipo?' · '+(TIPO[a.tipo]||a.tipo):''}${a.frete_gratis?' · frete grátis':''}</div>
-            <div class="tags"><span class="tag ${(a.dias??999)<=NEW_MAX_DAYS?'good':''}">${idade(a.dias)}</span>${a.avaliacoes?`<span class="tag">${fmtN(a.avaliacoes)} aval.${a.nota?' · '+a.nota.toFixed(1)+'★':''}</span>`:''}</div>
-            ${a.obs?`<div class="obs">${esc(a.obs)}</div>`:''}
-            ${(a.outros||[]).length?`<div class="small muted" style="margin-top:4px">Também vendem: ${a.outros.map(o=>`<a href="${fornLink(o)}" target="_blank" rel="noopener">${esc(o.vendedor||o.id)}</a> ${fmtBRL(o.preco)}`).join(' · ')}</div>`:''}</div>
-          <div class="cell"><div class="k">Preço no ML</div><div class="v big">${fmtBRL(a.preco)}</div></div>
-          <div class="cell"><div class="k">Vendas/sem</div><div class="v big">${fmtN(a.vendas_sem)}</div><div class="k">${fmtBRLc(a.receita_mes)}/mês</div></div>
-          <div class="cell"><div class="k">Margem bruta</div><div class="marg ${margClass(a.margem)}">${fmtPct(a.margem)}</div></div>
-          <div class="links"><a href="${fornLink(a)}" target="_blank" rel="noopener">Mercado Livre ↗</a><a href="${fornPulse(a)}" target="_blank" rel="noopener">JoomPulse ↗</a></div>
-        </div>`).join('');
+      const inner = L.map(a=>anuncioRow(a,p)).join('');
       return v==='diferente' ? `<details><summary>${titulo} (${L.length})</summary><div style="margin-top:8px">${inner}</div></details>`
         : `<div class="grp"><h3>${titulo}</h3><span class="hint">${L.length} · ${hint}</span></div>${inner}`; }).join('')}`;
   $('#f-back0').onclick=()=>{ forn.view='lista'; fornRender(); };
   $('#f-back1').onclick=()=>{ forn.view='produtos'; fornRender(); };
-  const sim=$('#f-sim'); if(sim) sim.onclick=e=>{ e.preventDefault(); $('#s-cost').value=p.unit; const best=melhor(iguais); if(best&&best.preco) $('#s-price').value=best.preco; simulate(); showTab('sim'); };
+  renderAlvos(p); renderCalc(p);
+  root.querySelectorAll('.an[data-id]').forEach(el=>{
+    el.onclick = e => { if (e.target.closest('a')) return; openAnuncio(p.anuncios.find(a=>a.id===el.dataset.id), p); };
+    el.onkeydown = e => { if (e.key==='Enter') openAnuncio(p.anuncios.find(a=>a.id===el.dataset.id), p); };
+  });
   window.scrollTo({top:0});
 }
+
+function anuncioRow(a, p){
+  const e = extrato(a.preco||0, tipoDe(a), catDe(a,p), p.unit||0, a.frete_gratis);
+  return `
+    <div class="an ${a.veredito||''}" data-id="${esc(a.id)}" tabindex="0" role="button">
+      <img class="thumb" loading="lazy" src="${esc(a.img||'')}" alt="">
+      <div><div class="name">${esc(a.nome)}</div>
+        <div class="path">${a.catalogo
+          ? `catálogo com <b>${a.bb||1} vendedor${(a.bb||1)>1?'es':''}</b> · quem mais vende: ${esc(a.vendedor||'—')}${a.preco_min!=null&&a.preco_max!=null&&a.preco_min!==a.preco_max?` · de ${fmtBRL(a.preco_min)} a ${fmtBRL(a.preco_max)}`:''}`
+          : `anúncio próprio de ${esc(a.vendedor||'—')}`}${a.tipo?' · '+(TIPO[a.tipo]||a.tipo):''}${a.frete_gratis?' · frete grátis':''}${a.l1?' · '+esc(a.l1):''}</div>
+        <div class="tags"><span class="tag ${(a.dias??999)<=NEW_MAX_DAYS?'good':''}">${idade(a.dias)}</span>${a.avaliacoes?`<span class="tag">${fmtN(a.avaliacoes)} aval.${a.nota?' · '+a.nota.toFixed(1)+'★':''}</span>`:''}</div>
+        ${a.obs?`<div class="obs">${esc(a.obs)}</div>`:''}</div>
+      <div class="cell"><div class="k">Preço no ML</div><div class="v big">${fmtBRL(a.preco)}</div></div>
+      <div class="cell"><div class="k">Vendas/sem</div><div class="v big">${fmtN(a.vendas_sem)}</div><div class="k">${fmtBRLc(a.receita_mes)}/mês</div></div>
+      <div class="cell meter" tabindex="0"><div class="k">Lucro líquido</div><div class="marg ${margClass(e.margin)}">${fmtPct(e.margin)}</div><div class="k">${fmtBRL(e.profit)}/un</div>
+        <div class="scorepop" role="tooltip">${extratoHTML(e, a.preco||0, tipoDe(a), p.unit||0)}</div></div>
+      <div class="links"><button class="btn" data-jp="${esc(a.id)}">JoomPulse</button><a class="btn ghost" href="${fornLink(a)}" target="_blank" rel="noopener">Mercado Livre ↗</a></div>
+    </div>`;
+}
+
+function renderAlvos(p){
+  const custo = p.unit||0, st = forn.calc[p.url];
+  const ms = [0.10, 0.15, 0.20];
+  $('#f-alvos').innerHTML = `<table class="tbl-alvos"><thead><tr><th>Para ganhar</th><th>Clássico</th><th>Premium</th></tr></thead><tbody>
+    ${ms.map(m=>{ const pc=precoAlvo(m,'c',st.cat,custo), pp=precoAlvo(m,'p',st.cat,custo);
+      const ec=extrato(pc,'c',st.cat,custo,false), ep=extrato(pp,'p',st.cat,custo,false);
+      return `<tr><td><b>${Math.round(m*100)}%</b> <span class="small muted">da venda</span></td>
+        <td><button class="alvo" data-tipo="c" data-preco="${pc.toFixed(2)}"><b>${fmtBRL(pc)}</b><span>sobram ${fmtBRL(ec.profit)}/un</span></button></td>
+        <td><button class="alvo" data-tipo="p" data-preco="${pp.toFixed(2)}"><b>${fmtBRL(pp)}</b><span>sobram ${fmtBRL(ep.profit)}/un</span></button></td></tr>`; }).join('')}
+    </tbody></table>
+    <div class="small muted" style="margin-top:6px">Categoria para a comissão: <b>${esc(st.cat)}</b> (${(FEES.comm[st.cat]||[12,17]).join('% / ')}%). Ponto de equilíbrio: ${fmtBRL(precoAlvo(0,'c',st.cat,custo))} no Clássico, ${fmtBRL(precoAlvo(0,'p',st.cat,custo))} no Premium.</div>`;
+  $('#f-alvos').querySelectorAll('.alvo').forEach(b=>b.onclick=()=>{ st.tipo=b.dataset.tipo; st.preco=+b.dataset.preco; renderCalc(p); $('#f-calc').scrollIntoView({behavior:'smooth',block:'center'}); });
+}
+
+function renderCalc(p){
+  const custo = p.unit||0, st = forn.calc[p.url], cc = concorrencia(p);
+  const e = extrato(st.preco||0, st.tipo, st.cat, custo, false);
+  let leitura = '';
+  if (cc){
+    const dif = (st.preco - cc.media)/cc.media, abaixo = dif < -0.01, naMedia = Math.abs(dif) <= 0.01;
+    if (e.profit > 0 && abaixo) leitura = `<div class="veredito ok"><b>Há espaço.</b> Seu preço fica <b>${fmtPct(-dif)} abaixo</b> da média dos concorrentes (${fmtBRL(cc.media)}) e ainda sobram <b>${fmtBRL(e.profit)} por unidade</b>. Entrar abaixo da média com lucro é a melhor posição para começar.</div>`;
+    else if (e.profit > 0 && naMedia) leitura = `<div class="veredito"><b>Você está na média dos concorrentes</b> (${fmtBRL(cc.media)}) e sobram <b>${fmtBRL(e.profit)} por unidade</b>. Para entrar por preço, teste um pouco abaixo — o mínimo praticado hoje é ${fmtBRL(cc.min)}.</div>`;
+    else if (e.profit > 0) leitura = `<div class="veredito"><b>Dá lucro, mas você está ${fmtPct(dif)} acima da média</b> (${fmtBRL(cc.media)}). Vai precisar de outro diferencial — foto, frete, reputação — ou baixar até ${fmtBRL(cc.media)} e ver se ainda sobra.</div>`;
+    else leitura = `<div class="veredito ruim"><b>Nesse preço você fica no prejuízo</b> (${fmtBRL(e.profit)} por unidade). Estar ${abaixo?'abaixo':'acima'} da média não adianta se não sobra nada. O ponto de equilíbrio é ${fmtBRL(precoAlvo(0,st.tipo,st.cat,custo))}.</div>`;
+  } else {
+    leitura = `<div class="veredito">${e.profit>0?`Sobram <b>${fmtBRL(e.profit)}</b> por unidade (${fmtPct(e.margin)}).`:`<b>Prejuízo de ${fmtBRL(-e.profit)}</b> por unidade.`} Sem concorrente igual conferido, não há média para comparar.</div>`;
+  }
+  $('#f-calc').innerHTML = `
+    <div class="calc-in">
+      <div class="field"><label>Tipo de anúncio</label><select id="fc-tipo"><option value="c"${st.tipo==='c'?' selected':''}>Clássico</option><option value="p"${st.tipo==='p'?' selected':''}>Premium (12x sem juros)</option></select></div>
+      <div class="field"><label>Categoria (comissão)</label><select id="fc-cat">${L1S.map(c=>`<option value="${esc(c)}"${c===st.cat?' selected':''}>${esc(c)}</option>`).join('')}</select></div>
+      <div class="field"><label>Seu preço de venda</label><input id="fc-preco" type="number" step="0.01" value="${st.preco}"></div>
+      ${cc?`<div class="cmp"><div class="k">Concorrentes iguais</div><div class="v">média <b>${fmtBRL(cc.media)}</b> · mín ${fmtBRL(cc.min)} · máx ${fmtBRL(cc.max)}</div><div class="k">${cc.n} anúncios em ${cc.catalogos} catálogo${cc.catalogos>1?'s':''}</div></div>`:''}
+    </div>
+    <div class="calc-out">${leitura}<div class="ext-card">${extratoHTML(e, st.preco||0, st.tipo, custo)}</div></div>`;
+  const rerender = () => { renderCalc(p); };
+  $('#fc-tipo').onchange = e => { st.tipo = e.target.value; rerender(); };
+  $('#fc-cat').onchange = e => { st.cat = e.target.value; renderAlvos(p); rerender(); };
+  $('#fc-preco').oninput = e => { st.preco = +e.target.value || 0; const pos = e.target.selectionStart; rerender(); const i=$('#fc-preco'); i.focus(); try{ i.setSelectionRange(pos,pos);}catch(_){} };
+}
+
+/* ---------- card com tudo que a JoomPulse trouxe do anúncio, sem sair daqui ---------- */
+function openAnuncio(a, p){
+  if (!a) return;
+  const custo = p.unit||0, tipo = tipoDe(a), cat = catDe(a,p);
+  const e = extrato(a.preco||0, tipo, cat, custo, a.frete_gratis);
+  const inicio = a.dias!=null ? new Date(Date.now()-a.dias*864e5).toLocaleDateString('pt-BR') : '—';
+  const VER = {igual:['good','Mesmo produto'], parecido:['warn','Parecido'], diferente:['bad','Outro produto']};
+  const v = VER[a.veredito] || ['', 'Sem conferência'];
+  $('#panel').innerHTML = `
+    <button class="btn close" id="pclose">Fechar</button>
+    <div class="small muted">Anúncio ${esc(a.id)} · dados da JoomPulse · <span class="tag ${v[0]}">${v[1]}</span></div>
+    <h3>${esc(a.nome)}</h3>
+    <img class="big" src="${esc(a.img||'')}" alt="">
+    ${a.obs?`<div class="why">${esc(a.obs)}</div>`:''}
+    <div class="kv">
+      <div><div class="k">Preço (quem mais vende)</div><div class="v">${fmtBRL(a.preco)}</div></div>
+      <div><div class="k">${a.catalogo?'Faixa no catálogo':'Tipo'}</div><div class="v">${a.catalogo?(a.preco_min!=null?`${fmtBRL(a.preco_min)} – ${fmtBRL(a.preco_max)}`:'—'):'anúncio próprio'}</div></div>
+      <div><div class="k">Vendas / semana</div><div class="v">${fmtN(a.vendas_sem)}</div></div>
+      <div><div class="k">Receita est. / mês</div><div class="v">${fmtBRL(a.receita_mes)}</div></div>
+      <div><div class="k">Tempo no ar</div><div class="v">${idade(a.dias)}</div></div>
+      <div><div class="k">Início estimado</div><div class="v">${inicio}</div></div>
+      <div><div class="k">Avaliações</div><div class="v">${a.avaliacoes?fmtN(a.avaliacoes)+(a.nota?' · '+a.nota.toFixed(1)+'★':''):'sem avaliações'}</div></div>
+      <div><div class="k">Vendedor principal</div><div class="v">${esc(a.vendedor||'—')}</div></div>
+      <div><div class="k">${a.catalogo?'Vendedores no catálogo':'Concorrência'}</div><div class="v">${a.catalogo?(a.bb||1):'anúncio único'}</div></div>
+      <div><div class="k">Tipo de anúncio</div><div class="v">${TIPO[a.tipo]||a.tipo||'—'}${a.frete_gratis?' · frete grátis':''}</div></div>
+      <div><div class="k">Categoria</div><div class="v">${esc(a.l1||'—')}</div></div>
+      <div><div class="k">Custo no fornecedor</div><div class="v">${fmtBRL(custo)}</div></div>
+    </div>
+    <div class="ext-card">${extratoHTML(e, a.preco||0, tipo, custo)}</div>
+    ${(a.outros||[]).length?`<div class="break"><div class="small muted" style="margin-bottom:6px">Outros vendedores do mesmo catálogo</div>
+      ${a.outros.map(o=>`<div class="alt"><div><div class="altp">${esc(o.vendedor||o.id)}</div><div class="altm">${esc(o.id)}</div></div><div class="altv"><span class="num">${fmtBRL(o.preco)}</span> <a href="${fornLink(o)}" target="_blank" rel="noopener">ML ↗</a></div></div>`).join('')}</div>`:''}
+    <div class="actions">
+      <a class="btn primary" href="${fornLink(a)}" target="_blank" rel="noopener">Abrir no Mercado Livre ↗</a>
+      <button class="btn" id="p-usar">Usar este preço na calculadora</button>
+    </div>`;
+  $('#drawer').classList.add('open'); document.body.classList.add('locked'); $('#panel').scrollTop = 0;
+  $('#pclose').onclick = closeDrawer;
+  $('#p-usar').onclick = () => { const st=forn.calc[p.url]; st.preco=a.preco; st.tipo=tipo; if(FEES.comm[cat]) st.cat=cat; closeDrawer(); renderAlvos(p); renderCalc(p); $('#f-calc').scrollIntoView({behavior:'smooth',block:'center'}); };
+}
+document.addEventListener('click', e=>{ const b=e.target.closest('button[data-jp]'); if(!b) return; e.stopPropagation();
+  const p=forn.data?.produtos.find(x=>x.url===forn.prod); if(p) openAnuncio(p.anuncios.find(a=>a.id===b.dataset.jp), p); });
 
 </script>
 
