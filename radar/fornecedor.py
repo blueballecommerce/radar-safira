@@ -400,9 +400,7 @@ def _ref_de(b: dict, ver: dict, url: str) -> dict:
         return ver.get(f'{url}|cat:{a.get("chave")}', ver.get(f'{url}|{a["id"]}', {})).get("veredito")
     # um anúncio "diferente" levaria à categoria de outro produto; melhor ficar sem
     uteis = [a for a in b["anuncios"] if v(a) != "diferente"]
-    if not uteis:
-        return None
-    return sorted(uteis, key=lambda a: (ordem.get(v(a), 2), -(a.get("vendas_mes") or a.get("vendas_sem") or 0)))[0]
+    return sorted(uteis, key=lambda a: (ordem.get(v(a), 2), -(a.get("vendas_mes") or a.get("vendas_sem") or 0)))
 
 
 async def _le_categoria(page, nivel: int, cid: str, nome: str, custo) -> tuple[dict, list]:
@@ -422,7 +420,9 @@ async def _le_categoria(page, nivel: int, cid: str, nome: str, custo) -> tuple[d
     if not cam and info.get("linhaBc"):
         cam = [s.strip() for s in info["linhaBc"].split("/") if s.strip() and s.strip() != "Categorias"]
     # o breadcrumb da página lista só os ancestrais; a folha é o nome do link da ficha
-    if nome and len(cam) < nivel and (not cam or cam[-1] != nome):
+    if nivel == 1:                          # categoria de topo: o caminho é só ela
+        cam = [nome]
+    elif nome and len(cam) < nivel and (not cam or cam[-1] != nome):
         cam = cam + [nome]
     opp_txt = info.get("oportunidade") or ""
     opp = next((k for k, t in (("high", "Alta"), ("medium", "Média"), ("low", "Baixa")) if t in opp_txt), None)
@@ -478,23 +478,33 @@ async def categorias(itens: list[dict], page, busca: list[dict]) -> dict:
         b = por_url.get(it["url"])
         if not b or not b.get("anuncios"):
             continue
-        ref = _ref_de(b, ver, it["url"])
-        if not ref:
+        fila = _ref_de(b, ver, it["url"])
+        if not fila:
             log.info("%s: só anúncios diferentes, fica sem categoria", it["nome"][:36])
             saida[it["url"]] = {"ref": None, "cat": None, "mesma_categoria": []}
             CATS.write_text(json.dumps(saida, ensure_ascii=False, indent=1), "utf-8")
             continue
-        link = None
-        try:
-            await page.goto(f"{B.BASE}/dashboard/beginner-products/{ref['id']}",
-                            timeout=B.NAV_TIMEOUT_MS, wait_until="domcontentloaded")
-            for _ in range(10):
-                await page.wait_for_timeout(1500)
-                link = await page.evaluate(_JS_CAT_LINK)
-                if link:
+        # a ficha de alguns anúncios só mostra a categoria de topo; tenta até 3 anúncios
+        # e fica com a categoria mais funda que aparecer
+        link, ref = None, fila[0]
+        for cand in fila[:3]:
+            achado = None
+            try:
+                await page.goto(f"{B.BASE}/dashboard/beginner-products/{cand['id']}",
+                                timeout=B.NAV_TIMEOUT_MS, wait_until="domcontentloaded")
+                for _ in range(10):
+                    await page.wait_for_timeout(1500)
+                    achado = await page.evaluate(_JS_CAT_LINK)
+                    if achado:
+                        break
+            except Exception as e:
+                log.warning("ficha %s: %s", cand["id"], type(e).__name__)
+            if achado:
+                nv = int(re.search(r"/categories/(\d+)/", achado["href"]).group(1))
+                if not link or nv > int(re.search(r"/categories/(\d+)/", link["href"]).group(1)):
+                    link, ref = achado, cand
+                if nv >= 3:
                     break
-        except Exception as e:
-            log.warning("ficha %s: %s", ref["id"], type(e).__name__)
         if not link:
             log.warning("%s: sem categoria na ficha de %s", it["nome"][:36], ref["id"])
             saida[it["url"]] = {"ref": ref["id"], "cat": None, "mesma_categoria": []}
