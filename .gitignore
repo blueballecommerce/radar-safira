@@ -6,3 +6,5 @@ shot_*.png
 data/*.tmp
 docs/*.tmp
 .venv/
+data/fornecedor.json
+data/pares.json

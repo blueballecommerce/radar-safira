@@ -10,6 +10,8 @@
   python -m radar export                # só regenera docs/data.json
   python -m radar token encrypt|decrypt # token.json <-> data/token.enc (senha em RADAR_TOKEN_KEY)
   python -m radar client-metadata       # imprime o JSON do documento OAuth (docs/oauth-client.json)
+  python -m radar fornecedor coletar    # baixa o catálogo da Flexx Imports -> data/fornecedor.json
+  python -m radar fornecedor cruzar     # cruza o catálogo com o radar -> data/pares.json
 """
 from __future__ import annotations
 
@@ -113,6 +115,21 @@ def cmd_token(a):
         print(f"Restaurado {config.TOKEN_PATH}.")
 
 
+def cmd_fornecedor(a):
+    from . import fornecedor as F
+    if a.op == "coletar":
+        cat = F.coletar()
+        print(json.dumps({"produtos": len(cat), "arquivo": str(F.SAIDA)}, ensure_ascii=False))
+        return
+    if not F.SAIDA.exists():
+        raise SystemExit("Sem catálogo. Rode `python -m radar fornecedor coletar` antes.")
+    cat = json.loads(F.SAIDA.read_text("utf-8"))
+    dados = json.loads((config.DOCS_DIR / "data.json").read_text("utf-8"))
+    pares = F.cruzar(cat, dados.get("products", []))
+    print(json.dumps({"itens": len(cat), "com_candidato": len(pares), "arquivo": str(F.PARES)},
+                     ensure_ascii=False))
+
+
 def cmd_client_metadata(_):
     print(json.dumps(auth.client_metadata_document(), indent=2, ensure_ascii=False))
 
@@ -136,6 +153,8 @@ def main(argv=None):
     t = sub.add_parser("token")
     t.add_argument("op", choices=["encrypt", "decrypt"])
     sub.add_parser("client-metadata")
+    f = sub.add_parser("fornecedor")
+    f.add_argument("op", choices=["coletar", "cruzar"])
     a = ap.parse_args(argv)
     if a.cmd == "login":
         asyncio.run(cmd_login(a))
@@ -153,6 +172,8 @@ def main(argv=None):
         cmd_token(a)
     elif a.cmd == "client-metadata":
         cmd_client_metadata(a)
+    elif a.cmd == "fornecedor":
+        cmd_fornecedor(a)
 
 
 if __name__ == "__main__":
