@@ -1,12 +1,12 @@
 # Radar Safira
 
 Máquina de oportunidades do Mercado Livre: consulta a JoomPulse por conta própria (sem IA no meio),
-mantém um ranking vivo com histórico e publica uma página estática. Roda sozinha no GitHub Actions,
-às 8h e 15h (horário de Brasília), com custo zero de tokens.
+mantém um ranking vivo com histórico e publica uma página estática. Roda sozinha todo dia às 8h,
+pela Tarefa Agendada do Windows, sem consumir tokens de IA.
 
 ```
-JoomPulse (servidor MCP, OAuth)  ──►  radar/pulse.py (cliente MCP em Python)
-                                          │  56 consultas CubeJS por rodada (+ categorias 1×/mês, JoomPro 1×/dia)
+JoomPulse (site, sessão do navegador)  ──►  radar/browser.py (Playwright)
+                                          │  54 buscas por rodada (27 categorias × top + novos) + a árvore de categorias
                                           ▼
                                   radar/engine.py  score 0–100 · dedupe · ranking
                                           ▼
@@ -36,12 +36,40 @@ JoomPulse (servidor MCP, OAuth)  ──►  radar/pulse.py (cliente MCP em Pytho
 
 Pesos e limiares em `radar/config.py`. Fórmula em `radar/engine.py`.
 
+## Como a coleta acontece
+
+A JoomPulse **recusa clientes OAuth de terceiros**: o `client_id` por metadata document
+responde `invalid_client`, e o endpoint `/mcp` devolve `401` para cookie de sessão. O MCP
+deles só aceita Claude e ChatGPT, que são clientes registrados por eles.
+
+Por isso a coleta é feita **pelo site**, com a sua própria sessão: um Chromium com perfil
+persistente guarda o login (feito uma vez, com o código por SMS/WhatsApp) e depois abre as
+páginas sozinho, em segundo plano, lendo as tabelas com JavaScript. Nenhum dado passa por
+um modelo de IA — vai da página direto para o SQLite.
+
+Consequências disso:
+
+- a rodada acontece **no seu PC** (tarefa agendada do Windows), não no GitHub Actions;
+- o site não expõe a subcategoria do produto nem o nível de concorrência da subcategoria,
+  então esses dois sinais entram no score de forma parcial;
+- `numBuyBoxSellers` é reconstruído contando quantos anúncios dividem o mesmo catálogo.
+
+Se um dia a JoomPulse fornecer um `client_id`, basta pôr em `RADAR_CLIENT_ID`, religar o
+cron em `.github/workflows/refresh.yml` e voltar ao caminho MCP, que continua no código.
+
 ## Comandos
 
 ```bash
-pip install -r requirements.txt
-python -m radar login              # uma vez, no seu PC: abre o navegador e autoriza na JoomPulse
-python -m radar check              # testa a conexão
+pip install -r requirements-dev.txt
+python -m playwright install chromium
+
+python -m radar login-browser      # uma vez: abre o navegador para você entrar na JoomPulse
+python -m radar check-browser      # diz se a sessão guardada ainda vale
+python -m radar run --browser      # rodada completa lendo o site
+.\scripts\agendar.ps1           # tarefa do Windows, todo dia às 8h
+
+python -m radar login              # (caminho MCP — hoje recusado pela JoomPulse)
+python -m radar check              # testa a conexão MCP
 python -m radar run                # rodada completa
 python -m radar run --fixtures tests/fixtures   # rodada com dados locais (sem rede)
 python -m radar export             # só regenera docs/data.json

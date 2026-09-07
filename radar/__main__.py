@@ -1,8 +1,11 @@
 """CLI do Radar Safira.
 
-  python -m radar login                 # autoriza na JoomPulse (abre o navegador) — uma vez, no seu PC
+  python -m radar login-browser         # abre o navegador para você entrar na JoomPulse — uma vez, no seu PC
+  python -m radar check-browser         # diz se a sessão guardada do navegador ainda vale
+  python -m radar login                 # (caminho OAuth, hoje recusado pela JoomPulse)
   python -m radar check                 # testa a conexão MCP (lista ferramentas + 1 consulta)
-  python -m radar run                   # rodada completa (coleta, ranking, export)
+  python -m radar run --browser         # rodada completa lendo o site (sessão do navegador)
+  python -m radar run                   # rodada completa via MCP (precisa de client_id da JoomPulse)
   python -m radar run --fixtures DIR    # rodada usando JSONs locais (sem rede)
   python -m radar export                # só regenera docs/data.json
   python -m radar token encrypt|decrypt # token.json <-> data/token.enc (senha em RADAR_TOKEN_KEY)
@@ -36,6 +39,22 @@ async def cmd_login(_):
     print(f"Token salvo em {config.TOKEN_PATH}")
 
 
+async def cmd_login_browser(_):
+    from . import browser
+    ok = await browser.login()
+    if not ok:
+        raise SystemExit("Login não concluído.")
+    print(f"Perfil guardado em {browser.PROFILE_DIR}")
+
+
+async def cmd_check_browser(_):
+    from . import browser
+    ok = await browser.check()
+    print("Sessão do navegador:", "ativa" if ok else "expirada — rode `python -m radar login-browser`")
+    if not ok:
+        raise SystemExit(1)
+
+
 async def cmd_check(_):
     from .pulse import Pulse
     storage = auth.FileTokenStorage()
@@ -51,7 +70,15 @@ async def cmd_run(a):
     from .run import FixtureSource, PulseSource, run_once
     db = DB()
     try:
-        if a.fixtures:
+        if a.browser:
+            from . import browser as B
+            src, close = await B.open_source(B.L1_IDS)
+            try:
+                res = await run_once(src, db, force_categories=a.force_categories,
+                                     force_joompro=a.force_joompro, l1s=a.l1 or None)
+            finally:
+                await close()
+        elif a.fixtures:
             src = FixtureSource(Path(a.fixtures))
             res = await run_once(src, db, force_categories=a.force_categories, force_joompro=a.force_joompro,
                                  l1s=a.l1 or None)
@@ -96,8 +123,12 @@ def main(argv=None):
     sub = ap.add_subparsers(dest="cmd", required=True)
     sub.add_parser("login")
     sub.add_parser("check")
+    sub.add_parser("login-browser")
+    sub.add_parser("check-browser")
     r = sub.add_parser("run")
     r.add_argument("--fixtures")
+    r.add_argument("--browser", action="store_true",
+                   help="coleta lendo o site com a sessão guardada (login-browser)")
     r.add_argument("--force-categories", action="store_true")
     r.add_argument("--force-joompro", action="store_true")
     r.add_argument("--l1", action="append", help="limita a coleta a uma categoria L1 (repetível)")
@@ -108,6 +139,10 @@ def main(argv=None):
     a = ap.parse_args(argv)
     if a.cmd == "login":
         asyncio.run(cmd_login(a))
+    elif a.cmd == "login-browser":
+        asyncio.run(cmd_login_browser(a))
+    elif a.cmd == "check-browser":
+        asyncio.run(cmd_check_browser(a))
     elif a.cmd == "check":
         asyncio.run(cmd_check(a))
     elif a.cmd == "run":

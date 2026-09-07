@@ -1,9 +1,17 @@
-name: Radar Safira — coleta
+# ATENÇÃO: este workflow está desligado (só roda se você mandar rodar na mão).
+#
+# Ele depende do MCP da JoomPulse com client_id próprio — e a JoomPulse recusa
+# clientes OAuth de terceiros (`invalid_client`). Enquanto isso não mudar, a
+# coleta acontece na máquina do João, lendo o site com a sessão do navegador:
+#
+#     .venv\Scripts\python.exe -m radar login-browser   (uma vez)
+#     .\scripts\agendar.ps1                          (tarefa diária das 8h)
+#
+# Se um dia a JoomPulse fornecer um client_id, basta pôr em RADAR_CLIENT_ID nas
+# variáveis do repositório e devolver o bloco `schedule` abaixo.
+name: Radar Safira — coleta (MCP, desligado)
 
 on:
-  schedule:
-    - cron: "0 11 * * *"   # 08:00 America/Sao_Paulo
-    - cron: "0 18 * * *"   # 15:00 America/Sao_Paulo
   workflow_dispatch:
 
 concurrency:
