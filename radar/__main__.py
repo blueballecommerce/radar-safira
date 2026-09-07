@@ -126,7 +126,8 @@ def cmd_fornecedor(a):
     cat = json.loads(F.SAIDA.read_text("utf-8"))
     if a.op == "pesquisar":
         from . import browser as B
-        itens = [i for i in cat if "mais_vendidos" in (i.get("tags") or [])] or cat[:15]
+        alvo = {"mais_vendidos", "novidades"}
+        itens = [i for i in cat if alvo & set(i.get("tags") or [])] or cat[:15]
 
         async def _run():
             src, close = await B.open_source(B.L1_IDS)

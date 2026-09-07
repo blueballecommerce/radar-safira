@@ -211,6 +211,20 @@ async def _rows_ready(page, tries: int = 12) -> bool:
     return False
 
 
+async def _periodo_mes(page) -> None:
+    """Fixa o seletor Dia/Semana/Mês em 'Mês' — é o que o site abre por padrão,
+    mas deixar explícito evita que uma sessão com outro estado mude a semântica."""
+    try:
+        btn = page.locator("label.ant-radio-button-wrapper:has-text('Mês'), .ant-segmented-item:has-text('Mês')").first
+        if await btn.count():
+            cls = await btn.get_attribute("class") or ""
+            if "checked" not in cls and "selected" not in cls:
+                await btn.click(timeout=5000)
+                await page.wait_for_timeout(2500)
+    except Exception as e:
+        log.debug("período: %s", e)
+
+
 async def _ungroup(page) -> None:
     """'Desagrupar catálogos': sem isso o vendedor, o tipo de anúncio e as
     avaliações vêm vazios, porque a linha representa o catálogo e não o anúncio."""
@@ -232,6 +246,7 @@ async def scrape_search(page, params: dict, max_rows: int) -> list[dict]:
     if not await _rows_ready(page):
         log.warning("sem resultados para %s", params)
         return []
+    await _periodo_mes(page)
     await _ungroup(page)
     await _set_page_size(page)
 
@@ -305,8 +320,10 @@ def to_product(r: dict, l1: str | None = None, l2: str | None = None, l3: str | 
         "listingType": tipo,
         "l2CompetitivenessLevel": None,
         "priceAmount": _num(r.get("preco")),
-        "orderCount1w": _int(r.get("vendas_media")),
-        "orderCount1m": None,
+        # a tabela do site abre no período "Mês": a média de vendas é mensal.
+        # A semana é derivada (÷ 4,33) para o score, que compara volumes relativos.
+        "orderCount1m": _int(r.get("vendas_media")),
+        "orderCount1w": (round(_int(r.get("vendas_media")) / 4.33) if _int(r.get("vendas_media")) is not None else None),
         "orderGmv1m": _num(r.get("receita")),
         "reviewsCount": _int(r.get("avaliacoes")),
         "reviewsRating": _num(r.get("classificacao")),

@@ -260,7 +260,8 @@ def _agrupa_por_catalogo(rows: list[dict], custo: float | None) -> list[dict]:
         saida.append({
             "id": rep["id"], "nome": rep["productName"], "img": rep["productImage"], "chave": chave,
             "l1": rep["merchantCategoryL1"],        # a comissão do ML depende da categoria
-            "preco": rep["priceAmount"], "vendas_sem": rep["orderCount1w"], "receita_mes": rep["orderGmv1m"],
+            "preco": rep["priceAmount"], "vendas_mes": rep["orderCount1m"], "vendas_sem": rep["orderCount1w"],
+            "receita_mes": rep["orderGmv1m"],
             "dias": rep["daysInAd"], "vendedor": rep["merchantName"], "catalogo": rep["catalogProduct"],
             "bb": len(prods) if rep["catalogProduct"] else None,
             "avaliacoes": rep["reviewsCount"], "nota": rep["reviewsRating"],
@@ -284,7 +285,11 @@ async def pesquisar(itens: list[dict], page) -> list[dict]:
     """
     from . import browser as B
 
-    saida = []
+    # incremental: o que já foi pesquisado fica; só os itens novos vão ao site
+    saida = json.loads(BUSCA.read_text("utf-8")) if BUSCA.exists() else []
+    feitos = {b["fornecedor"]["url"] for b in saida}
+    itens = [it for it in itens if it["url"] not in feitos]
+    log.info("itens a pesquisar: %d (já feitos: %d)", len(itens), len(feitos))
     for it in itens:
         achados: dict[str, dict] = {}
         for q in _consulta(it["nome"]):
@@ -300,5 +305,6 @@ async def pesquisar(itens: list[dict], page) -> list[dict]:
         cands = _agrupa_por_catalogo(list(achados.values()), it.get("unit"))[:CAND_POR_ITEM]
         log.info("%s: %d anúncios, %d catálogos", it["nome"][:40], len(achados), len(cands))
         saida.append({"fornecedor": it, "anuncios": cands})
+        BUSCA.write_text(json.dumps(saida, ensure_ascii=False, indent=1), "utf-8")   # salva a cada item
     BUSCA.write_text(json.dumps(saida, ensure_ascii=False, indent=1), "utf-8")
     return saida
