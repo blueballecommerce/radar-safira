@@ -573,13 +573,23 @@ function mlFiltered(){
 }
 const MEDAL = {platinum:'MercadoLíder Platinum', gold:'MercadoLíder Gold', silver:'MercadoLíder'};
 const COMPL = {low:'Concorrência baixa', mid:'Concorrência média', high:'Concorrência alta'};
+/* "38 dias no ar" para anúncios recentes; acima de um ano, meses e anos leem melhor */
+function idade(d){
+  if (d == null) return '—';
+  if (d <= NEW_MAX_DAYS) return `Novo · ${d} dias no ar`;
+  if (d < 365) return `${d} dias no ar`;
+  const anos = Math.floor(d / 365), meses = Math.round((d % 365) / 30);
+  return `${anos} ano${anos > 1 ? 's' : ''}${meses ? ` e ${meses} m` : ''} no ar`;
+}
+
 function prodTags(p){
   const t=[];
   if (p.move==null && (p.runs??1)<=1) t.push(`<span class="tag acc">Entrou agora</span>`);
   else if (p.move>0) t.push(`<span class="tag good">↑ ${p.move}</span>`);
   else if (p.move<0) t.push(`<span class="tag bad">↓ ${-p.move}</span>`);
   if (p.runs>1) t.push(`<span class="tag">${p.runs} rodadas · melhor #${p.best}</span>`);
-  if (p.flags.new) t.push(`<span class="tag good">Novo · ${p.d} dias</span>`);
+  // tempo no ar sempre visível: é o que diz se a venda é recente ou já madura
+  if (p.d != null) t.push(`<span class="tag ${p.flags.new?'good':''}">${idade(p.d)}</span>`);
   if (p.cl) t.push(`<span class="tag ${p.cl==='low'?'good':p.cl==='high'?'bad':'warn'}">${COMPL[p.cl]}</span>`);
   if (p.flags.grow) t.push(`<span class="tag acc">Categoria em alta</span>`);
   if (p.c && p.bb) t.push(`<span class="tag">${p.bb} vendedor${p.bb>1?'es':''} no catálogo</span>`);
