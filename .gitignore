@@ -10,3 +10,5 @@ data/fornecedor.json
 data/pares.json
 data/fornecedor_busca.json
 data/pranchas/
+data/fornecedor_veredito.json
+data/decisoes_*.json
