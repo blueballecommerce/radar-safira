@@ -573,6 +573,40 @@ function mlFiltered(){
 }
 const MEDAL = {platinum:'MercadoLíder Platinum', gold:'MercadoLíder Gold', silver:'MercadoLíder'};
 const COMPL = {low:'Concorrência baixa', mid:'Concorrência média', high:'Concorrência alta'};
+/* Concorrentes diretos: os outros anúncios do MESMO produto no catálogo.
+   O ranking mostra só o que mais vende; aqui ficam os demais, com link para o
+   anúncio no Mercado Livre — é onde dá para comparar preço, frete e reputação. */
+function rivalLink(r){
+  return 'https://produto.mercadolivre.com.br/' + String(r.id||'').replace('MLB','MLB-');
+}
+function rivaisHTML(p){
+  const rs = (p.riv||[]).slice().sort((a,b)=>(a.pr??9e9)-(b.pr??9e9));
+  if (!rs.length) return p.c
+    ? `<div class="alts"><div class="small muted">Nenhum outro anúncio deste produto apareceu nesta rodada.</div></div>`
+    : '';
+  const meu = p.pr;
+  return `<div class="alts">
+    <div class="picks-h" style="margin:0 0 8px"><h3>Quem mais vende este produto</h3>
+      <span class="hint">${rs.length} anúncio${rs.length>1?'s':''} no mesmo catálogo · clique para abrir no Mercado Livre</span></div>
+    <div class="alt" style="background:var(--acc2);border-color:var(--acc)">
+      <div><div class="altp">${esc(p.s||'—')} <span class="tag acc">este</span></div>
+        <div class="altm">${p.d!=null?idade(p.d):''}</div></div>
+      <div class="altv"><b class="num">${fmtBRL(meu)}</b></div>
+    </div>
+    ${rs.map(r=>{
+      const dif = (meu!=null && r.pr!=null) ? (r.pr-meu)/meu : null;
+      const cor = dif==null ? '' : (dif<0 ? 'bad' : 'good');
+      const txt = dif==null ? '' : `<span class="tag ${cor}">${dif>0?'+':''}${(dif*100).toFixed(0)}%</span>`;
+      return `<a class="alt" href="${rivalLink(r)}" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">
+        <div><div class="altp">${esc(r.s||'vendedor não informado')} ↗</div>
+          <div class="altm">${esc(r.id)}${r.d!=null?' · '+idade(r.d):''}</div></div>
+        <div class="altv"><span class="num">${fmtBRL(r.pr)}</span>${txt}</div></a>`;
+    }).join('')}
+    <p class="small muted" style="margin:8px 0 0;line-height:1.45">Verde = mais caro que o seu; vermelho = mais barato.
+    Quem está abaixo do seu preço é quem disputa a caixa de compra hoje.</p>
+  </div>`;
+}
+
 /* "38 dias no ar" para anúncios recentes; acima de um ano, meses e anos leem melhor */
 function idade(d){
   if (d == null) return '—';
@@ -815,6 +849,7 @@ function openProduct(id){
       <div><div class="k">No radar desde</div><div class="v">${fmtDT(p.first)}</div></div>
       <div><div class="k">Posição anterior → atual</div><div class="v">${p.prev??'—'} → ${p.rank}${p.best?' · melhor #'+p.best:''}</div></div>
     </div>
+    ${rivaisHTML(p)}
     <div class="actions">
       <a class="btn primary" href="${mlLink(p)}" target="_blank" rel="noopener">Abrir no Mercado Livre ↗</a>
       <a class="btn" href="${pulseLink(p)}" target="_blank" rel="noopener">Ficha JoomPulse ↗</a>

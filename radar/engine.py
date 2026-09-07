@@ -48,6 +48,7 @@ def product_from_row(r: dict, src: str) -> dict | None:
         "g": _num(r.get("orderGmv1m")), "rc": r.get("reviewsCount"), "rr": _num(r.get("reviewsRating")),
         "d": None if r.get("daysInAd") is None else int(round(r["daysInAd"])),
         "bb": r.get("numBuyBoxSellers"), "src": src,
+        "riv": r.get("rivals") or [],       # outros anúncios do mesmo catálogo
     }
     p["key"] = p["p"] or p["i"]
     return p
@@ -84,17 +85,39 @@ def joompro_from_row(r: dict) -> dict:
 
 
 # ---------------------------------------------------------------- dedupe
+def _merge_rivals(fica: dict, sai: dict) -> list[dict]:
+    """Junta as listas de concorrentes de dois anúncios do mesmo produto.
+
+    Quem perde o lugar no ranking não desaparece: passa a constar como
+    concorrente de quem ficou, para dar para comparar preço e tempo de anúncio.
+    """
+    vistos, saida = {fica["i"]}, []
+    for r in (fica.get("riv") or []) + (sai.get("riv") or []) + [
+            {"id": sai["i"], "s": sai.get("s"), "pr": sai.get("pr"), "d": sai.get("d")}]:
+        rid = r.get("id")
+        if not rid or rid in vistos:
+            continue
+        vistos.add(rid)
+        saida.append(r)
+    return saida
+
+
 def dedupe(products: list[dict]) -> list[dict]:
     """Um por produto de catálogo (fica o anúncio que mais vende) e um por (vendedor, título)."""
     by_key: dict[str, dict] = {}
     for p in products:
         prev = by_key.get(p["key"])
         if prev is None or p["w"] > prev["w"]:
-            if prev and prev["src"] == "new":
-                p["src"] = "new"
+            if prev:
+                if prev["src"] == "new":
+                    p["src"] = "new"
+                # o anúncio que sai vira concorrente do que fica
+                p["riv"] = _merge_rivals(p, prev)
             by_key[p["key"]] = p
-        elif p["src"] == "new":
-            prev["src"] = "new"
+        else:
+            if p["src"] == "new":
+                prev["src"] = "new"
+            prev["riv"] = _merge_rivals(prev, p)
     seen: set[tuple[str, str]] = set()
     out: list[dict] = []
     for p in sorted(by_key.values(), key=lambda x: -x["w"]):

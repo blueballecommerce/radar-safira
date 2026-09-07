@@ -30,6 +30,8 @@ def export_json(db: DB, out: Path = config.DOCS_DIR / "data.json") -> Path:
             "rank": cur["rank"], "prev": db.rank_in_run(r["key"], prev_run), "best": r["best_rank"],
             "status": r["status"], "first": r["first_seen_at"], "runs": r["runs_seen"],
             "hist": [[h["started_at"], h["rank"], h["w"], h["price"]] for h in reversed(hist)],
+            # concorrentes diretos: os outros anúncios do mesmo produto nesta rodada
+            "riv": json.loads(cur["rivals"]) if cur["rivals"] else [],
         })
     products.sort(key=lambda p: p["rank"])
     cats = db.categories()

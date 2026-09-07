@@ -28,8 +28,9 @@ troca para 100 itens por página e lê a tabela. Pega os 25 que mais vendem.
 Se uma subcategoria travar, ele registra e segue para a próxima.
 
 **5. Calcula o ranking** (7h40, segundos)
-Junta os anúncios repetidos do mesmo catálogo (fica o que mais vende), dá nota de
-0 a 100 para cada produto e ordena tudo.
+Junta os anúncios repetidos do mesmo catálogo (fica o que mais vende) e guarda os
+demais como concorrentes — eles aparecem na ficha do produto, com link para o
+Mercado Livre. Depois dá nota de 0 a 100 e ordena tudo.
 
 **6. Guarda o histórico** (7h40)
 Grava em `data/radar.db`. É assim que a página consegue mostrar "subiu 12 posições"
@@ -148,8 +149,9 @@ Vale saber, para você não procurar o que não existe:
   numa tela separada do site, que a coleta ainda não percorre. A aba avisa isso e
   manda o link direto.
 - **Shopee e Fornecedores** são abas planejadas, sem conteúdo.
-- **O tempo de anúncio é o do catálogo**, não o do anúncio individual — é o que o
-  site informa.
+- **Tempo de anúncio:** anúncio próprio tem o tempo dele mesmo; anúncio de catálogo
+  mostra o tempo do catálogo, igual para todos os vendedores — é assim que o site
+  informa.
 
 ---
 

@@ -269,7 +269,7 @@ def catalog_key(r: dict) -> str:
 
 
 def to_product(r: dict, l1: str | None = None, l2: str | None = None, l3: str | None = None,
-               bb: int | None = None, l2id: str | None = None) -> dict:
+               bb: int | None = None, l2id: str | None = None, rivais: list | None = None) -> dict:
     """Uma linha da tabela vira o mesmo dicionário que o CubeJS devolveria.
 
     O site não expõe subcategoria nem nível de concorrência: quando a busca foi
@@ -312,7 +312,32 @@ def to_product(r: dict, l1: str | None = None, l2: str | None = None, l3: str | 
         "reviewsRating": _num(r.get("classificacao")),
         "daysInAd": _int(r.get("dias")),
         "numBuyBoxSellers": bb,
+        # os outros anúncios do mesmo catálogo — a concorrência direta deste produto
+        "rivals": rivais or [],
     }
+
+
+def rivals_by_id(rows: list[dict]) -> dict[str, list[dict]]:
+    """Para cada anúncio, os outros que disputam o mesmo catálogo.
+
+    O ranking guarda um anúncio por produto (o que mais vende), mas os demais são
+    justamente a concorrência que interessa olhar: quem vende o mesmo item, por
+    quanto, e há quanto tempo.
+    """
+    grupos: dict[str, list[dict]] = {}
+    for r in rows:
+        grupos.setdefault(catalog_key(r), []).append(r)
+    saida: dict[str, list[dict]] = {}
+    for irmaos in grupos.values():
+        if len(irmaos) < 2:
+            continue
+        for r in irmaos:
+            saida[r["id"]] = [
+                {"id": o["id"], "s": (o.get("vendedor") or "").splitlines()[0].strip() or None,
+                 "pr": _num(o.get("preco")), "d": _int(o.get("dias"))}
+                for o in irmaos if o["id"] != r["id"]
+            ]
+    return saida
 
 
 def count_buybox(rows: list[dict]) -> dict[str, int]:
@@ -626,8 +651,9 @@ class BrowserSource:
         except Exception as e:
             log.warning("falha lendo %s › %s: %s", l1, l2, type(e).__name__)
             return []
-        bb = count_buybox(raw)
-        return [to_product(r, l1=l1, l2=l2, bb=bb.get(r["id"]), l2id=cid) for r in raw]
+        bb, riv = count_buybox(raw), rivals_by_id(raw)
+        return [to_product(r, l1=l1, l2=l2, bb=bb.get(r["id"]), l2id=cid, rivais=riv.get(r["id"]))
+                for r in raw]
 
     async def _search(self, l1: str, extra: dict, limit: int) -> list[dict]:
         self.calls += 1
@@ -638,8 +664,8 @@ class BrowserSource:
             # mais do que perder a rodada inteira
             log.warning("falha lendo %s (%s): %s", l1, extra or "top", type(e).__name__)
             return []
-        bb = count_buybox(raw)
-        return [to_product(r, l1=l1, bb=bb.get(r["id"])) for r in raw]
+        bb, riv = count_buybox(raw), rivals_by_id(raw)
+        return [to_product(r, l1=l1, bb=bb.get(r["id"]), rivais=riv.get(r["id"])) for r in raw]
 
     async def _por_subcategoria(self, l1: str, extra: dict, limit: int) -> list[dict]:
         alvos = [t for t in await self.l2_targets() if t[0] == l1]

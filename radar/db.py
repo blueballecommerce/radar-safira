@@ -29,6 +29,7 @@ CREATE TABLE IF NOT EXISTS product_runs (
   run_id INTEGER NOT NULL, key TEXT NOT NULL,
   rank INTEGER, score REAL, s_demand REAL, s_comp REAL, s_growth REAL, s_nov REAL,
   price REAL, w INTEGER, m INTEGER, gmv REAL, reviews INTEGER, rating REAL, days INTEGER, bb INTEGER,
+  rivals TEXT,                       -- JSON: outros anúncios do mesmo catálogo nesta rodada
   PRIMARY KEY (run_id, key)
 );
 CREATE INDEX IF NOT EXISTS ix_pr_key ON product_runs(key, run_id);
@@ -48,6 +49,10 @@ class DB:
         self.conn = sqlite3.connect(str(path))
         self.conn.row_factory = sqlite3.Row
         self.conn.executescript(SCHEMA)
+        # bancos criados antes da coluna `rivals` continuam funcionando
+        cols = {r[1] for r in self.conn.execute("PRAGMA table_info(product_runs)")}
+        if "rivals" not in cols:
+            self.conn.execute("ALTER TABLE product_runs ADD COLUMN rivals TEXT")
 
     # --- meta ---
     def get_meta(self, k: str, default=None):
@@ -108,10 +113,12 @@ class DB:
               p["l1"], p["l2"], p["l3"], p["md"], p["rep"], int(bool(p["full"])), int(bool(p["fs"])), p["lt"], p["cl"],
               status, old["first_seen_run"] if old else run_id, run_id, old["first_seen_at"] if old else ts, ts,
               best, runs_seen, zero, oot))
+        riv = p.get("riv") or []
         self.conn.execute("""INSERT OR REPLACE INTO product_runs(run_id,key,rank,score,s_demand,s_comp,s_growth,s_nov,
-            price,w,m,gmv,reviews,rating,days,bb) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+            price,w,m,gmv,reviews,rating,days,bb,rivals) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
             (run_id, p["key"], rank, p.get("score"), p.get("_dp"), p.get("_comp"), p.get("_growth"), p.get("_nov"),
-             p.get("pr"), p.get("w"), p.get("m"), p.get("g"), p.get("rc"), p.get("rr"), p.get("d"), p.get("bb")))
+             p.get("pr"), p.get("w"), p.get("m"), p.get("g"), p.get("rc"), p.get("rr"), p.get("d"), p.get("bb"),
+             json.dumps(riv, ensure_ascii=False) if riv else None))
 
     def mark_missing(self, keys_seen: set[str], run_id: int) -> int:
         """Produtos rastreados que não voltaram nesta rodada (anúncio pausado/removido)."""
