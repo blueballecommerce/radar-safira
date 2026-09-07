@@ -151,7 +151,11 @@ def cmd_fornecedor(a):
         feitos = set()
         if F.BUSCA.exists():
             feitos = {b["fornecedor"]["url"] for b in json.loads(F.BUSCA.read_text("utf-8"))}
-        itens = [i for i in cat if "catalogo_set26" in (i.get("tags") or []) and i["url"] not in feitos]
+        refazer = [t.strip().lower() for t in os.environ.get("RADAR_REFAZER", "").split(",") if t.strip()]
+        if refazer:      # refaz só os itens citados (o nome contém), mesmo que já pesquisados
+            itens = [i for i in cat if "catalogo_set26" in (i.get("tags") or []) and any(t in i["nome"].lower() for t in refazer)]
+        else:
+            itens = [i for i in cat if "catalogo_set26" in (i.get("tags") or []) and i["url"] not in feitos]
         itens.sort(key=lambda i: (i.get("pagina") or 99, i["url"]))
         itens = itens[:lote]
 

@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import json
 import logging
+import os
 import re
 import time
 import unicodedata
@@ -226,6 +227,10 @@ CAND_POR_ITEM = 12               # catálogos distintos por produto do fornecedo
 LINHAS_POR_BUSCA = 60            # anúncios lidos por busca — muitos dividem o mesmo catálogo
 
 
+_ALIAS = {r"\bchhuveiro\b": "chuveiro", r"\bmáqiuna\b": "máquina", r"\bbilíngüe\b": "bilíngue", r"\balinhador\b": "corretor",
+          r"\b(\d+(?:[.,]\d+)?)\s?cm\b": r"\1cm"}
+
+
 def _consulta(nome: str) -> list[str]:
     """Variações do nome para a busca: o título inteiro e uma versão curta.
 
@@ -233,9 +238,15 @@ def _consulta(nome: str) -> list[str]:
     Screen"; a JoomPulse acha mais coisa com "luva motoqueiro térmica".
     """
     limpo = re.sub(r"\s+", " ", nome or "").strip()
+    # erros de digitação do catálogo em PDF que a busca não perdoa
+    for errado, certo in _ALIAS.items():
+        limpo = re.sub(errado, certo, limpo, flags=re.I)
     palavras = [w for w in re.split(r"[^\wÀ-ÿ]+", limpo) if len(w) > 2 and w.lower() not in _STOP]
     curto = " ".join(palavras[:4])
-    return [q for q in dict.fromkeys([limpo, curto]) if q]
+    # último recurso: as duas palavras mais longas (as mais específicas), na ordem do título
+    longas = sorted(sorted(range(len(palavras)), key=lambda i: -len(palavras[i]))[:2])
+    minimo = " ".join(palavras[i] for i in longas)
+    return [q for q in dict.fromkeys([limpo, curto, minimo]) if q]
 
 
 def _agrupa_por_catalogo(rows: list[dict], custo: float | None) -> list[dict]:
@@ -287,12 +298,18 @@ async def pesquisar(itens: list[dict], page) -> list[dict]:
 
     # incremental: o que já foi pesquisado fica; só os itens novos vão ao site
     saida = json.loads(BUSCA.read_text("utf-8")) if BUSCA.exists() else []
+    # RADAR_REFAZER="colete alinhador,esterilizador": descarta e refaz os itens citados
+    refazer = [t.strip().lower() for t in os.environ.get("RADAR_REFAZER", "").split(",") if t.strip()]
+    if refazer:
+        saida = [b for b in saida if not any(t in b["fornecedor"]["nome"].lower() for t in refazer)]
     feitos = {b["fornecedor"]["url"] for b in saida}
     itens = [it for it in itens if it["url"] not in feitos]
     log.info("itens a pesquisar: %d (já feitos: %d)", len(itens), len(feitos))
     for it in itens:
         achados: dict[str, dict] = {}
-        for q in _consulta(it["nome"]):
+        for i, q in enumerate(_consulta(it["nome"])):
+            if i >= 2 and achados:               # a busca de 2 palavras é só o último recurso
+                break
             try:
                 rows = await B.scrape_search(page, {"query": q}, LINHAS_POR_BUSCA)
             except Exception as e:
@@ -381,7 +398,11 @@ def _ref_de(b: dict, ver: dict, url: str) -> dict:
 
     def v(a):
         return ver.get(f'{url}|cat:{a.get("chave")}', ver.get(f'{url}|{a["id"]}', {})).get("veredito")
-    return sorted(b["anuncios"], key=lambda a: (ordem.get(v(a), 2), -(a.get("vendas_mes") or a.get("vendas_sem") or 0)))[0]
+    # um anúncio "diferente" levaria à categoria de outro produto; melhor ficar sem
+    uteis = [a for a in b["anuncios"] if v(a) != "diferente"]
+    if not uteis:
+        return None
+    return sorted(uteis, key=lambda a: (ordem.get(v(a), 2), -(a.get("vendas_mes") or a.get("vendas_sem") or 0)))[0]
 
 
 async def _le_categoria(page, nivel: int, cid: str, nome: str, custo) -> tuple[dict, list]:
@@ -452,12 +473,17 @@ async def categorias(itens: list[dict], page, busca: list[dict]) -> dict:
 
     for it in itens:
         feito = saida.get(it["url"])
-        if feito and feito.get("cat") and feito["cat"].get("caminho"):
+        if feito and (feito.get("ref") is None or (feito.get("cat") and feito["cat"].get("caminho"))):
             continue
         b = por_url.get(it["url"])
         if not b or not b.get("anuncios"):
             continue
         ref = _ref_de(b, ver, it["url"])
+        if not ref:
+            log.info("%s: só anúncios diferentes, fica sem categoria", it["nome"][:36])
+            saida[it["url"]] = {"ref": None, "cat": None, "mesma_categoria": []}
+            CATS.write_text(json.dumps(saida, ensure_ascii=False, indent=1), "utf-8")
+            continue
         link = None
         try:
             await page.goto(f"{B.BASE}/dashboard/beginner-products/{ref['id']}",

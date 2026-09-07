@@ -16,3 +16,4 @@ data/radar.db.*
 data/catalogo_set26.json
 data/*.log
 .claude/
+data/fornecedor_categorias.json

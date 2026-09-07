@@ -29,6 +29,12 @@ UA = {"User-Agent": "Mozilla/5.0", "Referer": "https://www.flexximports.com.br/"
 
 
 def baixa(cli: httpx.Client, url: str | None) -> Image.Image:
+    if url and not url.startswith("http"):        # recorte do catálogo em PDF, guardado em docs/
+        local = Path(__file__).resolve().parents[1] / "docs" / url
+        try:
+            return Image.open(local).convert("RGB")
+        except Exception:
+            pass
     branco = Image.new("RGB", (LADO, LADO), (240, 240, 240))
     if not url:
         return branco

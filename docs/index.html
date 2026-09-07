@@ -1352,7 +1352,7 @@ function fornRender(){
           <div><div class="name">${esc(p.nome)}</div>
             <div class="tags">${p.tags.includes('mais_vendidos')?'<span class="tag acc">Mais vendido</span>':''}${p.tags.includes('novidades')?'<span class="tag acc">Novidade</span>':''}
               ${p.pesquisado ? (p.iguais?`<span class="tag good">${p.iguais} igual${p.iguais>1?'is':''} no ML</span>`:'')+(p.parecidos?`<span class="tag warn">${p.parecidos} parecido${p.parecidos>1?'s':''}</span>`:'')+(!p.iguais&&!p.parecidos?'<span class="tag">nenhum igual no ML</span>':'') : '<span class="tag">não pesquisado</span>'}
-              ${(()=>{ const t=tendencia(p.categoria); return t ? `<span class="tag ${TEND[t][0]}">${TEND[t][1]}${p.categoria.gG!=null?' · '+PCT(p.categoria.gG)+' no mês':''}</span>` : ''; })()}
+              ${(()=>{ const t=tendencia(p.categoria); return t ? `<span class="tag ${TEND[t][0]}" title="receita e vendas da subcategoria no mês, contra o mês anterior">${TEND[t][1]}${p.categoria.gG!=null?' · receita '+PCT(p.categoria.gG):''}${p.categoria.ocG!=null?' · vendas '+PCT(p.categoria.ocG):''}</span>` : ''; })()}
               ${p.anuncios.some(a=>['igual','parecido'].includes(a.veredito) && (a.dias??999)<=NEW_MAX_DAYS)?'<span class="tag good">anúncio novo no ML</span>':''}
             </div></div>
           <div class="cell"><div class="k">${p.tags.includes('catalogo_set26')?'Custo (catálogo set/26)':'Custo unitário'}</div><div class="v big">${fmtBRL(p.unit)}</div>${p.unit_site!=null&&p.unit_site!==p.unit?`<div class="k">site: ${fmtBRL(p.unit_site)}</div>`:''}</div>
