@@ -571,7 +571,9 @@ function renderFresh(live){
 /* ===================== tabs ===================== */
 $$('nav.tabs button').forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.tab)));
 function showTab(t){
-  if (t==='forn') fornLoad();
+  // a aba pode ser restaurada da última visita antes do código dela ter rodado;
+  // adiar um ciclo garante que `forn` já exista
+  if (t==='forn') setTimeout(fornLoad, 0);
   $$('nav.tabs button').forEach(b=>b.setAttribute('aria-selected', b.dataset.tab===t));
   $$('main > section').forEach(s=>s.hidden = s.id!=='tab-'+t);
   try{ localStorage.setItem('radar.tab', t);}catch(e){}
