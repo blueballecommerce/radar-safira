@@ -141,6 +141,54 @@ WEIGHTS = {"demand": 0.35, "competition": 0.25, "growth": 0.25, "novelty": 0.15}
 
 ---
 
+## Fornecedores: como funciona e como fazer os próximos lotes
+
+A aba **Fornecedores** mostra o catálogo da Flexx Imports (custo por unidade, tamanho
+da caixa, valor para fechar a caixa) e, para cada produto pesquisado, os catálogos do
+Mercado Livre que vendem a mesma coisa — conferidos foto a foto.
+
+Dentro de cada produto:
+
+- **Quanto cobrar para ganhar 10 / 15 / 20 %** — preço de venda necessário, Clássico e
+  Premium, já descontando comissão, custo fixo (ou frete grátis acima de R$ 79),
+  imposto e embalagem. Clique num valor para levá-lo à calculadora.
+- **Calcule o seu preço** — escolha o tipo de anúncio, digite o preço e veja o extrato
+  completo e a comparação com a **média dos concorrentes iguais**. A leitura diz se há
+  espaço (abaixo da média com lucro), se você está acima, ou se está no prejuízo.
+- Em cada anúncio, passe o mouse em **Lucro líquido** para ver o extrato daquele preço.
+  O botão **JoomPulse** abre um card com tudo que a JoomPulse trouxe do anúncio, aqui
+  mesmo. Só **Mercado Livre ↗** leva para fora — para você conferir.
+
+As premissas de peso, reputação, imposto e embalagem são as do **Simulador de preço**:
+mudou lá, tudo aqui recalcula.
+
+### Pesquisar mais produtos (o próximo lote de 30)
+
+Quatro comandos e uma conferência. Só a conferência gasta tokens.
+
+```powershell
+# 1. catálogo do fornecedor (grátis, ~1 min) — só quando quiser atualizar o site deles
+& ".\.venv\Scripts\python.exe" -m radar fornecedor coletar
+
+# 2. marque no data/fornecedor.json quais produtos entram: tags: ["mais_vendidos"]
+#    (o comando `pesquisar` usa os que têm essa tag; hoje são os 15 mais vendidos)
+
+# 3. busca na JoomPulse pelo nome, agrupada por catálogo (grátis, ~1 min por produto)
+& ".\.venv\Scripts\python.exe" -m radar fornecedor pesquisar
+
+# 4. pranchas de conferência: só o que ainda não foi conferido (grátis)
+& ".\.venv\Scripts\python.exe" scripts\prancha.py
+```
+
+Aí me chame: eu olho as pranchas em `data\pranchas\`, registro os vereditos com
+`scriptseredito.py`, rodo `python -m radar.fornecedor_export` e publico. Custo de
+referência: 15 produtos com ~140 catálogos ficaram em ~100 mil tokens.
+
+Os vereditos ficam guardados por catálogo (foto + título), então refazer a pesquisa não
+apaga o que já foi conferido.
+
+---
+
 ## O que este radar ainda não faz
 
 Vale saber, para você não procurar o que não existe:
