@@ -1258,9 +1258,12 @@ function fornRender(){
         <div class="an ${a.veredito||''}">
           <img class="thumb" loading="lazy" src="${esc(a.img||'')}" alt="">
           <div><div class="name">${esc(a.nome)}</div>
-            <div class="path">${esc(a.vendedor||'—')}${a.catalogo?` · ${a.bb||1} vendedor${(a.bb||1)>1?'es':''} no catálogo`:' · anúncio próprio'}${a.tipo?' · '+(TIPO[a.tipo]||a.tipo):''}${a.frete_gratis?' · frete grátis':''}</div>
+            <div class="path">${a.catalogo
+              ? `catálogo com <b>${a.bb||1} vendedor${(a.bb||1)>1?'es':''}</b> · quem mais vende: ${esc(a.vendedor||'—')}${a.preco_min!=null&&a.preco_max!=null&&a.preco_min!==a.preco_max?` · de ${fmtBRL(a.preco_min)} a ${fmtBRL(a.preco_max)}`:''}`
+              : `anúncio próprio de ${esc(a.vendedor||'—')}`}${a.tipo?' · '+(TIPO[a.tipo]||a.tipo):''}${a.frete_gratis?' · frete grátis':''}</div>
             <div class="tags"><span class="tag ${(a.dias??999)<=NEW_MAX_DAYS?'good':''}">${idade(a.dias)}</span>${a.avaliacoes?`<span class="tag">${fmtN(a.avaliacoes)} aval.${a.nota?' · '+a.nota.toFixed(1)+'★':''}</span>`:''}</div>
-            ${a.obs?`<div class="obs">${esc(a.obs)}</div>`:''}</div>
+            ${a.obs?`<div class="obs">${esc(a.obs)}</div>`:''}
+            ${(a.outros||[]).length?`<div class="small muted" style="margin-top:4px">Também vendem: ${a.outros.map(o=>`<a href="${fornLink(o)}" target="_blank" rel="noopener">${esc(o.vendedor||o.id)}</a> ${fmtBRL(o.preco)}`).join(' · ')}</div>`:''}</div>
           <div class="cell"><div class="k">Preço no ML</div><div class="v big">${fmtBRL(a.preco)}</div></div>
           <div class="cell"><div class="k">Vendas/sem</div><div class="v big">${fmtN(a.vendas_sem)}</div><div class="k">${fmtBRLc(a.receita_mes)}/mês</div></div>
           <div class="cell"><div class="k">Margem bruta</div><div class="marg ${margClass(a.margem)}">${fmtPct(a.margem)}</div></div>

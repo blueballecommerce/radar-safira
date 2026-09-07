@@ -20,6 +20,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parent.parent
 BUSCA = ROOT / "data" / "fornecedor_busca.json"
+VEREDITO = ROOT / "data" / "fornecedor_veredito.json"
 OUT = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "data" / "pranchas"
 LADO = 260            # tamanho de cada foto na prancha
 COLS = 4              # candidatos por linha
@@ -73,6 +74,7 @@ def rotulo(im: Image.Image, texto: str, cor=(20, 20, 20)) -> Image.Image:
 def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     dados = json.loads(BUSCA.read_text("utf-8"))
+    ja = json.loads(VEREDITO.read_text("utf-8")) if VEREDITO.exists() else {}
     indice = []
     with httpx.Client(headers=UA) as cli:
         for n, bloco in enumerate(dados, 1):
@@ -83,9 +85,13 @@ def main() -> None:
                 k = (a.get("img") or "").split("?")[0]
                 if k in vistos:
                     continue
+                if a.get("chave") and f'{f["url"]}|cat:{a["chave"]}' in ja:
+                    continue                          # já conferido numa rodada anterior
                 vistos.add(k); cands.append(a)
                 if len(cands) >= MAX_CAND:
                     break
+            if not cands:
+                print(f"{n:02d} {f['nome'][:44]:<44} nada novo para conferir"); continue
             esq = rotulo(baixa(cli, f.get("img")), f"FORNECEDOR: {f['nome']}", (160, 30, 30))
             quadros = [rotulo(baixa(cli, a.get("img")),
                               f"#{i+1} R$ {a.get('preco') or '?'} · {a.get('vendas_sem') or 0}/sem · {a.get('dias') or '?'}d · {a.get('nome','')[:40]}")
@@ -105,7 +111,7 @@ def main() -> None:
             caminho = OUT / f"{n:02d}.jpg"
             prancha.save(caminho, quality=82)
             indice.append({"n": n, "url": f["url"], "nome": f["nome"], "arquivo": str(caminho),
-                           "candidatos": [{"pos": i + 1, "id": a["id"], "nome": a.get("nome"), "preco": a.get("preco"),
+                           "candidatos": [{"pos": i + 1, "id": a["id"], "chave": a.get("chave"), "nome": a.get("nome"), "preco": a.get("preco"),
                                            "ids_mesma_foto": [b["id"] for b in bloco["anuncios"]
                                                               if (b.get("img") or "").split("?")[0] == (a.get("img") or "").split("?")[0]]}
                                           for i, a in enumerate(cands)]})

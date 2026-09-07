@@ -32,9 +32,12 @@ def main(arq: str) -> None:
             raise SystemExit(f"veredito inválido: {d}")
         bloco = indice[d["n"]]
         cand = next(c for c in bloco["candidatos"] if c["pos"] == d["pos"])
+        reg = {"veredito": d["veredito"], "obs": d.get("obs", "")}
         for aid in cand["ids_mesma_foto"]:
-            atual[f'{bloco["url"]}|{aid}'] = {"veredito": d["veredito"], "obs": d.get("obs", "")}
+            atual[f'{bloco["url"]}|{aid}'] = reg
             novos += 1
+        if cand.get("chave"):                       # sobrevive a uma nova pesquisa
+            atual[f'{bloco["url"]}|cat:{cand["chave"]}'] = reg
     SAIDA.write_text(json.dumps(atual, ensure_ascii=False, indent=1), "utf-8")
     print(f"{novos} anúncios com veredito ({len(atual)} no total) -> {SAIDA}")
 
