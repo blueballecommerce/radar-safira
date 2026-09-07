@@ -74,6 +74,9 @@ def rotulo(im: Image.Image, texto: str, cor=(20, 20, 20)) -> Image.Image:
 def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     dados = json.loads(BUSCA.read_text("utf-8"))
+    # só o que está no catálogo do fornecedor (o que dá para comprar) merece conferência
+    cat = {i["url"]: i for i in json.loads((ROOT / "data" / "fornecedor.json").read_text("utf-8"))}
+    dados = [b for b in dados if "catalogo_set26" in (cat.get(b["fornecedor"]["url"], {}).get("tags") or [])]
     ja = json.loads(VEREDITO.read_text("utf-8")) if VEREDITO.exists() else {}
     indice = []
     with httpx.Client(headers=UA) as cli:

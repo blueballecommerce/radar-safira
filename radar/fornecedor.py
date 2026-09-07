@@ -308,3 +308,184 @@ async def pesquisar(itens: list[dict], page) -> list[dict]:
         BUSCA.write_text(json.dumps(saida, ensure_ascii=False, indent=1), "utf-8")   # salva a cada item
     BUSCA.write_text(json.dumps(saida, ensure_ascii=False, indent=1), "utf-8")
     return saida
+
+
+# ------------------------------------------------- categoria de cada produto
+CATS = config.DATA_DIR / "fornecedor_categorias.json"
+
+# na ficha do anúncio, o link de categoria de nível mais fundo é a folha
+_JS_CAT_LINK = r"""() => {
+  const a = [...document.querySelectorAll('a[href*="/dashboard/categories/"]')]
+    .map(a => ({href: a.getAttribute('href') || '', nome: (a.innerText || '').trim()}))
+    .filter(x => /\/categories\/(\d+)\/(MLB\d+)/.test(x.href) && x.nome);
+  a.sort((x, y) => Number(y.href.match(/categories\/(\d+)\//)[1]) - Number(x.href.match(/categories\/(\d+)\//)[1]));
+  return a[0] || null;
+}"""
+
+# na página da categoria: caminho completo (breadcrumb) e os cartões de números
+_JS_CAT_PAGE = r"""() => {
+  const NL = String.fromCharCode(10);
+  const clean = s => (s || '').replace(/\s+/g, ' ').trim();
+  let caminho = [];
+  const bc = document.querySelector('.ant-breadcrumb, nav[aria-label="breadcrumb"], [class*="breadcrumb"]');
+  if (bc) caminho = bc.innerText.split(/[\/>›]/).map(clean).filter(s => s && s !== 'Categorias');
+  if (!caminho.length) {
+    const links = [...document.querySelectorAll('a[href*="/dashboard/categories/"]')]
+      .map(a => ({lvl: Number(((a.getAttribute('href') || '').match(/categories\/(\d+)\//) || [])[1] || 0), nome: clean(a.innerText)}))
+      .filter(x => x.lvl && x.nome);
+    const byLvl = new Map(); links.forEach(x => { if (!byLvl.has(x.lvl)) byLvl.set(x.lvl, x.nome); });
+    caminho = [...byLvl.keys()].sort((a, b) => a - b).map(k => byLvl.get(k));
+  }
+  const t = (document.querySelector('main') || document.body).innerText;
+  const linhas = t.split(NL).map(clean).filter(Boolean);
+  const bloco = (rotulo) => {
+    const i = linhas.findIndex(s => s.toLowerCase().startsWith(rotulo));
+    return i >= 0 ? linhas.slice(i, i + 6).join(' | ') : '';
+  };
+  const linhaBc = linhas.find(s => (s.match(/ \/ /g) || []).length >= 2) || '';
+  return { caminho, linhaBc, oportunidade: bloco('oportunidade'), receita: bloco('receita'), vendas: bloco('vendas'),
+           produtos: bloco('produtos'), ticket: bloco('ticket'), sazonalidade: bloco('sazonalidade'),
+           insights: linhas.filter(s => /monopoliza|varia|medalha|por vendedor/i.test(s)).slice(0, 8),
+           cabeca: linhas.slice(0, 40) };
+}"""
+
+
+def _pct_de(txt: str | None) -> float | None:
+    m = re.search(r"([+\-−]?)\s?(\d+(?:[.,]\d+)?)\s?%", txt or "")
+    if not m:
+        return None
+    v = float(m.group(2).replace(",", "."))
+    return (-v if m.group(1) in ("-", "−") else v) / 100
+
+
+def _valor_de(txt: str | None) -> float | None:
+    """Primeiro valor 'grande' do bloco (R$ 640 mil, 26 mil, 1,2 mi...), ignorando o trecho em %."""
+    from . import browser as B
+    semp = re.sub(r"[+\-−]?\s?\d+(?:[.,]\d+)?\s?%", " ", txt or "")
+    corpo = semp.split("|", 1)[1] if "|" in semp else semp
+    m = re.search(r"(R\$\s?)?(\d[\d.,]*)\s?(mil|mi|bi|k|M)?\b", corpo)
+    if not m:
+        return None
+    return B._big((m.group(1) or "") + m.group(2) + (" " + m.group(3) if m.group(3) else ""))
+
+
+def _dica_de(opp_txt: str) -> str | None:
+    """O conselho da JoomPulse para a categoria: 'Oportunidade | Explicar | Média | <dica> | Insights'."""
+    m = re.search(r"\|\s?(?:Alta|Média|Baixa)\s?\|\s?(.+?)(?:\s?\|\s?Insights|$)", opp_txt or "")
+    return m.group(1).strip() if m else None
+
+
+def _ref_de(b: dict, ver: dict, url: str) -> dict:
+    """Anúncio que representa o produto: igual > parecido > sem veredito; dentro do grupo, quem mais vende."""
+    ordem = {"igual": 0, "parecido": 1, None: 2, "diferente": 3}
+
+    def v(a):
+        return ver.get(f'{url}|cat:{a.get("chave")}', ver.get(f'{url}|{a["id"]}', {})).get("veredito")
+    return sorted(b["anuncios"], key=lambda a: (ordem.get(v(a), 2), -(a.get("vendas_mes") or a.get("vendas_sem") or 0)))[0]
+
+
+async def _le_categoria(page, nivel: int, cid: str, nome: str, custo) -> tuple[dict, list]:
+    from . import browser as B
+    await page.goto(f"{B.BASE}/dashboard/categories/{nivel}/{cid}/products",
+                    timeout=B.NAV_TIMEOUT_MS, wait_until="domcontentloaded")
+    await page.wait_for_timeout(8000)
+    try:                                   # comparação com o mês anterior, não com a semana
+        btn = page.get_by_text("Mês anterior", exact=True).first
+        if await btn.count():
+            await btn.click(timeout=4000)
+            await page.wait_for_timeout(2500)
+    except Exception:
+        pass
+    info = await page.evaluate(_JS_CAT_PAGE)
+    cam = info.get("caminho") or []
+    if not cam and info.get("linhaBc"):
+        cam = [s.strip() for s in info["linhaBc"].split("/") if s.strip() and s.strip() != "Categorias"]
+    # o breadcrumb da página lista só os ancestrais; a folha é o nome do link da ficha
+    if nome and len(cam) < nivel and (not cam or cam[-1] != nome):
+        cam = cam + [nome]
+    opp_txt = info.get("oportunidade") or ""
+    opp = next((k for k, t in (("high", "Alta"), ("medium", "Média"), ("low", "Baixa")) if t in opp_txt), None)
+    mono = next((s for s in info.get("insights", []) if re.search(r"\d\s?%\s?monopoliza", s.lower())), "")
+    saz = info.get("sazonalidade") or ""
+    cat = {"id": cid, "nivel": nivel, "nome": nome, "caminho": cam,
+           "l1": cam[0] if cam else None, "l2": cam[1] if len(cam) > 1 else None,
+           "l3": cam[2] if len(cam) > 2 else None, "folha": cam[-1] if cam else nome, "opp": opp,
+           "receita": _valor_de(info.get("receita")), "receita_var": _pct_de(info.get("receita")),
+           "vendas": _valor_de(info.get("vendas")), "vendas_var": _pct_de(info.get("vendas")),
+           "produtos": _valor_de(info.get("produtos")), "ticket": _valor_de(info.get("ticket")),
+           "mono_pct": _pct_de(mono), "dica": _dica_de(opp_txt),
+           "sazonalidade": saz.split("|")[1].strip() if "|" in saz else None,
+           "bruto": {k: info.get(k) for k in ("oportunidade", "receita", "vendas", "insights", "linhaBc")}}
+    rows = []
+    try:
+        if await B._rows_ready(page, tries=4):
+            await B._periodo_mes(page)
+            await B._ungroup(page)
+            await B._set_page_size(page)
+            rows = await page.evaluate(B._SCRAPE)
+    except Exception as e:
+        log.warning("tabela da categoria %s: %s", cid, type(e).__name__)
+    cands = _agrupa_por_catalogo(rows, custo)[:10]
+    for c in cands:
+        c["l1"], c["l2"] = cat["l1"], cat["l2"]
+    return cat, cands
+
+
+async def categorias(itens: list[dict], page, busca: list[dict]) -> dict:
+    """Descobre a categoria do ML de cada produto pesquisado e lê a página dela.
+
+    O anúncio de referência (igual > parecido > o que mais vende) leva à ficha
+    da JoomPulse, que linka a categoria folha; a página da categoria traz o
+    caminho completo, receita e vendas com variação, oportunidade, monopolização
+    e os produtos que mais vendem nela — o que alimenta "categoria em alta" e a
+    lista "anúncios da mesma categoria" para quem não tem concorrente igual.
+    Incremental: grava depois de cada produto e reaproveita categorias já lidas.
+    """
+    from . import browser as B
+
+    saida = json.loads(CATS.read_text("utf-8")) if CATS.exists() else {}
+    por_url = {b["fornecedor"]["url"]: b for b in busca}
+    vfile = config.DATA_DIR / "fornecedor_veredito.json"
+    ver = json.loads(vfile.read_text("utf-8")) if vfile.exists() else {}
+    cache_cat = {v["cat"]["id"]: v["cat"] for v in saida.values() if v.get("cat") and v["cat"].get("caminho")}
+    cache_prod = {v["cat"]["id"]: v.get("mesma_categoria", []) for v in saida.values() if v.get("cat")}
+
+    for it in itens:
+        feito = saida.get(it["url"])
+        if feito and feito.get("cat") and feito["cat"].get("caminho"):
+            continue
+        b = por_url.get(it["url"])
+        if not b or not b.get("anuncios"):
+            continue
+        ref = _ref_de(b, ver, it["url"])
+        link = None
+        try:
+            await page.goto(f"{B.BASE}/dashboard/beginner-products/{ref['id']}",
+                            timeout=B.NAV_TIMEOUT_MS, wait_until="domcontentloaded")
+            for _ in range(10):
+                await page.wait_for_timeout(1500)
+                link = await page.evaluate(_JS_CAT_LINK)
+                if link:
+                    break
+        except Exception as e:
+            log.warning("ficha %s: %s", ref["id"], type(e).__name__)
+        if not link:
+            log.warning("%s: sem categoria na ficha de %s", it["nome"][:36], ref["id"])
+            saida[it["url"]] = {"ref": ref["id"], "cat": None, "mesma_categoria": []}
+            CATS.write_text(json.dumps(saida, ensure_ascii=False, indent=1), "utf-8")
+            continue
+        m = re.search(r"/categories/(\d+)/(MLB\d+)", link["href"])
+        nivel, cid = int(m.group(1)), m.group(2)
+        if cid not in cache_cat:
+            try:
+                cat, cands = await _le_categoria(page, nivel, cid, link["nome"], it.get("unit"))
+            except Exception as e:
+                log.warning("categoria %s: %s", cid, type(e).__name__)
+                cat, cands = {"id": cid, "nivel": nivel, "nome": link["nome"], "caminho": [], "folha": link["nome"]}, []
+            cache_cat[cid], cache_prod[cid] = cat, cands
+            log.info("%s -> %s | opp %s | receita %s | vendas %s | %d produtos",
+                     it["nome"][:30], " › ".join(cat["caminho"]) or link["nome"], cat.get("opp"),
+                     cat.get("receita_var"), cat.get("vendas_var"), len(cands))
+        saida[it["url"]] = {"ref": ref["id"], "cat": cache_cat[cid], "mesma_categoria": cache_prod.get(cid, [])}
+        CATS.write_text(json.dumps(saida, ensure_ascii=False, indent=1), "utf-8")
+    return saida

@@ -524,7 +524,7 @@ ul.ext li b{font-family:var(--mono);font-weight:500;white-space:nowrap}
 <!-- ================= SUPPLIERS ================= -->
 <section id="tab-forn" hidden>
   <h2>Fornecedores</h2>
-  <p class="lead">Cada produto do fornecedor com o custo por unidade, o tamanho da caixa e o que você paga para fechar uma. Clique num produto para ver os anúncios do Mercado Livre que vendem a mesma coisa — conferidos foto a foto — com preço praticado, vendas por semana, tempo no ar e a margem bruta que sobra sobre o custo.</p>
+  <p class="lead">Cada produto do fornecedor com o custo por unidade, o tamanho da caixa e o que você paga para fechar uma. Clique num produto para ver os anúncios do Mercado Livre que vendem a mesma coisa — conferidos foto a foto — com preço praticado, vendas por mês, tempo no ar e a margem bruta que sobra sobre o custo.</p>
   <div id="forn-root"><div class="empty">Carregando fornecedores…</div></div>
 </section>
 
@@ -1384,24 +1384,27 @@ function fornProduto(root, F){
                   ['diferente','Descartados','a foto mostrou que é outro produto']];
   const iguais = p.anuncios.filter(a=>a.veredito==='igual');
   const c = p.categoria, tend = tendencia(c);
-  const caixaCat = c && c.l2 ? `<div class="catbox ${tend||''}">
-      <div><div class="k">Categoria no Mercado Livre</div><div class="cpath">${esc(c.l1)} › <b>${esc(c.l2)}</b>${c.l3?' › '+esc(c.l3):''}</div>
+  const caminho = c ? (c.caminho && c.caminho.length ? c.caminho : [c.l1,c.l2,c.l3].filter(Boolean)) : [];
+  const caixaCat = c && caminho.length ? `<div class="catbox ${tend||''}">
+      <div><div class="k">Categoria no Mercado Livre</div><div class="cpath">${caminho.map((s,i)=> i===caminho.length-1?'<b>'+esc(s)+'</b>':esc(s)).join(' › ')}</div>
         ${tend?`<div class="ctend"><span class="tag ${TEND[tend][0]}">${TEND[tend][1]}</span> ${c.gG!=null?`receita ${PCT(c.gG)} e vendas ${PCT(c.ocG??0)} no último mês`:''}</div>`:'<div class="ctend muted small">sem dados de tendência para esta subcategoria</div>'}
       </div>
       <div class="cnums">
         ${c.gmv!=null?`<div><div class="k">Receita da subcategoria/mês</div><div class="v">${fmtBRLc(c.gmv)}</div></div>`:''}
         ${c.opp?`<div><div class="k">Oportunidade</div><div class="v"><span class="pill ${c.opp}">${({high:'Alta',medium:'Média',low:'Baixa'})[c.opp]}</span></div></div>`:''}
         ${c.mono?`<div><div class="k">Monopolização</div><div class="v"><span class="pill mono ${c.mono}">${({low:'Baixa',medium:'Média',high:'Alta'})[c.mono]}</span></div></div>`:''}
-        ${c.ns!=null?`<div><div class="k">Vendedores</div><div class="v">${fmtN(c.ns)}</div></div>`:''}
+        ${c.vendas!=null?`<div><div class="k">Vendas da subcategoria/mês</div><div class="v">${fmtN(c.vendas)}${c.ocG!=null?` <span class="small ${c.ocG>0?'delta up':c.ocG<0?'delta down':''}">${PCT(c.ocG)}</span>`:''}</div></div>`:''}
+        ${c.nprod!=null?`<div><div class="k">Produtos na subcategoria</div><div class="v">${fmtN(c.nprod)}</div></div>`:''}
+        ${c.ticket!=null?`<div><div class="k">Ticket médio</div><div class="v">${fmtBRL(c.ticket)}</div></div>`:''}
       </div></div>` : '';
 
   let resumo = '';
   if (!p.pesquisado) resumo = `<div class="veredito">Este produto ainda <b>não foi pesquisado</b> no Mercado Livre.</div>`;
   else if (!iguais.length) resumo = `<div class="veredito">A busca trouxe ${p.anuncios.length} catálogo${p.anuncios.length!==1?'s':''}, mas <b>nenhum é o mesmo produto</b>${p.parecidos?` — ${p.parecidos} parecido${p.parecidos>1?'s':''} para você olhar`:''}.</div>`;
   else {
-    const vend = iguais.reduce((s,a)=>s+(a.vendas_sem||0),0);
+    const vend = iguais.reduce((s,a)=>s+(vMes(a)||0),0);
     const novos = iguais.filter(a=>(a.dias??999)<=NEW_MAX_DAYS).length;
-    resumo = `<div class="veredito"><b>${iguais.length} catálogo${iguais.length>1?'s':''} vendendo exatamente este produto</b>, somando <b>${fmtN(vend)} vendas/semana</b>.
+    resumo = `<div class="veredito"><b>${iguais.length} catálogo${iguais.length>1?'s':''} vendendo exatamente este produto</b>, somando <b>${fmtN(vend)} vendas/mês</b>.
       ${cc?`Os concorrentes cobram em média <b>${fmtBRL(cc.media)}</b> (${cc.n} anúncio${cc.n>1?'s':''}, de ${fmtBRL(cc.min)} a ${fmtBRL(cc.max)}) contra <b>${fmtBRL(custo)}</b> de custo.`:''}
       ${novos?`<b>${novos}</b> ${novos>1?'catálogos entraram':'catálogo entrou'} há menos de ${NEW_MAX_DAYS} dias — demanda ainda em formação.`:'Todos têm mais de um mês: mercado já estabelecido.'}</div>`;
   }
@@ -1427,7 +1430,7 @@ function fornProduto(root, F){
       return v==='diferente' ? `<details><summary>${titulo} (${L.length})</summary><div style="margin-top:8px">${inner}</div></details>`
         : `<div class="grp"><h3>${titulo}</h3><span class="hint">${L.length} · ${hint}</span></div>${inner}`; }).join('')}
     ${(p.mesma_categoria||[]).length ? `<div class="grp"><h3>${iguais.length?'Outros anúncios da mesma subcategoria':'Sem concorrente igual — o que a subcategoria está vendendo'}</h3>
-        <span class="hint">${p.mesma_categoria.length} · os que mais vendem em ${esc(c?.l2||'—')} · lucro calculado no preço deles com o seu custo</span></div>
+        <span class="hint">${p.mesma_categoria.length} · os que mais vendem em ${esc(c?.folha||c?.l2||'—')} · lucro calculado no preço deles com o seu custo</span></div>
         ${p.mesma_categoria.map(a=>anuncioRow(a,p,true)).join('')}` : ''}`;
   $('#f-back0').onclick=()=>{ forn.view='lista'; fornRender(); };
   $('#f-back1').onclick=()=>{ forn.view='produtos'; fornRender(); };

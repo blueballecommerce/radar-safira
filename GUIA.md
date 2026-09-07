@@ -159,33 +159,50 @@ Dentro de cada produto:
   O botão **JoomPulse** abre um card com tudo que a JoomPulse trouxe do anúncio, aqui
   mesmo. Só **Mercado Livre ↗** leva para fora — para você conferir.
 
+- **Ranking (#)** — ordem de oportunidade dentro do catálogo. Quem tem lucro medido em
+  anúncio igual vem primeiro (mesmo quando o lucro é negativo — é informação); depois
+  quem só tem estimativa pela subcategoria; sem informação nenhuma fica no fim.
+- **Categoria no Mercado Livre** — caminho completo da categoria, tendência (receita e
+  vendas do mês contra o mês anterior), oportunidade e monopolização. Sem concorrente
+  igual, mostra **o que a subcategoria está vendendo**, com o lucro calculado no preço
+  deles e no seu custo.
+- **Filtros** — catálogo de setembro, já pesquisados, com igual confirmado, margem boa,
+  pouca concorrência, categoria em alta, anúncios novos, iniciante (pouco investimento).
+
 As premissas de peso, reputação, imposto e embalagem são as do **Simulador de preço**:
 mudou lá, tudo aqui recalcula.
 
-### Pesquisar mais produtos (o próximo lote de 30)
+### Pesquisar mais produtos (lotes de 30 do catálogo)
 
-Quatro comandos e uma conferência. Só a conferência gasta tokens.
+O que entra na fila é o **catálogo de setembro** (PDF da Flexx com os 198 produtos em
+estoque, guardado em `data\catalogo_set26.json`); o que está só no site fica de fora.
+A ordem é a do PDF: cada rodada pega os próximos 30 ainda não pesquisados
+(`RADAR_LOTE` muda o tamanho do lote).
 
 ```powershell
-# 1. catálogo do fornecedor (grátis, ~1 min) — só quando quiser atualizar o site deles
-& ".\.venv\Scripts\python.exe" -m radar fornecedor coletar
-
-# 2. marque no data/fornecedor.json quais produtos entram: tags: ["mais_vendidos"]
-#    (o comando `pesquisar` usa os que têm essa tag; hoje são os 15 mais vendidos)
-
-# 3. busca na JoomPulse pelo nome, agrupada por catálogo (grátis, ~1 min por produto)
+# 1. busca na JoomPulse pelo nome, agrupada por catálogo (grátis, ~1 min por produto)
+$env:RADAR_LOTE = "30"
 & ".\.venv\Scripts\python.exe" -m radar fornecedor pesquisar
 
-# 4. pranchas de conferência: só o que ainda não foi conferido (grátis)
+# 2. pranchas de conferência: só o que ainda não foi conferido (grátis)
 & ".\.venv\Scripts\python.exe" scripts\prancha.py
+
+# 3. (depois da conferência) a categoria de cada produto na JoomPulse: caminho completo,
+#    receita e vendas do mês com variação, e quem mais vende nela (grátis, ~40 s por produto)
+& ".\.venv\Scripts\python.exe" -m radar fornecedor categorias
+
+# 4. gera o docs\fornecedores.json que a página lê; depois é só publicar (git push)
+& ".\.venv\Scripts\python.exe" -m radar.fornecedor_export
 ```
 
-Aí me chame: eu olho as pranchas em `data\pranchas\`, registro os vereditos com
-`scriptseredito.py`, rodo `python -m radar.fornecedor_export` e publico. Custo de
-referência: 15 produtos com ~140 catálogos ficaram em ~100 mil tokens.
+Entre o passo 2 e o 3 me chame: eu olho as pranchas em `data\pranchas\`, registro os
+vereditos com `scripts\veredito.py` (as decisões ficam em `data\decisoes_*.json`) e
+publico. Custo de referência: 15 produtos com ~140 catálogos ficaram em ~100 mil tokens;
+14 pranchas do catálogo, ~60 mil.
 
 Os vereditos ficam guardados por catálogo (foto + título), então refazer a pesquisa não
-apaga o que já foi conferido.
+apaga o que já foi conferido. A leitura de categorias também é incremental: só lê o que
+ainda não tem categoria, e uma categoria lida serve para todos os produtos dela.
 
 ---
 
@@ -196,7 +213,7 @@ Vale saber, para você não procurar o que não existe:
 - **Importação JoomPro está vazia.** O pareamento com fornecedores chineses fica
   numa tela separada do site, que a coleta ainda não percorre. A aba avisa isso e
   manda o link direto.
-- **Shopee e Fornecedores** são abas planejadas, sem conteúdo.
+- **Shopee** é uma aba planejada, sem conteúdo.
 - **Tempo de anúncio:** anúncio próprio tem o tempo dele mesmo; anúncio de catálogo
   mostra o tempo do catálogo, igual para todos os vendedores — é assim que o site
   informa.

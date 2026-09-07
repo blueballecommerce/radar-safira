@@ -124,10 +124,36 @@ def cmd_fornecedor(a):
     if not F.SAIDA.exists():
         raise SystemExit("Sem catálogo. Rode `python -m radar fornecedor coletar` antes.")
     cat = json.loads(F.SAIDA.read_text("utf-8"))
+    if a.op == "categorias":
+        from . import browser as B
+        # só o que já foi pesquisado tem anúncio de referência para chegar à categoria
+        busca = json.loads(F.BUSCA.read_text("utf-8")) if F.BUSCA.exists() else []
+        feitos = {b["fornecedor"]["url"] for b in busca}
+        itens = [i for i in cat if "catalogo_set26" in (i.get("tags") or []) and i["url"] in feitos]
+
+        async def _run():
+            src, close = await B.open_source(B.L1_IDS)
+            try:
+                return await F.categorias(itens, src.page, busca)
+            finally:
+                await close()
+        res = asyncio.run(_run())
+        print(json.dumps({"produtos": len(itens),
+                          "com_categoria": sum(1 for u in res.values() if u.get("cat") and u["cat"].get("caminho")),
+                          "arquivo": str(F.CATS)}, ensure_ascii=False))
+        return
     if a.op == "pesquisar":
         from . import browser as B
-        alvo = {"mais_vendidos", "novidades"}
-        itens = [i for i in cat if alvo & set(i.get("tags") or [])] or cat[:15]
+        # Lotes: primeiro o catálogo de setembro (o que dá para comprar), na ordem do
+        # PDF, até RADAR_LOTE itens por vez; o que já está em data/fornecedor_busca.json
+        # é pulado pelo próprio `pesquisar`.
+        lote = int(os.environ.get("RADAR_LOTE", "30"))
+        feitos = set()
+        if F.BUSCA.exists():
+            feitos = {b["fornecedor"]["url"] for b in json.loads(F.BUSCA.read_text("utf-8"))}
+        itens = [i for i in cat if "catalogo_set26" in (i.get("tags") or []) and i["url"] not in feitos]
+        itens.sort(key=lambda i: (i.get("pagina") or 99, i["url"]))
+        itens = itens[:lote]
 
         async def _run():
             src, close = await B.open_source(B.L1_IDS)
@@ -169,7 +195,7 @@ def main(argv=None):
     t.add_argument("op", choices=["encrypt", "decrypt"])
     sub.add_parser("client-metadata")
     f = sub.add_parser("fornecedor")
-    f.add_argument("op", choices=["coletar", "cruzar", "pesquisar"])
+    f.add_argument("op", choices=["coletar", "cruzar", "pesquisar", "categorias"])
     a = ap.parse_args(argv)
     if a.cmd == "login":
         asyncio.run(cmd_login(a))
