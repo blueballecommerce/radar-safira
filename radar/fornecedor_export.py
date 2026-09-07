@@ -78,7 +78,7 @@ def exportar() -> dict:
         for a in buscas.get(it["url"], []):
             a = _mensal(a)
             v = (vereditos.get(f'{it["url"]}|cat:{a.get("chave")}') if a.get("chave") else None)                 or vereditos.get(f'{it["url"]}|{a["id"]}', {})
-            anuncios.append({**a, "veredito": v.get("veredito"), "obs": v.get("obs")})
+            anuncios.append({**a, "veredito": v.get("veredito"), "obs": v.get("obs"), "qtd": int(v.get("qtd") or 1)})
         # os "iguais" primeiro, depois os parecidos; dentro de cada grupo, quem mais vende
         ordem = {"igual": 0, "parecido": 1, None: 2, "diferente": 3}
         anuncios.sort(key=lambda a: (ordem.get(a["veredito"], 2), -(a.get("vendas_sem") or 0)))

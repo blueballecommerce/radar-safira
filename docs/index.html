@@ -270,6 +270,7 @@ body.locked{overflow:hidden}
 @media (max-width:980px){ .fp{grid-template-columns:34px 56px 1fr 120px} .fp .cell{display:none} }
 .fp .rank{font-family:var(--display);font-weight:800;font-size:1rem;color:var(--ink3);text-align:center}
 .fp .rank.top{color:var(--acc)}
+.an .path b.kit{color:var(--warn,#e3b341)}
 .fhead{display:grid;grid-template-columns:160px 1fr;gap:18px;background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:16px}
 .fhead img{width:160px;height:160px;object-fit:contain;border-radius:10px;background:#fff;border:1px solid var(--line)}
 .fhead h3{font-family:var(--display);font-size:1.25rem;margin:0 0 6px;line-height:1.25}
@@ -1225,7 +1226,7 @@ function notaProduto(p){
   if (b) return { base:'igual', nota: b.lucro.margin, vendas: vMes(b)||0 };
   const mc = (p.mesma_categoria||[]);
   if (mc.length){
-    const ex = mc.map(a=>extrato(a.preco||0, tipoDe(a), catDe(a,p), p.unit||0, a.frete_gratis));
+    const ex = mc.map(a=>extrato(a.preco||0, tipoDe(a), catDe(a,p), custoDe(a,p), a.frete_gratis));
     const best = ex.reduce((x,y)=>y.margin>x.margin?y:x);
     return { base:'categoria', nota: best.margin, vendas: Math.max(...mc.map(a=>vMes(a)||0)) };
   }
@@ -1239,8 +1240,12 @@ function rankingDe(lista){
   return pos;
 }
 
+/* Kit 2, kit 3, par...: o anúncio entrega mais de uma unidade do fornecedor.
+   Custo do anúncio = custo unitário × qtd; comparação de preço sempre por unidade. */
+const qtdDe = a => Math.max(1, a.qtd||1);
+const custoDe = (a,p) => (p.unit||0) * qtdDe(a);
 function lucroIguais(p){
-  const ig = p.anuncios.filter(a=>a.veredito==='igual').map(a=>({...a, lucro: extrato(a.preco||0, tipoDe(a), catDe(a,p), p.unit||0, a.frete_gratis)}));
+  const ig = p.anuncios.filter(a=>a.veredito==='igual').map(a=>({...a, lucro: extrato(a.preco||0, tipoDe(a), catDe(a,p), custoDe(a,p), a.frete_gratis)}));
   return ig.length ? melhor(ig) : null;
 }
 const FILTROS = [
@@ -1280,11 +1285,11 @@ function extrato(preco, tipo, cat, custo, freteGratis){
           comPct:(FEES.comm[cat]||[12,17])[tipo==='p'?1:0], peso:FEES.ship[o.wi]?.label||'', o};
 }
 function precoAlvo(m, tipo, cat, custo){ const o=simOpts(); return priceForMargin(m, custo, cat, tipo, o.wi, o.rep, o.tax, o.other, o.ads); }
-function extratoHTML(e, preco, tipo, custo, titulo){
+function extratoHTML(e, preco, tipo, custo, titulo, qtd){
   const linhaFrete = preco < FEES.freeFrom
     ? (e.ship ? `<li><span>Frete grátis oferecido (${e.peso}, ${Math.round(e.o.rep*100)}% desc.)</span><b>− ${fmtBRL(e.ship)}</b></li>` : `<li><span>Frete</span><b>pago pelo comprador</b></li>`)
     : `<li><span>Frete grátis obrigatório (${e.peso}, ${Math.round(e.o.rep*100)}% desc.)</span><b>− ${fmtBRL(e.ship)}</b></li>`;
-  return `<div class="hd"><div class="tot">${fmtBRL(e.profit)}<span>lucro por unidade · ${fmtPct(e.margin)} da venda</span></div></div>
+  return `<div class="hd"><div class="tot">${fmtBRL(e.profit)}<span>lucro por ${(qtd||1)>1?`kit de ${qtd} un (${fmtBRL(e.profit/qtd)}/un)`:'unidade'} · ${fmtPct(e.margin)} da venda</span></div></div>
     <ul class="ext">
       <li><span>Preço de venda (${tipoNome(tipo)})</span><b>${fmtBRL(preco)}</b></li>
       <li><span>Comissão do ML (${e.comPct}%)</span><b>− ${fmtBRL(e.comm)}</b></li>
@@ -1293,14 +1298,14 @@ function extratoHTML(e, preco, tipo, custo, titulo){
       <li><span>Imposto (${e.o.tax}%)</span><b>− ${fmtBRL(e.taxV)}</b></li>
       ${e.adsV ? `<li><span>Ads (${e.o.ads}%)</span><b>− ${fmtBRL(e.adsV)}</b></li>` : ''}
       <li><span>Embalagem e outros</span><b>− ${fmtBRL(e.o.other)}</b></li>
-      <li><span>Custo do produto no fornecedor</span><b>− ${fmtBRL(custo)}</b></li>
+      <li><span>Custo do produto no fornecedor${(qtd||1)>1?` (${qtd} × ${fmtBRL(custo/qtd)})`:''}</span><b>− ${fmtBRL(custo)}</b></li>
     </ul>
     <div class="lost">Comissão, custo fixo e frete são a tabela de referência do ML; peso e reputação vêm do Simulador de preço.</div>`;
 }
 /* média, mínimo e máximo do que os concorrentes IGUAIS estão cobrando */
 function concorrencia(p){
   const ig = p.anuncios.filter(a=>a.veredito==='igual'); const precos = [];
-  ig.forEach(a=>{ if(a.preco!=null) precos.push(a.preco); (a.outros||[]).forEach(o=>{ if(o.preco!=null) precos.push(o.preco); }); });
+  ig.forEach(a=>{ const q=qtdDe(a); if(a.preco!=null) precos.push(a.preco/q); (a.outros||[]).forEach(o=>{ if(o.preco!=null) precos.push(o.preco/q); }); });
   let fonte = 'concorrentes iguais';
   if (!precos.length && (p.mesma_categoria||[]).length){          // sem igual: a referência é a subcategoria
     p.mesma_categoria.forEach(a=>{ if(a.preco!=null) precos.push(a.preco); }); fonte = 'subcategoria';
@@ -1343,7 +1348,7 @@ function fornRender(){
         <span class="count">${rows.length} produtos</span>
       </div>
       <div class="list">${rows.length? rows.map(p=>{
-        const ig = p.anuncios.filter(a=>a.veredito==='igual').map(a=>({...a, lucro: extrato(a.preco||0, tipoDe(a), catDe(a,p), p.unit||0, a.frete_gratis)}));
+        const ig = p.anuncios.filter(a=>a.veredito==='igual').map(a=>({...a, lucro: extrato(a.preco||0, tipoDe(a), catDe(a,p), custoDe(a,p), a.frete_gratis)}));
         const best = ig.length ? melhor(ig) : null;
         return `
         <article class="fp" data-url="${esc(p.url)}" tabindex="0" role="button">
@@ -1405,7 +1410,7 @@ function fornProduto(root, F){
     const vend = iguais.reduce((s,a)=>s+(vMes(a)||0),0);
     const novos = iguais.filter(a=>(a.dias??999)<=NEW_MAX_DAYS).length;
     resumo = `<div class="veredito"><b>${iguais.length} catálogo${iguais.length>1?'s':''} vendendo exatamente este produto</b>, somando <b>${fmtN(vend)} vendas/mês</b>.
-      ${cc?`Os concorrentes cobram em média <b>${fmtBRL(cc.media)}</b> (${cc.n} anúncio${cc.n>1?'s':''}, de ${fmtBRL(cc.min)} a ${fmtBRL(cc.max)}) contra <b>${fmtBRL(custo)}</b> de custo.`:''}
+      ${cc?`Os concorrentes cobram em média <b>${fmtBRL(cc.media)}</b> por unidade (${cc.n} anúncio${cc.n>1?'s':''}, de ${fmtBRL(cc.min)} a ${fmtBRL(cc.max)}) contra <b>${fmtBRL(custo)}</b> de custo.`:''}
       ${novos?`<b>${novos}</b> ${novos>1?'catálogos entraram':'catálogo entrou'} há menos de ${NEW_MAX_DAYS} dias — demanda ainda em formação.`:'Todos têm mais de um mês: mercado já estabelecido.'}</div>`;
   }
 
@@ -1444,7 +1449,8 @@ function fornProduto(root, F){
 }
 
 function anuncioRow(a, p, daCategoria){
-  const e = extrato(a.preco||0, tipoDe(a), catDe(a,p), p.unit||0, a.frete_gratis);
+  const q = qtdDe(a), custo = custoDe(a,p);
+  const e = extrato(a.preco||0, tipoDe(a), catDe(a,p), custo, a.frete_gratis);
   const ini = dataInicio(a);
   return `
     <div class="an ${daCategoria?'cat':(a.veredito||'')}" data-id="${esc(a.id)}" tabindex="0" role="button">
@@ -1452,13 +1458,13 @@ function anuncioRow(a, p, daCategoria){
       <div><div class="name">${esc(a.nome)}</div>
         <div class="path">${a.catalogo
           ? `catálogo com <b>${a.bb||1} vendedor${(a.bb||1)>1?'es':''}</b> · quem mais vende: ${esc(a.vendedor||'—')}${a.preco_min!=null&&a.preco_max!=null&&a.preco_min!==a.preco_max?` · de ${fmtBRL(a.preco_min)} a ${fmtBRL(a.preco_max)}`:''}`
-          : `anúncio próprio de ${esc(a.vendedor||'—')}`}${a.tipo?' · '+(TIPO[a.tipo]||a.tipo):''}${a.frete_gratis?' · frete grátis':''}${a.l1?' · '+esc(a.l1):''}</div>
+          : `anúncio próprio de ${esc(a.vendedor||'—')}`}${a.tipo?' · '+(TIPO[a.tipo]||a.tipo):''}${a.frete_gratis?' · frete grátis':''}${q>1?` · <b class="kit">kit com ${q} unidades</b>`:''}${a.l1?' · '+esc(a.l1):''}</div>
         <div class="tags"><span class="tag ${(a.dias??999)<=NEW_MAX_DAYS?'good':''}">${idade(a.dias)}${ini?' · desde '+ini:''}</span>${a.avaliacoes?`<span class="tag">${fmtN(a.avaliacoes)} aval.${a.nota?' · '+a.nota.toFixed(1)+'★':''}</span>`:'<span class="tag">sem avaliações</span>'}${a.l2?`<span class="tag">${esc(a.l2)}</span>`:''}</div>
         ${a.obs?`<div class="obs">${esc(a.obs)}</div>`:''}</div>
-      <div class="cell"><div class="k">Preço no ML</div><div class="v big">${fmtBRL(a.preco)}</div></div>
+      <div class="cell"><div class="k">Preço no ML</div><div class="v big">${fmtBRL(a.preco)}</div>${q>1?`<div class="k">${fmtBRL((a.preco||0)/q)}/un</div>`:''}</div>
       <div class="cell"><div class="k">Vendas/mês</div><div class="v big">${fmtN(vMes(a))}</div><div class="k">fatura ${fmtBRLc(a.receita_mes)}/mês</div></div>
-      <div class="cell meter" tabindex="0"><div class="k">Lucro líquido</div><div class="marg ${margClass(e.margin)}">${fmtPct(e.margin)}</div><div class="k">${fmtBRL(e.profit)}/un</div>
-        <div class="scorepop" role="tooltip">${extratoHTML(e, a.preco||0, tipoDe(a), p.unit||0)}</div></div>
+      <div class="cell meter" tabindex="0"><div class="k">Lucro líquido</div><div class="marg ${margClass(e.margin)}">${fmtPct(e.margin)}</div><div class="k">${q>1?`${fmtBRL(e.profit)}/kit · ${fmtBRL(e.profit/q)}/un`:`${fmtBRL(e.profit)}/un`}</div>
+        <div class="scorepop" role="tooltip">${extratoHTML(e, a.preco||0, tipoDe(a), custo, null, q)}</div></div>
       <div class="links"><button class="btn" data-jp="${esc(a.id)}">JoomPulse</button><a class="btn ghost" href="${fornLink(a)}" target="_blank" rel="noopener">Mercado Livre ↗</a></div>
     </div>`;
 }
@@ -1507,7 +1513,7 @@ function renderCalc(p){
 /* ---------- card com tudo que a JoomPulse trouxe do anúncio, sem sair daqui ---------- */
 function openAnuncio(a, p){
   if (!a) return;
-  const custo = p.unit||0, tipo = tipoDe(a), cat = catDe(a,p);
+  const q = qtdDe(a), custo = custoDe(a,p), tipo = tipoDe(a), cat = catDe(a,p);
   const e = extrato(a.preco||0, tipo, cat, custo, a.frete_gratis);
   const inicio = a.dias!=null ? new Date(Date.now()-a.dias*864e5).toLocaleDateString('pt-BR') : '—';
   const VER = {igual:['good','Mesmo produto'], parecido:['warn','Parecido'], diferente:['bad','Outro produto']};
@@ -1530,9 +1536,9 @@ function openAnuncio(a, p){
       <div><div class="k">${a.catalogo?'Vendedores no catálogo':'Concorrência'}</div><div class="v">${a.catalogo?(a.bb||1):'anúncio único'}</div></div>
       <div><div class="k">Tipo de anúncio</div><div class="v">${TIPO[a.tipo]||a.tipo||'—'}${a.frete_gratis?' · frete grátis':''}</div></div>
       <div><div class="k">Categoria</div><div class="v">${esc(a.l1||'—')}</div></div>
-      <div><div class="k">Custo no fornecedor</div><div class="v">${fmtBRL(custo)}</div></div>
+      <div><div class="k">Custo no fornecedor</div><div class="v">${fmtBRL(custo)}${q>1?` <span class="small muted">(kit com ${q} un × ${fmtBRL(p.unit)})</span>`:''}</div></div>
     </div>
-    <div class="ext-card">${extratoHTML(e, a.preco||0, tipo, custo)}</div>
+    <div class="ext-card">${extratoHTML(e, a.preco||0, tipo, custo, null, q)}</div>
     ${(a.outros||[]).length?`<div class="break"><div class="small muted" style="margin-bottom:6px">Outros vendedores do mesmo catálogo</div>
       ${a.outros.map(o=>`<div class="alt"><div><div class="altp">${esc(o.vendedor||o.id)}</div><div class="altm">${esc(o.id)}</div></div><div class="altv"><span class="num">${fmtBRL(o.preco)}</span> <a href="${fornLink(o)}" target="_blank" rel="noopener">ML ↗</a></div></div>`).join('')}</div>`:''}
     <div class="actions">

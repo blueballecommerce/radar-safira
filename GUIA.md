@@ -159,6 +159,9 @@ Dentro de cada produto:
   O botão **JoomPulse** abre um card com tudo que a JoomPulse trouxe do anúncio, aqui
   mesmo. Só **Mercado Livre ↗** leva para fora — para você conferir.
 
+- **Kits** — anúncio que entrega mais de uma unidade do fornecedor ("Kit 2", "Kit 3 toucas",
+  "2 varais") aparece marcado como **kit com N unidades**: o lucro usa custo × N e a média dos
+  concorrentes é por unidade. A quantidade é registrada na conferência, junto com o veredito.
 - **Ranking (#)** — ordem de oportunidade dentro do catálogo. Quem tem lucro medido em
   anúncio igual vem primeiro (mesmo quando o lucro é negativo — é informação); depois
   quem só tem estimativa pela subcategoria; sem informação nenhuma fica no fim.

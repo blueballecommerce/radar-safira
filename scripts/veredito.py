@@ -2,7 +2,11 @@
 """Registra a conferência visual das pranchas em data/fornecedor_veredito.json.
 
 Entrada: um JSON com a lista de decisões, uma por candidato da prancha:
-    [{"n": 1, "pos": 2, "veredito": "igual", "obs": "mesma cor, mesma corda"}, ...]
+    [{"n": 1, "pos": 2, "veredito": "igual", "obs": "mesma cor, mesma corda", "qtd": 2}, ...]
+
+`qtd` (opcional, padrão 1) é quantas unidades do produto do fornecedor o anúncio
+entrega — "Kit 2", "Kit 3 toucas", "2 varais". O lucro usa custo × qtd, e a
+comparação de preço é por unidade.
 
 `n` é o número da prancha, `pos` a posição do candidato nela. O veredito vale para
 TODOS os anúncios que dividem a mesma foto (mesmo catálogo) — a prancha mostra um
@@ -33,6 +37,8 @@ def main(arq: str) -> None:
         bloco = indice[d["n"]]
         cand = next(c for c in bloco["candidatos"] if c["pos"] == d["pos"])
         reg = {"veredito": d["veredito"], "obs": d.get("obs", "")}
+        if d.get("qtd"):                            # kit: quantas unidades do fornecedor o anúncio entrega
+            reg["qtd"] = int(d["qtd"])
         for aid in cand["ids_mesma_foto"]:
             atual[f'{bloco["url"]}|{aid}'] = reg
             novos += 1
