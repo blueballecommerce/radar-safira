@@ -533,7 +533,8 @@ function computeAll(){
 function fmtDT(iso){ if(!iso) return '—'; const d=new Date(iso); return d.toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo',day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}); }
 function fmtMonth(ym){ if(!ym) return '—'; const [y,m]=ym.split('-'); return ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'][+m-1]+'/'+y; }
 function renderFresh(live){
-  $('#fresh').innerHTML = `Rodada <b>#${S.meta.runId??'—'}</b> · produtos ML <b>${fmtDT(S.meta.generatedAt)}</b> · categorias <b>${fmtMonth(S.meta.catMonth)}</b> · JoomPro <b>${S.meta.joomproAsOf||'—'}</b><br><span class="live">automático</span> às 8h e 15h · ${S.meta.counts.new_this_run??0} novos nesta rodada`;
+  const temJp = (S.joompro||[]).length > 0;
+  $('#fresh').innerHTML = `Rodada <b>#${S.meta.runId??'—'}</b> · produtos ML <b>${fmtDT(S.meta.generatedAt)}</b> · categorias <b>${fmtMonth(S.meta.catMonth)}</b>${temJp?` · JoomPro <b>${S.meta.joomproAsOf||'—'}</b>`:''}<br><span class="live">automático</span> uma vez por dia · ${S.meta.counts.new_this_run??0} novos nesta rodada`;
   $('#foot').textContent = `Vendas e receitas são estimativas da JoomPulse a partir de dados públicos dos anúncios — não são números oficiais do Mercado Livre. Preços são reais (buy box no momento da coleta). Dados de categoria têm até um mês de atraso; dados de produto, até 24 horas. ${S.meta.counts.products} produtos, ${S.meta.counts.categories} subcategorias e ${S.meta.counts.joompro} pares JoomPro nesta leitura.`;
 }
 
@@ -921,7 +922,18 @@ function renderImp(reset){
    </article>`).join('') : `<div class="empty">Nenhum par com esses filtros.</div>`;
 }
 function impTiles(){
-  const J=S.joompro; const sb=J.filter(j=>j.sb).length, hi=J.filter(j=>(j.sc??0)>=.9).length;
+  const J=S.joompro;
+  if (!J.length){
+    // A coleta pelo site não alcança o pareamento JoomPro: ele vive numa tela
+    // própria, fora da busca de produtos. Melhor dizer isso do que mostrar zeros.
+    $('#imp-tiles').innerHTML = `<div class="empty" style="grid-column:1/-1;text-align:left">
+      <b>Sem dados de importação nesta rodada.</b><br>
+      O pareamento JoomPro fica numa área do site que a coleta automática ainda não percorre.
+      Enquanto isso, consulte em <a href="https://joompulse.com/dashboard/suppliers-products"
+      target="_blank" rel="noopener">Produtos dos fornecedores ↗</a> na JoomPulse.</div>`;
+    $('#imp-count').textContent = '';
+    return;
+  } const sb=J.filter(j=>j.sb).length, hi=J.filter(j=>(j.sc??0)>=.9).length;
   const mg=[...J.map(j=>j.mg).filter(x=>x!=null)].sort((a,b)=>a-b); const med=mg.length?mg[Math.floor(mg.length/2)]:null;
   $('#imp-tiles').innerHTML = `
    <div class="tile"><div class="k">Pares analisados</div><div class="v">${J.length}</div><div class="s">margem ≥ 25%, ≥ 20 vendas/mês no ML</div></div>
