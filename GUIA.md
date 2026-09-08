@@ -192,6 +192,13 @@ Para valer todo dia, coloque a linha no começo de `scripts\rodada.ps1`.
 - `NEW_MAX_DAYS = 30` — o que conta como "novo e vendendo"
 - `HIDE_RULES` — os nichos escondidos hoje (suplementos, roupas). Apague a linha
   para trazer de volta, ou use o botão "Mostrar tudo" na própria página.
+- `OPP_*` — o **semáforo de oportunidade** de cada card (verde, amarelo, vermelho). A cor
+  junta o score com a porta de entrada: produto de catálogo, quantos vendedores já dividem
+  o mesmo anúncio (até 2 aberta, 3 a 5 disputada, 6 ou mais fechada); anúncio próprio, quantas
+  avaliações o líder já tem (até 999 aberta, 1.000 a 9.999 disputada, 10.000 ou mais fechada).
+  Entrada disputada tira 8 pontos e fechada tira 18; verde é 60 ou mais, amarelo de 45 a 59,
+  vermelho abaixo de 45. Passe o mouse no selo para ver a conta. O CSV ganhou as colunas
+  `oportunidade` e `entrada`.
 
 **Nos pesos do score** (`radar/config.py`):
 

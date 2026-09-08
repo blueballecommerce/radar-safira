@@ -91,7 +91,7 @@ h2{font-family:var(--display);font-weight:700;font-size:1.5rem;margin:0 0 4px;le
 
 /* product list */
 .list{display:flex;flex-direction:column;gap:8px}
-.row{display:grid;grid-template-columns:44px 64px 1fr 150px 120px 110px 120px;gap:14px;align-items:center;background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:10px 12px;cursor:pointer;transition:border-color .15s}
+.row{display:grid;grid-template-columns:44px 64px 1fr 150px 150px 120px 110px 120px;gap:14px;align-items:center;background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:10px 12px;cursor:pointer;transition:border-color .15s}
 .row:hover{border-color:var(--acc)}
 .row .rank{font-family:var(--display);font-weight:800;font-size:1.15rem;color:var(--ink3);text-align:center}
 .row .rank.top{color:var(--acc)}
@@ -104,6 +104,19 @@ h2{font-family:var(--display);font-weight:700;font-size:1.5rem;margin:0 0 4px;le
 .tag.warn{background:var(--warnBg);color:var(--warn)}
 .tag.bad{background:var(--badBg);color:var(--bad)}
 .tag.acc{background:var(--acc2);color:var(--acc)}
+/* semáforo de oportunidade: verde / amarelo / vermelho (regra em oportunidade(), no JS) */
+.opp{border:1px solid var(--line);border-left-width:4px;border-radius:9px;padding:7px 10px;background:var(--bg);display:flex;flex-direction:column;gap:2px;min-width:0}
+.opp .lb{font-family:var(--mono);font-size:.64rem;letter-spacing:.07em;text-transform:uppercase;font-weight:600;display:flex;align-items:center;gap:6px;white-space:nowrap}
+.opp .lb::before{content:"";width:9px;height:9px;border-radius:50%;background:currentColor;flex:none}
+.opp .rs{font-size:.74rem;color:var(--ink2);line-height:1.3}
+.opp.verde{background:var(--goodBg);border-left-color:var(--good)} .opp.verde .lb{color:var(--good)}
+.opp.amarelo{background:var(--warnBg);border-left-color:var(--warn)} .opp.amarelo .lb{color:var(--warn)}
+.opp.vermelho{background:var(--badBg);border-left-color:var(--bad)} .opp.vermelho .lb{color:var(--bad)}
+.opp.mini{display:inline-flex;flex-direction:row;align-items:center;padding:3px 9px;border-radius:999px;border-left-width:1px}
+.opp.mini .rs{display:none}
+.opp-wrap{display:inline-block;margin:8px 0 12px}
+.opp-legend{margin-top:12px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.opp-legend p{flex-basis:100%;margin:6px 0 0;font-size:.84rem;color:var(--ink2);line-height:1.5}
 .meter{display:flex;flex-direction:column;gap:4px}
 .meter .sc{font-family:var(--display);font-weight:800;font-size:1.35rem;line-height:1}
 .meter .sc small{font-size:.7rem;font-weight:500;color:var(--ink3);margin-left:3px;font-family:var(--mono)}
@@ -117,11 +130,15 @@ h2{font-family:var(--display);font-weight:700;font-size:1.5rem;margin:0 0 4px;le
 @media (max-width:980px){
   .row{grid-template-columns:34px 56px 1fr 120px;grid-auto-rows:auto}
   .row .cell{display:none}
+  .row .meter{grid-column:4;grid-row:1}
+  .row .opp{grid-column:3/-1}
+  .row .links{grid-column:1/3;grid-row:2;align-self:center}
 }
 @media (max-width:640px){
   .row{grid-template-columns:48px 1fr;gap:10px}
   .row .rank,.row .links{display:none}
-  .row .meter{grid-column:1/-1}
+  .row .opp{grid-column:1/-1}
+  .row .meter{grid-column:1/-1;grid-row:auto}
 }
 .more{display:flex;justify-content:center;margin:14px 0}
 
@@ -393,6 +410,15 @@ ul.ext li b{font-family:var(--mono);font-weight:500;white-space:nowrap}
         <div class="it"><div class="w">PESO 15</div><div class="t">Novo e vendendo</div>
           <p>Anúncio recente que já vende bem — sinal de demanda ainda não disputada.</p></div>
       </div>
+      <div class="opp-legend">
+        <span class="opp mini verde"><span class="lb">Oportunidade forte</span></span>
+        <span class="opp mini amarelo"><span class="lb">Oportunidade média</span></span>
+        <span class="opp mini vermelho"><span class="lb">Oportunidade fraca</span></span>
+        <p>A cor de cada card junta o score com a <b>porta de entrada</b>. Produto de catálogo: quantos vendedores já dividem
+        o mesmo anúncio (até 2 aberta, 3 a 5 disputada, 6 ou mais fechada). Anúncio próprio: quantas avaliações o líder já tem
+        (até 999 aberta, 1.000 a 9.999 disputada, 10.000 ou mais fechada). Entrada disputada tira 8 pontos e fechada tira 18:
+        <b>verde</b> fica com 60 ou mais, <b>amarelo</b> entre 45 e 59, <b>vermelho</b> abaixo de 45. Passe o mouse no selo para ver a conta.</p>
+      </div>
       <p class="tail">Score alto não é garantia de lucro: ele mede <b>atratividade da oportunidade</b>, não a sua margem.
       Use o <b>Simulador de preço</b> para saber quanto sobra depois da comissão do Mercado Livre, frete e imposto.</p>
     </div>
@@ -560,6 +586,36 @@ const HIDE_RULES = [
 ];
 const isHidden = p => HIDE_RULES.some(r=>r.test(p));
 
+/* ============ semáforo de oportunidade ============
+   Cada produto ganha verde, amarelo ou vermelho a partir do score e da "porta de entrada":
+   - produto de catálogo: quantos vendedores já dividem o mesmo catálogo (bb).
+     até 2 = aberta · 3 a 5 = disputada · 6 ou mais = fechada
+   - anúncio próprio: quantas avaliações o líder já tem (rc).
+     até 999 = aberta · 1.000 a 9.999 = disputada · 10.000 ou mais = fechada
+   Nota do semáforo = score − penalidade da entrada (disputada 8, fechada 18).
+   verde ≥ OPP_VERDE · amarelo ≥ OPP_AMARELO · vermelho abaixo disso. */
+const OPP_VERDE = 60, OPP_AMARELO = 45;
+const OPP_PENALIDADE = { aberta:0, disputada:8, fechada:18 };
+const OPP_CATALOGO = [3, 6];        // vendedores no catálogo: a partir de 3 disputada, de 6 fechada
+const OPP_PROPRIO = [1000, 10000];  // avaliações do anúncio próprio: a partir de 1.000 disputada, de 10.000 fechada
+function oportunidade(p){
+  const rc = p.rc || 0, bb = p.bb || 1;
+  const entrada = p.c ? (bb>=OPP_CATALOGO[1] ? 'fechada' : bb>=OPP_CATALOGO[0] ? 'disputada' : 'aberta')
+                      : (rc>=OPP_PROPRIO[1] ? 'fechada' : rc>=OPP_PROPRIO[0] ? 'disputada' : 'aberta');
+  const pen = OPP_PENALIDADE[entrada], nota = p.score - pen;
+  const cor = nota>=OPP_VERDE ? 'verde' : nota>=OPP_AMARELO ? 'amarelo' : 'vermelho';
+  const sd = p.sd ?? 0, demanda = sd>=.8 ? 'Vende muito' : sd>=.5 ? 'Vende bem' : 'Vende pouco';
+  const porta = p.c ? `catálogo com ${bb} vendedor${bb>1?'es':''}`
+                    : rc>=OPP_PROPRIO[0] ? `anúncio próprio, líder com ${fmtN(rc)} aval.` : 'anúncio próprio sem líder forte';
+  const label = cor==='verde' ? 'Oportunidade forte' : cor==='amarelo' ? 'Oportunidade média' : 'Oportunidade fraca';
+  const conta = `score ${p.score.toFixed(0)}${pen ? ` − ${pen} (entrada ${entrada})` : ' (entrada aberta)'} = ${nota.toFixed(0)}`;
+  return { cor, entrada, nota, label, motivo: `${demanda} · ${porta}`, conta };
+}
+function oppBadge(p, mini){
+  const o = p.opp || (p.opp = oportunidade(p));
+  return `<div class="opp ${o.cor}${mini?' mini':''}" title="${esc(o.conta)}"><span class="lb">${o.label}</span><span class="rs">${esc(o.motivo)}</span></div>`;
+}
+
 const PCT = v => (v>0?'+':'') + (v*100).toFixed(1).replace('.',',') + '%';
 const fmtBRL = v => v==null ? '—' : BRL.format(v);
 const fmtN = v => v==null ? '—' : NUM.format(Math.round(v));
@@ -596,6 +652,7 @@ function computeAll(){
     p.flags = { vol: p._dp>=.8, comp: p._comp>=.8, grow: (t12>=.08 || gG>=.15) && (c?.opp!=='low'),
                 new: d<=NEW_MAX_DAYS, solo: !p.c };   // solo = anuncio proprio, fora do catalogo
     p.move = p.prev==null ? null : p.prev - p.rank;   // positivo = subiu
+    p.opp = oportunidade(p);
   }
   S.products.sort((a,b)=>a.rank-b.rank);
 }
@@ -722,6 +779,7 @@ function renderML(reset){
     <div><div class="name">${esc(p.n)}</div>
       <div class="path">${esc(p.l1)} › ${esc(p.l2||'')}${p.l3?' › '+esc(p.l3):''} · ${esc(p.s||'')}${p.b?' · '+esc(p.b):''}</div>
       <div class="tags">${prodTags(p)}</div></div>
+    ${oppBadge(p)}
     <div class="meter" tabindex="0"><div class="sc">${p.score.toFixed(0)}<small>/100</small></div><div class="bar"><i style="width:${p.score}%"></i></div>${scorePie(p)}</div>
     <div class="cell"><div class="k">Vendas/sem</div><div class="v big">${fmtN(p.w)}</div><div class="k">${fmtN(p.m)} / mês</div></div>
     <div class="cell"><div class="k">Preço</div><div class="v big">${fmtBRL(p.pr)}</div><div class="k">${p.rc?(p.rr?p.rr.toFixed(1)+'★ · ':'')+fmtN(p.rc)+' aval.':'sem avaliações'}</div></div>
@@ -852,6 +910,7 @@ function mlPicks(){
           <span class="money">${fmtBRL(p.pr)}</span>
           <span class="money muted">${fmtBRLc(p.g)}/mês est.</span>
         </div>
+        <div class="foot-s">${oppBadge(p,true)}</div>
       </div>
     </article>`).join('');
 }
@@ -895,6 +954,7 @@ function openProduct(id){
     <h3>${esc(p.n)}</h3>
     <img class="big" src="${esc(p.img||'')}" alt="">
     <div class="why">Por que está aqui: ${why.join(' · ')}.</div>
+    <div class="opp-wrap">${oppBadge(p)}</div>
     <div class="break">
       ${[['Volume de vendas',p._dp,35],['Pouca concorrência',p._comp,25],['Categoria crescendo',p._growth,25],['Novo e vendendo',p._nov,15]].map(([k,v,w])=>`
       <div class="li"><span>${k} <span class="muted small">(peso ${w})</span></span><div class="bar"><i style="width:${Math.round(v*100)}%"></i></div><span class="num">${Math.round(v*w)}/${w}</span></div>`).join('')}
@@ -1165,9 +1225,9 @@ function initSim(){
 /* ===================== toast / csv ===================== */
 let toastT; function toast(m){ const t=$('#toast'); t.textContent=m; t.classList.add('show'); clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove('show'),2600); }
 function csvOf(rows){
-  const H=['rank','score','produto','categoria_l1','categoria_l2','categoria_l3','preco','vendas_semana','vendas_mes','receita_mes','dias_no_ar','avaliacoes','nota','vendedor','marca','concorrencia_l2','vendedores_catalogo','link_ml','link_joompulse'];
+  const H=['rank','score','oportunidade','entrada','produto','categoria_l1','categoria_l2','categoria_l3','preco','vendas_semana','vendas_mes','receita_mes','dias_no_ar','avaliacoes','nota','vendedor','marca','concorrencia_l2','vendedores_catalogo','link_ml','link_joompulse'];
   const q=v=>`"${String(v??'').replace(/"/g,'""')}"`;
-  return [H.join(';')].concat(rows.map((p,i)=>[i+1,p.score,p.n,p.l1,p.l2,p.l3,p.pr,p.w,p.m,p.g,p.d,p.rc,p.rr,p.s,p.b,p.cl,p.bb,mlLink(p),pulseLink(p)].map(q).join(';'))).join('\n');
+  return [H.join(';')].concat(rows.map((p,i)=>[i+1,p.score,p.opp?.cor,p.opp?.entrada,p.n,p.l1,p.l2,p.l3,p.pr,p.w,p.m,p.g,p.d,p.rc,p.rr,p.s,p.b,p.cl,p.bb,mlLink(p),pulseLink(p)].map(q).join(';'))).join('\n');
 }
 
 /* ===================== boot ===================== */
