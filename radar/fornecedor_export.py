@@ -1,13 +1,18 @@
 """Gera docs/fornecedores.json — o que a aba "Fornecedores" da página lê.
 
-Junta três fontes:
-  data/fornecedor.json          o catálogo raspado do site do fornecedor
-  data/fornecedor_busca.json    os anúncios que a JoomPulse devolveu para cada item
-  data/fornecedor_veredito.json a conferência visual, anúncio por anúncio
+Junta, por fornecedor:
+  <catalogo>   o catálogo do fornecedor (raspado do site, ou digitado da prateleira)
+  <busca>      os anúncios que a pesquisa devolveu para cada item
+  <cats>       a subcategoria do ML de cada produto (`fornecedor categorias`)
+  fornecedor_veredito.json   a conferência visual, anúncio por anúncio
 
-O veredito é o que separa "a busca achou" de "é o mesmo produto": a JoomPulse
-casa por nome, e nome não sabe a cor nem o formato. Só entra na página como
-"igual" o que passou pela conferência da foto.
+O veredito é o que separa "a busca achou" de "é o mesmo produto": a busca casa
+por nome, e nome não sabe a cor nem o formato. Só entra na página como "igual"
+o que passou pela conferência da foto.
+
+Os vereditos de todos os fornecedores moram no mesmo arquivo — a chave é
+`<url do item>|<id do anúncio>`, e a url já carrega o fornecedor, então não há
+colisão entre catálogos diferentes.
 """
 from __future__ import annotations
 
@@ -29,11 +34,28 @@ FORNECEDORES = [{
     "logo": "img/flexx-logo.webp",
     "contato": "(11) 98820-8112",
     "regra": "Vende apenas caixa fechada",
+    "fonte": "catálogo set/26",
+    "catalogo": SAIDA,
+    "busca": BUSCA,
+    "cats": CATS,
+}, {
+    "id": "logospan",
+    "nome": "Logospan",
+    # loja física, sem site: a página troca o link do site pelo código da etiqueta
+    "site": "",
+    "logo": "img/logospan-logo.png",
+    "contato": "(11) 93310-4352",
+    "regra": "Loja física · aceita quantidade menor que a caixa fechada",
+    "fonte": "etiqueta da loja",
+    "catalogo": config.DATA_DIR / "fornecedor_logospan.json",
+    "busca": config.DATA_DIR / "fornecedor_logospan_busca.json",
+    # a categoria vem dentro do próprio arquivo de busca, não de um arquivo à parte
+    "cats": None,
 }]
 
 
 def _carrega(p):
-    return json.loads(p.read_text("utf-8")) if p.exists() else []
+    return json.loads(p.read_text("utf-8")) if p is not None and p.exists() else []
 
 
 def _mensal(a: dict) -> dict:
@@ -62,51 +84,81 @@ def _categoria(c: dict | None) -> dict | None:
             "ticket": c.get("ticket"), "sazonalidade": c.get("sazonalidade")}
 
 
-def exportar() -> dict:
-    catalogo = _carrega(SAIDA)
-    cats = _carrega(CATS) or {}
+def _produtos(forn: dict, vereditos: dict) -> list[dict]:
+    """Os produtos de um fornecedor, já com os anúncios conferidos.
+
+    Um fornecedor sem site (catálogo digitado da prateleira) guarda a categoria e
+    a lista da subcategoria dentro do próprio arquivo de busca; o da Flexx vem do
+    `fornecedor_categorias.json`. Aqui os dois caminhos convivem.
+    """
+    catalogo = _carrega(forn["catalogo"])
+    cats = _carrega(forn.get("cats")) or {}
     if not isinstance(cats, dict):
         cats = {}
-    buscas = {b["fornecedor"]["url"]: b["anuncios"] for b in _carrega(BUSCA)}
-    vereditos = _carrega(VEREDITO) or {}
-    if isinstance(vereditos, list):                        # tolera lista de registros
-        vereditos = {f'{v["item"]}|{v["id"]}': v for v in vereditos}
+    # guarda o bloco inteiro, não só os anúncios: é dele que sai a categoria
+    buscas = {b["fornecedor"]["url"]: b for b in _carrega(forn["busca"])}
 
     produtos = []
     for it in catalogo:
+        bloco = buscas.get(it["url"]) or {}
         anuncios = []
-        for a in buscas.get(it["url"], []):
+        for a in bloco.get("anuncios", []):
             a = _mensal(a)
-            v = (vereditos.get(f'{it["url"]}|cat:{a.get("chave")}') if a.get("chave") else None)                 or vereditos.get(f'{it["url"]}|{a["id"]}', {})
-            anuncios.append({**a, "veredito": v.get("veredito"), "obs": v.get("obs"), "qtd": int(v.get("qtd") or 1)})
+            v = (vereditos.get(f'{it["url"]}|cat:{a.get("chave")}') if a.get("chave") else None) \
+                or vereditos.get(f'{it["url"]}|{a["id"]}', {})
+            anuncios.append({**a, "veredito": v.get("veredito"), "obs": v.get("obs"),
+                             "qtd": int(v.get("qtd") or 1)})
         # os "iguais" primeiro, depois os parecidos; dentro de cada grupo, quem mais vende
         ordem = {"igual": 0, "parecido": 1, None: 2, "diferente": 3}
         anuncios.sort(key=lambda a: (ordem.get(a["veredito"], 2), -(a.get("vendas_sem") or 0)))
+
         c = cats.get(it["url"]) or {}
         ja = {a["id"] for a in anuncios}
         # os que mais vendem na subcategoria, tirando os que já estão na lista do produto
-        mesma = [{**a, "veredito": None, "obs": None}
-                 for a in (c.get("mesma_categoria") or []) if a.get("id") not in ja]
+        crus = c.get("mesma_categoria") or bloco.get("mesma_categoria") or []
+        mesma = [{**_mensal(a), "veredito": None, "obs": None}
+                 for a in crus if a.get("id") not in ja]
         produtos.append({
             "url": it["url"], "nome": it["nome"], "img": it.get("img"),
-            "categoria": _categoria(c.get("cat")), "mesma_categoria": mesma, "ref": c.get("ref"),
+            "categoria": _categoria(c.get("cat")) or bloco.get("categoria"),
+            "mesma_categoria": mesma, "ref": c.get("ref"),
             "unit": it.get("unit"), "caixa": it.get("caixa"), "total": it.get("total"),
             "unidade": it.get("unidade"), "tags": it.get("tags") or [],
             # preço do site quando o catálogo (PDF) trouxe outro; página do catálogo
             "unit_site": it.get("unit_site"), "caixa_site": it.get("caixa_site"), "pagina": it.get("pagina"),
             "nome_catalogo": it.get("nome_catalogo"),
+            # etiqueta de prateleira: o que estava escrito no papel, para conferência
+            "cod": it.get("cod"), "etiqueta": it.get("etiqueta"),
+            # o que eu olhei na foto para bater o produto, e as fotos originais
+            "marcas": it.get("marcas") or [], "fotos": it.get("fotos") or [],
             "pesquisado": it["url"] in buscas,
             "anuncios": anuncios,
             "iguais": sum(1 for a in anuncios if a["veredito"] == "igual"),
             "parecidos": sum(1 for a in anuncios if a["veredito"] == "parecido"),
+            "fornecedor": forn["id"],
+        })
+    return produtos
+
+
+def exportar() -> dict:
+    vereditos = _carrega(VEREDITO) or {}
+    if isinstance(vereditos, list):                        # tolera lista de registros
+        vereditos = {f'{v["item"]}|{v["id"]}': v for v in vereditos}
+
+    fornecedores, produtos = [], []
+    for f in FORNECEDORES:
+        meus = _produtos(f, vereditos)
+        produtos.extend(meus)
+        fornecedores.append({
+            **{k: v for k, v in f.items() if k not in ("catalogo", "busca", "cats")},
+            "produtos": len(meus),
+            "pesquisados": sum(1 for p in meus if p["pesquisado"]),
         })
 
     dados = {
         "geradoEm": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-        "fornecedores": [{**f, "produtos": len(produtos),
-                          "pesquisados": sum(1 for p in produtos if p["pesquisado"])}
-                         for f in FORNECEDORES],
-        "produtos": [{**p, "fornecedor": "flexx"} for p in produtos],
+        "fornecedores": fornecedores,
+        "produtos": produtos,
     }
     DESTINO.write_text(json.dumps(dados, ensure_ascii=False, separators=(",", ":")), "utf-8")
     return dados
@@ -115,5 +167,6 @@ def exportar() -> dict:
 if __name__ == "__main__":
     d = exportar()
     print(json.dumps({"produtos": len(d["produtos"]),
-                      "pesquisados": d["fornecedores"][0]["pesquisados"],
+                      "fornecedores": {f["id"]: f"{f['pesquisados']}/{f['produtos']}"
+                                       for f in d["fornecedores"]},
                       "arquivo": str(DESTINO)}, ensure_ascii=False))

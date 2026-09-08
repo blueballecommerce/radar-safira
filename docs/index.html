@@ -4,11 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="concorrentes.css?v=20260908-dates">
 <title>Radar Safira</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-html{color-scheme:light dark}
+html{color-scheme:light dark;-webkit-text-size-adjust:100%}
 :root{
   --bg:#f5f4ef; --bg2:#ffffff; --bg3:#ecebe4; --line:#d9d7cc; --line2:#c5c3b6;
   --ink:#1c1f2b; --ink2:#4a4e5c; --ink3:#7b7f8c;
@@ -91,6 +92,12 @@ h2{font-family:var(--display);font-weight:700;font-size:1.5rem;margin:0 0 4px;le
 
 /* product list */
 .list{display:flex;flex-direction:column;gap:8px}
+/* Item de grade nasce com min-width:auto: a coluna 1fr nunca encolhe abaixo do
+   min-content do conteudo. Como .path e nowrap, esse min-content e a frase
+   inteira e a linha estourava a tela do celular — cada uma com uma largura
+   diferente. Com min-width:0 a coluna aperta e o text-overflow:ellipsis que ja
+   estava aqui finalmente corta o texto, que era a intencao desde o comeco. */
+.row>*,.fp>*,.an>*{min-width:0}
 .row{display:grid;grid-template-columns:44px 64px 1fr 170px 150px 120px 110px 120px;gap:14px;align-items:center;background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:10px 12px;cursor:pointer;transition:border-color .15s}
 .row:hover{border-color:var(--acc)}
 .row .rank{font-family:var(--display);font-weight:800;font-size:1.15rem;color:var(--ink3);text-align:center}
@@ -133,15 +140,22 @@ h2{font-family:var(--display);font-weight:700;font-size:1.5rem;margin:0 0 4px;le
 @media (max-width:980px){
   .row{grid-template-columns:34px 56px 1fr 120px;grid-auto-rows:auto}
   .row .cell{display:none}
+  .row .thumb{width:56px;height:56px}  /* a coluna aqui e 56px */
   .row .meter{grid-column:4;grid-row:1}
   .row .opp{grid-column:3/-1}
   .row .links{grid-column:1/3;grid-row:2;align-self:center}
 }
 @media (max-width:640px){
-  .row{grid-template-columns:48px 1fr;gap:10px}
+  .row{grid-template-columns:48px minmax(0,1fr);gap:10px}
   .row .rank,.row .links{display:none}
+  .row .thumb{width:48px;height:48px}  /* a coluna aqui e 48px */
   .row .opp{grid-column:1/-1}
   .row .meter{grid-column:1/-1;grid-row:auto}
+  /* mesma armadilha da aba Fornecedores: item de grid tem min-width auto, e a
+     etiqueta comprida nao quebra — juntos empurram a pagina para o lado */
+  .row > div{min-width:0}
+  .row .name,.row .path,.row .opp{overflow-wrap:anywhere}
+  .row .tags .tag{white-space:normal}
 }
 .more{display:flex;justify-content:center;margin:14px 0}
 
@@ -307,6 +321,66 @@ body.locked{overflow:hidden}
 .an .thumb{width:64px;height:64px}
 .an .obs{font-size:.8rem;color:var(--ink2);margin-top:4px;line-height:1.4}
 .an .obs b{color:var(--ink)}
+/* ---------- concorrentes do catálogo ----------
+   Ocupa a linha inteira, abaixo dos números do anúncio. Fica aberto quando são
+   poucos: com 3 ou 4 vendedores a tabela cabe na tela e não vale esconder. */
+.rivais{grid-column:1/-1;border-top:1px solid var(--line);margin-top:9px;padding-top:8px}
+.rivais>summary{cursor:pointer;font-size:.82rem;color:var(--ink2);list-style:none;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.rivais>summary::-webkit-details-marker{display:none}
+.rivais>summary::before{content:'▸';color:var(--ink3);display:inline-block;transition:transform .15s}
+.rivais[open]>summary::before{transform:rotate(90deg)}
+.rivais>summary b{color:var(--ink)}
+.rivais .unico{font-size:.82rem;color:var(--ink2)}
+.rivais table{width:100%;min-width:0;border-collapse:collapse;margin-top:9px;font-size:.82rem;table-layout:fixed}
+.rivais th{font-size:.64rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink3);
+  text-align:left;padding:5px 8px;border-bottom:1px solid var(--line);position:static;background:none;cursor:default;font-weight:600}
+.rivais td{padding:5px 8px;border-bottom:1px solid var(--line);vertical-align:middle}
+.rivais tr:last-child td{border-bottom:none}
+.rivais .num{font-family:var(--mono);text-align:right;white-space:nowrap}
+.rivais tr.ganha{background:var(--acc2)}
+.rivais tr.ganha td{font-weight:600}
+.rivais .selo{display:inline-block;font-size:.64rem;padding:1px 6px;border-radius:20px;border:1px solid var(--line2);color:var(--ink3);margin-left:5px;white-space:nowrap}
+.rivais .selo.ganha{border-color:var(--acc);color:var(--acc)}
+.rivais .rep.good{color:var(--good)} .rivais .rep.warn{color:var(--warn)} .rivais .rep.bad{color:var(--bad)}
+.rivais .nota{font-size:.76rem;color:var(--ink3);margin-top:7px;line-height:1.45}
+/* ---------- lupa: a foto de prateleira em tela cheia ----------
+   Serve para conferir o produto contra o anúncio: dá zoom, arrasta e mostra
+   embaixo os traços que eu usei para bater. Vale para mouse e para dedo. */
+.lupa{position:fixed;inset:0;z-index:60;background:rgba(8,10,16,.95);display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr) auto;overflow:hidden}
+.lupa[hidden]{display:none}
+.lupa .barra{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.12);color:#fff;flex-wrap:wrap}
+.lupa .barra h4{margin:0;font-family:var(--display);font-size:1rem}
+.lupa .barra .cinza{color:rgba(255,255,255,.6);font-size:.82rem}
+.lupa .barra .dir{margin-left:auto;display:flex;gap:8px;align-items:center}
+.lupa .palco{position:relative;overflow:hidden;min-height:0;min-width:0;touch-action:none;cursor:zoom-in}
+.lupa .palco.mao{cursor:grab} .lupa .palco.mao.puxando{cursor:grabbing}
+.lupa .palco img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform-origin:center;user-select:none;-webkit-user-drag:none;will-change:transform}
+.lupa .pe{border-top:1px solid rgba(255,255,255,.12);padding:12px 14px;color:#fff;max-height:40vh;overflow:auto}
+.lupa .pe h5{margin:0 0 8px;font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,.55)}
+.lupa .marcas{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:5px 18px}
+.lupa .marcas li{position:relative;padding-left:19px;font-size:.9rem;line-height:1.45}
+.lupa .marcas li::before{content:'✓';position:absolute;left:0;color:var(--good);font-weight:700}
+.lupa .etiq{font-size:.82rem;color:rgba(255,255,255,.7);margin-top:10px;line-height:1.5}
+.lupa .tiras{display:flex;gap:8px;overflow:auto;margin-top:10px}
+.lupa .tiras img{height:52px;border-radius:6px;border:2px solid transparent;cursor:pointer;background:#fff;flex:0 0 auto}
+.lupa .tiras img.sel{border-color:var(--acc)}
+.fhead .fotobt{margin-top:8px;display:inline-flex;align-items:center;gap:6px;font-size:.82rem;cursor:pointer}
+.fhead img.temfoto{cursor:zoom-in}
+@media (max-width:640px){
+  /* barra numa linha só: o nome corta com reticências e os botões ficam à direita,
+     senão a barra vira duas linhas e come metade do espaço da foto */
+  .lupa .barra{padding:8px 10px;gap:6px;flex-wrap:nowrap}
+  .lupa .barra h4{font-size:.86rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;flex:1 1 auto}
+  .lupa .barra .cinza{display:none}        /* as miniaturas já dizem qual foto é */
+  .lupa .barra .dir{flex:0 0 auto;gap:6px}
+  .lupa .barra .btn{padding:5px 9px;font-size:.8rem}
+  .lupa .pe{max-height:34vh}
+  .lupa .marcas{grid-template-columns:1fr}
+}
+
+@media (max-width:980px){ .rivais td:nth-child(3),.rivais th:nth-child(3),
+  .rivais td:nth-child(4),.rivais th:nth-child(4),
+  .rivais td:nth-child(5),.rivais th:nth-child(5){display:none} }
 @media (max-width:980px){ .an{grid-template-columns:56px 1fr 110px} .an .cell{display:none} }
 .marg{font-family:var(--display);font-weight:800;font-size:1.2rem;line-height:1}
 .marg.boa{color:var(--good)} .marg.media{color:var(--warn)} .marg.ruim{color:var(--bad)}
@@ -337,7 +411,7 @@ body.locked{overflow:hidden}
 ul.ext{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:5px}
 ul.ext li{display:flex;justify-content:space-between;gap:12px;font-size:.84rem;border-bottom:1px dashed var(--line);padding-bottom:4px}
 ul.ext li b{font-family:var(--mono);font-weight:500;white-space:nowrap}
-.an .scorepop{width:330px;right:auto;left:0}
+.an .scorepop{width:min(330px,calc(100vw - 32px));right:0;left:auto}
 .an .links .btn{padding:5px 9px;font-size:.8rem}
 
 /* ---------- categoria do produto e anúncios da categoria ---------- */
@@ -381,6 +455,109 @@ ul.ext li b{font-family:var(--mono);font-weight:500;white-space:nowrap}
 @media (prefers-reduced-motion:reduce){ .meter .pieseg{transition:none;stroke-dasharray:var(--dash)} .scorepop{transition:none} }
 @media (max-width:980px){ .scorepop{display:none} }
 
+/* ============ telas médias e pequenas: aba Fornecedores ============
+   A página escondia custo, vendas e lucro abaixo de 980px — justamente os
+   números da decisão. Aqui as linhas deixam de ser grade de colunas fixas e
+   viram flex: nome em cima, números quebrando numa segunda faixa. Nada some.
+   O toque na linha continua abrindo a ficha da JoomPulse, que traz o extrato. */
+@media (max-width:980px){
+  /* --- linha da lista de produtos --- */
+  .fp{display:flex;flex-wrap:wrap;align-items:flex-start;gap:8px 12px;padding:12px}
+  .fp .rank{order:1;flex:0 0 26px;width:26px;text-align:left;font-size:.95rem;line-height:1.5}
+  .fp .thumb{order:2;flex:0 0 54px;width:54px;height:54px}
+  .fp > div:not(.rank):not(.cell){order:3;flex:1 1 180px;min-width:0}
+  .fp .cell{display:block;order:4;flex:1 1 calc(25% - 9px);min-width:104px;
+    border-top:1px solid var(--line);padding-top:7px}
+  .fp .v.big{font-size:1rem}
+  .fp .name{overflow-wrap:anywhere}
+  .fp .tags{margin-top:4px}
+  /* a etiqueta de categoria é comprida ("Categoria em alta · receita … · vendas …");
+     sem quebrar, ela sozinha empurra a página inteira para o lado */
+  .fp .tags .tag,.an .tags .tag{white-space:normal}
+
+  /* --- linha de anúncio (concorrente) --- */
+  .an{display:flex;flex-wrap:wrap;align-items:flex-start;gap:8px 12px;padding:12px}
+  .an .thumb{order:1;flex:0 0 54px;width:54px;height:54px}
+  .an > div:not(.cell):not(.links){order:2;flex:1 1 200px;min-width:0}
+  .an .cell{display:block;order:3;flex:1 1 calc(33.333% - 8px);min-width:96px;
+    border-top:1px solid var(--line);padding-top:7px}
+  .an .v.big,.an .marg{font-size:1rem}
+  .an .name,.an .path,.an .obs{overflow-wrap:anywhere}
+  .an .links{order:4;flex:1 1 100%;display:flex;gap:8px}
+  .an .links .btn{flex:1 1 0;justify-content:center;text-align:center}
+  /* a tabela de concorrentes ocupa a linha inteira e precisa poder encolher */
+  .an .rivais{order:5;flex:1 1 100%;min-width:0;width:100%}
+}
+
+/* ---------------------- celular ---------------------- */
+@media (max-width:640px){
+  /* --- cabeçalho ---
+     Ele é sticky. Com as 7 abas quebrando em 4 linhas ele chegava a 343px de
+     altura numa tela de 812 — 42% da tela grudada no topo, com o conteúdo
+     deslizando por baixo. Aqui vira uma faixa de ~100px: marca curta, abas
+     numa tira que rola de lado, e o status em uma linha só. */
+  .top-in{padding:8px 12px;gap:6px 10px;align-items:center}
+  .brand{flex:0 0 auto}
+  .brand h1{font-size:1rem;white-space:nowrap}
+  .brand span{display:none}
+  nav.tabs{order:3;flex:1 1 100%;flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain;
+    -webkit-overflow-scrolling:touch;scrollbar-width:none;margin:0 -12px;padding:2px 12px}
+  nav.tabs::-webkit-scrollbar{display:none}
+  nav.tabs button{flex:0 0 auto;white-space:nowrap;padding:7px 11px;font-size:.88rem}
+  nav.tabs button .soon{display:none}
+  .fresh{order:4;flex:1 1 100%;font-size:.64rem;line-height:1.5;text-align:left;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+  .fp .cell{flex:1 1 calc(50% - 6px);min-width:0}
+  .an .cell{min-width:92px}
+
+  /* ficha do produto */
+  .fhead{grid-template-columns:104px minmax(0,1fr);gap:12px;padding:12px}
+  .fhead img{width:104px;height:104px}
+  .fhead h3{font-size:1.05rem;overflow-wrap:anywhere}
+  /* sem min-width:0 o conteúdo mais largo (título, botão, .kv) manda na coluna
+     e empurra a página inteira para o lado */
+  .fhead > div,.fhead .kv > div{min-width:0}
+  .fhead .kv{grid-template-columns:1fr;gap:7px}
+  .fhead .kv .k{font-size:.62rem}
+  .fhead .kv .v{font-size:.92rem;white-space:nowrap}
+  .fhead .fotobt{max-width:100%;overflow-wrap:anywhere}
+  .fhead .fotobt{white-space:normal;text-align:left}
+  .crumb{font-size:.8rem}
+
+  /* preços-alvo: a tabela rola dentro da própria caixa, o corpo da página não */
+  #f-alvos{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .tbl-alvos{min-width:330px;font-size:.84rem}
+  .tbl-alvos th,.tbl-alvos td{padding:7px 8px}
+  .alvo{padding:6px 9px} .alvo b{font-size:.98rem} .alvo span{font-size:.7rem}
+
+  /* concorrentes do catálogo */
+  .rivais th,.rivais td{padding:5px 6px}
+  .rivais td:first-child{overflow-wrap:anywhere}
+  .rivais > summary{font-size:.78rem;overflow-wrap:anywhere}
+
+  /* fornecedor e filtros */
+  .supc{grid-template-columns:56px 1fr;padding:14px}
+  .supc .logo,.supc .mono{width:56px;height:56px}
+  /* --- filtros ---
+     Os 11 chips não cabem dois por linha (a maioria passa de 160px), então
+     empilhavam em 11 linhas: 472px de filtro antes do primeiro produto. Viram
+     uma tira de uma linha que rola de lado. */
+  /* o texto de apresentacao da aba come 200px antes do primeiro produto */
+  .lead{font-size:.86rem;line-height:1.5;margin-bottom:10px}
+  h2{font-size:1.25rem}
+  main{padding:14px 12px 48px}
+  .filters{padding:10px;gap:8px}
+  .filters input[type=search]{flex:1 1 100%;min-width:0}
+  .chips{flex:1 1 100%;flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain;
+    -webkit-overflow-scrolling:touch;scrollbar-width:none;margin:0 -10px;padding:2px 10px}
+  .chips::-webkit-scrollbar{display:none}
+  .chips .chip{flex:0 0 auto;white-space:nowrap}
+  .filters .count{flex:1 1 100%;text-align:left}
+  .grp{flex-wrap:wrap;gap:4px}
+}
+
+
 /* ---------- tiles com leitura mais clara ---------- */
 .tile.accent{background:linear-gradient(180deg,var(--acc2),var(--bg2) 70%);border-color:var(--acc)}
 .tile.accent .v{color:var(--acc)}
@@ -396,6 +573,7 @@ ul.ext li b{font-family:var(--mono);font-weight:500;white-space:nowrap}
     <button role="tab" data-tab="imp" aria-selected="false">Importação JoomPro</button>
     <button role="tab" data-tab="sim" aria-selected="false">Simulador de preço</button>
     <button role="tab" data-tab="forn" aria-selected="false">Fornecedores</button>
+    <button role="tab" data-tab="conc" aria-selected="false" aria-controls="tab-conc">Concorrentes</button>
     <button role="tab" data-tab="shp" aria-selected="false">Shopee<span class="soon">em breve</span></button>
   </nav>
   <div class="fresh" id="fresh"></div>
@@ -582,6 +760,10 @@ ul.ext li b{font-family:var(--mono);font-weight:500;white-space:nowrap}
 </section>
 
 <!-- ================= SHOPEE ================= -->
+<section id="tab-conc" hidden aria-label="Concorrentes">
+  <div id="conc-root"><p role="status">Carregando concorrentes…</p></div>
+</section>
+
 <section id="tab-shp" hidden>
   <h2>Shopee Brasil</h2>
   <p class="lead">A JoomPulse cobre a Shopee desde maio de 2026, ainda sem palavras-chave, sazonalidade ou tendência de 12 meses. Esta aba será ligada quando o Mercado Livre estiver rodando redondo, com a mesma lógica de score adaptada aos sinais que a Shopee oferece (vendas 30 dias, tendência do item, favoritos, tipo de loja).</p>
@@ -592,8 +774,22 @@ ul.ext li b{font-family:var(--mono);font-weight:500;white-space:nowrap}
 </main>
 
 <div class="drawer" id="drawer"><div class="veil"></div><div class="panel" id="panel"></div></div>
+<div class="lupa" id="lupa" hidden>
+  <div class="barra">
+    <h4 id="lupa-nome"></h4><span class="cinza" id="lupa-cont"></span>
+    <span class="dir">
+      <button class="btn ghost" id="lupa-menos">−</button>
+      <span class="cinza" id="lupa-zoom">100%</span>
+      <button class="btn ghost" id="lupa-mais">+</button>
+      <button class="btn" id="lupa-fechar">Fechar</button>
+    </span>
+  </div>
+  <div class="palco" id="lupa-palco"><img id="lupa-img" alt=""></div>
+  <div class="pe" id="lupa-pe"></div>
+</div>
 <div class="toast" id="toast"></div>
 
+<script src="concorrentes.js?v=20260908-dates"></script>
 <script>
 /* ===================== data ===================== */
 let S = {meta:{generatedAt:null,counts:{products:0,categories:0,joompro:0}},products:[],categories:[],joompro:[]};
@@ -727,6 +923,8 @@ function showTab(t){
   // a aba pode ser restaurada da última visita antes do código dela ter rodado;
   // adiar um ciclo garante que `forn` já exista
   if (t==='forn') setTimeout(fornLoad, 0);
+  if (t==='conc') setTimeout(()=>window.RadarConcorrentes.load(), 0);
+  else if(location.hash.startsWith('#concorrentes')) history.replaceState(null,'',location.pathname+location.search);
   $$('nav.tabs button').forEach(b=>b.setAttribute('aria-selected', b.dataset.tab===t));
   $$('main > section').forEach(s=>s.hidden = s.id!=='tab-'+t);
   try{ localStorage.setItem('radar.tab', t);}catch(e){}
@@ -1582,7 +1780,7 @@ function renderAll(){
   mlTiles(); mlPicks(); renderML(true); catTiles(); renderCats(); impTiles(); renderImp(true);
 }
 fillSelects(); initSim();
-try{ const t=localStorage.getItem('radar.tab'); if(t && $('#tab-'+t)) showTab(t);}catch(e){}
+try{ const t=location.hash.startsWith('#concorrentes') ? 'conc' : localStorage.getItem('radar.tab'); if(t && $('#tab-'+t)) showTab(t);}catch(e){}
 $('#ml-list').innerHTML = '<div class="empty">Carregando a última rodada…</div>';
 fetch('data.json?_='+Date.now(), {cache:'no-store'}).then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); }).then(d=>{ S=d; renderAll(); fornLoad(true); })
   .catch(e=>{ $('#ml-list').innerHTML = '<div class="empty">Não consegui carregar data.json ('+esc(e.message)+'). Se for a primeira publicação, espere a primeira rodada do coletor.</div>'; });
@@ -1674,6 +1872,7 @@ const FILTROS = [
   ['pesquisado','Já pesquisados no ML', p=>p.pesquisado],
   ['mais_vendidos','Mais vendidos do último mês', p=>p.tags.includes('mais_vendidos')],
   ['novidades','Novidades do fornecedor', p=>p.tags.includes('novidades')],
+  ['criancas','Aposta para o mês das crianças', p=>p.tags.includes('mes_das_criancas')],
   ['igual','Com anúncio igual no ML', p=>p.iguais>0],
   ['margem','Margem boa (≥ 25% líquido)', p=>{ const b=lucroIguais(p); return !!b && b.lucro.margin>=.25; }],
   ['pouca','Pouca ou nenhuma concorrência', p=>p.pesquisado && p.iguais<=1],
@@ -1725,16 +1924,25 @@ function extratoHTML(e, preco, tipo, custo, titulo, qtd){
 }
 /* média, mínimo e máximo do que os concorrentes IGUAIS estão cobrando */
 function concorrencia(p){
-  const ig = p.anuncios.filter(a=>a.veredito==='igual'); const precos = [];
-  ig.forEach(a=>{ const q=qtdDe(a); if(a.preco!=null) precos.push(a.preco/q); (a.outros||[]).forEach(o=>{ if(o.preco!=null) precos.push(o.preco/q); }); });
+  /* A média sai só dos anúncios que realmente vendem — um por catálogo, o que
+     está com a Compra Ganha. Os outros anúncios do mesmo catálogo entram na
+     faixa (mínimo e máximo), mas não na média: são revendedores que anunciam e
+     vendem zero, e incluí-los puxava a média para longe do preço praticado. */
+  const ig = p.anuncios.filter(a=>a.veredito==='igual');
+  const vende = [], todos = [];
+  ig.forEach(a=>{ const q=qtdDe(a);
+    if(a.preco!=null){ vende.push(a.preco/q); todos.push(a.preco/q); }
+    (a.outros||[]).forEach(o=>{ if(o.preco!=null) todos.push(o.preco/q); }); });
   let fonte = 'concorrentes iguais';
-  if (!precos.length && (p.mesma_categoria||[]).length){          // sem igual: a referência é a subcategoria
-    p.mesma_categoria.forEach(a=>{ if(a.preco!=null) precos.push(a.preco); }); fonte = 'subcategoria';
+  if (!vende.length && (p.mesma_categoria||[]).length){          // sem igual: a referência é a subcategoria
+    p.mesma_categoria.forEach(a=>{ if(a.preco!=null){ vende.push(a.preco); todos.push(a.preco); } });
+    fonte = 'subcategoria';
   }
-  if (!precos.length) return null;
-  precos.sort((a,b)=>a-b);
-  return { n:precos.length, catalogos:ig.length, fonte, media:precos.reduce((s,x)=>s+x,0)/precos.length,
-           min:precos[0], max:precos[precos.length-1], mediana:precos[Math.floor(precos.length/2)] };
+  if (!vende.length) return null;
+  vende.sort((a,b)=>a-b); todos.sort((a,b)=>a-b);
+  return { n:todos.length, catalogos:ig.length, vendedores:vende.length, fonte,
+           media:vende.reduce((s,x)=>s+x,0)/vende.length,
+           min:todos[0], max:todos[todos.length-1], mediana:vende[Math.floor(vende.length/2)] };
 }
 
 function fornRender(){
@@ -1744,7 +1952,9 @@ function fornRender(){
       <div class="supc" data-sup="${f.id}">
         <img class="logo" src="${esc(f.logo)}" alt="" onerror="this.outerHTML='<div class=mono>${esc(f.nome.split(' ').map(w=>w[0]).join('').slice(0,2))}</div>'">
         <div><h3>${esc(f.nome)}</h3>
-          <div class="meta">${esc(f.regra)} · ${esc(f.contato)}<br><a href="${esc(f.site)}" target="_blank" rel="noopener">${esc(f.site.replace(/^https?:\/\/(www\.)?/,'').replace(/\/$/,''))} ↗</a></div>
+          <div class="meta">${esc(f.regra)} · ${esc(f.contato)}<br>${f.site
+            ? `<a href="${esc(f.site)}" target="_blank" rel="noopener">${esc(f.site.replace(/^https?:\/\/(www\.)?/,'').replace(/\/$/,''))} ↗</a>`
+            : '<span class="muted">sem site — catálogo conferido na loja</span>'}</div>
           <div class="nums"><span><b>${f.produtos}</b> produtos</span><span><b>${f.pesquisados}</b> pesquisados no ML</span></div>
         </div></div>`).join('')}</div>
       <p class="small muted">Clique no fornecedor para ver o catálogo. Os produtos <b>pesquisados</b> já têm os anúncios do Mercado Livre conferidos foto a foto.</p>`;
@@ -1758,7 +1968,12 @@ function fornRender(){
     let rows = D.produtos.filter(p=>p.fornecedor===forn.sup)
       .filter(p=>ativos.every(f=>f[2](p)))
       .filter(p=>!q || p.nome.toLowerCase().includes(q));
-    const todosDoForn = D.produtos.filter(p=>p.fornecedor===forn.sup && (p.tags.includes('catalogo_set26') || !D.produtos.some(x=>x.tags.includes('catalogo_set26'))));
+    /* o ranking é por fornecedor: um catálogo não disputa posição com o outro.
+       Se este fornecedor tem itens marcados como estoque de setembro, o ranking
+       olha só para eles; se não tem, olha para o catálogo inteiro. */
+    const doForn = D.produtos.filter(p=>p.fornecedor===forn.sup);
+    const temSet26 = doForn.some(p=>p.tags.includes('catalogo_set26'));
+    const todosDoForn = temSet26 ? doForn.filter(p=>p.tags.includes('catalogo_set26')) : doForn;
     const rk = rankingDe(todosDoForn);
     rows.sort((a,b)=>((rk.get(a.url)?.pos??1e9)-(rk.get(b.url)?.pos??1e9)));
     root.innerHTML = `
@@ -1782,7 +1997,7 @@ function fornRender(){
               ${(()=>{ const t=tendencia(p.categoria); return t ? `<span class="tag ${TEND[t][0]}" title="receita e vendas da subcategoria no mês, contra o mês anterior">${TEND[t][1]}${p.categoria.gG!=null?' · receita '+PCT(p.categoria.gG):''}${p.categoria.ocG!=null?' · vendas '+PCT(p.categoria.ocG):''}</span>` : ''; })()}
               ${p.anuncios.some(a=>['igual','parecido'].includes(a.veredito) && (a.dias??999)<=NEW_MAX_DAYS)?'<span class="tag good">anúncio novo no ML</span>':''}
             </div></div>
-          <div class="cell"><div class="k">${p.tags.includes('catalogo_set26')?'Custo (catálogo set/26)':'Custo unitário'}</div><div class="v big">${fmtBRL(p.unit)}</div>${p.unit_site!=null&&p.unit_site!==p.unit?`<div class="k">site: ${fmtBRL(p.unit_site)}</div>`:''}</div>
+          <div class="cell"><div class="k">${p.tags.includes('catalogo_set26')&&F.fonte?'Custo · '+esc(F.fonte):'Custo unitário'}</div><div class="v big">${fmtBRL(p.unit)}</div>${p.unit_site!=null&&p.unit_site!==p.unit?`<div class="k">site: ${fmtBRL(p.unit_site)}</div>`:''}</div>
           <div class="cell"><div class="k">Na caixa</div><div class="v big">${p.caixa??'—'} <span class="small muted">${esc(p.unidade||'un')}</span></div></div>
           <div class="cell"><div class="k">Fecha a caixa por</div><div class="v big">${fmtBRL(p.total)}</div></div>
           <div class="cell">${best ? `<div class="k">Melhor lucro líquido</div><div class="marg ${margClass(best.lucro.margin)}">${fmtPct(best.lucro.margin)}</div><div class="k">${fmtBRL(best.lucro.profit)}/un vendendo a ${fmtBRL(best.preco)}</div>` : '<div class="k">Lucro</div><div class="v muted">—</div>'}</div>
@@ -1832,21 +2047,23 @@ function fornProduto(root, F){
     const vend = iguais.reduce((s,a)=>s+(vMes(a)||0),0);
     const novos = iguais.filter(a=>(a.dias??999)<=NEW_MAX_DAYS).length;
     resumo = `<div class="veredito"><b>${iguais.length} catálogo${iguais.length>1?'s':''} vendendo exatamente este produto</b>, somando <b>${fmtN(vend)} vendas/mês</b>.
-      ${cc?`Os concorrentes cobram em média <b>${fmtBRL(cc.media)}</b> por unidade (${cc.n} anúncio${cc.n>1?'s':''}, de ${fmtBRL(cc.min)} a ${fmtBRL(cc.max)}) contra <b>${fmtBRL(custo)}</b> de custo.`:''}
+      ${cc?`Quem está vendendo cobra em média <b>${fmtBRL(cc.media)}</b> por unidade (${cc.vendedores} anúncio${cc.vendedores>1?'s':''} com a Compra Ganha) contra <b>${fmtBRL(custo)}</b> de custo${cc.n>cc.vendedores?`; somando ${cc.n-cc.vendedores===1?'o outro anúncio':`os outros ${cc.n-cc.vendedores} anúncios`} dos mesmos catálogos, os preços vão de ${fmtBRL(cc.min)} a ${fmtBRL(cc.max)}`:''}.`:''}
       ${novos?`<b>${novos}</b> ${novos>1?'catálogos entraram':'catálogo entrou'} há menos de ${NEW_MAX_DAYS} dias — demanda ainda em formação.`:'Todos têm mais de um mês: mercado já estabelecido.'}</div>`;
   }
 
   root.innerHTML = `
     <div class="crumb"><a id="f-back0">← Fornecedores</a> <span>›</span> <a id="f-back1">${esc(F.nome)}</a> <span>›</span> <b>${esc(p.nome)}</b></div>
-    <div class="fhead"><img src="${esc(p.img||'')}" alt="">
+    <div class="fhead"><img id="f-foto" class="${(p.fotos||[]).length||p.img?'temfoto':''}" src="${esc(p.img||'')}" alt="">
       <div><div class="small muted">${p.tags.includes('mais_vendidos')?'Mais vendido do último mês · ':''}${esc(F.nome)}</div>
         <h3>${esc(p.nome)}</h3>
         <div class="kv">
-          <div><div class="k">Custo por unidade${p.tags.includes('catalogo_set26')?' · catálogo de setembro':''}</div><div class="v">${fmtBRL(p.unit)}${p.unit_site!=null&&p.unit_site!==p.unit?` <span class="small muted">(site: ${fmtBRL(p.unit_site)})</span>`:''}</div></div>
+          <div><div class="k">Custo por unidade${p.tags.includes('catalogo_set26')&&F.fonte?' · '+esc(F.fonte):''}</div><div class="v">${fmtBRL(p.unit)}${p.unit_site!=null&&p.unit_site!==p.unit?` <span class="small muted">(site: ${fmtBRL(p.unit_site)})</span>`:''}</div></div>
           <div><div class="k">Unidades na caixa</div><div class="v">${p.caixa??'—'} ${esc(p.unidade||'un')}</div></div>
           <div><div class="k">Para fechar uma caixa</div><div class="v">${fmtBRL(p.total)}</div></div>
-          <div><div class="k">No fornecedor</div><div class="v">${p.url.startsWith('http')?`<a href="${esc(p.url)}" target="_blank" rel="noopener">abrir no site ↗</a>`:`só no catálogo${p.pagina?' · pág. '+p.pagina:''}`}</div></div>
-        </div></div></div>
+          <div><div class="k">No fornecedor</div><div class="v">${p.url.startsWith('http')?`<a href="${esc(p.url)}" target="_blank" rel="noopener">abrir no site ↗</a>`:(p.cod?`cód. ${esc(p.cod)}`:'só no catálogo')+(p.pagina?' · pág. '+p.pagina:'')}</div></div>
+        </div>
+        ${(p.fotos||[]).length||p.img?`<button class="btn ghost fotobt" id="f-verfoto">🔍 ${(p.fotos||[]).length?`Ver a foto da prateleira e conferir${(p.marcas||[]).length?` · ${p.marcas.length} pontos`:''}`:'Ver a foto do produto'}</button>`:''}
+        ${p.etiqueta?`<div class="small muted" style="margin-top:8px">Etiqueta da prateleira: ${esc(p.etiqueta)}</div>`:''}</div></div>
     ${resumo}${caixaCat}
     <div class="grp"><h3>Quanto cobrar para ganhar</h3><span class="hint">lucro líquido sobre a venda, já descontando comissão, custo fixo ou frete, imposto e embalagem · clique para levar à calculadora</span></div>
     <div class="alvos" id="f-alvos"></div>
@@ -1860,15 +2077,129 @@ function fornProduto(root, F){
         <span class="hint">${p.mesma_categoria.length} · os que mais vendem em ${esc(c?.folha||c?.l2||'—')} · lucro calculado no preço deles com o seu custo</span></div>
         ${p.mesma_categoria.map(a=>anuncioRow(a,p,true)).join('')}` : ''}`;
   $('#f-back0').onclick=()=>{ forn.view='lista'; fornRender(); };
+  // a foto da ficha e o botao abrem a mesma lupa
+  const abrirFoto = ()=>abrirLupa(p, 0);
+  if ($('#f-verfoto')) $('#f-verfoto').onclick = abrirFoto;
+  if ($('#f-foto') && ((p.fotos||[]).length || p.img)) $('#f-foto').onclick = abrirFoto;
   $('#f-back1').onclick=()=>{ forn.view='produtos'; fornRender(); };
   renderAlvos(p); renderCalc(p);
   const todos = [...p.anuncios, ...(p.mesma_categoria||[])];
   root.querySelectorAll('.an[data-id]').forEach(el=>{
-    el.onclick = e => { if (e.target.closest('a')) return; openAnuncio(todos.find(a=>a.id===el.dataset.id), p); };
+    /* a tabela de concorrentes abre e fecha por conta própria: clique nela não
+       deve abrir o card da JoomPulse por cima */
+    el.onclick = e => { if (e.target.closest('a, .rivais')) return; openAnuncio(todos.find(a=>a.id===el.dataset.id), p); };
     el.onkeydown = e => { if (e.key==='Enter') openAnuncio(todos.find(a=>a.id===el.dataset.id), p); };
   });
   window.scrollTo({top:0});
 }
+
+/* ---------- concorrentes de um catálogo ----------
+   Num catálogo do Mercado Livre só quem está com a Compra Ganha vende: no
+   levantamento da Logospan, TODOS os outros anúncios estavam com zero venda no
+   mês — inclusive os mais baratos. Por isso a tabela mostra a coluna de vendas
+   e destaca o vencedor: é o que explica por que o preço mais baixo da lista não
+   é o preço que o mercado pratica. */
+const REP_NOME = {'5':['Verde','good'],'4':['Verde-claro','good'],'3':['Amarela','warn'],'2':['Laranja','warn'],'1':['Vermelha','bad']};
+const MEDALHA = {P:'Platinum', G:'Gold', S:'Silver'};
+const TIPO_CURTO = {gold_pro:'Premium', gold_special:'Clássico', silver:'Clássico', free:'Grátis', p:'Premium', c:'Clássico'};
+function repHTML(r){ const x = REP_NOME[r]; return x ? `<span class="rep ${x[1]}">${x[0]}</span>` : '<span class="muted">—</span>'; }
+function envioHTML(o){ const l=[]; if(o.full) l.push('Full'); if(o.frete_gratis) l.push('frete grátis');
+  return l.length ? esc(l.join(' · ')) : '<span class="muted">—</span>'; }
+
+function vendedoresHTML(a){
+  if (!a.catalogo) return '';
+  const outros = a.outros || [], n = outros.length + 1;
+  if (!outros.length) return `<div class="rivais"><div class="unico">Sem concorrência no catálogo: <b>${esc(a.vendedor||'—')}</b> é o único vendedor deste anúncio.</div></div>`;
+  const nota = `<div class="nota">Num catálogo, só quem está com a <b>Compra Ganha</b> vende — os demais anúncios ficam zerados, mesmo mais baratos. O tempo no ar é do catálogo, igual para todos os vendedores.</div>`;
+  const linha = (o, ganha) => `<tr class="${ganha?'ganha':''}">
+      <td>${esc(o.vendedor||'—')}${ganha?'<span class="selo ganha">Compra Ganha</span>':''}${o.medalha?`<span class="selo">MercadoLíder ${MEDALHA[o.medalha]||''}</span>`:''}</td>
+      <td class="num">${fmtBRL(o.preco)}</td>
+      <td>${repHTML(o.rep)}</td>
+      <td>${o.tipo?esc(TIPO_CURTO[o.tipo]||o.tipo):'<span class="muted">—</span>'}</td>
+      <td>${envioHTML(o)}</td>
+      <td class="num">${ganha?fmtN(vMes(a)):'0'}</td></tr>`;
+  const dono = {vendedor:a.vendedor, preco:a.preco, rep:a.rep, medalha:a.medalha, tipo:a.tipo, full:a.full, frete_gratis:a.frete_gratis};
+  const corpo = [linha(dono, true), ...outros.map(o=>linha(o, false))].join('');
+  const cabeca = `<tr><th>Vendedor</th><th class="num">Preço</th><th>Reputação</th><th>Anúncio</th><th>Envio</th><th class="num">Vendas/mês</th></tr>`;
+  const precos = [a.preco, ...outros.map(o=>o.preco)].filter(x=>x!=null);
+  const faixa = precos.length ? `de ${fmtBRL(Math.min(...precos))} a ${fmtBRL(Math.max(...precos))} · ` : '';
+  const resumo = `<b>${n} vendedores</b> disputam este catálogo · ${faixa}quem vende é <b>${esc(a.vendedor||'—')}</b>, a ${fmtBRL(a.preco)}`;
+  // até 4 vendedores a tabela cabe aberta; acima disso abre no clique
+  return `<details class="rivais" ${n<=4?'open':''}><summary>${resumo}</summary><table><thead>${cabeca}</thead><tbody>${corpo}</tbody></table>${nota}</details>`;
+}
+
+/* ---------- lupa: abrir a foto de prateleira e conferir ----------
+   O zoom é do próprio navegador (transform), não recarrega imagem. Arrastar só
+   faz sentido com zoom acima de 1, senão a foto já cabe inteira na tela. */
+const lupa = { fotos: [], i: 0, z: 1, x: 0, y: 0, arrasta: null, pin: null };
+
+function lupaAplica(){
+  const im = $('#lupa-img');
+  im.style.transform = `translate(${lupa.x}px, ${lupa.y}px) scale(${lupa.z})`;
+  $('#lupa-zoom').textContent = Math.round(lupa.z * 100) + '%';
+  $('#lupa-palco').classList.toggle('mao', lupa.z > 1);
+}
+function lupaZoom(novo){
+  lupa.z = Math.max(1, Math.min(6, novo));
+  if (lupa.z === 1) { lupa.x = 0; lupa.y = 0; }
+  lupaAplica();
+}
+function lupaVai(i){
+  if (!lupa.fotos.length) return;
+  lupa.i = (i + lupa.fotos.length) % lupa.fotos.length;
+  $('#lupa-img').src = lupa.fotos[lupa.i];
+  $('#lupa-cont').textContent = lupa.fotos.length > 1 ? `foto ${lupa.i+1} de ${lupa.fotos.length}` : '';
+  $('#lupa-pe').querySelectorAll('.tiras img').forEach((t,k)=>t.classList.toggle('sel', k===lupa.i));
+  lupa.z = 1; lupa.x = 0; lupa.y = 0; lupaAplica();
+}
+function abrirLupa(p, i){
+  const fotos = (p.fotos && p.fotos.length) ? p.fotos.slice() : (p.img ? [p.img] : []);
+  if (!fotos.length) return;
+  lupa.fotos = fotos;
+  $('#lupa-nome').textContent = p.nome || '';
+  const marcas = (p.marcas || []).map(m=>`<li>${esc(m)}</li>`).join('');
+  $('#lupa-pe').innerHTML =
+    (marcas ? `<h5>O que eu conferi nesta foto</h5><ul class="marcas">${marcas}</ul>` : '')
+    + (p.etiqueta ? `<div class="etiq"><b>Etiqueta da prateleira:</b> ${esc(p.etiqueta)}</div>` : '')
+    + (fotos.length > 1 ? `<div class="tiras">${fotos.map(f=>`<img src="${esc(f)}" alt="">`).join('')}</div>` : '');
+  $('#lupa-pe').querySelectorAll('.tiras img').forEach((t,k)=>t.onclick=()=>lupaVai(k));
+  $('#lupa').hidden = false; document.body.classList.add('locked');
+  lupaVai(i || 0);
+}
+function fecharLupa(){ $('#lupa').hidden = true; document.body.classList.remove('locked'); }
+
+(function ligaLupa(){
+  const palco = $('#lupa-palco');
+  if (!palco) return;
+  $('#lupa-fechar').onclick = fecharLupa;
+  $('#lupa-mais').onclick = ()=>lupaZoom(lupa.z * 1.4);
+  $('#lupa-menos').onclick = ()=>lupaZoom(lupa.z / 1.4);
+  document.addEventListener('keydown', e=>{
+    if ($('#lupa').hidden) return;
+    if (e.key === 'Escape') fecharLupa();
+    if (e.key === 'ArrowRight') lupaVai(lupa.i + 1);
+    if (e.key === 'ArrowLeft') lupaVai(lupa.i - 1);
+  });
+  palco.addEventListener('wheel', e=>{ e.preventDefault(); lupaZoom(lupa.z * (e.deltaY < 0 ? 1.15 : 1/1.15)); }, {passive:false});
+  palco.addEventListener('dblclick', ()=>lupaZoom(lupa.z > 1 ? 1 : 2.5));
+  // arrastar com um dedo/mouse; pinça com dois dedos
+  const pontos = new Map();
+  palco.addEventListener('pointerdown', e=>{
+    palco.setPointerCapture(e.pointerId); pontos.set(e.pointerId, {x:e.clientX, y:e.clientY});
+    if (pontos.size === 1 && lupa.z > 1) { lupa.arrasta = {x:e.clientX - lupa.x, y:e.clientY - lupa.y}; palco.classList.add('puxando'); }
+    if (pontos.size === 2) { lupa.arrasta = null; lupa.pin = {d: dist(pontos), z: lupa.z}; }
+  });
+  palco.addEventListener('pointermove', e=>{
+    if (!pontos.has(e.pointerId)) return;
+    pontos.set(e.pointerId, {x:e.clientX, y:e.clientY});
+    if (lupa.pin && pontos.size === 2) { lupaZoom(lupa.pin.z * (dist(pontos) / lupa.pin.d)); return; }
+    if (lupa.arrasta) { lupa.x = e.clientX - lupa.arrasta.x; lupa.y = e.clientY - lupa.arrasta.y; lupaAplica(); }
+  });
+  const solta = e=>{ pontos.delete(e.pointerId); lupa.arrasta = null; if (pontos.size < 2) lupa.pin = null; palco.classList.remove('puxando'); };
+  palco.addEventListener('pointerup', solta);
+  palco.addEventListener('pointercancel', solta);
+  function dist(m){ const [a,b] = [...m.values()]; return Math.hypot(a.x-b.x, a.y-b.y); }
+})();
 
 function anuncioRow(a, p, daCategoria){
   const q = qtdDe(a), custo = custoDe(a,p);
@@ -1882,12 +2213,13 @@ function anuncioRow(a, p, daCategoria){
           ? `catálogo com <b>${a.bb||1} vendedor${(a.bb||1)>1?'es':''}</b> · quem mais vende: ${esc(a.vendedor||'—')}${a.preco_min!=null&&a.preco_max!=null&&a.preco_min!==a.preco_max?` · de ${fmtBRL(a.preco_min)} a ${fmtBRL(a.preco_max)}`:''}`
           : `anúncio próprio de ${esc(a.vendedor||'—')}`}${a.tipo?' · '+(TIPO[a.tipo]||a.tipo):''}${a.frete_gratis?' · frete grátis':''}${q>1?` · <b class="kit">kit com ${q} unidades</b>`:''}${a.l1?' · '+esc(a.l1):''}</div>
         <div class="tags"><span class="tag ${(a.dias??999)<=NEW_MAX_DAYS?'good':''}">${idade(a.dias)}${ini?' · desde '+ini:''}</span>${a.avaliacoes?`<span class="tag">${fmtN(a.avaliacoes)} aval.${a.nota?' · '+a.nota.toFixed(1)+'★':''}</span>`:'<span class="tag">sem avaliações</span>'}${a.l2?`<span class="tag">${esc(a.l2)}</span>`:''}</div>
-        ${a.obs?`<div class="obs">${esc(a.obs)}</div>`:''}</div>
+        ${a.obs?`<div class="obs"><b>${({igual:'Bate:',parecido:'Diferença:',diferente:'Descartei porque:'})[a.veredito]||'Nota:'}</b> ${esc(a.obs)}</div>`:''}</div>
       <div class="cell"><div class="k">Preço no ML</div><div class="v big">${fmtBRL(a.preco)}</div>${q>1?`<div class="k">${fmtBRL((a.preco||0)/q)}/un</div>`:''}</div>
       <div class="cell"><div class="k">Vendas/mês</div><div class="v big">${fmtN(vMes(a))}</div><div class="k">fatura ${fmtBRLc(a.receita_mes)}/mês</div></div>
       <div class="cell meter" tabindex="0"><div class="k">Lucro líquido</div><div class="marg ${margClass(e.margin)}">${fmtPct(e.margin)}</div><div class="k">${q>1?`${fmtBRL(e.profit)}/kit · ${fmtBRL(e.profit/q)}/un`:`${fmtBRL(e.profit)}/un`}</div>
         <div class="scorepop" role="tooltip">${extratoHTML(e, a.preco||0, tipoDe(a), custo, null, q)}</div></div>
       <div class="links"><button class="btn" data-jp="${esc(a.id)}">JoomPulse</button><a class="btn ghost" href="${fornLink(a)}" target="_blank" rel="noopener">Mercado Livre ↗</a></div>
+      ${vendedoresHTML(a)}
     </div>`;
 }
 
@@ -1923,7 +2255,7 @@ function renderCalc(p){
       <div class="field"><label>Tipo de anúncio</label><select id="fc-tipo"><option value="c"${st.tipo==='c'?' selected':''}>Clássico</option><option value="p"${st.tipo==='p'?' selected':''}>Premium (12x sem juros)</option></select></div>
       <div class="field"><label>Categoria (comissão)</label><select id="fc-cat">${L1S.map(c=>`<option value="${esc(c)}"${c===st.cat?' selected':''}>${esc(c)}</option>`).join('')}</select></div>
       <div class="field"><label>Seu preço de venda</label><input id="fc-preco" type="number" step="0.01" value="${st.preco}"></div>
-      ${cc?`<div class="cmp"><div class="k">${cc.fonte==='subcategoria'?'Média da subcategoria (sem igual conferido)':'Concorrentes iguais'}</div><div class="v">média <b>${fmtBRL(cc.media)}</b> · mín ${fmtBRL(cc.min)} · máx ${fmtBRL(cc.max)}</div><div class="k">${cc.n} anúncios${cc.catalogos?` em ${cc.catalogos} catálogo${cc.catalogos>1?'s':''}`:' da subcategoria'}</div></div>`:''}
+      ${cc?`<div class="cmp"><div class="k">${cc.fonte==='subcategoria'?'Média da subcategoria (sem igual conferido)':'Quem está vendendo'}</div><div class="v">média <b>${fmtBRL(cc.media)}</b> · mín ${fmtBRL(cc.min)} · máx ${fmtBRL(cc.max)}</div><div class="k">média de ${cc.vendedores} anúncio${cc.vendedores>1?'s':''} com a Compra Ganha${cc.catalogos?` · faixa entre os ${cc.n} anúncios de ${cc.catalogos} catálogo${cc.catalogos>1?'s':''}`:' da subcategoria'}</div></div>`:''}
     </div>
     <div class="calc-out">${leitura}<div class="ext-card">${extratoHTML(e, st.preco||0, st.tipo, custo)}</div></div>`;
   const rerender = () => { renderCalc(p); };

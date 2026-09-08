@@ -17,3 +17,6 @@ data/catalogo_set26.json
 data/*.log
 .claude/
 data/fornecedor_categorias.json
+data/fornecedor_logospan.json
+data/fornecedor_logospan_busca.json
+data/*.bak*.json

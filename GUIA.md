@@ -22,7 +22,25 @@ principal**, o notebook (DOJOÇO) é onde a coleta roda hoje e onde o código é
 
 **Quem abre a página da tailnet:** qualquer aparelho ligado no Tailscale da empresa — os seus dois
 PCs, o iPhone e o PC do Fernando. Não tem senha nem porta aberta na internet; fora do Tailscale o
-link não abre (aí vale o link público do GitHub, que mostra a mesma coisa).
+link não abre (aí vale o link público do GitHub — mas veja o aviso abaixo).
+
+> **As duas páginas não mostram a mesma coisa.** A da tailnet (`:8444`) serve a pasta
+> `C:\Projeto - Radar Safira\docs` **do disco**: salvou o arquivo, mudou na hora. A pública do
+> GitHub serve o **último commit enviado**. Enquanto houver trabalho sem commit, o celular (que
+> normalmente abre o link público) fica vendo uma versão velha — sem nada do que foi feito depois
+> do último `publicar.ps1`. Se algo "não aparece no celular", **é quase sempre isto**: confira
+> `git status` antes de procurar bug.
+
+> **A cópia do notebook (`OneDrive\Área de Trabalho\radar-safira`) pode estar suja e velha.**
+> Em 08/09/2026 o `docs/index.html` dela estava 511 linhas atrás do que já estava publicado —
+> faltavam 19 funções vivas (`oportunidade`, `oppBadge`, a página do produto inteira). Um `push`
+> dali teria derrubado features que estavam no ar. Antes de publicar por aquela pasta, compare:
+>
+> ```bash
+> git diff --stat origin/main -- docs/index.html   # muitas deleções = a cópia está atrás
+> ```
+>
+> A fonte da verdade é `C:\Projeto - Radar Safira`.
 
 **Levar uma mudança para o Predator** (código, dados, vereditos): commite aqui e rode
 
@@ -228,9 +246,23 @@ WEIGHTS = {"demand": 0.35, "competition": 0.25, "growth": 0.25, "novelty": 0.15}
 
 ## Fornecedores: como funciona e como fazer os próximos lotes
 
-A aba **Fornecedores** mostra o catálogo da Flexx Imports (custo por unidade, tamanho
-da caixa, valor para fechar a caixa) e, para cada produto pesquisado, os catálogos do
-Mercado Livre que vendem a mesma coisa — conferidos foto a foto.
+A aba **Fornecedores** mostra, por fornecedor, o custo por unidade, o tamanho da caixa
+e o valor para fechar uma; e, para cada produto pesquisado, os catálogos do Mercado Livre
+que vendem a mesma coisa — conferidos foto a foto.
+
+Hoje há dois:
+
+| Fornecedor | Catálogo | Regra de compra | De onde vem o preço |
+|---|---|---|---|
+| **Flexx Imports** | site WooCommerce, raspado | só caixa fechada | catálogo set/26 |
+| **Logospan** | loja física, digitado da prateleira | aceita menos que a caixa | etiqueta da loja |
+
+Em cada anúncio de catálogo aparece a tabela **de todos os vendedores que disputam
+aquele anúncio**: quem está com a Compra Ganha, preço, reputação, tipo de anúncio, envio
+e vendas no mês. Vale ler com atenção — num catálogo do Mercado Livre **só quem tem a
+Compra Ganha vende**; os outros ficam zerados mesmo estando mais baratos. Por isso a
+"média dos concorrentes" é calculada só com quem tem a Compra Ganha, e o mínimo e o
+máximo mostram a faixa do catálogo inteiro.
 
 Dentro de cada produto:
 
@@ -240,6 +272,15 @@ Dentro de cada produto:
 - **Calcule o seu preço** — escolha o tipo de anúncio, digite o preço e veja o extrato
   completo e a comparação com a **média dos concorrentes iguais**. A leitura diz se há
   espaço (abaixo da média com lucro), se você está acima, ou se está no prejuízo.
+- **Ver a foto da prateleira e conferir** — abre a foto original em tela cheia, com
+  zoom (roda do mouse, botões + / −, duplo clique, ou pinça no celular) e arrasto.
+  Embaixo da foto ficam os **traços de conferência**: a lista do que eu olhei para
+  decidir se um anúncio é o mesmo produto (cor, formato, o que vem na caixa, idade).
+  É o que torna o veredito auditável — você confere item a item em vez de acreditar.
+  Só existe para fornecedor com foto de prateleira; na Flexx o botão abre a foto do
+  catálogo deles.
+- Em cada concorrente, o motivo do veredito vem rotulado: **Bate:**, **Diferença:**
+  ou **Descartei porque:**.
 - Em cada anúncio, passe o mouse em **Lucro líquido** para ver o extrato daquele preço.
   O botão **JoomPulse** abre um card com tudo que a JoomPulse trouxe do anúncio, aqui
   mesmo. Só **Mercado Livre ↗** leva para fora — para você conferir.
@@ -271,6 +312,29 @@ Dentro de cada produto:
 
 As premissas de peso, reputação, imposto e embalagem são as do **Simulador de preço**:
 mudou lá, tudo aqui recalcula.
+
+### No celular
+
+A página inteira cabe numa tela de celular, sem rolar para o lado. Quatro mudanças de
+comportamento que valem saber:
+
+- **Os números não somem mais.** Em tela pequena as linhas quebram para uma segunda
+  faixa, embaixo do nome, em vez de esconder custo, caixa, preço, vendas e lucro.
+  Antes eles sumiam abaixo de 980 px — justamente onde você olha o radar na frente
+  da prateleira.
+- **O cabeçalho é uma faixa fina.** Ele é fixo no topo; com as 7 abas quebrando em
+  quatro linhas, chegava a 343 px numa tela de 812 — quase metade da tela grudada,
+  com o conteúdo deslizando por baixo. Agora tem 117 px: as **abas rolam de lado**,
+  numa linha só.
+- **Os filtros também rolam de lado.** Os 11 chips empilhavam em 11 linhas (472 px de
+  filtro antes do primeiro produto). Agora é uma tira de uma linha; arraste para ver
+  os outros.
+- **Os dados do produto ficam em uma coluna**, para o valor não quebrar no meio
+  (`R$ 3.237,84` virava `R$ 3.237,` / `84`).
+
+Para ver o extrato de um anúncio no celular, **toque na linha**: abre a ficha completa
+da JoomPulse, com o extrato, os outros vendedores e o link para o Mercado Livre. O
+balão que aparece ao passar o mouse é só do computador.
 
 ### Pesquisar mais produtos (lotes de 30 do catálogo)
 
@@ -304,6 +368,41 @@ Os vereditos ficam guardados por catálogo (foto + título), então refazer a pe
 apaga o que já foi conferido. A leitura de categorias também é incremental: só lê o que
 ainda não tem categoria, e uma categoria lida serve para todos os produtos dela.
 
+### Fornecedor sem site, como a Logospan
+
+A Logospan é loja física: não há página para raspar. O catálogo é digitado a partir da
+foto da etiqueta verde da prateleira — código, nome e preço — em
+`data\fornecedor_logospan.json`, e a pesquisa do ML fica em
+`data\fornecedor_logospan_busca.json`. Três diferenças em relação à Flexx:
+
+- **A `url` é sintética**, no formato `logospan:<código>`. Ela continua sendo a chave do
+  produto (é assim que o veredito acha o item), e a página troca o link "abrir no site"
+  por "cód. 24689".
+- **O campo `etiqueta`** guarda, em texto, o que estava escrito no papel. É a única fonte
+  de verdade de um catálogo digitado à mão, então ele aparece na ficha do produto para
+  você conferir contra a foto.
+- **A categoria do ML vem dentro do próprio arquivo de busca**, não do
+  `fornecedor_categorias.json`.
+
+A foto do produto sai da própria foto de prateleira. Guarde a original em
+`docs\img\logospan\originais\`, meça o recorte uma vez em `ITENS`, dentro de
+`scripts\etiqueta.py`, e rode:
+
+```powershell
+python scripts\etiqueta.py prova     # folha de prova, para conferir os recortes
+python scripts\etiqueta.py cartoes   # grava docs\img\logospan\<código>.jpg
+```
+
+Sai a miniatura (só o produto) e, em `cartoes\`, o cartão com a etiqueta verde recortada
+ao lado dos dados. A caixa da etiqueta só precisa ser aproximada: o verde fluorescente é
+o único da cena, então o script fecha o enquadramento sozinho e endireita a etiqueta
+quando você informa o giro.
+
+Para acrescentar outro fornecedor, basta um bloco novo em `FORNECEDORES`, dentro de
+`radar\fornecedor_export.py`, apontando para os arquivos dele. Os vereditos de todos
+moram no mesmo arquivo, sem risco de colisão: a chave começa pela `url`, que já carrega
+o fornecedor.
+
 ---
 
 ## O que este radar ainda não faz
@@ -331,3 +430,39 @@ fornecerem um `client_id`, o caminho antigo continua no código:
 3. `python -m radar login` e `python -m radar run`
 
 Aí a coleta volta a rodar na nuvem, sem depender do seu PC ligado.
+
+
+## Concorrentes — pesquisa inicial de 08/09/2026
+
+A aba **Concorrentes**, ao lado de Fornecedores, começa com COMERCIALBRINKANDO e MERCADOKIDS,
+encontrados respectivamente nos produtos de bolhas de sabão e conjuntos infantis do Radar.
+Abra um vendedor para buscar seus produtos, filtrar categorias e ordenar por vendas, faturamento
+ou preço do anúncio principal. Abra a ficha para ver características, variações e anúncios vinculados.
+O link **Ver loja no Mercado Livre**, no alto de cada cartão, abre a loja real em outra aba.
+Os endereços de COMERCIALBRINKANDO e MercadoKids foram conferidos em 08/09/2026.
+Cada produto mostra a criação do anúncio principal e quantos dias decorreram até a consulta
+(calendário de São Paulo). A ficha separa o principal dos demais anúncios, com a data de cada um.
+A criação vem de `adPublishDate` da JoomPulse; `daysInAd` mede tempo ativo e não substitui a data.
+Opções sem anúncio próprio identificado ficam sem data atribuída. O principal continua sendo
+o de maior estimativa mensal de vendas, com desempate pelo indicador público acumulado.
+
+Foram coletados todos os 208 anúncios ativos disponíveis na JoomPulse para esses vendedores
+(147 + 61), com referência de 07/09/2026. Isso não garante a cobertura de toda a loja no Mercado Livre.
+A contagem de produtos é diferente da contagem de anúncios: inclui variações identificadas e agrupa
+anúncios com identidade comprovada. Título parecido sozinho não elimina um anúncio.
+O principal é o de maior estimativa mensal; em empate, usa o indicador público acumulado e o ID.
+Cores, tamanhos e quantidades diferentes ficam separados. Uma opção sem anúncio correspondente
+na fonte fica sem preço/vendas confirmados; a venda do anúncio vizinho não é atribuída a ela.
+
+As vendas e receitas mensais/semanais são **estimativas**, não totais oficiais nem janelas móveis.
+As vendas concluídas em 365 dias no perfil vêm do dado de transações do Mercado Livre.
+A fonte não informa vendas por variação nem a data da primeira venda. Tempo e avaliações de catálogo
+podem ser compartilhados. O custo e a margem do concorrente não são públicos.
+
+A pesquisa é uma fotografia desta data; esta aba não foi incluída na rotina automática das 5h.
+Os registros originais e as características observadas ficam em **data/concorrentes/**.
+Para reconstruir a tela a partir deles: `python -m radar.concorrentes`.
+O resultado é **docs/concorrentes.json**; a interface está em **docs/concorrentes.js** e **docs/concorrentes.css**.
+A integração no índice preserva as outras abas. O teste específico é
+`python -m unittest discover -s tests -p test_concorrentes.py`.
+
