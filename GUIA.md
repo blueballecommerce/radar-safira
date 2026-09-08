@@ -162,6 +162,9 @@ Dentro de cada produto:
 - **Kits** — anúncio que entrega mais de uma unidade do fornecedor ("Kit 2", "Kit 3 toucas",
   "2 varais") aparece marcado como **kit com N unidades**: o lucro usa custo × N e a média dos
   concorrentes é por unidade. A quantidade é registrada na conferência, junto com o veredito.
+  **Regra quando não se sabe quantas unidades vêm na unidade do fornecedor:** o custo do
+  anúncio é custo × a quantidade que o título do anúncio anuncia ("6 bombas" = 6 × custo),
+  até a Flexx confirmar o conteúdo da caixa. Com a confirmação, a conta usa o conteúdo real.
 - **Ranking (#)** — ordem de oportunidade dentro do catálogo. Quem tem lucro medido em
   anúncio igual vem primeiro (mesmo quando o lucro é negativo — é informação); depois
   quem só tem estimativa pela subcategoria; sem informação nenhuma fica no fim.
