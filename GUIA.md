@@ -4,6 +4,66 @@ Este é o manual do dia a dia. Se algo parar de funcionar, a resposta provavelme
 está aqui.
 
 **A página:** https://blueballecommerce.github.io/radar-safira/
+**A página na rede da empresa (Tailscale):** https://dojoo.tailce25ed.ts.net:8444/
+
+---
+
+## Onde o projeto mora (desde 08/09/2026)
+
+O Radar segue o desenho do Nexo: **o Predator (a Nave do João, `dojoo` no Tailscale) é a casa
+principal**, o notebook (DOJOÇO) é onde a coleta roda hoje e onde o código é escrito, e o GitHub
+é a cópia pública.
+
+| Onde | O que tem | Como chegar |
+|---|---|---|
+| **Predator** (`dojoo`, 100.101.114.106) | repositório central `C:\Repos\radar-safira.git` e a cópia de trabalho `C:\Projeto - Radar Safira`, com `.venv` e Chromium prontos; serve a página da tailnet pelo Tailscale Serve (porta 8444) | `ssh predator` deste notebook · página em https://dojoo.tailce25ed.ts.net:8444/ |
+| **Notebook** (`dojooco`, este PC) | esta pasta; a tarefa "Radar Safira" das 5h roda aqui e, ao terminar, publica no GitHub **e** no Predator | — |
+| **GitHub** | cópia pública do código e dos dados; página pública | https://github.com/blueballecommerce/radar-safira · https://blueballecommerce.github.io/radar-safira/ |
+
+**Quem abre a página da tailnet:** qualquer aparelho ligado no Tailscale da empresa — os seus dois
+PCs, o iPhone e o PC do Fernando. Não tem senha nem porta aberta na internet; fora do Tailscale o
+link não abre (aí vale o link público do GitHub, que mostra a mesma coisa).
+
+**Levar uma mudança para o Predator** (código, dados, vereditos): commite aqui e rode
+
+```powershell
+.\scripts\publicar.ps1           # GitHub + Predator
+.\scripts\publicar.ps1 -Dados    # idem, e ainda copia pranchas, decisões e fornecedor*.json
+```
+
+Ele empurra para o GitHub e para o Predator, atualiza a cópia de trabalho de lá e mostra o commit
+que ficou em cada lugar. Se o Predator tiver um commit que o notebook não tem, ele para e avisa,
+em vez de misturar. Antes de mexer em qualquer arquivo, a regra é a do Nexo: olhe o estado do
+Predator primeiro:
+
+```powershell
+ssh predator 'cd "/c/Projeto - Radar Safira" && git status -sb && git log --oneline -1'
+```
+
+**Trabalhando do Predator** (Claude Code aberto lá): a pasta é `C:\Projeto - Radar Safira`.
+Commit lá, `git push central main`; depois, aqui no notebook, `git pull --ff-only predator main`.
+
+**Para a coleta das 5h rodar no Predator** (ele fica ligado 24h; o notebook não): lá já tem
+`.venv` e Chromium, falta só a sessão da JoomPulse, que não copia entre máquinas. No Predator:
+
+```powershell
+cd "C:\Projeto - Radar Safira"
+& ".\.venv\Scripts\python.exe" -m radar login-browser    # abre o navegador; código pelo sócio
+.\scripts\agendar.ps1                                    # cria a tarefa das 5h lá
+```
+
+e aqui no notebook `Disable-ScheduledTask -TaskName "Radar Safira"`. **Uma coleta por vez:** a
+JoomPulse derruba a outra sessão. A partir daí a rodada guarda o commit no repositório central do
+Predator sozinha, e o notebook puxa com `git pull --ff-only predator main`. Para a página pública
+continuar atualizando, o Predator também precisa do GitHub: `git remote add origin
+https://github.com/blueballecommerce/radar-safira.git` e um login do GitHub lá.
+
+**Sócio (Fernando):** o PC dele está na mesma rede Tailscale (aparece conversando com o Predator),
+então o link da tailnet deve abrir lá direto. Se não abrir, no painel do Tailscale
+(https://login.tailscale.com/admin/machines), na máquina `dojoo`, use **Share** e mande o convite
+para ele. O repositório é público para leitura; para ele também poder enviar mudanças, adicione o
+GitHub dele em https://github.com/blueballecommerce/radar-safira/settings/access. A página **não**
+está aberta para a internet inteira (Funnel desligado); se quiser isso, é um comando no Predator.
 
 ---
 

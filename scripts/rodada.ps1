@@ -37,14 +37,30 @@ if ($LASTEXITCODE -ne 0) {
 }
 Registrar "coleta concluida"
 
-# Publica no GitHub Pages. Só commita se algo mudou de fato.
+# Publica (GitHub Pages e Predator). Só commita se algo mudou de fato.
 git add data/radar.db docs/data.json
 git diff --cached --quiet
 if ($LASTEXITCODE -ne 0) {
     git -c user.name="radar-bot" -c user.email="radar-bot@users.noreply.github.com" `
         commit -q -m "radar: rodada $(Get-Date -Format 'yyyy-MM-dd HH:mm')"
-    git push -q origin main
-    Registrar "publicado no GitHub Pages"
+    $remotos = @(git remote)
+    if ($remotos -contains "origin") {
+        git push -q origin main
+        Registrar "publicado no GitHub Pages"
+    }
+    if ($remotos -contains "predator") {
+        # Notebook: o mesmo commit vai para o Predator (repositorio central + pagina da tailnet).
+        # Se o Predator estiver desligado, a rodada nao falha: fica no log e o proximo
+        # .\scripts\publicar.ps1 poe em dia.
+        powershell -NoProfile -ExecutionPolicy Bypass -File (Join-Path $raiz "scripts\publicar.ps1") -SoPredator |
+            Add-Content -Path $log -Encoding utf8
+        if ($LASTEXITCODE -eq 0) { Registrar "publicado no Predator" }
+        else { Registrar "AVISO: Predator nao atualizado - rode scripts\publicar.ps1" }
+    } elseif ($remotos -contains "central") {
+        # Predator: a copia de trabalho e a propria producao; falta so guardar no repositorio central.
+        git push -q central main
+        Registrar "publicado no repositorio central do Predator"
+    }
 } else {
     Registrar "nada mudou, sem publicar"
 }
