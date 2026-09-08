@@ -290,6 +290,9 @@ body.locked{overflow:hidden}
 @media (max-width:980px){ .fp{grid-template-columns:34px 56px 1fr 120px} .fp .cell{display:none} }
 .fp .rank{font-family:var(--display);font-weight:800;font-size:1rem;color:var(--ink3);text-align:center}
 .fp .rank.top{color:var(--acc)}
+.row.fornrow{border-left:3px solid var(--acc)}
+.selo-forn{display:inline-block;vertical-align:1px;margin-right:6px;padding:1px 7px;border-radius:999px;background:var(--acc);color:#fff;
+  font-family:var(--display);font-size:.62rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
 .an .path b.kit{color:var(--warn,#e3b341)}
 .fhead{display:grid;grid-template-columns:160px 1fr;gap:18px;background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:16px}
 .fhead img{width:160px;height:160px;object-fit:contain;border-radius:10px;background:#fff;border:1px solid var(--line)}
@@ -392,7 +395,8 @@ ul.ext li b{font-family:var(--mono);font-weight:500;white-space:nowrap}
 <!-- ================= ML ================= -->
 <section id="tab-ml">
   <h2>Produtos fora da curva no Mercado Livre</h2>
-  <p class="lead">Ranking único de 0 a 100 que combina volume de vendas, pouca concorrência, categoria em crescimento e anúncios novos que já vendem. Clique num produto para ver por que ele pontuou e simular o preço.</p>
+  <p class="lead">Ranking único de 0 a 100 que combina volume de vendas, pouca concorrência, categoria em crescimento e anúncios novos que já vendem. Clique num produto para ver por que ele pontuou e simular o preço.
+    Os produtos que já têm fornecedor entram na mesma lista, marcados com <span class="selo-forn">Fornecedor</span> — não passam na frente de ninguém: aparecem onde o score deles alcançar, com o custo e a margem ao lado.</p>
 
   <div class="picks-h">
     <h3>Comece por aqui</h3>
@@ -460,6 +464,7 @@ ul.ext li b{font-family:var(--mono);font-weight:500;white-space:nowrap}
       <button class="chip" data-sig="new" aria-pressed="false">Novo e vendendo</button>
       <button class="chip" data-sig="solo" aria-pressed="false">Anúncio próprio</button>
       <button class="chip" data-sig="fora" aria-pressed="false">Catálogo que vende fora dele</button>
+      <button class="chip" data-sig="forn" aria-pressed="false">Já tenho fornecedor</button>
     </div>
     <span class="count" id="ml-count"></span>
     <button class="btn" id="ml-hide"></button>
@@ -630,7 +635,11 @@ function oportunidade(p){
   const entrada = p.c ? (bb>=OPP_CATALOGO[1] ? 'fechada' : bb>=OPP_CATALOGO[0] ? 'disputada' : 'aberta')
                       : (rc>=OPP_PROPRIO[1] ? 'fechada' : rc>=OPP_PROPRIO[0] ? 'disputada' : 'aberta');
   const taxa = p.c ? OPP_CATALOGO_TAXA : 0;
-  const pen = OPP_PENALIDADE[entrada], nota = p.score - taxa - pen;
+  /* produto que já tem fornecedor: a margem que sobra no preço praticado hoje é parte
+     da oportunidade. Vender muito sem lucro não é oportunidade — desconta como as demais. */
+  const m = p._forn ? (p._margem ?? 0) : null;
+  const penM = m == null ? 0 : (m < 0 ? 25 : m < .10 ? 12 : m < .20 ? 5 : 0);
+  const pen = OPP_PENALIDADE[entrada] + penM, nota = p.score - taxa - pen;
   const cor = nota>=OPP_VERDE ? 'verde' : nota>=OPP_AMARELO ? 'amarelo' : 'vermelho';
   const sd = p.sd ?? 0, demanda = sd>=.8 ? 'Vende muito' : sd>=.5 ? 'Vende bem' : 'Vende pouco';
   const porta = p.c ? `catálogo com ${bb} vendedor${bb>1?'es':''}${taxa?` (−${taxa})`:''}`
@@ -638,8 +647,11 @@ function oportunidade(p){
   const label = cor==='verde' ? 'Oportunidade forte' : cor==='amarelo' ? 'Oportunidade média' : 'Oportunidade fraca';
   const nf = (p.fora||[]).length;
   const fora = !p.c ? '' : nf ? `Fora do catálogo: ${nf} anúncio${nf>1?'s':''} próprio${nf>1?'s':''} vendendo (${fmtN(p.fora[0].w)}/sem)` : 'Fora do catálogo: nenhum entre os mais vendidos';
-  const conta = `score ${p.score.toFixed(0)}${taxa ? ` − ${taxa} (catálogo)` : ''}${pen ? ` − ${pen} (entrada ${entrada})` : ''} = ${nota.toFixed(0)}${pen ? '' : ' · entrada aberta'}`;
-  return { cor, entrada, nota, label, motivo: `${demanda} · ${porta}`, fora, foraOk: nf>0, conta };
+  const conta = `score ${p.score.toFixed(0)}${taxa ? ` − ${taxa} (catálogo)` : ''}`
+    + `${OPP_PENALIDADE[entrada] ? ` − ${OPP_PENALIDADE[entrada]} (entrada ${entrada})` : ''}`
+    + `${penM ? ` − ${penM} (melhor margem ${fmtPct(m)})` : ''} = ${nota.toFixed(0)}${pen ? '' : ' · entrada aberta'}`;
+  const margemTxt = m == null ? '' : ` · melhor margem ${fmtPct(m)} entre os anúncios iguais`;
+  return { cor, entrada, nota, label, motivo: `${demanda} · ${porta}${margemTxt}`, fora, foraOk: nf>0, conta };
 }
 function oppBadge(p, mini){
   const o = p.opp || (p.opp = oportunidade(p));
@@ -710,6 +722,62 @@ function showTab(t){
 
 /* ===================== ML tab ===================== */
 const ml = { q:'', l1:'', sort:'score', bands:new Set(), sigs:new Set(), shown:50, hide:true };
+
+/* ---------- produtos do fornecedor dentro do ranking de oportunidades ----------
+   O que a Flexx vende também é uma oportunidade — a diferença é que dela já temos
+   custo e fornecedor. Entram na MESMA lista, com a MESMA conta de score do radar
+   (demanda 35 · pouca concorrência 25 · categoria crescendo 25 · novo e vendendo 15),
+   calculada sobre o anúncio igual que mais vende. Ninguém é removido para abrir vaga
+   e ninguém sobe por ter fornecedor: sobe quem pontua. */
+let FORN_ROWS = [];
+const CL_P = {low:1.0, mid:0.6, high:0.25}, MONO_P = {low:1.0, medium:0.6, high:0.2}, OPP_P = {high:1.0, medium:0.5, low:0.0};
+let LOGW = null;                                   // distribuição de vendas/semana do radar, para o percentil
+function pctVendas(w){
+  if (!(w > 0) || !LOGW || !LOGW.length) return 0;
+  const x = Math.log(w); let lo = 0, hi = LOGW.length;
+  while (lo < hi){ const mid = (lo+hi)>>1; if (LOGW[mid] < x) lo = mid+1; else hi = mid; }
+  return lo / LOGW.length;
+}
+function fornParaRadar(){
+  FORN_ROWS = [];
+  if (!forn.data || !S.products || !S.products.length) return;
+  LOGW = S.products.filter(p=>(p.w||0)>0).map(p=>Math.log(p.w)).sort((a,b)=>a-b);
+  const forns = Object.fromEntries((forn.data.fornecedores||[]).map(f=>[f.id, f]));
+  for (const p of forn.data.produtos||[]){
+    const ig = (p.anuncios||[]).filter(a=>a.veredito==='igual' && (a.preco!=null));
+    if (!ig.length) continue;                       // sem produto igual confirmado não há o que comparar
+    const a = ig.reduce((x,y)=>(vMes(y)||0)>(vMes(x)||0)?y:x);   // o igual que mais vende representa o mercado
+    const c = p.categoria || {};
+    const q = qtdDe(a), custo = custoDe(a,p);
+    // a margem é a do MELHOR anúncio igual: é o teto que dá para tirar deste produto hoje
+    const comLucro = ig.map(x=>({x, e:extrato(x.preco||0, tipoDe(x), catDe(x,p), custoDe(x,p), x.frete_gratis)}));
+    const top = comLucro.reduce((x,y)=>y.e.margin>x.e.margin?y:x);
+    const e = top.e;
+    const w = a.vendas_sem ?? Math.round((vMes(a)||0)/4.33);
+    const bbTotal = ig.reduce((s,x)=>s + (x.bb||1), 0);          // vendedores somados de todos os catálogos iguais
+    const dp = pctVendas(w);
+    const bbF = bbTotal<=1 ? 1.0 : bbTotal<=3 ? 0.7 : bbTotal<=6 ? 0.4 : 0.15;
+    const comp = 0.35*0.5 + 0.3*bbF + 0.2*(MONO_P[c.mono] ?? 0.5) + 0.15*0.5;
+    const gg = c.gG ?? 0, oc = c.ocG ?? 0;
+    const growth = 0.5*clamp((0 + .05)/.30) + 0.3*clamp((Math.max(gg, oc) + .2)/.6) + 0.2*(OPP_P[c.opp] ?? 0.5);
+    const d = a.dias ?? 999;
+    const nov = d<=30 ? 1 : d<=60 ? .85 : d<=90 ? .7 : d<=180 ? .4 : d<=365 ? .15 : .05;
+    const novs = nov * (0.5 + 0.5*dp);
+    let score = 100 * (0.35*dp + 0.25*comp + 0.25*growth + 0.15*novs);
+    if ((a.nota ?? 5) < 3.5 && (a.avaliacoes||0) > 50) score *= 0.85;
+    FORN_ROWS.push({
+      i:'forn:'+p.url, _forn:p, _fornec:forns[p.fornecedor]||{nome:'Fornecedor'},
+      n:p.nome, img:p.img, l1:c.l1||a.l1||'—', l2:c.l2||a.l2||'', l3:c.l3||'', l2id:null,
+      s:a.vendedor||'', b:null, pr:(a.preco||0)/q, w, m:vMes(a)||0, d, rc:a.avaliacoes||0, rr:a.nota??null,
+      c:!!a.catalogo, bb:bbTotal, cl:null, full:false, md:null, riv:[], fora:[], hist:null, runs:1, prev:null, move:null,
+      score:Math.round(score*10)/10, sd:dp, _dp:dp, _comp:comp, _growth:growth, _nov:novs, _cat:null,
+      _margem:e.margin, _lucro:e.profit, _custo:custoDe(top.x,p), _qtd:qtdDe(top.x), _precoMargem:top.x.preco, _iguais:ig.length,
+      flags:{ vol:dp>=.8, comp:comp>=.8, grow:(Math.max(gg,oc)>=.08) && c.opp!=='low', new:d<=NEW_MAX_DAYS, solo:!a.catalogo, fora:false, forn:true },
+    });
+  }
+  for (const r of FORN_ROWS) r.opp = oportunidade(r);
+  FORN_ROWS.sort((a,b)=>b.score-a.score);
+}
 function inBand(price, bands){
   if(!bands.size) return true;
   for(const b of bands){ const [lo,hi]=b.split('-'); if(price>=+lo && (hi===''||price<+hi)) return true; }
@@ -717,7 +785,7 @@ function inBand(price, bands){
 }
 function mlFiltered(){
   const q = ml.q.trim().toLowerCase();
-  let rows = S.products.filter(p =>
+  let rows = S.products.concat(FORN_ROWS).filter(p =>
     (!ml.hide || !isHidden(p)) &&
     (!ml.l1 || p.l1===ml.l1) && inBand(p.pr??0, ml.bands) &&
     [...ml.sigs].every(s=>p.flags[s]) &&
@@ -797,15 +865,17 @@ function idade(d){
 
 function prodTags(p){
   const t=[];
-  if (p.move==null && (p.runs??1)<=1) t.push(`<span class="tag acc">Entrou agora</span>`);
+  if (!p._forn && p.move==null && (p.runs??1)<=1) t.push(`<span class="tag acc">Entrou agora</span>`);
   else if (p.move>0) t.push(`<span class="tag good">↑ ${p.move}</span>`);
   else if (p.move<0) t.push(`<span class="tag bad">↓ ${-p.move}</span>`);
-  if (p.runs>1) t.push(`<span class="tag">${p.runs} rodadas · melhor #${p.best}</span>`);
+  if (!p._forn && p.runs>1) t.push(`<span class="tag">${p.runs} rodadas · melhor #${p.best}</span>`);
   // tempo no ar sempre visível: é o que diz se a venda é recente ou já madura
   if (p.d != null) t.push(`<span class="tag ${p.flags.new?'good':''}">${idade(p.d)}</span>`);
   if (p.cl) t.push(`<span class="tag ${p.cl==='low'?'good':p.cl==='high'?'bad':'warn'}">${COMPL[p.cl]}</span>`);
   if (p.flags.grow) t.push(`<span class="tag acc">Categoria em alta</span>`);
   if (p.c && p.bb) t.push(`<span class="tag">${p.bb} vendedor${p.bb>1?'es':''} no catálogo</span>`);
+  if (p._forn) t.push(`<span class="tag acc">${esc(p._fornec.nome)} · ${fmtBRL(p._forn.unit)} por unidade</span>`);
+  if (p._forn && p._iguais) t.push(`<span class="tag">${p._iguais} anúncio${p._iguais>1?'s':''} igual${p._iguais>1?'is':''} conferido${p._iguais>1?'s':''}</span>`);
   if (!p.c) t.push(`<span class="tag">Anúncio próprio</span>`);
   if (p.full) t.push(`<span class="tag">Full</span>`);
   if (p.md) t.push(`<span class="tag">${MEDAL[p.md]||p.md}</span>`);
@@ -816,22 +886,27 @@ function renderML(reset){
   const rows = mlFiltered();
   const show = rows.slice(0, ml.shown);
   const cut = ml.hide ? S.products.filter(isHidden).length : 0;
+  const nf = rows.filter(p=>p._forn).length;
   $('#ml-count').textContent = `${rows.length} produtos · mostrando ${show.length}`
+    + (nf ? ` · ${nf} com fornecedor` : '')
     + (cut ? ` · ${cut} ocultos (${HIDE_RULES.map(r=>r.label).join(', ')})` : '');
   $('#ml-hide').textContent = ml.hide ? 'Mostrar tudo' : `Ocultar ${HIDE_RULES.map(r=>r.label.toLowerCase()).join(' e ')}`;
   $('#ml-more').hidden = rows.length <= ml.shown;
   $('#ml-list').innerHTML = show.length ? show.map((p,i)=>`
-   <article class="row" data-id="${esc(p.i)}" tabindex="0" role="button">
+   <article class="row${p._forn?' fornrow':''}" data-id="${esc(p.i)}" tabindex="0" role="button">
     <div class="rank ${i<3?'top':''}">${i+1}</div>
     <img class="thumb" loading="lazy" src="${esc(p.img||'')}" alt="">
-    <div><div class="name">${esc(p.n)}</div>
+    <div><div class="name">${p._forn?'<span class="selo-forn">Fornecedor</span> ':''}${esc(p.n)}</div>
       <div class="path">${esc(p.l1)} › ${esc(p.l2||'')}${p.l3?' › '+esc(p.l3):''} · ${esc(p.s||'')}${p.b?' · '+esc(p.b):''}</div>
       <div class="tags">${prodTags(p)}</div></div>
     ${oppBadge(p)}
     <div class="meter" tabindex="0"><div class="sc">${p.score.toFixed(0)}<small>/100</small></div><div class="bar"><i style="width:${p.score}%"></i></div>${scorePie(p)}</div>
     <div class="cell"><div class="k">Vendas/sem</div><div class="v big">${fmtN(p.w)}</div><div class="k">${fmtN(p.m)} / mês</div></div>
-    <div class="cell"><div class="k">Preço</div><div class="v big">${fmtBRL(p.pr)}</div><div class="k">${p.rc?(p.rr?p.rr.toFixed(1)+'★ · ':'')+fmtN(p.rc)+' aval.':'sem avaliações'}</div></div>
-    <div class="links"><a href="${mlLink(p)}" target="_blank" rel="noopener">Abrir no Mercado Livre ↗</a></div>
+    ${p._forn
+      ? `<div class="cell" title="preço por unidade no anúncio que mais vende; margem no melhor anúncio igual (a ${fmtBRL(p._precoMargem)}, custo ${fmtBRL(p._custo)}${p._qtd>1?` por ${p._qtd} un`:''})"><div class="k">Preço/un · margem</div><div class="v big">${fmtBRL(p.pr)}</div><div class="k">melhor margem <b class="${margClass(p._margem)}">${fmtPct(p._margem)}</b></div></div>
+         <div class="links"><a href="#" data-forn="${esc(p._forn.url)}">Ver no fornecedor →</a></div>`
+      : `<div class="cell"><div class="k">Preço</div><div class="v big">${fmtBRL(p.pr)}</div><div class="k">${p.rc?(p.rr?p.rr.toFixed(1)+'★ · ':'')+fmtN(p.rc)+' aval.':'sem avaliações'}</div></div>
+         <div class="links"><a href="${mlLink(p)}" target="_blank" rel="noopener">Abrir no Mercado Livre ↗</a></div>`}
    </article>`).join('') : `<div class="empty">Nenhum produto com esses filtros. Tire um filtro ou mude a faixa de preço.</div>`;
 }
 /* ---------- pizza do score ----------
@@ -983,8 +1058,22 @@ $('#ml-price').addEventListener('click', e=>{ const b=e.target.closest('.chip');
 $('#ml-sig').addEventListener('click', e=>{ const b=e.target.closest('.chip'); if(!b) return; const on=b.getAttribute('aria-pressed')!=='true'; b.setAttribute('aria-pressed',on); on?ml.sigs.add(b.dataset.sig):ml.sigs.delete(b.dataset.sig); renderML(true); });
 $('#ml-more').addEventListener('click', ()=>{ ml.shown+=50; renderML(false); });
 $('#ml-hide').addEventListener('click', ()=>{ ml.hide=!ml.hide; mlPicks(); mlTiles(); renderML(true); });
-$('#ml-list').addEventListener('click', e=>{ const r=e.target.closest('.row'); if(!r || e.target.closest('a')) return; openProduct(r.dataset.id); });
-$('#ml-list').addEventListener('keydown', e=>{ if(e.key==='Enter'){ const r=e.target.closest('.row'); if(r) openProduct(r.dataset.id);} });
+$('#ml-list').addEventListener('click', e=>{
+  const link = e.target.closest('a[data-forn]');
+  if (link){ e.preventDefault(); return abrirNoFornecedor(link.dataset.forn); }
+  const r = e.target.closest('.row'); if(!r || e.target.closest('a')) return;
+  if (r.dataset.id.startsWith('forn:')) return abrirNoFornecedor(r.dataset.id.slice(5));
+  openProduct(r.dataset.id);
+});
+/* leva o produto do fornecedor para a ficha completa (margem, alvos, calculadora) */
+function abrirNoFornecedor(url){
+  const p = (forn.data?.produtos||[]).find(x=>x.url===url); if(!p) return;
+  forn.sup = p.fornecedor; forn.prod = url; forn.view = 'produto';
+  showTab('forn'); fornRender();
+}
+$('#ml-list').addEventListener('keydown', e=>{ if(e.key==='Enter'){ const r=e.target.closest('.row'); if(!r) return;
+  if (r.dataset.id.startsWith('forn:')) return abrirNoFornecedor(r.dataset.id.slice(5));
+  openProduct(r.dataset.id); } });
 
 /* ===================== drawer ===================== */
 function openProduct(id){
@@ -1291,23 +1380,30 @@ function renderAll(){
 fillSelects(); initSim();
 try{ const t=localStorage.getItem('radar.tab'); if(t && $('#tab-'+t)) showTab(t);}catch(e){}
 $('#ml-list').innerHTML = '<div class="empty">Carregando a última rodada…</div>';
-fetch('data.json?_='+Date.now(), {cache:'no-store'}).then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); }).then(d=>{ S=d; renderAll(); })
+fetch('data.json?_='+Date.now(), {cache:'no-store'}).then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); }).then(d=>{ S=d; renderAll(); fornLoad(true); })
   .catch(e=>{ $('#ml-list').innerHTML = '<div class="empty">Não consegui carregar data.json ('+esc(e.message)+'). Se for a primeira publicação, espere a primeira rodada do coletor.</div>'; });
 const csvBtn=$('#ml-csv'); csvBtn.hidden=false;
 csvBtn.addEventListener('click', ()=>{ const blob=new Blob(['\ufeff'+csvOf(mlFiltered())],{type:'text/csv;charset=utf-8'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='radar-safira-ml.csv'; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),2000); toast('CSV gerado'); });
 
 /* ===================== fornecedores ===================== */
 const forn = { data:null, view:'lista', sup:null, prod:null, q:'', filtros:new Set(['catalogo']), calc:{} };
-async function fornLoad(){
-  if (forn.data) return fornRender();
-  try{
-    const r = await fetch('fornecedores.json?'+Date.now()); if(!r.ok) throw new Error(r.status);
+let fornP = null;
+/* Carrega o catálogo do fornecedor uma única vez. Chamado no boot (soDados=true) para
+   os produtos entrarem no ranking de oportunidades, e ao abrir a aba Fornecedores. */
+async function fornLoad(soDados){
+  if (!fornP) fornP = (async () => {
+    const r = await fetch('fornecedores.json?'+Date.now());
+    if (!r.ok) throw new Error(r.status);
     forn.data = await r.json();
-  }catch(e){
+    fornParaRadar(); renderML(true);
+  })();
+  try{ await fornP; }
+  catch(e){
+    if (soDados) return;
     $('#forn-root').innerHTML = `<div class="empty">Ainda não há catálogo de fornecedor publicado.<br><span class="small muted">Rode <code>python -m radar fornecedor coletar</code> e depois <code>python -m radar.fornecedor_export</code>.</span></div>`;
     return;
   }
-  fornRender();
+  if (!soDados) fornRender();
 }
 const fornLink = a => 'https://produto.mercadolivre.com.br/' + String(a.id||'').replace('MLB','MLB-');
 const TIPO = {gold_pro:'Premium', gold_special:'Clássico', free:'Grátis'};
@@ -1327,24 +1423,36 @@ function tendencia(c){
 }
 const TEND = { alta:['good','Categoria em alta'], estavel:['','Categoria estável'], queda:['bad','Categoria em queda'] };
 /* Nota de oportunidade para ordenar o catálogo do fornecedor.
-   Regra: produto com lucro medido em anúncio igual vem antes de qualquer um sem
-   medida — inclusive quando o lucro medido é negativo. Só "sem informação" fica
-   no fim; um lucro de zero de verdade é informação e entra na fila normal. */
+   Duas partes, porque margem sozinha põe no topo produto caro que ninguém compra:
+     margem  60 pontos — o lucro medido no melhor anúncio igual (negativo tira pontos)
+     demanda 40 pontos — quanto o produto vende por mês, em escala log
+   A ordem por base continua: lucro medido em anúncio igual vem antes de estimativa
+   pela subcategoria, e "sem informação" fica no fim. Lucro zero é informação. */
+const PT_MARGEM = 60, PT_DEMANDA = 40, MARGEM_CHEIA = 0.35, VENDAS_CHEIA = 800;
+function pontosDe(margem, vendas){
+  const pm = clamp((margem ?? 0) / MARGEM_CHEIA, -1, 1) * PT_MARGEM;
+  const pd = clamp(Math.log10(1 + Math.max(0, vendas||0)) / Math.log10(1 + VENDAS_CHEIA)) * PT_DEMANDA;
+  return { pontos: pm + pd, pm, pd };
+}
 function notaProduto(p){
   const b = lucroIguais(p);
-  if (b) return { base:'igual', nota: b.lucro.margin, vendas: vMes(b)||0 };
+  if (b){
+    const v = vMes(b)||0;
+    return { base:'igual', nota:b.lucro.margin, vendas:v, ...pontosDe(b.lucro.margin, v) };
+  }
   const mc = (p.mesma_categoria||[]);
   if (mc.length){
-    const ex = mc.map(a=>extrato(a.preco||0, tipoDe(a), catDe(a,p), custoDe(a,p), a.frete_gratis));
-    const best = ex.reduce((x,y)=>y.margin>x.margin?y:x);
-    return { base:'categoria', nota: best.margin, vendas: Math.max(...mc.map(a=>vMes(a)||0)) };
+    const ex = mc.map(a=>({a, e:extrato(a.preco||0, tipoDe(a), catDe(a,p), custoDe(a,p), a.frete_gratis)}));
+    const best = ex.reduce((x,y)=>y.e.margin>x.e.margin?y:x);
+    const v = Math.max(...mc.map(a=>vMes(a)||0));
+    return { base:'categoria', nota:best.e.margin, vendas:v, ...pontosDe(best.e.margin, v) };
   }
-  return { base:null, nota:null, vendas:0 };
+  return { base:null, nota:null, vendas:0, pontos:null, pm:0, pd:0 };
 }
 const ORDEM_BASE = { igual:0, categoria:1, null:2 };
 function rankingDe(lista){
   const arr = lista.map(p=>({p, n:notaProduto(p)}));
-  arr.sort((a,b)=> (ORDEM_BASE[a.n.base]-ORDEM_BASE[b.n.base]) || ((b.n.nota??-9)-(a.n.nota??-9)) || (b.n.vendas-a.n.vendas) || a.p.nome.localeCompare(b.p.nome));
+  arr.sort((a,b)=> (ORDEM_BASE[a.n.base]-ORDEM_BASE[b.n.base]) || ((b.n.pontos??-999)-(a.n.pontos??-999)) || (b.n.vendas-a.n.vendas) || a.p.nome.localeCompare(b.p.nome));
   const pos = new Map(); arr.forEach((x,i)=>pos.set(x.p.url, {pos:i+1, ...x.n}));
   return pos;
 }
@@ -1461,7 +1569,8 @@ function fornRender(){
         const best = ig.length ? melhor(ig) : null;
         return `
         <article class="fp" data-url="${esc(p.url)}" tabindex="0" role="button">
-          <div class="rank ${(rk.get(p.url)?.pos||99)<=3?'top':''}" title="${rk.get(p.url)?.base==='igual'?'lucro medido em anúncio igual':rk.get(p.url)?.base==='categoria'?'estimado pela subcategoria':'sem informação ainda'}">${rk.get(p.url)?.base ? '#'+rk.get(p.url).pos : '—'}</div>
+          <div class="rank ${(rk.get(p.url)?.pos||99)<=3?'top':''}" title="${(()=>{ const r=rk.get(p.url); if(!r||!r.base) return 'sem informação ainda';
+        return `${r.base==='igual'?'lucro medido em anúncio igual':'estimado pela subcategoria'}: margem ${fmtPct(r.nota)} (${r.pm.toFixed(0)}/${PT_MARGEM} pts) + demanda ${fmtN(r.vendas)}/mês (${r.pd.toFixed(0)}/${PT_DEMANDA} pts) = ${r.pontos.toFixed(0)} pontos`; })()}">${rk.get(p.url)?.base ? '#'+rk.get(p.url).pos : '—'}</div>
           <img class="thumb" loading="lazy" src="${esc(p.img||'')}" alt="">
           <div><div class="name">${esc(p.nome)}</div>
             <div class="tags">${p.tags.includes('mais_vendidos')?'<span class="tag acc">Mais vendido</span>':''}${p.tags.includes('novidades')?'<span class="tag acc">Novidade</span>':''}

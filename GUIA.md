@@ -240,9 +240,18 @@ Dentro de cada produto:
   **Regra quando não se sabe quantas unidades vêm na unidade do fornecedor:** o custo do
   anúncio é custo × a quantidade que o título do anúncio anuncia ("6 bombas" = 6 × custo),
   até a Flexx confirmar o conteúdo da caixa. Com a confirmação, a conta usa o conteúdo real.
+- **Os produtos do fornecedor aparecem também na aba Oportunidades ML**, na mesma lista dos
+  2.225 do radar, marcados com o selo **Fornecedor** e com custo e margem ao lado. Eles entram
+  pelo mesmo score de 0 a 100 do radar (demanda, concorrência, categoria, novidade), calculado
+  sobre o anúncio igual que mais vende — ninguém sai da lista para abrir vaga e nenhum sobe por
+  ter fornecedor. O semáforo desconta margem baixa: abaixo de 20% perde pontos, no prejuízo
+  perde 25. O filtro **Já tenho fornecedor** isola só eles.
 - **Ranking (#)** — ordem de oportunidade dentro do catálogo. Quem tem lucro medido em
   anúncio igual vem primeiro (mesmo quando o lucro é negativo — é informação); depois
   quem só tem estimativa pela subcategoria; sem informação nenhuma fica no fim.
+  Dentro de cada grupo a ordem é por pontos: **60 de margem + 40 de demanda** (margem cheia em
+  35%, demanda cheia em 800 vendas/mês), para não pôr no topo produto de margem alta que
+  ninguém compra. Passe o mouse no número da posição para ver a conta.
 - **Categoria no Mercado Livre** — caminho completo da categoria, tendência (receita e
   vendas do mês contra o mês anterior), oportunidade e monopolização. Sem concorrente
   igual, mostra **o que a subcategoria está vendendo**, com o lucro calculado no preço
