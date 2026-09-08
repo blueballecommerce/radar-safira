@@ -227,7 +227,7 @@ CAND_POR_ITEM = 12               # catálogos distintos por produto do fornecedo
 LINHAS_POR_BUSCA = 60            # anúncios lidos por busca — muitos dividem o mesmo catálogo
 
 
-_ALIAS = {r"\bchhuveiro\b": "chuveiro", r"\bmáqiuna\b": "máquina", r"\bbilíngüe\b": "bilíngue", r"\balinhador\b": "corretor", r"\bmágicp\b": "mágico", r"\btaolhas\b": "toalhas", r"\btémica\b": "térmica", r"\bcomrpessão\b": "compressão", r"\bblusa regata térmica de compressão sauna feminina\b": "regata sauna térmica feminina",
+_ALIAS = {r"\bchhuveiro\b": "chuveiro", r"\bmáqiuna\b": "máquina", r"\bbilíngüe\b": "bilíngue", r"\balinhador\b": "corretor", r"\bmágicp\b": "mágico", r"\bkit 3 taolhas santel\b": "jogo de toalhas 3 peças banho rosto", r"\btémica\b": "térmica", r"\bcomrpessão\b": "compressão", r"\bblusa regata térmica de compressão sauna feminina\b": "regata sauna térmica feminina",
           r"\b(\d+(?:[.,]\d+)?)\s?cm\b": r"\1cm"}
 
 
