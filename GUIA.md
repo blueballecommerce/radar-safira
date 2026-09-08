@@ -207,6 +207,16 @@ Para valer todo dia, coloque a linha no começo de `scripts\rodada.ps1`.
   "Catálogo que vende fora dele" mostra só os que têm essa prova. É uma noção, não uma certeza:
   o radar só lê os 25 mais vendidos de cada subcategoria. O CSV ganhou as colunas `oportunidade`,
   `entrada` e `fora_catalogo`.
+- **Página do produto** — clique em qualquer produto de Oportunidades ML e ele abre uma página
+  no mesmo desenho da ficha de fornecedor, só que invertida: como não temos custo, a referência
+  é o preço do concorrente que mais vende. A tabela **Quanto posso pagar para ganhar** mostra o
+  custo máximo no fornecedor para sobrar 10, 15 e 20% vendendo a esse preço, no Clássico e no
+  Premium (clique num valor para levá-lo à calculadora). Em **Calcule com o seu custo**, digite
+  o que o fornecedor cobra e veja o extrato completo; mude o preço para testar outra posição.
+  Embaixo, **Mesmo produto** (os outros vendedores do catálogo) e **Parecidos** (título parecido
+  na mesma subcategoria) mostram, para cada anúncio, até quanto dá para pagar para ganhar 20% e
+  10% no preço dele e, quando você digitou um custo, a margem que sobra com o seu custo naquele
+  preço. As premissas são as do Simulador de preço. Esc ou "← Oportunidades ML" volta à lista.
 
 **Nos pesos do score** (`radar/config.py`):
 
