@@ -21,7 +21,7 @@ $raiz = Split-Path -Parent $PSScriptRoot
 Set-Location $raiz
 
 $copia = "/c/Projeto - Radar Safira"
-$ssh = @("-o", "BatchMode=yes", "-o", "ConnectTimeout=20", "-o", "WarnWeakCrypto=no", "predator")
+$ssh = @("-o", "BatchMode=yes", "-o", "ConnectTimeout=20", "predator")
 
 function Falhar($msg) { Write-Output "ERRO: $msg"; exit 1 }
 
@@ -67,7 +67,7 @@ if ($Dados) {
     $tgz = Join-Path $env:TEMP "radar-dados.tgz"
     tar czf $tgz @lista
     if ($LASTEXITCODE -ne 0) { Falhar "nao consegui empacotar os dados" }
-    cmd /c "ssh -o BatchMode=yes -o WarnWeakCrypto=no predator ""cat > '$copia/dados.tgz'"" < ""$tgz"""
+    cmd /c "ssh -o BatchMode=yes predator ""cat > '$copia/dados.tgz'"" < ""$tgz"""
     if ($LASTEXITCODE -ne 0) { Falhar "nao consegui mandar os dados para o Predator" }
     ssh @ssh "cd '$copia' && tar xzf dados.tgz && rm dados.tgz && du -sh data/pranchas"
     if ($LASTEXITCODE -ne 0) { Falhar "o Predator nao conseguiu abrir o pacote de dados" }
