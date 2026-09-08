@@ -196,9 +196,17 @@ Para valer todo dia, coloque a linha no começo de `scripts\rodada.ps1`.
   junta o score com a porta de entrada: produto de catálogo, quantos vendedores já dividem
   o mesmo anúncio (até 2 aberta, 3 a 5 disputada, 6 ou mais fechada); anúncio próprio, quantas
   avaliações o líder já tem (até 999 aberta, 1.000 a 9.999 disputada, 10.000 ou mais fechada).
-  Entrada disputada tira 8 pontos e fechada tira 18; verde é 60 ou mais, amarelo de 45 a 59,
-  vermelho abaixo de 45. Passe o mouse no selo para ver a conta. O CSV ganhou as colunas
-  `oportunidade` e `entrada`.
+  Entrada disputada tira 8 pontos e fechada tira 18, e **todo produto de catálogo perde 5 pontos**
+  (`OPP_CATALOGO_TAXA`): no catálogo a disputa é com quem compra mais barato. Verde é 60 ou mais,
+  amarelo de 45 a 59, vermelho abaixo de 45. Passe o mouse no selo para ver a conta.
+- **Vende fora do catálogo?** — para cada produto de catálogo, o radar procura anúncios próprios
+  parecidos (mesma subcategoria, título parecido, mesma marca quando há) entre os mais vendidos
+  que ele leu. Se existem e vendem, o selo diz "Fora do catálogo: N anúncios próprios vendendo" e
+  a ficha lista quais são, com link e vendas por semana; se não aparece nenhum, diz "nenhum entre
+  os mais vendidos", ou seja, pelo que o radar viu só o catálogo vende aquele produto. O filtro
+  "Catálogo que vende fora dele" mostra só os que têm essa prova. É uma noção, não uma certeza:
+  o radar só lê os 25 mais vendidos de cada subcategoria. O CSV ganhou as colunas `oportunidade`,
+  `entrada` e `fora_catalogo`.
 
 **Nos pesos do score** (`radar/config.py`):
 
