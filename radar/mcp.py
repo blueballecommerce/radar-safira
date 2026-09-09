@@ -19,7 +19,8 @@ data/live/inbox/ e ingere do mesmo jeito.
 Passos (o nome de cada consulta; o slug é o da fixture, sem acento):
     top/<slug da L1>       100 mais vendidos da categoria (fixture ml_main_<slug>.json)
     new/<slug da L1>       100 mais vendidos com até NOVOS_MAX_DIAS no ar (ml_new_<slug>.json)
-    track/<n>              lote n de até 100 ids que já estão no radar (ml_track.json)
+    track/<n>              lote n de até 100 ids da página (ml_track.json): de manhã só os que a
+                           descoberta não trouxe de novo; à tarde (modo atualiza) a página inteira
     cat/<nível>/<página>   categorias do mês, só quando o mês virou (cat_l<nível>.json)
 
 O estado da rodada do dia fica em data/live/<modo>/estado.json (um por modo, para a rodada das
@@ -56,6 +57,9 @@ LIMITE = 100                                                 # o servidor corta 
 # descoberta + lotes) não cabe numa hora, então `plano` só entrega o que cabe no orçamento e a
 # rodada fica aberta para a próxima execução agendada continuar.
 MAX_POR_HORA = int(os.environ.get("RADAR_MCP_MAX_POR_HORA", "36"))
+# cada lote `track` impresso carrega 100 ids (~1,5 KB); mais que isto por `plano` estoura o que
+# a sessão consegue ler de uma vez — ela roda `plano` de novo depois de ingerir
+TRACK_POR_PLANO = 12
 PAGINAS_CAT = {2: 6, 3: config.CATEGORY_L3_MAX_PAGES}
 FERRAMENTA = "query_cubejs_meli (conector JoomPulse, MCP)"
 MODOS = ("novos", "atualiza")
@@ -189,9 +193,9 @@ def _lotes_track(modo: str, db: DB, e: dict) -> list[list[str]]:
     """Os lotes de acompanhamento, calculados uma vez por rodada e guardados no estado."""
     if "lotes" in e:
         return e["lotes"]
-    ids = db.tracked_ids()
+    ids = db.page_ids()                      # tudo que está na página
     if modo == "novos":
-        vistos = _ids_descobertos(modo)
+        vistos = _ids_descobertos(modo)      # de manhã, só o que a descoberta não trouxe de novo
         ids = [i for i in ids if i not in vistos]
     ids = sorted(set(ids))
     lotes = [ids[k:k + LOTE] for k in range(0, len(ids), LOTE)]
@@ -301,10 +305,12 @@ def cmd_plano(modo: str, reiniciar: bool) -> None:
             print(_json(q).replace('"{OFFSET}"', "{OFFSET}"))
         print("\nQuando terminar estas, rode `plano` de novo: ele calcula os lotes de acompanhamento.")
     else:
-        sobra = max(0, len(fase2) - orcamento)
-        fase2 = fase2[:orcamento]
+        agora = min(orcamento, TRACK_POR_PLANO)
+        sobra = max(0, len(fase2) - agora)
+        fase2 = fase2[:agora]
         print(f"\nDescoberta completa. FALTAM {len(fase2)} lote(s) de acompanhamento agora"
-              + (f" (mais {sobra} na próxima hora)" if sobra else "") + " (consulta pronta, é só copiar):")
+              + (f" (mais {sobra} depois: ingira estes e rode `plano` de novo)" if sobra else "")
+              + " (consulta pronta, é só copiar):")
         for p in fase2:
             print(f"\n{p}:")
             print(_json(consulta_do_passo(p, e)))

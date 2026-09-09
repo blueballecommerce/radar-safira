@@ -85,9 +85,24 @@ class DB:
 
     # --- products ---
     def tracked_ids(self) -> list[str]:
-        """ids (anúncio) dos produtos ativos ou em observação — releitura a cada rodada."""
+        """ids (anúncio) dos produtos ativos ou em observação."""
         return [r["id"] for r in self.conn.execute(
             "SELECT id FROM products WHERE status IN ('active','watching') AND id IS NOT NULL")]
+
+    def page_ids(self) -> list[str]:
+        """ids (anúncio) de tudo que está na página: produtos com posição na última rodada boa.
+
+        É o conjunto que cada rodada relê — de manhã, o que a descoberta não trouxe de novo;
+        à tarde, tudo. Sem essa releitura um produto que saiu do top 100 da categoria sumiria
+        da página no dia seguinte, mesmo continuando a vender.
+        """
+        run_id = self.last_ok_run()
+        if run_id is None:
+            return self.tracked_ids()
+        return [r["id"] for r in self.conn.execute(
+            "SELECT p.id FROM products p JOIN product_runs pr ON pr.key = p.key AND pr.run_id = ? "
+            "WHERE p.status IN ('active','watching','candidate') AND p.id IS NOT NULL AND pr.rank IS NOT NULL",
+            (run_id,))]
 
     def product(self, key: str) -> sqlite3.Row | None:
         return self.conn.execute("SELECT * FROM products WHERE key=?", (key,)).fetchone()

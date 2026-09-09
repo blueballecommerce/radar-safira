@@ -150,7 +150,7 @@ def _rekey_known(db: DB, raw: list[dict]) -> int:
 
 async def run_once(src: Source, db: DB, *, force_categories: bool = False, force_joompro: bool = False,
                    l1s: list[str] | None = None, discover: bool = True) -> dict:
-    """Uma rodada. `discover=False` pula a descoberta e só relê o que já está no radar
+    """Uma rodada. `discover=False` pula a descoberta e relê pelo id tudo que está na página
     (a rodada das 15h): tudo é pontuado e reordenado de novo com os números do dia."""
     run_id = db.start_run()
     try:
@@ -165,7 +165,8 @@ async def run_once(src: Source, db: DB, *, force_categories: bool = False, force
                 log.info("%s: %d linhas acumuladas", l1, len(raw))
 
         discovered_ids = {p["i"] for p in raw}
-        to_track = [i for i in db.tracked_ids() if i not in discovered_ids]
+        # relê tudo que está na página e a descoberta não trouxe (sem descoberta: a página inteira)
+        to_track = [i for i in db.page_ids() if i not in discovered_ids]
         for k in range(0, len(to_track), config.TRACK_BATCH):
             rows = await src.products_by_ids(to_track[k:k + config.TRACK_BATCH])
             raw.extend(p for p in (engine.product_from_row(r, "track") for r in rows) if p)

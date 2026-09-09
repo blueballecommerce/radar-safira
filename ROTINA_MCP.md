@@ -1,10 +1,12 @@
 # Rotina do Radar pelo MCP — o que a sessão agendada faz
 
 Este arquivo é lido pela sessão do Claude Code que roda sozinha **às 5h** (modo `novos`: traz
-produtos novos e reordena o ranking) e **às 15h** (modo `atualiza`: relê tudo que já está no
-radar — vendas, dias no ar, vendedores no catálogo, categoria — e reordena). Ele existe para a
-sessão não precisar pensar: é seguir os passos. Quem quiser entender o desenho lê `GUIA.md`
-(seção "O que acontece sozinho") e `radar/mcp.py`.
+produtos novos, relê o que estava na página e não reapareceu, e reordena o ranking) e **às
+15h** (modo `atualiza`: relê pelo id **todos** os produtos da página — vendas, dias no ar,
+vendedores no catálogo, preço, avaliações — e reordena). Cada modo tem execuções de
+continuação na hora seguinte (6h02/7h02 e 16h02/17h02) por causa do limite por hora da
+JoomPulse. Ele existe para a sessão não precisar pensar: é seguir os passos. Quem quiser
+entender o desenho lê `GUIA.md` (seção "O que acontece sozinho") e `radar/mcp.py`.
 
 ## Regras
 
@@ -40,7 +42,11 @@ consultas de descoberta mais 3 a 6 lotes de acompanhamento — não cabe numa ho
 
        ~/.claude/radar-mcp.cmd plano novos --reiniciar        (5h — só a primeira execução do dia)
        ~/.claude/radar-mcp.cmd plano novos                    (6h02 e 7h02 — continuação)
-       ~/.claude/radar-mcp.cmd plano atualiza --reiniciar     (15h)
+       ~/.claude/radar-mcp.cmd plano atualiza --reiniciar     (15h — só a primeira execução)
+       ~/.claude/radar-mcp.cmd plano atualiza                 (16h02 e 17h02 — continuação)
+
+   Os lotes `track/n` saem de 12 em 12 por `plano` (cada um carrega 100 ids); ingira e rode
+   `plano` de novo para receber os próximos.
 
    Ele imprime a lista do que falta **e cabe nesta hora** (`top/<slug>`, `new/<slug>`,
    `track/<n>`, `cat/…`), o nome exato de cada categoria e o modelo JSON de cada tipo de
