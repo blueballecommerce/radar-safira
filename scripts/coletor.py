@@ -17,10 +17,17 @@ falar com servidor http. Pendurado em /api os dois viram a mesma origem e o
 problema some. É também por isso que a página pública do GitHub nunca alcança o
 coletor — de lá o pedido fica guardado no aparelho até você abrir pela tailnet.
 
-Rotas:
-    GET  /api/saude    o coletor está de pé? a busca consegue rodar?
-    GET  /api/pedidos  a fila, com o estado de cada um
-    POST /api/pedido   grava um pedido novo e dispara a busca
+Rotas, como a página as chama:
+    GET  /api/saude              o coletor está de pé? a busca consegue rodar?
+    GET  /api/pedidos            a fila, com o estado de cada um
+    GET  /api/foto/<id>/<arq>    a foto de um pedido (para ver os que vieram de
+                                 outro aparelho)
+    POST /api/pedido             grava um pedido novo e dispara a busca
+
+Atenção: o `--set-path=/api` **remove** o /api antes de encaminhar, então aqui
+chega `/saude`, não `/api/saude`. Batendo direto no 127.0.0.1 chega com o
+prefixo. O `_rota()` aceita as duas formas, para não depender do caminho que a
+requisição fez para chegar.
 """
 from __future__ import annotations
 
@@ -156,7 +163,19 @@ class Handler(BaseHTTPRequestHandler):
         self.wfile.write(corpo)
 
     def _rota(self) -> str:
-        return self.path.split("?")[0].rstrip("/")
+        """A rota, com ou sem o prefixo /api.
+
+        O `tailscale serve --set-path=/api` TIRA o /api antes de encaminhar: a
+        página pede /api/saude e aqui chega /saude. Batendo direto no
+        127.0.0.1 chega /api/saude. Aceitar as duas formas evita depender do
+        caminho que a requisição fez para chegar.
+        """
+        r = self.path.split("?")[0].rstrip("/")
+        if r == "/api":
+            return "/"
+        if r.startswith("/api/"):
+            r = r[len("/api"):]
+        return r
 
     # ---------------------------------------------------------------- rotas
     def do_OPTIONS(self):
@@ -166,7 +185,7 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_GET(self):
         rota = self._rota()
-        if rota == "/api/saude":
+        if rota == "/saude":
             SESSAO.em_segundo_plano()
             return self._json({
                 "ok": True,
@@ -175,7 +194,7 @@ class Handler(BaseHTTPRequestHandler):
                 "buscando_agora": BUSCA.rodando,
                 "na_fila": len(P.pendentes()),
             })
-        if rota == "/api/pedidos":
+        if rota == "/pedidos":
             return self._json([{
                 "id": p["id"],
                 "nome": p.get("nome"),
@@ -189,7 +208,7 @@ class Handler(BaseHTTPRequestHandler):
                 "resultado": p.get("resultado"),
                 "motivo": p.get("motivo") or "",
             } for p in P.lista()])
-        if rota.startswith("/api/foto/"):
+        if rota.startswith("/foto/"):
             return self._foto(rota)
         self._json({"ok": False, "erro": "rota desconhecida"}, 404)
 
@@ -197,7 +216,7 @@ class Handler(BaseHTTPRequestHandler):
         """A foto de um pedido, para a página conseguir mostrar os que vieram de
         outro aparelho. Os dois pedaços do caminho são conferidos contra um
         formato fechado — nada de `..` chegar ao disco."""
-        partes = rota[len("/api/foto/"):].split("/")
+        partes = rota[len("/foto/"):].split("/")
         if len(partes) != 2:
             return self._json({"ok": False, "erro": "caminho inválido"}, 400)
         pid, arq = partes
@@ -216,7 +235,7 @@ class Handler(BaseHTTPRequestHandler):
         self.wfile.write(dados)
 
     def do_POST(self):
-        if self._rota() != "/api/pedido":
+        if self._rota() != "/pedido":
             return self._json({"ok": False, "erro": "rota desconhecida"}, 404)
 
         origem = self.headers.get("Origin")
