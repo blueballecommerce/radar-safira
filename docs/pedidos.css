@@ -1,0 +1,134 @@
+/* Aba "Pedir pesquisa". Tudo escopado em #tab-ped para não encostar no resto da
+   página. As cores vêm das variáveis que o index.html já define, então a aba
+   acompanha o tema claro/escuro sozinha. */
+
+#tab-ped .ped-aviso {
+  border: 1px solid var(--line);
+  border-left-width: 4px;
+  border-radius: 9px;
+  padding: 10px 13px;
+  margin: 0 0 16px;
+  font-size: .9rem;
+  line-height: 1.5;
+}
+#tab-ped .ped-aviso.ok { background: var(--goodBg); border-left-color: var(--good); }
+#tab-ped .ped-aviso.atencao { background: var(--warnBg); border-left-color: var(--warn); }
+#tab-ped .ped-aviso code {
+  font-family: var(--mono);
+  font-size: .84em;
+  background: var(--bg3);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+/* ---------------- o formulário ---------------- */
+#tab-ped .ped-form { margin-bottom: 26px; }
+#tab-ped .ped-botoes { display: flex; flex-wrap: wrap; gap: 10px; }
+#tab-ped .ped-botoes .btn { cursor: pointer; }
+
+#tab-ped .ped-preview { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+#tab-ped .ped-preview:empty { display: none; }
+#tab-ped .ped-mini { position: relative; }
+#tab-ped .ped-mini img {
+  width: 92px; height: 92px; object-fit: cover;
+  border-radius: 8px; border: 1px solid var(--line); background: var(--bg3);
+}
+#tab-ped .ped-mini button {
+  position: absolute; top: -6px; right: -6px;
+  width: 24px; height: 24px; border-radius: 50%;
+  border: 1px solid var(--line2); background: var(--bg2); color: var(--ink);
+  font-size: 15px; line-height: 1; cursor: pointer;
+}
+
+#tab-ped .ped-campos {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 14px; margin-top: 18px;
+}
+#tab-ped .ped-campo { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+/* dar display a uma classe atropela o [hidden] do navegador, que tem
+   especificidade menor — sem isto o campo "qual fornecedor" fica sempre visível */
+#tab-ped .ped-campo[hidden] { display: none; }
+#tab-ped .ped-campo.larga { grid-column: 1 / -1; }
+#tab-ped .ped-campo > span { font-size: .82rem; color: var(--ink2); font-weight: 500; }
+#tab-ped .ped-campo small { font-size: .74rem; color: var(--ink3); line-height: 1.4; }
+#tab-ped .ped-obrig { color: var(--bad); }
+#tab-ped .ped-campo input,
+#tab-ped .ped-campo select,
+#tab-ped .ped-campo textarea {
+  width: 100%; box-sizing: border-box;
+  font: inherit; font-size: 16px;   /* 16px evita o zoom automático do iOS ao focar */
+  color: var(--ink); background: var(--bg);
+  border: 1px solid var(--line2); border-radius: 8px; padding: 9px 11px;
+}
+#tab-ped .ped-campo textarea { resize: vertical; min-height: 60px; }
+#tab-ped .ped-campo input:focus,
+#tab-ped .ped-campo select:focus,
+#tab-ped .ped-campo textarea:focus { outline: 2px solid var(--acc); outline-offset: -1px; }
+
+#tab-ped .ped-acoes { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 18px; }
+#tab-ped .ped-status { font-size: .84rem; color: var(--ink3); }
+#tab-ped .ped-status.ruim { color: var(--bad); font-weight: 500; }
+
+/* ---------------- a fila ---------------- */
+#tab-ped .ped-titulo-lista {
+  font-family: var(--display); font-size: 1.1rem; margin: 0 0 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+#tab-ped .ped-conta {
+  font-family: var(--mono); font-size: .78rem; font-weight: 500;
+  background: var(--bg3); color: var(--ink2); padding: 2px 8px; border-radius: 999px;
+}
+
+#tab-ped .ped-item {
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 14px; align-items: start;
+  background: var(--bg2); border: 1px solid var(--line); border-radius: var(--r);
+  padding: 12px; margin-bottom: 8px;
+}
+#tab-ped .ped-item > * { min-width: 0; }
+#tab-ped .ped-fotos { display: flex; gap: 5px; }
+#tab-ped .ped-fotos img {
+  width: 62px; height: 62px; object-fit: cover;
+  border-radius: 7px; border: 1px solid var(--line); background: var(--bg3);
+}
+#tab-ped .ped-semfoto { font-size: .74rem; color: var(--ink3); }
+#tab-ped .ped-corpo h4 { margin: 0 0 3px; font-size: .98rem; line-height: 1.3; overflow-wrap: anywhere; }
+#tab-ped .ped-meta { font-size: .78rem; color: var(--ink3); line-height: 1.4; overflow-wrap: anywhere; }
+#tab-ped .ped-obs { font-size: .84rem; color: var(--ink2); margin-top: 5px; line-height: 1.45; overflow-wrap: anywhere; }
+#tab-ped .ped-fonte { font-style: italic; }
+#tab-ped .ped-res {
+  font-size: .84rem; margin-top: 7px; line-height: 1.45;
+  background: var(--goodBg); color: var(--good);
+  border-radius: 7px; padding: 6px 9px;
+}
+#tab-ped .ped-nota { color: var(--ink2); font-weight: 400; }
+#tab-ped .ped-motivo { font-size: .8rem; color: var(--warn); margin-top: 5px; line-height: 1.4; overflow-wrap: anywhere; }
+
+#tab-ped .ped-lado { display: flex; flex-direction: column; align-items: flex-end; gap: 7px; }
+#tab-ped .ped-estado {
+  font-family: var(--mono); font-size: .66rem; letter-spacing: .04em; text-transform: uppercase;
+  padding: 3px 9px; border-radius: 999px; white-space: nowrap;
+  background: var(--bg3); color: var(--ink2);
+}
+#tab-ped .ped-estado.ok { background: var(--acc2); color: var(--acc); }
+#tab-ped .ped-estado.ativo { background: var(--warnBg); color: var(--warn); }
+#tab-ped .ped-estado.bom { background: var(--goodBg); color: var(--good); }
+#tab-ped .ped-estado.ruim { background: var(--badBg); color: var(--bad); }
+
+/* ---------------- celular ---------------- */
+@media (max-width: 640px) {
+  #tab-ped .ped-botoes .btn { flex: 1 1 100%; justify-content: center; }
+  #tab-ped .ped-campos { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  #tab-ped .ped-acoes .btn { flex: 1 1 calc(50% - 5px); justify-content: center; }
+  #tab-ped .ped-status { flex: 1 1 100%; }
+
+  /* a mesma armadilha do resto da página: sem min-width:0 a coluna 1fr cresce
+     até caber o texto inteiro e a linha estoura a tela */
+  #tab-ped .ped-item { grid-template-columns: auto minmax(0, 1fr); }
+  #tab-ped .ped-lado {
+    grid-column: 1 / -1; flex-direction: row; align-items: center;
+    justify-content: space-between; border-top: 1px solid var(--line); padding-top: 9px;
+  }
+  #tab-ped .ped-fotos img { width: 54px; height: 54px; }
+  #tab-ped .ped-mini img { width: 78px; height: 78px; }
+}

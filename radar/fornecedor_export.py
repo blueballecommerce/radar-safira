@@ -43,7 +43,7 @@ FORNECEDORES = [{
     "nome": "Logospan",
     # loja física, sem site: a página troca o link do site pelo código da etiqueta
     "site": "",
-    "logo": "img/logospan-logo.png",
+    "logo": "",                    # loja fisica, sem marca propria: a pagina desenha a inicial
     "contato": "(11) 93310-4352",
     "regra": "Loja física · aceita quantidade menor que a caixa fechada",
     "fonte": "etiqueta da loja",

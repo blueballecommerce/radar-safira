@@ -12,6 +12,8 @@
   python -m radar client-metadata       # imprime o JSON do documento OAuth (docs/oauth-client.json)
   python -m radar fornecedor coletar    # baixa o catálogo da Flexx Imports -> data/fornecedor.json
   python -m radar fornecedor cruzar     # cruza o catálogo com o radar -> data/pares.json
+  python -m radar pedidos fila          # os pedidos feitos pela aba "Pedir pesquisa"
+  python -m radar pedidos pesquisar     # roda a busca dos pedidos que estão na fila
 """
 from __future__ import annotations
 
@@ -175,6 +177,18 @@ def cmd_fornecedor(a):
                      ensure_ascii=False))
 
 
+def cmd_pedidos(a):
+    """Os pedidos que chegam pela aba "Pedir pesquisa" (via scripts/coletor.py)."""
+    from . import pedidos as P
+    if a.op == "fila":
+        for p in P.lista():
+            r = p.get("resultado") or {}
+            print(f'{p["status"]:9} {p["id"]}  {(p.get("nome") or "")[:46]:46}'
+                  f'  {r.get("catalogos", "-")} catálogos')
+        return
+    print(json.dumps(P.pesquisar(), ensure_ascii=False))
+
+
 def cmd_client_metadata(_):
     print(json.dumps(auth.client_metadata_document(), indent=2, ensure_ascii=False))
 
@@ -200,6 +214,8 @@ def main(argv=None):
     sub.add_parser("client-metadata")
     f = sub.add_parser("fornecedor")
     f.add_argument("op", choices=["coletar", "cruzar", "pesquisar", "categorias"])
+    pd = sub.add_parser("pedidos")
+    pd.add_argument("op", choices=["fila", "pesquisar"])
     a = ap.parse_args(argv)
     if a.cmd == "login":
         asyncio.run(cmd_login(a))
@@ -219,6 +235,8 @@ def main(argv=None):
         cmd_client_metadata(a)
     elif a.cmd == "fornecedor":
         cmd_fornecedor(a)
+    elif a.cmd == "pedidos":
+        cmd_pedidos(a)
 
 
 if __name__ == "__main__":

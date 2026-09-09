@@ -405,6 +405,79 @@ o fornecedor.
 
 ---
 
+## Pedir pesquisa pelo celular (aba "Pedir pesquisa")
+
+Você está na loja, vê um produto e quer saber se vale. Tira a foto pela aba, escreve o que é
+e quanto custa, e envia. O pedido entra na fila e a busca dos anúncios iguais no Mercado Livre
+começa em seguida.
+
+**Funciona sem sinal.** O pedido é gravado primeiro no próprio celular (no navegador) e só
+depois entregue ao PC. Dá para fotografar a loja inteira no subsolo sem rede e, quando você
+voltar para o alcance, tudo sobe sozinho — é só abrir a aba de novo.
+
+### Ligar o coletor
+
+O radar é um site estático: um formulário estático não tem para onde enviar. Quem recebe é o
+`scripts\coletor.py`, um servidor pequeno que fica no PC:
+
+```powershell
+& ".\.venv\Scripts\python.exe" scripts\coletor.py
+```
+
+Ele escuta só em `127.0.0.1` — de fora ninguém chega nele direto. Quem publica na tailnet é o
+Tailscale, e o coletor precisa ficar no **mesmo endereço da página**, no caminho `/api`
+(uma vez só; depois disso fica valendo):
+
+```powershell
+tailscale serve --bg --https=8444 --set-path=/api http://127.0.0.1:8445
+```
+
+Mesmo endereço não é capricho: a página é `https`, e nenhum navegador deixa uma página `https`
+falar com um servidor `http`. Pendurado em `/api`, os dois viram a mesma origem e o problema
+some. É também por isso que **pela página pública do GitHub o envio nunca chega** — de lá o
+pedido fica guardado no celular até você abrir pelo endereço da tailnet.
+
+Para desfazer: `tailscale serve --https=8444 --set-path=/api off`.
+
+### Onde o pedido cai
+
+Cada pedido vira uma pasta em `data\pedidos\<id>\` (fora do git — tem foto e custo, não vai
+para o site público):
+
+| Arquivo | O que é |
+|---|---|
+| `pedido.json` | o que você preencheu, mais o estado |
+| `foto-1.jpg`… | as fotos, já encolhidas pelo navegador para ~400 KB |
+| `resultado.json` | os catálogos encontrados, no mesmo formato do `fornecedor_busca.json` |
+
+O estado aparece na tela e também na linha de comando:
+
+```powershell
+& ".\.venv\Scripts\python.exe" -m radar pedidos fila        # o que já foi pedido
+& ".\.venv\Scripts\python.exe" -m radar pedidos pesquisar   # roda a busca da fila agora
+```
+
+`na_fila` → `buscando` → `pronto` (ou `erro`, com o motivo no próprio pedido).
+
+### O que a busca faz e o que ela não faz
+
+Ela faz o mesmo que `radar fornecedor pesquisar` faz com o catálogo da Flexx: pergunta o nome à
+JoomPulse e agrupa os anúncios por catálogo do Mercado Livre. **Ela não decide se o anúncio é o
+mesmo produto** — isso é conferência foto a foto, e continua sendo feita olhando, com a lupa da
+ficha. O que a fila entrega é a lista de candidatos, pronta para conferir.
+
+Por isso o nome que você escreve importa: escreva como o **anúncio** seria ("arma lança dardos
+com mira laser"), não como está na etiqueta da loja ("SUPER SHOT 24689").
+
+### Se a busca não começa
+
+O aviso amarelo no alto da aba diz o motivo. O mais comum é a sessão da JoomPulse ter expirado —
+ela vale algumas semanas. O pedido não se perde: fica na fila e roda quando você resolver.
+
+```powershell
+& ".\.venv\Scripts\python.exe" -m radar login-browser
+```
+
 ## O que este radar ainda não faz
 
 Vale saber, para você não procurar o que não existe:

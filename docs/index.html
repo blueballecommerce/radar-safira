@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <link rel="stylesheet" href="concorrentes.css?v=20260908-dates">
+<link rel="stylesheet" href="pedidos.css?v=20260908-pedidos">
 <title>Radar Safira</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -574,6 +575,7 @@ ul.ext li b{font-family:var(--mono);font-weight:500;white-space:nowrap}
     <button role="tab" data-tab="sim" aria-selected="false">Simulador de preço</button>
     <button role="tab" data-tab="forn" aria-selected="false">Fornecedores</button>
     <button role="tab" data-tab="conc" aria-selected="false" aria-controls="tab-conc">Concorrentes</button>
+    <button role="tab" data-tab="ped" aria-selected="false" aria-controls="tab-ped">Pedir pesquisa</button>
     <button role="tab" data-tab="shp" aria-selected="false">Shopee<span class="soon">em breve</span></button>
   </nav>
   <div class="fresh" id="fresh"></div>
@@ -764,6 +766,10 @@ ul.ext li b{font-family:var(--mono);font-weight:500;white-space:nowrap}
   <div id="conc-root"><p role="status">Carregando concorrentes…</p></div>
 </section>
 
+<section id="tab-ped" hidden aria-label="Pedir pesquisa">
+  <div id="ped-root"><p role="status">Carregando…</p></div>
+</section>
+
 <section id="tab-shp" hidden>
   <h2>Shopee Brasil</h2>
   <p class="lead">A JoomPulse cobre a Shopee desde maio de 2026, ainda sem palavras-chave, sazonalidade ou tendência de 12 meses. Esta aba será ligada quando o Mercado Livre estiver rodando redondo, com a mesma lógica de score adaptada aos sinais que a Shopee oferece (vendas 30 dias, tendência do item, favoritos, tipo de loja).</p>
@@ -790,6 +796,7 @@ ul.ext li b{font-family:var(--mono);font-weight:500;white-space:nowrap}
 <div class="toast" id="toast"></div>
 
 <script src="concorrentes.js?v=20260908-dates"></script>
+<script src="pedidos.js?v=20260908-pedidos"></script>
 <script>
 /* ===================== data ===================== */
 let S = {meta:{generatedAt:null,counts:{products:0,categories:0,joompro:0}},products:[],categories:[],joompro:[]};
@@ -923,6 +930,7 @@ function showTab(t){
   // a aba pode ser restaurada da última visita antes do código dela ter rodado;
   // adiar um ciclo garante que `forn` já exista
   if (t==='forn') setTimeout(fornLoad, 0);
+  if (t==='ped') setTimeout(()=>window.RadarPedidos.load(), 0);
   if (t==='conc') setTimeout(()=>window.RadarConcorrentes.load(), 0);
   else if(location.hash.startsWith('#concorrentes')) history.replaceState(null,'',location.pathname+location.search);
   $$('nav.tabs button').forEach(b=>b.setAttribute('aria-selected', b.dataset.tab===t));
@@ -1950,7 +1958,9 @@ function fornRender(){
   if (forn.view==='lista'){
     root.innerHTML = `<div class="sup">${D.fornecedores.map(f=>`
       <div class="supc" data-sup="${f.id}">
-        <img class="logo" src="${esc(f.logo)}" alt="" onerror="this.outerHTML='<div class=mono>${esc(f.nome.split(' ').map(w=>w[0]).join('').slice(0,2))}</div>'">
+        ${f.logo
+          ? `<img class="logo" src="${esc(f.logo)}" alt="" onerror="this.outerHTML='<div class=mono>${esc(f.nome.split(' ').map(w=>w[0]).join('').slice(0,2))}</div>'">`
+          : `<div class="mono">${esc(f.nome.split(' ').map(w=>w[0]).join('').slice(0,2))}</div>`}
         <div><h3>${esc(f.nome)}</h3>
           <div class="meta">${esc(f.regra)} · ${esc(f.contato)}<br>${f.site
             ? `<a href="${esc(f.site)}" target="_blank" rel="noopener">${esc(f.site.replace(/^https?:\/\/(www\.)?/,'').replace(/\/$/,''))} ↗</a>`

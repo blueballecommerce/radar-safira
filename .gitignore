@@ -20,3 +20,4 @@ data/fornecedor_categorias.json
 data/fornecedor_logospan.json
 data/fornecedor_logospan_busca.json
 data/*.bak*.json
+data/pedidos/
