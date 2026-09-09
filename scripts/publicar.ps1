@@ -19,6 +19,7 @@ param([switch]$SoPredator, [switch]$Dados)
 $ErrorActionPreference = "Continue"
 $raiz = Split-Path -Parent $PSScriptRoot
 Set-Location $raiz
+$naPastaViva = [System.IO.Path]::GetFullPath($raiz).TrimEnd('\') -ieq 'C:\Projeto - Radar Safira'
 
 $copia = "/c/Projeto - Radar Safira"
 $ssh = @("-o", "BatchMode=yes", "-o", "ConnectTimeout=20", "predator")
@@ -36,6 +37,16 @@ if (-not $SoPredator) {
     git push -q origin main
     if ($LASTEXITCODE -ne 0) { Falhar "git push origin main falhou (internet? GitHub?)" }
     Write-Output "GitHub:    enviado (a pagina publica atualiza em 1-2 min)"
+}
+
+if ($naPastaViva) {
+    # A cópia já está no Predator: não precisa de SSH para falar consigo mesma.
+    git push -q central main
+    if ($LASTEXITCODE -ne 0) { Falhar "git push central main falhou" }
+    Write-Output "Central:   $(git log --oneline -1)"
+    Write-Output "Pasta viva: arquivos locais servidos diretamente pelo Tailscale"
+    Write-Output "Pagina da tailnet: https://dojoo.tailce25ed.ts.net:8444/"
+    exit 0
 }
 
 $antes = ssh @ssh "git -C '$copia' log --oneline -1"

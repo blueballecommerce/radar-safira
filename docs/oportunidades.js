@@ -1,0 +1,203 @@
+/* Etapa 1: somente JSONs e as contas compartilhadas do Radar. Sem IA ou coleta. */
+(function(global){
+  'use strict';
+  const OPT_MARGEM_MIN = .20;
+  const OPT_DEMANDA_DIA_MIN = 1;
+  const OPT_IDADE_MAX = 40;
+  const OPT_CAPITAL_ALERTA = null; // João: avaliar caso a caso, sem teto fixo.
+  const OPT_APROXIMADOS = true;
+  const OPT_PLANO = 'Após a primeira venda, observar se surgem outras; avaliar a compra pelo investimento e pelo prazo dos pedidos. Mais vendas reforçam o sinal, mas não autorizam automaticamente comprar a caixa.';
+  const CONFIG = {margem:OPT_MARGEM_MIN, diaria:OPT_DEMANDA_DIA_MIN, idade:OPT_IDADE_MAX, capital:OPT_CAPITAL_ALERTA, aproximados:OPT_APROXIMADOS};
+  const PENDENTES = {
+    'MLB5179068847':'Abridor KGQ03: cabeça e cabos diferentes; conferir na lupa.',
+    'MLB4812803339':'Bomba: painel e corpo diferentes; conferir na lupa.',
+    'MLB6625098390':'Modelador: comandos e base diferentes; conferir na lupa.',
+    'MLB7481296738':'Squishy: marca e apresentação diferentes; conferir na lupa.',
+  };
+  const n = x => typeof x==='number' && Number.isFinite(x) ? x : null;
+  const money=x=>n(x)==null?'não coletado':x.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+  const num=x=>n(x)==null?'não coletado':x.toLocaleString('pt-BR',{maximumFractionDigits:2});
+  const pct=x=>n(x)==null?'não coletado':num(x*100)+'%';
+  const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  function day(s){
+    const v=String(s||'').slice(0,10);
+    if(!/^\d{4}-\d{2}-\d{2}$/.test(v)) return null;
+    const t=Date.parse(v+'T00:00:00Z');
+    return Number.isFinite(t)&&new Date(t).toISOString().slice(0,10)===v?t:null;
+  }
+  const dateText=s=>day(s)==null?'não coletada':String(s).slice(0,10).split('-').reverse().join('/');
+  const today=()=>new Intl.DateTimeFormat('en-CA',{timeZone:'America/Sao_Paulo',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+  const age=(created,at)=>day(created)==null||day(at)==null||day(at)<day(created)?null:Math.floor((day(at)-day(created))/864e5);
+  function unitAllowed(f){return !!f && typeof f.regra==='string' && /unidade|quantidade menor/i.test(f.regra) && !/apenas caixa fechada/i.test(f.regra);}
+
+  // As janelas não são somadas. Uma janela parcial só prova um LIMITE INFERIOR
+  // da média desde a criação; se não atingir a meta, faltam dados para rejeitar.
+  function demand(a, supplement, exported, now){
+    const created=a.criadoEm||a.adPublishDate||supplement?.created;
+    const currentAge=age(created,now);
+    const read=a.lidoEm||supplement?.read||null;
+    const sinceAge=age(created,read||exported);
+    let sales=n(a.vendas_desde_criacao), windowDays=null, source='JoomPulse · vendas desde a criação';
+    let bound=false;
+    if(sales==null){
+      if(n(supplement?.monthly)!=null){sales=supplement.monthly;windowDays=30;source=supplement.source+' · estimativa de 30 dias';}
+      else if(n(a.vendas_mes)!=null){sales=a.vendas_mes;windowDays=30;source='JoomPulse / fornecedores.json · estimativa de 30 dias';}
+      else if(n(a.vendas_sem)!=null){sales=a.vendas_sem;windowDays=7;source='JoomPulse / fornecedores.json · estimativa de 7 dias';}
+      // Exportador normaliza o período: vendas_mes é mensal, não soma de anúncios.
+      bound=sinceAge!=null && windowDays!=null && sinceAge>windowDays;
+    }
+    const daily=sales!=null && sinceAge!=null && sinceAge>0 ? sales/sinceAge : null;
+    return {created, age:currentAge, ageAtReading:sinceAge, daily, lowerBound:bound, sales, windowDays, source, read,
+      passes:daily!=null&&daily>=CONFIG.diaria,
+      fails:daily!=null&&!bound&&daily<CONFIG.diaria};
+  }
+
+  function classify(r){
+    const why=[];
+    if(r.listingStatus && r.listingStatus!=='active') why.push('Anúncio de referência não está ativo na leitura pontual.');
+    if(r.catalog && r.entrance==='fechada') why.push('Catálogo fechado: '+num(r.bb)+' vendedores disputam a Compra Ganha.');
+    if(n(r.maxFloor)!=null&&r.catalog&&n(r.cost)!=null&&r.maxFloor<r.cost) why.push('No piso do catálogo, o custo supera o máximo para margem de 20%.');
+    if(n(r.classic?.profit)!=null&&r.classic.profit<=0) why.push('A sobra no preço de referência é zero ou negativa.');
+    if(r.demand.age!=null&&r.demand.age>CONFIG.idade) why.push('Criado há '+num(r.demand.age)+' dias: excede o limite de '+CONFIG.idade+' dias.');
+    if(r.demand.fails) why.push('A média desde a criação é menor que uma venda por dia.');
+    if(why.length) return {status:'Não vale o teste',reason:why.join(' ')};
+    const missing=[];
+    if(r.demand.age==null) missing.push('Data de criação não coletada; dias no ar não substituem criação.');
+    if(!r.demand.passes) missing.push('Ainda falta comprovar média de uma venda por dia desde a criação.');
+    if(!r.classic) missing.push('Falta preço, custo, quantidade do kit, categoria ou frete do anúncio.');
+    else if(r.classic.margin<CONFIG.margem) missing.push('Margem no Clássico abaixo de 20%.');
+    if(r.catalog && (r.entrance!=='aberta'||r.maxFloor==null||r.maxFloor<=r.cost)) missing.push('Falta margem para ficar abaixo do piso em catálogo aberto.');
+    if(r.entrance==='não coletada') missing.push('Concorrência não coletada.');
+    if(r.entrance==='fechada') missing.push('Anúncio próprio com líder de entrada fechada.');
+    if(r.reviewPending) missing.push('A correspondência visual está contestada e aguarda confirmação na lupa.');
+    if(r.quantityPending) missing.push('Quantidade do kit de munição ainda precisa de confirmação.');
+    if(r.missingReading) missing.push('O anúncio não retornou na consulta pontual; revalidar disponibilidade.');
+    if(r.approximate&&!r.unit) missing.push('Referência aproximada exige fornecedor que aceita unidade.');
+    if(missing.length) return {status:'Precisa de mais análise',reason:missing.join(' ')};
+    return {status:'Promissor',reason:'Até 40 dias de criação, média mínima de uma venda por dia e margem de pelo menos 20% no Clássico.'+(r.approximate?' Referência aproximada.':'')+(!r.unit?' Condição: definir como atender a primeira venda sem comprar a caixa antecipadamente.':'')};
+  }
+
+  function analyze(p,f,env){
+    if(!p.pesquisado)return null;
+    let ads=(p.anuncios||[]).filter(a=>a.veredito==='igual');
+    let approximate=false;
+    if(!ads.length&&CONFIG.aproximados&&unitAllowed(f)){ads=(p.anuncios||[]).filter(a=>a.veredito==='parecido');approximate=true;}
+    if(!ads.length)return null;
+    const monthly=a=>n(a.vendas_mes)??(n(a.vendas_sem)==null?null:Math.round(a.vendas_sem*4.33));
+    ads=[...ads].sort((a,b)=>(monthly(b)??-1)-(monthly(a)??-1)||String(a.id).localeCompare(String(b.id)));
+    const a=ads[0],q=n(a.qtd),cost=n(p.unit),cat=env.cat(a,p);
+    const quantity=q!=null&&Number.isInteger(q)&&q>=1?q:null;
+    const totalCost=quantity!=null&&cost!=null?cost*quantity:null;
+    const price=n(a.preco);
+    const fs=typeof a.frete_gratis==='boolean'?a.frete_gratis:null;
+    const comparable=ads.filter(x=>n(x.qtd)===quantity);
+    const prices=comparable.map(x=>n(x.preco)).filter(x=>x!=null);
+    const low=prices.length?Math.min(...prices):null, high=prices.length?Math.max(...prices):null;
+    const floor=a.catalogo?n(a.preco_min):low;
+    const canCalc=price!=null&&totalCost!=null&&cat!=null&&fs!=null;
+    const classic=canCalc?env.extrato(price,'c',cat,totalCost,fs):null;
+    const premium=canCalc?env.extrato(price,'p',cat,totalCost,fs):null;
+    const floorResult=canCalc&&floor!=null?env.extrato(floor,'c',cat,totalCost,fs):null;
+    const maxCost=canCalc?env.max(.20,price,'c',cat,fs):null;
+    const maxFloor=canCalc&&floor!=null?env.max(.20,floor,'c',cat,fs):null;
+    const bb=n(a.bb),rc=n(a.avaliacoes),catalog=typeof a.catalogo==='boolean'?a.catalogo:null;
+    const entrance=catalog===true?(bb==null?'não coletada':bb>=env.catalogLimits[1]?'fechada':bb>=env.catalogLimits[0]?'disputada':'aberta'):
+      catalog===false?(rc==null?'não coletada':rc>=env.ownLimits[1]?'fechada':rc>=env.ownLimits[0]?'disputada':'aberta'):'não coletada';
+    const r={url:p.url,name:p.nome,img:p.img,supplier:f?.nome||p.fornecedor,supplierId:p.fornecedor,unit:unitAllowed(f),approximate,ref:a,ads,
+      cost:totalCost,unitCost:cost,quantity,price,low,high,floor,classic,premium,floorResult,maxCost,maxFloor,catalog,bb,rc,entrance,
+      monthly:monthly(a),weekly:n(a.vendas_sem),activityDays:n(a.dias),exported:env.exported,
+      demand:demand(a,env.dates?.[a.id],env.exported,env.now),
+      listingStatus:env.dates?.[a.id]?.listingStatus,missingReading:env.missing?.includes(a.id)||false,
+      radar:env.rows.find(x=>x._forn?.url===p.url)?.opp||null,
+      box:n(p.caixa),siteBox:n(p.caixa_site),capital:n(p.caixa)!=null&&cost!=null?p.caixa*cost:null,
+      quantityPending:/munição.*bolinhas.*gel/i.test(p.nome),
+      september:(p.tags||[]).includes('catalogo_set26'),reviewPending:PENDENTES[a.id]||null,
+      stock:p.fornecedor==='flexx'?((p.tags||[]).includes('catalogo_set26')?'No catálogo de setembro':'Só no site, estoque não confirmado'):'Prateleira · data da foto '+dateText(p.fotoEm||p.etiquetaEm),
+      pending:['Peso e medidas embaladas.','Conteúdo da embalagem e quantidade do kit.','Estoque, prazo de reposição e prazo para atender o pedido.',p.fornecedor==='flexx'?'Qualidade do fornecedor: Flexx ainda não comprada.':'Qualidade e disponibilidade do lote: Logospan já utilizada.'],
+    };
+    if(/brinquedo|bebê/i.test(cat||'')||/elétric|eletric|usb|led|bateria|caneta.*3d/i.test(p.nome)) r.pending.push('Conferir certificação INMETRO aplicável, alimentação e voltagem.');
+    if(!r.unit)r.pending.push('Decidir antes de publicar como atender a primeira venda sem comprar a caixa.');
+    if(r.siteBox!=null&&r.siteBox!==r.box)r.pending.push('Caixa diverge: catálogo '+num(r.box)+'; site '+num(r.siteBox)+'. Confirmar condição vigente.');
+    if(r.reviewPending)r.pending.push(r.reviewPending);
+    if(quantity==null)r.pending.push('Quantidade por anúncio não coletada: não assumir uma unidade.');
+    if(r.quantityPending)r.pending.push('Munição: confirmar quantas unidades do fornecedor compõem o kit; a conta cadastrada é provisória.');
+    if(r.demand.age==null)r.pending.push('Data de criação não coletada.');
+    r.stability='não demonstrada';
+    Object.assign(r,classify(r));
+    r.score=env.score(classic?.margin,r.monthly).pontos;
+    r.math=classic?'Venda '+money(price)+' − produto '+money(totalCost)+' − comissão '+money(classic.comm)+' − tarifa '+money(classic.fixed)+' − frete '+money(classic.ship)+' − imposto '+money(classic.taxV)+' − embalagem '+money(classic.o?.other)+' − ads '+money(classic.adsV)+' = '+money(classic.profit)+' ('+pct(classic.margin)+').':'Conta pendente: não substituir campos ausentes por zero.';
+    r.reading=(catalog?'Catálogo':'Anúncio próprio')+' com entrada '+entrance+'. Referência a '+money(price)+', '+num(r.monthly)+' vendas mensais estimadas; sobra '+money(classic?.profit)+' ('+pct(classic?.margin)+') no Clássico. '+r.reason;
+    return r;
+  }
+
+  function build(data,env){
+    const suppliers=Object.fromEntries((data.fornecedores||[]).map(f=>[f.id,f]));
+    const order={'Promissor':0,'Precisa de mais análise':1,'Não vale o teste':2};
+    return (data.produtos||[]).map(p=>analyze(p,suppliers[p.fornecedor],env)).filter(Boolean).sort((a,b)=>order[a.status]-order[b.status]||b.score-a.score||a.name.localeCompare(b.name));
+  }
+  const state={rows:[],data:null,extra:null,all:false,q:'',supplier:'',unit:false,own:false,color:'',september:false,limit:20};
+  let extraPromise=null;
+  function environment(){
+    const dates={};
+    for(const p of S.products||[]) if(p.pub) dates[p.i]={created:p.pub,read:null,source:'Radar / data.json (data de criação)'};
+    Object.assign(dates,state.extra?.anuncios||{});
+    return {extrato,max:custoMaximo,cat:(a,p)=>{const c=catDe(a,p);return a.l1&&FEES.comm[a.l1]?c:p.categoria?.l1&&FEES.comm[p.categoria.l1]?p.categoria.l1:null;},
+      score:pontosDe,rows:FORN_ROWS,dates,missing:state.extra?.naoRetornados,exported:forn.data.geradoEm,now:today(),catalogLimits:OPP_CATALOGO,ownLimits:OPP_PROPRIO};
+  }
+  function selected(){const query=state.q.toLocaleLowerCase('pt-BR');return state.rows.filter(r=>(state.all||r.status!=='Não vale o teste')&&(!state.supplier||r.supplierId===state.supplier)&&(!state.unit||r.unit)&&(!state.own||r.catalog===false)&&(!state.color||r.radar?.cor===state.color)&&(!state.september||r.september)&&(!query||(r.name+' '+r.supplier).toLocaleLowerCase('pt-BR').includes(query)));}
+  const provenance=(source,date)=>`<small class="ot-source">${esc(source)} · ${date?'exportado/lido em '+dateText(date):'leitura não coletada'}</small>`;
+  const metric=(label,value,detail,source,date)=>`<div class="ot-metric"><span>${label}</span><strong>${value}</strong><div>${detail}</div>${provenance(source,date)}</div>`;
+  function card(r){
+    const d=r.demand,cls=r.status==='Promissor'?'good':r.status==='Não vale o teste'?'bad':'warn';
+    const capital=r.unit?'Compra após a venda':`Caixa de ${num(r.box)} = ${money(r.capital)}`;
+    const daily=d.daily==null?'não coletada':(d.lowerBound?'ao menos ':'')+num(d.daily)+'/dia';
+    const pending=[...r.pending,...(r.status==='Precisa de mais análise'?[r.reason]:[])];
+    const radio=r.radar?`<div class="ot-radar ${esc(r.radar.cor)}"><b>Radar ${esc(r.radar.cor)} · ${num(r.radar.nota)}</b><span>${esc(r.radar.motivo)}</span><small>${esc(r.radar.conta)}</small>${provenance('Semáforo do Radar',r.exported)}</div>`:`<div class="ot-radar">Semáforo do Radar: não coletado para referência aproximada.</div>`;
+    return `<article class="ot-card" data-url="${esc(r.url)}" data-status="${esc(r.status)}"><header>${r.img?`<img src="${esc(r.img)}" alt="" loading="lazy">`:''}<div><span class="ot-supplier">${esc(r.supplier)}</span><h3>${esc(r.name)}</h3><span class="ot-badge ${cls}">${esc(r.status)}</span>${r.approximate?'<span class="ot-badge warn">Referência aproximada</span>':''}${!r.unit&&r.status==='Promissor'?'<span class="ot-badge warn">Com condição</span>':''}</div></header>
+      ${radio}<p class="ot-reading">${esc(r.reading)}</p>
+      <div class="ot-metrics">${metric('Vende por',money(r.price),'Faixa comparável: '+money(r.low)+' a '+money(r.high)+(r.catalog?'<br>Piso do catálogo: '+money(r.floor):'')+'<br>'+num(r.quantity)+' unidade(s) por anúncio','JoomPulse / fornecedor',r.exported)}
+      ${metric('Sobra',money(r.classic?.profit),'Clássico '+pct(r.classic?.margin)+'<br>Premium '+money(r.premium?.profit)+' · '+pct(r.premium?.margin)+'<br>No piso: '+money(r.floorResult?.profit)+' · '+pct(r.floorResult?.margin),'Simulador do Radar / FEES · premissas atuais',r.exported)}
+      ${metric('Demanda',num(r.monthly)+' / mês',num(r.weekly)+' / semana<br>Média desde criação: '+daily+'<br>Criação: '+dateText(d.created)+' · idade '+num(d.age)+' dias<br>Dias no ar: '+num(r.activityDays)+'<br>Estabilidade: '+r.stability,'JoomPulse; exportação não é data de leitura',r.exported)}
+      ${metric('Concorrência',r.catalog===true?'Catálogo':r.catalog===false?'Anúncio próprio':'não coletado','Entrada '+r.entrance+'<br>'+num(r.rc)+' avaliações do líder'+(r.catalog?'<br>'+num(r.bb)+' vendedores no catálogo':'')+'<br>Full: '+(r.ref.full==null?'não coletado':r.ref.full?'sim':'não')+' · Frete grátis: '+(r.ref.frete_gratis==null?'não coletado':r.ref.frete_gratis?'sim':'não'),'JoomPulse / limites do Radar',r.exported)}
+      ${metric('Custo do teste',esc(capital),r.unit?'Risco zero de estoque antecipado: compra 1 depois da venda (ou '+num(r.quantity)+' se for kit). Frete, devolução e disponibilidade ainda contam.':'Decidir antes de publicar como atender a primeira venda sem comprar a caixa. Sem teto fixo de capital.','Fornecedor / regra confirmada por João',r.exported)}</div>
+      <p class="ot-stock">${esc(r.stock)} · custo unitário ${money(r.unitCost)}${r.siteBox!=null&&r.siteBox!==r.box?' · site informa caixa com '+num(r.siteBox):''}${provenance('Fornecedor / catálogo e etiqueta',r.exported)}</p>
+      <div class="ot-blocks"><section><h4>Por que anunciar</h4><p>${esc(r.status==='Promissor'?r.reason:'Ainda não priorizar: '+r.reason)}</p><p>Para margem de 20%, dá para pagar até <b>${money(r.maxCost)}</b> pelos produtos do anúncio, contra custo de <b>${money(r.cost)}</b>. No piso: <b>${money(r.maxFloor)}</b>.</p>${provenance('custoMaximo / Simulador do Radar',r.exported)}</section><section><h4>O que falta</h4><ul>${pending.map(x=>'<li>Pendente · '+esc(x)+'</li>').join('')}</ul></section></div>
+      <details><summary>Ver conta, fontes e anúncios de referência</summary><p>${esc(r.math)}</p><p>Critério: ${CONFIG.idade} dias de criação, ${CONFIG.diaria} venda/dia e ${pct(CONFIG.margem)} de margem. ${esc(r.reason)}</p><p>Média: ${num(d.sales)} vendas em ${d.windowDays?num(d.windowDays)+' dias de janela':'toda a vida do anúncio'} ÷ ${num(d.ageAtReading)} dias desde a criação na observação. ${d.lowerBound?'É um limite inferior, não a média exata.':''} Fonte: ${esc(d.source)}; leitura ${dateText(d.read)}. Quando a leitura falta, usa-se a idade na exportação conservadoramente.</p><p>Plano da QuickBuy: ${esc(OPT_PLANO)}</p><p>Regras de envio: Mercado Livre, consulta de 09/09/2026; entrega padrão confirmada por João. QuickBuy amarela, sem Full; desconto de frete não confirmado (0% por padrão). Peso, taxas e embalagem são premissas do Simulador, não medidas verificadas.</p><ul>${r.ads.map(a=>`<li>${esc(a.id)} · ${esc(a.nome)} · ${esc(a.vendedor||'não coletado')} · ${money(a.preco)} · ${num(a.vendas_mes)} vendas/mês. Sem somar anúncios ou variações.</li>`).join('')}</ul></details>
+      <footer><button class="btn" data-sheet="${esc(r.url)}">Ver ficha</button><a class="btn primary" href="https://produto.mercadolivre.com.br/${esc(String(r.ref.id).replace('MLB','MLB-'))}" target="_blank" rel="noopener">Mercado Livre ↗</a></footer></article>`;
+  }
+  function renderCards(){
+    const list=document.querySelector('#ot-results');if(!list)return;
+    const rows=selected();document.querySelector('#ot-count').textContent=rows.length+' produtos · '+state.rows.filter(r=>r.status==='Promissor').length+' Promissor no universo pesquisado';
+    list.innerHTML=rows.slice(0,state.limit).map(card).join('')||'<p class="empty">Nenhum produto com estes filtros. Use Mostrar tudo para ver os descartados e seus motivos.</p>';
+    document.querySelector('#ot-more').hidden=rows.length<=state.limit;
+  }
+  function csv(rows){
+    const flat=r=>({produto:r.name,fornecedor:r.supplier,url:r.url,classificacao:r.status,motivo:r.reason,referencia_aproximada:r.approximate,aceita_unidade:r.unit,referencia:r.ref.id,preco:r.price,faixa_min:r.low,faixa_max:r.high,piso_catalogo:r.floor,custo_unitario:r.unitCost,qtd:r.quantity,custo_kit:r.cost,sobra_classico:r.classic?.profit,margem_classico:r.classic?.margin,sobra_premium:r.premium?.profit,margem_premium:r.premium?.margin,sobra_piso:r.floorResult?.profit,custo_maximo_20:r.maxCost,custo_maximo_piso:r.maxFloor,vendas_mes:r.monthly,vendas_semana:r.weekly,media_dia:r.demand.daily,media_limite_inferior:r.demand.lowerBound,fonte_media:r.demand.source,data_leitura:r.demand.read,criacao:r.demand.created,idade:r.demand.age,dias_no_ar:r.activityDays,catalogo:r.catalog,vendedores:r.bb,avaliacoes:r.rc,entrada:r.entrance,full:r.ref.full,frete_gratis:r.ref.frete_gratis,caixa:r.box,caixa_site:r.siteBox,capital:r.capital,estoque:r.stock,semaforo:r.radar?.cor,nota_radar:r.radar?.nota,motivo_radar:r.radar?.motivo,conta:r.math,estabilidade:r.stability,pendencias:r.pending.join(' | '),plano:OPT_PLANO,exportadoEm:r.exported});
+    const objects=rows.map(flat),keys=Object.keys(flat(rows[0]||{ref:{},demand:{},pending:[]}));
+    const q=v=>'"'+String(v==null?'não coletado':v).replace(/^[=+@-]/,"'$&").replace(/"/g,'""')+'"';
+    return [keys.map(q).join(';'),...objects.map(o=>keys.map(k=>q(o[k])).join(';'))].join('\r\n');
+  }
+  function render(){
+    const root=document.getElementById('oport-root');
+    root.innerHTML=`<div class="ot-intro"><span>QUICKBUY · ETAPA 1</span><h2>Oportunidade de fornecedores</h2><p>Produtos para investir tempo no anúncio. Comprar estoque só depois de validar a venda e avaliar o pedido.</p><p>Até ${CONFIG.idade} dias desde a criação · pelo menos ${CONFIG.diaria} venda/dia · margem de ${pct(CONFIG.margem)} no Clássico · capital avaliado caso a caso.</p><small>Catálogo exportado em ${dateText(state.data.geradoEm)}. Vendas estimadas pela JoomPulse. Exportação não renova a leitura do mercado. A aba usa somente JSONs, sem tokens ou coleta.</small></div>
+    <div class="ot-filters"><label>Buscar<input id="ot-query" type="search" value="${esc(state.q)}" placeholder="Nome do produto"></label><label>Fornecedor<select id="ot-supplier"><option value="">Todos</option>${state.data.fornecedores.map(f=>`<option value="${esc(f.id)}" ${state.supplier===f.id?'selected':''}>${esc(f.nome)}</option>`).join('')}</select></label><label>Semáforo<select id="ot-color"><option value="">Todos</option>${['verde','amarelo','vermelho'].map(c=>`<option ${state.color===c?'selected':''}>${c}</option>`).join('')}</select></label><label><input id="ot-unit" type="checkbox" ${state.unit?'checked':''}> Aceita unidade</label><label><input id="ot-own" type="checkbox" ${state.own?'checked':''}> Anúncio próprio</label><label><input id="ot-september" type="checkbox" ${state.september?'checked':''}> Catálogo de setembro</label><button class="btn" id="ot-all" aria-pressed="${state.all}">${state.all?'Só potenciais':'Mostrar tudo'}</button><button class="btn" id="ot-csv">Baixar CSV</button></div><p id="ot-count" role="status"></p><div id="ot-results"></div><button class="btn" id="ot-more">Mostrar mais produtos</button>`;
+    const readDates=Object.values(state.extra?.anuncios||{}).map(x=>x.lidoEm).filter(Boolean).sort();
+    root.querySelector('.ot-intro').insertAdjacentHTML('beforeend',`<small class="ot-source">Consulta pontual de criação e demanda: lido em ${dateText(readDates.at(-1))}. As datas efetivas de cada leitura estão na conta do cartão; preços continuam na exportação de fornecedores.</small>`);
+    for(const [id,key,kind] of [['ot-query','q','value'],['ot-supplier','supplier','value'],['ot-color','color','value'],['ot-unit','unit','checked'],['ot-own','own','checked'],['ot-september','september','checked']]) root.querySelector('#'+id).addEventListener('input',e=>{state[key]=e.target[kind];state.limit=20;renderCards();});
+    root.querySelector('#ot-all').onclick=e=>{state.all=!state.all;e.target.textContent=state.all?'Só potenciais':'Mostrar tudo';e.target.setAttribute('aria-pressed',state.all);state.limit=20;renderCards();};
+    root.querySelector('#ot-more').onclick=()=>{state.limit+=20;renderCards();};
+    root.querySelector('#ot-csv').onclick=()=>{const url=URL.createObjectURL(new Blob(['\ufeff'+csv(selected())],{type:'text/csv;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='oportunidades-fornecedores.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
+    root.onclick=e=>{const b=e.target.closest('[data-sheet]');if(b)abrirNoFornecedor(b.dataset.sheet);};
+    renderCards();
+  }
+  async function load(){
+    try{await fornLoad(true);if(!forn.data)throw new Error('Catálogo indisponível');
+      if(!extraPromise)extraPromise=fetch('oportunidades.json').then(r=>{if(!r.ok)throw new Error('Leitura pontual indisponível');return r.json();}).catch(e=>{extraPromise=null;throw e;});
+      state.extra=await extraPromise;fornParaRadar();state.data=forn.data;state.rows=build(state.data,environment());render();}
+    catch(e){document.getElementById('oport-root').innerHTML='<p role="alert">Não foi possível carregar as oportunidades. Recarregue a página. '+esc(e.message)+'</p>';}
+  }
+  function refresh(){if(state.data){state.rows=build(state.data,environment());if(!document.getElementById('tab-oport').hidden)render();}}
+  const api={load,refresh,build,analyze,classify,demand,age,csv,CONFIG,rows:()=>state.rows};
+  if(typeof module!=='undefined'&&module.exports)module.exports=api;
+  if(global)global.RadarOportunidades=api;
+})(typeof window==='undefined'?null:window);

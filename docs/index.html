@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="oportunidades.css?v=20260909">
 <link rel="stylesheet" href="concorrentes.css?v=20260908-dates">
 <link rel="stylesheet" href="pedidos.css?v=20260908-pedidos">
 <title>Radar Safira</title>
@@ -574,6 +575,7 @@ ul.ext li b{font-family:var(--mono);font-weight:500;white-space:nowrap}
     <button role="tab" data-tab="imp" aria-selected="false">Importação JoomPro</button>
     <button role="tab" data-tab="sim" aria-selected="false">Simulador de preço</button>
     <button role="tab" data-tab="forn" aria-selected="false">Fornecedores</button>
+    <button role="tab" data-tab="oport" aria-selected="false" aria-controls="tab-oport">Oportunidade de fornecedores</button>
     <button role="tab" data-tab="conc" aria-selected="false" aria-controls="tab-conc">Concorrentes</button>
     <button role="tab" data-tab="ped" aria-selected="false" aria-controls="tab-ped">Pedir pesquisa</button>
     <button role="tab" data-tab="shp" aria-selected="false">Shopee<span class="soon">em breve</span></button>
@@ -735,7 +737,7 @@ ul.ext li b{font-family:var(--mono);font-weight:500;white-space:nowrap}
       <div class="field"><label>Categoria (define a comissão)</label><select id="s-cat"></select></div>
       <div class="field"><label>Tipo de anúncio</label><select id="s-type"><option value="c">Clássico</option><option value="p">Premium (12x sem juros)</option></select></div>
       <div class="field"><label>Peso com embalagem</label><select id="s-weight"></select></div>
-      <div class="field"><label>Desconto no frete pela reputação</label><select id="s-rep"><option value="0">0% (vendedor novo)</option><option value="0.25">25%</option><option value="0.5" selected>50% (reputação verde)</option><option value="0.7">70% (MercadoLíder)</option></select></div>
+      <div class="field"><label>Desconto no frete pela reputação</label><select id="s-rep"><option value="0" selected>0% (QuickBuy amarela; desconto não confirmado)</option><option value="0.25">25%</option><option value="0.5">50% (reputação verde)</option><option value="0.7">70% (MercadoLíder)</option></select></div>
       <div class="field"><label>Imposto sobre a venda (Simples) %</label><input id="s-tax" type="number" step="0.1" value="6"></div>
       <div class="field"><label>Embalagem e outros custos por unidade</label><input id="s-other" type="number" step="0.01" value="1.50"></div>
       <div class="field"><label>Anúncios (Ads) % da venda</label><input id="s-ads" type="number" step="0.1" value="0"></div>
@@ -761,6 +763,7 @@ ul.ext li b{font-family:var(--mono);font-weight:500;white-space:nowrap}
   <div id="forn-root"><div class="empty">Carregando fornecedores…</div></div>
 </section>
 
+<section id="tab-oport" hidden aria-label="Oportunidade de fornecedores"><div id="oport-root"><p role="status">Carregando oportunidades…</p></div></section>
 <!-- ================= SHOPEE ================= -->
 <section id="tab-conc" hidden aria-label="Concorrentes">
   <div id="conc-root"><p role="status">Carregando concorrentes…</p></div>
@@ -795,6 +798,7 @@ ul.ext li b{font-family:var(--mono);font-weight:500;white-space:nowrap}
 </div>
 <div class="toast" id="toast"></div>
 
+<script src="oportunidades.js?v=20260909"></script>
 <script src="concorrentes.js?v=20260908-dates"></script>
 <script src="pedidos.js?v=20260908-pedidos"></script>
 <script>
@@ -930,6 +934,8 @@ function showTab(t){
   // a aba pode ser restaurada da última visita antes do código dela ter rodado;
   // adiar um ciclo garante que `forn` já exista
   if (t==='forn') setTimeout(fornLoad, 0);
+  if (t==='oport') { history.replaceState(null,'','#oportunidades'); setTimeout(()=>window.RadarOportunidades.load(), 0); }
+  else if(location.hash.startsWith('#oportunidades')) history.replaceState(null,'',location.pathname+location.search);
   if (t==='ped') setTimeout(()=>window.RadarPedidos.load(), 0);
   if (t==='conc') setTimeout(()=>window.RadarConcorrentes.load(), 0);
   else if(location.hash.startsWith('#concorrentes')) history.replaceState(null,'',location.pathname+location.search);
@@ -1306,9 +1312,9 @@ $('#ml-list').addEventListener('keydown', e=>{ if(e.key==='Enter'){ const r=e.ta
 const tipoLt = lt => lt==='gold_pro' ? 'p' : 'c';
 const catL1 = p => FEES.comm[p.l1] ? p.l1 : 'Casa, Móveis e Decoração';
 /* custo máximo do produto para sobrar a margem m vendendo a `preco` (comissão, custo fixo ou frete, imposto, embalagem e ads já descontados) */
-function custoMaximo(m, preco, tipo, cat){
+function custoMaximo(m, preco, tipo, cat, freteGratis=false){
   const o = simOpts();
-  const r = calc(preco||0, 0, cat, tipo, o.wi, o.rep, o.tax, o.other, o.ads);
+  const r = calc(preco||0, 0, cat, tipo, o.wi, o.rep, o.tax, o.other, o.ads, freteGratis);
   return (preco||0)*(1-m) - r.total;
 }
 const naoFecha = v => v>0 ? fmtBRL(v) : 'não fecha';
@@ -1679,6 +1685,8 @@ $('#imp-more').addEventListener('click', ()=>{ im.shown+=50; renderImp(false); }
 
 /* ===================== simulator ===================== */
 const FEES = {
+  standardFree: true, // João confirmou entrega padrão em 09/09/2026.
+  offerFree: true, // Oferta de frete desta simulação; os anúncios usam seu próprio dado.
   comm: { // Clássico / Premium por categoria (referência 2026)
     'Câmeras e Acessórios':[11,16],'Eletrodomésticos':[11,16],'Informática':[11,16],'Celulares e Telefones':[11,16],
     'Agro':[11.5,16.5],'Arte, Papelaria e Armarinho':[11.5,16.5],'Brinquedos e Hobbies':[11.5,16.5],'Casa, Móveis e Decoração':[11.5,16.5],'Construção':[11.5,16.5],'Festas e Lembrancinhas':[11.5,16.5],'Instrumentos Musicais':[11.5,16.5],
@@ -1708,18 +1716,22 @@ function feeGrid(){
   h+=`<div>Preço a partir do qual o frete grátis é obrigatório</div><div><input id="f-free" type="number" step="1" value="${FEES.freeFrom}"></div>`;
   h+=`<div><b>Frete pago pelo vendedor (≥ R$ ${FEES.freeFrom}), por peso</b></div><div></div>`;
   FEES.ship.forEach((f,i)=>{ h+=`<div>${f.label}</div><div><input data-ship="${i}" type="number" step="0.01" value="${f.val}"></div>`; });
+  h+=`<label for="f-standard-free">Frete grátis de R$ 19 a R$ 78,99 pago pelo Mercado Livre (entrega padrão)</label><div><input id="f-standard-free" type="checkbox" ${FEES.standardFree?'checked':''}></div>`;
+  h+=`<label for="f-offer-free">Oferecer frete grátis abaixo de R$ 79 nesta simulação</label><div><input id="f-offer-free" type="checkbox" ${FEES.offerFree?'checked':''}></div>`;
   g.innerHTML=h;
   g.addEventListener('input', e=>{
     const t=e.target;
     if (t.dataset.fix!=null){ const f=FEES.fixed[+t.dataset.fix]; if(f.pct) f.pct=+t.value; else f.val=+t.value; }
     if (t.dataset.ship!=null){ FEES.ship[+t.dataset.ship].val=+t.value; $('#s-weight').options[+t.dataset.ship].text = FEES.ship[+t.dataset.ship].label+' — '+fmtBRL(+t.value); }
     if (t.id==='f-free') FEES.freeFrom=+t.value;
+    if (t.id==='f-standard-free') FEES.standardFree=t.checked;
+    if (t.id==='f-offer-free') FEES.offerFree=t.checked;
     if (t.id==='f-cc'||t.id==='f-cp'){ const c=$('#s-cat').value; FEES.comm[c]=[+$('#f-cc').value,+$('#f-cp').value]; }
     simulate();
   });
 }
 function syncComm(){ const c=FEES.comm[$('#s-cat').value]||[12,17]; $('#f-cc').value=c[0]; $('#f-cp').value=c[1]; }
-function calc(price, cost, cat, type, wi, rep, tax, other, ads){
+function calc(price, cost, cat, type, wi, rep, tax, other, ads, freeShipping=false){
   const comm = (FEES.comm[cat]||[12,17])[type==='p'?1:0]/100 * price;
   let fixed=0, ship=0, fixedLabel='';
   if (price < FEES.freeFrom){
@@ -1728,22 +1740,25 @@ function calc(price, cost, cat, type, wi, rep, tax, other, ads){
   } else {
     ship = (FEES.ship[wi]?.val||0)*(1-rep);
   }
+  if (price < FEES.freeFrom && freeShipping && !(FEES.standardFree && price>=19 && price<79)) {
+    ship = (FEES.ship[wi]?.val||0)*(1-rep);
+  }
   const taxV = price*tax/100, adsV = price*ads/100;
   const total = cost + comm + fixed + ship + taxV + other + adsV;
   const profit = price - total;
   return {comm, fixed, fixedLabel, ship, taxV, adsV, total, profit, margin: price? profit/price : 0, roi: cost? profit/cost : 0};
 }
-function priceForMargin(target, cost, cat, type, wi, rep, tax, other, ads){
+function priceForMargin(target, cost, cat, type, wi, rep, tax, other, ads, freeShipping=false){
   let lo=cost, hi=Math.max(cost*10, 200);
-  for(let i=0;i<60;i++){ const mid=(lo+hi)/2; const r=calc(mid,cost,cat,type,wi,rep,tax,other,ads); if(r.margin>=target) hi=mid; else lo=mid; }
+  for(let i=0;i<60;i++){ const mid=(lo+hi)/2; const r=calc(mid,cost,cat,type,wi,rep,tax,other,ads,freeShipping); if(r.margin>=target) hi=mid; else lo=mid; }
   return hi;
 }
 function simulate(){
   const price=+$('#s-price').value||0, cost=+$('#s-cost').value||0, cat=$('#s-cat').value, type=$('#s-type').value, wi=+$('#s-weight').value, rep=+$('#s-rep').value;
   const tax=+$('#s-tax').value||0, other=+$('#s-other').value||0, ads=+$('#s-ads').value||0, target=(+$('#s-target').value||0)/100;
   syncComm();
-  const r = calc(price,cost,cat,type,wi,rep,tax,other,ads);
-  const need = priceForMargin(target,cost,cat,type,wi,rep,tax,other,ads);
+  const r = calc(price,cost,cat,type,wi,rep,tax,other,ads,FEES.offerFree);
+  const need = priceForMargin(target,cost,cat,type,wi,rep,tax,other,ads,FEES.offerFree);
   const cls = r.margin>=target?'good':r.margin>0?'warn':'bad';
   $('#s-res').innerHTML = `
    <div class="tile hero"><div class="k">Lucro por unidade</div><div class="v" style="color:var(--${cls})">${fmtBRL(r.profit)}</div><div class="s">margem ${(r.margin*100).toFixed(1).replace('.',',')}% sobre a venda</div></div>
@@ -1760,8 +1775,10 @@ function simulate(){
    <tr><td>Embalagem e outros</td><td class="n">− ${fmtBRL(other)}</td></tr>
    <tr><td>Custo do produto</td><td class="n">− ${fmtBRL(cost)}</td></tr>
    <tr class="tot"><td>Lucro por unidade</td><td class="n">${fmtBRL(r.profit)}</td></tr>`;
+  if(price<FEES.freeFrom && r.ship) $('#s-led').insertAdjacentHTML('beforeend', `<tr><td>Frete grátis oferecido por você</td><td class="n">− ${fmtBRL(r.ship)}</td></tr>`);
   const alt = price<FEES.freeFrom ? `Abaixo de R$ ${FEES.freeFrom} o Mercado Livre cobra custo fixo por unidade; a partir de R$ ${FEES.freeFrom} o custo fixo some, mas o frete grátis passa a ser obrigatório e sai do seu bolso (com desconto pela reputação). Teste os dois lados da linha dos R$ ${FEES.freeFrom}.` : `A partir de R$ ${FEES.freeFrom} não há custo fixo, mas o frete grátis é obrigatório e você paga a parte não subsidiada. Vendedores novos pagam a tabela cheia.`;
-  $('#s-note').textContent = alt + ' Valores de comissão, custo fixo e frete são referência de 2026 e podem variar por categoria exata, peso e dimensões — confira no Simulador de Custos do ML e ajuste na tabela editável.';
+  $('#s-note').textContent = (FEES.standardFree ? 'Entrega padrão: de R$ 19 a R$ 78,99, envio pago pelo Mercado Livre, quando elegível. Abaixo de R$ 19 o frete grátis oferecido sai do vendedor. ' : 'Subsídio da entrega padrão desligado. Frete grátis oferecido sai do vendedor. ') + alt + ' Valores de comissão, custo fixo e frete são referência de 2026 e podem variar por categoria exata, peso e dimensões — confira no Simulador de Custos do ML e ajuste na tabela editável.';
+  setTimeout(()=>{ if(forn.data){ fornParaRadar(); renderML(true); if(!$('#tab-forn').hidden) fornRender(); window.RadarOportunidades?.refresh(); } },0);
 }
 function initSim(){
   $('#s-cat').innerHTML = L1S.map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join('');
@@ -1791,7 +1808,7 @@ function renderAll(){
   mlTiles(); mlPicks(); renderML(true); catTiles(); renderCats(); impTiles(); renderImp(true);
 }
 fillSelects(); initSim();
-try{ const t=location.hash.startsWith('#concorrentes') ? 'conc' : localStorage.getItem('radar.tab'); if(t && $('#tab-'+t)) showTab(t);}catch(e){}
+try{ const t=location.hash.startsWith('#oportunidades') ? 'oport' : location.hash.startsWith('#concorrentes') ? 'conc' : localStorage.getItem('radar.tab'); if(t && $('#tab-'+t)) showTab(t);}catch(e){}
 $('#ml-list').innerHTML = '<div class="empty">Carregando a última rodada…</div>';
 fetch('data.json?_='+Date.now(), {cache:'no-store'}).then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); }).then(d=>{ S=d; renderAll(); fornLoad(true); })
   .catch(e=>{ $('#ml-list').innerHTML = '<div class="empty">Não consegui carregar data.json ('+esc(e.message)+'). Se for a primeira publicação, espere a primeira rodada do coletor.</div>'; });
@@ -1896,8 +1913,8 @@ const FILTROS = [
    As premissas (peso, reputação, imposto, embalagem, ads) são as do Simulador
    de preço — mude lá e tudo aqui recalcula. */
 function simOpts(){
-  return { wi:+($('#s-weight')?.value||0), rep:+($('#s-rep')?.value||0.5), tax:+($('#s-tax')?.value||6),
-           other:+($('#s-other')?.value||1.5), ads:+($('#s-ads')?.value||0) };
+  return { wi:+($('#s-weight')?.value||0), rep:+($('#s-rep')?.value??0), tax:+($('#s-tax')?.value??6),
+           other:+($('#s-other')?.value??1.5), ads:+($('#s-ads')?.value||0) };
 }
 function catDe(a, p){
   if (a && a.l1 && FEES.comm[a.l1]) return a.l1;
@@ -1908,17 +1925,15 @@ function catDe(a, p){
 /* extrato de uma venda: preço − comissão − custo fixo/frete − imposto − embalagem − custo = lucro */
 function extrato(preco, tipo, cat, custo, freteGratis){
   const o = simOpts();
-  const r = calc(preco, custo, cat, tipo, o.wi, o.rep, o.tax, o.other, o.ads);
-  // frete grátis oferecido abaixo da linha dos R$ 79 é opcional — e sai do bolso de quem oferece
-  const extra = (preco < FEES.freeFrom && freteGratis) ? (FEES.ship[o.wi]?.val||0)*(1-o.rep) : 0;
-  const profit = r.profit - extra;
-  return {...r, ship: r.ship + extra, profit, margin: preco ? profit/preco : 0,
+  const r = calc(preco, custo, cat, tipo, o.wi, o.rep, o.tax, o.other, o.ads, freteGratis);
+  const profit = r.profit;
+  return {...r, profit, margin: preco ? profit/preco : 0,
           comPct:(FEES.comm[cat]||[12,17])[tipo==='p'?1:0], peso:FEES.ship[o.wi]?.label||'', o};
 }
 function precoAlvo(m, tipo, cat, custo){ const o=simOpts(); return priceForMargin(m, custo, cat, tipo, o.wi, o.rep, o.tax, o.other, o.ads); }
 function extratoHTML(e, preco, tipo, custo, titulo, qtd){
   const linhaFrete = preco < FEES.freeFrom
-    ? (e.ship ? `<li><span>Frete grátis oferecido (${e.peso}, ${Math.round(e.o.rep*100)}% desc.)</span><b>− ${fmtBRL(e.ship)}</b></li>` : `<li><span>Frete</span><b>pago pelo comprador</b></li>`)
+    ? (e.ship ? `<li><span>Frete grátis oferecido (${e.peso}, ${Math.round(e.o.rep*100)}% desc.)</span><b>− ${fmtBRL(e.ship)}</b></li>` : `<li><span>Frete</span><b>${FEES.standardFree && preco>=19 && preco<79 ? "coberto pelo ML na entrega padrão elegível" : "sem custo de envio nesta conta"}</b></li>`)
     : `<li><span>Frete grátis obrigatório (${e.peso}, ${Math.round(e.o.rep*100)}% desc.)</span><b>− ${fmtBRL(e.ship)}</b></li>`;
   return `<div class="hd"><div class="tot">${fmtBRL(e.profit)}<span>lucro por ${(qtd||1)>1?`kit de ${qtd} un (${fmtBRL(e.profit/qtd)}/un)`:'unidade'} · ${fmtPct(e.margin)} da venda</span></div></div>
     <ul class="ext">
