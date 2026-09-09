@@ -4,10 +4,12 @@
   const OPT_MARGEM_MIN = .20;
   const OPT_DEMANDA_DIA_MIN = 1;
   const OPT_IDADE_MAX = 45;
+  const OPT_REPETICAO_MIN = 2;
+  const OPT_CRESCIMENTO_MIN = .20;
   const OPT_CAPITAL_ALERTA = null; // João: avaliar caso a caso, sem teto fixo.
   const OPT_APROXIMADOS = true;
   const OPT_PLANO = 'Após a primeira venda, observar se surgem outras; avaliar a compra pelo investimento e pelo prazo dos pedidos. Mais vendas reforçam o sinal, mas não autorizam automaticamente comprar a caixa.';
-  const CONFIG = {margem:OPT_MARGEM_MIN, diaria:OPT_DEMANDA_DIA_MIN, idade:OPT_IDADE_MAX, capital:OPT_CAPITAL_ALERTA, aproximados:OPT_APROXIMADOS};
+  const CONFIG = {margem:OPT_MARGEM_MIN, diaria:OPT_DEMANDA_DIA_MIN, idade:OPT_IDADE_MAX, repeticao:OPT_REPETICAO_MIN, crescimento:OPT_CRESCIMENTO_MIN, capital:OPT_CAPITAL_ALERTA, aproximados:OPT_APROXIMADOS};
   const PENDENTES = {
     'MLB5179068847':'Abridor KGQ03: cabeça e cabos diferentes; conferir na lupa.',
     'MLB4812803339':'Bomba: painel e corpo diferentes; conferir na lupa.',
@@ -55,6 +57,44 @@
       fails:daily!=null&&!bound&&daily<CONFIG.diaria};
   }
 
+  // Compara o ritmo semanal com a média mensal do MESMO anúncio. Não soma
+  // vendas de anúncios diferentes e não chama aceleração de histórico.
+  function growth(a){
+    const week=n(a.vendas_sem),month=n(a.vendas_mes);
+    return week==null||month==null||month<=0?null:(week*4.33/month)-1;
+  }
+
+  function marketEvidence(p,candidates){
+    const coverage=p._coverage||null;
+    const recentReviewed=candidates.filter(r=>r.demand.age!=null&&r.demand.age<CONFIG.idade&&r.ref.revisadoEm&&!r.reviewPending&&!r.reviewRequired&&(!r.listingStatus||r.listingStatus==='active'));
+    const key=r=>'vendedor:'+(r.ref.vendedor||r.ref.merchantName||r.ref.id).toLocaleLowerCase('pt-BR');
+    const unique=list=>[...new Map(list.map(r=>[key(r),r])).values()];
+    const strong=unique(recentReviewed.filter(r=>r.demand.passes));
+    const growing=unique(strong.filter(r=>n(r.growth)!=null&&r.growth>=CONFIG.crescimento));
+    const weak=unique(recentReviewed.filter(r=>r.demand.fails));
+    const leader=[...recentReviewed].sort((a,b)=>(b.monthly??-1)-(a.monthly??-1))[0]||candidates[0]||null;
+    const advantages=[];
+    if(leader?.catalog)advantages.push('catálogo/Compra Ganha');
+    if(leader?.ref.full===true&&recentReviewed.some(r=>r.ref.full===false))advantages.push('Full');
+    const peerPrices=recentReviewed.map(r=>r.price).filter(v=>n(v)!=null);
+    if(leader&&peerPrices.length>1&&leader.price<=Math.min(...peerPrices)*1.02)advantages.push('menor preço entre os comparáveis revisados');
+    const peerReviews=recentReviewed.map(r=>r.rc).filter(v=>n(v)!=null&&v>0).sort((a,b)=>a-b);
+    const median=peerReviews.length?peerReviews[Math.floor(peerReviews.length/2)]:null;
+    if(leader&&median!=null&&leader.rc>=Math.max(100,median*3))advantages.push('muito mais avaliações');
+    const repeatable=strong.length>=CONFIG.repeticao;
+    const growthConfirmed=growing.length>=CONFIG.repeticao;
+    const complete=coverage?.paginacaoCompleta===true;
+    let diagnosis;
+    if(!strong.length)diagnosis='Nenhum anúncio recente revisado sustenta uma venda por dia.';
+    else if(!repeatable)diagnosis='Só '+strong.length+' vendedor recente revisado sustenta uma venda por dia'+(weak.length?' enquanto '+weak.length+' comparável revisado fica abaixo disso':'')+'. Resultado isolado não valida o mercado.';
+    else diagnosis=strong.length+' vendedores recentes revisados sustentam uma venda por dia.';
+    if(advantages.length)diagnosis+=' O líder tem vantagem observável de '+advantages.join(', ')+'.';
+    else if(leader)diagnosis+=' Não foi encontrada uma vantagem objetiva que explique sozinho o líder.';
+    return {coverage,complete,reviewed:recentReviewed.length,strong:strong.length,growing:growing.length,weak:weak.length,repeatable,growthConfirmed,
+      growthThreshold:CONFIG.crescimento,diagnosis,advantages,leader:leader?.ref.id||null,
+      coverageText:coverage?(complete?'Busca concluída para os termos.':'Busca parcial: '+num(coverage.revisados)+' de '+num(coverage.candidatos)+' candidatos foram comparados visualmente.'):'Cobertura da busca não coletada.'};
+  }
+
   function classify(r){
     const why=[];
     if(r.listingStatus && r.listingStatus!=='active') why.push('Anúncio de referência não está ativo na leitura pontual.');
@@ -76,8 +116,13 @@
     if(r.reviewRequired) missing.push('Falta reconferir visualmente modelo e kit antes de aprovar esta referência.');
     if(r.quantityPending) missing.push('Quantidade do kit de munição ainda precisa de confirmação.');
     if(r.missingReading) missing.push('O anúncio não retornou na consulta pontual; revalidar disponibilidade.');
+    if(r.market){
+      if(!r.market.complete) missing.push(r.market.coverageText+' A pesquisa precisa ser concluída antes da aprovação.');
+      if(!r.market.repeatable) missing.push('Demanda ainda não repetida: são necessários pelo menos '+CONFIG.repeticao+' vendedores recentes e revisados com uma venda por dia.');
+      if(!r.market.growthConfirmed) missing.push('Crescimento forte ainda não confirmado em '+CONFIG.repeticao+' anúncios: o ritmo semanal precisa superar a média mensal em pelo menos '+pct(CONFIG.crescimento)+'.');
+    }
     if(missing.length) return {status:'Precisa de mais análise',reason:missing.join(' ')};
-    return {status:'Promissor',reason:'Menos de 45 dias desde a criação, média mínima de uma venda por dia e margem de pelo menos 20% no Clássico.'+(r.approximate?' Referência aproximada.':'')+(!r.unit?' Condição: definir como atender a primeira venda sem comprar a caixa antecipadamente.':'')};
+    return {status:'Promissor',reason:'Mercado repetido em pelo menos '+CONFIG.repeticao+' vendedores comparáveis, crescimento semanal forte, pesquisa concluída, menos de 45 dias desde a criação, uma venda por dia e margem de pelo menos 20% no Clássico.'+(r.approximate?' Referência aproximada.':'')+(!r.unit?' Condição: definir como atender a primeira venda sem comprar a caixa antecipadamente.':'')};
   }
 
   function analyze(p,f,env,referenceId){
@@ -97,6 +142,10 @@
       chosen.evaluated=candidates.map(r=>({id:r.ref.id,status:r.status,reason:r.reason,age:r.demand.age,monthly:r.monthly,price:r.price,margin:r.classic?.margin}));
       chosen.leader=ads[0];
       chosen.coverage=p._coverage||null;
+      chosen.market=marketEvidence(p,candidates);
+      chosen.stability=chosen.market.repeatable?'Demanda repetida em '+num(chosen.market.strong)+' vendedores recentes revisados.':'Não demonstrada: '+chosen.market.diagnosis;
+      Object.assign(chosen,classify(chosen));
+      chosen.reading=(chosen.catalog?'Catálogo':'Anúncio próprio')+' com entrada '+chosen.entrance+'. Referência a '+money(chosen.price)+', '+num(chosen.monthly)+' vendas mensais estimadas; sobra '+money(chosen.classic?.profit)+' ('+pct(chosen.classic?.margin)+') no Clássico. '+chosen.market.diagnosis+' '+chosen.reason;
       chosen.researchOnly=candidates.every(r=>r.demand.age==null||r.demand.age>=CONFIG.idade);
       if(chosen.status==='Não vale o teste' && candidates.every(r=>r.demand.age==null||r.demand.age>=CONFIG.idade)){
         chosen.status='Precisa de mais análise';
@@ -129,6 +178,7 @@
       monthly:monthly(a),weekly:n(a.vendas_sem),activityDays:n(a.dias),exported:a.lidoEm||a.exportadoEm||env.exported,
       supplierDate:p._siteLidoEm||env.exported,
       demand:demand(a,env.dates?.[a.id],a.exportadoEm||env.exported,env.now),
+      growth:growth(a),
       listingStatus:env.dates?.[a.id]?.listingStatus,missingReading:env.missing?.includes(a.id)||false,
       radar:env.rows.find(x=>x._forn?.url===p.url)?.opp||null,
       box:n(p.caixa),siteBox:n(p.caixa_site),capital:n(p.caixa)!=null&&cost!=null?p.caixa*cost:null,
@@ -166,7 +216,10 @@
         original.set(pair.id,{...original.get(pair.id),...ad,veredito:pair.veredito,qtd:pair.qtd,obs:pair.obs,revisadoEm:pair.revisadoEm,pendencia:pair.pendencia||null});
       }
       const ads=[...original.values()];
-      return {...p,pesquisado:p.pesquisado||pairs.some(x=>x.url===p.url),anuncios:ads,iguais:ads.filter(a=>a.veredito==='igual').length,parecidos:ads.filter(a=>a.veredito==='parecido').length,_coverage:extra.cobertura?.produtos?.[p.url],_siteLidoEm:extra.catalogoAtual?.produtos?.[p.url]?extra.catalogoAtual.lidoEm:null};
+      const rawCoverage=extra.cobertura?.produtos?.[p.url],coverage=rawCoverage?{...rawCoverage,candidatosDetalhes:(rawCoverage.candidatosIds||[]).map(id=>{
+        const entry=extra.anuncios?.[id];return entry?{...entry.ad,id,criadoEm:entry.created,lidoEm:entry.read,listingStatus:entry.listingStatus,fontePesquisa:entry.source}:null;
+      }).filter(Boolean)}:p._coverage||null;
+      return {...p,pesquisado:p.pesquisado||pairs.some(x=>x.url===p.url),anuncios:ads,iguais:ads.filter(a=>a.veredito==='igual').length,parecidos:ads.filter(a=>a.veredito==='parecido').length,_coverage:coverage,_siteLidoEm:extra.catalogoAtual?.produtos?.[p.url]?extra.catalogoAtual.lidoEm:null};
     });
     return {...data,produtos:products,fornecedores:(data.fornecedores||[]).map(f=>({...f,pesquisados:products.filter(p=>p.fornecedor===f.id&&p.pesquisado).length}))};
   }
@@ -233,7 +286,7 @@
     return `<article class="ot-card ot-compact" data-url="${esc(r.url)}" data-sheet="${esc(r.url)}" data-status="${esc(r.status)}" tabindex="0" role="link" aria-label="Ver ficha de ${esc(r.name)}">
       <span class="ot-rank">${index+1}</span><img class="ot-thumbnail" src="${esc(r.img||'')}" alt="" loading="lazy">
       <div class="ot-card-name"><h3>${esc(r.name)}</h3><span class="ot-supplier">${esc(r.supplier)}</span><div class="tags"><span class="tag">${r.catalog===true?'Catálogo':r.catalog===false?'Anúncio próprio':'Tipo não coletado'}</span><span class="tag">${num(r.demand.age)} dias de criação</span>${r.approximate?'<span class="tag">Referência aproximada</span>':''}</div></div>
-      <div class="ot-card-status"><span class="ot-badge ${cls}">${esc(r.status)}</span><small>${r.unit?'Aceita unidade':num(r.box)+' un. por caixa'}${r.radar?' · Radar '+esc(r.radar.cor):''}</small></div>
+      <div class="ot-card-status"><span class="ot-badge ${cls}">${esc(r.status)}</span><small>${r.unit?'Aceita unidade':num(r.box)+' un. por caixa'}${r.radar?' · Radar '+esc(r.radar.cor):''}</small><small class="ot-market-line">${num(r.market?.strong)} vendedores fortes · ${num(r.market?.growing)} em crescimento · ${r.market?.complete?'busca concluída':'busca parcial'}</small></div>
       <div class="ot-card-value"><small>Vendas/mês</small><b>${num(r.monthly)}</b><small>estimativa da referência</small></div>
       <div class="ot-card-value"><small>Preço de venda</small><b>${money(r.price)}</b><small>Custo ${money(r.cost)}</small></div>
       <div class="ot-card-value"><small>Sobra Clássico</small><b>${money(r.classic?.profit)}</b><small>${pct(r.classic?.margin)} de margem</small></div>
@@ -280,7 +333,7 @@
     document.querySelector('#ot-more').hidden=rows.length<=state.limit;
   }
   function csv(rows){
-    const flat=r=>({produto:r.name,fornecedor:r.supplier,url:r.url,classificacao:r.status,motivo:r.reason,referencia_aproximada:r.approximate,aceita_unidade:r.unit,referencia:r.ref.id,lider_mercado:r.leader?.id,anuncios_avaliados:r.evaluated?.length,pareamento:r.ref.obs,pendencia_pareamento:r.reviewPending,pesquisa_recente:r.coverage?.buscado,paginacao_completa:r.coverage?.paginacaoCompleta,preco:r.price,faixa_min:r.low,faixa_max:r.high,piso_catalogo:r.floor,custo_unitario:r.unitCost,qtd:r.quantity,custo_kit:r.cost,sobra_classico:r.classic?.profit,margem_classico:r.classic?.margin,sobra_premium:r.premium?.profit,margem_premium:r.premium?.margin,sobra_piso:r.floorResult?.profit,custo_maximo_20:r.maxCost,custo_maximo_piso:r.maxFloor,vendas_mes:r.monthly,vendas_semana:r.weekly,media_dia:r.demand.daily,media_limite_inferior:r.demand.lowerBound,fonte_media:r.demand.source,data_leitura:r.demand.read,criacao:r.demand.created,idade:r.demand.age,dias_no_ar:r.activityDays,catalogo:r.catalog,vendedores:r.bb,avaliacoes:r.rc,entrada:r.entrance,full:r.ref.full,frete_gratis:r.ref.frete_gratis,caixa:r.box,caixa_site:r.siteBox,capital:r.capital,estoque:r.stock,semaforo:r.radar?.cor,nota_radar:r.radar?.nota,motivo_radar:r.radar?.motivo,conta:r.math,estabilidade:r.stability,pendencias:r.pending.join(' | '),plano:OPT_PLANO,exportadoEm:r.exported});
+    const flat=r=>({produto:r.name,fornecedor:r.supplier,url:r.url,classificacao:r.status,motivo:r.reason,referencia_aproximada:r.approximate,aceita_unidade:r.unit,referencia:r.ref.id,lider_mercado:r.leader?.id,anuncios_avaliados:r.evaluated?.length,pareamento:r.ref.obs,pendencia_pareamento:r.reviewPending,pesquisa_recente:r.coverage?.buscado,paginacao_completa:r.coverage?.paginacaoCompleta,candidatos_pesquisa:r.coverage?.candidatos,candidatos_revisados:r.coverage?.revisados,vendedores_recentes_fortes:r.market?.strong,anuncios_em_crescimento:r.market?.growing,diagnostico_mercado:r.market?.diagnosis,preco:r.price,faixa_min:r.low,faixa_max:r.high,piso_catalogo:r.floor,custo_unitario:r.unitCost,qtd:r.quantity,custo_kit:r.cost,sobra_classico:r.classic?.profit,margem_classico:r.classic?.margin,sobra_premium:r.premium?.profit,margem_premium:r.premium?.margin,sobra_piso:r.floorResult?.profit,custo_maximo_20:r.maxCost,custo_maximo_piso:r.maxFloor,vendas_mes:r.monthly,vendas_semana:r.weekly,crescimento_semana_vs_mes:r.growth,media_dia:r.demand.daily,media_limite_inferior:r.demand.lowerBound,fonte_media:r.demand.source,data_leitura:r.demand.read,criacao:r.demand.created,idade:r.demand.age,dias_no_ar:r.activityDays,catalogo:r.catalog,vendedores:r.bb,avaliacoes:r.rc,entrada:r.entrance,full:r.ref.full,frete_gratis:r.ref.frete_gratis,caixa:r.box,caixa_site:r.siteBox,capital:r.capital,estoque:r.stock,semaforo:r.radar?.cor,nota_radar:r.radar?.nota,motivo_radar:r.radar?.motivo,conta:r.math,estabilidade:r.stability,pendencias:r.pending.join(' | '),plano:OPT_PLANO,exportadoEm:r.exported});
     const objects=rows.map(flat),keys=Object.keys(flat(rows[0]||{ref:{},demand:{},pending:[]}));
     const q=v=>'"'+String(v==null?'não coletado':v).replace(/^[=+@-]/,"'$&").replace(/"/g,'""')+'"';
     return [keys.map(q).join(';'),...objects.map(o=>keys.map(k=>q(o[k])).join(';'))].join('\r\n');
@@ -288,7 +341,7 @@
   function render(){
     if(state.sheet){renderSheet();return;}
     const root=document.getElementById('oport-root');
-    root.innerHTML=`<div class="ot-intro"><span>QUICKBUY · ETAPA 1</span><h2>Oportunidade de fornecedores</h2><p>Produtos para investir tempo no anúncio. Comprar estoque só depois de validar a venda e avaliar o pedido.</p><p>Menos de ${CONFIG.idade} dias desde a criação · pelo menos ${CONFIG.diaria} venda/dia · margem de ${pct(CONFIG.margem)} no Clássico · capital avaliado caso a caso.</p><small>Catálogo exportado em ${dateText(state.data.geradoEm)}. Vendas estimadas pela JoomPulse. Exportação não renova a leitura do mercado. A aba usa somente JSONs, sem tokens ou coleta.</small></div>
+    root.innerHTML=`<div class="ot-intro"><span>QUICKBUY · ETAPA 1</span><h2>Oportunidade de fornecedores</h2><p>Produtos para investir tempo no anúncio. Comprar estoque só depois de validar a venda e avaliar o pedido.</p><p>Menos de ${CONFIG.idade} dias desde a criação · pelo menos ${CONFIG.diaria} venda/dia em ${CONFIG.repeticao} vendedores comparáveis · crescimento mínimo de ${pct(CONFIG.crescimento)} no ritmo semanal · margem de ${pct(CONFIG.margem)} no Clássico · pesquisa concluída.</p><small>O crescimento compara a última semana com a média mensal do mesmo anúncio; não soma anúncios e não substitui histórico. Catálogo exportado em ${dateText(state.data.geradoEm)}. Vendas estimadas pela JoomPulse. Exportação não renova a leitura do mercado. A aba usa somente JSONs, sem tokens ou coleta.</small></div>
     <div class="ot-filters"><label>Buscar<input id="ot-query" type="search" value="${esc(state.q)}" placeholder="Nome do produto"></label><label>Fornecedor<select id="ot-supplier"><option value="">Todos</option>${state.data.fornecedores.map(f=>`<option value="${esc(f.id)}" ${state.supplier===f.id?'selected':''}>${esc(f.nome)}</option>`).join('')}</select></label><label>Semáforo<select id="ot-color"><option value="">Todos</option>${['verde','amarelo','vermelho'].map(c=>`<option ${state.color===c?'selected':''}>${c}</option>`).join('')}</select></label><label class="ot-toggle"><input id="ot-unit" type="checkbox" ${state.unit?'checked':''}> Aceita unidade</label><label class="ot-toggle"><input id="ot-own" type="checkbox" ${state.own?'checked':''}> Anúncio próprio</label><label class="ot-toggle"><input id="ot-september" type="checkbox" ${state.september?'checked':''}> Catálogo de setembro</label><button class="btn" id="ot-all" aria-pressed="${state.all}">${state.all?'Só oportunidades':'Ver também reprovados'}</button><button class="btn" id="ot-csv">Baixar CSV</button></div><p id="ot-count" role="status"></p><p id="ot-selection-note" class="ot-selection-note"></p><div id="ot-results"></div><button class="btn" id="ot-more">Mostrar mais produtos</button>`;
     const readDates=Object.values(state.extra?.anuncios||{}).map(x=>x.lidoEm).filter(Boolean).sort();
     const collection=state.extra?.auditoria?.coleta;
@@ -318,7 +371,7 @@
     catch(e){document.getElementById('oport-root').innerHTML='<p role="alert">Não foi possível carregar as oportunidades. Recarregue a página. '+esc(e.message)+'</p>';}
   }
   function refresh(){if(state.data){state.rows=build(state.data,environment());if(!document.getElementById('tab-oport').hidden)render();}}
-  const api={isRecent,closeSheet,leave,context:environment,load,refresh,build,analyze,classify,demand,age,csv,enrich,withReadings,latestReadings,discover,CONFIG,rows:()=>state.rows};
+  const api={isRecent,closeSheet,leave,context:environment,load,refresh,build,analyze,classify,demand,growth,marketEvidence,age,csv,enrich,withReadings,latestReadings,discover,CONFIG,rows:()=>state.rows};
   if(typeof module!=='undefined'&&module.exports)module.exports=api;
   if(global)global.RadarOportunidades=api;
 })(typeof window==='undefined'?null:window);

@@ -1,129 +1,59 @@
 # Revisão da entrega — Etapa 1, 09/09/2026
 
-[Tailnet](https://dojoo.tailce25ed.ts.net:8444/#oportunidades) · [Pública](https://blueballecommerce.github.io/radar-safira/#oportunidades). Commit informado na conversa e no histórico da pasta viva.
+[Tailnet](https://dojoo.tailce25ed.ts.net:8444/#oportunidades) · [Pública](https://blueballecommerce.github.io/radar-safira/#oportunidades). O commit da entrega fica registrado no histórico da pasta viva.
 
-**A seleção anterior foi corrigida.** Os três aprovados anteriores foram retirados: suporte UV e power bank não correspondiam ao modelo do fornecedor; a taça incluía personalização sem custo validado. As fotos dos dois lados e as observações ficam na ficha, acessível pelo cartão.
+## Resultado correto desta rodada
 
-Foram relidos os 687 produtos da listagem pública da Flexx, sem mudanças nos preços e caixas publicados. O cadastro tem 750 Flexx (incluindo itens somente do catálogo) e 20 Logospan. Todas as famílias dos 770 itens foram incluídas nas buscas; a base anterior tinha apenas 219 pesquisados. Foram registradas 57 comparações visuais. Há 2010 anúncios com leituras pontuais disponíveis; não são produtos fornecedores distintos.
+**Nenhum produto está classificado como Promissor.** A base atual tem 171 produtos em **Precisa de mais análise** e 23 em **Não vale o teste** entre os produtos com alguma referência. Isso não significa que os fornecedores só tenham produto ruim: a busca ampla ficou parcial quando a JoomPulse atingiu o limite mensal, com renovação informada para 06/10/2026.
 
-**Limite real da entrega:** a JoomPulse atingiu o limite mensal e informou renovação em 06/10/2026. As buscas amplas que retornaram 100 linhas continuam parciais. Nenhum candidato por nome virou aprovação automática. A aba revela cobertura e pendências. A Etapa 1 permanece aberta para revisar as opções; não avançamos para a Etapa 2.
+A regra agora impede aprovar uma estrela isolada. Para ser Promissor, o produto precisa reunir:
 
-## Revisão de apresentação
+- anúncio criado há menos de 45 dias;
+- média mínima de uma venda estimada por dia;
+- margem mínima de 20% no Clássico;
+- entrada viável no Mercado Livre;
+- pelo menos dois vendedores diferentes com produtos visualmente comparáveis e demanda forte;
+- pelo menos dois anúncios com ritmo semanal 20% ou mais acima da estimativa mensal do próprio anúncio;
+- busca concluída para os termos usados.
 
-Cartões compactos abrem a ficha dentro da própria aba Oportunidade de fornecedores com preço, custo, quanto pagar, margens e concorrentes individualizados. Comparar fotos mostra fornecedor e concorrente lado a lado, sem alterar vereditos. Criação, atividade e início das vendas ficam separados; dados ausentes são indicados. A seleção e as regras abaixo foram preservadas.
+Variações do mesmo vendedor contam uma vez. Vendas de anúncios diferentes não são somadas. Catálogo, Full, preço e avaliações aparecem como explicações observáveis do desempenho do líder. Sem explicação ou repetição, o resultado fica em análise.
 
-## Regra aplicada
+## Produtos que pareciam fortes antes
 
-Menos de 45 dias desde a criação, pelo menos uma venda estimada por dia e margem de 20% no Clássico. Cada anúncio tem sua própria conta; vendas de anúncios e variações não são somadas. Um líder antigo não elimina uma oferta recente. Similares são aceitos nos dois fornecedores, identificados como aproximados, conforme a autorização posterior de João. Caixa fechada não tem teto fixo e exige plano de atendimento antes de publicar. QuickBuy amarela, entrega padrão confirmada, sem Full, desconto de frete acima de R$ 79 não confirmado (0%).
+- **Caneta Impressora 3D:** Precisa de mais análise. Há dois vendedores recentes revisados acima de uma venda por dia, mas apenas um anúncio confirma aceleração mínima de 20%. A busca encontrou 35 candidatos por texto e só 3 foram comparados visualmente. Os candidatos recentes restantes agora aparecem na ficha como “a conferir” e não entram na margem nem na aprovação.
+- **Repetidor de Wifi:** Precisa de mais análise. Um vendedor recente forte, nenhum crescimento forte confirmado e cobertura de 1 revisão em 3 candidatos. O anúncio a R$ 61,33 não prova sozinho que nossa oferta repetirá o resultado.
+- **Cercado Pet M:** Precisa de mais análise. Um vendedor recente forte e em crescimento, mas cobertura de apenas 1 revisão em 29 candidatos. Outros cercados, tamanhos e construções não podem ser tratados como o mesmo produto.
+- **Bolsa Térmica 25 × 13 × 23 cm:** Precisa de mais análise. Dois vendedores fortes, apenas um em crescimento e só 2 de 18 candidatos comparados. Os concorrentes revisados têm alça, bolsos, acabamento ou catálogo diferentes do produto do fornecedor.
+- **Bolsa Transversal 3 Zíperes:** retirada da oportunidade. João confirmou que o anúncio MLB7344028306 vende uma bolsa tática retangular muito superior ao modelo triangular simples do fornecedor. O pareamento passou para **diferente** e não conta mais como demanda ou margem.
 
-## Promissor — leitura disponível na ficha
+## Outros casos importantes
 
-### Bolsa Transversal 3 Zíperes
+- **Abridor de Lata:** continua em análise. O catálogo tem problema de entrada e margem; o KGQ03 não é o mesmo produto e continua pendente de confirmação na lupa antes de alterar a base principal.
+- **Pipoqueira Elétrica:** demanda observada, mas margem aproximada de 1,87% nas premissas atuais.
+- **Descascador Elétrico:** demanda observada, mas margem aproximada de 16,61%.
+- **Munição de Bolinhas de Gel:** quantidade do kit ainda não confirmada.
 
-Anúncio próprio com entrada aberta. Referência a R$ 42,12, 857 vendas mensais estimadas; sobra R$ 10,20 (24,21%) no Clássico. Menos de 45 dias desde a criação, média mínima de uma venda por dia e margem de pelo menos 20% no Clássico. Referência aproximada. Condição: definir como atender a primeira venda sem comprar a caixa antecipadamente.
+## Logospan — 20 produtos
 
-Ambas são bolsas transversais de um ombro. O fornecedor tem formato triangular de 30 × 18 × 8 cm; referência retangular tática, com bolsos e alça de mão diferentes. Testar o modelo do fornecedor sem copiar capacidade ou benefícios.
+Nenhum dos 20 produtos está aprovado. Dezoito ficam em **Precisa de mais análise** por falta de referência recente repetida, crescimento, cobertura visual ou margem. Dois ficam em **Não vale o teste** com os dados atuais:
 
-Custo unitário: R$ 15,50; caixa: 120 = R$ 1.860,00. Premium: R$ 8,09 (19.21%). Referência MLB7344028306, criada em 2026-08-06, leitura 2026-09-08.
+- **Urso com Luz e Som Dancing Bear TOYS260628:** custo supera o máximo para 20% no piso do catálogo.
+- **Arminha Lança Dardos Soft-Shot Gun Rifle SL6264:** sobra zero ou negativa no preço de referência.
 
-### Repetidor de Wifi
+A Boneca Sereia TOYS24129 segue em análise: 1 de 3 candidatos foi comparado, não há repetição de demanda e a referência com luz e música não confirma as mesmas funções no produto da Logospan.
 
-Anúncio próprio com entrada aberta. Referência a R$ 61,33, 79 vendas mensais estimadas; sobra R$ 18,65 (30,42%) no Clássico. Menos de 45 dias desde a criação, média mínima de uma venda por dia e margem de pelo menos 20% no Clássico. Condição: definir como atender a primeira venda sem comprar a caixa antecipadamente.
+## O que a ficha mostra agora
 
-Mesmo corpo curvo Wireless-N de tomada, posição dos LEDs e botão frontal. A alegação 1200m do concorrente não é especificação confirmada: verificar velocidade, alcance, plugue e homologação do fornecedor.
+Cada ficha abre dentro da aba Oportunidade de fornecedores e preserva o produto no endereço. Ela mostra:
 
-Custo unitário: R$ 24,00; caixa: 100 = R$ 2.400,00. Premium: R$ 15,59 (25.42%). Referência MLB7319552348, criada em 2026-08-03, leitura 2026-09-08.
+- validação do mercado em quatro blocos: demanda repetida, crescimento, cobertura e motivo do líder;
+- todos os concorrentes recentes já revisados, um por anúncio;
+- candidatos recentes ainda não comparados, claramente separados e sem efeito na decisão;
+- preço, vendas mensais e semanais, ritmo semanal contra mensal, criação, avaliações, catálogo, Full e margens quando o pareamento permite;
+- busca geral do Mercado Livre e categorias observadas com taxas de Clássico e Premium.
 
-Atenção: nota 3.1/5 na referência; verificar reclamações e qualidade antes de anunciar.
+## Limite e pendências
 
-### Cercado Pet M
+A JoomPulse retornou limite mensal atingido e informou renovação em **06/10/2026**. Até a busca ser completada, nenhum produto com cobertura parcial recebe aprovação automática. Continuam pendentes também estoque, reposição, peso e medidas embaladas, conteúdo do kit, voltagem ou certificação aplicável e qualidade do fornecedor.
 
-Anúncio próprio com entrada aberta. Referência a R$ 112,96, 100 vendas mensais estimadas; sobra R$ 27,66 (24,49%) no Clássico. Menos de 45 dias desde a criação, média mínima de uma venda por dia e margem de pelo menos 20% no Clássico. Condição: definir como atender a primeira venda sem comprar a caixa antecipadamente.
-
-Mesmo cercado portátil octogonal dobrável com telas, porta com zíper, teto removível e estampa de patas. Referência para porte pequeno. Confirmar medidas do M e medidas embaladas: não equiparar aos tamanhos G/GG ou cercas metálicas.
-
-Custo unitário: R$ 42,00; caixa: 40 = R$ 1.680,00. Premium: R$ 22,01 (19.49%). Referência MLB7565591468, criada em 2026-08-31, leitura 2026-09-08.
-
-### Caneta Impressora 3D
-
-Anúncio próprio com entrada aberta. Referência a R$ 58,80, 25 vendas mensais estimadas; sobra R$ 17,05 (29%) no Clássico. Menos de 45 dias desde a criação, média mínima de uma venda por dia e margem de pelo menos 20% no Clássico. Condição: definir como atender a primeira venda sem comprar a caixa antecipadamente.
-
-Mesmo formato de caneta 3D com visor, dois botões laterais, ponteira preta e alimentação por cabo. Anúncio inclui refil; confirmar metragem e cores do refil fornecido antes de anunciar. A referência de R$ 75,04 mostra versão camuflada; disponibilidade dessa cor não confirmada no fornecedor.
-
-Custo unitário: R$ 23,50; caixa: 120 = R$ 2.820,00. Premium: R$ 14,11 (24.0%). Referência MLB5070579131, criada em 2026-08-15, leitura 2026-09-08.
-
-### BOLSA TÉRMICA DE MARMITA 25*13*23CM
-
-Anúncio próprio com entrada aberta. Referência a R$ 27,93, 81 vendas mensais estimadas; sobra R$ 5,59 (20,03%) no Clássico. Menos de 45 dias desde a criação, média mínima de uma venda por dia e margem de pelo menos 20% no Clássico. Referência aproximada. Condição: definir como atender a primeira venda sem comprar a caixa antecipadamente.
-
-Ambas são bolsas térmicas para marmita. Fornecedor 25 × 13 × 23 cm, alças de mão e formato simples; referência tem alça de ombro e bolsos adicionais. Não copiar capacidade, acessórios nem tempo de conservação.
-
-Custo unitário: R$ 9,00; caixa: 300 = R$ 2.700,00. Premium: R$ 4,20 (15.03%). Referência MLB4992571305, criada em 2026-08-04, leitura 2026-09-08.
-
-Margem no limite: pequeno custo adicional pode deixá-la abaixo de 20%.
-
-## Caneta, Abridor, Pipoqueira, Descascador e Cercado
-
-Caneta volta a Promissor porque há anúncio recente compatível. A decisão usa a caneta lisa a R$ 58,80; a camuflada a R$ 75,04 permanece pendente de equivalência de cor/acabamento. Não usamos o preço maior para inflar a margem.
-Pipoqueira tem referência compatível a R$ 94,17 e 375 vendas/mês, mas sobra cerca de 1,87% nas premissas atuais. Descascador tem referência compatível a R$ 66,64 e 100 vendas/mês, mas margem de 16,61%. Ambos ficam em mais análise; demanda sozinha não resolve custo e frete.
-Cercado M tem oferta própria dobrável compatível e recente. Não foi confundido com cercas metálicas nem com tamanhos G/GG. Medidas e peso embalado precisam de confirmação.
-Abridor KGQ03 continua contestado e não pode ser Promissor. Os quatro pares que exigem confirmação individual de João não foram gravados como diferentes. Só a correção confirmada do Pulverizador foi aplicada na base de vereditos.
-
-## Os 11 verdes/amarelos do retrato anterior
-
-- **Microfone Lapela Sem Fio Duplo P/ Celular Lighting Ou Tipo C Cor DUPLO-TYPO-C**: Precisa de mais análise — Data de criação não coletada; dias no ar não substituem criação. Ainda falta comprovar média de uma venda por dia desde a criação. Falta reconferir visualmente modelo e kit antes de aprovar esta referência.
-- **Abridor de Lata**: Precisa de mais análise — Falta margem para ficar abaixo do piso em catálogo aberto. Abridor KGQ03: cabeça e cabos diferentes; conferir na lupa. Falta reconferir visualmente modelo e kit antes de aprovar esta referência.
-- **Massageador Elétrico Corporal Redutor de Medidas**: Precisa de mais análise — Margem no Clássico abaixo de 20%. Falta margem para ficar abaixo do piso em catálogo aberto. Falta reconferir visualmente modelo e kit antes de aprovar esta referência.
-- **Munição Bolinhas Gel 7-8mm Arma Elétrica**: Precisa de mais análise — Data de criação não coletada; dias no ar não substituem criação. Ainda falta comprovar média de uma venda por dia desde a criação. Falta reconferir visualmente modelo e kit antes de aprovar esta referência. Quantidade do kit de munição ainda precisa de confirmação.
-- **Caneta Impressora 3D**: Promissor — Menos de 45 dias desde a criação, média mínima de uma venda por dia e margem de pelo menos 20% no Clássico. Condição: definir como atender a primeira venda sem comprar a caixa antecipadamente.
-- **Pistola de Bolhas**: Precisa de mais análise — As referências conferidas são antigas ou não têm criação coletada. Falta confirmar um anúncio recente; isso não reprova o produto inteiro.
-- **Pulverizador Manual**: Sem referência elegível no cadastro atual; pareamento confirmado como diferente ou pesquisa pendente.
-- **Cercado Pet GG**: Precisa de mais análise — Margem no Clássico abaixo de 20%. Falta reconferir visualmente modelo e kit antes de aprovar esta referência.
-- **Pipoqueira Elétrica 110v e 120v**: Precisa de mais análise — Margem no Clássico abaixo de 20%.
-- **Modelador de Cachos Automático**: Precisa de mais análise — Diferença de marca e modelo: falta uma referência de preço comparável ao fornecedor.
-- **Descascador Elétrico para Frutas e Legumes**: Precisa de mais análise — Margem no Clássico abaixo de 20%.
-
-O semáforo vem do Radar; a classificação da Etapa 1 é independente.
-
-## Logospan — os 20 produtos
-
-- **Arma Lança Dardos Air Blaster SL6064**: Precisa de mais análise — Data de criação não coletada; dias no ar não substituem criação. Ainda falta comprovar média de uma venda por dia desde a criação. Falta reconferir visualmente modelo e kit antes de aprovar esta referência.
-- **Arminha Lança Dardos Soft-Shot Gun Rifle SL6264**: Não vale o teste — A sobra no preço de referência é zero ou negativa.
-- **Arminha Lança Dardos Soft-Shot Gun Pistola SL6262**: Precisa de mais análise — Data de criação não coletada; dias no ar não substituem criação. Ainda falta comprovar média de uma venda por dia desde a criação. Falta reconferir visualmente modelo e kit antes de aprovar esta referência.
-- **Arma Lança Dardos Kit Policial Assault Team TOYS24506**: Precisa de mais análise — As referências conferidas são antigas ou não têm criação coletada. Falta confirmar um anúncio recente; isso não reprova o produto inteiro.
-- **Caranguejo Robô Cartoon Crab TOYS260721**: Precisa de mais análise — As referências conferidas são antigas ou não têm criação coletada. Falta confirmar um anúncio recente; isso não reprova o produto inteiro.
-- **Urso com Luz e Som Dancing Bear TOYS260628**: Precisa de mais análise — As referências conferidas são antigas ou não têm criação coletada. Falta confirmar um anúncio recente; isso não reprova o produto inteiro.
-- **Arma Lança Foguetes Bazuca**: Precisa de mais análise — As referências conferidas são antigas ou não têm criação coletada. Falta confirmar um anúncio recente; isso não reprova o produto inteiro.
-- **Skate 43cm Monstro Amarelo 81012**: Precisa de mais análise — Data de criação não coletada; dias no ar não substituem criação. Ainda falta comprovar média de uma venda por dia desde a criação. Falta reconferir visualmente modelo e kit antes de aprovar esta referência.
-- **Skate 43cm All Star Rock 81018**: Precisa de mais análise — Data de criação não coletada; dias no ar não substituem criação. Ainda falta comprovar média de uma venda por dia desde a criação. Falta reconferir visualmente modelo e kit antes de aprovar esta referência.
-- **Skate 43cm Monstro Verde 81011**: Precisa de mais análise — Data de criação não coletada; dias no ar não substituem criação. Ainda falta comprovar média de uma venda por dia desde a criação. Falta reconferir visualmente modelo e kit antes de aprovar esta referência.
-- **Boneca com Acessórios Bruxa DOLL180004**: Precisa de mais análise — As referências conferidas são antigas ou não têm criação coletada. Falta confirmar um anúncio recente; isso não reprova o produto inteiro.
-- **Boneca com Acessórios Sereia DOLL77628**: Precisa de mais análise — Data de criação não coletada; dias no ar não substituem criação. Ainda falta comprovar média de uma venda por dia desde a criação. Falta reconferir visualmente modelo e kit antes de aprovar esta referência.
-- **Boneca Sereia TOYS24129**: Precisa de mais análise — Falta margem para ficar abaixo do piso em catálogo aberto. Não usar preço da boneca com luz e música até confirmar essas funções no produto da Logospan.
-- **Boneca Sereia TOYS24111**: Precisa de mais análise — Data de criação não coletada; dias no ar não substituem criação. Ainda falta comprovar média de uma venda por dia desde a criação. Falta reconferir visualmente modelo e kit antes de aprovar esta referência.
-- **Arma de Plástico 47,5cm Super Machine TOYS25136**: Precisa de mais análise — As referências conferidas são antigas ou não têm criação coletada. Falta confirmar um anúncio recente; isso não reprova o produto inteiro.
-- **Arma de Plástico 43,5cm Super Machine TOYS25139**: Precisa de mais análise — As referências conferidas são antigas ou não têm criação coletada. Falta confirmar um anúncio recente; isso não reprova o produto inteiro.
-- **Arma Kit Future War TOYS23603**: Precisa de mais análise — As referências conferidas são antigas ou não têm criação coletada. Falta confirmar um anúncio recente; isso não reprova o produto inteiro.
-- **Lança Dardos Soft Gun M4 TOYS23637**: Precisa de mais análise — Ainda falta comprovar média de uma venda por dia desde a criação. Margem no Clássico abaixo de 20%. Falta margem para ficar abaixo do piso em catálogo aberto. Falta reconferir visualmente modelo e kit antes de aprovar esta referência.
-- **Lança Dardos Comando 2 em 1 TOYS-190212**: Precisa de mais análise — As referências conferidas são antigas ou não têm criação coletada. Falta confirmar um anúncio recente; isso não reprova o produto inteiro.
-- **Lança Dardos Super Comando TOYS190248**: Precisa de mais análise — As referências conferidas são antigas ou não têm criação coletada. Falta confirmar um anúncio recente; isso não reprova o produto inteiro.
-
-Nenhum Logospan aprovado nesta rodada. A nova sereia musical não comprova a mesma função/conteúdo da caixa da Logospan; ficou pendente, sem transformar ausência de referência recente em reprovação do fornecedor.
-
-## Pendências e validação
-
-- Quatro confirmações na lupa do prompt original: Abridor MLB5179068847, Bomba MLB4812803339, Modelador MLB6625098390 e Squishy MLB7481296738. Kit de munição continua pendente.
-- Para cada candidato: conferir estoque, reposição, peso e medidas embaladas, conteúdo, voltagem/certificação aplicável e qualidade. As margens são simulações com as premissas visíveis, não garantia de lucro.
-- Rever as páginas de pesquisa ainda parciais quando houver cota disponível. Nenhuma coleta foi acrescentada à rotina diária.
-- Testes Python, regras de classificação e Chromium limpo: validação registrada no fechamento da conversa. A aba usa a mesma extrato/FEES de Fornecedores e do Simulador.
-
-**Continuamos somente na Etapa 1.** A revisão foi publicada para João avaliar as evidências, sem compra de estoque nem publicação de anúncios.
-
-
-## Correção após conferência de João
-
-Fichas mantêm a aba e o produto no endereço, com restauração ao recarregar. Filtros escuros com seleção/foco neon. A partir de 45 dias o anúncio é antigo e não entra na lista nem nos concorrentes desta aba; sem data de criação comprovada também fica fora. Os 5 Promissor permanecem, todos com referências entre 9 e 37 dias, sendo duas aproximadas. Pesquisa existente reavaliada sem novas consultas. Testes: fronteira de 44/45 dias, referência recente priorizada, ficha na mesma aba, retorno, recarga, teclado e celular.
-
-## Busca geral e categorias na ficha
-
-Cada ficha agora oferece a busca geral do Mercado Livre com o nome do produto preenchido e um painel expansível de categorias observadas. As categorias vêm do Radar e de anúncios recentes conferidos como iguais ou parecidos, agrupadas pela categoria principal. Clássico e Premium mostram as comissões da tabela do Simulador. A ausência de categoria é indicada sem sugestão inventada. O teste de navegador confere destino da busca, abertura do painel, taxas, teclado, celular e console.
+**A Etapa 1 continua aberta. Não avançar para a Etapa 2 enquanto nenhum produto atender à regra completa ou João decidir revisar conscientemente um caso com dados parciais.**

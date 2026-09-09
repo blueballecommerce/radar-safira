@@ -71,6 +71,7 @@ def test_busca_parcial_nao_vira_pesquisa_completa_nem_pareamento(tmp_path):
     assert result['pareamentos']==[]
     assert result['cobertura']['buscados']==2
     assert result['cobertura']['produtos']['u1']['paginacaoCompleta'] is False
+    assert result['cobertura']['produtos']['u1']['candidatosIds']==['MLB1']
     assert result['anuncios']['MLB1']['ad']['preco_min'] is None
     assert result['anuncios']['MLB1']['ad']['preco']==50
 

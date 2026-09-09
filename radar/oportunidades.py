@@ -59,8 +59,12 @@ def exportar(root=None):
             pages=[s for s in searches if group['terms'] in s['groups']]
             complete=bool(pages) and any(s['rows']<s['query'].get('limit',100) for s in pages)
             candidates=[i for i,e in items.items() if all(normalize(t) in normalize(e.get('ad',{}).get('nome','')) for t in group['terms'])]
+            candidate_ids=sorted(candidates,key=lambda i: (-(items[i].get('monthly') or -1),i))
             for url in group['urls']:
-                coverage[url]={'termos':group['terms'],'buscado':bool(pages),'paginacaoCompleta':complete,'candidatos':len(candidates),'revisados':sum(p['url']==url for p in pairs),'lidoEm':max((s['lidoEm'] or '' for s in pages),default=None)}
+                reviewed={p['id'] for p in pairs if p['url']==url}
+                coverage[url]={'termos':group['terms'],'buscado':bool(pages),'paginacaoCompleta':complete,'candidatos':len(candidates),
+                               'revisados':len(reviewed),'candidatosIds':[ident for ident in candidate_ids if ident not in reviewed],
+                               'lidoEm':max((s['lidoEm'] or '' for s in pages),default=None)}
         data['cobertura']={'total':plan['catalogo'],'pesquisadosAntes':219,'buscados':sum(c['buscado'] for c in coverage.values()),'comPareamentoRevisado':len({p['url'] for p in pairs}),'produtos':coverage}
     destination=root/'docs/oportunidades.json';destination.parent.mkdir(parents=True,exist_ok=True)
     destination.write_text(json.dumps(data,ensure_ascii=False,indent=2),'utf-8')

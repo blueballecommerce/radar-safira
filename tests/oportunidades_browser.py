@@ -73,6 +73,9 @@ try:
     assert categories.locator('.ot-category-card').count()>=1
     assert all('Clássico' in categories.locator('.ot-category-card').nth(i).inner_text() and 'Premium' in categories.locator('.ot-category-card').nth(i).inner_text() for i in range(categories.locator('.ot-category-card').count()))
     assert page.evaluate("[...document.querySelectorAll('.ot-category-card')].every(e=>{const l1=e.querySelector('h4').textContent.split(' › ')[0];const values=[...e.querySelectorAll('.ot-category-fee b')].map(x=>Number(x.textContent.replace('%','').replace(',','.')));return FEES.comm[l1]&&values[0]===FEES.comm[l1][0]&&values[1]===FEES.comm[l1][1]})")
+    assert page.locator('.ot-market-proof').count()==1
+    assert '35' in page.locator('.ot-market-proof').inner_text()
+    assert page.locator('.ot-unreviewed .ot-rival').count()>=1
     page.screenshot(path=str(OUT/'ficha-pesquisa-categorias.png'),full_page=True)
     original_url=page.url
     page.locator('[data-tab=sim]').click()
@@ -109,7 +112,7 @@ try:
     (OUT/'resultado-real.json').write_text(json.dumps({'rows':rows,'baseline':baseline,'radar':page.evaluate('FORN_ROWS.map(r=>({nome:r.n,url:r._forn.url,opp:r.opp}))')},ensure_ascii=False,indent=2),'utf-8')
     page.set_viewport_size({'width':390,'height':844});page.screenshot(path=str(OUT/'oportunidades-mobile.png'),full_page=True)
     assert page.evaluate('document.documentElement.scrollWidth<=window.innerWidth'), 'Rolagem horizontal'
-    page.locator('#ot-query').fill('Bolsa Transversal 3 Zíperes')
+    page.locator('#ot-query').fill('Repetidor de Wifi')
     page.locator('.ot-card').first.click();page.wait_for_selector('.ot-sheet-summary')
     assert page.evaluate('document.documentElement.scrollWidth<=innerWidth'), 'Calculadora da bolsa excede a largura'
     page.locator('.ot-back').click();page.wait_for_selector('.ot-card')
@@ -118,9 +121,10 @@ try:
       const base=structuredClone(forn.data.produtos.find(p=>p.nome==='Caneta Impressora 3D'));
       const now=new Date(); const created=new Date(now.getTime()-20*864e5).toISOString().slice(0,10);
       base.nome='Caso promissor';base.url='fixture:promissor';base.unit=10;
-      base.anuncios=[{id:'MLBTEST1',nome:'Teste',revisadoEm:now.toISOString(),veredito:'igual',qtd:1,preco:60,vendas_mes:20,vendas_sem:7,vendas_desde_criacao:20,criadoEm:created,lidoEm:now.toISOString(),catalogo:false,avaliacoes:2,frete_gratis:true,l1:'Brinquedos e Hobbies'}];
-      const pending=structuredClone(base);pending.nome='Caso pendente';pending.url='fixture:pendente';pending.anuncios[0].qtd=null;
-      const closed=structuredClone(base);closed.nome='Caso fechado';closed.url='fixture:fechado';closed.anuncios[0].catalogo=true;closed.anuncios[0].bb=6;closed.anuncios[0].preco_min=60;
+      base.anuncios=[{id:'MLBTEST1',nome:'Teste A',vendedor:'LOJA A',revisadoEm:now.toISOString(),veredito:'igual',qtd:1,preco:60,vendas_mes:20,vendas_sem:7,vendas_desde_criacao:20,criadoEm:created,lidoEm:now.toISOString(),catalogo:false,avaliacoes:2,frete_gratis:true,l1:'Brinquedos e Hobbies'}];
+      base.anuncios.push({...base.anuncios[0],id:'MLBTEST2',nome:'Teste B',vendedor:'LOJA B'});base._coverage={buscado:true,paginacaoCompleta:true,candidatos:2,revisados:2,lidoEm:now.toISOString()};
+      const pending=structuredClone(base);pending.nome='Caso pendente';pending.url='fixture:pendente';pending.anuncios.forEach(a=>a.qtd=null);
+      const closed=structuredClone(base);closed.nome='Caso fechado';closed.url='fixture:fechado';closed.anuncios.forEach(a=>{a.catalogo=true;a.bb=6;a.preco_min=60});
       forn.data.produtos=[base,pending,closed];
     }''')
     page.evaluate('RadarOportunidades.load()');page.locator('#ot-query').fill('')
