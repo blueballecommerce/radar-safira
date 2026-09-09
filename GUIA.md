@@ -85,7 +85,64 @@ está aberta para a internet inteira (Funnel desligado); se quiser isso, é um c
 
 ---
 
-## O que acontece sozinho, todo dia às 5h
+## O que acontece sozinho, duas vezes por dia (desde 09/09/2026)
+
+A coleta mudou de mão: quem entra na JoomPulse agora é o **Claude** (o conector MCP da JoomPulse
+só aceita o Claude e o ChatGPT — não aceita programa nosso), em duas sessões agendadas no
+aplicativo Claude Code deste PC (o Predator, que fica ligado 24h):
+
+| Hora | Modo | O que faz |
+|---|---|---|
+| **5h** | `novos` | lê os 100 mais vendidos e os 100 anúncios com até 90 dias no ar que já vendem, em cada uma das 27 categorias do ML (54 consultas); relê pelo id o que já estava no radar e não apareceu; dá nota a tudo e reordena. É o que traz produto novo. |
+| **15h** | `atualiza` | relê pelo id todo produto ativo ou em observação (3 a 6 consultas): vendas da semana e do mês, preço, dias no ar, quantos vendedores disputam o catálogo, avaliações. Reordena. Não traz produto novo. |
+
+Nas duas, no fim: `data/radar.db` (histórico), `docs/data.json` (a página), commit e publicação
+no GitHub Pages e no repositório central. A página da tailnet muda na hora; a pública em 1–2 min.
+O cabeçalho da página mostra a rodada e a hora.
+
+**O que precisa estar de pé:** o aplicativo Claude Code aberto neste PC — as tarefas agendadas
+só disparam com ele aberto; se estiver fechado no horário, rodam assim que abrir. Elas aparecem
+em "Scheduled" na barra lateral: `radar-novos-5h` e `radar-atualiza-15h`. Na primeira vez,
+clique em "Run now" numa delas e aprove o que ela pedir (o conector JoomPulse e o atalho
+`radar-mcp.cmd`); a aprovação fica guardada na tarefa.
+
+**Custo:** a rodada das 5h gasta uns 60 mil tokens de saída (são 54 consultas escritas pelo
+Claude), a das 15h uns 10 mil. O dado em si **não passa pelo modelo**: cada resposta da
+JoomPulse (~60 KB) é gravada em arquivo pelo Claude Code e vai para o banco por script
+(`radar/mcp.py`). O passo a passo que a sessão segue está em `ROTINA_MCP.md`.
+
+**A tarefa antiga do notebook** ("Radar Safira", 5h, coleta pelo navegador) **deve ficar
+desligada** — as duas publicariam no mesmo repositório e brigariam:
+
+```powershell
+Disable-ScheduledTask -TaskName "Radar Safira"      # no notebook
+```
+
+A coleta pelo navegador continua no código (`radar run --browser`) como plano B.
+
+**O que muda em relação à coleta pelo navegador:**
+
+- O radar passa a usar o **`productId` real** do Mercado Livre como chave. O histórico dos
+  produtos antigos foi migrado na primeira rodada (posições, rodadas, melhor posição), sem
+  virar "entrou agora".
+- A descoberta é por categoria de nível 1 (top 100 + 100 novos), não pelas 390 subcategorias.
+  Produto que só aparecia na varredura das subcategorias sai da lista se não for relido.
+- A ficha mostra a **data de criação** do anúncio ("criado em"), que o site não informava.
+- Os dados da JoomPulse mudam uma vez por dia; se a das 15h não encontrar nada diferente, ela
+  não faz commit ("nada mudou nos dados").
+
+Estado e log da rotina:
+
+```powershell
+~/.claude/radar-mcp.cmd status          # no Git Bash do Claude Code
+Get-Content data
+odada_mcp.log -Tail 20
+```
+
+### A coleta antiga pelo navegador (notebook, desligada)
+
+Fica registrada porque continua no código, como plano B. Se a rotina pelo MCP parar, dá para
+religar com `.\scriptsgendar.ps1` no notebook (e desligar as tarefas do Claude).
 
 Você não precisa fazer nada. Esta é a sequência:
 
@@ -422,6 +479,17 @@ O radar é um site estático: um formulário estático não tem para onde enviar
 
 ```powershell
 & ".\.venv\Scripts\python.exe" scripts\coletor.py
+```
+
+**Um de cada vez.** No Windows, dois processos conseguem prender a mesma porta, e as
+requisições vão para um ou para o outro sem critério — dá para "reiniciar" o coletor e
+continuar conversando com o antigo. Ele agora recusa subir se já houver outro. Se precisar
+fechar todos:
+
+```powershell
+Get-CimInstance Win32_Process -Filter "Name='pythonw.exe'" |
+  Where-Object { $_.CommandLine -like "*coletor.py*" } |
+  ForEach-Object { Stop-Process -Id $_.ProcessId -Force }
 ```
 
 Ele escuta só em `127.0.0.1` — de fora ninguém chega nele direto. Quem publica na tailnet é o

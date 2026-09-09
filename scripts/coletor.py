@@ -53,6 +53,7 @@ log = logging.getLogger("coletor")
 PORTA = int(os.environ.get("RADAR_COLETOR_PORTA", "8445"))
 CORPO_MAX = 25 * 1024 * 1024              # 25 MB: umas 40 fotos já encolhidas
 CHECA_SESSAO_A_CADA = 10 * 60             # segundos
+RETENTA_EM = 30                           # quando a conferência não conseguiu rodar
 
 # De onde a página pode chamar. Só a tailnet e o próprio PC: o coletor grava
 # arquivos, então não vale deixar qualquer site do mundo conversar com ele.
@@ -74,23 +75,36 @@ class Sessao:
         self.ok = False
         self.motivo = "ainda conferindo a sessão da JoomPulse"
         self.em = 0.0
+        self.intervalo = CHECA_SESSAO_A_CADA
         self._lock = threading.Lock()
 
     def confere(self):
+        """`check-browser` sai com erro em DOIS casos diferentes: a sessão
+        expirou, ou a conferência nem conseguiu rodar (o perfil do navegador
+        fica trancado enquanto outra janela o usa — a do próprio login, por
+        exemplo). Tratar os dois como "expirada" fazia uma falha de bastidor
+        virar um diagnóstico errado sobre o login do João, guardado por dez
+        minutos. Quem separa os casos é o texto na saída."""
         with self._lock:
-            if time.time() - self.em < CHECA_SESSAO_A_CADA:
+            if time.time() - self.em < self.intervalo:
                 return
             self.em = time.time()
         try:
             r = subprocess.run([sys.executable, "-m", "radar", "check-browser"],
                                cwd=RAIZ, capture_output=True, timeout=120)
-            self.ok = r.returncode == 0
-            # texto puro: vai direto para a tela, sem marcação
-            self.motivo = "" if self.ok else (
-                "a sessão da JoomPulse expirou — rode  python -m radar login-browser  no PC")
+            saida = (r.stdout or b"").decode("utf-8", "replace")
+            if r.returncode == 0:
+                self.ok, self.motivo, self.intervalo = True, "", CHECA_SESSAO_A_CADA
+            elif "expirada" in saida:
+                self.ok, self.intervalo = False, CHECA_SESSAO_A_CADA
+                # texto puro: vai direto para a tela, sem marcação
+                self.motivo = "a sessão da JoomPulse expirou — rode  python -m radar login-browser  no PC"
+            else:
+                self.ok, self.intervalo = False, RETENTA_EM
+                self.motivo = "não consegui conferir a sessão agora (o navegador estava ocupado); tentando de novo"
         except Exception as e:
-            self.ok = False
-            self.motivo = f"não consegui conferir a sessão ({type(e).__name__})"
+            self.ok, self.intervalo = False, RETENTA_EM
+            self.motivo = f"não consegui conferir a sessão ({type(e).__name__}); tentando de novo"
         log.info("sessão da JoomPulse: %s", "ativa" if self.ok else self.motivo)
 
     def em_segundo_plano(self):
@@ -303,13 +317,29 @@ class Handler(BaseHTTPRequestHandler):
         self._json({"ok": True, "status": _estado_para_tela(p), "motivo": p["motivo"]})
 
 
+class Servidor(ThreadingHTTPServer):
+    """No Windows o SO_REUSEADDR — que o http.server liga por padrão — deixa
+    DOIS processos prenderem a mesma porta, e as requisições vão para um ou para
+    o outro sem critério. Um coletor antigo continuava respondendo com uma
+    resposta velha depois de eu achar que tinha reiniciado. Desligado, o segundo
+    processo falha na hora e diz o que está acontecendo."""
+
+    allow_reuse_address = False
+    daemon_threads = True
+
+
 def main():
     logging.basicConfig(level=os.environ.get("RADAR_LOG", "INFO"),
                         format="%(asctime)s %(levelname)s %(name)s: %(message)s")
     P.PASTA.mkdir(parents=True, exist_ok=True)
     SESSAO.em_segundo_plano()
 
-    srv = ThreadingHTTPServer(("127.0.0.1", PORTA), Handler)
+    try:
+        srv = Servidor(("127.0.0.1", PORTA), Handler)
+    except OSError as e:
+        print(f"Não consegui ouvir na porta {PORTA}: {e}")
+        print("Já existe um coletor rodando. Feche o outro antes de abrir este.")
+        raise SystemExit(1)
     print(f"Coletor de pedidos ouvindo em http://127.0.0.1:{PORTA}")
     print(f"Pedidos em {P.PASTA}")
     print()
