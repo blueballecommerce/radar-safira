@@ -1,0 +1,3188 @@
+{
+  "lidoEm": "2026-09-09T19:02:57.955Z",
+  "fonte": "JoomPulse / MercadoProductsWeekly",
+  "groups": [
+    [
+      "aparelho",
+      "eletroestimulador"
+    ],
+    [
+      "termômetro",
+      "digital"
+    ],
+    [
+      "lancheira",
+      "térmica"
+    ],
+    [
+      "soprador",
+      "potente"
+    ],
+    [
+      "chapinha",
+      "alisadora"
+    ],
+    [
+      "arminha",
+      "gel"
+    ],
+    [
+      "cozedor",
+      "ovos"
+    ],
+    [
+      "maquininha",
+      "dragão"
+    ],
+    [
+      "máquina",
+      "kemei"
+    ],
+    [
+      "lava",
+      "jato"
+    ],
+    [
+      "saco",
+      "lava"
+    ],
+    [
+      "squishy",
+      "dumpling"
+    ],
+    [
+      "tapete",
+      "listrado"
+    ],
+    [
+      "toalha",
+      "banho"
+    ],
+    [
+      "tablet",
+      "interativo"
+    ],
+    [
+      "tapete",
+      "pedras"
+    ],
+    [
+      "saco",
+      "lavagem"
+    ],
+    [
+      "meia",
+      "calça"
+    ],
+    [
+      "ferramenta"
+    ],
+    [
+      "depilador"
+    ],
+    [
+      "microfone",
+      "karaoke"
+    ],
+    [
+      "chhuveiro",
+      "mão"
+    ],
+    [
+      "motosserra",
+      "furadeira"
+    ],
+    [
+      "dispenser"
+    ],
+    [
+      "cortador",
+      "legumes"
+    ],
+    [
+      "carimbo",
+      "protetor"
+    ],
+    [
+      "helicóptero",
+      "aromatizador"
+    ],
+    [
+      "máqiuna",
+      "waffle"
+    ],
+    [
+      "adesivo",
+      "detox"
+    ],
+    [
+      "caneta",
+      "depiladora"
+    ]
+  ],
+  "pages": [
+    {
+      "query": {
+        "dimensions": [
+          "MercadoProductsWeekly.id",
+          "MercadoProductsWeekly.productName",
+          "MercadoProductsWeekly.adPublishDate",
+          "MercadoProductsWeekly.date",
+          "MercadoProductsWeekly.productImage",
+          "MercadoProductsWeekly.merchantCategoryL1",
+          "MercadoProductsWeekly.catalogProduct",
+          "MercadoProductsWeekly.listingStatus",
+          "MercadoProductsWeekly.isFull",
+          "MercadoProductsWeekly.isFreeShipping",
+          "MercadoProductsWeekly.merchantName",
+          "MercadoProductsWeekly.listingType",
+          "MercadoProductsWeekly.buyBoxWiner",
+          "MercadoProductsWeekly.productId",
+          "MercadoProductsWeekly.brand"
+        ],
+        "measures": [
+          "MercadoProductsWeekly.priceAmount",
+          "MercadoProductsWeekly.orderCount1m",
+          "MercadoProductsWeekly.orderCount1w",
+          "MercadoProductsWeekly.numBuyBoxSellers",
+          "MercadoProductsWeekly.reviewsCount",
+          "MercadoProductsWeekly.daysInAd",
+          "MercadoProductsWeekly.reviewsRating"
+        ],
+        "filters": [
+          {
+            "member": "MercadoProductsWeekly.adPublishDate",
+            "operator": "inDateRange",
+            "values": [
+              "2026-07-31",
+              "2026-09-09"
+            ]
+          },
+          {
+            "member": "MercadoProductsWeekly.listingStatus",
+            "operator": "equals",
+            "values": [
+              "active"
+            ]
+          },
+          {
+            "member": "MercadoProductsWeekly.orderCount1m",
+            "operator": "gt",
+            "values": [
+              "0"
+            ]
+          },
+          {
+            "or": [
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "aparelho"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "eletroestimulador"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "termômetro"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "digital"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "lancheira"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "térmica"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "soprador"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "potente"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "chapinha"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "alisadora"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "arminha"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "gel"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "cozedor"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "ovos"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "maquininha"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "dragão"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "máquina"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "kemei"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "lava"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "jato"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "saco"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "lava"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "squishy"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "dumpling"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "tapete"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "listrado"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "toalha"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "banho"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "tablet"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "interativo"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "tapete"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "pedras"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "saco"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "lavagem"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "meia"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "calça"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "ferramenta"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "48"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "depilador"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "4"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "microfone"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "karaoke"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "chuveiro"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "mão"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "motosserra"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "furadeira"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "dispenser"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "pia"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "cortador"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "legumes"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "carimbo"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "protetor"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "helicóptero"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "aromatizador"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "máquina"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "waffle"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "adesivo"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "detox"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "caneta"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "depiladora"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "order": [
+          [
+            "MercadoProductsWeekly.orderCount1m",
+            "desc"
+          ],
+          [
+            "MercadoProductsWeekly.id",
+            "asc"
+          ]
+        ],
+        "limit": 100
+      },
+      "columns": [
+        "id",
+        "productName",
+        "adPublishDate",
+        "date",
+        "productImage",
+        "merchantCategoryL1",
+        "catalogProduct",
+        "listingStatus",
+        "isFull",
+        "isFreeShipping",
+        "merchantName",
+        "listingType",
+        "buyBoxWiner",
+        "productId",
+        "brand",
+        "priceAmount",
+        "orderCount1m",
+        "orderCount1w",
+        "numBuyBoxSellers",
+        "reviewsCount",
+        "daysInAd",
+        "reviewsRating"
+      ],
+      "data": [
+        [
+          "MLB7341732552",
+          "SOARFLY Profissional Ocasional Lavadora Alta Pressão Lavadoras de Jato Elétricas - Preto 60Hz",
+          "2026-08-05T04:37:50.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_909373-MLA115618858741_082026-O.webp",
+          "Ferramentas",
+          true,
+          "active",
+          null,
+          true,
+          "SOARFLY_ALTAPRESSAO",
+          "gold_pro",
+          true,
+          "MLB76386939",
+          null,
+          255.76,
+          833,
+          194,
+          1,
+          188,
+          36,
+          4.9
+        ],
+        [
+          "MLB4976473351",
+          "Lavadora De Alta Pressão 1 Bateria Potente E Lava Jato Nehc Preto",
+          "2026-07-31T22:00:19.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_678459-MLA114078805274_072026-E.webp",
+          "Ferramentas",
+          true,
+          "active",
+          null,
+          true,
+          "MAISCOMPRASRJ_BR",
+          "gold_pro",
+          true,
+          "MLB76160796",
+          null,
+          93.99,
+          732,
+          171,
+          1,
+          423,
+          41,
+          4
+        ],
+        [
+          "MLB7499298104",
+          "Máquina Mini Waffle Grill Anti Aderente 110v Cor Preto",
+          "2026-08-21T21:05:25.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_876062-MLA116553248965_082026-O.webp",
+          "Eletrodomésticos",
+          true,
+          "active",
+          null,
+          true,
+          "SORELLA FITNESS",
+          "gold_pro",
+          true,
+          "MLB78023399",
+          null,
+          132.9,
+          500,
+          175,
+          1,
+          239,
+          20,
+          4.7
+        ],
+        [
+          "MLB7575314452",
+          "Cozedor De Ovos Portátil Elétrico Cozinha A Vapor 7 Ovos",
+          "2026-09-01T22:30:14.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_666983-MLB111224152893_052026-O.webp",
+          "Eletrodomésticos",
+          false,
+          "active",
+          null,
+          true,
+          "LORBEN_OFICIAL",
+          "gold_pro",
+          true,
+          "MLB-7575314452",
+          null,
+          45,
+          500,
+          389,
+          1,
+          2,
+          9,
+          5
+        ],
+        [
+          "MLB7579296238",
+          "Bolsa Lancheira Caixa Térmica Pra Marmita Mantém Temperatura Cor Roxo",
+          "2026-09-02T14:42:26.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_782484-MLA115635057854_092026-E.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          null,
+          true,
+          "BILLION_ECOMMERCE",
+          "gold_special",
+          true,
+          "MLB78827379",
+          null,
+          23.9,
+          500,
+          438,
+          1,
+          2893,
+          8,
+          4.8
+        ],
+        [
+          "MLB5033733883",
+          "Soprador 48v Turbo Portátil Com 2 Baterias Potente Preto",
+          "2026-08-10T17:18:31.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_700345-MLB115006514208_082026-O.webp",
+          "Ferramentas",
+          false,
+          "active",
+          null,
+          true,
+          "VBUTILIDADESLTDA",
+          "gold_special",
+          true,
+          "MLB-5033733883",
+          null,
+          99.12,
+          484,
+          113,
+          1,
+          null,
+          31,
+          null
+        ],
+        [
+          "MLB5013737323",
+          "Lavadora Lava Jato Portatil Pressao 2 Baterias + Maleta",
+          "2026-08-07T13:18:53.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_801792-MLB115721818571_082026-O-lavadora-lava-jato-portatil-pressao-2-baterias--maleta.webp",
+          "Agro",
+          true,
+          "active",
+          null,
+          true,
+          "DG7_STORE",
+          "gold_special",
+          true,
+          "MLB76901595",
+          "MYMOTORS",
+          103,
+          441,
+          103,
+          1,
+          136,
+          34,
+          4.5
+        ],
+        [
+          "MLB7407379470",
+          "Depilador Elétrico Feminino 4 em 1 Recarregável USB Maquininha Aparador Íntimo Corpo Rosto Facial Sobrancelha Nariz Orelhas Removedor de Pelos Trimmer Portátil Sem Dor Alta Precisão SAMZHE",
+          "2026-08-03T20:40:19.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_700160-MLA115971608293_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          null,
+          true,
+          "SC20251219102936",
+          null,
+          true,
+          "MLB76261349",
+          null,
+          56.9,
+          395,
+          92,
+          3,
+          54,
+          38,
+          4.8
+        ],
+        [
+          "MLB7304651168",
+          "Meia Calça Ballet Fio40 Com Furo Selene Conversível Infantil",
+          "2026-08-01T02:10:06.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_843071-MLB87732055739_072025-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          true,
+          true,
+          "CENTERPORTOVARIEDADES",
+          "gold_special",
+          true,
+          "MLB-7304651168",
+          null,
+          28.78,
+          375,
+          88,
+          1,
+          362,
+          40,
+          5
+        ],
+        [
+          "MLB5049317197",
+          "Organizador Pia Com Dispenser Inox Porta Detergente E Bucha",
+          "2026-08-12T23:51:06.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_825432-MLB116064371205_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "ERSUTILIDADES",
+          "gold_special",
+          true,
+          "MLB-5049317197",
+          null,
+          38.02,
+          100,
+          24,
+          1,
+          6,
+          29,
+          4.8
+        ],
+        [
+          "MLB5049413585",
+          "Mini Escova Enrola Cabelo Chapinha Alisadora 2 Em 1",
+          "2026-08-13T00:40:44.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_901331-MLB95492769781_102025-O.webp",
+          "Beleza e Cuidado Pessoal",
+          false,
+          "active",
+          null,
+          true,
+          "LUCYARTIGOS",
+          "gold_special",
+          true,
+          "MLB-5049413585",
+          null,
+          32.99,
+          100,
+          25,
+          1,
+          33,
+          28,
+          4
+        ],
+        [
+          "MLB5075157911",
+          "Lancheira Térmica Média Techfun Preta com Alça Removível para Marmita e Bebidas",
+          "2026-08-16T17:10:16.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_808510-MLA116278574929_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          null,
+          true,
+          "ADSJJJDDSAERE",
+          "gold_special",
+          true,
+          "MLB77480084",
+          null,
+          29.94,
+          100,
+          28,
+          1,
+          null,
+          25,
+          null
+        ],
+        [
+          "MLB5076297799",
+          "Soprador De Folhas Turbo Portátil 800W Recarregável Com 2 Baterias 48V, Mini De Mão, Potente, Folhas Pó Limpeza Carro",
+          "2026-08-14T11:54:01.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_668520-MLA116179207753_082026-O.webp",
+          "Ferramentas",
+          true,
+          "active",
+          true,
+          true,
+          "DAFEBDHGC28478",
+          "gold_special",
+          true,
+          "MLB77322195",
+          "STARMEGA",
+          97.49,
+          100,
+          26,
+          1,
+          9,
+          27,
+          4.7
+        ],
+        [
+          "MLB5079119527",
+          "Toalha De Banho Grossa 75x150cm | 600g 100% Algodão Banhão Cor AZUL ENVELHECIDO",
+          "2026-08-11T16:39:42.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_844580-MLA115954723507_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "TOALHASAMPO",
+          "gold_pro",
+          true,
+          "MLB76797914",
+          null,
+          66.9,
+          100,
+          23,
+          3,
+          138,
+          30,
+          4.9
+        ],
+        [
+          "MLB5087890817",
+          "Toalha Para Secar Cabelo Microfibra Turbante Touca Pós Banho Rosa Toalha",
+          "2026-08-13T22:02:12.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_663912-MLA114769332348_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "VARIEDADESCI",
+          "gold_pro",
+          true,
+          "MLB77289594",
+          null,
+          25,
+          100,
+          25,
+          1,
+          7,
+          28,
+          4.8
+        ],
+        [
+          "MLB5088858691",
+          "Saco De Lixo 30 Litros Perfumado Lavanda Anti Odor Cheiroso",
+          "2026-08-18T23:39:38.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_939618-MLB115004539930_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "DIGSHOP_",
+          "gold_special",
+          true,
+          "MLB-5088858691",
+          null,
+          19.9,
+          100,
+          30,
+          1,
+          null,
+          23,
+          null
+        ],
+        [
+          "MLB5122998425",
+          "Toalha De Banho Grossa 75x150cm | 600g 100% Algodão Banhão Cor Branco",
+          "2026-08-12T07:31:34.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_861052-MLA114640287848_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "CASA_CARVALHO",
+          "gold_pro",
+          true,
+          "MLB77035844",
+          null,
+          69.1,
+          100,
+          24,
+          3,
+          138,
+          29,
+          4.9
+        ],
+        [
+          "MLB5125133187",
+          "Kit Colmeia Organizadora Toalha Banho Rosto Piso Jogo Lençol",
+          "2026-08-24T17:36:47.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_989754-MLA115256908722_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "AMOKITS",
+          null,
+          true,
+          "MLB78199978",
+          null,
+          49.99,
+          100,
+          41,
+          1,
+          null,
+          17,
+          null
+        ],
+        [
+          "MLB5125177211",
+          "Máquina De Cortar Cabelo Kemei Km-2296 Bivolt Com Base",
+          "2026-08-24T17:46:38.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_761127-MLB116663025185_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          false,
+          "active",
+          true,
+          true,
+          "CROW_LEY",
+          "gold_special",
+          true,
+          "MLB-5125177211",
+          null,
+          119.73,
+          100,
+          41,
+          1,
+          5,
+          17,
+          5
+        ],
+        [
+          "MLB5132547145",
+          "Kit 2 Toalhas Artesanalle Dohler Banho+rosto Pintura/maquina Lilás",
+          "2026-08-14T23:18:31.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_891474-MLA114832762630_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "MIAVIBE",
+          "gold_special",
+          true,
+          "MLB77361644",
+          "DOHLER",
+          68.99,
+          100,
+          26,
+          3,
+          427,
+          27,
+          4.9
+        ],
+        [
+          "MLB5132731317",
+          "Kit 4 Em 1 - Cortador Legumes Ralador Fatiador Descascador",
+          "2026-08-21T19:52:08.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_658470-MLA115154195506_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "VEMK",
+          "gold_special",
+          true,
+          "MLB78016621",
+          null,
+          30.3,
+          100,
+          35,
+          2,
+          1,
+          20,
+          5
+        ],
+        [
+          "MLB5134357887",
+          "Kit 2 Sacos Lavar Tênis Maquina Reutilizável Zíper + Brinde",
+          "2026-08-26T00:27:11.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_698028-MLB115315593262_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "VMCOMERCIAL",
+          "gold_special",
+          true,
+          "MLB-5134357887",
+          "SACOLAVARTENISSACOLAVAROU",
+          40.99,
+          100,
+          47,
+          1,
+          4,
+          15,
+          5
+        ],
+        [
+          "MLB5160468293",
+          "Picador Cortador De Legumes E Fruta Batata Cabrita Reforçado",
+          "2026-08-12T20:06:59.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_799886-MLA116051524001_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "JCSTORE0215",
+          null,
+          true,
+          "MLB77164935",
+          null,
+          59.9,
+          100,
+          24,
+          1,
+          null,
+          29,
+          null
+        ],
+        [
+          "MLB5163328153",
+          "Body Bebê 16 Peças Calça Mijão E Meias 100% Algodão Enxoval Cor Manga Longa Feminino Tamanho P",
+          "2026-08-26T23:07:31.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_933572-MLA116777560979_082026-O.webp",
+          "Bebês",
+          true,
+          "active",
+          null,
+          true,
+          "DCP.KIDS",
+          null,
+          true,
+          "MLB78496217",
+          null,
+          141.04,
+          100,
+          47,
+          1,
+          null,
+          15,
+          null
+        ],
+        [
+          "MLB5163516411",
+          "Cozedor De Ovos Legumes Elétrico Portátil A Vapor Multifuncional Até 7 Unidades Legumes Compacto Rápido Desligamento Automático Cozimento Ágil Dieta Fitness Ganhe Tempo Cor Azul",
+          "2026-08-26T18:57:46.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_730047-MLA115556221902_082026-E.webp",
+          "Eletrodomésticos",
+          true,
+          "active",
+          true,
+          true,
+          "GOLDENFESTA",
+          "gold_special",
+          true,
+          "MLB78440580",
+          null,
+          30.26,
+          100,
+          47,
+          1,
+          6,
+          15,
+          5
+        ],
+        [
+          "MLB5175602713",
+          "Relógio Digital de Parede LED Grande 36cm Preto Shopclic Calendário Data Hora 12/24h Termômetro Temperatura Alarme com Soneca Bivolt 110/220v para Sala Cozinha Academia Igreja e Comércio",
+          "2026-08-17T16:23:09.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_698692-MLA114934853290_082026-E.webp",
+          "Joias e Relógios",
+          true,
+          "active",
+          true,
+          false,
+          "SHOPCLIC OFICIAL",
+          "gold_special",
+          true,
+          "MLB77514504",
+          null,
+          94.7,
+          100,
+          29,
+          1,
+          7,
+          24,
+          5
+        ],
+        [
+          "MLB5175684755",
+          "Bolsa Térmica Lequeen Feminina Lancheira Alimentos Moderna Cor Cinza Desenho Do Tecido Lisa",
+          "2026-09-02T08:27:03.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_920323-MLU74209577661_012024-E.webp",
+          "Bebês",
+          true,
+          "active",
+          null,
+          true,
+          "LEQUEEN OFICIAL",
+          "gold_special",
+          true,
+          "MLB30017140",
+          null,
+          168.2,
+          100,
+          88,
+          1,
+          28,
+          8,
+          4.7
+        ],
+        [
+          "MLB5179353085",
+          "Dispenser Porta Detergente Liquido Bucha 600ml Pia Cozinha Cor Preto",
+          "2026-09-02T18:21:17.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_728507-MLA117087478483_092026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "MERCADOINBOX",
+          null,
+          true,
+          "MLB78843686",
+          null,
+          28.45,
+          100,
+          88,
+          1,
+          null,
+          8,
+          null
+        ],
+        [
+          "MLB5186111423",
+          "Sooso Soprador de Ar Potente 21V Sem Fio a Bateria Portátil para Secagem Automotiva Limpeza Casa Jardim Folhas Eletrônicos",
+          "2026-09-08T03:55:35.338",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_683847-MLA117174418483_092026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "KC20260504142038",
+          null,
+          true,
+          "MLB78906553",
+          null,
+          193.03,
+          100,
+          100,
+          1,
+          null,
+          2,
+          null
+        ],
+        [
+          "MLB7391075116",
+          "Arminha Bolinha Gel Arma Metralhadora Automática Ak47 Orbeez Cor Sortido",
+          "2026-08-11T17:14:20.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_845013-MLA115957316879_082026-O.webp",
+          "Brinquedos e Hobbies",
+          true,
+          "active",
+          null,
+          true,
+          "DREAMLAND_",
+          "gold_special",
+          true,
+          "MLB76804785",
+          null,
+          74,
+          100,
+          23,
+          2,
+          124,
+          30,
+          4.5
+        ],
+        [
+          "MLB7414539088",
+          "Kit 2 Saco Lavagem Tênis Sapatos Máquina De Lavar",
+          "2026-08-14T08:58:15.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_718964-MLB116845273295_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "FX20251016140814",
+          "gold_pro",
+          true,
+          "MLB-7414539088",
+          null,
+          31.99,
+          100,
+          26,
+          1,
+          5,
+          27,
+          5
+        ],
+        [
+          "MLB7420372634",
+          "Meia Calça De Lã Térmica Preta Forrada Pelinho Pelúcia",
+          "2026-08-14T22:20:45.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_655807-MLB116203414407_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          null,
+          true,
+          "JOY JEANS",
+          "gold_special",
+          true,
+          "MLB-7420372634",
+          null,
+          21.9,
+          100,
+          26,
+          1,
+          7,
+          27,
+          4.4
+        ],
+        [
+          "MLB7425786978",
+          "Maquininha Depilador Elétrico Feminino 4 Em 1 Pelos Íntimos",
+          "2026-08-15T18:08:21.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_938793-MLB116827492989_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          false,
+          "active",
+          true,
+          true,
+          "J2COMERCIAL",
+          "gold_special",
+          true,
+          "MLB-7425786978",
+          null,
+          35.94,
+          100,
+          27,
+          1,
+          16,
+          26,
+          5
+        ],
+        [
+          "MLB7427926288",
+          "Máquina Barbear Profissional Com Visor Elétrica Maquininha Dragão Dourado Recarregável Para Cabelo e barba, Acabamento Hair trimmer",
+          "2026-08-16T02:14:18.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_754324-MLA116256033341_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          null,
+          false,
+          "DLMSTORES",
+          "gold_special",
+          true,
+          "MLB77456210",
+          "HAIRTRIMMER",
+          38.23,
+          100,
+          28,
+          2,
+          15,
+          25,
+          4.9
+        ],
+        [
+          "MLB7432382168",
+          "Máquina de Acabamento Kemei KM 2299 Profissional Sem Fio para Cabelo e Barba",
+          "2026-08-15T00:38:33.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_918106-MLA114939886160_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          true,
+          true,
+          "OMNIGO1",
+          "gold_pro",
+          true,
+          "MLB77371217",
+          null,
+          104.7,
+          100,
+          27,
+          1,
+          null,
+          26,
+          null
+        ],
+        [
+          "MLB7437022286",
+          "Kit 2 Termômetro Culinário Espeto Digital Cozinha Alimentos Temperatura Bebidas Líquidos Queijo Assado Chocolate Leite Doces Preciso Medidor",
+          "2026-08-14T00:31:22.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_697733-MLA114775030318_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "FACANHASHOP",
+          "gold_special",
+          true,
+          "MLB77307777",
+          null,
+          21.5,
+          100,
+          26,
+          1,
+          null,
+          27,
+          null
+        ],
+        [
+          "MLB7473960234",
+          "Acessórios Quadrado Fluvcasa Porta Toalha Banho Luxo Preto 5 Pçs",
+          "2026-08-14T13:58:56.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_867888-MLA114811649854_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "FAHBFGCDE88024",
+          "gold_special",
+          true,
+          "MLB77325859",
+          null,
+          125.84,
+          100,
+          26,
+          1,
+          1,
+          27,
+          5
+        ],
+        [
+          "MLB7475216098",
+          "Mini Máquina Waffle Antiaderente Gourmet Lanches Práticos",
+          "2026-08-21T20:10:32.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_866369-MLB111832481112_062026-O.webp",
+          "Eletrodomésticos",
+          false,
+          "active",
+          null,
+          true,
+          "OLDMONKEYSTORE",
+          "gold_special",
+          true,
+          "MLB-7475216098",
+          null,
+          49.99,
+          100,
+          35,
+          1,
+          55,
+          20,
+          4.6
+        ],
+        [
+          "MLB7481296738",
+          "Squishy Dumpling  O Verdadeiro Bolinho Fofo Infantil",
+          "2026-08-22T00:27:55.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_689954-MLB115223323040_082026-O.webp",
+          "Brinquedos e Hobbies",
+          false,
+          "active",
+          true,
+          true,
+          "DIGII_STORE",
+          "gold_special",
+          true,
+          "MLB-7481296738",
+          "BLOOPY",
+          119.38,
+          100,
+          37,
+          1,
+          9,
+          19,
+          4
+        ],
+        [
+          "MLB7501193348",
+          "Dispenser Detergente Embutir Pia Cozinha 300ml Inox Escovado Prateado",
+          "2026-08-12T11:44:42.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_622364-MLA114656597718_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "DESTAKACABAMENTOS",
+          "gold_special",
+          true,
+          "MLB77094423",
+          null,
+          29.52,
+          100,
+          24,
+          1,
+          1,
+          29,
+          5
+        ],
+        [
+          "MLB7511295430",
+          "Kit 2 Toalhas Artesanalle Dohler Banho+rosto Pintura/maquina Verde-claro",
+          "2026-08-15T04:38:23.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_875959-MLA114842944668_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "MIAVIBE",
+          "gold_special",
+          true,
+          "MLB77393912",
+          "DOHLER",
+          68.99,
+          100,
+          27,
+          3,
+          427,
+          26,
+          4.9
+        ],
+        [
+          "MLB7512544334",
+          "Kit 2 Toalhas Artesanalle Dohler Banho+rosto Pintura/maquina Marfim",
+          "2026-08-14T20:38:08.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_773395-MLA114828082554_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "ARI ENXOVAIS",
+          "gold_special",
+          true,
+          "MLB77340442",
+          "DOHLER",
+          74.95,
+          100,
+          26,
+          1,
+          420,
+          27,
+          4.9
+        ],
+        [
+          "MLB7512544376",
+          "Kit 2 Toalhas Artesanalle Dohler Banho+rosto Pintura/maquina Terracota",
+          "2026-08-15T00:51:49.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_838480-MLA116207835315_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "ARI ENXOVAIS",
+          "gold_special",
+          true,
+          "MLB77372462",
+          "DOHLER",
+          74.95,
+          100,
+          27,
+          2,
+          427,
+          26,
+          4.9
+        ],
+        [
+          "MLB7512708222",
+          "Kit 2 Toalhas Artesanalle Dohler Banho+rosto Pintura/maquina Rosa Bebê",
+          "2026-08-15T07:03:38.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_825180-MLA114848266802_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "ARI ENXOVAIS",
+          "gold_special",
+          true,
+          "MLB77410395",
+          "DOHLER",
+          74.95,
+          100,
+          27,
+          2,
+          420,
+          26,
+          4.9
+        ],
+        [
+          "MLB7514256862",
+          "Bolsa Térmica Lancheira Marmita Academia E Passeios Rosa",
+          "2026-08-14T21:52:29.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_634215-MLA116203503165_082026-E.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          null,
+          true,
+          "VMCOMERCIAL",
+          null,
+          true,
+          "MLB77350756",
+          null,
+          15.99,
+          100,
+          26,
+          1,
+          null,
+          27,
+          null
+        ],
+        [
+          "MLB7521271708",
+          "Fatiador Descascador Cortador Legumes Frutas Aço Inox Prateado",
+          "2026-08-13T22:05:52.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_812753-MLA116139192889_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "MOIRAS_ARMARINHOS",
+          "gold_special",
+          true,
+          "MLB77289957",
+          null,
+          27,
+          100,
+          25,
+          1,
+          4,
+          28,
+          5
+        ],
+        [
+          "MLB7531516322",
+          "Toalhas Banho Academia Microfibra Praia Absorve Limpa Seca Cor Roxo Lisa",
+          "2026-08-12T04:44:37.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_950151-MLA115994264519_082026-O.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          null,
+          true,
+          "UUP_ECOMMERCE",
+          "gold_special",
+          true,
+          "MLB76958954",
+          null,
+          49.9,
+          100,
+          24,
+          1,
+          14,
+          29,
+          4.9
+        ],
+        [
+          "MLB7534730218",
+          "3 Toalha Banho Fralda Soft Capuz Bebê 2 Camadas Papi Karinho Cor 3/1",
+          "2026-08-13T21:29:23.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_927536-MLA114769095662_082026-E.webp",
+          "Bebês",
+          true,
+          "active",
+          null,
+          true,
+          "MEUBEBESOFTLTDA",
+          "gold_special",
+          true,
+          "MLB77285434",
+          "PAPI",
+          93.99,
+          100,
+          25,
+          1,
+          77,
+          28,
+          4.9
+        ],
+        [
+          "MLB7538812260",
+          "Kit Toalha De Banho Teka Hotel Decorvix 75x150 500g/m2",
+          "2026-08-28T08:50:39.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_893008-MLB116983395105_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "DECORVIX",
+          "gold_pro",
+          true,
+          "MLB-7538812260",
+          null,
+          569.77,
+          100,
+          54,
+          1,
+          6,
+          13,
+          5
+        ],
+        [
+          "MLB7568222494",
+          "Body Bebê 16 Peças Calça Mijão E Meias 100% Algodão Enxoval Cor Manga Longa Feminino Tamanho G",
+          "2026-08-27T00:30:52.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_780460-MLA116779492803_082026-O.webp",
+          "Bebês",
+          true,
+          "active",
+          null,
+          true,
+          "DCP.KIDS",
+          null,
+          true,
+          "MLB78513426",
+          "DCPKIDS",
+          141.04,
+          100,
+          50,
+          1,
+          null,
+          14,
+          null
+        ],
+        [
+          "MLB7569874322",
+          "Chave De Impacto 48v Ferramenta Com 2 Bateria Lítio Parafusadeira Velocidade de Rotação de Entre 3500rpm e 2.3rpm Com Acessórios e Caixa 21mm 20mm 19mm 18mm 17mm",
+          "2026-08-19T05:53:47.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_784501-MLA117011241653_092026-O.webp",
+          "Ferramentas",
+          true,
+          "active",
+          true,
+          true,
+          "DCAHGFDEB91134",
+          null,
+          true,
+          "MLB77680896",
+          null,
+          239,
+          100,
+          32,
+          1,
+          null,
+          22,
+          null
+        ],
+        [
+          "MLB7580575482",
+          "Toalha Banho Bebê Soft Capuz Algodão 3 Camadas 85cm Loupiot Cor Rosa",
+          "2026-08-11T08:41:04.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_624881-MLA115924994455_082026-E.webp",
+          "Bebês",
+          true,
+          "active",
+          null,
+          true,
+          "CRISTHIBABY",
+          "gold_special",
+          true,
+          "MLB76739410",
+          null,
+          58.98,
+          100,
+          23,
+          1,
+          null,
+          30,
+          null
+        ],
+        [
+          "MLB7582047698",
+          "Sooso Soprador de Ar Potente 21V Sem Fio a Bateria Portátil para Secagem Automotiva Limpeza Casa Jardim Folhas Eletrônicos",
+          "2026-09-03T09:59:38.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_813978-MLA115673726760_092026-E.webp",
+          "Ferramentas",
+          true,
+          "active",
+          null,
+          true,
+          "KC20260504142038",
+          "gold_special",
+          true,
+          "MLB78865805",
+          null,
+          193.03,
+          100,
+          100,
+          1,
+          6,
+          7,
+          4.4
+        ],
+        [
+          "MLB4941011287",
+          "L Tapete Para Banheiro: Pedras Geométricas De Cinza Claro",
+          "2026-08-10T02:07:46.901",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_981972-CBT109847838740_042026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "CNTAIZHOULIAOXUSHANGMAOBRR",
+          null,
+          true,
+          "MLB2100594205",
+          "GENERIC",
+          128.85,
+          97,
+          23,
+          1,
+          null,
+          31,
+          null
+        ],
+        [
+          "MLB5031309425",
+          "Cozedor De Ovos Elétrico Vápor Portátil Cozimento 127v/220v",
+          "2026-08-10T12:08:51.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_630804-MLB114531557810_082026-O.webp",
+          "Eletrodomésticos",
+          false,
+          "active",
+          true,
+          true,
+          "HANNOVER HOME",
+          "gold_special",
+          true,
+          "MLB-5031309425",
+          null,
+          42.57,
+          97,
+          23,
+          1,
+          8,
+          31,
+          5
+        ],
+        [
+          "MLB7381242718",
+          "Termômetro Infravermelho Sem Contato Digital Medição Rápida Alta Precisão Display Lcd Memória Alarme Sensor",
+          "2026-08-10T15:52:01.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_848206-MLA114536628772_082026-E.webp",
+          "Saúde",
+          true,
+          "active",
+          null,
+          true,
+          "FAGEVAN",
+          "gold_special",
+          true,
+          "MLB76578205",
+          null,
+          21.49,
+          97,
+          23,
+          1,
+          null,
+          31,
+          null
+        ],
+        [
+          "MLB7366920310",
+          "Bolsa Térmica Infantil Lancheira Escolar Marmita C/ Alça",
+          "2026-08-08T22:53:44.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_802557-MLA114473356106_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          null,
+          true,
+          "FB20240917122915",
+          "gold_special",
+          true,
+          "MLB-7366920310",
+          null,
+          21.99,
+          91,
+          21,
+          1,
+          4,
+          33,
+          5
+        ],
+        [
+          "MLB7397308662",
+          "Kit Toalha Banho Bebê + Saco De Dormir + 6 Toalhinhas Ombro Cor Menino",
+          "2026-08-08T09:54:29.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_804915-MLA115808514729_082026-E.webp",
+          "Bebês",
+          true,
+          "active",
+          null,
+          true,
+          "CECENXOVAISPARABEBE",
+          "gold_special",
+          true,
+          "MLB76545311",
+          "MEFMAEEFILHO",
+          64.99,
+          91,
+          21,
+          1,
+          469,
+          33,
+          4.8
+        ],
+        [
+          "MLB7421880540",
+          "Fatiador Legumes Cebola Cabo Madeira Cortador Precisão .",
+          "2026-08-08T09:39:29.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_705541-CBT110767558250_052026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          false,
+          "CNLVMAOSHANGMAO2DIANBRR",
+          null,
+          true,
+          "MLB2103389312",
+          "GENERIC",
+          55.33,
+          91,
+          21,
+          262,
+          null,
+          33,
+          null
+        ],
+        [
+          "MLB5015811101",
+          "Meia Calça De Lã Térmica Forrada Pelinho Pelúcia Infantil",
+          "2026-08-07T20:23:28.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_677749-MLB111252239100_052026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          null,
+          true,
+          "PRIMECLOCK",
+          "gold_pro",
+          true,
+          "MLB-5015811101",
+          null,
+          129.66,
+          88,
+          21,
+          1,
+          17,
+          34,
+          5
+        ],
+        [
+          "MLB7355999438",
+          "Tablet Infantil Sonic Tela 7 64gb Android Interativo Kids Vs",
+          "2026-08-07T13:01:26.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_918814-MLB112199709143_052026-O.webp",
+          "Informática",
+          false,
+          "active",
+          null,
+          true,
+          "VD20260428170905",
+          "gold_special",
+          true,
+          "MLB-7355999438",
+          null,
+          308.9,
+          88,
+          21,
+          1,
+          6,
+          34,
+          4.9
+        ],
+        [
+          "MLB7572757284",
+          "Kit 5 Sacos Protetores para Lavar Roupas Delicadas 30x40 cm, com Zíper Reforçado",
+          "2026-08-07T18:09:56.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_874458-MLA114431455518_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          false,
+          "DO13SHOPS",
+          "gold_special",
+          true,
+          "MLB76528323",
+          null,
+          33.2,
+          88,
+          21,
+          2,
+          3,
+          34,
+          4.3
+        ],
+        [
+          "MLB5001718723",
+          "Toalha De Banho Bebê Com Capuz Felpuda Macia Infantil",
+          "2026-08-06T02:24:16.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_919550-MLB116882155325_082026-O.webp",
+          "Bebês",
+          false,
+          "active",
+          true,
+          true,
+          "SANBARIMPORTS",
+          "gold_special",
+          true,
+          "MLB-5001718723",
+          "GENERICA",
+          24.69,
+          86,
+          20,
+          1,
+          14,
+          35,
+          5
+        ],
+        [
+          "MLB5017757857",
+          "Kit Toalha Banho Bebê + Saco De Dormir + 6 Toalhinhas Ombro Cor Menina",
+          "2026-08-06T09:21:04.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_806844-MLA114364176742_082026-E.webp",
+          "Bebês",
+          true,
+          "active",
+          null,
+          true,
+          "CECENXOVAISPARABEBE",
+          "gold_special",
+          true,
+          "MLB76464818",
+          "MEFMAEEFILHO",
+          64.99,
+          86,
+          20,
+          1,
+          466,
+          35,
+          4.8
+        ],
+        [
+          "MLB7340645250",
+          "Arma Bolinha De Gel Arminha M416 Metralhadora Automática",
+          "2026-08-06T03:50:38.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_691252-MLB115690955171_082026-O.webp",
+          "Brinquedos e Hobbies",
+          false,
+          "active",
+          null,
+          true,
+          "GW20260212105446",
+          "gold_special",
+          true,
+          "MLB-7340645250",
+          null,
+          49,
+          86,
+          20,
+          1,
+          14,
+          35,
+          4.9
+        ],
+        [
+          "MLB7348075816",
+          "Saco Lixo Perfumado 30l Lavanda 2 Packs 60 Sacos",
+          "2026-08-06T18:50:32.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_843102-MLB115729718119_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "ESSENCIALCASALAR",
+          "gold_special",
+          true,
+          "MLB-7348075816",
+          "EXTRUSAPACK",
+          35.79,
+          86,
+          20,
+          1,
+          4,
+          35,
+          5
+        ],
+        [
+          "MLB5000643017",
+          "Kit 2 Rolos Saco Lixo Perfumado Lavanda Pia Banheiro 80 Unid",
+          "2026-08-05T21:33:33.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_613689-MLB115673997797_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          false,
+          "SOUZARIBEIRO",
+          "gold_special",
+          true,
+          "MLB2108573936",
+          null,
+          14.97,
+          83,
+          19,
+          1,
+          5,
+          36,
+          5
+        ],
+        [
+          "MLB5195598711",
+          "Kit 2 Bateria De 48v Lítio Recarregável Para Ferramentas",
+          "2026-08-05T21:16:29.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_967876-MLA115136129002_082026-E.webp",
+          "Ferramentas",
+          true,
+          "active",
+          null,
+          true,
+          "BANCA1000",
+          null,
+          true,
+          "MLB77954258",
+          "MULTICONTROL",
+          57.1,
+          83,
+          19,
+          2,
+          4,
+          36,
+          3.5
+        ],
+        [
+          "MLB7331390290",
+          "Cozedor De Ovos Elétrico 220v Máquina Portatil De Cozinhar",
+          "2026-08-05T01:05:01.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_983429-MLB114609794170_082026-O.webp",
+          "Eletrodomésticos",
+          false,
+          "active",
+          true,
+          true,
+          "ESSENCIAL7SHOP",
+          "gold_special",
+          true,
+          "MLB-7331390290",
+          null,
+          36.9,
+          83,
+          19,
+          1,
+          3,
+          36,
+          5
+        ],
+        [
+          "MLB4992105849",
+          "Cozedor de Ovos Elétrico a Vapor Desligamento Automático 7 Ovos YONKS",
+          "2026-08-04T13:31:44.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_669976-MLA114241910226_082026-O.webp",
+          "Eletrodomésticos",
+          true,
+          "active",
+          null,
+          true,
+          "YONKS",
+          "gold_special",
+          true,
+          "MLB76320894",
+          null,
+          39.97,
+          81,
+          19,
+          1,
+          null,
+          37,
+          null
+        ],
+        [
+          "MLB4992571305",
+          "Bolsa Lancheira Térmica Escolar Trabalho Resistente Marmita",
+          "2026-08-04T15:14:45.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_979294-MLB115674891463_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          true,
+          true,
+          "FL.SHOP.",
+          "gold_special",
+          true,
+          "MLB-4992571305",
+          "FLBAGS",
+          27.93,
+          81,
+          19,
+          1,
+          23,
+          37,
+          4.9
+        ],
+        [
+          "MLB4992951717",
+          "Toalha Banho  Bebê Infatil Com Capuz Grande Forrada Macia",
+          "2026-08-04T16:50:44.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_740754-MLB115857238459_082026-O.webp",
+          "Bebês",
+          false,
+          "active",
+          null,
+          true,
+          "MOTTAIMPORTS",
+          "gold_special",
+          true,
+          "MLB-4992951717",
+          null,
+          23.56,
+          81,
+          19,
+          1,
+          10,
+          37,
+          4.6
+        ],
+        [
+          "MLB7321308726",
+          "Helicóptero Aromatizador Perfume Solar Veicular Cheirinho",
+          "2026-08-04T08:57:07.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_772896-MLB116896659527_082026-O.webp",
+          "Acessórios para Veículos",
+          false,
+          "active",
+          null,
+          true,
+          "ADABFHGEC84960",
+          "gold_special",
+          true,
+          "MLB-7321308726",
+          null,
+          33.6,
+          81,
+          19,
+          1,
+          19,
+          37,
+          4
+        ],
+        [
+          "MLB7328176990",
+          "Cozedor de Ovos Elétrico a Vapor Desligamento Automático 7 Ovos YONKS",
+          "2026-08-04T13:31:44.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_872315-MLA114241059230_082026-E.webp",
+          "Eletrodomésticos",
+          true,
+          "active",
+          null,
+          true,
+          "YONKS",
+          "gold_special",
+          true,
+          "MLB76320893",
+          null,
+          39.97,
+          81,
+          19,
+          1,
+          18,
+          37,
+          4.8
+        ],
+        [
+          "MLB7330114094",
+          "Kit Com 4 Toalhas De Banho Grande Grossa Macia Tamanho 68x132cm Useline",
+          "2026-08-04T18:24:35.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_922120-MLA115589892691_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "THOMHOME",
+          "gold_special",
+          true,
+          "MLB76343744",
+          null,
+          64.99,
+          81,
+          19,
+          1,
+          26,
+          37,
+          4.8
+        ],
+        [
+          "MLB4984892575",
+          "Lancheira Infantil Térmica com 3 Divisórias Verde de 550ml Ideal para a escola e passeios",
+          "2026-08-03T02:35:04.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_987230-MLA114156805448_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          null,
+          true,
+          "HDEFACHBG59182",
+          "gold_special",
+          true,
+          "MLB76217552",
+          "KEENKLE",
+          32.99,
+          79,
+          18,
+          1,
+          6,
+          38,
+          5
+        ],
+        [
+          "MLB4985354871",
+          "Pistola Térmica Sem Fio 48V 550°C Kit 2 Baterias e 3 Bicos | Ferramenta de Calor Ideal para Remover Tintas e Plastificar",
+          "2026-08-03T08:24:38.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_673124-MLB114169796766_082026-O-pistola-termica-a-bateria-48v-550c-sem-fio-kit-3-bicos.webp",
+          "Ferramentas",
+          true,
+          "active",
+          null,
+          true,
+          "XUMTOMSHOP",
+          "gold_special",
+          true,
+          "MLB77242431",
+          "XUMTOM",
+          309.07,
+          79,
+          18,
+          1,
+          1,
+          38,
+          5
+        ],
+        [
+          "MLB4986068165",
+          "Lavadora Lava Jato Portátil Alta Pressão Bivolt Com Maleta",
+          "2026-08-03T11:54:05.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_713865-MLB114179829458_082026-O.webp",
+          "Ferramentas",
+          false,
+          "active",
+          null,
+          true,
+          "ISMAFER_MG",
+          "gold_pro",
+          true,
+          "MLB-4986068165",
+          "THEBLACKTOOLS",
+          116.3,
+          79,
+          18,
+          1,
+          21,
+          38,
+          4.2
+        ],
+        [
+          "MLB4986068167",
+          "Lavadora Lava Jato Portátil Pressão 600w Bivolt + Maleta",
+          "2026-08-03T11:54:05.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_713865-MLB114179829458_082026-O.webp",
+          "Ferramentas",
+          false,
+          "active",
+          null,
+          true,
+          "ISMAFER_MG",
+          "gold_special",
+          true,
+          "MLB-4986068167",
+          "THEBLACKTOOLS",
+          116.3,
+          79,
+          18,
+          1,
+          33,
+          38,
+          3.9
+        ],
+        [
+          "MLB4986521689",
+          "Kit 60 Adesivos Detox Natural Para Pés Kinoki 6 Caixas",
+          "2026-08-03T14:18:42.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_970466-MLB115517920297_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          false,
+          "active",
+          true,
+          false,
+          "KINOKI_T",
+          "gold_special",
+          true,
+          "MLB-4986521689",
+          null,
+          48.29,
+          79,
+          18,
+          1,
+          13,
+          38,
+          4
+        ],
+        [
+          "MLB4986684181",
+          "Depilador Feminino 4 Em 1 Recarregável Multi Aparador Intimo",
+          "2026-08-03T15:15:08.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_714636-MLB117041401221_092026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          false,
+          "active",
+          true,
+          true,
+          "FINKE",
+          "gold_special",
+          true,
+          "MLB-4986684181",
+          null,
+          34.87,
+          79,
+          18,
+          1,
+          10,
+          38,
+          5
+        ],
+        [
+          "MLB7314539054",
+          "Kit 2 Saco Lavagem Tênis Sapatos P/ Máquina Lavar Branco Bag",
+          "2026-08-02T17:32:26.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_993401-MLB114762169254_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "AGSTSHOP",
+          "gold_special",
+          true,
+          "MLB-7314539054",
+          "BOLSALIMPEZASAQUINHORESIS",
+          31.15,
+          77,
+          18,
+          1,
+          7,
+          39,
+          4.4
+        ],
+        [
+          "MLB7310664532",
+          "Termômetro Infravermelho Digital Laser Testa Com Pilha",
+          "2026-08-01T23:26:19.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_783351-MLB115449469543_082026-O.webp",
+          "Saúde",
+          false,
+          "active",
+          null,
+          true,
+          "CJNW",
+          "gold_special",
+          true,
+          "MLB-7310664532",
+          null,
+          29.9,
+          75,
+          18,
+          1,
+          16,
+          40,
+          4.8
+        ],
+        [
+          "MLB4976470077",
+          "Cozedor De Ovos Elétrico Cozinhar A Vapor 110 Cor Azul",
+          "2026-07-31T21:29:07.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_757021-MLA115401867333_072026-E.webp",
+          "Eletrodomésticos",
+          true,
+          "active",
+          null,
+          true,
+          "YONKS",
+          "gold_special",
+          true,
+          "MLB76156423",
+          null,
+          35.97,
+          73,
+          17,
+          1,
+          910,
+          41,
+          4.8
+        ],
+        [
+          "MLB4976473143",
+          "Jacki Design Kit Concept Lancheira Térmica Cor Rosa",
+          "2026-07-31T22:10:34.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_741255-MLA114079075930_072026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          null,
+          true,
+          "CHICCHARMLTDA",
+          "gold_pro",
+          true,
+          "MLB76162579",
+          "JACKIDESIGN",
+          129,
+          73,
+          17,
+          1,
+          116,
+          41,
+          4.9
+        ],
+        [
+          "MLB5039973579",
+          "Jacki Design Kit Concept Lancheira Térmica Cor Azul",
+          "2026-07-31T21:25:59.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_704307-MLA114077974224_072026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          null,
+          true,
+          "MARY_KASE",
+          "gold_special",
+          true,
+          "MLB76156183",
+          "JACKIDESIGN",
+          151.09,
+          73,
+          17,
+          2,
+          115,
+          41,
+          4.9
+        ],
+        [
+          "MLB7304572142",
+          "Depilador Feminino Recarregável Rosto Axila Nariz 4 Em 1",
+          "2026-07-31T20:01:46.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_604358-MLB115410388613_072026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          false,
+          "active",
+          true,
+          true,
+          "SALARACOMMERCE",
+          "gold_special",
+          true,
+          "MLB-7304572142",
+          null,
+          41.29,
+          73,
+          17,
+          1,
+          18,
+          41,
+          4.4
+        ],
+        [
+          "MLB7314822976",
+          "Conjunto Hidropistola Alta Pressão 8 Jatos Reguláveis Mangueira Engate Rápido Irrigação Jardim Quintal Lavagem",
+          "2026-07-31T08:48:24.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_748894-MLA115373920211_072026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "HDEFACHBG59182",
+          "gold_special",
+          true,
+          "MLB76098451",
+          null,
+          35.95,
+          73,
+          17,
+          1,
+          4,
+          41,
+          5
+        ],
+        [
+          "MLB7512708186",
+          "Kit 2 Toalhas Artesanalle Dohler Banho+rosto Bordar/maquina Bege",
+          "2026-07-31T23:34:01.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_733613-MLA115404736233_072026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "ARI ENXOVAIS",
+          "gold_special",
+          true,
+          "MLB76172669",
+          "DOHLER",
+          74.95,
+          73,
+          17,
+          2,
+          427,
+          41,
+          4.9
+        ],
+        [
+          "MLB5075157913",
+          "Bolsa Térmica Lancheira Média Com Alça Removível da Techfun, Para Quente ou Frio",
+          "2026-08-16T17:10:16.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_923648-MLA114900554922_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          null,
+          true,
+          "ADSJJJDDSAERE",
+          "gold_special",
+          true,
+          "MLB77480083",
+          null,
+          29.94,
+          50,
+          14,
+          1,
+          null,
+          25,
+          null
+        ],
+        [
+          "MLB5086202717",
+          "Cozedor De Ovos Kian A Vapor Elétrico Até 7 Ovos 350w Preto",
+          "2026-08-13T01:32:16.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_852835-MLA114704560462_082026-E.webp",
+          "Eletrodomésticos",
+          true,
+          "active",
+          null,
+          true,
+          "MAXXNASUACASA",
+          "gold_special",
+          true,
+          "MLB77192512",
+          null,
+          53.8,
+          50,
+          13,
+          2,
+          1,
+          28,
+          5
+        ],
+        [
+          "MLB5125197411",
+          "Toalha Bebê Banho Soft Capuz 3 Camadas Fralda Algodão Cor Nuvem Rosa",
+          "2026-08-24T17:48:40.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_945087-MLA116662142029_082026-E.webp",
+          "Bebês",
+          true,
+          "active",
+          null,
+          true,
+          "ALBADISTRIBUIDORA",
+          "gold_pro",
+          true,
+          "MLB78201742",
+          "TECICLEANBABY",
+          34.12,
+          50,
+          21,
+          1,
+          178,
+          17,
+          5
+        ],
+        [
+          "MLB5125367415",
+          "Soprador De Ar 48v 2 Baterias Potente Turbo Portátil Sem Fio",
+          "2026-08-24T18:19:49.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_952769-MLB116778885807_082026-O.webp",
+          "Ferramentas",
+          false,
+          "active",
+          null,
+          true,
+          "VANGUARDMKT",
+          "gold_special",
+          true,
+          "MLB-5125367415",
+          null,
+          105.9,
+          50,
+          21,
+          1,
+          1,
+          17,
+          5
+        ],
+        [
+          "MLB5146365811",
+          "Kit Suporte Porta Toalha Banho Rosto Papeleira Dupla Face 3m Branco",
+          "2026-08-13T06:57:51.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_928539-MLA116089362623_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "VML IMPORT",
+          "gold_pro",
+          true,
+          "MLB77211908",
+          null,
+          136.28,
+          50,
+          13,
+          1,
+          null,
+          28,
+          null
+        ],
+        [
+          "MLB5166465365",
+          "Lâmina Kemei 2296 para máquina de cortar cabelo totalmente preta",
+          "2026-09-07T02:05:53.796",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_662969-MLA94385137384_102025-E.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          null,
+          true,
+          "SKYIMPORTTS",
+          null,
+          true,
+          "MLB59819634",
+          null,
+          64,
+          50,
+          50,
+          1,
+          null,
+          3,
+          null
+        ],
+        [
+          "MLB5178050735",
+          "Máquina de Cortar Cabelo Profissional Kemei KM-1986 Sem Fio Recarregável Bivolt Visor LCD Cabeça Lavável 4 Pentes Barbeador para Barba Acabamento Degradê Fade Barbearia Uso Doméstico Premium",
+          "2026-08-15T04:32:22.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_891288-MLA116216893029_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          true,
+          true,
+          "X4ECOMMERCE",
+          "gold_special",
+          true,
+          "MLB77393235",
+          null,
+          136.32,
+          50,
+          13,
+          1,
+          null,
+          26,
+          null
+        ],
+        [
+          "MLB5179065331",
+          "Cortador Em Aço Inox Para Frutas Legumes Banana Salsicha Amarelo",
+          "2026-09-02T16:45:04.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_917008-MLA115638250794_092026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "PHFULL2",
+          null,
+          true,
+          "MLB78831903",
+          null,
+          20.9,
+          50,
+          44,
+          1,
+          null,
+          8,
+          null
+        ],
+        [
+          "MLB5187701327",
+          "Lancheira Térmica Escolar Infantil Animais Zoo Clio Pets Cor lhama",
+          "2026-09-05T07:18:52.763",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_677151-MLA114335770067_072026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          null,
+          true,
+          "LOJA_PONTO_CRIATIVO",
+          null,
+          true,
+          "MLB75322438",
+          null,
+          69.9,
+          50,
+          50,
+          1,
+          null,
+          5,
+          null
+        ],
+        [
+          "MLB5188631477",
+          "Termômetro culinário digital Tp300, espeto para alimentos e bebidas, cinza",
+          "2026-09-04T17:42:43.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_697189-MLA85247698258_062025-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "INFINITYSH0P",
+          "gold_pro",
+          true,
+          "MLB39991955",
+          null,
+          25,
+          50,
+          50,
+          1,
+          7,
+          6,
+          4.6
+        ],
+        [
+          "MLB7420398514",
+          "Meia Calça De Lã Térmica Preta Forrada Pelinho Pelúcia",
+          "2026-08-14T22:20:45.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_655807-MLB116203414407_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          null,
+          true,
+          "JOY JEANS",
+          "gold_special",
+          true,
+          "MLB-7420398514",
+          null,
+          21.9,
+          50,
+          13,
+          1,
+          7,
+          27,
+          5
+        ]
+      ],
+      "dimensionCount": 15,
+      "lastRefreshTime": "2026-09-09T19:02:57.614Z",
+      "slowQuery": false,
+      "totalRows": 100,
+      "types": [
+        "string",
+        "string",
+        "time",
+        "time",
+        "string",
+        "string",
+        "boolean",
+        "string",
+        "boolean",
+        "boolean",
+        "string",
+        "string",
+        "boolean",
+        "string",
+        "string",
+        "number",
+        "number",
+        "number",
+        "number",
+        "number",
+        "number",
+        "number"
+      ]
+    }
+  ]
+}

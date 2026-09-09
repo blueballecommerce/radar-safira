@@ -1,5 +1,6 @@
 """Integra a aba e a correção de frete na página atual, sem substituir outras abas."""
 import argparse
+import re
 from pathlib import Path
 
 
@@ -9,9 +10,15 @@ def replace_once(text, before, after):
     return text.replace(before, after, 1)
 
 
+def readings_hook(source):
+    source=re.sub(r'oportunidades\.(js|css)\?v=[^"\s]+',r'oportunidades.\1?v=20260909r2',source)
+    if 'await window.RadarOportunidades.withReadings(forn.data)' not in source:
+        source=replace_once(source,'    forn.data = await r.json();','    forn.data = await r.json();\n    try { forn.data = await window.RadarOportunidades.withReadings(forn.data); } catch(e) { /* Base original disponível; a aba exibe a falha da leitura. */ }')
+    return source
+
 def integrate(source):
     if 'src="oportunidades.js?' in source:
-        return source
+        return readings_hook(source)
     edits = [
         ('<meta name="color-scheme" content="light dark">', '<meta name="color-scheme" content="light dark">\n<link rel="stylesheet" href="oportunidades.css?v=20260909">'),
         ('    <button role="tab" data-tab="forn" aria-selected="false">Fornecedores</button>', '    <button role="tab" data-tab="forn" aria-selected="false">Fornecedores</button>\n    <button role="tab" data-tab="oport" aria-selected="false" aria-controls="tab-oport">Oportunidade de fornecedores</button>'),
@@ -60,7 +67,7 @@ def integrate(source):
     anchor="  $('#s-note').textContent = "
     start=out.index(anchor); end=out.index('\n}', start)
     out=out[:end]+"\n  setTimeout(()=>{ if(forn.data){ fornParaRadar(); renderML(true); if(!$('#tab-forn').hidden) fornRender(); window.RadarOportunidades?.refresh(); } },0);"+out[end:]
-    return out
+    return readings_hook(out)
 
 
 if __name__ == '__main__':

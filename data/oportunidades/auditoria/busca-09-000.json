@@ -1,0 +1,3191 @@
+{
+  "lidoEm": "2026-09-09T19:01:53.225Z",
+  "fonte": "JoomPulse / MercadoProductsWeekly",
+  "groups": [
+    [
+      "chave",
+      "multi"
+    ],
+    [
+      "velocímetro",
+      "bike"
+    ],
+    [
+      "descanso",
+      "pezinho"
+    ],
+    [
+      "chave",
+      "ferramenta"
+    ],
+    [
+      "suporte",
+      "parede"
+    ],
+    [
+      "cadeado",
+      "aço"
+    ],
+    [
+      "calibrador",
+      "compressor"
+    ],
+    [
+      "chave",
+      "bike"
+    ],
+    [
+      "chaves",
+      "extrator"
+    ],
+    [
+      "chave",
+      "extrator"
+    ],
+    [
+      "corrente",
+      "bike"
+    ],
+    [
+      "adesivo",
+      "protetor"
+    ],
+    [
+      "freio",
+      "brake"
+    ],
+    [
+      "ciclo",
+      "computador"
+    ],
+    [
+      "catraca",
+      "cinta"
+    ],
+    [
+      "cintas",
+      "catraca"
+    ],
+    [
+      "pazinha",
+      "coletora"
+    ],
+    [
+      "escova",
+      "secadora"
+    ],
+    [
+      "maquina",
+      "silenciosa"
+    ],
+    [
+      "rasqueadeira",
+      "removedor"
+    ],
+    [
+      "luva",
+      "escova"
+    ],
+    [
+      "brinquedo",
+      "mordedor"
+    ],
+    [
+      "bola",
+      "inteligente"
+    ],
+    [
+      "massageador",
+      "fascial"
+    ],
+    [
+      "sutiã",
+      "adesivo"
+    ],
+    [
+      "tonificador",
+      "muscular"
+    ],
+    [
+      "aparelho",
+      "massageador"
+    ],
+    [
+      "eletrodo",
+      "auto"
+    ],
+    [
+      "barra",
+      "apoio"
+    ],
+    [
+      "ventilador",
+      "umidificador"
+    ]
+  ],
+  "pages": [
+    {
+      "query": {
+        "dimensions": [
+          "MercadoProductsWeekly.id",
+          "MercadoProductsWeekly.productName",
+          "MercadoProductsWeekly.adPublishDate",
+          "MercadoProductsWeekly.date",
+          "MercadoProductsWeekly.productImage",
+          "MercadoProductsWeekly.merchantCategoryL1",
+          "MercadoProductsWeekly.catalogProduct",
+          "MercadoProductsWeekly.listingStatus",
+          "MercadoProductsWeekly.isFull",
+          "MercadoProductsWeekly.isFreeShipping",
+          "MercadoProductsWeekly.merchantName",
+          "MercadoProductsWeekly.listingType",
+          "MercadoProductsWeekly.buyBoxWiner",
+          "MercadoProductsWeekly.productId",
+          "MercadoProductsWeekly.brand"
+        ],
+        "measures": [
+          "MercadoProductsWeekly.priceAmount",
+          "MercadoProductsWeekly.orderCount1m",
+          "MercadoProductsWeekly.orderCount1w",
+          "MercadoProductsWeekly.numBuyBoxSellers",
+          "MercadoProductsWeekly.reviewsCount",
+          "MercadoProductsWeekly.daysInAd",
+          "MercadoProductsWeekly.reviewsRating"
+        ],
+        "filters": [
+          {
+            "member": "MercadoProductsWeekly.adPublishDate",
+            "operator": "inDateRange",
+            "values": [
+              "2026-07-31",
+              "2026-09-09"
+            ]
+          },
+          {
+            "member": "MercadoProductsWeekly.listingStatus",
+            "operator": "equals",
+            "values": [
+              "active"
+            ]
+          },
+          {
+            "member": "MercadoProductsWeekly.orderCount1m",
+            "operator": "gt",
+            "values": [
+              "0"
+            ]
+          },
+          {
+            "or": [
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "chave"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "multi"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "velocímetro"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "bike"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "descanso"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "pezinho"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "chave"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "ferramenta"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "suporte"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "parede"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "cadeado"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "aço"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "calibrador"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "compressor"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "chave"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "bike"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "chaves"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "extrator"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "chave"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "extrator"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "corrente"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "bike"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "adesivo"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "protetor"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "freio"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "brake"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "ciclo"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "computador"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "catraca"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "cinta"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "cintas"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "catraca"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "pazinha"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "coletora"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "escova"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "secadora"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "maquina"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "silenciosa"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "rasqueadeira"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "removedor"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "luva"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "escova"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "brinquedo"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "mordedor"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "bola"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "inteligente"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "massageador"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "fascial"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "sutiã"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "adesivo"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "tonificador"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "muscular"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "aparelho"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "massageador"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "eletrodo"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "auto"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "barra"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "apoio"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "ventilador"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "umidificador"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "order": [
+          [
+            "MercadoProductsWeekly.orderCount1m",
+            "desc"
+          ],
+          [
+            "MercadoProductsWeekly.id",
+            "asc"
+          ]
+        ],
+        "limit": 100
+      },
+      "columns": [
+        "id",
+        "productName",
+        "adPublishDate",
+        "date",
+        "productImage",
+        "merchantCategoryL1",
+        "catalogProduct",
+        "listingStatus",
+        "isFull",
+        "isFreeShipping",
+        "merchantName",
+        "listingType",
+        "buyBoxWiner",
+        "productId",
+        "brand",
+        "priceAmount",
+        "orderCount1m",
+        "orderCount1w",
+        "numBuyBoxSellers",
+        "reviewsCount",
+        "daysInAd",
+        "reviewsRating"
+      ],
+      "data": [
+        [
+          "MLB5033672611",
+          "Suporte Porta Papel Higiênico Fixação Por Adesivo Resistente Com Prateleira Para Lenço Umedecido Celular Chaves Decoração Organizador Para Banheiro Lavabo Parede Sem Furos 2 em 1 Moderno Elegante Luxo",
+          "2026-08-10T16:29:08.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_791278-MLA115893909443_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "OPACOTINHO",
+          "gold_special",
+          true,
+          "MLB76580658",
+          "EQUILIBRAMUNDOPRESENTES",
+          20.99,
+          4839,
+          1129,
+          1,
+          95,
+          31,
+          4.6
+        ],
+        [
+          "MLB5062890025",
+          "Chave Inglesa Ajustável 10 Polegadas 250mm Com Cabo Emborrachado Antiderrapante Ferramenta De Aperto Profissional Abertura Máxima 30mm",
+          "2026-08-14T17:39:49.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_724780-MLA116194169277_082026-O.webp",
+          "Acessórios para Veículos",
+          true,
+          "active",
+          true,
+          true,
+          "JBA_VENDAS",
+          "gold_special",
+          true,
+          "MLB77331404",
+          null,
+          27.99,
+          500,
+          130,
+          1,
+          15,
+          27,
+          4.8
+        ],
+        [
+          "MLB5099972725",
+          "Massageador Corporal Pistola Pescoço Aquecimento Elétrico Masajeador Massageador Pês Lombar Panturrilha Mão Pescoço Cabeça Costas Coluna Pernas Ombros Cervical - Aparelho massagem Portátil",
+          "2026-08-20T13:23:32.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_790643-MLA115254113146_082026-E.webp",
+          "Saúde",
+          true,
+          "active",
+          null,
+          true,
+          "NEXTTREE",
+          "gold_special",
+          true,
+          "MLB77830418",
+          null,
+          29.97,
+          500,
+          167,
+          1,
+          274,
+          21,
+          4.5
+        ],
+        [
+          "MLB5163517751",
+          "Aparelho Massageador Corporal Elétrico Redutor Barriga Cor Azul",
+          "2026-08-27T00:43:38.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_834344-MLA116779783303_082026-O.webp",
+          "Saúde",
+          true,
+          "active",
+          null,
+          true,
+          "TOTALSHOP BRASIL",
+          "gold_special",
+          true,
+          "MLB78516697",
+          null,
+          76.62,
+          500,
+          250,
+          1,
+          240,
+          14,
+          4.8
+        ],
+        [
+          "MLB7400625262",
+          "Mini Ar-condicionado Ventilador Umidificador Portátil Timer",
+          "2026-08-13T00:07:20.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_667588-MLB103460996225_012026-O.webp",
+          "Eletrodomésticos",
+          false,
+          "active",
+          true,
+          true,
+          "CAMPINAS STOREPRO",
+          "gold_special",
+          true,
+          "MLB-7400625262",
+          "ONISTEK",
+          57.89,
+          500,
+          125,
+          1,
+          null,
+          28,
+          null
+        ],
+        [
+          "MLB7450934216",
+          "Aparelho Massageador Com Ventosa Anti Celulite Infravermelho Variado",
+          "2026-08-13T06:37:16.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_996621-MLA114720635828_082026-O.webp",
+          "Saúde",
+          true,
+          "active",
+          null,
+          true,
+          "TRADTSTORE",
+          "gold_special",
+          true,
+          "MLB77210919",
+          null,
+          114.5,
+          500,
+          125,
+          2,
+          115,
+          28,
+          4.9
+        ],
+        [
+          "MLB7493150676",
+          "Barra Alça Apoio Banheiro 60cm Alta Qualidade Inox 4pcs",
+          "2026-08-21T07:56:51.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_796772-MLA116525722447_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "FAHBFGCDE88024",
+          "gold_special",
+          true,
+          "MLB77947109",
+          null,
+          82.56,
+          500,
+          175,
+          1,
+          5,
+          20,
+          4.6
+        ],
+        [
+          "MLB7504427926",
+          "LMKB Grade Proteção Cama Idoso E Barra Apoio Dobrável Para Cama",
+          "2026-08-20T10:33:57.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_872390-MLA115091436670_082026-O.webp",
+          "Bebês",
+          true,
+          "active",
+          true,
+          true,
+          "S20250430133036",
+          null,
+          true,
+          "MLB77824951",
+          "LMKB",
+          373.88,
+          500,
+          167,
+          2,
+          15,
+          21,
+          5
+        ],
+        [
+          "MLB7516428018",
+          "6 Protetor Porta Adesivo Silicone Anti Impacto Parede Moveis Transparente",
+          "2026-08-13T22:56:35.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_727496-MLA116141347959_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "IMPORTS_MN",
+          "gold_special",
+          true,
+          "MLB77297008",
+          null,
+          22.9,
+          500,
+          125,
+          1,
+          118,
+          28,
+          4.7
+        ],
+        [
+          "MLB7572876966",
+          "Suporte Cabide 10 Ganchos Para Parede Pendura Roupas Toalhas Cor Prata",
+          "2026-08-15T04:29:41.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_801663-MLA116217093455_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "NYGAARD SHOP",
+          "gold_special",
+          true,
+          "MLB77392930",
+          "AXXESSORY",
+          19,
+          500,
+          135,
+          4,
+          21,
+          26,
+          4.6
+        ],
+        [
+          "MLB7585970518",
+          "Cabide Suporte 6 Ganchos Para Pendura Roupas Toalhas Parede",
+          "2026-09-03T21:15:33.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_762825-MLB114318668258_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "MNYSHOP",
+          "gold_special",
+          true,
+          "MLB-7585970518",
+          null,
+          19,
+          500,
+          500,
+          1,
+          64,
+          7,
+          4
+        ],
+        [
+          "MLB7298179852",
+          "Kit Ferramentas 10 Peças Chave L Soquete De Boca Com Estojo Sortido",
+          "2026-07-31T06:50:07.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_647574-MLA114048949020_072026-E.webp",
+          "Ferramentas",
+          true,
+          "active",
+          null,
+          true,
+          "KICOOL COMERCIAL",
+          "gold_special",
+          true,
+          "MLB76092270",
+          null,
+          28.49,
+          366,
+          85,
+          1,
+          91,
+          41,
+          4.8
+        ],
+        [
+          "MLB5035312055",
+          "Suporte Controle Remoto Ar Condicionado Parede Sem Furos Branco",
+          "2026-08-11T05:47:05.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_704094-MLA115918323763_082026-E.webp",
+          "Eletrodomésticos",
+          true,
+          "active",
+          null,
+          true,
+          "ARTERHOME",
+          "gold_pro",
+          true,
+          "MLB76710455",
+          null,
+          12.37,
+          100,
+          23,
+          1,
+          null,
+          30,
+          null
+        ],
+        [
+          "MLB5037155897",
+          "Cinta P Carga Catraca Automatica Retrátil 800kg 3.6m",
+          "2026-08-11T08:24:08.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_739343-MLB115923697881_082026-O.webp",
+          "Ferramentas",
+          false,
+          "active",
+          null,
+          true,
+          "RD20260701150634",
+          "gold_pro",
+          true,
+          "MLB-5037155897",
+          null,
+          152.49,
+          100,
+          23,
+          1,
+          1,
+          30,
+          5
+        ],
+        [
+          "MLB5037155901",
+          "Cinta P Carga Catraca Automatica Retrátil 800kg 3.6m",
+          "2026-08-11T08:24:08.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_700484-MLB117125845955_092026-O-cinta-p-carga-catraca-automatica-retratil-800kg-36m.webp",
+          "Ferramentas",
+          false,
+          "active",
+          true,
+          true,
+          "RD20260701150634",
+          "gold_pro",
+          true,
+          "MLB-5037155901",
+          "COBA",
+          284.43,
+          100,
+          23,
+          1,
+          2,
+          30,
+          5
+        ],
+        [
+          "MLB5049048715",
+          "Arranhador Protetor Sofá Carpete Pet Adesivo Gatos 200x50cm",
+          "2026-08-12T21:57:48.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_915134-MLB116058538223_082026-O.webp",
+          "Pet Shop",
+          false,
+          "active",
+          true,
+          true,
+          "LUMYN_STORE",
+          "gold_special",
+          true,
+          "MLB-5049048715",
+          null,
+          49.4,
+          100,
+          24,
+          1,
+          null,
+          29,
+          null
+        ],
+        [
+          "MLB5054049905",
+          "Kit 4 Suportes De Parede - Porta Toalha - Gancho Cabide",
+          "2026-08-13T12:47:37.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_743716-MLB109782499211_032026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "SDESIGN_UTILIDADES",
+          "gold_pro",
+          true,
+          "MLB-5054049905",
+          "GENERICA",
+          23.69,
+          100,
+          25,
+          1,
+          419,
+          28,
+          4
+        ],
+        [
+          "MLB5054382605",
+          "Kit 4 Cintas Catraca Amarração 3 Metros 800kg Reforçada Poliéster Gancho S Para Carga Caminhão Carreta Moto Mudança Transporte Sólar",
+          "2026-08-11T23:13:31.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_918076-MLA115976097457_082026-O.webp",
+          "Indústria e Comércio",
+          true,
+          "active",
+          true,
+          true,
+          "MEGA TRENDS",
+          "gold_special",
+          true,
+          "MLB76870645",
+          "SOLARVARIEDADESUTENSILIOS",
+          44.84,
+          100,
+          23,
+          1,
+          14,
+          30,
+          4.4
+        ],
+        [
+          "MLB5055421025",
+          "Sutiã Adesivo Modelador Levanta Seio E Valoriza.",
+          "2026-08-13T15:58:18.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_778098-MLB114748886832_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          null,
+          true,
+          "FLASHUB",
+          "gold_special",
+          true,
+          "MLB-5055421025",
+          "FLASHUB",
+          19.3,
+          100,
+          25,
+          1,
+          2,
+          28,
+          5
+        ],
+        [
+          "MLB5063203007",
+          "Bomba De Ar Elétrica Portátil Compressor Calibrador De Pneus Digital Para Carro Moto Bicicleta Inflador Recarregável Auxiliar De Partida Bateria Power Bank Celular Emergência Automotiva Quicko",
+          "2026-08-14T12:46:27.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_863869-MLA115253606218_082026-O.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          true,
+          true,
+          "TDX",
+          "gold_special",
+          true,
+          "MLB77323172",
+          "QUICKO",
+          179.89,
+          100,
+          26,
+          1,
+          6,
+          27,
+          4.9
+        ],
+        [
+          "MLB5069111563",
+          "Suporte De Mastro Para Parede Duas Posições, Liga De",
+          "2026-08-17T09:58:44.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_719244-MLB105622753817_012026-O.webp",
+          "Antiguidades e Coleções",
+          false,
+          "active",
+          true,
+          true,
+          "EEAFCDBGH27006",
+          "gold_special",
+          true,
+          "MLB-5069111563",
+          null,
+          48.06,
+          100,
+          29,
+          1,
+          41,
+          24,
+          5
+        ],
+        [
+          "MLB5075774955",
+          "Suporte Para Projetor Hy320 Parede Teto Para Tripé Magcubic Preto",
+          "2026-08-11T03:37:22.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_919268-MLA115914985695_082026-O.webp",
+          "Eletrônicos, Áudio e Vídeo",
+          true,
+          "active",
+          true,
+          true,
+          "VT3D",
+          "gold_special",
+          true,
+          "MLB76684992",
+          null,
+          19,
+          100,
+          23,
+          1,
+          4,
+          30,
+          5
+        ],
+        [
+          "MLB5078639089",
+          "Mini Compressor Bomba De Ar Digital Portátil para Carro Moto Bicicleta com Calibrador Digital Inflador Elétrico de Pneus LCD Lanterna LED Compacto e Recarregável Preto",
+          "2026-08-14T11:19:59.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_697157-MLA115320035002_082026-O.webp",
+          "Acessórios para Veículos",
+          true,
+          "active",
+          null,
+          true,
+          "FARM_AURA",
+          "gold_special",
+          true,
+          "MLB77321429",
+          "CHROMETECHNOLOGY",
+          64.99,
+          100,
+          26,
+          1,
+          8,
+          27,
+          5
+        ],
+        [
+          "MLB5085577717",
+          "Kit 2 Bola Interativa Inteligente Recarregável Para Cachorro",
+          "2026-08-18T10:09:20.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_680846-MLB117190015509_092026-O-kit-2-bola-interativa-inteligente-recarregavel-para-cachorro.webp",
+          "Pet Shop",
+          false,
+          "active",
+          null,
+          false,
+          "LEJE_VARIEDADES",
+          "gold_special",
+          true,
+          "MLB-5085577717",
+          "MAIA",
+          20.65,
+          100,
+          30,
+          1,
+          2,
+          23,
+          5
+        ],
+        [
+          "MLB5093924511",
+          "Kit 7 Peças Ferramentas Manual Jogo Chave De Fenda e Phillips Imantadas Testador De Voltagem Martelo Unha 270g Alicate Universal 8 Polegadas",
+          "2026-08-12T05:48:19.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_801401-MLA115997920713_082026-O.webp",
+          "Ferramentas",
+          true,
+          "active",
+          true,
+          true,
+          "LDJVENDAS",
+          "gold_special",
+          true,
+          "MLB76992879",
+          null,
+          58.19,
+          100,
+          24,
+          2,
+          null,
+          29,
+          null
+        ],
+        [
+          "MLB5094046141",
+          "Suporte Violão Guitarra Baixo De Parede Cavaco Com Parafusos Preto",
+          "2026-08-13T19:26:30.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_812435-MLA116131298763_082026-E.webp",
+          "Instrumentos Musicais",
+          true,
+          "active",
+          true,
+          true,
+          "LHP IMPORTS",
+          "gold_special",
+          true,
+          "MLB77272374",
+          "BIGGDOGG",
+          21.33,
+          100,
+          25,
+          1,
+          5,
+          28,
+          5
+        ],
+        [
+          "MLB5097515483",
+          "Chave Hidráulica Multifuncional 8 Em 1 Para Torneira Pia Sifão Válvula Encanamento Porcas Instalação Hidráulica Ferramenta Universal Encanador Com Nível Extrator Adaptadores Profissional Vermelho CANO",
+          "2026-08-20T00:06:44.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_958778-MLA115065197460_082026-O.webp",
+          "Ferramentas",
+          true,
+          "active",
+          null,
+          true,
+          "CANGURUPLASTIC",
+          "gold_special",
+          true,
+          "MLB77788440",
+          null,
+          19.98,
+          100,
+          33,
+          1,
+          null,
+          21,
+          null
+        ],
+        [
+          "MLB5102488965",
+          "Kit 5 Suporte Para Vassoura E Rodo Inox Parede Organizador Mop Gancho Multiuso Lavanderia Cozinha Garagem Porta Vassoura Para Pendurar Utensílios De Limpeza",
+          "2026-08-20T09:28:33.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_937406-MLA116480328439_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "NC20251030170752",
+          "gold_special",
+          true,
+          "MLB77822145",
+          null,
+          34.92,
+          100,
+          33,
+          1,
+          null,
+          21,
+          null
+        ],
+        [
+          "MLB5107717961",
+          "Chaveiro Mosquetão Multimarcas Logo Colorida 2 Lados Abridor Volkswagen - P",
+          "2026-08-21T17:15:07.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_727321-MLA115149593644_082026-O.webp",
+          "Acessórios para Veículos",
+          true,
+          "active",
+          null,
+          true,
+          "LUALKI_STORE",
+          "gold_pro",
+          true,
+          "MLB77989069",
+          null,
+          24.9,
+          100,
+          35,
+          1,
+          109,
+          20,
+          5
+        ],
+        [
+          "MLB5108366663",
+          "Chaveiro Mosquetão Multimarcas Logo Colorida 2 Lados Abridor Toyota - P",
+          "2026-08-21T19:11:54.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_784200-MLA116550058457_082026-O.webp",
+          "Acessórios para Veículos",
+          true,
+          "active",
+          null,
+          true,
+          "LUALKI_STORE",
+          "gold_pro",
+          true,
+          "MLB78009873",
+          null,
+          24.9,
+          100,
+          35,
+          1,
+          109,
+          20,
+          5
+        ],
+        [
+          "MLB5109942073",
+          "Kit 3 Suportes Para Óculos de Parede Branco Organizador Decorativo MERCATO",
+          "2026-08-23T00:49:54.229",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_784137-MLA116701909573_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          null,
+          true,
+          "MERCATOIPT",
+          null,
+          true,
+          "MLB78277376",
+          null,
+          25.91,
+          100,
+          39,
+          1,
+          null,
+          18,
+          null
+        ],
+        [
+          "MLB5133390873",
+          "Suporte de Parede Ajustável para Violão e Guitarra Harbon Preto",
+          "2026-08-25T20:16:08.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_856906-MLA115309943080_082026-O.webp",
+          "Instrumentos Musicais",
+          true,
+          "active",
+          null,
+          true,
+          "ECOMMERCE_SILVERSTORE",
+          "gold_special",
+          true,
+          "MLB78314089",
+          null,
+          13.65,
+          100,
+          44,
+          1,
+          33,
+          16,
+          4.9
+        ],
+        [
+          "MLB5133547097",
+          "Suporte De Parede Triplo Controle Remoto Tv Ar Condicionado Cor Branco APEX",
+          "2026-08-24T20:46:14.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_991550-MLA115262846214_082026-E.webp",
+          "Eletrodomésticos",
+          true,
+          "active",
+          null,
+          true,
+          "APEX__",
+          "gold_special",
+          true,
+          "MLB78233643",
+          "APEX",
+          19.9,
+          100,
+          41,
+          1,
+          1,
+          17,
+          5
+        ],
+        [
+          "MLB5158512463",
+          "Arranhador Protetor Sofá Carpete Pet Adesivo Gatos 200x50cm",
+          "2026-08-29T20:51:45.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_915134-MLB116058538223_082026-O.webp",
+          "Pet Shop",
+          false,
+          "active",
+          null,
+          true,
+          "LUMYN_STORE",
+          "gold_special",
+          true,
+          "MLB-5158512463",
+          null,
+          54.52,
+          100,
+          58,
+          1,
+          null,
+          12,
+          null
+        ],
+        [
+          "MLB5164013395",
+          "Máscara De Solda Automática Eletrodo True Cor Com Bateria",
+          "2026-08-31T02:40:31.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_972852-MLB116951261613_082026-O.webp",
+          "Ferramentas",
+          false,
+          "active",
+          null,
+          true,
+          "CENTURIONBR",
+          "gold_special",
+          true,
+          "MLB-5164013395",
+          null,
+          75.16,
+          100,
+          70,
+          1,
+          15,
+          10,
+          4.8
+        ],
+        [
+          "MLB5169556555",
+          "Gancho Suporte Cabide Banheiro Parede Rose Gold Quadrado Rose Gold",
+          "2026-08-31T20:29:02.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_833273-MLA115551634368_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "EM SHOPWEB",
+          "gold_special",
+          true,
+          "MLB78744369",
+          "EMSHOPWEB",
+          29.13,
+          100,
+          70,
+          1,
+          1,
+          10,
+          5
+        ],
+        [
+          "MLB5188025355",
+          "Calibrador Digital Portátil Compressor de Ar Automotivo Bomba de Ar para Encher Pneus de Carro Moto e Bicicleta Preto - +uMais.u",
+          "2026-09-08T03:50:34.951",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_919245-MLA117150899811_092026-E.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          null,
+          true,
+          "BANCA1000",
+          null,
+          true,
+          "MLB78894533",
+          null,
+          78.97,
+          100,
+          100,
+          1,
+          null,
+          2,
+          null
+        ],
+        [
+          "MLB5190840555",
+          "Suporte Para Escova De Dentes De Pasta De Dente,para Parede Branco",
+          "2026-08-13T19:06:50.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_965546-MLA114760961936_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          false,
+          "DHEGFBADC34488",
+          "gold_pro",
+          true,
+          "MLB77268960",
+          null,
+          47.32,
+          100,
+          25,
+          1,
+          null,
+          28,
+          null
+        ],
+        [
+          "MLB7393872142",
+          "Suporte Para Impressora Prateleira Com Divisoria Parede Branco",
+          "2026-08-12T01:32:59.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_769158-MLA114620376468_082026-O.webp",
+          "Informática",
+          true,
+          "active",
+          true,
+          true,
+          "SHOEL_ACESSORIOS",
+          "gold_pro",
+          true,
+          "MLB76899253",
+          null,
+          166.1,
+          100,
+          24,
+          1,
+          4,
+          29,
+          5
+        ],
+        [
+          "MLB7408505714",
+          "Kit 3 Suporte Porta Shampoo Saboneteira Prateleira Banheiro Adesiva Parede Sem Furar Box Luxo Aço Inox Preto Ak Acessórios",
+          "2026-08-12T19:46:36.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_822266-MLA114684543152_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "LUNIX",
+          "gold_special",
+          true,
+          "MLB77160845",
+          "AKACESSORIOS",
+          52.66,
+          100,
+          24,
+          1,
+          332,
+          29,
+          4.7
+        ],
+        [
+          "MLB7431744038",
+          "Calibrador Compressor Portátil Inflador Bomba Ar Digital Para Encher Pneus Elétrico Digital De Automóveis Motos Bicicleta Colchão Inflável Bóia A Bateria Prateado Bivolt",
+          "2026-08-16T20:48:17.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_987452-MLA114900912402_082026-O.webp",
+          "Acessórios para Veículos",
+          true,
+          "active",
+          true,
+          true,
+          "CLARELISE_COMERCIAL",
+          "gold_pro",
+          true,
+          "MLB77490388",
+          null,
+          170.91,
+          100,
+          28,
+          1,
+          1,
+          25,
+          5
+        ],
+        [
+          "MLB7442293014",
+          "Brinquedo De Cachorro Bichinho Pelúcia Mordedor C/ Apito Som Cor Raposa",
+          "2026-08-11T05:52:59.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_646301-MLA115918447585_082026-E.webp",
+          "Pet Shop",
+          true,
+          "active",
+          null,
+          true,
+          "SHENLONGPET",
+          "gold_special",
+          true,
+          "MLB76711440",
+          null,
+          24.97,
+          100,
+          23,
+          1,
+          65,
+          30,
+          4.5
+        ],
+        [
+          "MLB7442651652",
+          "Cadeado Tsa Aço Viagem Mala Cabo Senha Aeroporto Mochila Seg",
+          "2026-08-18T04:49:06.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_707967-MLB114955203802_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          true,
+          true,
+          "TT20250131213418",
+          "gold_special",
+          true,
+          "MLB-7442651652",
+          null,
+          28.79,
+          100,
+          30,
+          1,
+          3,
+          23,
+          5
+        ],
+        [
+          "MLB7443470072",
+          "Kit 4 Barras de Apoio Banheiro Inox com Revestimento Silicone Antiderrapante, 2 Unid 40cm + 2 Unid 60cm, Pegador de Segurança Acessibilidade Para Idosos e Deficientes Físicos",
+          "2026-08-14T09:54:02.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_976945-MLA116173296403_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "CT20250416225844",
+          "gold_special",
+          true,
+          "MLB77319600",
+          null,
+          118.75,
+          100,
+          26,
+          1,
+          null,
+          27,
+          null
+        ],
+        [
+          "MLB7447548080",
+          "Guia De Corrente Bike Bicicleta Mtb 30t A 40t Cor Vermelho",
+          "2026-08-11T05:18:25.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_610339-MLA114558312084_082026-O.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          null,
+          true,
+          "BKSHOPPING",
+          "gold_special",
+          true,
+          "MLB76704406",
+          null,
+          53.99,
+          100,
+          23,
+          2,
+          117,
+          30,
+          4.8
+        ],
+        [
+          "MLB7447548624",
+          "Jogo de Ferramentas EVOFIX 9 Peças: Alicates, Chaves, Martelo e Testador para Casa e Profissional",
+          "2026-08-18T14:06:55.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_882576-MLA114984993054_082026-O.webp",
+          "Ferramentas",
+          true,
+          "active",
+          true,
+          true,
+          "V3MQU3T3M",
+          "gold_special",
+          true,
+          "MLB77582711",
+          null,
+          91.17,
+          100,
+          30,
+          2,
+          38,
+          23,
+          4.9
+        ],
+        [
+          "MLB7474035908",
+          "Cadeado Bicicleta Reforçado Cabo Aço Senha Impermeável 1.5m Resistência ao corte e durabilidade À prova d'água Preto fosco com reflexo",
+          "2026-08-21T03:00:45.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_807541-MLA116513830317_082026-E.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          true,
+          true,
+          "EDBEFGACH7990",
+          "gold_pro",
+          true,
+          "MLB77921778",
+          null,
+          33.75,
+          100,
+          35,
+          1,
+          null,
+          20,
+          null
+        ],
+        [
+          "MLB7476343884",
+          "2x Conjunto Catraca E Cinta Nautica 1500kg 35mm 3m Gancho S Preto",
+          "2026-08-14T20:12:14.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_993479-MLA116200137355_082026-O.webp",
+          "Ferramentas",
+          true,
+          "active",
+          null,
+          true,
+          "ALSTOREDISTRIBUIDORA",
+          null,
+          true,
+          "MLB77338202",
+          null,
+          97.21,
+          100,
+          26,
+          1,
+          null,
+          27,
+          null
+        ],
+        [
+          "MLB7479241750",
+          "Chaveiro Mosquetão Multimarcas Logo Colorida 2 Lados Abridor Renault - P",
+          "2026-08-21T17:59:49.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_812224-MLA115151355462_082026-O.webp",
+          "Acessórios para Veículos",
+          true,
+          "active",
+          null,
+          true,
+          "LUALKI_STORE",
+          "gold_pro",
+          true,
+          "MLB77996731",
+          null,
+          24.9,
+          100,
+          35,
+          1,
+          109,
+          20,
+          5
+        ],
+        [
+          "MLB7479243712",
+          "Kit Chaves de Precisão 16 Peças para Abrir Celular Smartphone iPhone Android Notebook Tablet Ferramentas Manutenção Assistência Técnica Conserto Eletrônicos Hypefull",
+          "2026-08-19T23:59:29.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_786325-MLA116454438149_082026-O.webp",
+          "Celulares e Telefones",
+          true,
+          "active",
+          true,
+          true,
+          "HYPEFULL",
+          "gold_special",
+          true,
+          "MLB77787568",
+          null,
+          23.59,
+          100,
+          32,
+          1,
+          null,
+          22,
+          null
+        ],
+        [
+          "MLB7479693336",
+          "Kit Catraca Fixa Sider + Cinta Amarração 9m 3ton Caminhão",
+          "2026-08-21T19:24:03.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_807836-MLB76247475929_052024-E.webp",
+          "Acessórios para Veículos",
+          true,
+          "active",
+          null,
+          true,
+          "REIDOTRECHO",
+          "gold_special",
+          true,
+          "MLB2098782957",
+          null,
+          138,
+          100,
+          35,
+          1,
+          null,
+          20,
+          null
+        ],
+        [
+          "MLB7491200884",
+          "Escova Secadora Profissional Seca Alisa Modela Cabelo 110v",
+          "2026-08-21T16:22:06.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_649948-MLA116544445579_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          null,
+          true,
+          "DFJN VENDAS",
+          null,
+          true,
+          "MLB77980147",
+          null,
+          67.99,
+          100,
+          35,
+          1,
+          null,
+          20,
+          null
+        ],
+        [
+          "MLB7491950040",
+          "Mordedor Para Bebê Controle Remoto Brinquedo Infantil Macio Cor Preto",
+          "2026-08-21T18:16:25.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_907920-MLA116547653977_082026-O.webp",
+          "Bebês",
+          true,
+          "active",
+          null,
+          true,
+          "FLR ARTIGOS",
+          "gold_pro",
+          true,
+          "MLB77999699",
+          null,
+          38,
+          100,
+          35,
+          1,
+          52,
+          20,
+          4.7
+        ],
+        [
+          "MLB7501186078",
+          "2 Suporte De Parede Para Violão/guitarra/baixo..etc Preto",
+          "2026-08-24T18:06:30.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_765143-MLA115257863008_082026-O.webp",
+          "Instrumentos Musicais",
+          true,
+          "active",
+          null,
+          true,
+          "FATIMA_REIS",
+          null,
+          true,
+          "MLB78203928",
+          null,
+          14.5,
+          100,
+          41,
+          1,
+          null,
+          17,
+          null
+        ],
+        [
+          "MLB7501743460",
+          "Chaveiro Mosquetão Multimarcas Logo Colorida 2 Lados Abridor Chevrolet - P",
+          "2026-08-24T20:56:51.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_770011-MLA116667677995_082026-O.webp",
+          "Acessórios para Veículos",
+          true,
+          "active",
+          null,
+          true,
+          "LUALKI_STORE",
+          "gold_pro",
+          true,
+          "MLB78235874",
+          null,
+          24.9,
+          100,
+          41,
+          1,
+          168,
+          17,
+          5
+        ],
+        [
+          "MLB7501830606",
+          "Chaveiro Mosquetão Multimarcas Logo Colorida 2 Lados Abridor Ford - P",
+          "2026-08-24T20:53:43.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_973573-MLA115262533378_082026-O.webp",
+          "Acessórios para Veículos",
+          true,
+          "active",
+          null,
+          true,
+          "LUALKI_STORE",
+          "gold_pro",
+          true,
+          "MLB78235189",
+          null,
+          24.9,
+          100,
+          41,
+          1,
+          168,
+          17,
+          5
+        ],
+        [
+          "MLB7511295176",
+          "Braço Suporte De Parede K130 Para Estúdio Fotográfico 130cm",
+          "2026-08-13T22:28:09.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_936535-MLA116139890853_082026-E.webp",
+          "Câmeras e Acessórios",
+          true,
+          "active",
+          null,
+          true,
+          "EMANIA_FOTO_VIDEO",
+          "gold_special",
+          true,
+          "MLB77292660",
+          null,
+          264.02,
+          100,
+          25,
+          1,
+          1,
+          28,
+          5
+        ],
+        [
+          "MLB7517808260",
+          "Mini Compressor de Ar Portátil HAVALOR com Calibrador Digital e Lanterna",
+          "2026-08-25T13:24:44.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_820393-MLA115296154634_082026-O.webp",
+          "Acessórios para Veículos",
+          true,
+          "active",
+          true,
+          true,
+          "LJLSHOP",
+          null,
+          true,
+          "MLB78280336",
+          "HAVALOR",
+          63.52,
+          100,
+          44,
+          1,
+          null,
+          16,
+          null
+        ],
+        [
+          "MLB7551096250",
+          "Suporte Fixo Para Tv Universal 30 A 86 Polegadas Parede 70kg Preto",
+          "2026-08-27T00:14:29.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_761868-MLA116779069681_082026-E.webp",
+          "Eletrônicos, Áudio e Vídeo",
+          true,
+          "active",
+          true,
+          true,
+          "LSFVARIEDADES",
+          null,
+          true,
+          "MLB78509849",
+          null,
+          48.41,
+          100,
+          50,
+          2,
+          null,
+          14,
+          null
+        ],
+        [
+          "MLB7568052084",
+          "Cabideiro De Roupa Inox Suporte Parede Pendurar Ajuste 180° Preto",
+          "2026-08-31T19:21:46.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_864337-MLA116986007553_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "WWONDERLAND",
+          "gold_special",
+          true,
+          "MLB78737523",
+          null,
+          37.21,
+          100,
+          70,
+          1,
+          null,
+          10,
+          null
+        ],
+        [
+          "MLB7569874322",
+          "Chave De Impacto 48v Ferramenta Com 2 Bateria Lítio Parafusadeira Velocidade de Rotação de Entre 3500rpm e 2.3rpm Com Acessórios e Caixa 21mm 20mm 19mm 18mm 17mm",
+          "2026-08-19T05:53:47.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_784501-MLA117011241653_092026-O.webp",
+          "Ferramentas",
+          true,
+          "active",
+          true,
+          true,
+          "DCAHGFDEB91134",
+          null,
+          true,
+          "MLB77680896",
+          null,
+          239,
+          100,
+          32,
+          1,
+          null,
+          22,
+          null
+        ],
+        [
+          "MLB7575174348",
+          "Rack De Teto Onix E Prisma 2013 Até 2019 + 1 Cinta Catraca",
+          "2026-09-05T02:03:05.487",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_733720-MLA115943226129_082026-O.webp",
+          "Acessórios para Veículos",
+          true,
+          "active",
+          null,
+          false,
+          "MEGA RESTART",
+          null,
+          true,
+          "MLB76770349",
+          null,
+          278.55,
+          100,
+          100,
+          1,
+          null,
+          5,
+          null
+        ],
+        [
+          "MLB7579591366",
+          "Kit Ferramenta 115 Chaves Precisão Celular Tablet Notebook",
+          "2026-09-02T15:49:36.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_635136-MLA115637268588_092026-O.webp",
+          "Celulares e Telefones",
+          true,
+          "active",
+          null,
+          true,
+          "WKWAKA",
+          "gold_special",
+          true,
+          "MLB78829035",
+          null,
+          28.4,
+          100,
+          88,
+          1,
+          null,
+          8,
+          null
+        ],
+        [
+          "MLB7580237502",
+          "Suporte Organizador De Pia Porta Detergente Esponja Shampoo Sabonete Sabão Multifuncional Fixação em Parede Por Adesivo Ventosa Não Fura Parede Para Cozinha Lavanderia Banheiro Área Gourmet Universal",
+          "2026-09-02T18:24:09.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_601192-MLA117085687691_092026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "LUCKANADANI",
+          "gold_special",
+          true,
+          "MLB78842012",
+          null,
+          37.3,
+          100,
+          88,
+          1,
+          1,
+          8,
+          null
+        ],
+        [
+          "MLB7580881068",
+          "Gancho Pendurar Bicicleta Parede Suporte Kit 5 Unidades Bike",
+          "2026-09-02T22:58:35.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_868778-MLB97789945952_112025-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          null,
+          true,
+          "BATISTA_FIGUEIREDO_STORE",
+          "gold_pro",
+          true,
+          "MLB-7580881068",
+          null,
+          93.63,
+          100,
+          88,
+          1,
+          12,
+          8,
+          5
+        ],
+        [
+          "MLB7585123418",
+          "Suporte Shampoo De Canto Parede Banheiro Aço Inox Preto Preto",
+          "2026-08-13T12:30:17.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_643399-MLA114741345658_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "KAZARTTEDOBRASIL",
+          "gold_special",
+          true,
+          "MLB77233433",
+          null,
+          48.59,
+          100,
+          25,
+          1,
+          13,
+          28,
+          4.8
+        ],
+        [
+          "MLB7585958244",
+          "Kit Cadeado Tsa Cabo Aço Senha Mala Viagem Aeroporto Mochila",
+          "2026-09-04T02:06:30.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_763709-MLB111616553735_052026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "UW58751223123933",
+          "gold_special",
+          true,
+          "MLB-7585958244",
+          null,
+          29.77,
+          100,
+          100,
+          1,
+          3,
+          6,
+          null
+        ],
+        [
+          "MLB7585970530",
+          "Cabide Suporte 6 Ganchos Para Pendura Roupas Toalhas Parede Preto",
+          "2026-09-03T21:23:59.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_866230-MLB115660477331_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "AXXESSORY",
+          "gold_special",
+          true,
+          "MLB-7585970530",
+          null,
+          19,
+          100,
+          100,
+          1,
+          45,
+          7,
+          4
+        ],
+        [
+          "MLB7585970730",
+          "Suporte Cabide 10 Ganchos Para Parede Pendura Roupas Toalhas",
+          "2026-09-03T22:37:37.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_754558-MLB111673166624_062026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "AXXESSORY",
+          "gold_special",
+          true,
+          "MLB-7585970730",
+          null,
+          19,
+          100,
+          100,
+          1,
+          39,
+          7,
+          5
+        ],
+        [
+          "MLB5033781617",
+          "Kit 3 Prateleiras 60x20 Parede Suporte Invisível Flutuante",
+          "2026-08-10T17:38:45.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_623687-MLB115899584001_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "LOHE9829552",
+          "gold_special",
+          true,
+          "MLB-5033781617",
+          null,
+          69.99,
+          97,
+          23,
+          1,
+          8,
+          31,
+          5
+        ],
+        [
+          "MLB7380688434",
+          "Arara Suporte Cabideiro De Parede Para Roupas Aço Carbono 1m",
+          "2026-08-10T18:23:04.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_697896-MLB115896482965_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "ITENS ÚTEIS",
+          "gold_pro",
+          true,
+          "MLB-7380688434",
+          null,
+          32.31,
+          97,
+          23,
+          1,
+          18,
+          31,
+          5
+        ],
+        [
+          "MLB7496220764",
+          "Suporte Ajustável Parede Articulado Antena Starlink Gen3 V4 Preto",
+          "2026-08-10T19:47:00.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_763000-MLA114543089862_082026-E.webp",
+          "Eletrônicos, Áudio e Vídeo",
+          true,
+          "active",
+          null,
+          true,
+          "LAROVIAMIX",
+          "gold_special",
+          true,
+          "MLB76589370",
+          null,
+          236.9,
+          97,
+          23,
+          1,
+          null,
+          31,
+          null
+        ],
+        [
+          "MLB5010094879",
+          "Kit 3/4 Cinta P Carga Catraca Automatica Retrátil 800kg 3.6m",
+          "2026-08-07T04:14:05.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_946837-MLB117181449691_092026-O.webp",
+          "Ferramentas",
+          false,
+          "active",
+          null,
+          true,
+          "IF20250926094442",
+          "gold_pro",
+          true,
+          "MLB-5010094879",
+          null,
+          284.43,
+          88,
+          21,
+          1,
+          17,
+          34,
+          4.8
+        ],
+        [
+          "MLB5012507811",
+          "Cinta Para Carga Catraca Automatica 680kg 3m Cor Preto 2 Pcs",
+          "2026-08-07T09:58:21.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_796569-MLB115296333484_082026-O.webp",
+          "Ferramentas",
+          false,
+          "active",
+          true,
+          true,
+          "DR58060602102307",
+          "gold_special",
+          true,
+          "MLB-5012507811",
+          null,
+          99,
+          88,
+          21,
+          1,
+          7,
+          34,
+          5
+        ],
+        [
+          "MLB5012509313",
+          "Kit Cinta Catraca Automática Retrátil 800kg Luvas Mais Bolsa",
+          "2026-08-07T10:09:36.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_860108-MLB115119005752_082026-O.webp",
+          "Ferramentas",
+          false,
+          "active",
+          null,
+          true,
+          "PE20251001110057",
+          "gold_pro",
+          true,
+          "MLB-5012509313",
+          null,
+          209.04,
+          88,
+          21,
+          1,
+          4,
+          34,
+          5
+        ],
+        [
+          "MLB5012509315",
+          "Kit Cinta Catraca Automática Retrátil 800kg Luvas Mais Bolsa",
+          "2026-08-07T10:09:36.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_916801-MLB116883697039_082026-O.webp",
+          "Ferramentas",
+          false,
+          "active",
+          null,
+          true,
+          "PE20251001110057",
+          "gold_pro",
+          true,
+          "MLB-5012509315",
+          null,
+          296,
+          88,
+          21,
+          1,
+          3,
+          34,
+          5
+        ],
+        [
+          "MLB5012509321",
+          "Kit Cinta Catraca Automática Retrátil 800kg Luvas Mais Bolsa",
+          "2026-08-07T10:09:36.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_810010-MLB116514092095_082026-O.webp",
+          "Ferramentas",
+          false,
+          "active",
+          null,
+          true,
+          "PE20251001110057",
+          "gold_pro",
+          true,
+          "MLB-5012509321",
+          null,
+          289.03,
+          88,
+          21,
+          1,
+          3,
+          34,
+          5
+        ],
+        [
+          "MLB5015777329",
+          "Suporte Prateleira Organizador Roteador Wifi Parede S/ Furos",
+          "2026-08-07T19:43:00.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_781660-MLB115782114469_082026-O.webp",
+          "Informática",
+          false,
+          "active",
+          true,
+          true,
+          "MARISTIESHOP",
+          "gold_special",
+          true,
+          "MLB-5015777329",
+          null,
+          49.99,
+          88,
+          21,
+          1,
+          15,
+          34,
+          4
+        ],
+        [
+          "MLB7353904522",
+          "Aparelho Fisioterapia Acupuntura Eletro-choque  Massageador",
+          "2026-08-07T09:33:50.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_721934-MLB114414688490_082026-O.webp",
+          "Saúde",
+          false,
+          "active",
+          null,
+          true,
+          "JD20260409181336",
+          "gold_special",
+          true,
+          "MLB-7353904522",
+          "GENERICA",
+          46.99,
+          88,
+          21,
+          1,
+          2,
+          34,
+          5
+        ],
+        [
+          "MLB5007620933",
+          "Escova Modeladora Philco Escova Secadora De Cabelo",
+          "2026-08-06T18:22:22.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_855200-MLB114384037480_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          false,
+          "active",
+          null,
+          false,
+          "RCK1COMERCIODEBELEZA",
+          "gold_special",
+          true,
+          "MLB-5007620933",
+          "PHILCO",
+          217.3,
+          86,
+          20,
+          1,
+          7,
+          35,
+          4.6
+        ],
+        [
+          "MLB7340003258",
+          "Kit 02 Suporte Pendurar Capacete Acessório Chave Parede Fixo",
+          "2026-08-06T00:54:18.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_842847-MLB114698103144_082026-O.webp",
+          "Acessórios para Veículos",
+          false,
+          "active",
+          null,
+          true,
+          "BEDA_PROFESSIONAL",
+          "gold_special",
+          true,
+          "MLB-7340003258",
+          null,
+          19.9,
+          86,
+          20,
+          1,
+          15,
+          35,
+          4.4
+        ],
+        [
+          "MLB7337553420",
+          "Kit Mordedor para Bebê brinquedo Sensorial Silicone com Chocalho 8 Peças Coloridas",
+          "2026-08-05T13:36:21.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_636014-MLA114307309560_082026-O.webp",
+          "Bebês",
+          true,
+          "active",
+          null,
+          true,
+          "NEXTGENTECHBR",
+          "gold_special",
+          true,
+          "MLB76397729",
+          null,
+          24.15,
+          83,
+          19,
+          1,
+          1,
+          36,
+          null
+        ],
+        [
+          "MLB7337704124",
+          "Kit Escova Secadora Taiff Tourmaline  1200w Bivolt + Pente",
+          "2026-08-05T16:06:28.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_875216-MLB114053791987_072026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          false,
+          "active",
+          true,
+          true,
+          "BEAUTY.SECRET",
+          "gold_pro",
+          true,
+          "MLB-7337704124",
+          null,
+          320.09,
+          83,
+          19,
+          1,
+          37,
+          36,
+          5
+        ],
+        [
+          "MLB4990612769",
+          "Suporte Tv Parede Articulado Vesa 32 40 42 50 55 Polegadas",
+          "2026-08-04T09:56:32.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_728891-MLB115569088029_082026-O.webp",
+          "Eletrônicos, Áudio e Vídeo",
+          false,
+          "active",
+          null,
+          true,
+          "CABHECGFD26850",
+          "gold_special",
+          true,
+          "MLB-4990612769",
+          null,
+          38,
+          81,
+          19,
+          1,
+          30,
+          37,
+          5
+        ],
+        [
+          "MLB4994668567",
+          "2 Suportes de Bicicleta de Parede Vertical Preto com gancho de pendurar bike universal resistente",
+          "2026-08-04T23:54:24.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_818595-MLA114266849296_082026-O.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          false,
+          true,
+          "TORRESBIKES",
+          "gold_special",
+          true,
+          "MLB76368793",
+          "TORRESBIKE",
+          35.34,
+          81,
+          19,
+          1,
+          1,
+          37,
+          4.5
+        ],
+        [
+          "MLB7327479466",
+          "Suporte De Parede Jbl Boombox 2 3 E 4",
+          "2026-08-04T14:10:08.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_609725-MLB114245252434_082026-O.webp",
+          "Eletrônicos, Áudio e Vídeo",
+          false,
+          "active",
+          true,
+          true,
+          "UNIBOXX",
+          "gold_pro",
+          true,
+          "MLB-7327479466",
+          "UNIBOX",
+          72.73,
+          81,
+          19,
+          1,
+          29,
+          37,
+          4.8
+        ],
+        [
+          "MLB7328433736",
+          "Escova Philco 4 Em 1 Pes33a Escova Secadora De Cabelo",
+          "2026-08-04T14:44:23.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_726795-MLB115729722001_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          false,
+          "active",
+          null,
+          true,
+          "RCK1COMERCIODEBELEZA",
+          "gold_special",
+          true,
+          "MLB-7328433736",
+          "PHILCO",
+          216.5,
+          81,
+          19,
+          1,
+          10,
+          37,
+          4
+        ],
+        [
+          "MLB4986122531",
+          "Pro Kit Suporte Gancho Cabide Parede Quadrado Banheiro Inox",
+          "2026-08-03T12:15:09.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_995987-MLB114180640610_082026-O-pro-kit-suporte-gancho-cabide-parede-quadrado-banheiro-inox.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "ANTHONYPABLOFRANCASANTOS",
+          "gold_pro",
+          true,
+          "MLB-4986122531",
+          "SIMAJOY",
+          34.51,
+          79,
+          18,
+          1,
+          3,
+          38,
+          5
+        ],
+        [
+          "MLB7319283844",
+          "Suporte Para Projetor De Teto Parede Universal Com Regulagem",
+          "2026-08-03T14:34:41.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_923882-MLB114269078570_082026-O.webp",
+          "Eletrônicos, Áudio e Vídeo",
+          false,
+          "active",
+          true,
+          false,
+          "CASABEMARRUMADA",
+          "gold_special",
+          true,
+          "MLB-7319283844",
+          null,
+          78,
+          79,
+          18,
+          1,
+          8,
+          38,
+          4.3
+        ],
+        [
+          "MLB7408786666",
+          "Cinta Catraca 2 Toneladas 5 Metros Amarração De Carga B-Tek BT-406 Cinta De Amarração Com Catraca 2t 2000kg 38mm Gancho J Caminhão Carroceria Carretinha Moto Reboque Mudança Poliéster Laranja",
+          "2026-08-03T19:26:26.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_669167-MLA115109549522_082026-O.webp",
+          "Indústria e Comércio",
+          true,
+          "active",
+          true,
+          true,
+          "CONECTAILUMINACAO",
+          "gold_special",
+          true,
+          "MLB76254328",
+          null,
+          38.72,
+          79,
+          18,
+          2,
+          null,
+          38,
+          null
+        ],
+        [
+          "MLB4983345289",
+          "Arranhador Adesivo Para Gato Carpete Protetor De Sofá/moveis",
+          "2026-08-02T15:33:18.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_953223-MLB114144928998_082026-O.webp",
+          "Pet Shop",
+          false,
+          "active",
+          null,
+          true,
+          "EVYSHOP_OFICIAL",
+          "gold_special",
+          true,
+          "MLB-4983345289",
+          null,
+          26.9,
+          77,
+          18,
+          1,
+          10,
+          39,
+          5
+        ],
+        [
+          "MLB7314033076",
+          "Chave Hidráulica Multifuncional 8em1 Instalação Encanamento",
+          "2026-08-02T15:10:10.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_931668-MLB115473662843_082026-O.webp",
+          "Ferramentas",
+          false,
+          "active",
+          null,
+          true,
+          "SHOPIRMAOS",
+          "gold_special",
+          true,
+          "MLB-7314033076",
+          null,
+          23.72,
+          77,
+          18,
+          1,
+          null,
+          39,
+          null
+        ],
+        [
+          "MLB4979469221",
+          "Suporte Duplo Parede Controle Remoto Tv Ar Condicionado",
+          "2026-08-01T14:53:04.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_948089-MLB115435520893_082026-O.webp",
+          "Eletrodomésticos",
+          false,
+          "active",
+          true,
+          true,
+          "VORTZEN",
+          "gold_special",
+          true,
+          "MLB-4979469221",
+          "VORTZEN",
+          18.43,
+          75,
+          18,
+          1,
+          3,
+          40,
+          5
+        ],
+        [
+          "MLB4973894857",
+          "Jogo De Ferramentas Chave Boca L Kit 27 Peças Soquete Estojo",
+          "2026-07-31T09:05:31.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_864433-MLB114053297244_072026-O.webp",
+          "Ferramentas",
+          false,
+          "active",
+          null,
+          true,
+          "FAEFCBDHG52444",
+          "gold_special",
+          true,
+          "MLB-4973894857",
+          null,
+          34.5,
+          73,
+          17,
+          1,
+          15,
+          41,
+          5
+        ],
+        [
+          "MLB4973896587",
+          "Suporte De Tv Parede Articulado 32 A 55 Vesa 200 A 400 Top",
+          "2026-07-31T09:20:53.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_836560-MLB114053666410_072026-O.webp",
+          "Eletrônicos, Áudio e Vídeo",
+          false,
+          "active",
+          null,
+          true,
+          "FAEFCBDHG52444",
+          "gold_special",
+          true,
+          "MLB-4973896587",
+          null,
+          39,
+          73,
+          17,
+          1,
+          29,
+          41,
+          5
+        ],
+        [
+          "MLB4980590315",
+          "KIT com 4 Suportes De Parede Para Bicicleta Vertical Fácil Instalação gancho de pendurar reforcado feito em aço resistente apoio de bike",
+          "2026-07-31T14:22:05.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_733547-MLA114064371126_072026-O.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          null,
+          true,
+          "TORRESBIKES",
+          "gold_special",
+          true,
+          "MLB76120784",
+          null,
+          64.59,
+          73,
+          17,
+          1,
+          564,
+          41,
+          4.8
+        ],
+        [
+          "MLB5179699101",
+          "Escova Secadora Profissional 3 Em 1 1200W Seca Alisa Modela Escova Modeladora Elétrica Design Oval 3 Velocidades Para Todos Os Tipos De Cabelo Secagem Rápida Com Menos Frizz E Mais Brilho",
+          "2026-07-31T13:12:05.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_898202-MLA115383878321_072026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          null,
+          true,
+          "CRITHY_MIX",
+          null,
+          true,
+          "MLB76113096",
+          "DUOSEG",
+          65.9,
+          73,
+          17,
+          4,
+          null,
+          41,
+          null
+        ],
+        [
+          "MLB7304552916",
+          "Suporte Para Microondas Forno Elétrico Parede Ajustável Cor Preto",
+          "2026-07-31T21:40:04.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_795462-MLA115401799165_072026-E.webp",
+          "Eletrodomésticos",
+          true,
+          "active",
+          null,
+          true,
+          "ELETRÔNICA FALEIROS",
+          "gold_special",
+          true,
+          "MLB76158374",
+          null,
+          53.25,
+          73,
+          17,
+          1,
+          1114,
+          41,
+          4.7
+        ],
+        [
+          "MLB7304555650",
+          "Suporte Para Microondas Forno Elétrico Parede Ajustável Cor Branco",
+          "2026-07-31T22:39:38.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_981292-MLA115403495135_072026-E.webp",
+          "Eletrodomésticos",
+          true,
+          "active",
+          null,
+          true,
+          "ELETRÔNICA FALEIROS",
+          "gold_special",
+          true,
+          "MLB76165276",
+          null,
+          53.25,
+          73,
+          17,
+          1,
+          1634,
+          41,
+          4.7
+        ],
+        [
+          "MLB7310424672",
+          "Suporte De Parede Para Bicicleta Vertical Fácil Instalação gancho de pendurar reforcado feito em aço resistente apoio de bike",
+          "2026-07-31T14:22:07.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_621684-MLA114064576804_072026-O.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          null,
+          true,
+          "TORRESBIKES",
+          "gold_special",
+          true,
+          "MLB76120790",
+          "TORRESBIKE",
+          19.9,
+          73,
+          17,
+          2,
+          1,
+          41,
+          4.7
+        ]
+      ],
+      "dimensionCount": 15,
+      "lastRefreshTime": "2026-09-09T19:01:52.835Z",
+      "slowQuery": false,
+      "totalRows": 100,
+      "types": [
+        "string",
+        "string",
+        "time",
+        "time",
+        "string",
+        "string",
+        "boolean",
+        "string",
+        "boolean",
+        "boolean",
+        "string",
+        "string",
+        "boolean",
+        "string",
+        "string",
+        "number",
+        "number",
+        "number",
+        "number",
+        "number",
+        "number",
+        "number"
+      ]
+    }
+  ]
+}

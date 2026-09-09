@@ -1,0 +1,3191 @@
+{
+  "lidoEm": "2026-09-09T19:01:18.691Z",
+  "fonte": "JoomPulse / MercadoProductsWeekly",
+  "groups": [
+    [
+      "colete",
+      "massageador"
+    ],
+    [
+      "massageador",
+      "corporal"
+    ],
+    [
+      "extensão",
+      "tomadas"
+    ],
+    [
+      "monitor",
+      "batimentos"
+    ],
+    [
+      "squish",
+      "mosh"
+    ],
+    [
+      "suporte",
+      "celular"
+    ],
+    [
+      "lixa",
+      "pés"
+    ],
+    [
+      "capa",
+      "banco"
+    ],
+    [
+      "base",
+      "rodinhas"
+    ],
+    [
+      "placa",
+      "massagem"
+    ],
+    [
+      "tabua",
+      "magica"
+    ],
+    [
+      "fone",
+      "ouvido"
+    ],
+    [
+      "console",
+      "game"
+    ],
+    [
+      "saco",
+      "pancada"
+    ],
+    [
+      "cabide",
+      "madeira"
+    ],
+    [
+      "bastão",
+      "pau"
+    ],
+    [
+      "rolo",
+      "facial"
+    ],
+    [
+      "máquina",
+      "barbeador"
+    ],
+    [
+      "elásticos",
+      "extensores"
+    ],
+    [
+      "soprador",
+      "térmico"
+    ],
+    [
+      "andarela",
+      "solar"
+    ],
+    [
+      "máscara",
+      "dormir"
+    ],
+    [
+      "fita",
+      "adesiva"
+    ],
+    [
+      "torcedor",
+      "itens"
+    ],
+    [
+      "descascador",
+      "frutas"
+    ],
+    [
+      "tapete",
+      "antiderrapante"
+    ],
+    [
+      "luz",
+      "led"
+    ],
+    [
+      "luz",
+      "rgb"
+    ],
+    [
+      "balança",
+      "digital"
+    ],
+    [
+      "balança",
+      "colher"
+    ]
+  ],
+  "pages": [
+    {
+      "query": {
+        "dimensions": [
+          "MercadoProductsWeekly.id",
+          "MercadoProductsWeekly.productName",
+          "MercadoProductsWeekly.adPublishDate",
+          "MercadoProductsWeekly.date",
+          "MercadoProductsWeekly.productImage",
+          "MercadoProductsWeekly.merchantCategoryL1",
+          "MercadoProductsWeekly.catalogProduct",
+          "MercadoProductsWeekly.listingStatus",
+          "MercadoProductsWeekly.isFull",
+          "MercadoProductsWeekly.isFreeShipping",
+          "MercadoProductsWeekly.merchantName",
+          "MercadoProductsWeekly.listingType",
+          "MercadoProductsWeekly.buyBoxWiner",
+          "MercadoProductsWeekly.productId",
+          "MercadoProductsWeekly.brand"
+        ],
+        "measures": [
+          "MercadoProductsWeekly.priceAmount",
+          "MercadoProductsWeekly.orderCount1m",
+          "MercadoProductsWeekly.orderCount1w",
+          "MercadoProductsWeekly.numBuyBoxSellers",
+          "MercadoProductsWeekly.reviewsCount",
+          "MercadoProductsWeekly.daysInAd",
+          "MercadoProductsWeekly.reviewsRating"
+        ],
+        "filters": [
+          {
+            "member": "MercadoProductsWeekly.adPublishDate",
+            "operator": "inDateRange",
+            "values": [
+              "2026-07-31",
+              "2026-09-09"
+            ]
+          },
+          {
+            "member": "MercadoProductsWeekly.listingStatus",
+            "operator": "equals",
+            "values": [
+              "active"
+            ]
+          },
+          {
+            "member": "MercadoProductsWeekly.orderCount1m",
+            "operator": "gt",
+            "values": [
+              "0"
+            ]
+          },
+          {
+            "or": [
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "colete"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "massageador"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "massageador"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "corporal"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "extensão"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "tomadas"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "monitor"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "batimentos"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "squish"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "mosh"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "suporte"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "celular"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "lixa"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "pés"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "capa"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "banco"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "base"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "rodinhas"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "placa"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "massagem"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "tabua"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "magica"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "fone"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "ouvido"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "console"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "game"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "saco"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "pancada"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "cabide"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "madeira"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "bastão"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "pau"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "rolo"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "facial"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "máquina"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "barbeador"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "elásticos"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "extensores"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "soprador"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "térmico"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "arandela"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "solar"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "máscara"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "dormir"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "fita"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "adesiva"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "torcedor"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "itens"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "descascador"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "frutas"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "tapete"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "antiderrapante"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "luz"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "led"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "luz"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "rgb"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "balança"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "digital"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "balança"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "colher"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "order": [
+          [
+            "MercadoProductsWeekly.orderCount1m",
+            "desc"
+          ],
+          [
+            "MercadoProductsWeekly.id",
+            "asc"
+          ]
+        ],
+        "limit": 100
+      },
+      "columns": [
+        "id",
+        "productName",
+        "adPublishDate",
+        "date",
+        "productImage",
+        "merchantCategoryL1",
+        "catalogProduct",
+        "listingStatus",
+        "isFull",
+        "isFreeShipping",
+        "merchantName",
+        "listingType",
+        "buyBoxWiner",
+        "productId",
+        "brand",
+        "priceAmount",
+        "orderCount1m",
+        "orderCount1w",
+        "numBuyBoxSellers",
+        "reviewsCount",
+        "daysInAd",
+        "reviewsRating"
+      ],
+      "data": [
+        [
+          "MLB7358437178",
+          "Suporte Celular Moto E Bike Gps Aluminio Motoboy Anti Queda",
+          "2026-08-07T18:47:47.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_921452-MLB115790744488_092026-O-suporte-celular-moto-e-bike-gps-aluminio-motoboy-anti-queda.webp",
+          "Celulares e Telefones",
+          false,
+          "active",
+          true,
+          true,
+          "SHOPE SMART1",
+          "gold_special",
+          true,
+          "MLB-7358437178",
+          "ARTHENFIX",
+          30.69,
+          8824,
+          2059,
+          1,
+          3007,
+          34,
+          4.6
+        ],
+        [
+          "MLB5000378031",
+          "Ring Light LED de 10\" com Tripé e Suporte para Celular, para Maquiagem e Gravações",
+          "2026-08-05T20:20:31.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_909029-MLA114996872870_082026-E.webp",
+          "Câmeras e Acessórios",
+          true,
+          "active",
+          null,
+          true,
+          "IRONVAULT",
+          "gold_special",
+          true,
+          "MLB77607200",
+          null,
+          59.99,
+          8333,
+          1944,
+          1,
+          null,
+          36,
+          null
+        ],
+        [
+          "MLB7593608368",
+          "Pulseira Neon Kit 100 Unidades Festa Balada Casamento Adereços Fluorescente Led Show Luz Brilho",
+          "2026-08-02T22:38:39.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_777862-MLA114152048490_082026-E.webp",
+          "Festas e Lembrancinhas",
+          true,
+          "active",
+          null,
+          true,
+          "OMEGAPROBR",
+          "gold_special",
+          true,
+          "MLB76215273",
+          null,
+          30.99,
+          7692,
+          1795,
+          1,
+          836,
+          39,
+          4.8
+        ],
+        [
+          "MLB5033672611",
+          "Suporte Porta Papel Higiênico Fixação Por Adesivo Resistente Com Prateleira Para Lenço Umedecido Celular Chaves Decoração Organizador Para Banheiro Lavabo Parede Sem Furos 2 em 1 Moderno Elegante Luxo",
+          "2026-08-10T16:29:08.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_791278-MLA115893909443_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "OPACOTINHO",
+          "gold_special",
+          true,
+          "MLB76580658",
+          "EQUILIBRAMUNDOPRESENTES",
+          20.99,
+          4839,
+          1129,
+          1,
+          95,
+          31,
+          4.6
+        ],
+        [
+          "MLB5069945229",
+          "Balança Digital Corporal Vidro Temperado Alta Capacidade Balança De Banheiro Academia Portátil Pesagem Nutricionista Balanca 180kg Davely",
+          "2026-08-09T01:17:30.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_727973-MLA114475835862_082026-O.webp",
+          "Saúde",
+          true,
+          "active",
+          null,
+          true,
+          "URLINSTORE",
+          "gold_special",
+          true,
+          "MLB76552055",
+          null,
+          23.98,
+          938,
+          219,
+          1,
+          52,
+          32,
+          4.9
+        ],
+        [
+          "MLB7360798038",
+          "Fone De Ouvido Sem Fio Compativel Tune 760 Preto Bluetooth",
+          "2026-08-08T04:23:08.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_859371-MLB115796643457_082026-O.webp",
+          "Celulares e Telefones",
+          false,
+          "active",
+          null,
+          true,
+          "MULTPLIX",
+          "gold_special",
+          true,
+          "MLB-7360798038",
+          null,
+          86.23,
+          909,
+          212,
+          1,
+          66,
+          33,
+          4.7
+        ],
+        [
+          "MLB7356017480",
+          "Fita Antiderrapante para Escada Piso Rampa Banheiro Zebrada 5m x 50mm Adesiva de Segurança Alta Aderência Impermeável Uso Interno e Externo Resistente à Água Alta Fixação Prevenção de Acidentes",
+          "2026-08-07T12:43:52.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_711052-MLA116187604269_082026-E.webp",
+          "Indústria e Comércio",
+          true,
+          "active",
+          null,
+          true,
+          "CELLAECOMMERCE2025",
+          "gold_special",
+          true,
+          "MLB76519562",
+          null,
+          37.99,
+          882,
+          206,
+          1,
+          82,
+          34,
+          4.7
+        ],
+        [
+          "MLB4999066699",
+          "Kit 6 Vela Retrô Filamento Led Vintage Âmbar Branco Quente Luz Amarela 110v/220v Bivolt Bocal E27",
+          "2026-08-05T12:56:21.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_654325-MLA115644842869_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "SHOPPLED",
+          "gold_special",
+          true,
+          "MLB76396092",
+          null,
+          59,
+          833,
+          194,
+          1,
+          154,
+          36,
+          4.9
+        ],
+        [
+          "MLB7336443530",
+          "Kit 2 Plafon Painel Led Sobrepor Quadrado 30x30 3000k Branco Quente Luz Amarela 32W Bivolt 110v/220v 127/220v",
+          "2026-08-05T13:11:04.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_921994-MLA115645921131_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "SHOPPLED",
+          "gold_special",
+          true,
+          "MLB76396671",
+          null,
+          99.9,
+          833,
+          194,
+          1,
+          null,
+          36,
+          null
+        ],
+        [
+          "MLB7440135096",
+          "Suporte Magnético para Celular de Moto com 6 Ímãs Forte",
+          "2026-08-05T13:02:17.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_867917-MLA114305656766_082026-E.webp",
+          "Celulares e Telefones",
+          true,
+          "active",
+          null,
+          true,
+          "BANCA1000",
+          "gold_special",
+          true,
+          "MLB76396293",
+          null,
+          25.46,
+          833,
+          194,
+          2,
+          74,
+          36,
+          4.9
+        ],
+        [
+          "MLB4993089859",
+          "Cabo de Rede Cat6 Blindado 2 Metros Ethernet RJ45 Gigabit Anti-Lag Para PC Gamer Console PS5 PS4 Xbox e Home Office Cobre Puro Internet Alta Velocidade Azul - Yuso",
+          "2026-08-04T17:33:46.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_823447-MLA114813786888_082026-O.webp",
+          "Informática",
+          true,
+          "active",
+          null,
+          false,
+          "YUSO",
+          "gold_special",
+          true,
+          "MLB76339487",
+          "YUSO",
+          13.99,
+          811,
+          189,
+          1,
+          null,
+          37,
+          null
+        ],
+        [
+          "MLB7499195612",
+          "Balança Digital Bioimpedância Smart Bluetooth Inteligente IMC Saúde Peso App Android Academia Banheiro Alta Precisão Megalodonte",
+          "2026-08-04T20:27:42.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_840323-MLA115595512933_082026-E.webp",
+          "Saúde",
+          true,
+          "active",
+          null,
+          true,
+          "GUSPLAYONE",
+          "gold_special",
+          true,
+          "MLB76355341",
+          null,
+          29.9,
+          811,
+          189,
+          1,
+          2,
+          37,
+          4.9
+        ],
+        [
+          "MLB4992051669",
+          "Suporte Peitoral Ajustável 360° para Celular e GoPro com Base de Fixação",
+          "2026-08-03T19:23:16.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_858589-MLA115530368377_082026-O.webp",
+          "Câmeras e Acessórios",
+          true,
+          "active",
+          null,
+          true,
+          "FINKE",
+          "gold_special",
+          true,
+          "MLB76254103",
+          null,
+          35,
+          789,
+          184,
+          1,
+          85,
+          38,
+          4.7
+        ],
+        [
+          "MLB7299839788",
+          "Extensão 3 Tomadas 2 Usb 1pd Bivolt Power 110v/220 Sem Fio",
+          "2026-08-03T06:05:20.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_717267-MLB89581859710_082025-O.webp",
+          "Construção",
+          false,
+          "active",
+          null,
+          true,
+          "NOVAVIDA C.",
+          "gold_special",
+          true,
+          "MLB-7299839788",
+          null,
+          40.84,
+          789,
+          184,
+          1,
+          1863,
+          38,
+          5
+        ],
+        [
+          "MLB7320214728",
+          "Kit Gamer Completo Mageon Teclado Mouse Rgb Mobilador Hub USB Mousepad Suporte Celular Adaptador",
+          "2026-08-03T17:45:06.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_936619-MLA115527086661_082026-E.webp",
+          "Informática",
+          true,
+          "active",
+          null,
+          true,
+          "LAVANASHOP",
+          "gold_special",
+          true,
+          "MLB76242563",
+          "MAGEON",
+          77.69,
+          789,
+          184,
+          1,
+          376,
+          38,
+          4.4
+        ],
+        [
+          "MLB7313646630",
+          "Fita Adesiva Silver Tape 48mm X 5m * Várias Cores*  Adelbras",
+          "2026-08-02T14:56:42.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_727111-MLB53567276028_022023-O.webp",
+          "Arte, Papelaria e Armarinho",
+          false,
+          "active",
+          true,
+          true,
+          "NOVADIGI",
+          "gold_special",
+          true,
+          "MLB-7313646630",
+          null,
+          18.38,
+          769,
+          179,
+          1,
+          1525,
+          39,
+          4
+        ],
+        [
+          "MLB7298268816",
+          "Máscara De Dormir Cetim Toque De Seda Confort",
+          "2026-07-31T13:31:13.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_783800-MLB105797718571_012026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          true,
+          true,
+          "PUNTO GIALLO",
+          "gold_pro",
+          true,
+          "MLB-7298268816",
+          null,
+          29,
+          732,
+          171,
+          1,
+          596,
+          41,
+          5
+        ],
+        [
+          "MLB7309453220",
+          "Lâmpada Ventilador de Teto LED 60W Bivolt E27 6 Pás Controle Remoto 3 Velocidades Luz Regulável Timer 2h 4h Rotação Reversível Branco",
+          "2026-07-31T17:27:02.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_808879-MLA114070497062_072026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "AMPLUSECOMMERCE",
+          "gold_special",
+          true,
+          "MLB76135848",
+          null,
+          44.9,
+          732,
+          171,
+          1,
+          79,
+          41,
+          4
+        ],
+        [
+          "MLB5049001549",
+          "Kit Ventilador Portátil 8\" + Luz LED 4\" Refletor Com 2 Baterias recarregável",
+          "2026-08-12T17:34:08.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_884849-MLA116039933229_082026-O.webp",
+          "Eletrodomésticos",
+          true,
+          "active",
+          null,
+          true,
+          "EZREAL",
+          "gold_special",
+          true,
+          "MLB77135957",
+          null,
+          209.9,
+          500,
+          121,
+          1,
+          234,
+          29,
+          5
+        ],
+        [
+          "MLB5099972725",
+          "Massageador Corporal Pistola Pescoço Aquecimento Elétrico Masajeador Massageador Pês Lombar Panturrilha Mão Pescoço Cabeça Costas Coluna Pernas Ombros Cervical - Aparelho massagem Portátil",
+          "2026-08-20T13:23:32.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_790643-MLA115254113146_082026-E.webp",
+          "Saúde",
+          true,
+          "active",
+          null,
+          true,
+          "NEXTTREE",
+          "gold_special",
+          true,
+          "MLB77830418",
+          null,
+          29.97,
+          500,
+          167,
+          1,
+          274,
+          21,
+          4.5
+        ],
+        [
+          "MLB5099980271",
+          "Extensão Elétrica 10 Metros Branca 10a Com 3 Tomadas Tripolares 2p+t Bivolt 127v 220v Cabo Prolongador Compacto Para Casa Escritório Eletrônicos Uso Doméstico Creator Brasil Branco 127/220v",
+          "2026-08-20T13:22:30.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_714726-MLA115096474024_082026-O.webp",
+          "Construção",
+          true,
+          "active",
+          true,
+          true,
+          "CREATOR_BRASIL1",
+          "gold_special",
+          true,
+          "MLB77830398",
+          "CREATORBRASIL",
+          24.9,
+          500,
+          167,
+          1,
+          1458,
+          21,
+          4.6
+        ],
+        [
+          "MLB5120436693",
+          "Pack 2 Varal de Luzes LED Gluroo G40 de 20 m com 22 Lâmpadas Branco Quente para Externo",
+          "2026-08-13T12:23:14.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_933980-MLA115534183498_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "GLUROOBR",
+          "gold_special",
+          true,
+          "MLB77232711",
+          null,
+          156.29,
+          500,
+          125,
+          1,
+          1,
+          28,
+          5
+        ],
+        [
+          "MLB5131489185",
+          "Ring Light Led Portátil Para Celular Anel De Luz 20w 3 Cores Preto",
+          "2026-08-25T15:36:23.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_990619-MLA115300953880_082026-O.webp",
+          "Celulares e Telefones",
+          true,
+          "active",
+          true,
+          true,
+          "AQMAGAZINE",
+          "gold_special",
+          true,
+          "MLB78286856",
+          null,
+          139.9,
+          500,
+          219,
+          1,
+          2,
+          16,
+          4.6
+        ],
+        [
+          "MLB5142588927",
+          "Papeleira de Vidro Incolor para Banheiro com Suporte para Celular e Objetos",
+          "2026-08-15T02:06:10.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_716937-MLA116210702871_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "JASPEMETAIS",
+          null,
+          true,
+          "MLB77379284",
+          null,
+          16.53,
+          500,
+          135,
+          1,
+          null,
+          26,
+          null
+        ],
+        [
+          "MLB5163517751",
+          "Aparelho Massageador Corporal Elétrico Redutor Barriga Cor Azul",
+          "2026-08-27T00:43:38.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_834344-MLA116779783303_082026-O.webp",
+          "Saúde",
+          true,
+          "active",
+          null,
+          true,
+          "TOTALSHOP BRASIL",
+          "gold_special",
+          true,
+          "MLB78516697",
+          null,
+          76.62,
+          500,
+          250,
+          1,
+          240,
+          14,
+          4.8
+        ],
+        [
+          "MLB5171679791",
+          "Fita Adesiva Bhs Limpa Tape 50m X 2,5cm Transparente",
+          "2026-09-05T01:15:45.003",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_919501-MLA114267014005_072026-O.webp",
+          "Arte, Papelaria e Armarinho",
+          true,
+          "active",
+          null,
+          true,
+          "MANUSHISAM",
+          null,
+          true,
+          "MLB75126393",
+          null,
+          144.95,
+          500,
+          500,
+          1,
+          null,
+          5,
+          null
+        ],
+        [
+          "MLB5178430229",
+          "Espelho Maquiagem Com Led Para Carro Portátil 3 Tipos De Luz Branco",
+          "2026-09-02T13:49:46.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_737233-MLA117077854689_092026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          null,
+          true,
+          "BUENIDO",
+          null,
+          true,
+          "MLB78824106",
+          null,
+          34.5,
+          500,
+          438,
+          1,
+          null,
+          8,
+          null
+        ],
+        [
+          "MLB5179791145",
+          "Luz Led Para Celular Portátil Self Vídeos Ring Light Flash Branco",
+          "2026-08-31T20:39:17.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_719506-MLA116988899397_082026-O.webp",
+          "Celulares e Telefones",
+          true,
+          "active",
+          true,
+          true,
+          "MEGA_MIX_UTILIDADES",
+          "gold_special",
+          true,
+          "MLB78746131",
+          null,
+          30.9,
+          500,
+          350,
+          1,
+          115,
+          10,
+          4.6
+        ],
+        [
+          "MLB7419877458",
+          "Tapete Para Box De Banheiro Chuveiro Antiderrapante Ventosas Cor Bege",
+          "2026-08-13T05:34:48.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_920458-MLA116084383271_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "HBIM.ECOMMERCE",
+          "gold_special",
+          true,
+          "MLB77208954",
+          null,
+          22.21,
+          500,
+          125,
+          1,
+          981,
+          28,
+          4
+        ],
+        [
+          "MLB7420395588",
+          "Balança Corporal Digital Vidro Temperado 180kg Com Pilhas",
+          "2026-08-14T22:12:25.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_929364-MLB116204071741_082026-O.webp",
+          "Saúde",
+          false,
+          "active",
+          null,
+          true,
+          "PLANETA_CARREGADORES",
+          "gold_special",
+          true,
+          "MLB-7420395588",
+          null,
+          34.99,
+          500,
+          130,
+          1,
+          30,
+          27,
+          4.9
+        ],
+        [
+          "MLB7440786746",
+          "Suporte Apoio De Mesa Escritório Portátil Alumínio Celular Tablet Regulagem 360° Ajustável Momax",
+          "2026-08-17T14:07:45.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_796322-MLA114930156226_082026-O.webp",
+          "Celulares e Telefones",
+          true,
+          "active",
+          true,
+          true,
+          "MOMAX",
+          "gold_special",
+          true,
+          "MLB77509691",
+          null,
+          19,
+          500,
+          146,
+          1,
+          149,
+          24,
+          null
+        ],
+        [
+          "MLB7457960016",
+          "Cordão 100leds(80 Fixo 20 Strobo) Luz Decorativa Natal 10m",
+          "2026-08-19T13:17:19.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_770624-MLB116534990239_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "DINASTIA LED",
+          "gold_special",
+          true,
+          "MLB-7457960016",
+          null,
+          35.01,
+          500,
+          159,
+          1,
+          73,
+          22,
+          5
+        ],
+        [
+          "MLB7471242112",
+          "200pçs Mini Módulo Led 27mm Letra Caixa 5050 2-led 27mm Luz Branco Frio 6500k / 8000k",
+          "2026-08-19T19:56:57.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_808993-MLA116446574827_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "SHOPMIX ILUMINAÇÃO",
+          "gold_special",
+          true,
+          "MLB77762741",
+          "IMPORTADOMUNDOMIXLED",
+          139.99,
+          500,
+          159,
+          1,
+          158,
+          22,
+          4.8
+        ],
+        [
+          "MLB7480369586",
+          "Suporte Universal Veicular Retrovisor Celular Smartphone",
+          "2026-08-21T21:24:46.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_693800-MLA116554108829_082026-O.webp",
+          "Celulares e Telefones",
+          true,
+          "active",
+          null,
+          true,
+          "ECOLOGYTECH",
+          "gold_pro",
+          true,
+          "MLB78026079",
+          null,
+          20.24,
+          500,
+          175,
+          1,
+          null,
+          20,
+          null
+        ],
+        [
+          "MLB7481340746",
+          "Fita Eva Espuma Borracha Vedação Autocolante Adesiva 3d Pvc",
+          "2026-08-22T00:47:49.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_912625-MLB116556979535_082026-O.webp",
+          "Arte, Papelaria e Armarinho",
+          false,
+          "active",
+          null,
+          true,
+          "ACADI",
+          "gold_special",
+          true,
+          "MLB-7481340746",
+          null,
+          48.17,
+          500,
+          184,
+          1,
+          107,
+          19,
+          5
+        ],
+        [
+          "MLB7482734110",
+          "Balança Digital Eletrônica Comercial 40kg Precisão Mercado Preto Varejão Comercio Loja Feira Comerciante 110/220v",
+          "2026-08-18T23:50:46.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_904278-MLA115005111416_082026-E.webp",
+          "Indústria e Comércio",
+          true,
+          "active",
+          null,
+          true,
+          "ALVVENDAS",
+          "gold_pro",
+          true,
+          "MLB77652288",
+          "PARES",
+          159.9,
+          500,
+          152,
+          3,
+          13,
+          23,
+          5
+        ],
+        [
+          "MLB7493338010",
+          "Kit 2 Fone De Ouvido Premium Com Fio Com Microfone Reforçado Branco",
+          "2026-08-14T20:22:35.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_837887-MLA114827596070_082026-O.webp",
+          "Eletrônicos, Áudio e Vídeo",
+          true,
+          "active",
+          null,
+          true,
+          "OLIMIX",
+          "gold_special",
+          true,
+          "MLB77339187",
+          "LEHMOX",
+          24.9,
+          500,
+          130,
+          1,
+          8,
+          27,
+          4.7
+        ],
+        [
+          "MLB7493647244",
+          "Suporte Celular Aluminio Moto Bike Articulado Guidão Plus 21 Preto",
+          "2026-08-15T06:23:33.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_884087-MLA116220846229_082026-O.webp",
+          "Celulares e Telefones",
+          true,
+          "active",
+          true,
+          true,
+          "BRADDUS",
+          "gold_pro",
+          true,
+          "MLB77405318",
+          null,
+          122.75,
+          500,
+          135,
+          1,
+          2,
+          26,
+          5
+        ],
+        [
+          "MLB7510674188",
+          "Suporte De Metal Ajustável Para Notebook E Celular Lay Zjl05 Preto",
+          "2026-08-25T17:27:03.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_631324-MLA116713023075_082026-O.webp",
+          "Informática",
+          true,
+          "active",
+          null,
+          true,
+          "LAYSORTE",
+          null,
+          true,
+          "MLB78296704",
+          null,
+          109.99,
+          500,
+          219,
+          1,
+          null,
+          16,
+          null
+        ],
+        [
+          "MLB7524753256",
+          "Rolo Pedra De Jade + Placa Gua Sha Massagem Facial Anti Ruga Preto",
+          "2026-08-26T20:35:59.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_946383-MLA116773094419_082026-O.webp",
+          "Saúde",
+          true,
+          "active",
+          true,
+          true,
+          "LUFE_STORE",
+          "gold_special",
+          true,
+          "MLB78464310",
+          null,
+          15.2,
+          500,
+          233,
+          1,
+          52,
+          15,
+          4.9
+        ],
+        [
+          "MLB7525159042",
+          "Lanterna Para Bicicleta Farol Led Luz Bike Sinalizador Forte Preto",
+          "2026-08-26T19:58:33.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_701819-MLA115358391404_082026-O.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          true,
+          true,
+          "SAMCLARA",
+          "gold_special",
+          true,
+          "MLB78455651",
+          null,
+          33.82,
+          500,
+          233,
+          1,
+          14,
+          15,
+          4.7
+        ],
+        [
+          "MLB7526672828",
+          "Balança Comercial Digital 40kg Bateria Bivolt Alta Precisão",
+          "2026-08-27T02:07:24.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_738213-MLB115367553846_082026-O.webp",
+          "Indústria e Comércio",
+          false,
+          "active",
+          null,
+          true,
+          "NEYVAREJO10",
+          "gold_special",
+          true,
+          "MLB-7526672828",
+          "FAMILAR",
+          210,
+          500,
+          250,
+          1,
+          13,
+          14,
+          5
+        ],
+        [
+          "MLB7542390612",
+          "Filtro De Linha Régua Extensão 6 Tomadas E 2 Usb 2 Pd 2500 Watts Equipado Com Um Interruptor De Protecção Automática De Sobrecarga Protetor Elétrico Cabo 2 Metros 10 a Cor Preto-PLUGADO",
+          "2026-08-28T21:35:29.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_723321-MLA115550156894_082026-O.webp",
+          "Construção",
+          true,
+          "active",
+          true,
+          true,
+          "Z20250815134636",
+          "gold_special",
+          true,
+          "MLB78740322",
+          null,
+          35.1,
+          500,
+          269,
+          1,
+          14,
+          13,
+          5
+        ],
+        [
+          "MLB7542391632",
+          "Kit 2 Suporte Celular Carro Magnético Imã Painel Veicular Gurumania",
+          "2026-08-26T22:52:01.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_809492-MLA115363050272_082026-O.webp",
+          "Celulares e Telefones",
+          true,
+          "active",
+          true,
+          true,
+          "IMPORT RANGEL",
+          "gold_special",
+          true,
+          "MLB78493019",
+          "GURUMANIA",
+          27.93,
+          500,
+          233,
+          1,
+          35,
+          15,
+          4.8
+        ],
+        [
+          "MLB7572853880",
+          "Dinossauro T-Rex Robo Brinquedo Anda Solta Fumaça Sons Luzes Led Rugido Movimentos Articulados Infantil Tiranossauro Interativo Educativo Presente Criança Menino Divertido Azul Flow Dimension",
+          "2026-08-31T21:57:22.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_635061-MLA116991032455_082026-E.webp",
+          "Brinquedos e Hobbies",
+          true,
+          "active",
+          null,
+          true,
+          "PLAYO",
+          "gold_special",
+          true,
+          "MLB78752501",
+          null,
+          48.4,
+          500,
+          350,
+          1,
+          4,
+          10,
+          4.4
+        ],
+        [
+          "MLB7572853920",
+          "Dinossauro T-Rex Robo Brinquedo Anda Solta Fumaça Sons Luzes Led Rugido Movimentos Articulados Infantil Tiranossauro Interativo Educativo Presente Criança Menino Divertido Laranja Flow Dimension",
+          "2026-08-31T21:57:25.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_664611-MLA115554419088_082026-E.webp",
+          "Brinquedos e Hobbies",
+          true,
+          "active",
+          true,
+          true,
+          "PLAYO",
+          "gold_special",
+          true,
+          "MLB78752503",
+          null,
+          48.4,
+          500,
+          350,
+          1,
+          4,
+          10,
+          4.4
+        ],
+        [
+          "MLB7572854578",
+          "Dinossauro T-Rex Robo Brinquedo Anda Solta Fumaça Sons Luzes Led Rugido Movimentos Articulados Infantil Tiranossauro Interativo Educativo Presente Criança Menino Divertido Verde Flow Dimension",
+          "2026-08-31T21:57:29.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_937278-MLA116990862229_082026-O.webp",
+          "Brinquedos e Hobbies",
+          true,
+          "active",
+          true,
+          true,
+          "PLAYO",
+          "gold_special",
+          true,
+          "MLB78752505",
+          null,
+          49.9,
+          500,
+          350,
+          1,
+          4,
+          10,
+          null
+        ],
+        [
+          "MLB7574009648",
+          "Kit 10 Fita Adesiva Marrom 45x100 Hot Melt Embalagem Marrom Liso",
+          "2026-08-24T15:41:26.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_779040-MLA116658300753_082026-O.webp",
+          "Arte, Papelaria e Armarinho",
+          true,
+          "active",
+          null,
+          true,
+          "PERSONA90",
+          null,
+          true,
+          "MLB78185884",
+          null,
+          58.9,
+          500,
+          206,
+          1,
+          null,
+          17,
+          null
+        ],
+        [
+          "MLB7580825686",
+          "Fone De Ouvido Headphone Bluetooth Sem Fio Estéreo Com Microfone Tws Wireless Over-ear Headset Bateria Longa Duração Portátil Redução De Ruído Som Potente Home Bless",
+          "2026-09-02T19:07:40.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_786006-MLA115643288914_092026-O.webp",
+          "Eletrônicos, Áudio e Vídeo",
+          true,
+          "active",
+          null,
+          true,
+          "PRIME_FNL_TECH",
+          null,
+          true,
+          "MLB78850039",
+          "HOMEBLESS",
+          61.98,
+          500,
+          438,
+          1,
+          null,
+          8,
+          null
+        ],
+        [
+          "MLB7585447188",
+          "Fone Ouvido Gatinho Bluetooth Adulto Crianças + Relógio Led Preto",
+          "2026-08-28T09:06:20.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_766296-MLA116852592001_082026-O.webp",
+          "Eletrônicos, Áudio e Vídeo",
+          true,
+          "active",
+          null,
+          true,
+          "HELMARQ",
+          "gold_special",
+          true,
+          "MLB78654905",
+          null,
+          48.93,
+          500,
+          269,
+          1,
+          313,
+          13,
+          4.7
+        ],
+        [
+          "MLB7586571670",
+          "Barbeador elétrico e máquina de cortar pelos corporais Maxgroom",
+          "2026-09-04T03:48:18.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_762259-MLA98427034860_112025-O.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          true,
+          true,
+          "LZ20260120140524",
+          "gold_special",
+          true,
+          "MLB62350071",
+          null,
+          125.24,
+          500,
+          500,
+          1,
+          917,
+          6,
+          4.6
+        ],
+        [
+          "MLB7594526044",
+          "Rolo Pedra De Jade + Placa Gua Sha Massagem Facial Anti Ruga Preto",
+          "2026-09-05T23:06:32.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_959927-MLA116107583365_082026-O.webp",
+          "Saúde",
+          true,
+          "active",
+          true,
+          true,
+          "SHOPP-AUQMIA",
+          "gold_special",
+          true,
+          "MLB77232577",
+          null,
+          19,
+          500,
+          500,
+          1,
+          127,
+          5,
+          4.8
+        ],
+        [
+          "MLB7595563686",
+          "Fita Led Neon Mangueira 120 Leds Ip65 5 Metros Fonte Luz Vermelha",
+          "2026-09-08T07:32:11.347",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_985491-MLA81194743604_122024-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "BILISTORE",
+          null,
+          true,
+          "MLB44858099",
+          null,
+          25.6,
+          500,
+          500,
+          1,
+          null,
+          2,
+          null
+        ],
+        [
+          "MLB7384617812",
+          "Tapete Higiênico para Cães Pratitudo Essencial Slim 50x60 cm com 50 Unidades Descartável Super Absorvente com Fitas Adesivas nos 4 Cantos e Controle de Odores para Treinamento e Apartamento",
+          "2026-08-10T22:51:00.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_776570-MLA117195036481_092026-O.webp",
+          "Pet Shop",
+          true,
+          "active",
+          true,
+          true,
+          "FAVORITODAWEB",
+          "gold_special",
+          true,
+          "MLB76601635",
+          "PRATITUDOESSENCIAL",
+          45.9,
+          484,
+          113,
+          3,
+          35,
+          31,
+          4.8
+        ],
+        [
+          "MLB5034155401",
+          "Fita Cob Super Led 5 Metros 360led/m Ip20 Alto Brilho Luz Branco-Quente 3000k S/ Fonte Lumanare",
+          "2026-08-08T17:26:47.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_911215-MLA114466946618_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "DELIVERYIMPORTS",
+          "gold_special",
+          true,
+          "MLB76548854",
+          "LUMANARE",
+          29.99,
+          455,
+          106,
+          1,
+          10,
+          33,
+          4.1
+        ],
+        [
+          "MLB7363613862",
+          "Suporte Celular Tablet Dobrável Escritório Apoio Mesa Universal Portátil Ajustável Apoiar Base Preto",
+          "2026-08-08T15:36:14.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_943709-MLA115816106333_082026-E.webp",
+          "Celulares e Telefones",
+          true,
+          "active",
+          null,
+          true,
+          "VKECOMMERCE",
+          "gold_special",
+          true,
+          "MLB76547959",
+          null,
+          12.9,
+          455,
+          106,
+          2,
+          13,
+          33,
+          4.3
+        ],
+        [
+          "MLB7359077048",
+          "Kit Saco De Pancada Homem Aranha Marca:MultiOn Infantil Luva De Boxe presente menino criança",
+          "2026-08-06T18:50:12.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_737532-MLA114675165010_082026-E.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          null,
+          false,
+          "VENDA_MÁQUINAS OFICIAL",
+          "gold_special",
+          true,
+          "MLB76490074",
+          "MULTION",
+          57.99,
+          429,
+          100,
+          2,
+          184,
+          35,
+          4.3
+        ],
+        [
+          "MLB4999543483",
+          "Carro de Controle Remoto Unicórnio com Luzes LED Coloridas para Menina",
+          "2026-08-05T14:19:10.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_897657-MLA114308410884_082026-O.webp",
+          "Brinquedos e Hobbies",
+          true,
+          "active",
+          null,
+          true,
+          "FAVORITODAWEB",
+          "gold_special",
+          true,
+          "MLB76401356",
+          "PRATITUDOTOYS",
+          57.9,
+          417,
+          97,
+          1,
+          33,
+          36,
+          5
+        ],
+        [
+          "MLB7337249408",
+          "Suporte Celular Moto Magnetico Ima Extra Forte Motoboy Gps",
+          "2026-08-05T14:36:33.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_820744-MLB116105582533_082026-O.webp",
+          "Celulares e Telefones",
+          false,
+          "active",
+          true,
+          true,
+          "DUCK_HOUSE",
+          "gold_special",
+          true,
+          "MLB-7337249408",
+          null,
+          28.72,
+          417,
+          97,
+          1,
+          31,
+          36,
+          5
+        ],
+        [
+          "MLB7579335512",
+          "Suporte Queixo Capacete Moto Universal para Câmera de Ação GoPro DJI Insta360 SJCAM Celular com Adaptador Gravação POV Motovlog Ajustável Fixação Segura Compatível com Capacetes Integrais",
+          "2026-08-05T23:11:24.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_892916-MLA115548814888_082026-O.webp",
+          "Câmeras e Acessórios",
+          true,
+          "active",
+          null,
+          false,
+          "1PEQUENOCRAQUE0",
+          "gold_special",
+          true,
+          "MLB76440019",
+          null,
+          29.9,
+          417,
+          97,
+          2,
+          37,
+          36,
+          4.7
+        ],
+        [
+          "MLB4993039431",
+          "Fita Adesiva Walker Tape Azul Lace Front Mega Hair 12 Metros",
+          "2026-08-04T17:26:40.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_631813-MLB115587215775_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          false,
+          "active",
+          true,
+          true,
+          "IMVEX",
+          "gold_special",
+          true,
+          "MLB-4993039431",
+          "FITAWALKERTAPEADESIVAAZUL",
+          61.99,
+          405,
+          95,
+          1,
+          18,
+          37,
+          4.9
+        ],
+        [
+          "MLB5140571673",
+          "Ventilador de Teto SolViva Com Luz LED e Controle Remoto, 6 Pás de 42 cm, Silencioso e Bivolt",
+          "2026-08-04T02:48:00.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_869814-MLA114270991786_082026-E.webp",
+          "Eletrodomésticos",
+          true,
+          "active",
+          null,
+          true,
+          "JHPSTORELTDA",
+          null,
+          true,
+          "MLB76376677",
+          "SOLVIVA",
+          69,
+          405,
+          95,
+          4,
+          46,
+          37,
+          4.9
+        ],
+        [
+          "MLB4984892485",
+          "Ventilador de Teto SolViva Com Luz LED e Controle Remoto, 52 cm de Diâmetro, Branco",
+          "2026-08-03T05:48:57.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_894689-MLA114348202266_082026-O.webp",
+          "Eletrodomésticos",
+          true,
+          "active",
+          true,
+          true,
+          "RP20260519102846",
+          "gold_special",
+          true,
+          "MLB76458058",
+          "SOLVIVA",
+          119,
+          395,
+          92,
+          1,
+          122,
+          38,
+          4.6
+        ],
+        [
+          "MLB4981696937",
+          "Kit 3 Luminária Barra Led Recarregável Sensor Base Momlulu 3pcs Luz Quente 3000 K / Luz Branca Quente 4500 K / Luz Branca 6000 K",
+          "2026-08-02T10:06:48.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_981070-MLA114139250974_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "HIGOOGOO888",
+          "gold_special",
+          true,
+          "MLB76208932",
+          null,
+          69.99,
+          385,
+          90,
+          1,
+          15,
+          39,
+          4.6
+        ],
+        [
+          "MLB7309454018",
+          "Tapete Tatame Yoga 180x50  Eva Antiderrapante 10mm Pilates",
+          "2026-08-01T16:50:02.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_662315-MLB114112819320_082026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          null,
+          true,
+          "PRIMESHOPRSE",
+          "gold_special",
+          true,
+          "MLB-7309454018",
+          null,
+          51.2,
+          375,
+          88,
+          1,
+          53,
+          40,
+          4.6
+        ],
+        [
+          "MLB7298268818",
+          "Máscara De Dormir Cetim Toque De Seda Confort",
+          "2026-07-31T13:31:13.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_935221-MLB105401822946_012026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          true,
+          true,
+          "PUNTO GIALLO",
+          "gold_pro",
+          true,
+          "MLB-7298268818",
+          null,
+          29,
+          366,
+          85,
+          1,
+          596,
+          41,
+          5
+        ],
+        [
+          "MLB7298268820",
+          "Máscara De Dormir Cetim Toque De Seda Confort",
+          "2026-07-31T13:31:13.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_932903-MLB105996207989_012026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          true,
+          true,
+          "PUNTO GIALLO",
+          "gold_pro",
+          true,
+          "MLB-7298268820",
+          null,
+          29,
+          366,
+          85,
+          1,
+          596,
+          41,
+          5
+        ],
+        [
+          "MLB7298268822",
+          "Máscara De Dormir Cetim Toque De Seda Confort",
+          "2026-07-31T13:31:13.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_867980-MLB105996212445_012026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          true,
+          true,
+          "PUNTO GIALLO",
+          "gold_pro",
+          true,
+          "MLB-7298268822",
+          null,
+          24.9,
+          366,
+          85,
+          1,
+          596,
+          41,
+          5
+        ],
+        [
+          "MLB5034472703",
+          "Tapete Banheiro Ventosas, Antiderrapante, Box Piso Estrado",
+          "2026-08-12T11:29:07.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_680447-MLB116047653997_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "WNU",
+          "gold_pro",
+          true,
+          "MLB-5034472703",
+          null,
+          58.41,
+          100,
+          24,
+          1,
+          81,
+          29,
+          null
+        ],
+        [
+          "MLB5034700581",
+          "Capa Banco Bolinha Madeira Universal Carro Caminhão Encosto",
+          "2026-08-11T00:18:10.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_692357-MLB115906757629_082026-O.webp",
+          "Acessórios para Veículos",
+          false,
+          "active",
+          null,
+          true,
+          "PDCMIX",
+          "gold_special",
+          true,
+          "MLB-5034700581",
+          null,
+          59.97,
+          100,
+          23,
+          1,
+          13,
+          30,
+          4.8
+        ],
+        [
+          "MLB5041374169",
+          "Manta Autoadesiva Asfáltica Dryko Fvd10 10cm X 10m Fita",
+          "2026-08-11T17:27:57.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_737746-MLA114596991444_082026-O.webp",
+          "Construção",
+          true,
+          "active",
+          null,
+          false,
+          "ENERBLUSTOREOFICIAL",
+          "gold_special",
+          true,
+          "MLB76806623",
+          null,
+          49.9,
+          100,
+          23,
+          1,
+          null,
+          30,
+          null
+        ],
+        [
+          "MLB5041703291",
+          "Tripé Celular Bastão Pau De Selfie 1,7m Controle Bluetooth",
+          "2026-08-11T20:49:51.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_688792-MLB114950965506_082026-O.webp",
+          "Câmeras e Acessórios",
+          false,
+          "active",
+          null,
+          true,
+          "ZARTICO",
+          "gold_special",
+          true,
+          "MLB-5041703291",
+          null,
+          43.94,
+          100,
+          23,
+          1,
+          20,
+          30,
+          4.9
+        ],
+        [
+          "MLB5043646605",
+          "Suporte Celular Carro Magnético Rotativo 360dobrável Ventosa",
+          "2026-08-12T06:38:01.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_803701-MLB115608099576_092026-O.webp",
+          "Celulares e Telefones",
+          false,
+          "active",
+          null,
+          true,
+          "VQ20251021154547",
+          "gold_pro",
+          true,
+          "MLB-5043646605",
+          "GENERICA",
+          21.92,
+          100,
+          24,
+          1,
+          14,
+          29,
+          3
+        ],
+        [
+          "MLB5048225975",
+          "Kit 3x Fita Dupla Face Espumada 12mm x 2m Tipo Banana Alta Fixação Parede Quadros Espelhos Extra Forte Profissional Papelaria Artesanato Scrapbook Multiuso Fita Adesiva Sem Pregos Resistente FEELTRA",
+          "2026-08-12T20:26:03.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_989044-MLA116060606167_082026-O.webp",
+          "Arte, Papelaria e Armarinho",
+          true,
+          "active",
+          null,
+          true,
+          "FEELTRA",
+          "gold_special",
+          true,
+          "MLB77168246",
+          "FEELTRA",
+          21.82,
+          100,
+          24,
+          1,
+          5,
+          29,
+          5
+        ],
+        [
+          "MLB5049002121",
+          "Fita Adesiva Vedação Box Pia Pvc Impermeável Selante Rejunte Adesivo Branco",
+          "2026-08-12T03:47:44.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_787427-MLA115990872557_082026-O.webp",
+          "Construção",
+          true,
+          "active",
+          true,
+          true,
+          "LOADINGCOSTORE",
+          "gold_special",
+          true,
+          "MLB76943921",
+          null,
+          13.92,
+          100,
+          24,
+          1,
+          4,
+          29,
+          4.6
+        ],
+        [
+          "MLB5058257153",
+          "Máscara De Dormir Cilios 3d Ajustável, Tapa Olho Para Dormir",
+          "2026-08-14T02:04:57.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_885522-MLB116147899303_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          true,
+          true,
+          "DFCHABDEG62454",
+          "gold_special",
+          true,
+          "MLB-5058257153",
+          "GENERICA",
+          43.5,
+          100,
+          26,
+          1,
+          9,
+          27,
+          5
+        ],
+        [
+          "MLB5069218553",
+          "Fone De Ouvido Gamer Dj Musicos Retorno Palco In-ear Musical",
+          "2026-08-18T00:09:40.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_899211-MLB89128877657_082025-O.webp",
+          "Eletrônicos, Áudio e Vídeo",
+          false,
+          "active",
+          true,
+          true,
+          "SANTPIRESSTORE",
+          "gold_special",
+          true,
+          "MLB-5069218553",
+          null,
+          63.9,
+          100,
+          30,
+          1,
+          236,
+          23,
+          5
+        ],
+        [
+          "MLB5070394257",
+          "Balança Portátil De Mão Digital Mala Viagem Bagagem Até 50kg",
+          "2026-08-15T21:00:08.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_961493-MLB116250723107_082026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          null,
+          true,
+          "AECSALES",
+          "gold_special",
+          true,
+          "MLB-5070394257",
+          null,
+          21.89,
+          100,
+          27,
+          1,
+          null,
+          26,
+          null
+        ],
+        [
+          "MLB5073941641",
+          "Suporte Moto Carregador Usb Universal Celular Shopclic",
+          "2026-08-16T12:57:19.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_929792-MLB116277990083_082026-O.webp",
+          "Celulares e Telefones",
+          false,
+          "active",
+          true,
+          true,
+          "SHOPCLIC OFICIAL",
+          "gold_special",
+          true,
+          "MLB-5073941641",
+          null,
+          29,
+          100,
+          28,
+          1,
+          null,
+          25,
+          null
+        ],
+        [
+          "MLB5074913357",
+          "Fone De Ouvido Sem Fio Bluetooth Compativel Com Jbl 720",
+          "2026-08-16T17:01:51.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_656819-MLB115796862452_092026-O.webp",
+          "Informática",
+          false,
+          "active",
+          null,
+          true,
+          "MSBCOMMERCELTDA",
+          "gold_special",
+          true,
+          "MLB-5074913357",
+          null,
+          80.74,
+          100,
+          28,
+          1,
+          11,
+          25,
+          4.8
+        ],
+        [
+          "MLB5088035923",
+          "Tapete Escorredor De Louça Silicone Antiderrapante 40x30cm",
+          "2026-08-18T19:17:04.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_760127-MLB115007998800_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "FACANHASHOP",
+          "gold_special",
+          true,
+          "MLB-5088035923",
+          null,
+          20.9,
+          100,
+          30,
+          1,
+          3,
+          23,
+          4
+        ],
+        [
+          "MLB5093511473",
+          "Mini Ventilador De Mão Portátil Com Suporte Celular",
+          "2026-08-20T07:50:33.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_602940-MLB93036163146_092025-O.webp",
+          "Informática",
+          false,
+          "active",
+          null,
+          true,
+          "CV20250123153526",
+          "gold_special",
+          true,
+          "MLB-5093511473",
+          null,
+          49.41,
+          100,
+          33,
+          1,
+          null,
+          21,
+          null
+        ],
+        [
+          "MLB5095689765",
+          "Descascador Eletrico De Alho, Frutas, Legumes E Vegetais",
+          "2026-08-19T21:20:28.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_801171-MLB115059515830_082026-O.webp",
+          "Eletrodomésticos",
+          false,
+          "active",
+          null,
+          true,
+          "JELE_VARIEDADES",
+          "gold_special",
+          true,
+          "MLB-5095689765",
+          null,
+          58.9,
+          100,
+          32,
+          1,
+          1,
+          22,
+          5
+        ],
+        [
+          "MLB5100245111",
+          "Fone De Ouvido Philips Tae2146bk/00 Tipo -c Preto C/ Nfe",
+          "2026-08-20T14:32:44.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_977062-MLA99577226654_122025-O.webp",
+          "Eletrônicos, Áudio e Vídeo",
+          false,
+          "active",
+          null,
+          true,
+          "STECVALE-",
+          "gold_special",
+          true,
+          "MLB-5100245111",
+          null,
+          46.46,
+          100,
+          33,
+          1,
+          null,
+          21,
+          null
+        ],
+        [
+          "MLB5100389265",
+          "Brinquedo Máquina de Bolhas de Sabão Azul Pistola Automática Infantil com Luz LED para Crianças Festa e Diversão Smoofy",
+          "2026-08-19T23:02:39.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_839872-MLA116452905609_082026-O.webp",
+          "Brinquedos e Hobbies",
+          true,
+          "active",
+          true,
+          true,
+          "LJRECOM",
+          "gold_special",
+          true,
+          "MLB77781443",
+          "SMOOFY",
+          20.92,
+          100,
+          32,
+          1,
+          2,
+          22,
+          4.4
+        ],
+        [
+          "MLB5101128717",
+          "Kit 10 Fio De Fada Cordão Luz Decoração Led Pisca 2m 20 Leds",
+          "2026-08-20T17:05:00.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_798018-MLB115105620014_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "ARMAZEM ECOM",
+          "gold_special",
+          true,
+          "MLB-5101128717",
+          null,
+          19.79,
+          100,
+          33,
+          1,
+          3,
+          21,
+          5
+        ],
+        [
+          "MLB5101510429",
+          "Suporte De Cabeça Para Celular Grave Com As Mãos Livres Tarefas do Dia A Dia Branco",
+          "2026-08-17T20:35:55.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_753379-MLA115151229096_082026-E.webp",
+          "Celulares e Telefones",
+          true,
+          "active",
+          null,
+          true,
+          "MEUDOME OFICIAL",
+          "gold_special",
+          true,
+          "MLB77538232",
+          null,
+          65.61,
+          100,
+          29,
+          1,
+          177,
+          24,
+          4.9
+        ],
+        [
+          "MLB5101580891",
+          "Suporte De Cabeça Para Celular Grave Com As Mãos Livres Tarefas do Dia A Dia Cinza",
+          "2026-08-17T20:35:54.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_843151-MLA116548163885_082026-E.webp",
+          "Celulares e Telefones",
+          true,
+          "active",
+          null,
+          true,
+          "MEUDOME OFICIAL",
+          "gold_special",
+          true,
+          "MLB77538230",
+          null,
+          72.89,
+          100,
+          29,
+          1,
+          177,
+          24,
+          4.9
+        ],
+        [
+          "MLB5105516163",
+          "Tapete Para Box De Banheiro Chuveiro Antiderrapante Ventosas Cor Transparente com bolinha vermelha",
+          "2026-08-13T17:47:41.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_663770-MLA116126487553_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "HBIM.ECOMMERCE",
+          "gold_special",
+          true,
+          "MLB77260699",
+          null,
+          17.77,
+          100,
+          25,
+          1,
+          978,
+          28,
+          4.5
+        ],
+        [
+          "MLB5105591087",
+          "Tapete Para Box De Banheiro Chuveiro Antiderrapante Ventosas Cor Rosa",
+          "2026-08-13T05:31:14.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_765327-MLA116083912909_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "HBIM.ECOMMERCE",
+          null,
+          true,
+          "MLB77208652",
+          null,
+          22.21,
+          100,
+          25,
+          1,
+          null,
+          28,
+          null
+        ],
+        [
+          "MLB5107639019",
+          "Mini Abajur Transparente Luz Led 11cm Transparente",
+          "2026-08-21T17:18:05.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_601570-MLA114832230742_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "ESTAOBRINQUEDOSEIRELIESTA",
+          "gold_special",
+          true,
+          "MLB77360035",
+          null,
+          19.9,
+          100,
+          35,
+          1,
+          null,
+          20,
+          null
+        ],
+        [
+          "MLB5108288511",
+          "Saco Pancada Treino Punching Ball Boxe Infantil E Adulto Preto E Laranja",
+          "2026-08-21T18:45:22.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_819503-MLA116549276095_082026-O.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          true,
+          true,
+          "AXVO",
+          "gold_pro",
+          true,
+          "MLB78004767",
+          null,
+          148.19,
+          100,
+          35,
+          1,
+          1,
+          20,
+          4
+        ],
+        [
+          "MLB5108370263",
+          "Lâmpada Led RGBW 10W 16 Cores Com Controle Remoto E27 Bivolt Luz Colorida Branca Quente Fria Para Quarto Sala Decoração - Holotv",
+          "2026-08-21T19:18:31.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_759213-MLA115153173132_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "HOLOTV",
+          "gold_special",
+          true,
+          "MLB78011071",
+          null,
+          25.9,
+          100,
+          35,
+          1,
+          1106,
+          20,
+          4.8
+        ],
+        [
+          "MLB5109494353",
+          "Descascador Elétrico De Alho Legumes Frutas Portátil Sem Fio",
+          "2026-08-22T01:37:12.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_636271-MLB116622719727_082026-O.webp",
+          "Eletrodomésticos",
+          false,
+          "active",
+          true,
+          true,
+          "ZEVOX",
+          "gold_special",
+          true,
+          "MLB-5109494353",
+          null,
+          53.12,
+          100,
+          37,
+          1,
+          11,
+          19,
+          null
+        ],
+        [
+          "MLB5114495647",
+          "Régua Extensão Filtro Linha Tomadas 20 Amperes",
+          "2026-08-11T14:38:48.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_948525-MLA114587911360_082026-O.webp",
+          "Construção",
+          true,
+          "active",
+          true,
+          true,
+          "RMS_SHOOPS",
+          "gold_special",
+          true,
+          "MLB76781583",
+          null,
+          40.65,
+          100,
+          23,
+          1,
+          3,
+          30,
+          5
+        ],
+        [
+          "MLB5114503631",
+          "Fone De Ouvido Sem Fio Bluetooth Compativel Com Jbl 720",
+          "2026-08-22T19:59:58.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_644456-MLB116590440493_082026-O.webp",
+          "Informática",
+          false,
+          "active",
+          null,
+          true,
+          "OFICIALCENTRALPRIME",
+          "gold_pro",
+          true,
+          "MLB-5114503631",
+          null,
+          126.67,
+          100,
+          37,
+          1,
+          32,
+          19,
+          4.6
+        ],
+        [
+          "MLB5115005279",
+          "6x Ganchos Adesivo Cabide Parede Rústico Minimalista Madeira Natural",
+          "2026-08-15T02:00:15.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_980470-MLA115631099026_092026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "ABDODIB",
+          "gold_special",
+          true,
+          "MLB77378718",
+          null,
+          71.01,
+          100,
+          27,
+          1,
+          null,
+          26,
+          null
+        ],
+        [
+          "MLB5115370181",
+          "Balança Digital De Alta Precisão Eletrônica Lcd Saté 10kg",
+          "2026-08-13T23:33:46.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_723728-MLA114772868582_082026-E.webp",
+          "Eletrodomésticos",
+          true,
+          "active",
+          null,
+          true,
+          "D.K.L .OFICIAL",
+          "gold_pro",
+          true,
+          "MLB77303255",
+          null,
+          65.97,
+          100,
+          25,
+          1,
+          null,
+          28,
+          null
+        ],
+        [
+          "MLB5118627657",
+          "Fone De Ouvido Bluetooth Xiaomi Redmi Airdots 2 Preto",
+          "2026-08-12T19:28:20.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_822159-MLA114684376564_082026-E.webp",
+          "Celulares e Telefones",
+          true,
+          "active",
+          null,
+          false,
+          "C20250615194449",
+          null,
+          true,
+          "MLB77158403",
+          null,
+          31.45,
+          100,
+          24,
+          2,
+          null,
+          29,
+          null
+        ],
+        [
+          "MLB5119770659",
+          "Descascador Elétrico De Alho Legumes Frutas Portátil Sem Fio",
+          "2026-08-23T21:46:41.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_611468-MLB116622720709_082026-O.webp",
+          "Eletrodomésticos",
+          false,
+          "active",
+          null,
+          true,
+          "ZEVOX",
+          "gold_special",
+          true,
+          "MLB-5119770659",
+          null,
+          53.12,
+          100,
+          39,
+          1,
+          9,
+          18,
+          4.3
+        ]
+      ],
+      "dimensionCount": 15,
+      "lastRefreshTime": "2026-09-09T19:01:18.298Z",
+      "slowQuery": false,
+      "totalRows": 100,
+      "types": [
+        "string",
+        "string",
+        "time",
+        "time",
+        "string",
+        "string",
+        "boolean",
+        "string",
+        "boolean",
+        "boolean",
+        "string",
+        "string",
+        "boolean",
+        "string",
+        "string",
+        "number",
+        "number",
+        "number",
+        "number",
+        "number",
+        "number",
+        "number"
+      ]
+    }
+  ]
+}

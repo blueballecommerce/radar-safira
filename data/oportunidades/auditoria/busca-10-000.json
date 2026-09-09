@@ -1,0 +1,3183 @@
+{
+  "lidoEm": "2026-09-09T19:01:57.351Z",
+  "fonte": "JoomPulse / MercadoProductsWeekly",
+  "groups": [
+    [
+      "robô",
+      "aspirador"
+    ],
+    [
+      "bomba",
+      "tirar"
+    ],
+    [
+      "bomba",
+      "tira"
+    ],
+    [
+      "bomba",
+      "mama"
+    ],
+    [
+      "nebulizador",
+      "inalador"
+    ],
+    [
+      "inalador",
+      "neb"
+    ],
+    [
+      "labubu",
+      "colecionánel"
+    ],
+    [
+      "labubu",
+      "geração"
+    ],
+    [
+      "roupa",
+      "labubu"
+    ],
+    [
+      "labubu",
+      "coleção"
+    ],
+    [
+      "varal",
+      "corda"
+    ],
+    [
+      "livro",
+      "colorir"
+    ],
+    [
+      "caixas",
+      "organizadoras"
+    ],
+    [
+      "pegador",
+      "pinça"
+    ],
+    [
+      "protetor",
+      "torneira"
+    ],
+    [
+      "tesoura",
+      "cortar"
+    ],
+    [
+      "balde",
+      "armazenamento"
+    ],
+    [
+      "rack",
+      "organizador"
+    ],
+    [
+      "lixadeira",
+      "nail"
+    ],
+    [
+      "mochila",
+      "escolar"
+    ],
+    [
+      "caneta",
+      "detectora"
+    ],
+    [
+      "marmita"
+    ],
+    [
+      "porta",
+      "tempero"
+    ],
+    [
+      "maquina",
+      "assentar"
+    ],
+    [
+      "conjunto",
+      "ferramentas"
+    ],
+    [
+      "pistola",
+      "pintura"
+    ],
+    [
+      "parafusadeira",
+      "furadeira"
+    ],
+    [
+      "tesoura",
+      "alicate"
+    ],
+    [
+      "luminária",
+      "leds"
+    ],
+    [
+      "maquina",
+      "rosto"
+    ]
+  ],
+  "pages": [
+    {
+      "query": {
+        "dimensions": [
+          "MercadoProductsWeekly.id",
+          "MercadoProductsWeekly.productName",
+          "MercadoProductsWeekly.adPublishDate",
+          "MercadoProductsWeekly.date",
+          "MercadoProductsWeekly.productImage",
+          "MercadoProductsWeekly.merchantCategoryL1",
+          "MercadoProductsWeekly.catalogProduct",
+          "MercadoProductsWeekly.listingStatus",
+          "MercadoProductsWeekly.isFull",
+          "MercadoProductsWeekly.isFreeShipping",
+          "MercadoProductsWeekly.merchantName",
+          "MercadoProductsWeekly.listingType",
+          "MercadoProductsWeekly.buyBoxWiner",
+          "MercadoProductsWeekly.productId",
+          "MercadoProductsWeekly.brand"
+        ],
+        "measures": [
+          "MercadoProductsWeekly.priceAmount",
+          "MercadoProductsWeekly.orderCount1m",
+          "MercadoProductsWeekly.orderCount1w",
+          "MercadoProductsWeekly.numBuyBoxSellers",
+          "MercadoProductsWeekly.reviewsCount",
+          "MercadoProductsWeekly.daysInAd",
+          "MercadoProductsWeekly.reviewsRating"
+        ],
+        "filters": [
+          {
+            "member": "MercadoProductsWeekly.adPublishDate",
+            "operator": "inDateRange",
+            "values": [
+              "2026-07-31",
+              "2026-09-09"
+            ]
+          },
+          {
+            "member": "MercadoProductsWeekly.listingStatus",
+            "operator": "equals",
+            "values": [
+              "active"
+            ]
+          },
+          {
+            "member": "MercadoProductsWeekly.orderCount1m",
+            "operator": "gt",
+            "values": [
+              "0"
+            ]
+          },
+          {
+            "or": [
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "robô"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "aspirador"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "bomba"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "tirar"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "bomba"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "tira"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "bomba"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "mama"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "nebulizador"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "inalador"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "inalador"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "neb"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "labubu"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "colecionánel"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "labubu"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "geração"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "roupa"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "labubu"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "labubu"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "coleção"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "varal"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "corda"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "livro"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "colorir"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "caixas"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "organizadoras"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "pegador"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "pinça"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "protetor"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "torneira"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "tesoura"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "cortar"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "balde"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "armazenamento"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "rack"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "organizador"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "lixadeira"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "nail"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "mochila"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "escolar"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "caneta"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "detectora"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "marmita"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "porta"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "tempero"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "maquina"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "assentar"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "conjunto"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "ferramentas"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "pistola"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "pintura"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "parafusadeira"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "furadeira"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "tesoura"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "alicate"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "luminária"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "leds"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "maquina"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "rosto"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "order": [
+          [
+            "MercadoProductsWeekly.orderCount1m",
+            "desc"
+          ],
+          [
+            "MercadoProductsWeekly.id",
+            "asc"
+          ]
+        ],
+        "limit": 100
+      },
+      "columns": [
+        "id",
+        "productName",
+        "adPublishDate",
+        "date",
+        "productImage",
+        "merchantCategoryL1",
+        "catalogProduct",
+        "listingStatus",
+        "isFull",
+        "isFreeShipping",
+        "merchantName",
+        "listingType",
+        "buyBoxWiner",
+        "productId",
+        "brand",
+        "priceAmount",
+        "orderCount1m",
+        "orderCount1w",
+        "numBuyBoxSellers",
+        "reviewsCount",
+        "daysInAd",
+        "reviewsRating"
+      ],
+      "data": [
+        [
+          "MLB5022352653",
+          "Mochila Masculina Anti Furto Notebook Escolar Reforçada",
+          "2026-08-10T13:44:05.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_618757-MLB115037005704_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          true,
+          true,
+          "LKSCOMPANY STORE",
+          "gold_special",
+          true,
+          "MLB-5022352653",
+          null,
+          134.9,
+          968,
+          226,
+          1,
+          null,
+          31,
+          null
+        ],
+        [
+          "MLB7321306886",
+          "Higoogoo G40 35 Lampadas 20m Inquebrável Varal Luz De Corda",
+          "2026-08-04T04:27:48.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_718384-MLB111521028149_052026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "HIGOOGOO999",
+          "gold_special",
+          true,
+          "MLB-7321306886",
+          null,
+          159.99,
+          811,
+          189,
+          1,
+          604,
+          37,
+          5
+        ],
+        [
+          "MLB7321306888",
+          "Higoogoo G40 35 Lampadas 20m Inquebrável Varal Luz De Corda",
+          "2026-08-04T04:27:48.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_718384-MLB111521028149_052026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "HIGOOGOO999",
+          "gold_special",
+          true,
+          "MLB-7321306888",
+          null,
+          169.99,
+          811,
+          189,
+          1,
+          604,
+          37,
+          5
+        ],
+        [
+          "MLB7321307588",
+          "Higoogoo G40 55 Lampadas 30m Inquebrável Varal Luz De Corda",
+          "2026-08-04T06:07:21.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_758497-MLB111520998673_052026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "HIGOOGOO999",
+          "gold_special",
+          true,
+          "MLB-7321307588",
+          null,
+          219.99,
+          811,
+          189,
+          1,
+          479,
+          37,
+          5
+        ],
+        [
+          "MLB7321307590",
+          "Higoogoo G40 55 Lampadas 30m Inquebrável Varal Luz De Corda",
+          "2026-08-04T06:07:21.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_758497-MLB111520998673_052026-O-higoogoo-g40-55-lampadas-30m-inquebravel-varal-luz-de-corda.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "HIGOOGOO999",
+          "gold_special",
+          true,
+          "MLB-7321307590",
+          "HIGOOGOO",
+          239.99,
+          811,
+          189,
+          1,
+          478,
+          37,
+          4.9
+        ],
+        [
+          "MLB4976861531",
+          "Furadeira Parafusadeira C/ Impacto 20v 2 Bat + 300 Peças Amarelo/preto 50 Hz/60 Hz",
+          "2026-08-01T04:53:48.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_620679-MLA114089860916_082026-O.webp",
+          "Ferramentas",
+          true,
+          "active",
+          null,
+          true,
+          "ISMAFER-VILA GUILHERME",
+          "gold_special",
+          true,
+          "MLB76190433",
+          null,
+          242.49,
+          750,
+          175,
+          1,
+          379,
+          40,
+          4.5
+        ],
+        [
+          "MLB4688076273",
+          "Mochila Infantil Bolsa Menina Escolar Princesa Cor Rosa Desenho Do Tecido Liso",
+          "2026-09-05T02:06:36.124",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_795181-MLA105821844989_012026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          true,
+          true,
+          "UPDASVENDAS",
+          null,
+          true,
+          "MLB64953246",
+          "MC",
+          44.2,
+          500,
+          500,
+          1,
+          null,
+          5,
+          null
+        ],
+        [
+          "MLB4980898401",
+          "Adaptador Mandril Engate Rápido Para Furadeira Parafusadeira",
+          "2026-08-23T00:50:16.435",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_690813-MLB114125275746_082026-O.webp",
+          "Ferramentas",
+          true,
+          "active",
+          true,
+          true,
+          "JOYO_OFICIAL",
+          null,
+          true,
+          "MLB2089436631",
+          null,
+          21.9,
+          500,
+          194,
+          1,
+          null,
+          18,
+          null
+        ],
+        [
+          "MLB6792623514",
+          "Mochila Infantil Bolsa Menina Escolar Princesa Cor Lilás Desenho Do Tecido Liso",
+          "2026-09-05T02:06:36.124",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_683633-MLA105011423128_012026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          true,
+          true,
+          "UPDASVENDAS",
+          null,
+          true,
+          "MLB64852778",
+          "MC",
+          44.2,
+          500,
+          500,
+          1,
+          null,
+          5,
+          null
+        ],
+        [
+          "MLB7393001388",
+          "Parafusadeira 48v Furadeira Profissional 2 Baterias Bivolt",
+          "2026-08-12T06:50:02.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_874937-MLB116329516625_082026-O.webp",
+          "Ferramentas",
+          false,
+          "active",
+          null,
+          true,
+          "SOARFLYOUTDOORBR",
+          "gold_special",
+          true,
+          "MLB-7393001388",
+          "SOARFLY",
+          99.5,
+          500,
+          121,
+          1,
+          34,
+          29,
+          4.8
+        ],
+        [
+          "MLB7469337722",
+          "Kit 2 Caixas Organizadoras Grande Plástico Cesto Tampa 17lt",
+          "2026-08-20T17:30:25.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_613237-MLB97912123120_112025-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "IDEIA FACIL",
+          "gold_special",
+          true,
+          "MLB-7469337722",
+          "RAINHA",
+          158.3,
+          500,
+          167,
+          1,
+          303,
+          21,
+          4.9
+        ],
+        [
+          "MLB7472877392",
+          "Porta Temperos Condimentos Giratório 360° 12 Potes De Vidro Dosador Preto Organizador Cozinha Bancada Mesa Redondo Premium Orvell",
+          "2026-08-20T16:12:36.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_817076-MLA115102478746_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "ORVELL",
+          "gold_special",
+          true,
+          "MLB77844671",
+          "ORVELL",
+          37.99,
+          500,
+          167,
+          1,
+          61,
+          21,
+          4.9
+        ],
+        [
+          "MLB7520875028",
+          "Kit 4 Caixas Organizadoras 1,5l Transparente Tampa E Trava Transparente Liso",
+          "2026-08-14T21:57:08.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_803929-MLA114830517632_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "PLDECOR",
+          null,
+          true,
+          "MLB77351298",
+          null,
+          99.99,
+          500,
+          130,
+          1,
+          null,
+          27,
+          null
+        ],
+        [
+          "MLB7524313224",
+          "Higoogoo G40 55 Lampadas 30m Inquebrável Varal Luz De Corda",
+          "2026-08-27T02:13:04.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_887189-MLB110527797567_042026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "AECBDAFGH33510",
+          "gold_special",
+          true,
+          "MLB-7524313224",
+          null,
+          218.99,
+          500,
+          250,
+          1,
+          41,
+          14,
+          5
+        ],
+        [
+          "MLB7579296238",
+          "Bolsa Lancheira Caixa Térmica Pra Marmita Mantém Temperatura Cor Roxo",
+          "2026-09-02T14:42:26.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_782484-MLA115635057854_092026-E.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          null,
+          true,
+          "BILLION_ECOMMERCE",
+          "gold_special",
+          true,
+          "MLB78827379",
+          null,
+          23.9,
+          500,
+          438,
+          1,
+          2893,
+          8,
+          4.8
+        ],
+        [
+          "MLB7367244736",
+          "Mochila Masculina 35l Aço Notebook 17 Grande Escolar Preta",
+          "2026-08-08T01:39:13.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_602069-MLA115791602395_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          true,
+          true,
+          "DIGIMIXLOJA",
+          "gold_special",
+          true,
+          "MLB76541620",
+          null,
+          89.98,
+          455,
+          106,
+          1,
+          43,
+          33,
+          4
+        ],
+        [
+          "MLB5009968555",
+          "Pulverizador De Tinta Pistola Pintura Elétrico 500w 2.5mm 1l",
+          "2026-08-07T03:09:51.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_996229-MLB115117263998_082026-O.webp",
+          "Ferramentas",
+          false,
+          "active",
+          true,
+          true,
+          "BDCEAFHGB33199",
+          "gold_special",
+          true,
+          "MLB-5009968555",
+          "GENERICA",
+          130.4,
+          441,
+          103,
+          1,
+          66,
+          34,
+          4.8
+        ],
+        [
+          "MLB5039319969",
+          "Pistola De Pintura Pulverizadora Hvlp Portátil 1.1l 650w Amarelo/preto",
+          "2026-08-11T12:51:52.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_721679-MLA115431160184_082026-O.webp",
+          "Ferramentas",
+          true,
+          "active",
+          null,
+          true,
+          "NI20260702174052",
+          "gold_special",
+          true,
+          "MLB77228578",
+          "AWESHINE",
+          198.93,
+          100,
+          23,
+          2,
+          1,
+          30,
+          4.9
+        ],
+        [
+          "MLB5046969603",
+          "Pote Térmico Inox Infantil Papinha Sopa Marmita Com Tampa",
+          "2026-08-12T14:28:58.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_947277-MLB116027932837_082026-O.webp",
+          "Bebês",
+          false,
+          "active",
+          null,
+          true,
+          "CHIC ELETRONICA",
+          "gold_special",
+          true,
+          "MLB-5046969603",
+          null,
+          26.59,
+          100,
+          24,
+          1,
+          2,
+          29,
+          5
+        ],
+        [
+          "MLB5047269703",
+          "Kit 3 Potes Vidro 1040ml Hermético Marmita Forno Refratário",
+          "2026-08-12T15:36:14.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_929920-MLB114688640112_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "ROSSICO",
+          "gold_special",
+          true,
+          "MLB-5047269703",
+          null,
+          52.99,
+          100,
+          24,
+          1,
+          11,
+          29,
+          5
+        ],
+        [
+          "MLB5047332813",
+          "Kit 4 Potes Vidro 1040ml Hermético Marmita Forno Refratário",
+          "2026-08-12T15:40:14.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_970258-MLB114700904778_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "ROSSICO",
+          "gold_special",
+          true,
+          "MLB-5047332813",
+          "PITIA",
+          73.99,
+          100,
+          24,
+          1,
+          12,
+          29,
+          5
+        ],
+        [
+          "MLB5055815347",
+          "Kit-(1) Perler Hama Beads+conjunto De Ferramentas+ferro",
+          "2026-08-13T16:59:48.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_920047-MLB114754322262_082026-O.webp",
+          "Brinquedos e Hobbies",
+          false,
+          "active",
+          null,
+          true,
+          "MAOMAO20230808102150",
+          "gold_pro",
+          true,
+          "MLB-5055815347",
+          null,
+          85.49,
+          100,
+          25,
+          1,
+          7,
+          28,
+          5
+        ],
+        [
+          "MLB5057088311",
+          "Kit 22 Acessórios Xiaomi Robô S40 S40c H40 Aspirador Mops E Scova",
+          "2026-08-13T01:06:19.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_635176-MLA116069176575_082026-O.webp",
+          "Eletrodomésticos",
+          true,
+          "active",
+          true,
+          true,
+          "CAEBCHDGF4302",
+          "gold_pro",
+          true,
+          "MLB77190411",
+          "WLN",
+          188.05,
+          100,
+          25,
+          1,
+          2,
+          28,
+          5
+        ],
+        [
+          "MLB5062890891",
+          "Porta Temperos Condimentos Inox Kit 12 Unidades Potes Vidro Base Giratório 360 Preto Organizador Cozinha Dosador",
+          "2026-08-14T19:19:06.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_604713-MLA115268109806_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "UTENSILIZE",
+          "gold_special",
+          true,
+          "MLB77336317",
+          null,
+          59.17,
+          100,
+          26,
+          1,
+          null,
+          27,
+          null
+        ],
+        [
+          "MLB5068357311",
+          "Mochila Escolar Feminina Juvenil Bolsa 180° Grande Abertura Cor Bege",
+          "2026-08-14T22:16:41.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_643545-MLA114831258440_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          true,
+          true,
+          "UNICOSHOP",
+          "gold_special",
+          true,
+          "MLB77353754",
+          null,
+          73.5,
+          100,
+          26,
+          1,
+          395,
+          27,
+          4.9
+        ],
+        [
+          "MLB5070400159",
+          "Pote Descartável 500ml Freezer Microondas Marmita 24un",
+          "2026-08-15T21:13:38.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_964753-MLA116249513397_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "MARCULINOECOMERS1",
+          "gold_pro",
+          true,
+          "MLB-5070400159",
+          null,
+          29,
+          100,
+          27,
+          1,
+          6,
+          26,
+          5
+        ],
+        [
+          "MLB5074863695",
+          "Corda De Varal Reforçada E Resistente Aço Revestido Pvc",
+          "2026-08-16T16:54:23.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_977514-MLB109451181422_042026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "SHIFT_FULL",
+          "gold_special",
+          true,
+          "MLB-5074863695",
+          null,
+          10.99,
+          100,
+          28,
+          1,
+          18,
+          25,
+          5
+        ],
+        [
+          "MLB5075157911",
+          "Lancheira Térmica Média Techfun Preta com Alça Removível para Marmita e Bebidas",
+          "2026-08-16T17:10:16.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_808510-MLA116278574929_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          null,
+          true,
+          "ADSJJJDDSAERE",
+          "gold_special",
+          true,
+          "MLB77480084",
+          null,
+          29.94,
+          100,
+          28,
+          1,
+          null,
+          25,
+          null
+        ],
+        [
+          "MLB5075782283",
+          "Kit Escolar Infantil Yupe 3 em 1 com Mochila de Rodinhas Azul, Lancheira e Estojo com Estampa de Lhama",
+          "2026-08-17T07:15:44.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_651566-MLA116294989517_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          null,
+          true,
+          "YUPE_STORE",
+          "gold_special",
+          true,
+          "MLB77504006",
+          null,
+          246,
+          100,
+          29,
+          1,
+          1,
+          24,
+          5
+        ],
+        [
+          "MLB5082795235",
+          "Parafusadeira Furadeira de Impacto Brushless Sem Fio 21V 10mm com 2 Baterias, Bolsa e Acessórios ATVERCE CORE-BRD01",
+          "2026-08-11T15:31:59.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_820839-MLA115951097811_082026-E.webp",
+          "Ferramentas",
+          true,
+          "active",
+          true,
+          true,
+          "TO20260129141208",
+          "gold_special",
+          true,
+          "MLB76786610",
+          "ATVERCE",
+          215.62,
+          100,
+          23,
+          1,
+          27,
+          30,
+          5
+        ],
+        [
+          "MLB5094415135",
+          "Lixadeira Politriz 2 em 1 Automotiva Multifunções Profissional 5000rpm Com Mandril 5 Polegadas Furadeira Parafusadeira",
+          "2026-08-17T20:26:24.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_880504-MLA116669203951_082026-O.webp",
+          "Ferramentas",
+          true,
+          "active",
+          null,
+          true,
+          "NEXCOMMERCE",
+          "gold_special",
+          true,
+          "MLB77537345",
+          "ALINEA",
+          119.98,
+          100,
+          29,
+          1,
+          null,
+          24,
+          null
+        ],
+        [
+          "MLB5094578149",
+          "Lixadeira Politriz Automotiva Multifunções Profissional 5000rpm Com Mandril 5 Polegadas Furadeira Parafusadeira",
+          "2026-08-17T20:26:25.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_971672-MLA116669500833_082026-O.webp",
+          "Ferramentas",
+          true,
+          "active",
+          null,
+          true,
+          "NEXCOMMERCE",
+          "gold_special",
+          true,
+          "MLB77537349",
+          null,
+          119.98,
+          100,
+          29,
+          1,
+          null,
+          24,
+          null
+        ],
+        [
+          "MLB5099166001",
+          "Pote Térmico Inox Infantil Papinha Sopa Marmita Com Tampa Azul",
+          "2026-08-14T23:52:05.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_962651-MLA116206621883_082026-E.webp",
+          "Bebês",
+          true,
+          "active",
+          null,
+          true,
+          "JY20250527114818",
+          "gold_pro",
+          true,
+          "MLB77365792",
+          "CHICSHINE",
+          31.99,
+          100,
+          26,
+          3,
+          2,
+          27,
+          5
+        ],
+        [
+          "MLB5107721681",
+          "Parafusadeira Furadeira Impacto Brushless Sem Fio 2 Baterias The Black Tools Com Kit Brocas Bits Soquetes 68 Peças Bosch",
+          "2026-08-21T15:48:26.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_990572-MLA115146870070_082026-O.webp",
+          "Ferramentas",
+          true,
+          "active",
+          null,
+          true,
+          "THE_BLACK_TOOLS_",
+          "gold_special",
+          true,
+          "MLB77974421",
+          null,
+          387.9,
+          100,
+          35,
+          2,
+          8,
+          20,
+          5
+        ],
+        [
+          "MLB5109876085",
+          "Kit 2 Baterias 21v 48vh P/ Parafusadeira Furadeira",
+          "2026-08-22T02:42:14.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_884198-MLB115163421552_082026-O.webp",
+          "Ferramentas",
+          false,
+          "active",
+          null,
+          true,
+          "HF20260427131615",
+          "gold_special",
+          true,
+          "MLB-5109876085",
+          null,
+          59.75,
+          100,
+          37,
+          1,
+          5,
+          19,
+          5
+        ],
+        [
+          "MLB5113139515",
+          "Luminária LED Aquário Plantado Newpet 35-55cm 53 LEDs Espectro Total Timer Memória 10 Níveis Brilho USB (Requer 5V/2A) Suporte Extensível",
+          "2026-08-21T10:45:44.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_849534-MLA116533649795_082026-E.webp",
+          "Pet Shop",
+          true,
+          "active",
+          null,
+          true,
+          "VE20250611082416",
+          "gold_special",
+          true,
+          "MLB77955490",
+          "NEWPET",
+          62.28,
+          100,
+          35,
+          1,
+          42,
+          20,
+          5
+        ],
+        [
+          "MLB5113139987",
+          "Luminária Aquário Plantado LED Newpet 50-70cm 88 LEDs Espectro Total Timer Função Memória 10 Níveis Brilho USB (Requer 5V/2A) Extensível",
+          "2026-08-21T10:45:45.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_993647-MLA115137631144_082026-E.webp",
+          "Pet Shop",
+          true,
+          "active",
+          null,
+          true,
+          "VE20250611082416",
+          null,
+          true,
+          "MLB77955491",
+          "NEWPET",
+          69.46,
+          100,
+          35,
+          1,
+          null,
+          20,
+          null
+        ],
+        [
+          "MLB5113190195",
+          "Luminária LED Para Aquário Plantado Newpet 60-87cm 118 LEDs Espectro Total Timer 10 Níveis Brilho Memória USB (Requer 5V/3A) Extensível",
+          "2026-08-21T10:45:46.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_991013-MLA116533443017_082026-O.webp",
+          "Pet Shop",
+          true,
+          "active",
+          true,
+          true,
+          "VE20250611082416",
+          null,
+          true,
+          "MLB77955492",
+          "NEWPET",
+          78.61,
+          100,
+          35,
+          1,
+          null,
+          20,
+          null
+        ],
+        [
+          "MLB5114521261",
+          "200un Marmita Pote Comida Congelada Freezer/microondas 750ml Branco",
+          "2026-08-20T18:38:03.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_867740-MLA116500233025_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "ABC EMBALAGENS",
+          "gold_special",
+          true,
+          "MLB77865935",
+          "STARPACK",
+          347,
+          100,
+          33,
+          1,
+          null,
+          21,
+          null
+        ],
+        [
+          "MLB5117007133",
+          "Marmita Prafesta Marmitex Retangular 500ml Caixa Com 144un. Transparente",
+          "2026-08-14T22:39:42.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_626408-MLA114831915826_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "MONTE FRESH",
+          "gold_special",
+          true,
+          "MLB77356645",
+          null,
+          177.51,
+          100,
+          26,
+          1,
+          465,
+          27,
+          4.9
+        ],
+        [
+          "MLB5117096305",
+          "Marmita Térmica Em Alumínio Com Isopor E Capa Em Tnt Pq N14 Cinza",
+          "2026-08-13T23:32:15.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_707363-MLA114773541862_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "ALUMINIOSMARANA MARALAR",
+          "gold_special",
+          true,
+          "MLB77302657",
+          "MARANA",
+          42.77,
+          100,
+          25,
+          1,
+          31,
+          28,
+          4.8
+        ],
+        [
+          "MLB5121741113",
+          "Pinça Pinção Gancho Cobras Serpentes Pegador 1.5m Inox Com luvas e saco para cobras",
+          "2026-08-24T09:10:34.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_769528-MLA115238954056_082026-O.webp",
+          "Pet Shop",
+          true,
+          "active",
+          true,
+          true,
+          "NATURALSMILESHOP",
+          null,
+          true,
+          "MLB78181742",
+          null,
+          129.99,
+          100,
+          41,
+          1,
+          null,
+          17,
+          null
+        ],
+        [
+          "MLB5131488893",
+          "Kit 10 Caixas Plásticas De 5l Multiuso Organizadoras De Casa Transparente",
+          "2026-08-13T15:29:51.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_992725-MLA114750354352_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "BLUEPACKING",
+          "gold_special",
+          true,
+          "MLB77246391",
+          null,
+          182.75,
+          100,
+          25,
+          1,
+          16,
+          28,
+          5
+        ],
+        [
+          "MLB5132547145",
+          "Kit 2 Toalhas Artesanalle Dohler Banho+rosto Pintura/maquina Lilás",
+          "2026-08-14T23:18:31.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_891474-MLA114832762630_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "MIAVIBE",
+          "gold_special",
+          true,
+          "MLB77361644",
+          "DOHLER",
+          68.99,
+          100,
+          26,
+          3,
+          427,
+          27,
+          4.9
+        ],
+        [
+          "MLB5132550069",
+          "Varal De Luzes Cordao Festao 5m Lamps Cada 50cm Prova D'agua Preto",
+          "2026-08-14T20:55:53.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_918766-MLA114828596552_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "LUCCIOLAR",
+          null,
+          true,
+          "MLB77342923",
+          null,
+          109.8,
+          100,
+          26,
+          1,
+          null,
+          27,
+          null
+        ],
+        [
+          "MLB5132731185",
+          "Tesoura Poda Galhos Alicate Profissional Com Trava Lâmina Curva Aço Inox Corte Bypass Para Jardinagem Árvores Ramos Folhas Podas Precisas",
+          "2026-08-25T17:50:21.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_819087-MLA115305033010_082026-E.webp",
+          "Ferramentas",
+          true,
+          "active",
+          null,
+          true,
+          "JBA_VENDAS",
+          "gold_special",
+          true,
+          "MLB78298866",
+          null,
+          22.99,
+          100,
+          44,
+          1,
+          69,
+          16,
+          4.9
+        ],
+        [
+          "MLB5137758617",
+          "Pote Descartável 500ml Freezer Microondas Marmita - 48 Un. Transparente",
+          "2026-08-14T22:53:02.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_697981-MLA116204864063_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "CONEXAO_2M",
+          "gold_special",
+          true,
+          "MLB77358414",
+          "CONEXAO2M",
+          52.15,
+          100,
+          26,
+          1,
+          60,
+          27,
+          4.8
+        ],
+        [
+          "MLB5138871307",
+          "Tesoura De Cozinha Cortar Alimentos Multifuncional Faca",
+          "2026-08-26T15:07:14.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_755155-MLB116760777565_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "PAVINSHOP",
+          "gold_special",
+          true,
+          "MLB-5138871307",
+          null,
+          28.4,
+          100,
+          47,
+          1,
+          138,
+          15,
+          5
+        ],
+        [
+          "MLB5144701863",
+          "Marmita Termica Vikterm 1 Litro Livre De Bpa Tampa De Rosca Verde-claro",
+          "2026-08-15T08:33:51.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_727617-MLA114851943050_082026-O.webp",
+          "Bebês",
+          true,
+          "active",
+          null,
+          true,
+          "3L DISTRIBUIDORA",
+          "gold_special",
+          true,
+          "MLB77419427",
+          null,
+          49.95,
+          100,
+          27,
+          3,
+          174,
+          26,
+          4.4
+        ],
+        [
+          "MLB5167286807",
+          "Mochila Feminina Escolar Passe Grande Capacidade Impermeável",
+          "2026-08-31T14:51:53.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_620531-MLB116977382111_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          null,
+          true,
+          "GUVIVICOMERCIO",
+          "gold_special",
+          true,
+          "MLB-5167286807",
+          null,
+          69.99,
+          100,
+          70,
+          1,
+          84,
+          10,
+          4.8
+        ],
+        [
+          "MLB5171679145",
+          "Conjunto de ferramentas Bosch X-line de 103 peças",
+          "2026-08-31T18:20:35.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_600963-MLA115547354192_082026-E.webp",
+          "Ferramentas",
+          true,
+          "active",
+          null,
+          true,
+          "CABE_FERRAMENTAS",
+          "gold_pro",
+          true,
+          "MLB78719866",
+          null,
+          426.55,
+          100,
+          70,
+          2,
+          125,
+          10,
+          4.8
+        ],
+        [
+          "MLB5173611971",
+          "Marmita Fitness Pequena 1 Litro Com Tampa De Rosca Quentinha Cor Mamita Cinza Claro Com Faixa Azul",
+          "2026-08-12T20:33:23.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_653455-MLA116052822441_082026-O.webp",
+          "Bebês",
+          true,
+          "active",
+          null,
+          true,
+          "EMOVESHOP",
+          null,
+          true,
+          "MLB77169482",
+          null,
+          38.99,
+          100,
+          24,
+          3,
+          174,
+          29,
+          4.4
+        ],
+        [
+          "MLB5174484839",
+          "Kit 2 Caixas Organizadoras Multiuso Preta C/ Tampa 25 Litros Preto Lisa",
+          "2026-08-13T20:13:12.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_712452-MLA114764936216_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "UTILTOP",
+          "gold_special",
+          true,
+          "MLB77277760",
+          null,
+          71.01,
+          100,
+          25,
+          1,
+          null,
+          28,
+          null
+        ],
+        [
+          "MLB5175604221",
+          "Kit Bolsa Térmica, Pote Marmita 950ml, Garrafa Porta Talher Verde",
+          "2026-09-06T03:37:34.986",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_941744-MLA115611649946_092026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          null,
+          true,
+          "CHICCHARMLTDA",
+          null,
+          true,
+          "MLB78806362",
+          null,
+          142.41,
+          100,
+          100,
+          1,
+          null,
+          4,
+          null
+        ],
+        [
+          "MLB5179060335",
+          "Marmita Com Divisória Interna 1250ml Hermética Bpa Free Transparente",
+          "2026-08-13T14:29:30.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_845415-MLA116116230919_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "CAPPEX",
+          "gold_special",
+          true,
+          "MLB77241297",
+          null,
+          21.24,
+          100,
+          25,
+          4,
+          12,
+          28,
+          4.8
+        ],
+        [
+          "MLB5180167409",
+          "Ezreal Furadeira Parafusadeira Chaves De Impacto Bateria - Vermelho - - 60 Hz",
+          "2026-09-01T12:52:33.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_801165-MLA117022328403_092026-O.webp",
+          "Ferramentas",
+          true,
+          "active",
+          null,
+          true,
+          "KUAFUSOL",
+          "gold_special",
+          true,
+          "MLB78769943",
+          null,
+          248.9,
+          100,
+          78,
+          2,
+          2,
+          9,
+          5
+        ],
+        [
+          "MLB5192078093",
+          "Kit Furadeira Parafusadeira Impacto Sem Fio 2 Baterias 21v",
+          "2026-09-05T17:35:46.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_693012-MLA116719189979_082026-O.webp",
+          "Ferramentas",
+          true,
+          "active",
+          null,
+          false,
+          "ACHADOS_MIX",
+          "gold_pro",
+          true,
+          "MLB78315099",
+          null,
+          263.62,
+          100,
+          100,
+          1,
+          null,
+          5,
+          null
+        ],
+        [
+          "MLB7389202346",
+          "Pote Marmita 500ml 24un Freezer Microondas Fitness Saúde",
+          "2026-08-11T16:01:33.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_942177-MLB114591428012_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "CITIESTOGO",
+          "gold_special",
+          true,
+          "MLB-7389202346",
+          "CITIESTOGO",
+          27.06,
+          100,
+          23,
+          1,
+          15,
+          30,
+          5
+        ],
+        [
+          "MLB7391088422",
+          "Kit 12 Pçs Pote Porta Temperos Acrílico 170ml Hermético",
+          "2026-08-12T11:32:03.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_790115-MLB112501344444_062026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "TATASHOP.VARIEDADES",
+          "gold_special",
+          true,
+          "MLB-7391088422",
+          null,
+          95.9,
+          100,
+          24,
+          1,
+          112,
+          29,
+          5
+        ],
+        [
+          "MLB7391821134",
+          "Mochila Notebook Impermeavel Escolar Reforçada Portátil",
+          "2026-08-12T03:47:15.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_868438-MLB114711829236_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          null,
+          true,
+          "CM20251117153747",
+          "gold_special",
+          true,
+          "MLB-7391821134",
+          null,
+          39.58,
+          100,
+          24,
+          1,
+          null,
+          29,
+          null
+        ],
+        [
+          "MLB7397620488",
+          "Kit 2 Potes Vidro 1040ml Hermético Marmita Forno Refratário",
+          "2026-08-12T15:21:57.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_757368-MLB116049318881_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "ROSSICO",
+          "gold_special",
+          true,
+          "MLB-7397620488",
+          null,
+          40.99,
+          100,
+          24,
+          1,
+          7,
+          29,
+          5
+        ],
+        [
+          "MLB7398643156",
+          "Marmita Hermética Com Talheres Em Plástico Azul 850ml - Lyor Azul",
+          "2026-08-12T07:06:37.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_742100-MLA114638467000_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "REALATACADISTA",
+          "gold_special",
+          true,
+          "MLB77028033",
+          "LYOR",
+          14.9,
+          100,
+          24,
+          1,
+          135,
+          29,
+          4.9
+        ],
+        [
+          "MLB7400978508",
+          "Adaptador Serra Tico Tico 3/8 para Furadeira e Parafusadeira com 5 Lâminas para Madeira MDF Compensado Acessório de Corte para Reparos Marcenaria e Projetos DIY",
+          "2026-08-13T00:46:33.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_658656-MLA114708080100_082026-O.webp",
+          "Ferramentas",
+          true,
+          "active",
+          false,
+          true,
+          "ALVEMIX",
+          "gold_pro",
+          true,
+          "MLB77189899",
+          null,
+          24,
+          100,
+          25,
+          1,
+          null,
+          28,
+          null
+        ],
+        [
+          "MLB7412321636",
+          "Pote Marmita Lancheira Dupla C/ 4 Divisorias Escola Academia",
+          "2026-08-14T18:57:24.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_713716-MLB80122939594_112024-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "LS-EMPREENDIMENTOS",
+          "gold_special",
+          true,
+          "MLB-7412321636",
+          null,
+          22.9,
+          100,
+          26,
+          1,
+          14,
+          27,
+          5
+        ],
+        [
+          "MLB7416740234",
+          "Kit 2 Caixas Organizadoras Tecido Tampa Guarda-roupa Closet",
+          "2026-08-14T12:11:53.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_648559-MLB106631234906_022026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "STUDIOGMIX",
+          "gold_special",
+          true,
+          "MLB-7416740234",
+          null,
+          29.68,
+          100,
+          26,
+          1,
+          136,
+          27,
+          4
+        ],
+        [
+          "MLB7431395084",
+          "Kit 2 Bolsa Térmica Marmita Trabalho Escola Academia",
+          "2026-08-16T16:23:34.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_856071-MLB116319454325_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          null,
+          true,
+          "ADSJJJDDSAERE",
+          "gold_special",
+          true,
+          "MLB-7431395084",
+          null,
+          19.9,
+          100,
+          28,
+          1,
+          20,
+          25,
+          4.9
+        ],
+        [
+          "MLB7441392818",
+          "Nebulizador Inalador Portátil Usb Silencioso",
+          "2026-08-18T01:36:54.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_752965-MLB114433250087_072026-O.webp",
+          "Saúde",
+          false,
+          "active",
+          true,
+          true,
+          "MULTISETUTILIDADES",
+          "gold_special",
+          true,
+          "MLB-7441392818",
+          null,
+          29.2,
+          100,
+          30,
+          1,
+          4,
+          23,
+          5
+        ],
+        [
+          "MLB7448197970",
+          "Mochila Feminina Escolar Grande Estilosa Viagem E Trabalho",
+          "2026-08-18T18:08:48.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_782662-MLB111646540761_052026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          true,
+          true,
+          "ORIGINALTNIS",
+          "gold_special",
+          true,
+          "MLB-7448197970",
+          null,
+          62.88,
+          100,
+          30,
+          1,
+          42,
+          23,
+          5
+        ],
+        [
+          "MLB7450030830",
+          "Porta Temperos Giratório Giratorio Preto",
+          "2026-08-11T22:33:53.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_669838-MLA114611947490_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "VARIEDADESAZEVEDO",
+          "gold_special",
+          true,
+          "MLB76862210",
+          null,
+          37.99,
+          100,
+          23,
+          1,
+          106,
+          30,
+          4.9
+        ],
+        [
+          "MLB7469337694",
+          "Kit 2 Caixas Organizadoras Grande Plástico Cesto Tampa 17lt",
+          "2026-08-20T17:30:11.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_917158-MLB98381192471_112025-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "IDEIA FACIL",
+          "gold_pro",
+          true,
+          "MLB-7469337694",
+          null,
+          186.74,
+          100,
+          33,
+          1,
+          77,
+          21,
+          5
+        ],
+        [
+          "MLB7469337708",
+          "Kit 3 Caixas Cestos Organizadoras Rattan Baixa 11l C/ Tampa",
+          "2026-08-20T17:30:28.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_787462-MLB97348706765_112025-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "IDEIA FACIL",
+          "gold_special",
+          true,
+          "MLB-7469337708",
+          null,
+          158.41,
+          100,
+          33,
+          1,
+          129,
+          21,
+          5
+        ],
+        [
+          "MLB7472429772",
+          "Bomba de Sucção Manual para Retirar Oleo Transferência de Gasolina Etanol Tanque Agua Aquario Mangueira Gurumania",
+          "2026-08-11T14:30:41.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_683379-MLA114936389944_082026-O.webp",
+          "Acessórios para Veículos",
+          true,
+          "active",
+          null,
+          true,
+          "DNCOMERCIODIVS",
+          "gold_special",
+          true,
+          "MLB76780156",
+          null,
+          20.99,
+          100,
+          23,
+          1,
+          null,
+          30,
+          null
+        ],
+        [
+          "MLB7473028908",
+          "Pistola de Pintura Elétrica 1650W HVLP CAKILA Reservatório de 1400ml",
+          "2026-08-20T04:11:30.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_648019-MLA116465263735_082026-E.webp",
+          "Ferramentas",
+          true,
+          "active",
+          null,
+          false,
+          "BFGBECDAH8674",
+          null,
+          true,
+          "MLB77808709",
+          null,
+          259.99,
+          100,
+          33,
+          2,
+          null,
+          21,
+          null
+        ],
+        [
+          "MLB7479172074",
+          "Kit 2 Caixas Organizadoras Rattan 7 Litros C/ Tampa Preta Preto Rattan Lisa",
+          "2026-08-21T18:21:12.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_738084-MLA115151380484_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "MULTTECHSP",
+          "gold_special",
+          true,
+          "MLB78000649",
+          null,
+          23.99,
+          100,
+          35,
+          1,
+          null,
+          20,
+          null
+        ],
+        [
+          "MLB7486176238",
+          "Porta Temperos Condimentos 12 Unidades Potes Vidro Base Giratória Preto Organizador Cozinha Dosador",
+          "2026-08-21T19:51:46.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_624347-MLA115154342716_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "DELIVERYIMPORTS",
+          null,
+          true,
+          "MLB78016542",
+          "LUMANARE",
+          37.99,
+          100,
+          35,
+          1,
+          null,
+          20,
+          null
+        ],
+        [
+          "MLB7496099222",
+          "Kit Mochila Infantil Escolar Feminina Yupe Com Lancheira E Estojo, Mochila Para Menina Grande Capacidade Volta As Aulas",
+          "2026-08-24T06:33:33.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_694721-MLA115232225942_082026-E.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          null,
+          true,
+          "YUPE_STORE",
+          "gold_special",
+          true,
+          "MLB78180348",
+          null,
+          359.96,
+          100,
+          41,
+          1,
+          null,
+          17,
+          null
+        ],
+        [
+          "MLB7499829878",
+          "Kit 20 Pote Marmita Fitness Descartável 350ml Freezer Branco",
+          "2026-08-24T15:15:55.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_851363-MLA115253236596_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "JOILSONSOLIVEIRA06",
+          "gold_special",
+          true,
+          "MLB78184733",
+          null,
+          23.7,
+          100,
+          41,
+          1,
+          null,
+          17,
+          null
+        ],
+        [
+          "MLB7511285706",
+          "Kit 12 Potes Vidro Marmita Hermético 640ml Freezer Fitness Azul",
+          "2026-08-25T16:38:27.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_909460-MLA116710873201_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "U4HOME",
+          "gold_special",
+          true,
+          "MLB78292271",
+          null,
+          119.84,
+          100,
+          44,
+          1,
+          1098,
+          16,
+          4.9
+        ],
+        [
+          "MLB7511295430",
+          "Kit 2 Toalhas Artesanalle Dohler Banho+rosto Pintura/maquina Verde-claro",
+          "2026-08-15T04:38:23.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_875959-MLA114842944668_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "MIAVIBE",
+          "gold_special",
+          true,
+          "MLB77393912",
+          "DOHLER",
+          68.99,
+          100,
+          27,
+          3,
+          427,
+          26,
+          4.9
+        ],
+        [
+          "MLB7512544334",
+          "Kit 2 Toalhas Artesanalle Dohler Banho+rosto Pintura/maquina Marfim",
+          "2026-08-14T20:38:08.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_773395-MLA114828082554_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "ARI ENXOVAIS",
+          "gold_special",
+          true,
+          "MLB77340442",
+          "DOHLER",
+          74.95,
+          100,
+          26,
+          1,
+          420,
+          27,
+          4.9
+        ],
+        [
+          "MLB7512544376",
+          "Kit 2 Toalhas Artesanalle Dohler Banho+rosto Pintura/maquina Terracota",
+          "2026-08-15T00:51:49.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_838480-MLA116207835315_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "ARI ENXOVAIS",
+          "gold_special",
+          true,
+          "MLB77372462",
+          "DOHLER",
+          74.95,
+          100,
+          27,
+          2,
+          427,
+          26,
+          4.9
+        ],
+        [
+          "MLB7512708222",
+          "Kit 2 Toalhas Artesanalle Dohler Banho+rosto Pintura/maquina Rosa Bebê",
+          "2026-08-15T07:03:38.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_825180-MLA114848266802_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "ARI ENXOVAIS",
+          "gold_special",
+          true,
+          "MLB77410395",
+          "DOHLER",
+          74.95,
+          100,
+          27,
+          2,
+          420,
+          26,
+          4.9
+        ],
+        [
+          "MLB7514256862",
+          "Bolsa Térmica Lancheira Marmita Academia E Passeios Rosa",
+          "2026-08-14T21:52:29.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_634215-MLA116203503165_082026-E.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          null,
+          true,
+          "VMCOMERCIAL",
+          null,
+          true,
+          "MLB77350756",
+          null,
+          15.99,
+          100,
+          26,
+          1,
+          null,
+          27,
+          null
+        ],
+        [
+          "MLB7517808096",
+          "Pistola Pintura Pulverizadora Compressor De Tinta 800ml Azul",
+          "2026-08-12T17:16:42.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_908064-MLA114675499912_082026-E.webp",
+          "Ferramentas",
+          true,
+          "active",
+          null,
+          true,
+          "PR20250929122215",
+          "gold_special",
+          true,
+          "MLB77130652",
+          null,
+          161.49,
+          100,
+          24,
+          2,
+          1,
+          29,
+          5
+        ],
+        [
+          "MLB7541527806",
+          "Kit 25 Guarnições Da Tampa Para Pistola De Pintura Arprex",
+          "2026-08-28T16:41:28.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_831143-MLB115441924942_082026-E.webp",
+          "Ferramentas",
+          true,
+          "active",
+          null,
+          true,
+          "RODRIGODEFREITASGANDOLFI",
+          "gold_special",
+          true,
+          "MLB2098370951",
+          null,
+          219.9,
+          100,
+          54,
+          1,
+          null,
+          13,
+          null
+        ],
+        [
+          "MLB7541535630",
+          "Robô Aspirador De Pó Inteligente 3 Em 1 Cm Sensor Passa Pano",
+          "2026-08-28T16:52:03.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_884362-MLB114804498405_072026-O.webp",
+          "Eletrodomésticos",
+          false,
+          "active",
+          null,
+          true,
+          "EPRA_CASA",
+          "gold_special",
+          true,
+          "MLB-7541535630",
+          null,
+          57.42,
+          100,
+          54,
+          1,
+          22,
+          13,
+          4
+        ],
+        [
+          "MLB7570737604",
+          "Mochila Feminina Escolar Reforçada Notebook Juvenil Viagem",
+          "2026-09-01T15:44:49.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_728410-MLB73755908581_012024-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          null,
+          true,
+          "STYLEBRAND",
+          "gold_special",
+          true,
+          "MLB-7570737604",
+          null,
+          129.9,
+          100,
+          78,
+          1,
+          16,
+          9,
+          4
+        ],
+        [
+          "MLB7570737610",
+          "Mochila Reforçada Escolar Bolsa Yupe Moderna Juvenil",
+          "2026-09-01T15:44:56.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_862011-MLB73756145813_012024-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          null,
+          true,
+          "STYLEBRAND",
+          "gold_special",
+          true,
+          "MLB-7570737610",
+          null,
+          129.9,
+          100,
+          78,
+          1,
+          48,
+          9,
+          4
+        ],
+        [
+          "MLB7570739352",
+          "Lancheira Infantil Marmita Coruja C/ Colher Escola Trabalho",
+          "2026-09-01T19:19:10.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_944614-MLB114761808352_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          null,
+          true,
+          "ILOVENOVIDADES",
+          "gold_special",
+          true,
+          "MLB-7570739352",
+          "ILOVENOVIDADES",
+          26.12,
+          100,
+          78,
+          1,
+          25,
+          9,
+          4
+        ],
+        [
+          "MLB7571153264",
+          "Parafusadeira Furadeira De Impacto A Bateria Brushless 10mm Mandril Bivolt Com 2 Baterias",
+          "2026-08-19T08:07:20.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_708144-MLA115024212770_082026-O.webp",
+          "Ferramentas",
+          true,
+          "active",
+          null,
+          true,
+          "GGBO",
+          "gold_special",
+          true,
+          "MLB77689696",
+          "EZREAL",
+          398,
+          100,
+          32,
+          1,
+          47,
+          22,
+          4.7
+        ],
+        [
+          "MLB7575165202",
+          "Parafusadeira Furadeira Brushless S/fio 2 Baterias Azul-aço Azul-marinho 50/60",
+          "2026-08-13T23:20:09.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_814997-MLA114772913530_082026-O.webp",
+          "Ferramentas",
+          true,
+          "active",
+          true,
+          true,
+          "QUANXING",
+          "gold_special",
+          true,
+          "MLB77300124",
+          null,
+          176.74,
+          100,
+          25,
+          1,
+          null,
+          28,
+          null
+        ],
+        [
+          "MLB7581615714",
+          "Mochila Bolsa Feminina Escolar Notebook Reforçada Juvenil",
+          "2026-09-03T08:28:01.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_940903-MLB73611461352_122023-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          null,
+          true,
+          "STYLEBRAND",
+          "gold_special",
+          true,
+          "MLB-7581615714",
+          null,
+          109.9,
+          100,
+          100,
+          1,
+          203,
+          7,
+          5
+        ],
+        [
+          "MLB7585939158",
+          "Cute Buddies - Livro De Colorir",
+          "2026-09-05T08:20:22.019",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_674486-MLA116851720451_082026-O.webp",
+          "Livros, Revistas e Comics",
+          true,
+          "active",
+          null,
+          true,
+          "LIVRARIASSIS",
+          null,
+          true,
+          "MLB78654073",
+          null,
+          22.49,
+          100,
+          100,
+          1,
+          null,
+          5,
+          null
+        ],
+        [
+          "MLB7589401960",
+          "Pote 700ml Retangular Marmita Freezer Microondas Com 10 Uni",
+          "2026-09-04T14:23:41.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_878886-MLA116069526199_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "N.A DECORE",
+          "gold_special",
+          true,
+          "MLB77190354",
+          null,
+          31.43,
+          100,
+          100,
+          1,
+          null,
+          6,
+          null
+        ],
+        [
+          "MLB5169656747",
+          "Pistola de Pintura Elétrica HVLP CAKILA Sem Fio Com 2 Baterias Recarregáveis e Reservatório de 1400ml",
+          "2026-08-10T11:47:13.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_601428-MLA114724645760_082026-E.webp",
+          "Ferramentas",
+          true,
+          "active",
+          null,
+          true,
+          "FACBEDGFH95618",
+          "gold_special",
+          true,
+          "MLB76570472",
+          null,
+          276.44,
+          97,
+          23,
+          1,
+          12,
+          31,
+          4.5
+        ],
+        [
+          "MLB5021392865",
+          "Kit 2 Tesouras De Cozinha Preta We Varejo Multifuncional Para Cortar Osso Carne Frango Peixe Aço Inox Ergonomica 20cm Tesoura Panda Original",
+          "2026-08-08T14:38:25.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_918467-MLA114944044676_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "WEBELITTA",
+          "gold_special",
+          true,
+          "MLB76547217",
+          "WEVAREJO",
+          29.9,
+          91,
+          21,
+          1,
+          1559,
+          33,
+          4.7
+        ],
+        [
+          "MLB7366920310",
+          "Bolsa Térmica Infantil Lancheira Escolar Marmita C/ Alça",
+          "2026-08-08T22:53:44.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_802557-MLA114473356106_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          null,
+          true,
+          "FB20240917122915",
+          "gold_special",
+          true,
+          "MLB-7366920310",
+          null,
+          21.99,
+          91,
+          21,
+          1,
+          4,
+          33,
+          5
+        ],
+        [
+          "MLB5011877127",
+          "kit 54 de ferramentas manuais completo para impressao 3d acabamento acessorios alicate multifuncional pinça mini pequeno multi uso conjunto novas domesticas tools",
+          "2026-08-07T10:52:24.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_874556-MLA114443168312_082026-E.webp",
+          "Ferramentas",
+          true,
+          "active",
+          true,
+          true,
+          "EFEGHBADC27062",
+          "gold_pro",
+          true,
+          "MLB76517616",
+          "TIVUI",
+          150.55,
+          88,
+          21,
+          1,
+          null,
+          34,
+          null
+        ],
+        [
+          "MLB7351678434",
+          "Parafusadeira E Furadeira De Impacto Kit Soarfly 1300 Mah",
+          "2026-08-07T05:51:30.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_812131-MLB115752842497_082026-O.webp",
+          "Ferramentas",
+          false,
+          "active",
+          null,
+          true,
+          "SOARFLYOUTDOORBR",
+          "gold_special",
+          true,
+          "MLB-7351678434",
+          null,
+          98.28,
+          88,
+          21,
+          1,
+          7,
+          34,
+          5
+        ],
+        [
+          "MLB5003796771",
+          "Mochila Infantil Escolar Menino Astronauta Impermeável Bolsa",
+          "2026-08-06T08:17:22.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_818981-MLB115706836201_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          null,
+          false,
+          "EGBCDAEHF98255",
+          "gold_special",
+          true,
+          "MLB-5003796771",
+          null,
+          99.89,
+          86,
+          20,
+          1,
+          46,
+          35,
+          4.9
+        ]
+      ],
+      "dimensionCount": 15,
+      "lastRefreshTime": "2026-09-09T19:01:57.188Z",
+      "slowQuery": false,
+      "totalRows": 100,
+      "types": [
+        "string",
+        "string",
+        "time",
+        "time",
+        "string",
+        "string",
+        "boolean",
+        "string",
+        "boolean",
+        "boolean",
+        "string",
+        "string",
+        "boolean",
+        "string",
+        "string",
+        "number",
+        "number",
+        "number",
+        "number",
+        "number",
+        "number",
+        "number"
+      ]
+    }
+  ]
+}

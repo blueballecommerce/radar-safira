@@ -1,0 +1,3188 @@
+{
+  "lidoEm": "2026-09-09T19:03:01.640Z",
+  "fonte": "JoomPulse / MercadoProductsWeekly",
+  "groups": [
+    [
+      "tosa"
+    ],
+    [
+      "massageador",
+      "efeito"
+    ],
+    [
+      "dispositivo",
+      "ventosaterapia"
+    ],
+    [
+      "espanador",
+      "flexível"
+    ],
+    [
+      "refeição"
+    ],
+    [
+      "pulverizador",
+      "manual"
+    ],
+    [
+      "bolsa",
+      "puffer"
+    ],
+    [
+      "mop",
+      "mágicp"
+    ],
+    [
+      "bomba",
+      "banho"
+    ],
+    [
+      "tornozeleira",
+      "comrpessão"
+    ],
+    [
+      "girafa",
+      "tubo"
+    ],
+    [
+      "abelha",
+      "dançante"
+    ],
+    [
+      "passarinho",
+      "interativo"
+    ],
+    [
+      "boneca",
+      "pop"
+    ],
+    [
+      "triturador"
+    ],
+    [
+      "bolsa",
+      "infantil"
+    ],
+    [
+      "bichinho",
+      "virtual"
+    ],
+    [
+      "power",
+      "bank"
+    ],
+    [
+      "escova",
+      "silicone"
+    ],
+    [
+      "pochete",
+      "slim"
+    ],
+    [
+      "ferro",
+      "passar"
+    ],
+    [
+      "plataforma",
+      "vibratória"
+    ],
+    [
+      "repetidor",
+      "wifi"
+    ],
+    [
+      "toalha",
+      "secagem"
+    ],
+    [
+      "taolhas",
+      "santel"
+    ],
+    [
+      "cortador",
+      "culinário"
+    ],
+    [
+      "depilador",
+      "luz"
+    ],
+    [
+      "adesivo",
+      "espinha"
+    ],
+    [
+      "lancheira",
+      "témica"
+    ],
+    [
+      "cercado",
+      "pet"
+    ]
+  ],
+  "pages": [
+    {
+      "query": {
+        "dimensions": [
+          "MercadoProductsWeekly.id",
+          "MercadoProductsWeekly.productName",
+          "MercadoProductsWeekly.adPublishDate",
+          "MercadoProductsWeekly.date",
+          "MercadoProductsWeekly.productImage",
+          "MercadoProductsWeekly.merchantCategoryL1",
+          "MercadoProductsWeekly.catalogProduct",
+          "MercadoProductsWeekly.listingStatus",
+          "MercadoProductsWeekly.isFull",
+          "MercadoProductsWeekly.isFreeShipping",
+          "MercadoProductsWeekly.merchantName",
+          "MercadoProductsWeekly.listingType",
+          "MercadoProductsWeekly.buyBoxWiner",
+          "MercadoProductsWeekly.productId",
+          "MercadoProductsWeekly.brand"
+        ],
+        "measures": [
+          "MercadoProductsWeekly.priceAmount",
+          "MercadoProductsWeekly.orderCount1m",
+          "MercadoProductsWeekly.orderCount1w",
+          "MercadoProductsWeekly.numBuyBoxSellers",
+          "MercadoProductsWeekly.reviewsCount",
+          "MercadoProductsWeekly.daysInAd",
+          "MercadoProductsWeekly.reviewsRating"
+        ],
+        "filters": [
+          {
+            "member": "MercadoProductsWeekly.adPublishDate",
+            "operator": "inDateRange",
+            "values": [
+              "2026-07-31",
+              "2026-09-09"
+            ]
+          },
+          {
+            "member": "MercadoProductsWeekly.listingStatus",
+            "operator": "equals",
+            "values": [
+              "active"
+            ]
+          },
+          {
+            "member": "MercadoProductsWeekly.orderCount1m",
+            "operator": "gt",
+            "values": [
+              "0"
+            ]
+          },
+          {
+            "or": [
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "tosa"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "pet"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "massageador"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "efeito"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "dispositivo"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "ventosaterapia"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "espanador"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "flexível"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "refeição"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "silicone"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "pulverizador"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "manual"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "bolsa"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "puffer"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "mop"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "limpeza"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "bomba"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "banho"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "tornozeleira"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "compressão"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "girafa"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "tubo"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "abelha"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "dançante"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "passarinho"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "interativo"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "boneca"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "pop"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "triturador"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "elétrico"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "bolsa"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "infantil"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "bichinho"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "virtual"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "power"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "bank"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "escova"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "silicone"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "pochete"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "slim"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "ferro"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "passar"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "plataforma"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "vibratória"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "repetidor"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "wifi"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "toalha"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "secagem"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "taolhas"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "santel"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "cortador"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "culinário"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "depilador"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "luz"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "adesivo"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "espinha"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "lancheira"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "térmica"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "cercado"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "pet"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "order": [
+          [
+            "MercadoProductsWeekly.orderCount1m",
+            "desc"
+          ],
+          [
+            "MercadoProductsWeekly.id",
+            "asc"
+          ]
+        ],
+        "limit": 100
+      },
+      "columns": [
+        "id",
+        "productName",
+        "adPublishDate",
+        "date",
+        "productImage",
+        "merchantCategoryL1",
+        "catalogProduct",
+        "listingStatus",
+        "isFull",
+        "isFreeShipping",
+        "merchantName",
+        "listingType",
+        "buyBoxWiner",
+        "productId",
+        "brand",
+        "priceAmount",
+        "orderCount1m",
+        "orderCount1w",
+        "numBuyBoxSellers",
+        "reviewsCount",
+        "daysInAd",
+        "reviewsRating"
+      ],
+      "data": [
+        [
+          "MLB5034096097",
+          "Pochete Fit Slim Impermeável Corrida Academia Porta Celular Rosa-claro",
+          "2026-08-10T22:53:29.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_838434-MLA114548305002_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          true,
+          true,
+          "ZOU ONE",
+          "gold_special",
+          true,
+          "MLB76602107",
+          "POCHETEFITNESSCORRIDAACAD",
+          29.9,
+          968,
+          226,
+          1,
+          17,
+          31,
+          4.9
+        ],
+        [
+          "MLB4993983159",
+          "Pulverizador Manual Snow Foam Hardline de 2 Litros para Lavagem Automotiva e Limpeza",
+          "2026-08-04T21:08:36.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_677344-MLB115596138999_082026-O-snow-foam-pulverizador-manual-borrifador-espuma-2l-veiculos.webp",
+          "Ferramentas",
+          true,
+          "active",
+          true,
+          true,
+          "BUSCAECOMPRA",
+          "gold_special",
+          true,
+          "MLB76416473",
+          "HARDLINE",
+          39.99,
+          811,
+          189,
+          1,
+          6,
+          37,
+          4.3
+        ],
+        [
+          "MLB7425471526",
+          "Espanador de Pó Extensível Retrátil 2,80m Microfibra Eletrostática Lavável Cabeça Flexível Ventilador e Teto",
+          "2026-07-31T14:51:06.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_988273-MLA115387801541_072026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "VELLOVARIEDADES",
+          "gold_pro",
+          true,
+          "MLB76124263",
+          "HOUSEWIFE",
+          50,
+          732,
+          171,
+          2,
+          72,
+          41,
+          4.8
+        ],
+        [
+          "MLB4688076273",
+          "Mochila Infantil Bolsa Menina Escolar Princesa Cor Rosa Desenho Do Tecido Liso",
+          "2026-09-05T02:06:36.124",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_795181-MLA105821844989_012026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          true,
+          true,
+          "UPDASVENDAS",
+          null,
+          true,
+          "MLB64953246",
+          "MC",
+          44.2,
+          500,
+          500,
+          1,
+          null,
+          5,
+          null
+        ],
+        [
+          "MLB5090016507",
+          "Power Bank BitVendo Turbo de 22,5W com Cabos Integrados e Display Digital para iPhone e Android",
+          "2026-08-19T03:30:45.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_791472-MLA116398843787_082026-O.webp",
+          "Celulares e Telefones",
+          true,
+          "active",
+          null,
+          true,
+          "BITVENDO",
+          "gold_special",
+          true,
+          "MLB77673725",
+          null,
+          66.93,
+          500,
+          159,
+          1,
+          null,
+          22,
+          null
+        ],
+        [
+          "MLB6792623514",
+          "Mochila Infantil Bolsa Menina Escolar Princesa Cor Lilás Desenho Do Tecido Liso",
+          "2026-09-05T02:06:36.124",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_683633-MLA105011423128_012026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          true,
+          true,
+          "UPDASVENDAS",
+          null,
+          true,
+          "MLB64852778",
+          "MC",
+          44.2,
+          500,
+          500,
+          1,
+          null,
+          5,
+          null
+        ],
+        [
+          "MLB7419877458",
+          "Tapete Para Box De Banheiro Chuveiro Antiderrapante Ventosas Cor Bege",
+          "2026-08-13T05:34:48.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_920458-MLA116084383271_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "HBIM.ECOMMERCE",
+          "gold_special",
+          true,
+          "MLB77208954",
+          null,
+          22.21,
+          500,
+          125,
+          1,
+          981,
+          28,
+          4
+        ],
+        [
+          "MLB7444334052",
+          "Power Bank Basike 10000mAh Branco, Carga Rápida 22.5W para iPhone e Samsung, Com Cabos Embutidos e Display",
+          "2026-08-18T08:10:43.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_689770-MLA114966919586_082026-E.webp",
+          "Celulares e Telefones",
+          true,
+          "active",
+          null,
+          true,
+          "AA20241006142725",
+          "gold_special",
+          true,
+          "MLB77577169",
+          "BASIKE",
+          76.6,
+          500,
+          152,
+          1,
+          11031,
+          23,
+          4.9
+        ],
+        [
+          "MLB7512540778",
+          "Mop Spray Com Reservatório Verocasa Para Limpeza Fácil Branco",
+          "2026-08-12T00:26:39.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_773996-MLA115979284417_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "MALOESTILO",
+          "gold_special",
+          true,
+          "MLB76885964",
+          null,
+          34.9,
+          500,
+          121,
+          1,
+          20,
+          29,
+          4.5
+        ],
+        [
+          "MLB7553151340",
+          "Pulverizador Borrifador Alta Pressão 2 Litros Manual Snow Foam Profissional Com 3 Bicos Espuma Ativa Automotivo Lavagem Carro Moto Limpeza Jardim Uso Geral Híbrido 3 Em 1 S Siqueira",
+          "2026-08-29T22:32:41.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_973641-MLA110389179749_042026-O.webp",
+          "Ferramentas",
+          true,
+          "active",
+          null,
+          false,
+          "STREETSPEC",
+          "gold_special",
+          true,
+          "MLB67958634",
+          null,
+          41.9,
+          500,
+          292,
+          1,
+          null,
+          12,
+          null
+        ],
+        [
+          "MLB7579296238",
+          "Bolsa Lancheira Caixa Térmica Pra Marmita Mantém Temperatura Cor Roxo",
+          "2026-09-02T14:42:26.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_782484-MLA115635057854_092026-E.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          null,
+          true,
+          "BILLION_ECOMMERCE",
+          "gold_special",
+          true,
+          "MLB78827379",
+          null,
+          23.9,
+          500,
+          438,
+          1,
+          2893,
+          8,
+          4.8
+        ],
+        [
+          "MLB7356893584",
+          "Moedor Café Triturador Elétrico De Grãos Sementes Ervas Usb",
+          "2026-08-07T14:30:16.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_785146-MLB115771641789_082026-O.webp",
+          "Indústria e Comércio",
+          false,
+          "active",
+          true,
+          true,
+          "TELLANSHOP",
+          "gold_special",
+          true,
+          "MLB-7356893584",
+          "MOEDORGRAOSCAFEPORTATIL12",
+          111,
+          441,
+          103,
+          1,
+          123,
+          34,
+          4.8
+        ],
+        [
+          "MLB7341076702",
+          "Power Bank 20000mah Turbo 45w Carregamento Rápido Portátil",
+          "2026-08-06T08:47:17.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_995891-MLB114135745103_072026-O.webp",
+          "Celulares e Telefones",
+          false,
+          "active",
+          null,
+          true,
+          "DABCGEHFD97299",
+          "gold_special",
+          true,
+          "MLB-7341076702",
+          "ECOZENITY",
+          177.2,
+          429,
+          100,
+          1,
+          62,
+          35,
+          4.9
+        ],
+        [
+          "MLB5132188937",
+          "aweshine Compressor Ar Portátil 150PSI Automotivo com Auxiliar Partida Portátil,5 Modos Inflagem,Auxiliar Partida Veicular Carro Moto Caminhão,Power Bank,digital duplo,lanterna emergência com 3 modos",
+          "2026-08-05T14:07:23.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_957986-MLA115648985729_082026-E.webp",
+          "Acessórios para Veículos",
+          true,
+          "active",
+          null,
+          true,
+          "MANZANOCARPARTS",
+          "gold_pro",
+          true,
+          "MLB76400191",
+          "AWESHINE",
+          305.14,
+          417,
+          97,
+          2,
+          46,
+          36,
+          4
+        ],
+        [
+          "MLB7336438686",
+          "aweshine Compressor de Ar Portátil 150PSI Automotivo com Auxiliar Partida Portátil,6 Modos Inflagem, Power Bank, Tela Digital Grande, Lanterna Emergência 3 Modos Compatível Carro Moto Caminhão",
+          "2026-08-05T12:28:06.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_760506-MLA115642129375_082026-E.webp",
+          "Acessórios para Veículos",
+          true,
+          "active",
+          null,
+          true,
+          "BI20260415022715",
+          "gold_special",
+          true,
+          "MLB76395509",
+          null,
+          290.99,
+          417,
+          97,
+          1,
+          27,
+          36,
+          4.9
+        ],
+        [
+          "MLB4987365379",
+          "Mini Ferro De Passar Roupa A Vapor Portátil Bivolt Viagem",
+          "2026-08-03T18:54:42.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_820587-MLB115531919125_082026-O.webp",
+          "Eletrodomésticos",
+          false,
+          "active",
+          true,
+          true,
+          "FUFRAME_IMPORTS_LTDA",
+          "gold_special",
+          true,
+          "MLB-4987365379",
+          null,
+          47.7,
+          395,
+          92,
+          1,
+          53,
+          38,
+          4
+        ],
+        [
+          "MLB7304651186",
+          "Power Bank 60.000mah 100w P/ Starlink Mini Turbo P/ Notebook",
+          "2026-08-01T02:53:56.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_841295-MLB113884953259_062026-O.webp",
+          "Informática",
+          false,
+          "active",
+          true,
+          true,
+          "JUJUWEBSTORE",
+          "gold_pro",
+          true,
+          "MLB-7304651186",
+          "PEININGAGOLD",
+          374.99,
+          375,
+          88,
+          1,
+          83,
+          40,
+          4.9
+        ],
+        [
+          "MLB7337868670",
+          "Cercado Grade Segurança Pet 10 Módulos 359x51cm Cães Preto",
+          "2026-07-31T23:03:26.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_650609-MLA114080337496_072026-E.webp",
+          "Pet Shop",
+          true,
+          "active",
+          null,
+          true,
+          "BIMETAISBIMETAIS20230701093852",
+          "gold_pro",
+          true,
+          "MLB76168812",
+          null,
+          227.9,
+          366,
+          85,
+          2,
+          41,
+          41,
+          4.9
+        ],
+        [
+          "MLB5034472703",
+          "Tapete Banheiro Ventosas, Antiderrapante, Box Piso Estrado",
+          "2026-08-12T11:29:07.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_680447-MLB116047653997_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "WNU",
+          "gold_pro",
+          true,
+          "MLB-5034472703",
+          null,
+          58.41,
+          100,
+          24,
+          1,
+          81,
+          29,
+          null
+        ],
+        [
+          "MLB5039863789",
+          "Power Bank Magnético 10000mah Para Magsafe Iphone 17 Pro Ma",
+          "2026-08-11T14:14:18.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_885497-MLB115950251297_082026-O.webp",
+          "Celulares e Telefones",
+          false,
+          "active",
+          null,
+          true,
+          "INOVATECHBR",
+          "gold_special",
+          true,
+          "MLB-5039863789",
+          null,
+          99.9,
+          100,
+          23,
+          1,
+          null,
+          30,
+          null
+        ],
+        [
+          "MLB5041649421",
+          "Powerbank Carregador Portátil 20000mah Universal Indução Usb",
+          "2026-08-11T20:32:13.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_928205-MLB114605630658_082026-O.webp",
+          "Celulares e Telefones",
+          false,
+          "active",
+          null,
+          true,
+          "YZ20250408153513",
+          "gold_special",
+          true,
+          "MLB-5041649421",
+          "ANJGG",
+          64.99,
+          100,
+          23,
+          1,
+          3,
+          30,
+          5
+        ],
+        [
+          "MLB5042698807",
+          "Power Bank 50000mah Portátil Turbo Display Cabo Embutido",
+          "2026-08-12T03:38:54.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_973709-MLB115990473087_082026-O.webp",
+          "Celulares e Telefones",
+          false,
+          "active",
+          null,
+          true,
+          "KSGOIS",
+          "gold_special",
+          true,
+          "MLB-5042698807",
+          null,
+          145.4,
+          100,
+          24,
+          1,
+          75,
+          29,
+          4.8
+        ],
+        [
+          "MLB5056792071",
+          "Mesa Tábua De Passar Roupas Reforçada 3 Alturas, Porta Ferro",
+          "2026-08-13T19:11:29.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_771262-MLB114761811280_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "ANDREFILIOLBELLINFILHO",
+          "gold_special",
+          true,
+          "MLB-5056792071",
+          "SCARPARO",
+          94.45,
+          100,
+          25,
+          1,
+          5,
+          28,
+          4
+        ],
+        [
+          "MLB5060820475",
+          "Moedor De Café Elétrico Triturador Aço Inox Grãos Temperos",
+          "2026-08-14T09:36:49.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_711739-MLB116169518447_082026-O.webp",
+          "Eletrodomésticos",
+          false,
+          "active",
+          null,
+          true,
+          "NL20250504174043",
+          "gold_special",
+          true,
+          "MLB-5060820475",
+          "GENERICA",
+          48.98,
+          100,
+          26,
+          1,
+          5,
+          27,
+          4.6
+        ],
+        [
+          "MLB5063203007",
+          "Bomba De Ar Elétrica Portátil Compressor Calibrador De Pneus Digital Para Carro Moto Bicicleta Inflador Recarregável Auxiliar De Partida Bateria Power Bank Celular Emergência Automotiva Quicko",
+          "2026-08-14T12:46:27.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_863869-MLA115253606218_082026-O.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          true,
+          true,
+          "TDX",
+          "gold_special",
+          true,
+          "MLB77323172",
+          "QUICKO",
+          179.89,
+          100,
+          26,
+          1,
+          6,
+          27,
+          4.9
+        ],
+        [
+          "MLB5075157911",
+          "Lancheira Térmica Média Techfun Preta com Alça Removível para Marmita e Bebidas",
+          "2026-08-16T17:10:16.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_808510-MLA116278574929_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          null,
+          true,
+          "ADSJJJDDSAERE",
+          "gold_special",
+          true,
+          "MLB77480084",
+          null,
+          29.94,
+          100,
+          28,
+          1,
+          null,
+          25,
+          null
+        ],
+        [
+          "MLB5081280293",
+          "Power Bank 20000mah Carregador Portátil Turbo 22.5w",
+          "2026-08-17T18:34:40.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_833185-MLB114942238174_082026-O.webp",
+          "Celulares e Telefones",
+          false,
+          "active",
+          true,
+          true,
+          "FMPSHOP",
+          "gold_special",
+          true,
+          "MLB-5081280293",
+          null,
+          68.46,
+          100,
+          29,
+          1,
+          null,
+          24,
+          null
+        ],
+        [
+          "MLB5081885355",
+          "Pulverizador Costal 20 Litros Manual Para Jardim E Agro Oper",
+          "2026-08-17T20:54:04.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_791202-MLB114942271386_082026-O.webp",
+          "Ferramentas",
+          false,
+          "active",
+          null,
+          true,
+          "OPERFERRAMENTAS",
+          "gold_pro",
+          true,
+          "MLB-5081885355",
+          null,
+          128.91,
+          100,
+          29,
+          1,
+          2,
+          24,
+          5
+        ],
+        [
+          "MLB5087456785",
+          "Casinha De Cachorro Cercado Pet Dobrável Portátil Grande",
+          "2026-08-18T16:37:39.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_994906-MLB116177631819_082026-O.webp",
+          "Pet Shop",
+          false,
+          "active",
+          null,
+          true,
+          "LUZCASA",
+          "gold_special",
+          true,
+          "MLB-5087456785",
+          "GRM",
+          94.8,
+          100,
+          30,
+          1,
+          10,
+          23,
+          5
+        ],
+        [
+          "MLB5089296415",
+          "Carregador Portátil Power Bank Turbo inova 20000mah 22.5w Com Display Digital Usb-c / Usb-a Carga Rápida - Preto",
+          "2026-08-12T18:30:35.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_955263-MLA116044424315_082026-O.webp",
+          "Celulares e Telefones",
+          true,
+          "active",
+          true,
+          true,
+          "TUNAICOMERCIODEVARIEDADES",
+          "gold_special",
+          true,
+          "MLB77148722",
+          null,
+          115.67,
+          100,
+          24,
+          2,
+          19,
+          29,
+          4.9
+        ],
+        [
+          "MLB5102487351",
+          "Mop Elétrico JJ Molas com Cabeça Giratória 360° para Limpeza de Casa e Carro",
+          "2026-08-21T00:28:49.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_779464-MLA116509045795_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "JJ MOLAS",
+          "gold_special",
+          true,
+          "MLB77906016",
+          null,
+          99.9,
+          100,
+          35,
+          1,
+          null,
+          20,
+          null
+        ],
+        [
+          "MLB5102488965",
+          "Kit 5 Suporte Para Vassoura E Rodo Inox Parede Organizador Mop Gancho Multiuso Lavanderia Cozinha Garagem Porta Vassoura Para Pendurar Utensílios De Limpeza",
+          "2026-08-20T09:28:33.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_937406-MLA116480328439_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "NC20251030170752",
+          "gold_special",
+          true,
+          "MLB77822145",
+          null,
+          34.92,
+          100,
+          33,
+          1,
+          null,
+          21,
+          null
+        ],
+        [
+          "MLB5105516163",
+          "Tapete Para Box De Banheiro Chuveiro Antiderrapante Ventosas Cor Transparente com bolinha vermelha",
+          "2026-08-13T17:47:41.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_663770-MLA116126487553_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "HBIM.ECOMMERCE",
+          "gold_special",
+          true,
+          "MLB77260699",
+          null,
+          17.77,
+          100,
+          25,
+          1,
+          978,
+          28,
+          4.5
+        ],
+        [
+          "MLB5105591087",
+          "Tapete Para Box De Banheiro Chuveiro Antiderrapante Ventosas Cor Rosa",
+          "2026-08-13T05:31:14.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_765327-MLA116083912909_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "HBIM.ECOMMERCE",
+          null,
+          true,
+          "MLB77208652",
+          null,
+          22.21,
+          100,
+          25,
+          1,
+          null,
+          28,
+          null
+        ],
+        [
+          "MLB5114189183",
+          "Mop Rodo Giratorio Cesto Balde Centrífuga Limpeza Flash Mop Cinza",
+          "2026-08-17T22:08:26.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_793156-MLA116325990327_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "INFO_GLOBAL",
+          "gold_special",
+          true,
+          "MLB77546725",
+          null,
+          55.9,
+          100,
+          29,
+          1,
+          null,
+          24,
+          null
+        ],
+        [
+          "MLB5118197527",
+          "Cercado Gaiola Porquinho Índia Mini Coelho 60x120 Tapete Cor Rosa",
+          "2026-08-19T16:12:48.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_856532-MLA116436665495_082026-O.webp",
+          "Pet Shop",
+          true,
+          "active",
+          true,
+          true,
+          "IGUANNA.",
+          "gold_pro",
+          true,
+          "MLB77728319",
+          null,
+          289.32,
+          100,
+          32,
+          1,
+          257,
+          22,
+          null
+        ],
+        [
+          "MLB5118815497",
+          "Multiprocessador Triturador De Alimentos Carne Elétrico 3l Prateado",
+          "2026-08-18T23:14:16.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_840808-MLA116389648071_082026-O.webp",
+          "Eletrodomésticos",
+          true,
+          "active",
+          true,
+          true,
+          "ISLAND SOUZA",
+          "gold_special",
+          true,
+          "MLB77645227",
+          null,
+          179.9,
+          100,
+          30,
+          1,
+          17,
+          23,
+          4.6
+        ],
+        [
+          "MLB5141677191",
+          "Moedor de Café Elétrico Inox 150W Portátil Triturador de Grãos e Temperos Multifuncional Grãos Pimentas Sementes",
+          "2026-08-26T17:33:59.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_780441-MLA115352229948_082026-O.webp",
+          "Indústria e Comércio",
+          true,
+          "active",
+          null,
+          true,
+          "VIPONEECOM",
+          "gold_special",
+          true,
+          "MLB78423101",
+          null,
+          49.9,
+          100,
+          47,
+          2,
+          null,
+          15,
+          null
+        ],
+        [
+          "MLB5173696841",
+          "Power Bank 10000mah Carregador Portátil 4 Cabos Integrados Visor Digital Lanterna Led Usb Tipo C Compatível iPhone Samsung Xiaomi Android Bateria Externa Carrega 4 Dispositivos Preto",
+          "2026-08-31T23:18:21.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_908888-MLA116993575251_082026-O.webp",
+          "Celulares e Telefones",
+          true,
+          "active",
+          null,
+          true,
+          "PLENO1",
+          "gold_special",
+          true,
+          "MLB78753894",
+          null,
+          55.9,
+          100,
+          70,
+          1,
+          null,
+          10,
+          null
+        ],
+        [
+          "MLB5175684755",
+          "Bolsa Térmica Lequeen Feminina Lancheira Alimentos Moderna Cor Cinza Desenho Do Tecido Lisa",
+          "2026-09-02T08:27:03.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_920323-MLU74209577661_012024-E.webp",
+          "Bebês",
+          true,
+          "active",
+          null,
+          true,
+          "LEQUEEN OFICIAL",
+          "gold_special",
+          true,
+          "MLB30017140",
+          null,
+          168.2,
+          100,
+          88,
+          1,
+          28,
+          8,
+          4.7
+        ],
+        [
+          "MLB5179067013",
+          "Cercado Grade 181x51cm 5 Módulos Segurança Pet Cães Cor Preto",
+          "2026-09-08T03:04:43.373",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_835679-MLA115639176514_092026-E.webp",
+          "Pet Shop",
+          true,
+          "active",
+          null,
+          true,
+          "BIMETAISBIMETAIS20230701093852",
+          null,
+          true,
+          "MLB78836464",
+          null,
+          112.95,
+          100,
+          100,
+          1,
+          null,
+          2,
+          null
+        ],
+        [
+          "MLB5179069697",
+          "Cercado Grade 288x51cm 8 Módulos Segurança Pet Cães Preto",
+          "2026-09-08T03:04:43.373",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_975999-MLA117084930027_092026-E.webp",
+          "Pet Shop",
+          true,
+          "active",
+          null,
+          true,
+          "BIMETAISBIMETAIS20230701093852",
+          null,
+          true,
+          "MLB78840259",
+          null,
+          180.4,
+          100,
+          100,
+          1,
+          null,
+          2,
+          null
+        ],
+        [
+          "MLB7381766542",
+          "Ferro De Passar Vapor Black Decker 1200w Base Antiaderente",
+          "2026-08-11T00:52:15.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_840888-MLB90398106500_082025-O.webp",
+          "Eletrodomésticos",
+          false,
+          "active",
+          true,
+          true,
+          "GEO-SHOP",
+          "gold_special",
+          true,
+          "MLB-7381766542",
+          "BLACKDECKER",
+          199.7,
+          100,
+          23,
+          1,
+          33,
+          30,
+          5
+        ],
+        [
+          "MLB7393870408",
+          "Máquina de Tosa Pet Profissional Inova LFJ-13498 Sem Fio 7500 RPM Silenciosa Display LED 240 Min 4 Pentes Kit Completo Cães e Gatos",
+          "2026-08-12T06:22:17.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_617010-MLA115524682348_082026-O.webp",
+          "Pet Shop",
+          true,
+          "active",
+          null,
+          true,
+          "RE20250315100638",
+          "gold_pro",
+          true,
+          "MLB77006268",
+          null,
+          148.32,
+          100,
+          24,
+          1,
+          5,
+          29,
+          5
+        ],
+        [
+          "MLB7410042142",
+          "Mesa Tábua De Passar Roupa Reforçada 3 Alturas E Porta Ferro",
+          "2026-08-13T18:55:48.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_794806-MLB114754328696_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "CIAUTILIDADES20230626172108",
+          "gold_special",
+          true,
+          "MLB-7410042142",
+          "SCARPARO",
+          94.45,
+          100,
+          25,
+          1,
+          8,
+          28,
+          4
+        ],
+        [
+          "MLB7410053312",
+          "Mesa Tábua De Passar Roupas Reforçada 3 Alturas, Porta Ferro",
+          "2026-08-13T19:04:46.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_720073-MLB114761037192_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "CIAUTILIDADES20230626172108",
+          "gold_special",
+          true,
+          "MLB-7410053312",
+          "SCARPARO",
+          94.45,
+          100,
+          25,
+          1,
+          13,
+          28,
+          4.8
+        ],
+        [
+          "MLB7418334568",
+          "Pulverizador Borrifador Manual  Para Jardim Horta 500ml",
+          "2026-08-15T14:55:23.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_605430-MLB90745847480_082025-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "LS-EMPREENDIMENTOS",
+          "gold_special",
+          true,
+          "MLB-7418334568",
+          null,
+          13.9,
+          100,
+          27,
+          1,
+          17,
+          26,
+          5
+        ],
+        [
+          "MLB7444417382",
+          "Power Bank Basike 10000mAh Preto, Carga Rápida 22.5W para iPhone e Samsung, Com Cabos Embutidos e Display",
+          "2026-08-18T08:10:44.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_706774-MLA116350168799_082026-O.webp",
+          "Celulares e Telefones",
+          true,
+          "active",
+          true,
+          true,
+          "AA20241006142725",
+          "gold_special",
+          true,
+          "MLB77577171",
+          "BASIKE",
+          76.6,
+          100,
+          30,
+          1,
+          8721,
+          23,
+          4.9
+        ],
+        [
+          "MLB7450053184",
+          "Ferro Passar Roupa Mini Portátil 110/220v Elétrico Multiuso Cor Preto",
+          "2026-08-14T20:34:10.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_620869-MLA114827958886_082026-O.webp",
+          "Eletrodomésticos",
+          true,
+          "active",
+          null,
+          true,
+          "S.M. COMERCIO",
+          "gold_pro",
+          true,
+          "MLB77340024",
+          null,
+          51.96,
+          100,
+          26,
+          2,
+          5,
+          27,
+          4.6
+        ],
+        [
+          "MLB7458076550",
+          "Cercado Pet Grande Casinha Dobrável Cachorros 100x100x60cm Cor Rosa",
+          "2026-08-15T08:12:14.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_665420-MLA116225804495_082026-E.webp",
+          "Pet Shop",
+          true,
+          "active",
+          null,
+          true,
+          "BILAN LI48",
+          "gold_special",
+          true,
+          "MLB77417376",
+          null,
+          93.12,
+          100,
+          27,
+          2,
+          362,
+          26,
+          4.9
+        ],
+        [
+          "MLB7461064504",
+          "Escova Banho Pet Silicone Dispenser De Shampoo Cachorro Gato",
+          "2026-08-19T21:44:51.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_727939-MLB115115419086_082026-O.webp",
+          "Pet Shop",
+          false,
+          "active",
+          null,
+          true,
+          "BOLTCENTER",
+          "gold_special",
+          true,
+          "MLB-7461064504",
+          null,
+          19,
+          100,
+          32,
+          1,
+          28,
+          22,
+          4.9
+        ],
+        [
+          "MLB7461785744",
+          "Kit Refeição Bebê Prato Babador Copo Talher Silicone Ventosa Introdução Alimentar Livre BPA Verde",
+          "2026-08-18T04:13:20.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_640145-MLA114954993144_082026-O.webp",
+          "Bebês",
+          true,
+          "active",
+          null,
+          true,
+          "ENDECA",
+          "gold_special",
+          true,
+          "MLB77569935",
+          null,
+          38.61,
+          100,
+          30,
+          1,
+          null,
+          23,
+          null
+        ],
+        [
+          "MLB7468892054",
+          "Mini Processador Triturador Alimentos Elétrico 45w Usb 350ml",
+          "2026-08-20T14:10:28.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_861697-MLB116581095975_082026-O.webp",
+          "Eletrodomésticos",
+          false,
+          "active",
+          null,
+          true,
+          "MRI_ACESSORIOS",
+          "gold_special",
+          true,
+          "MLB-7468892054",
+          "KAPBOM",
+          32.08,
+          100,
+          33,
+          1,
+          5,
+          21,
+          5
+        ],
+        [
+          "MLB7470235594",
+          "Ferro Passar Roupa Mini Portátil 110/220v Elétrico Multiuso Cor Branco",
+          "2026-08-12T17:26:17.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_611694-MLA114676309370_082026-O.webp",
+          "Eletrodomésticos",
+          true,
+          "active",
+          true,
+          true,
+          "UTILITY COMERCIO",
+          "gold_pro",
+          true,
+          "MLB77133222",
+          null,
+          51.99,
+          100,
+          24,
+          2,
+          18,
+          29,
+          4.6
+        ],
+        [
+          "MLB7501833192",
+          "Lamina Para Maquina Tosa Propetz Pro 6 Para Adaptador Inox",
+          "2026-08-24T20:54:54.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_925093-MLA116667592267_082026-O.webp",
+          "Pet Shop",
+          true,
+          "active",
+          null,
+          true,
+          "GRUPO IMPORT-X",
+          "gold_pro",
+          true,
+          "MLB78235440",
+          "PROPETZ",
+          282.01,
+          100,
+          41,
+          1,
+          null,
+          17,
+          null
+        ],
+        [
+          "MLB7504427156",
+          "Carregador Portátil Power Bank Turbo inova 10000mah 22.5w Com Display Digital Usb-c / Usb-a Carga Rápida - Preto",
+          "2026-08-19T10:13:35.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_843522-MLA116418224899_082026-E.webp",
+          "Celulares e Telefones",
+          true,
+          "active",
+          null,
+          true,
+          "TUNAICOMERCIODEVARIEDADES",
+          "gold_special",
+          true,
+          "MLB77700936",
+          "INOVA",
+          84,
+          100,
+          32,
+          1,
+          12,
+          22,
+          5
+        ],
+        [
+          "MLB7504427294",
+          "Carregador Portátil Power Bank Turbo inova 10000mah 22.5w Com Display Digital Usb-c / Usb-a Carga Rápida - Rosa",
+          "2026-08-19T10:13:34.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_833528-MLA116418078611_082026-E.webp",
+          "Celulares e Telefones",
+          true,
+          "active",
+          null,
+          true,
+          "TUNAICOMERCIODEVARIEDADES",
+          "gold_special",
+          true,
+          "MLB77700933",
+          "INOVA",
+          89.25,
+          100,
+          32,
+          1,
+          12,
+          22,
+          4.9
+        ],
+        [
+          "MLB7514256862",
+          "Bolsa Térmica Lancheira Marmita Academia E Passeios Rosa",
+          "2026-08-14T21:52:29.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_634215-MLA116203503165_082026-E.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          null,
+          true,
+          "VMCOMERCIAL",
+          null,
+          true,
+          "MLB77350756",
+          null,
+          15.99,
+          100,
+          26,
+          1,
+          null,
+          27,
+          null
+        ],
+        [
+          "MLB7518591504",
+          "Carregador Portátil Power Bank 45w 20000mah Rápido Celular",
+          "2026-08-26T09:46:16.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_864284-MLB113906983206_072026-O.webp",
+          "Informática",
+          false,
+          "active",
+          true,
+          true,
+          "AHFBCGEDA23154",
+          "gold_special",
+          true,
+          "MLB-7518591504",
+          null,
+          137.78,
+          100,
+          47,
+          1,
+          92,
+          15,
+          5
+        ],
+        [
+          "MLB7518591512",
+          "Power Bank 66w 20000mah Carregador Portátil Rápido Celular",
+          "2026-08-26T09:50:10.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_812270-MLB112122798326_062026-O.webp",
+          "Celulares e Telefones",
+          false,
+          "active",
+          null,
+          true,
+          "AHFBCGEDA23154",
+          "gold_special",
+          true,
+          "MLB-7518591512",
+          null,
+          69,
+          100,
+          47,
+          1,
+          9,
+          15,
+          5
+        ],
+        [
+          "MLB7564117704",
+          "Cercado Caes Pet Cachorro Grade Cerca 7 Módulos 51 Cm Altura",
+          "2026-08-31T11:53:11.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_637525-MLB98526253867_112025-O.webp",
+          "Pet Shop",
+          false,
+          "active",
+          null,
+          true,
+          "UTILITY.PET.LAR.I",
+          "gold_special",
+          true,
+          "MLB-7564117704",
+          null,
+          137.9,
+          100,
+          70,
+          1,
+          51,
+          10,
+          5
+        ],
+        [
+          "MLB7565591468",
+          "Cercado Pet Dobrável Cercadinho Cachorro Caes Porte Pequeno",
+          "2026-08-31T18:08:03.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_738858-MLB115354415996_082026-O.webp",
+          "Pet Shop",
+          false,
+          "active",
+          false,
+          true,
+          "LOJA SHOPX",
+          "gold_special",
+          true,
+          "MLB-7565591468",
+          "SHOPX",
+          112.96,
+          100,
+          70,
+          1,
+          203,
+          10,
+          5
+        ],
+        [
+          "MLB7567273500",
+          "Adesivo Sortido Pet Piercing Enfeite Banho E Tosa Kit 200un Sortido De Cores Variados",
+          "2026-08-31T15:42:07.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_900169-MLA116979152975_082026-E.webp",
+          "Pet Shop",
+          true,
+          "active",
+          null,
+          true,
+          "CECIDISTRIBUIDORA",
+          "gold_special",
+          true,
+          "MLB78696207",
+          null,
+          20.56,
+          100,
+          70,
+          1,
+          null,
+          10,
+          null
+        ],
+        [
+          "MLB7567326704",
+          "Mop Giratório Esfregão 360 Balde Inox 12l Limpeza 2 Refis Branco",
+          "2026-08-31T16:11:27.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_867962-MLA115543423224_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          false,
+          "HIAMAZO",
+          "gold_special",
+          true,
+          "MLB78699634",
+          null,
+          86.33,
+          100,
+          70,
+          1,
+          null,
+          10,
+          null
+        ],
+        [
+          "MLB7574004918",
+          "Power Bank 20000mah Carregador Portátil Turbo 22.5w Preto",
+          "2026-08-31T18:46:10.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_940297-MLA115548711362_082026-O.webp",
+          "Celulares e Telefones",
+          true,
+          "active",
+          null,
+          true,
+          "FMPSHOP",
+          "gold_special",
+          true,
+          "MLB78729625",
+          null,
+          68.46,
+          100,
+          70,
+          1,
+          2,
+          10,
+          5
+        ],
+        [
+          "MLB7575169450",
+          "Cercado Grade 252x51cm 7 Módulos Segurança Pet Cães Cor Branco",
+          "2026-09-06T01:47:14.746",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_735307-MLA116499114093_082026-E.webp",
+          "Pet Shop",
+          true,
+          "active",
+          null,
+          true,
+          "BLESSED_HOME_",
+          null,
+          true,
+          "MLB77863179",
+          null,
+          161.41,
+          100,
+          100,
+          2,
+          null,
+          4,
+          null
+        ],
+        [
+          "MLB7579599666",
+          "Cercado Grade 181x51cm 5 Módulos Segurança Pet Cães Cor Branco",
+          "2026-09-08T03:04:43.373",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_989224-MLA115639610976_092026-E.webp",
+          "Pet Shop",
+          true,
+          "active",
+          null,
+          true,
+          "BIMETAISBIMETAIS20230701093852",
+          null,
+          true,
+          "MLB78837649",
+          null,
+          118.9,
+          100,
+          100,
+          1,
+          null,
+          2,
+          null
+        ],
+        [
+          "MLB7585112986",
+          "Mop Rodo Espuma Limpeza Geral Plus Starlimp Verde Esmeralda",
+          "2026-09-05T02:07:13.669",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_907652-MLA114340543064_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "ALLGIFT UTILIDADES",
+          null,
+          true,
+          "MLB76446728",
+          null,
+          42.74,
+          100,
+          100,
+          1,
+          null,
+          5,
+          null
+        ],
+        [
+          "MLB7589390956",
+          "Mop 360 Esfregão Balde Inox Giratório Limpeza 16l Escovão Microfibra Azul",
+          "2026-09-08T03:08:25.432",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_924663-MLA116183370727_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "RMAISTECH",
+          null,
+          true,
+          "MLB77325123",
+          null,
+          141.92,
+          100,
+          100,
+          1,
+          null,
+          2,
+          null
+        ],
+        [
+          "MLB7598456872",
+          "Cercado Grade 110x51cm 3 Módulos Segurança Pet Cães Cor Branco",
+          "2026-09-08T03:04:43.373",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_817571-MLA116984318591_082026-E.webp",
+          "Pet Shop",
+          true,
+          "active",
+          null,
+          true,
+          "BIMETAISBIMETAIS20230701093852",
+          null,
+          true,
+          "MLB78723375",
+          null,
+          71.9,
+          100,
+          100,
+          1,
+          null,
+          2,
+          null
+        ],
+        [
+          "MLB7314050640",
+          "L Toalha De Microfibra De Secagem Rápida Para Carro 30x30",
+          "2026-08-10T02:06:46.201",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_744416-CBT109290986704_042026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "CNCHENGDUSHUAIMEIZHONGD12BRR3",
+          null,
+          true,
+          "MLB2099181567",
+          "GENERIC",
+          33.69,
+          97,
+          23,
+          12,
+          null,
+          31,
+          null
+        ],
+        [
+          "MLB7366920310",
+          "Bolsa Térmica Infantil Lancheira Escolar Marmita C/ Alça",
+          "2026-08-08T22:53:44.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_802557-MLA114473356106_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          null,
+          true,
+          "FB20240917122915",
+          "gold_special",
+          true,
+          "MLB-7366920310",
+          null,
+          21.99,
+          91,
+          21,
+          1,
+          4,
+          33,
+          5
+        ],
+        [
+          "MLB5009514727",
+          "Power Bank Basike 10000mAh Preto com Cabo e Carga Rápida 22.5W LED Turbo Carga Rápida Universal",
+          "2026-08-07T02:13:36.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_651041-MLA116464962013_082026-O.webp",
+          "Celulares e Telefones",
+          true,
+          "active",
+          true,
+          true,
+          "CDGECFHBA85465",
+          "gold_special",
+          true,
+          "MLB77808361",
+          "BASIKE",
+          122.46,
+          88,
+          21,
+          1,
+          455,
+          34,
+          4.9
+        ],
+        [
+          "MLB5003796771",
+          "Mochila Infantil Escolar Menino Astronauta Impermeável Bolsa",
+          "2026-08-06T08:17:22.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_818981-MLB115706836201_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          null,
+          false,
+          "EGBCDAEHF98255",
+          "gold_special",
+          true,
+          "MLB-5003796771",
+          null,
+          99.89,
+          86,
+          20,
+          1,
+          46,
+          35,
+          4.9
+        ],
+        [
+          "MLB5007002079",
+          "Mini Mop Portátil Absorvente Rodo Esponja Limpeza Rápida Pia",
+          "2026-08-06T16:27:09.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_830604-MLB115724512921_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "LOJAMARIASANTOS",
+          "gold_special",
+          true,
+          "MLB-5007002079",
+          "GENERICA",
+          23.99,
+          86,
+          20,
+          1,
+          2,
+          35,
+          5
+        ],
+        [
+          "MLB5137764351",
+          "Powerbank Baseus Fm12 Qi2 10000mah 22,5w Magnético Sem Fio Branco",
+          "2026-08-06T18:00:47.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_817407-MLA115727903073_082026-E.webp",
+          "Celulares e Telefones",
+          true,
+          "active",
+          null,
+          true,
+          "BASEUS_BRASIL",
+          "gold_special",
+          true,
+          "MLB76486195",
+          null,
+          239.44,
+          86,
+          20,
+          1,
+          3,
+          35,
+          4.9
+        ],
+        [
+          "MLB7447558624",
+          "Toalha De Secagem Automotiva 50x90 Microfibra Mágica Carro Azul",
+          "2026-08-06T00:27:46.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_862935-MLA115682591739_082026-O.webp",
+          "Acessórios para Veículos",
+          true,
+          "active",
+          true,
+          false,
+          "GFUTILIDADES",
+          "gold_special",
+          true,
+          "MLB76446649",
+          null,
+          21.9,
+          86,
+          20,
+          1,
+          6,
+          35,
+          null
+        ],
+        [
+          "MLB4994709257",
+          "Power Bank 30000mah 22.5w Turbo Display Digital Carga Rápida",
+          "2026-08-05T00:37:21.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_659115-MLB114268493146_082026-O.webp",
+          "Celulares e Telefones",
+          false,
+          "active",
+          null,
+          true,
+          "AMIRAACESSORIO",
+          "gold_pro",
+          true,
+          "MLB-4994709257",
+          "AGOLD",
+          110,
+          83,
+          19,
+          1,
+          2,
+          36,
+          5
+        ],
+        [
+          "MLB5062880843",
+          "Pulverizador Lateral Manual 5 Litros Agrícola VKZ-5 Vollekz Branco com Compressão Prévia Bico Regulador Alça",
+          "2026-08-05T13:55:38.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_676965-MLA115648383781_082026-O.webp",
+          "Ferramentas",
+          true,
+          "active",
+          null,
+          true,
+          "TORK TOOLS",
+          "gold_pro",
+          true,
+          "MLB76399228",
+          null,
+          77.9,
+          83,
+          19,
+          1,
+          16,
+          36,
+          4.9
+        ],
+        [
+          "MLB4992003033",
+          "Mop Spray Starmega Profissional para Limpeza de Piso com Reservatório, Cabeça 180°, Microfibra e Chenille",
+          "2026-08-04T03:51:19.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_645077-MLA114212498592_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "EGADFHEBC47478",
+          "gold_special",
+          true,
+          "MLB76298039",
+          null,
+          75.39,
+          81,
+          19,
+          1,
+          16,
+          37,
+          4.8
+        ],
+        [
+          "MLB4992571305",
+          "Bolsa Lancheira Térmica Escolar Trabalho Resistente Marmita",
+          "2026-08-04T15:14:45.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_979294-MLB115674891463_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          true,
+          true,
+          "FL.SHOP.",
+          "gold_special",
+          true,
+          "MLB-4992571305",
+          "FLBAGS",
+          27.93,
+          81,
+          19,
+          1,
+          23,
+          37,
+          4.9
+        ],
+        [
+          "MLB4993558973",
+          "Carregador Portátil Mini Power Bank 10000mah Tipo C E Light",
+          "2026-08-04T19:39:48.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_896158-MLB114254774686_082026-O.webp",
+          "Celulares e Telefones",
+          false,
+          "active",
+          null,
+          true,
+          "KAZAKORA",
+          "gold_special",
+          true,
+          "MLB-4993558973",
+          "GENERICA",
+          49.99,
+          81,
+          19,
+          1,
+          11,
+          37,
+          4.8
+        ],
+        [
+          "MLB7321308460",
+          "Carregador Turbo 20000mah Power Bank Portátil",
+          "2026-08-04T07:44:43.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_835783-MLB112887909532_072026-O.webp",
+          "Celulares e Telefones",
+          false,
+          "active",
+          null,
+          true,
+          "DDGFBCHAE27423",
+          "gold_special",
+          true,
+          "MLB-7321308460",
+          null,
+          89,
+          81,
+          19,
+          1,
+          16,
+          37,
+          4.6
+        ],
+        [
+          "MLB7328866164",
+          "Processador De Alimentos Elétrico 2L Inox Triturador Moedor Picador 400W Multifuncional Cozinha",
+          "2026-08-04T11:40:36.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_776050-MLA115573530131_082026-O.webp",
+          "Eletrodomésticos",
+          true,
+          "active",
+          true,
+          true,
+          "JAECOMMERCEBR",
+          "gold_special",
+          true,
+          "MLB76316130",
+          null,
+          72.99,
+          81,
+          19,
+          1,
+          null,
+          37,
+          null
+        ],
+        [
+          "MLB4984892575",
+          "Lancheira Infantil Térmica com 3 Divisórias Verde de 550ml Ideal para a escola e passeios",
+          "2026-08-03T02:35:04.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_987230-MLA114156805448_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          null,
+          true,
+          "HDEFACHBG59182",
+          "gold_special",
+          true,
+          "MLB76217552",
+          "KEENKLE",
+          32.99,
+          79,
+          18,
+          1,
+          6,
+          38,
+          5
+        ],
+        [
+          "MLB7319552348",
+          "Repetidor De Sinal Wifi Roteador Sem Fio Alta Potência 1200m",
+          "2026-08-03T15:25:39.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_898748-MLB115727295405_082026-O.webp",
+          "Informática",
+          false,
+          "active",
+          true,
+          true,
+          "L7ECOMMERCE",
+          "gold_special",
+          true,
+          "MLB-7319552348",
+          null,
+          61.33,
+          79,
+          18,
+          1,
+          8,
+          38,
+          3.1
+        ],
+        [
+          "MLB7320801770",
+          "Power Bank 20000mh Carregador Portátil Turbo Bateria Digital",
+          "2026-08-03T19:08:10.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_770816-MLB114195625500_082026-O.webp",
+          "Informática",
+          false,
+          "active",
+          null,
+          true,
+          "FERBACH",
+          "gold_special",
+          true,
+          "MLB-7320801770",
+          null,
+          88.79,
+          79,
+          18,
+          1,
+          7,
+          38,
+          5
+        ],
+        [
+          "MLB7321154482",
+          "Power Bank 20000mah Display Carregador Portátil",
+          "2026-08-03T20:09:22.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_988363-MLB116661198619_082026-O.webp",
+          "Celulares e Telefones",
+          false,
+          "active",
+          null,
+          true,
+          "RESSURGEOFC",
+          "gold_special",
+          true,
+          "MLB-7321154482",
+          null,
+          69.9,
+          79,
+          18,
+          1,
+          5,
+          38,
+          5
+        ],
+        [
+          "MLB7359145890",
+          "Carregador Portátil Power Bank Anker 20000mAh 45W Carga Turbo Rápida Display Digital Cor Preto Com 1 Cabo USB-C Integrado, 1 Porta USB-C e 1 USB-A, Para iPhone, Samsung, Motorola, AirPods e Mais",
+          "2026-08-03T10:29:29.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_815264-MLA114446175206_082026-E.webp",
+          "Celulares e Telefones",
+          true,
+          "active",
+          null,
+          true,
+          "ANKER_BR",
+          "gold_pro",
+          true,
+          "MLB76221124",
+          "ANKER",
+          278.99,
+          79,
+          18,
+          1,
+          9,
+          38,
+          5
+        ],
+        [
+          "MLB4982845855",
+          "Carregador Power Bank 10000amh S/ Fio Turbo Indução Magsafe",
+          "2026-08-02T13:49:37.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_657035-MLB114893389770_082026-O.webp",
+          "Celulares e Telefones",
+          false,
+          "active",
+          null,
+          true,
+          "AEREPERFOR",
+          "gold_special",
+          true,
+          "MLB-4982845855",
+          null,
+          44.9,
+          77,
+          18,
+          1,
+          6,
+          39,
+          4.7
+        ],
+        [
+          "MLB4983352661",
+          "Power Bank 30000mah Carregador Portátil 66w Usb Turbo C Cabo",
+          "2026-08-02T16:04:35.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_954463-MLB114588751890_082026-O.webp",
+          "Celulares e Telefones",
+          false,
+          "active",
+          true,
+          true,
+          "REVSHOP",
+          "gold_special",
+          true,
+          "MLB-4983352661",
+          "REVSHOP",
+          139.89,
+          77,
+          18,
+          1,
+          7,
+          39,
+          4.3
+        ],
+        [
+          "MLB4983403129",
+          "Power Bank 30000mah Carregador Portátil 66w Usb Turbo C Cabo",
+          "2026-08-02T16:17:03.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_730902-MLB115638893278_092026-O.webp",
+          "Celulares e Telefones",
+          false,
+          "active",
+          null,
+          true,
+          "REVSHOP",
+          "gold_special",
+          true,
+          "MLB-4983403129",
+          "REVSHOP",
+          129.97,
+          77,
+          18,
+          1,
+          7,
+          39,
+          4.4
+        ],
+        [
+          "MLB4976976935",
+          "Power Bank 10000mah Turbo 22.5w Carregador Portátil Display",
+          "2026-08-01T02:14:45.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_885572-MLB115409112629_072026-O.webp",
+          "Celulares e Telefones",
+          false,
+          "active",
+          null,
+          true,
+          "ALPHACLICK",
+          "gold_special",
+          true,
+          "MLB-4976976935",
+          null,
+          103.52,
+          75,
+          18,
+          1,
+          null,
+          40,
+          null
+        ],
+        [
+          "MLB4976989903",
+          "Power Bank 10000mah Turbo 22.5w Carregador Portátil Display",
+          "2026-08-01T02:14:45.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_886742-MLB114085080850_072026-O.webp",
+          "Celulares e Telefones",
+          false,
+          "active",
+          null,
+          true,
+          "ALPHACLICK",
+          "gold_special",
+          true,
+          "MLB-4976989903",
+          null,
+          102.12,
+          75,
+          18,
+          1,
+          null,
+          40,
+          null
+        ],
+        [
+          "MLB4974913691",
+          "Power Bank 10000mah Turbo 22.5w Carregador Portátil Display",
+          "2026-07-31T13:12:37.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_866031-MLB115383230189_072026-O.webp",
+          "Celulares e Telefones",
+          false,
+          "active",
+          null,
+          true,
+          "ALPHACLICK",
+          "gold_special",
+          true,
+          "MLB-4974913691",
+          null,
+          103.52,
+          73,
+          17,
+          1,
+          null,
+          41,
+          null
+        ],
+        [
+          "MLB4976473143",
+          "Jacki Design Kit Concept Lancheira Térmica Cor Rosa",
+          "2026-07-31T22:10:34.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_741255-MLA114079075930_072026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          null,
+          true,
+          "CHICCHARMLTDA",
+          "gold_pro",
+          true,
+          "MLB76162579",
+          "JACKIDESIGN",
+          129,
+          73,
+          17,
+          1,
+          116,
+          41,
+          4.9
+        ],
+        [
+          "MLB5039973579",
+          "Jacki Design Kit Concept Lancheira Térmica Cor Azul",
+          "2026-07-31T21:25:59.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_704307-MLA114077974224_072026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          null,
+          true,
+          "MARY_KASE",
+          "gold_special",
+          true,
+          "MLB76156183",
+          "JACKIDESIGN",
+          151.09,
+          73,
+          17,
+          2,
+          115,
+          41,
+          4.9
+        ],
+        [
+          "MLB7328432336",
+          "Power Bank Basike 10000 mAh com Cabo USB-C e Carregamento Rápido 35W para iPhone e Samsung",
+          "2026-07-31T02:06:22.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_896645-MLA115577317985_082026-O.webp",
+          "Informática",
+          true,
+          "active",
+          null,
+          true,
+          "DD20241011093002",
+          "gold_special",
+          true,
+          "MLB76083153",
+          "BASIKE",
+          138.71,
+          73,
+          17,
+          1,
+          1486,
+          41,
+          4.9
+        ],
+        [
+          "MLB7337868668",
+          "Cercado Grade Segurança Pet 10 Módulos 359x51cm Cães Branco",
+          "2026-07-31T20:54:02.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_987214-MLA115400474305_072026-E.webp",
+          "Pet Shop",
+          true,
+          "active",
+          null,
+          true,
+          "BIMETAISBIMETAIS20230701093852",
+          "gold_pro",
+          true,
+          "MLB76153634",
+          null,
+          227.9,
+          73,
+          17,
+          2,
+          69,
+          41,
+          4.8
+        ],
+        [
+          "MLB3387621815",
+          "Cercado Toca Casinha Portátil Dobravel Cães Gatos Pet",
+          "2026-09-06T07:26:46.689",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_783739-MLU72532693336_102023-O.webp",
+          "Pet Shop",
+          true,
+          "active",
+          null,
+          true,
+          "MINIMIX 1",
+          null,
+          true,
+          "MLB23515351",
+          null,
+          99,
+          50,
+          50,
+          2,
+          null,
+          4,
+          null
+        ]
+      ],
+      "dimensionCount": 15,
+      "lastRefreshTime": "2026-09-09T19:03:01.456Z",
+      "slowQuery": false,
+      "totalRows": 100,
+      "types": [
+        "string",
+        "string",
+        "time",
+        "time",
+        "string",
+        "string",
+        "boolean",
+        "string",
+        "boolean",
+        "boolean",
+        "string",
+        "string",
+        "boolean",
+        "string",
+        "string",
+        "number",
+        "number",
+        "number",
+        "number",
+        "number",
+        "number",
+        "number"
+      ]
+    }
+  ]
+}

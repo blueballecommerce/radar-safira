@@ -57,3 +57,30 @@ def test_exportacao_pontual_preserva_datas_da_fonte(tmp_path):
     assert result['anuncios']['MLB1']['read']=='2026-09-08'
     assert result['anuncios']['MLB1']['lidoEm']==doc['lidoEm']
     assert result['naoRetornados']==['MLB2']
+
+
+def test_busca_parcial_nao_vira_pesquisa_completa_nem_pareamento(tmp_path):
+    from radar.oportunidades import exportar
+    folder=tmp_path/'data/oportunidades/auditoria';folder.mkdir(parents=True)
+    (folder/'plano.json').write_text(json.dumps({'catalogo':2,'grupos':[{'terms':['caneta','3d'],'urls':['u1','u2']}]}))
+    doc={'lidoEm':'2026-09-09T18:00:00Z','fonte':'JoomPulse','groups':[['caneta','3d']],
+         'pages':[{'query':{'limit':1},'columns':['id','productName','date','adPublishDate','priceAmount','orderCount1m','catalogProduct'],
+                   'data':[['MLB1','Caneta 3d','2026-09-08','2026-08-20',50,40,True]]}]}
+    (folder/'busca-00-000.json').write_text(json.dumps(doc))
+    result=exportar(tmp_path)
+    assert result['pareamentos']==[]
+    assert result['cobertura']['buscados']==2
+    assert result['cobertura']['produtos']['u1']['paginacaoCompleta'] is False
+    assert result['anuncios']['MLB1']['ad']['preco_min'] is None
+    assert result['anuncios']['MLB1']['ad']['preco']==50
+
+
+def test_preco_e_demanda_sao_atualizados_juntos_sem_apagar_criacao(tmp_path):
+    from radar.oportunidades import exportar
+    folder=tmp_path/'data/oportunidades';folder.mkdir(parents=True)
+    for name,date,created,price,sales in [('a','2026-09-07','2026-08-20',60,100),('b','2026-09-08',None,45,30)]:
+        doc={'pages':[{'columns':['id','date','adPublishDate','priceAmount','orderCount1m'],'data':[['MLB1',date,created,price,sales]]}]}
+        (folder/(name+'.json')).write_text(json.dumps(doc))
+    result=exportar(tmp_path)['anuncios']['MLB1']
+    assert result['created']=='2026-08-20'
+    assert result['ad']['preco']==45 and result['monthly']==30

@@ -1,0 +1,3191 @@
+{
+  "lidoEm": "2026-09-09T19:01:48.782Z",
+  "fonte": "JoomPulse / MercadoProductsWeekly",
+  "groups": [
+    [
+      "abajur",
+      "projetor"
+    ],
+    [
+      "caixa",
+      "som"
+    ],
+    [
+      "dispenser",
+      "inteligente"
+    ],
+    [
+      "escova",
+      "dente"
+    ],
+    [
+      "irrigador",
+      "bucal"
+    ],
+    [
+      "máquina",
+      "seladora"
+    ],
+    [
+      "secador",
+      "roupas"
+    ],
+    [
+      "câmera",
+      "segurança"
+    ],
+    [
+      "massageador",
+      "facial"
+    ],
+    [
+      "gloss",
+      "lip"
+    ],
+    [
+      "gloss",
+      "mel"
+    ],
+    [
+      "lanterna",
+      "bike"
+    ],
+    [
+      "lanterna",
+      "farol"
+    ],
+    [
+      "led",
+      "traseiro"
+    ],
+    [
+      "farol",
+      "lanterna"
+    ],
+    [
+      "farol",
+      "monster"
+    ],
+    [
+      "luvas",
+      "gel"
+    ],
+    [
+      "luvas",
+      "táticas"
+    ],
+    [
+      "luva",
+      "motoqueiro"
+    ],
+    [
+      "luva",
+      "meio"
+    ],
+    [
+      "luva",
+      "tática"
+    ],
+    [
+      "luvas",
+      "desporto"
+    ],
+    [
+      "mochila",
+      "tática"
+    ],
+    [
+      "mochila",
+      "hidratação"
+    ],
+    [
+      "tática",
+      "bolsa"
+    ],
+    [
+      "manguito",
+      "manga"
+    ],
+    [
+      "meias",
+      "crossfit"
+    ],
+    [
+      "capa",
+      "selim"
+    ],
+    [
+      "canivete",
+      "ferramenta"
+    ],
+    [
+      "chave",
+      "multiuso"
+    ]
+  ],
+  "pages": [
+    {
+      "query": {
+        "dimensions": [
+          "MercadoProductsWeekly.id",
+          "MercadoProductsWeekly.productName",
+          "MercadoProductsWeekly.adPublishDate",
+          "MercadoProductsWeekly.date",
+          "MercadoProductsWeekly.productImage",
+          "MercadoProductsWeekly.merchantCategoryL1",
+          "MercadoProductsWeekly.catalogProduct",
+          "MercadoProductsWeekly.listingStatus",
+          "MercadoProductsWeekly.isFull",
+          "MercadoProductsWeekly.isFreeShipping",
+          "MercadoProductsWeekly.merchantName",
+          "MercadoProductsWeekly.listingType",
+          "MercadoProductsWeekly.buyBoxWiner",
+          "MercadoProductsWeekly.productId",
+          "MercadoProductsWeekly.brand"
+        ],
+        "measures": [
+          "MercadoProductsWeekly.priceAmount",
+          "MercadoProductsWeekly.orderCount1m",
+          "MercadoProductsWeekly.orderCount1w",
+          "MercadoProductsWeekly.numBuyBoxSellers",
+          "MercadoProductsWeekly.reviewsCount",
+          "MercadoProductsWeekly.daysInAd",
+          "MercadoProductsWeekly.reviewsRating"
+        ],
+        "filters": [
+          {
+            "member": "MercadoProductsWeekly.adPublishDate",
+            "operator": "inDateRange",
+            "values": [
+              "2026-07-31",
+              "2026-09-09"
+            ]
+          },
+          {
+            "member": "MercadoProductsWeekly.listingStatus",
+            "operator": "equals",
+            "values": [
+              "active"
+            ]
+          },
+          {
+            "member": "MercadoProductsWeekly.orderCount1m",
+            "operator": "gt",
+            "values": [
+              "0"
+            ]
+          },
+          {
+            "or": [
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "abajur"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "projetor"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "caixa"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "som"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "dispenser"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "inteligente"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "escova"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "dente"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "irrigador"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "bucal"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "máquina"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "seladora"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "secador"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "roupas"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "câmera"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "segurança"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "massageador"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "facial"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "gloss"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "lip"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "gloss"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "mel"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "lanterna"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "bike"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "lanterna"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "farol"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "led"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "traseiro"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "farol"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "lanterna"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "farol"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "monster"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "luvas"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "gel"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "luvas"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "táticas"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "luva"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "motoqueiro"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "luva"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "meio"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "luva"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "tática"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "luvas"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "desporto"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "mochila"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "tática"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "mochila"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "hidratação"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "tática"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "bolsa"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "manguito"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "manga"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "meias"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "crossfit"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "capa"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "selim"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "canivete"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "ferramenta"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "chave"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "multiuso"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "order": [
+          [
+            "MercadoProductsWeekly.orderCount1m",
+            "desc"
+          ],
+          [
+            "MercadoProductsWeekly.id",
+            "asc"
+          ]
+        ],
+        "limit": 100
+      },
+      "columns": [
+        "id",
+        "productName",
+        "adPublishDate",
+        "date",
+        "productImage",
+        "merchantCategoryL1",
+        "catalogProduct",
+        "listingStatus",
+        "isFull",
+        "isFreeShipping",
+        "merchantName",
+        "listingType",
+        "buyBoxWiner",
+        "productId",
+        "brand",
+        "priceAmount",
+        "orderCount1m",
+        "orderCount1w",
+        "numBuyBoxSellers",
+        "reviewsCount",
+        "daysInAd",
+        "reviewsRating"
+      ],
+      "data": [
+        [
+          "MLB5088856635",
+          "Franciny Ehlke Liphoney Gloss Labial De Mel Original",
+          "2026-08-06T09:20:47.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_847593-MLA114363854270_082026-E.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          null,
+          true,
+          "DARLYSSON080",
+          null,
+          true,
+          "MLB76464815",
+          null,
+          25,
+          4286,
+          1000,
+          9,
+          36,
+          35,
+          4.9
+        ],
+        [
+          "MLB7470232178",
+          "Gloss Liphoney Fran Mel Brilho Intenso",
+          "2026-08-08T09:07:29.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_880729-MLA114455988346_082026-E.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          null,
+          true,
+          "LANARO COSMETICOS",
+          "gold_pro",
+          true,
+          "MLB76545208",
+          "FRAN",
+          29.8,
+          909,
+          212,
+          16,
+          269,
+          33,
+          4.9
+        ],
+        [
+          "MLB4988016521",
+          "Luva Moto Inverno Termica Resistente Agua Motoboy Motoqueiro Couro Sintetico Motociclista Forrada Pelucia Forro Lã Ajustavel Confortavel Frio Uso Diario Unissex Masculina Feminina",
+          "2026-08-03T18:04:15.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_796279-MLA116495501047_082026-E.webp",
+          "Acessórios para Veículos",
+          true,
+          "active",
+          null,
+          true,
+          "TIBAPRIME",
+          "gold_special",
+          true,
+          "MLB76244318",
+          null,
+          26.9,
+          789,
+          184,
+          1,
+          null,
+          38,
+          null
+        ],
+        [
+          "MLB4983913103",
+          "Caixa Caixinha De Som Bluetooth Pendrive Fm Sd Portátil 50w",
+          "2026-08-02T21:57:47.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_721408-MLB114151403948_082026-O.webp",
+          "Eletrônicos, Áudio e Vídeo",
+          false,
+          "active",
+          null,
+          true,
+          "MULTYXGROUP",
+          "gold_special",
+          true,
+          "MLB-4983913103",
+          "MULTYX",
+          59.99,
+          769,
+          179,
+          1,
+          209,
+          39,
+          4.8
+        ],
+        [
+          "MLB5039976571",
+          "Kit 2 Câmeras de Segurança Lâmpada Wi-Fi Full HD 1080p para Monitoramento Interno",
+          "2026-08-11T15:10:44.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_912538-MLA114591648564_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "1VINANET",
+          "gold_special",
+          true,
+          "MLB76784598",
+          null,
+          105.62,
+          500,
+          117,
+          1,
+          996,
+          30,
+          4.9
+        ],
+        [
+          "MLB7418324954",
+          "Caixa Caixinha De Som Bluetooth Rádio Relógio Despertador Fm",
+          "2026-08-14T18:28:46.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_660098-MLB117149018749_092026-O.webp",
+          "Eletrônicos, Áudio e Vídeo",
+          false,
+          "active",
+          true,
+          true,
+          "INBOXMOBILE",
+          "gold_special",
+          true,
+          "MLB-7418324954",
+          "INBOXMOBILE",
+          39.83,
+          500,
+          130,
+          1,
+          323,
+          27,
+          4.4
+        ],
+        [
+          "MLB7488476066",
+          "Cinto Modular De Guarnição Sistema Molle E Bolsa Tática Cor Preto Tamanho Único",
+          "2026-08-12T03:01:56.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_967731-MLA115987823339_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          null,
+          true,
+          "BAZAR IMPERIAL",
+          "gold_pro",
+          true,
+          "MLB76927476",
+          "VJP",
+          149.99,
+          500,
+          121,
+          1,
+          242,
+          29,
+          4
+        ],
+        [
+          "MLB7525159042",
+          "Lanterna Para Bicicleta Farol Led Luz Bike Sinalizador Forte Preto",
+          "2026-08-26T19:58:33.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_701819-MLA115358391404_082026-O.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          true,
+          true,
+          "SAMCLARA",
+          "gold_special",
+          true,
+          "MLB78455651",
+          null,
+          33.82,
+          500,
+          233,
+          1,
+          14,
+          15,
+          4.7
+        ],
+        [
+          "MLB5005894723",
+          "Gloss Labial Liphoney Mel Hidratante Brilho Intenso Volume",
+          "2026-08-06T12:57:41.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_839777-MLB112358613628_062026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          false,
+          "active",
+          null,
+          true,
+          "FINKE",
+          "gold_special",
+          true,
+          "MLB-5005894723",
+          null,
+          19,
+          429,
+          100,
+          1,
+          2,
+          35,
+          5
+        ],
+        [
+          "MLB5009215327",
+          "Irrigador Oral bucal Limpeza Elétrico Bivolt Portátil Dental Gengiva Jato D'água 3 Níveis De Pressão Recarregável KATELUO",
+          "2026-08-06T14:27:55.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_797027-MLA114377067080_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          true,
+          true,
+          "GSAUTILIDADESS",
+          "gold_special",
+          true,
+          "MLB76469207",
+          null,
+          32,
+          429,
+          100,
+          1,
+          2421,
+          35,
+          4.4
+        ],
+        [
+          "MLB7318394336",
+          "Tinta Spray Automotivo Pintura Lanterna E Farol Translucido",
+          "2026-08-03T17:27:12.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_687707-MLB81704353703_122024-O.webp",
+          "Acessórios para Veículos",
+          false,
+          "active",
+          null,
+          true,
+          "TINTAS GONÇALVES",
+          "gold_special",
+          true,
+          "MLB-7318394336",
+          null,
+          47.4,
+          395,
+          92,
+          1,
+          199,
+          38,
+          4
+        ],
+        [
+          "MLB5034701627",
+          "Suporte Prolongador E Protetor P Câmeras De Segurança 55cm",
+          "2026-08-11T00:22:21.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_905758-MLB115907969397_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "FURIONS",
+          "gold_special",
+          true,
+          "MLB-5034701627",
+          null,
+          69.9,
+          100,
+          23,
+          1,
+          11,
+          30,
+          5
+        ],
+        [
+          "MLB5045798247",
+          "Kit Higiene Bucal Multi Saúde Irrigador Oral + Escova Dental Elétrica Recarregável Para Limpeza Completa dos Dentes - HC560K",
+          "2026-08-12T10:45:04.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_936033-MLA116438439469_082026-E.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          null,
+          true,
+          "LOJA MMPLACE",
+          "gold_special",
+          true,
+          "MLB77088224",
+          null,
+          234,
+          100,
+          24,
+          1,
+          2,
+          29,
+          5
+        ],
+        [
+          "MLB5048937581",
+          "Câmera De Segurança Wifi Externa 3 Lentes Ptz Ip66 Icsee",
+          "2026-08-12T21:23:57.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_677412-MLB116054358225_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "BELINLIFE",
+          "gold_special",
+          true,
+          "MLB-5048937581",
+          "LEBOSS",
+          153,
+          100,
+          24,
+          1,
+          18,
+          29,
+          5
+        ],
+        [
+          "MLB5056167377",
+          "Kit 2 Micro Câmera Espiã Segurança Wifi Ip Hd Noturna 1080p",
+          "2026-08-13T17:53:39.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_845950-MLB114757792546_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "X20250517020135",
+          "gold_special",
+          true,
+          "MLB-5056167377",
+          "ANJGG",
+          32.27,
+          100,
+          25,
+          1,
+          15,
+          28,
+          4.6
+        ],
+        [
+          "MLB5060827449",
+          "Caixa De Som Portátil 600w Bluetooth Com Luz 708e",
+          "2026-08-14T09:10:53.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_605397-MLB116464801417_082026-O.webp",
+          "Eletrônicos, Áudio e Vídeo",
+          false,
+          "active",
+          true,
+          true,
+          "FDFEHBAGC62491",
+          "gold_pro",
+          true,
+          "MLB-5060827449",
+          null,
+          310,
+          100,
+          26,
+          1,
+          9,
+          27,
+          4.2
+        ],
+        [
+          "MLB5062369515",
+          "Gloss Labial Franboesa Fran By Franciny Ehlke Brilho Vermelh",
+          "2026-08-14T13:11:50.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_759221-MLB116181320293_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          false,
+          "active",
+          null,
+          true,
+          "GERAÇÃO 77",
+          "gold_special",
+          true,
+          "MLB-5062369515",
+          null,
+          20.18,
+          100,
+          26,
+          1,
+          11,
+          27,
+          5
+        ],
+        [
+          "MLB5068362253",
+          "Kit 4 Porta Escova Dente Pasta Estojo Para Viagem Organizador Pratico Premium Induvidual UtilCerto",
+          "2026-08-15T19:15:04.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_919528-MLA116247259589_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "UTILCERTODISTRIBUIDORA",
+          "gold_special",
+          true,
+          "MLB77445431",
+          null,
+          19.43,
+          100,
+          27,
+          1,
+          null,
+          26,
+          null
+        ],
+        [
+          "MLB5069462757",
+          "Kit Máscara Led 7 Cores Fototerapia + Massageador Facial",
+          "2026-08-15T16:44:05.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_795897-MLB114867739528_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          false,
+          "active",
+          null,
+          true,
+          "AURADIHCOSMETICOS",
+          "gold_pro",
+          true,
+          "MLB-5069462757",
+          "MASCARADEFOTOTERAPIAFACIA",
+          119.63,
+          100,
+          27,
+          1,
+          3,
+          26,
+          5
+        ],
+        [
+          "MLB5081668687",
+          "Creme Dental E Escova Dente Cães Gatos Higiene Bucal Sabor Carne",
+          "2026-08-11T00:15:19.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_976293-MLA115907706663_082026-O.webp",
+          "Pet Shop",
+          true,
+          "active",
+          true,
+          true,
+          "BARTH_STORE",
+          null,
+          true,
+          "MLB76625215",
+          null,
+          23.6,
+          100,
+          23,
+          1,
+          null,
+          30,
+          null
+        ],
+        [
+          "MLB5088939527",
+          "Seladora Térmica Manual 30cm Sacos Plásticos Embalagens Vedação Selagem PP PE Máquina Lacradora Impulso Regulador Temperatura 8 Níveis Profissional Doméstica Alimentos Comércio Katrex",
+          "2026-08-19T00:30:27.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_817793-MLA115006678152_082026-O.webp",
+          "Indústria e Comércio",
+          true,
+          "active",
+          null,
+          true,
+          "KATREX",
+          "gold_special",
+          true,
+          "MLB77661933",
+          "KATREX",
+          104.9,
+          100,
+          32,
+          1,
+          18,
+          22,
+          4.8
+        ],
+        [
+          "MLB5099969635",
+          "Câmera Segurança Wifi Externa Inteligente NovaDigital CS-VIZION PTZ 355° 3MP IP65 Onvif Tuya Smart Life Alexa Google Visão Noturna Detecção Movimento Bivolt Branca",
+          "2026-08-19T18:38:51.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_996800-MLA116442772027_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "AZZAX SHOP",
+          "gold_pro",
+          true,
+          "MLB77749781",
+          "NOVADIGITAL",
+          169.99,
+          100,
+          32,
+          1,
+          null,
+          22,
+          null
+        ],
+        [
+          "MLB5110528799",
+          "Daoyee Câmera De Segurança Wifi Profissional 3 Lentes Preto",
+          "2026-08-14T21:12:44.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_932212-MLA116201693435_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "CGABCHDFE97282",
+          "gold_pro",
+          true,
+          "MLB77345490",
+          null,
+          296.67,
+          100,
+          26,
+          1,
+          11,
+          27,
+          5
+        ],
+        [
+          "MLB5117555587",
+          "Kit Creme Dental Pet + Dedeira Escova Dente Cachorro Gato Tutti Fruti",
+          "2026-08-19T16:05:38.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_955179-MLA115047622644_082026-O.webp",
+          "Pet Shop",
+          true,
+          "active",
+          true,
+          true,
+          "GAISAPET",
+          "gold_special",
+          true,
+          "MLB77726943",
+          null,
+          27.06,
+          100,
+          32,
+          1,
+          2,
+          22,
+          5
+        ],
+        [
+          "MLB5125131497",
+          "Capacete Ciclismo Bike Proteçao Bicicleta Kit Lanterna Cores Cor Preto Com Cinza Tamanho LUVA G",
+          "2026-08-24T17:20:48.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_978808-MLA115256158216_082026-O.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          null,
+          true,
+          "RPC SHOP",
+          "gold_special",
+          true,
+          "MLB78198226",
+          null,
+          159.77,
+          100,
+          41,
+          1,
+          112,
+          17,
+          4.5
+        ],
+        [
+          "MLB5125538941",
+          "Massageador Facial Led Tratamento Lift Fototerapia 7 Cores",
+          "2026-08-24T19:19:38.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_806936-MLB114958248273_072026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          false,
+          "active",
+          true,
+          true,
+          "DRAKONIC",
+          "gold_special",
+          true,
+          "MLB-5125538941",
+          null,
+          49.94,
+          100,
+          41,
+          1,
+          956,
+          17,
+          4
+        ],
+        [
+          "MLB5125794411",
+          "Kit 2 Estojo Porta Escova De Dente E Pasta Viagem Portátil Branco",
+          "2026-08-24T19:10:37.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_825770-MLA115259320004_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "NOVAMIL",
+          "gold_special",
+          true,
+          "MLB78215109",
+          null,
+          18.51,
+          100,
+          41,
+          1,
+          1,
+          17,
+          4.9
+        ],
+        [
+          "MLB5139446779",
+          "Alaxe Caixa De Som Inteligente Comando Voz Portátil Sem Fio",
+          "2026-08-26T16:59:21.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_813959-MLB115351081126_082026-O.webp",
+          "Eletrônicos, Áudio e Vídeo",
+          false,
+          "active",
+          true,
+          true,
+          "MALE4497169",
+          "gold_special",
+          true,
+          "MLB-5139446779",
+          null,
+          74.95,
+          100,
+          47,
+          1,
+          14,
+          15,
+          4
+        ],
+        [
+          "MLB5139467689",
+          "Alaxe Caixa De Som Inteligente Comando Voz Portátil Sem Fio",
+          "2026-08-26T16:55:55.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_742991-MLB116765881015_082026-O.webp",
+          "Eletrônicos, Áudio e Vídeo",
+          false,
+          "active",
+          true,
+          true,
+          "MALE4497169",
+          "gold_special",
+          true,
+          "MLB-5139467689",
+          null,
+          74.95,
+          100,
+          47,
+          1,
+          14,
+          15,
+          4
+        ],
+        [
+          "MLB5160765505",
+          "Bateria C12 Da Câmera De Segurança Sem Fio Amzcev Mini 4k Negro",
+          "2026-09-01T01:38:43.058",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_826384-CBT116927355685_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "USSTRATTONCBTBRR",
+          null,
+          true,
+          "MLB2101153021",
+          null,
+          401.55,
+          100,
+          78,
+          1,
+          null,
+          9,
+          null
+        ],
+        [
+          "MLB5174371525",
+          "Caixa de Som Boombox Plus Aiwa AWA408 550 Watts PMPO Com Bluetooth USB TWS Auxiliar",
+          "2026-08-11T02:51:08.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_965323-MLA115364083294_082026-E.webp",
+          "Eletrônicos, Áudio e Vídeo",
+          true,
+          "active",
+          null,
+          true,
+          "DIVINASVENDAS",
+          null,
+          true,
+          "MLB76677158",
+          "AIWA",
+          453,
+          100,
+          23,
+          11,
+          25,
+          30,
+          5
+        ],
+        [
+          "MLB5178608635",
+          "Porta-escovas De Dente Com Tampa Deslizante, Organizador  Qo 8949182195710",
+          "2026-08-12T03:34:40.953",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_788849-MLB101318960343_122025-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "CNWUHANFENGSUSHANGMAOYOBRR",
+          "gold_pro",
+          true,
+          "MLB2099203199",
+          null,
+          177.66,
+          100,
+          24,
+          7,
+          null,
+          29,
+          null
+        ],
+        [
+          "MLB5190840555",
+          "Suporte Para Escova De Dentes De Pasta De Dente,para Parede Branco",
+          "2026-08-13T19:06:50.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_965546-MLA114760961936_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          false,
+          "DHEGFBADC34488",
+          "gold_pro",
+          true,
+          "MLB77268960",
+          null,
+          47.32,
+          100,
+          25,
+          1,
+          null,
+          28,
+          null
+        ],
+        [
+          "MLB7391080014",
+          "Caixa de Som Portátil WGP S100 5W Bluetooth Com Luzes LED RGB",
+          "2026-08-12T02:19:33.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_858778-MLA114623554450_082026-O.webp",
+          "Eletrônicos, Áudio e Vídeo",
+          true,
+          "active",
+          true,
+          true,
+          "B20260430105448",
+          "gold_pro",
+          true,
+          "MLB76911079",
+          null,
+          21.99,
+          100,
+          24,
+          1,
+          null,
+          29,
+          null
+        ],
+        [
+          "MLB7397305258",
+          "Kit com 4 Câmeras de Segurança Lâmpada Wi-Fi Full HD para Monitoramento 360°",
+          "2026-08-12T14:50:20.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_971266-MLA114668385984_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "1VINANET",
+          "gold_special",
+          true,
+          "MLB77103978",
+          null,
+          206.35,
+          100,
+          24,
+          1,
+          399,
+          29,
+          4.8
+        ],
+        [
+          "MLB7399987274",
+          "Câmera De Segurança Wi-fi 3mp Visão Noturna Colorida Áudio",
+          "2026-08-12T21:02:07.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_925773-MLB116053718963_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "BELINLIFE",
+          "gold_special",
+          true,
+          "MLB-7399987274",
+          "IPEGA",
+          63.76,
+          100,
+          24,
+          1,
+          9,
+          29,
+          4.4
+        ],
+        [
+          "MLB7400626900",
+          "Par Luva Motoqueiro Com Touch Moto Proteção Impermeável",
+          "2026-08-13T00:10:29.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_644340-MLB117212877497_092026-O.webp",
+          "Acessórios para Veículos",
+          false,
+          "active",
+          true,
+          true,
+          "ORIZON_STORE",
+          "gold_special",
+          true,
+          "MLB-7400626900",
+          null,
+          34.42,
+          100,
+          25,
+          1,
+          19,
+          28,
+          4
+        ],
+        [
+          "MLB7402501530",
+          "Par Luva Motoqueiro Térmica Com Touch Screen Tamanho Único",
+          "2026-08-13T06:50:25.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_746932-MLB115237099009_072026-O.webp",
+          "Acessórios para Veículos",
+          false,
+          "active",
+          null,
+          true,
+          "DAECFBHGD5603",
+          "gold_special",
+          true,
+          "MLB-7402501530",
+          null,
+          24.69,
+          100,
+          25,
+          1,
+          28,
+          28,
+          4.8
+        ],
+        [
+          "MLB7402501534",
+          "Par Luva Motoqueiro Térmica Com Touch Screen Tamanho Único",
+          "2026-08-13T06:50:25.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_746932-MLB115237099009_072026-O.webp",
+          "Acessórios para Veículos",
+          false,
+          "active",
+          true,
+          true,
+          "DAECFBHGD5603",
+          "gold_special",
+          true,
+          "MLB-7402501534",
+          "INICO",
+          24.69,
+          100,
+          25,
+          1,
+          28,
+          28,
+          4.7
+        ],
+        [
+          "MLB7409690148",
+          "Kit 4 Micro Câmera Espiã Segurança Wifi Ip Sensor Movimento",
+          "2026-08-13T18:22:43.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_768479-MLB116128142233_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "X20250517020135",
+          "gold_special",
+          true,
+          "MLB-7409690148",
+          "ANJGG",
+          55.28,
+          100,
+          25,
+          1,
+          8,
+          28,
+          4.5
+        ],
+        [
+          "MLB7418324476",
+          "Caixa Caixinha De Som Bluetooth Rádio Relógio Despertador Fm",
+          "2026-08-14T18:18:38.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_616443-MLB116195020873_082026-O.webp",
+          "Eletrônicos, Áudio e Vídeo",
+          false,
+          "active",
+          true,
+          true,
+          "INBOX MOBILE",
+          "gold_special",
+          true,
+          "MLB-7418324476",
+          null,
+          42.23,
+          100,
+          26,
+          1,
+          195,
+          27,
+          4
+        ],
+        [
+          "MLB7418324478",
+          "Caixa Caixinha De Som Bluetooth Rádio Relógio Despertador Fm",
+          "2026-08-14T18:18:38.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_879343-MLB116195965471_082026-O.webp",
+          "Eletrônicos, Áudio e Vídeo",
+          false,
+          "active",
+          true,
+          true,
+          "INBOX MOBILE",
+          "gold_special",
+          true,
+          "MLB-7418324478",
+          null,
+          42.23,
+          100,
+          26,
+          1,
+          195,
+          27,
+          4
+        ],
+        [
+          "MLB7448513042",
+          "Caixa De Som Bluetooth Grave Potente Ipx6 Resistente A Água",
+          "2026-08-18T23:04:33.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_738357-MLA116468090285_082026-O.webp",
+          "Eletrônicos, Áudio e Vídeo",
+          false,
+          "active",
+          null,
+          true,
+          "INBOXMOBILE",
+          "gold_special",
+          true,
+          "MLB-7448513042",
+          "INBOXMOBILE",
+          106.64,
+          100,
+          30,
+          1,
+          126,
+          23,
+          4
+        ],
+        [
+          "MLB7459658620",
+          "Par Luva Moto Motoqueiro Térmica Impermeável Frio Touch Screen Para Proteção Inverno Motociclista Forrada Com Algodão Acessório Feminino e Masculino Motoboy Entregador Rívora Unissex Universal",
+          "2026-08-19T18:06:56.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_780052-MLA116442386797_082026-O.webp",
+          "Acessórios para Veículos",
+          true,
+          "active",
+          null,
+          true,
+          "RIVORA",
+          "gold_special",
+          true,
+          "MLB77745499",
+          null,
+          24.9,
+          100,
+          32,
+          1,
+          14,
+          22,
+          4.5
+        ],
+        [
+          "MLB7470040338",
+          "Caixa Caixinha De Som Computador Pc Notebook Subwoofer Amplificada 6w Usb P2 Sortidas",
+          "2026-08-14T13:44:21.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_738951-MLA114811574954_082026-O.webp",
+          "Informática",
+          true,
+          "active",
+          null,
+          true,
+          "AYANNSTORE",
+          "gold_special",
+          true,
+          "MLB77325388",
+          null,
+          28.9,
+          100,
+          26,
+          1,
+          88,
+          27,
+          4.7
+        ],
+        [
+          "MLB7472128092",
+          "Caixa De Som Jbl Go Essential 2 Bluetooth Portátil Original",
+          "2026-08-20T22:41:29.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_924525-MLB115267103894_082026-O.webp",
+          "Eletrônicos, Áudio e Vídeo",
+          false,
+          "active",
+          null,
+          true,
+          "FKAUDIOSHOP",
+          "gold_special",
+          true,
+          "MLB-7472128092",
+          null,
+          199,
+          100,
+          33,
+          1,
+          3,
+          21,
+          5
+        ],
+        [
+          "MLB7481749282",
+          "Kit Farol E Lanterna Bike Recarregável Usb Com Buzina Led",
+          "2026-08-22T02:41:29.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_799155-MLB116811661343_082026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          true,
+          true,
+          "AZ20260623214811",
+          "gold_special",
+          true,
+          "MLB-7481749282",
+          null,
+          30.68,
+          100,
+          37,
+          1,
+          3,
+          19,
+          5
+        ],
+        [
+          "MLB7488473760",
+          "Mochila De Hidratação De Ciclismo Bolsa De Corrida Esportiva Cor Preto",
+          "2026-08-14T20:11:54.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_642918-MLA116199551565_082026-O.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          null,
+          true,
+          "FASHION_SPOT",
+          "gold_special",
+          true,
+          "MLB77338184",
+          null,
+          76.47,
+          100,
+          26,
+          1,
+          37,
+          27,
+          4.4
+        ],
+        [
+          "MLB7493155266",
+          "Kit Com 4 Escovas De Dente Macias Kit Família 4 Cores 4 Escovas Cerdas Macia",
+          "2026-08-21T20:02:07.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_790103-MLA116551156831_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          true,
+          false,
+          "GBPRESENTES_E_UTIL_",
+          "gold_special",
+          true,
+          "MLB78018507",
+          null,
+          8.29,
+          100,
+          35,
+          1,
+          null,
+          20,
+          null
+        ],
+        [
+          "MLB7497818422",
+          "Creme Dental E Escova Dente Cães Gatos Higiene Bucal Sabor Morango",
+          "2026-08-24T10:42:32.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_789232-MLA115243600424_082026-E.webp",
+          "Pet Shop",
+          true,
+          "active",
+          null,
+          true,
+          "BARTH_STORE",
+          "gold_special",
+          true,
+          "MLB78182254",
+          null,
+          23.6,
+          100,
+          41,
+          1,
+          161,
+          17,
+          null
+        ],
+        [
+          "MLB7525980856",
+          "Soundbar 32 Cm Para Pc Caixa Barra De Som Slim Audio Speaker Preto",
+          "2026-08-26T23:27:47.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_919037-MLA116777956399_082026-O.webp",
+          "Eletrônicos, Áudio e Vídeo",
+          true,
+          "active",
+          null,
+          true,
+          "KOSTAGON",
+          "gold_pro",
+          true,
+          "MLB78499243",
+          "GAMERCOMPUTADORP2POTENTE",
+          54.91,
+          100,
+          47,
+          1,
+          1,
+          15,
+          0
+        ],
+        [
+          "MLB7531523106",
+          "Transmissor E Receptor Bluetooth 2 Em 1 P2 AUX RCA USB Adaptador Áudio Wireless Para TV Smart TV Carro Som Caixa Fone Home Theater Amplificador Sem Fio Baixa Latência",
+          "2026-08-27T12:12:43.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_730717-MLA116811338403_082026-O.webp",
+          "Eletrônicos, Áudio e Vídeo",
+          true,
+          "active",
+          true,
+          true,
+          "SINAPSE_IMPORTS",
+          "gold_special",
+          true,
+          "MLB78616549",
+          null,
+          56,
+          100,
+          50,
+          1,
+          1,
+          14,
+          5
+        ],
+        [
+          "MLB7557665170",
+          "Manguito Braço Proteção Solar Uv50+ Moto Manga Ciclismo Bike G Preto",
+          "2026-08-26T20:36:00.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_946078-MLA116773388737_082026-E.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          true,
+          true,
+          "LIDERSHOP1",
+          "gold_pro",
+          true,
+          "MLB78464320",
+          null,
+          9.99,
+          100,
+          47,
+          1,
+          null,
+          15,
+          null
+        ],
+        [
+          "MLB7575169984",
+          "Caixa De Som Jbl Partybox On The Go 2 Preta Com Microfone Preto",
+          "2026-08-13T03:01:38.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_626584-MLA114709986426_082026-E.webp",
+          "Eletrônicos, Áudio e Vídeo",
+          true,
+          "active",
+          null,
+          true,
+          "INFOSTORE_MG",
+          "gold_pro",
+          true,
+          "MLB77198147",
+          null,
+          1979,
+          100,
+          25,
+          1,
+          50,
+          28,
+          5
+        ],
+        [
+          "MLB7580245788",
+          "Kit Banheiro Pia Lavabo Escova De Dente Sabonete Preto 3 Pçs Preto",
+          "2026-09-02T19:41:02.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_609045-MLA116204367639_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "LOJA DOPAMINE",
+          "gold_special",
+          true,
+          "MLB77353622",
+          null,
+          67.09,
+          100,
+          88,
+          1,
+          37,
+          8,
+          4.8
+        ],
+        [
+          "MLB7582055680",
+          "Kit 2 Escova Facial Drenagem Linfática Inchaço Modeladora Massageadora Rosto Pescoço Corpo Reduz Medidas Celulite Massagem Relaxante Estética Beleza Skincare Spa AutoCuidado",
+          "2026-09-03T11:04:01.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_607241-MLA117130887705_092026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          null,
+          true,
+          "DLUCCAECOMMERCE",
+          "gold_special",
+          true,
+          "MLB78872458",
+          null,
+          25.65,
+          100,
+          100,
+          1,
+          1,
+          7,
+          5
+        ],
+        [
+          "MLB5034089495",
+          "Caixinha Som Karaokê 2 Microfones Infantil Bluetooth Sem Fio Led RGB Efeitos Muda Altera Voz Fina e Grossa Musical Brinquedo Recarregável USB Portátil Divertido Mini Caixa Colorida com Luzes Rosa",
+          "2026-08-10T19:26:21.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_686448-MLA114543951216_082026-E.webp",
+          "Eletrônicos, Áudio e Vídeo",
+          true,
+          "active",
+          null,
+          true,
+          "CANTI_STORE",
+          "gold_special",
+          true,
+          "MLB76588436",
+          "VIPCELLCAPASEACESSORIOS",
+          41.7,
+          97,
+          23,
+          1,
+          55,
+          31,
+          4.9
+        ],
+        [
+          "MLB5034096311",
+          "Creme Dental E Escova Dente Cães Gatos Higiene Bucal Sabor Tutti frutti",
+          "2026-08-10T23:16:33.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_989705-MLA114548705766_082026-O.webp",
+          "Pet Shop",
+          true,
+          "active",
+          true,
+          true,
+          "BARTH_STORE",
+          "gold_special",
+          true,
+          "MLB76609119",
+          "PETCLEAN",
+          23.6,
+          97,
+          23,
+          1,
+          90,
+          31,
+          null
+        ],
+        [
+          "MLB7377419466",
+          "Caixinha Som Karaokê 2 Microfones Infantil Bluetooth Sem Fio Led RGB Efeitos Muda Altera Voz Fina e Grossa Musical Brinquedo Recarregável USB Portátil Divertido Mini Caixa Colorida com Luzes Azul",
+          "2026-08-10T14:48:08.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_862742-MLA114534796950_082026-O.webp",
+          "Eletrônicos, Áudio e Vídeo",
+          true,
+          "active",
+          true,
+          true,
+          "CANTI_STORE",
+          "gold_special",
+          true,
+          "MLB76574981",
+          "VIPCELLCAPASEACESSORIOS",
+          38.7,
+          97,
+          23,
+          1,
+          55,
+          31,
+          4.9
+        ],
+        [
+          "MLB7377420252",
+          "Caixinha Som Karaokê 2 Microfones Infantil Bluetooth Sem Fio Led RGB Efeitos Muda Altera Voz Fina e Grossa Musical Brinquedo Recarregável USB Portátil Divertido Mini Caixa Colorida com Luzes Bege",
+          "2026-08-10T14:48:09.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_863216-MLA115891290511_082026-E.webp",
+          "Eletrônicos, Áudio e Vídeo",
+          true,
+          "active",
+          null,
+          true,
+          "CANTI_STORE",
+          "gold_special",
+          true,
+          "MLB76574983",
+          "VIPCELLCAPASEACESSORIOS",
+          38.7,
+          97,
+          23,
+          2,
+          55,
+          31,
+          4.9
+        ],
+        [
+          "MLB7381692704",
+          "Luminária G-Speaker Led RGB com Carregador Indução 15w Caixa De Som Bluetooth Usb Bivolt Luz De Mesa Abajur Quarto Multifuncional Radio Fm Bateria Recarregável Branco",
+          "2026-08-10T14:11:04.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_722752-MLA114602655180_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "GDICOMERCIO",
+          "gold_special",
+          true,
+          "MLB76573033",
+          "VISONSPECIALTISSUE",
+          39.5,
+          97,
+          23,
+          1,
+          1,
+          31,
+          4.9
+        ],
+        [
+          "MLB5015602665",
+          "Gloss Lip Bunny Triple Fran Chocolate 3 Camadas Original",
+          "2026-08-07T18:39:55.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_958993-MLB114530797160_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          false,
+          "active",
+          null,
+          true,
+          "SAMPAIOANDERSON21",
+          "gold_special",
+          true,
+          "MLB-5015602665",
+          null,
+          20.9,
+          88,
+          21,
+          1,
+          null,
+          34,
+          null
+        ],
+        [
+          "MLB7349335376",
+          "Kit Máscara Led 7 Cores Fototerapia + Massageador Facial",
+          "2026-08-06T22:14:31.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_867125-MLB115736912509_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          false,
+          "active",
+          true,
+          true,
+          "LDCOMERCIODEVARIEDADES",
+          "gold_special",
+          true,
+          "MLB-7349335376",
+          null,
+          134.46,
+          86,
+          20,
+          1,
+          3,
+          35,
+          5
+        ],
+        [
+          "MLB7350527566",
+          "Caixa de Som Bluetooth Portátil Belteenk S100, 5W, para Festa e Piquenique",
+          "2026-08-06T13:51:11.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_674437-MLA114375575704_082026-O.webp",
+          "Eletrônicos, Áudio e Vídeo",
+          true,
+          "active",
+          true,
+          true,
+          "L20260428155609",
+          "gold_special",
+          true,
+          "MLB76468184",
+          null,
+          24.99,
+          86,
+          20,
+          1,
+          null,
+          35,
+          null
+        ],
+        [
+          "MLB7353117470",
+          "Inova Caixa De Som Bluetooth 30w Boombox Estéreo Hifi TWS Bass Boost IPX6 Bateria 3000mAh Com USB Pendrive Luzes Rgb E Fm Para Festa Praia Viagem - Preto",
+          "2026-08-06T01:17:30.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_709275-MLA116174648913_082026-E.webp",
+          "Eletrônicos, Áudio e Vídeo",
+          true,
+          "active",
+          null,
+          true,
+          "PC20250321104047",
+          "gold_special",
+          true,
+          "MLB76452328",
+          null,
+          157.5,
+          86,
+          20,
+          1,
+          null,
+          35,
+          null
+        ],
+        [
+          "MLB7404909338",
+          "Kapbom SY8418b Caixa de som Bluetooth - Sortidas",
+          "2026-08-06T18:22:51.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_682978-MLA114385006842_082026-O.webp",
+          "Eletrônicos, Áudio e Vídeo",
+          true,
+          "active",
+          null,
+          true,
+          "NOVOLT_ECOMMERCE",
+          "gold_special",
+          true,
+          "MLB76488430",
+          null,
+          219,
+          86,
+          20,
+          1,
+          7,
+          35,
+          4.7
+        ],
+        [
+          "MLB7336422388",
+          "Caixa De Som Bluetooth À Prova D'água Boombox 4 Jbl - Branca",
+          "2026-08-05T12:51:10.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_629142-MLA91280310883_082025-O.webp",
+          "Eletrônicos, Áudio e Vídeo",
+          false,
+          "active",
+          null,
+          true,
+          "EASYTECHSP",
+          "gold_special",
+          true,
+          "MLB-7336422388",
+          null,
+          3099,
+          83,
+          19,
+          1,
+          null,
+          36,
+          null
+        ],
+        [
+          "MLB7340801222",
+          "Massageador Facial LED Elétrico para Rosto e Pescoço com Fototerapia",
+          "2026-08-05T17:04:48.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_681418-MLA115064056798_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          null,
+          true,
+          "LINNY_STORE",
+          "gold_special",
+          true,
+          "MLB76417613",
+          null,
+          43.83,
+          83,
+          19,
+          1,
+          15,
+          36,
+          5
+        ],
+        [
+          "MLB4988787237",
+          "Kit Farol E Lanterna Bicicleta Luz Led Potente Recarregável",
+          "2026-08-04T05:35:24.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_647192-MLB114222867328_082026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          true,
+          true,
+          "SNPBRSHOP",
+          "gold_special",
+          true,
+          "MLB-4988787237",
+          "KOINFI",
+          69.42,
+          81,
+          19,
+          1,
+          9,
+          37,
+          5
+        ],
+        [
+          "MLB4991601831",
+          "Caixa De Som Sabala Dr-901 Tws Potent 10w",
+          "2026-08-04T12:42:58.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_658471-MLB114238240560_082026-O.webp",
+          "Eletrônicos, Áudio e Vídeo",
+          false,
+          "active",
+          null,
+          true,
+          "BAHEDCGFB53703",
+          "gold_pro",
+          true,
+          "MLB-4991601831",
+          "SABALA",
+          99,
+          81,
+          19,
+          1,
+          22,
+          37,
+          5
+        ],
+        [
+          "MLB4985515923",
+          "Bolsa Peitoral Tática Molle Impermeável Pesca Moto Camping",
+          "2026-08-03T08:46:54.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_810968-MLB114170100458_082026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          true,
+          true,
+          "RS20260414141855",
+          "gold_special",
+          true,
+          "MLB-4985515923",
+          "GENERICA",
+          78,
+          79,
+          18,
+          1,
+          5,
+          38,
+          5
+        ],
+        [
+          "MLB5007632075",
+          "Pochete Perna Coxa Bolsa Lateral Tática Hard Shell Moto Multifuncional Impermeável Motocicleta Eva Casca Rígida Cor Preta Tumblr",
+          "2026-08-03T19:25:43.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_733563-MLA114197423570_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          true,
+          true,
+          "FERREIRASHOPPING_",
+          "gold_special",
+          true,
+          "MLB76254287",
+          null,
+          45,
+          79,
+          18,
+          1,
+          null,
+          38,
+          null
+        ],
+        [
+          "MLB7314824478",
+          "Mochila Tática Militar 60L Impermeável Reforçada para Notebook 17.3 Polegadas, Mochila Grande Capacidade para Camping, Viagem, Trabalho e Uso Outdoor preto",
+          "2026-08-03T04:10:37.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_600077-MLA114423472342_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          null,
+          true,
+          "AS20260427094711",
+          "gold_special",
+          true,
+          "MLB76520875",
+          "NTESX",
+          130.75,
+          79,
+          18,
+          1,
+          282,
+          38,
+          4.8
+        ],
+        [
+          "MLB7321303692",
+          "Caixa De Som 16w Ipx6 Bluetooth 5.3 Graves Potentes Rgb Tws",
+          "2026-08-03T21:12:43.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_705824-MLA109855011168_042026-O.webp",
+          "Eletrônicos, Áudio e Vídeo",
+          false,
+          "active",
+          true,
+          true,
+          "INBOX MOBILE",
+          "gold_special",
+          true,
+          "MLB-7321303692",
+          null,
+          107,
+          79,
+          18,
+          1,
+          105,
+          38,
+          4
+        ],
+        [
+          "MLB7314498406",
+          "Caixa Registradora Infantil Luz Som Scanner Brinquedo Mercad",
+          "2026-08-02T16:57:35.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_974781-MLB115475554695_082026-O.webp",
+          "Brinquedos e Hobbies",
+          false,
+          "active",
+          true,
+          true,
+          "JBCSTORE_OFICIAL",
+          "gold_special",
+          true,
+          "MLB-7314498406",
+          null,
+          34.96,
+          77,
+          18,
+          1,
+          4,
+          39,
+          4
+        ],
+        [
+          "MLB4975103447",
+          "Karaokê Bluetooth Infantil Caixa Som Microfones Recarregável",
+          "2026-07-31T14:05:59.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_693283-MLB115386331403_072026-O.webp",
+          "Brinquedos e Hobbies",
+          false,
+          "active",
+          true,
+          true,
+          "YWWACESSORIOS",
+          "gold_special",
+          true,
+          "MLB-4975103447",
+          null,
+          30.52,
+          73,
+          17,
+          1,
+          23,
+          41,
+          5
+        ],
+        [
+          "MLB4975103509",
+          "Karaokê Bluetooth Infantil Caixa Som Microfones Recarregável",
+          "2026-07-31T14:06:06.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_746809-MLB114064220942_072026-O.webp",
+          "Brinquedos e Hobbies",
+          false,
+          "active",
+          true,
+          true,
+          "YWWACESSORIOS",
+          "gold_special",
+          true,
+          "MLB-4975103509",
+          null,
+          31.52,
+          73,
+          17,
+          1,
+          23,
+          41,
+          4.8
+        ],
+        [
+          "MLB4975111903",
+          "Karaokê Bluetooth Infantil Caixa Som Microfones Recarregável",
+          "2026-07-31T14:17:19.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_760518-MLB115386077287_072026-O.webp",
+          "Brinquedos e Hobbies",
+          false,
+          "active",
+          null,
+          true,
+          "KLLCOMERCIO",
+          "gold_special",
+          true,
+          "MLB-4975111903",
+          null,
+          35,
+          73,
+          17,
+          1,
+          4,
+          41,
+          4.5
+        ],
+        [
+          "MLB4975931837",
+          "Luva Moto Motociclista Impermeável Proteção Touch Motoqueiro Preto Unico",
+          "2026-07-31T17:53:34.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_732231-MLB111243810097_052026-O.webp",
+          "Acessórios para Veículos",
+          false,
+          "active",
+          false,
+          true,
+          "HFDGEBCAH80141",
+          "gold_special",
+          true,
+          "MLB-4975931837",
+          null,
+          36.76,
+          73,
+          17,
+          1,
+          12,
+          41,
+          3.8
+        ],
+        [
+          "MLB4975939111",
+          "Kit Motociclista Luva Proteção Touch Balaclava Motoqueiro Preto Unico",
+          "2026-07-31T17:49:10.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_870140-MLB112507184350_062026-O.webp",
+          "Acessórios para Veículos",
+          false,
+          "active",
+          null,
+          true,
+          "HFDGEBCAH80141",
+          "gold_special",
+          true,
+          "MLB-4975939111",
+          "MOTOCROSSMOTOBOYMAOCICLIS",
+          50.29,
+          73,
+          17,
+          1,
+          13,
+          41,
+          4.8
+        ],
+        [
+          "MLB5118935917",
+          "Câmera De Segurança Wifi 4k Dome Lente Dupla À Prova D'água Cinza C/ Preto - De Acordo Com Disponibilidade De Cor",
+          "2026-07-31T21:44:08.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_862716-MLA115295585408_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "ALIRONOFICIAL",
+          null,
+          true,
+          "MLB76158829",
+          null,
+          135.8,
+          73,
+          17,
+          2,
+          5,
+          41,
+          5
+        ],
+        [
+          "MLB7297531586",
+          "Câmera Segurança Externa Lente Dupla Wifi Yoosee Prova Dágua",
+          "2026-07-31T00:57:03.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_708693-MLB114038631070_072026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "MARKETPLACE",
+          "gold_special",
+          true,
+          "MLB-7297531586",
+          null,
+          153.22,
+          73,
+          17,
+          1,
+          31,
+          41,
+          4.7
+        ],
+        [
+          "MLB7304422416",
+          "Kit Farol Bike Led Seta Sinalizador Lanterna Luz Bicicleta",
+          "2026-07-31T19:26:50.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_832335-MLB114072940010_072026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          true,
+          true,
+          "SAMCLARA",
+          "gold_special",
+          true,
+          "MLB-7304422416",
+          null,
+          93.26,
+          73,
+          17,
+          1,
+          16,
+          41,
+          4.9
+        ],
+        [
+          "MLB7304556200",
+          "Caixa De Som Ativa 15 Profissional 2000 Watts Rms Ksr Pro K2 Preto",
+          "2026-07-31T22:38:25.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_882242-MLA115403493609_072026-O.webp",
+          "Eletrônicos, Áudio e Vídeo",
+          true,
+          "active",
+          null,
+          true,
+          "ECOMPATOS_SONATA",
+          "gold_pro",
+          true,
+          "MLB76165002",
+          null,
+          3569,
+          73,
+          17,
+          1,
+          34,
+          41,
+          5
+        ],
+        [
+          "MLB7304557404",
+          "4 Cantoneiras Arredondada Plástica + Parafusos P/ Caixa Som Cor Preto",
+          "2026-07-31T23:04:08.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_695554-MLA114080540678_072026-O.webp",
+          "Eletrônicos, Áudio e Vídeo",
+          true,
+          "active",
+          null,
+          true,
+          "NGS AUDIO",
+          "gold_special",
+          true,
+          "MLB76169144",
+          null,
+          33.99,
+          73,
+          17,
+          1,
+          5,
+          41,
+          4.4
+        ],
+        [
+          "MLB7304797292",
+          "Mini Caixa Registradora Infantil Scanner C/ Som Luz Didatico",
+          "2026-07-31T21:53:19.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_742159-MLA115402416819_072026-O.webp",
+          "Brinquedos e Hobbies",
+          false,
+          "active",
+          null,
+          true,
+          "ARMARINHOSDANIELLAARMARINHOS",
+          "gold_pro",
+          true,
+          "MLB-7304797292",
+          null,
+          47.43,
+          73,
+          17,
+          1,
+          null,
+          41,
+          null
+        ],
+        [
+          "MLB5041674541",
+          "Kit Porta Sabonete Líquido E Escova De Dentes Lyor Transp.",
+          "2026-08-11T20:40:37.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_742570-MLA115967605099_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "ZT20260703153324",
+          "gold_special",
+          true,
+          "MLB-5041674541",
+          null,
+          62.99,
+          50,
+          12,
+          1,
+          1,
+          30,
+          5
+        ],
+        [
+          "MLB5049150115",
+          "Mochila De Hidratação Leve E Reflexiva Para Corrida E Bike",
+          "2026-08-13T05:59:45.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_818979-MLB117165402151_092026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          true,
+          true,
+          "AT202503218754269",
+          "gold_pro",
+          true,
+          "MLB-5049150115",
+          null,
+          180.5,
+          50,
+          13,
+          1,
+          142,
+          28,
+          4
+        ],
+        [
+          "MLB5049150123",
+          "Mochila De Hidratação Leve E Reflexiva Para Corrida E Bike",
+          "2026-08-13T06:34:46.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_864003-MLB117165230205_092026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          true,
+          true,
+          "AT202503218754269",
+          "gold_pro",
+          true,
+          "MLB-5049150123",
+          null,
+          119.16,
+          50,
+          13,
+          1,
+          142,
+          28,
+          4
+        ],
+        [
+          "MLB5049150125",
+          "Mochila De Hidratação Leve E Reflexiva Para Corrida E Bike",
+          "2026-08-13T06:34:46.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_873487-MLB115714059764_092026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          true,
+          true,
+          "AT202503218754269",
+          "gold_pro",
+          true,
+          "MLB-5049150125",
+          null,
+          119.16,
+          50,
+          13,
+          1,
+          142,
+          28,
+          4
+        ],
+        [
+          "MLB5055846457",
+          "Mini Câmera Segurança Espiã Wifi Ip A9 Full Hd Noturna 1080p",
+          "2026-08-13T16:55:10.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_910212-MLB114756772300_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "X20250517020135",
+          "gold_special",
+          true,
+          "MLB-5055846457",
+          "ANJGG",
+          22.99,
+          50,
+          13,
+          1,
+          4,
+          28,
+          4.8
+        ],
+        [
+          "MLB5057437811",
+          "Sacos para Seladora a Vácuo 20 x 30 cm, 100 Unidades Pré-Cortadas, para Armazenar Alimentos e Congelamento, Compatíveis com Máquinas a Vácuo",
+          "2026-08-13T07:15:26.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_690843-MLA114723144972_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "GT58660709142126",
+          "gold_special",
+          true,
+          "MLB77212530",
+          null,
+          74.1,
+          50,
+          13,
+          1,
+          null,
+          28,
+          null
+        ],
+        [
+          "MLB5064284905",
+          "Caixa Registradora Brinquedo Mercado Leitor Luz E Som",
+          "2026-08-14T18:21:47.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_831888-MLB114822124680_082026-O.webp",
+          "Brinquedos e Hobbies",
+          false,
+          "active",
+          null,
+          true,
+          "VIVEXA",
+          "gold_special",
+          true,
+          "MLB-5064284905",
+          null,
+          29.84,
+          50,
+          13,
+          1,
+          null,
+          27,
+          null
+        ],
+        [
+          "MLB5081668689",
+          "Creme Dental E Escova Dente Cães Gatos Higiene Bucal Sabor Menta",
+          "2026-08-11T14:52:18.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_733861-MLA115949614915_082026-E.webp",
+          "Pet Shop",
+          true,
+          "active",
+          true,
+          true,
+          "BARTH_STORE",
+          null,
+          true,
+          "MLB76783326",
+          null,
+          23.6,
+          50,
+          12,
+          1,
+          null,
+          30,
+          null
+        ],
+        [
+          "MLB5089397439",
+          "Kit 2 Porta-escovas De Dentes Pasta Dental Viagem Escola",
+          "2026-08-19T02:10:38.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_634705-MLB116394389809_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "MEGU ECOMER",
+          "gold_special",
+          true,
+          "MLB-5089397439",
+          null,
+          20.99,
+          50,
+          16,
+          1,
+          2,
+          22,
+          5
+        ],
+        [
+          "MLB5097514189",
+          "Kit 3 Placas Decodificadora MP3 Bluetooth 12V USB FM Som Automotivo Com Controle Painel Digital Placa Bluetooth USB Decodificador Bluetooth Eletrônica Som Auto Rádio Caixa de Som Diy",
+          "2026-08-20T04:40:17.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_631361-MLA116466460479_082026-O.webp",
+          "Eletrônicos, Áudio e Vídeo",
+          true,
+          "active",
+          true,
+          false,
+          "BK20260717082446314",
+          "gold_pro",
+          true,
+          "MLB77810071",
+          null,
+          73.7,
+          50,
+          17,
+          1,
+          null,
+          21,
+          null
+        ],
+        [
+          "MLB5125194583",
+          "Irrigador Oral Bucal Portatil Water Limpeza Dental Implante",
+          "2026-08-24T17:25:48.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_729860-MLA115256282736_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          null,
+          true,
+          "DJM_COMERCIO",
+          "gold_special",
+          true,
+          "MLB78198841",
+          null,
+          78.99,
+          50,
+          21,
+          1,
+          1,
+          17,
+          5
+        ],
+        [
+          "MLB5139469745",
+          "Alaxe Caixa De Som Inteligente Comando Voz Portátil Sem Fio",
+          "2026-08-26T16:58:14.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_826327-MLB115351538972_082026-O.webp",
+          "Eletrônicos, Áudio e Vídeo",
+          false,
+          "active",
+          true,
+          true,
+          "MALE4497169",
+          "gold_special",
+          true,
+          "MLB-5139469745",
+          null,
+          74.95,
+          50,
+          23,
+          1,
+          14,
+          15,
+          null
+        ],
+        [
+          "MLB5169558341",
+          "Lanterna De Cabeça Led Recarregável Usb-c Farol Testa 3modos Branco Preto",
+          "2026-08-31T18:16:33.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_993071-MLA116983849305_082026-E.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          null,
+          true,
+          "THAYECOM",
+          "gold_special",
+          true,
+          "MLB78717603",
+          null,
+          29.09,
+          50,
+          35,
+          1,
+          null,
+          10,
+          null
+        ],
+        [
+          "MLB5169746107",
+          "Caixa Caixinha De Som Bluetooth Pendrive Fm Sd Portátil Ipx6 Preto",
+          "2026-08-12T09:11:02.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_807376-MLA116010107995_082026-E.webp",
+          "Eletrônicos, Áudio e Vídeo",
+          true,
+          "active",
+          null,
+          true,
+          "CIADOSOMBAZAR",
+          "gold_special",
+          true,
+          "MLB77066268",
+          null,
+          129.9,
+          50,
+          12,
+          1,
+          13,
+          29,
+          4.9
+        ]
+      ],
+      "dimensionCount": 15,
+      "lastRefreshTime": "2026-09-09T19:01:48.548Z",
+      "slowQuery": false,
+      "totalRows": 100,
+      "types": [
+        "string",
+        "string",
+        "time",
+        "time",
+        "string",
+        "string",
+        "boolean",
+        "string",
+        "boolean",
+        "boolean",
+        "string",
+        "string",
+        "boolean",
+        "string",
+        "string",
+        "number",
+        "number",
+        "number",
+        "number",
+        "number",
+        "number",
+        "number"
+      ]
+    }
+  ]
+}

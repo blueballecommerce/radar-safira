@@ -1,0 +1,3191 @@
+{
+  "lidoEm": "2026-09-09T19:02:13.765Z",
+  "fonte": "JoomPulse / MercadoProductsWeekly",
+  "groups": [
+    [
+      "navalhas",
+      "design"
+    ],
+    [
+      "afinador",
+      "nariz"
+    ],
+    [
+      "exercitador",
+      "mandíbula"
+    ],
+    [
+      "máscara",
+      "led"
+    ],
+    [
+      "depilador",
+      "intimo"
+    ],
+    [
+      "máquina",
+      "elevação"
+    ],
+    [
+      "rolo",
+      "massageador"
+    ],
+    [
+      "adesivo",
+      "removedor"
+    ],
+    [
+      "aparelho",
+      "vaporizador"
+    ],
+    [
+      "dispositivo",
+      "beleza"
+    ],
+    [
+      "meias",
+      "ortopédicas"
+    ],
+    [
+      "garrafa",
+      "inox"
+    ],
+    [
+      "maçarico",
+      "culinário"
+    ],
+    [
+      "caneta",
+      "estimuladora"
+    ],
+    [
+      "cuidados",
+      "saúde"
+    ],
+    [
+      "removedor",
+      "calos"
+    ],
+    [
+      "bico",
+      "engate"
+    ],
+    [
+      "soft",
+      "box"
+    ],
+    [
+      "filtro",
+      "flutuante"
+    ],
+    [
+      "amassador",
+      "espremedor"
+    ],
+    [
+      "tesoura",
+      "cozinha"
+    ],
+    [
+      "cabine",
+      "digital"
+    ],
+    [
+      "porta",
+      "shampoo"
+    ],
+    [
+      "varal",
+      "secagem"
+    ],
+    [
+      "lixadeira",
+      "lixa"
+    ],
+    [
+      "isqueiro",
+      "plasma"
+    ],
+    [
+      "isqueiro",
+      "slim"
+    ],
+    [
+      "blusa",
+      "regata"
+    ],
+    [
+      "tapete",
+      "desenho"
+    ],
+    [
+      "tapete",
+      "magico"
+    ]
+  ],
+  "pages": [
+    {
+      "query": {
+        "dimensions": [
+          "MercadoProductsWeekly.id",
+          "MercadoProductsWeekly.productName",
+          "MercadoProductsWeekly.adPublishDate",
+          "MercadoProductsWeekly.date",
+          "MercadoProductsWeekly.productImage",
+          "MercadoProductsWeekly.merchantCategoryL1",
+          "MercadoProductsWeekly.catalogProduct",
+          "MercadoProductsWeekly.listingStatus",
+          "MercadoProductsWeekly.isFull",
+          "MercadoProductsWeekly.isFreeShipping",
+          "MercadoProductsWeekly.merchantName",
+          "MercadoProductsWeekly.listingType",
+          "MercadoProductsWeekly.buyBoxWiner",
+          "MercadoProductsWeekly.productId",
+          "MercadoProductsWeekly.brand"
+        ],
+        "measures": [
+          "MercadoProductsWeekly.priceAmount",
+          "MercadoProductsWeekly.orderCount1m",
+          "MercadoProductsWeekly.orderCount1w",
+          "MercadoProductsWeekly.numBuyBoxSellers",
+          "MercadoProductsWeekly.reviewsCount",
+          "MercadoProductsWeekly.daysInAd",
+          "MercadoProductsWeekly.reviewsRating"
+        ],
+        "filters": [
+          {
+            "member": "MercadoProductsWeekly.adPublishDate",
+            "operator": "inDateRange",
+            "values": [
+              "2026-07-31",
+              "2026-09-09"
+            ]
+          },
+          {
+            "member": "MercadoProductsWeekly.listingStatus",
+            "operator": "equals",
+            "values": [
+              "active"
+            ]
+          },
+          {
+            "member": "MercadoProductsWeekly.orderCount1m",
+            "operator": "gt",
+            "values": [
+              "0"
+            ]
+          },
+          {
+            "or": [
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "navalhas"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "design"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "afinador"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "nariz"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "exercitador"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "mandíbula"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "máscara"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "led"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "depilador"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "intimo"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "máquina"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "elevação"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "rolo"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "massageador"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "adesivo"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "removedor"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "aparelho"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "vaporizador"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "dispositivo"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "beleza"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "meias"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "ortopédicas"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "garrafa"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "inox"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "maçarico"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "culinário"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "caneta"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "estimuladora"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "cuidados"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "saúde"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "removedor"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "calos"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "bico"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "engate"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "soft"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "box"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "filtro"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "flutuante"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "amassador"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "espremedor"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "tesoura"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "cozinha"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "cabine"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "digital"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "porta"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "shampoo"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "varal"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "secagem"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "lixadeira"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "lixa"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "isqueiro"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "plasma"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "isqueiro"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "slim"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "blusa"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "regata"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "tapete"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "desenho"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "tapete"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "magico"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "order": [
+          [
+            "MercadoProductsWeekly.orderCount1m",
+            "desc"
+          ],
+          [
+            "MercadoProductsWeekly.id",
+            "asc"
+          ]
+        ],
+        "limit": 100
+      },
+      "columns": [
+        "id",
+        "productName",
+        "adPublishDate",
+        "date",
+        "productImage",
+        "merchantCategoryL1",
+        "catalogProduct",
+        "listingStatus",
+        "isFull",
+        "isFreeShipping",
+        "merchantName",
+        "listingType",
+        "buyBoxWiner",
+        "productId",
+        "brand",
+        "priceAmount",
+        "orderCount1m",
+        "orderCount1w",
+        "numBuyBoxSellers",
+        "reviewsCount",
+        "daysInAd",
+        "reviewsRating"
+      ],
+      "data": [
+        [
+          "MLB5034093443",
+          "Kit 2 Prateleiras Para Banheiro Porta Shampoo Suporte Canto Preto",
+          "2026-08-10T22:40:58.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_833650-MLA115904558303_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "JABUTISHOP",
+          "gold_pro",
+          true,
+          "MLB76592766",
+          null,
+          39.9,
+          968,
+          226,
+          1,
+          2,
+          31,
+          4
+        ],
+        [
+          "MLB5011896793",
+          "Garrafa Térmica Inox 900ml Tampa Flip Straw Canudo Com Alça",
+          "2026-08-07T08:48:40.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_778316-MLB115759692685_082026-O-garrafa-termica-inox-900ml-tampa-flip-straw-canudo-com-alca.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          true,
+          true,
+          "CU20260313080138",
+          "gold_special",
+          true,
+          "MLB-5011896793",
+          "ROMANTICCROWN",
+          44.99,
+          882,
+          206,
+          1,
+          229,
+          34,
+          4.9
+        ],
+        [
+          "MLB5011909635",
+          "Garrafa Térmica Inox 900ml Tampa Flip Straw Canudo Com Alça",
+          "2026-08-07T08:48:40.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_885504-MLB115754888077_082026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          null,
+          true,
+          "CU20260313080138",
+          "gold_special",
+          true,
+          "MLB-5011909635",
+          null,
+          44.99,
+          882,
+          206,
+          1,
+          192,
+          34,
+          4.9
+        ],
+        [
+          "MLB7346990050",
+          "Garrafa Térmica 800ml Isotermica Água Academia Aço Inox",
+          "2026-08-06T17:32:04.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_875575-MLB99635501263_112025-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "MIA__STORE",
+          "gold_pro",
+          true,
+          "MLB-7346990050",
+          null,
+          36.22,
+          857,
+          200,
+          1,
+          214,
+          35,
+          4.9
+        ],
+        [
+          "MLB5174494241",
+          "Tesoura Multifuncional Inox Corta Osso Frango Peixe Cozinha Prateado",
+          "2026-08-05T22:59:52.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_737015-MLA115678539755_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "LUCKYCHEGOU",
+          "gold_pro",
+          true,
+          "MLB76439227",
+          "DECKCASA",
+          29.99,
+          833,
+          194,
+          2,
+          94,
+          36,
+          4.6
+        ],
+        [
+          "MLB7321314602",
+          "Kit 4 Blusas Blusinha Feminina Basica Regata Alcinha  Bojo.",
+          "2026-08-04T17:02:02.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_777369-MLB81918385366_012025-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          null,
+          true,
+          "VIBEMODA",
+          "gold_pro",
+          true,
+          "MLB-7321314602",
+          null,
+          76.44,
+          811,
+          189,
+          1,
+          655,
+          37,
+          5
+        ],
+        [
+          "MLB7323950160",
+          "Garrafa Térmica A Vácuo Térmico Quente/frio 1000ml Inox 316",
+          "2026-08-04T06:37:43.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_823607-MLB114226565218_082026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          null,
+          true,
+          "FAHFEDBCG45908",
+          "gold_special",
+          true,
+          "MLB-7323950160",
+          null,
+          35,
+          811,
+          189,
+          1,
+          81,
+          37,
+          4.8
+        ],
+        [
+          "MLB7317755496",
+          "Kit Esmerilhadeira Lixadeira Angular 4.1/2 Pol 900w",
+          "2026-08-03T10:02:53.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_835550-MLB116417539311_082026-O.webp",
+          "Ferramentas",
+          false,
+          "active",
+          null,
+          true,
+          "JACKMAX6688",
+          "gold_pro",
+          true,
+          "MLB-7317755496",
+          null,
+          113,
+          789,
+          184,
+          1,
+          38,
+          38,
+          4.8
+        ],
+        [
+          "MLB5038207971",
+          "Esmerilhadeira Elétrica Angular Lixadeira 48v Mohor 2bateria",
+          "2026-08-11T10:25:07.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_789899-MLB114581384302_082026-O.webp",
+          "Ferramentas",
+          false,
+          "active",
+          null,
+          true,
+          "GT58460711130618",
+          "gold_special",
+          true,
+          "MLB-5038207971",
+          null,
+          189.15,
+          500,
+          117,
+          1,
+          18,
+          30,
+          4.5
+        ],
+        [
+          "MLB5048408285",
+          "Máscara Facial Skincare Led 7 Cores Fototerapi Recarregável",
+          "2026-08-12T19:34:44.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_690994-MLB114683430132_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          false,
+          "active",
+          null,
+          true,
+          "SJPRIMEXL",
+          "gold_special",
+          true,
+          "MLB-5048408285",
+          null,
+          67.32,
+          500,
+          121,
+          1,
+          18,
+          29,
+          4.8
+        ],
+        [
+          "MLB5179068847",
+          "Abridor De Lata E Garrafas Aço Inox Profissional Chef Kgq03 Preto",
+          "2026-09-02T17:10:05.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_700093-MLA117084111115_092026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "VITTORIAECOMMERCE",
+          "gold_pro",
+          true,
+          "MLB78837046",
+          null,
+          36.58,
+          500,
+          438,
+          1,
+          1,
+          8,
+          null
+        ],
+        [
+          "MLB7512184024",
+          "Garrafa Térmica Com Kit 3 Xícaras 500ml Aço Inox Café Chá",
+          "2026-08-25T19:17:06.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_681928-MLB95527175916_102025-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          true,
+          true,
+          "MIA__STORE",
+          "gold_special",
+          true,
+          "MLB-7512184024",
+          null,
+          32.34,
+          500,
+          219,
+          1,
+          40,
+          16,
+          4.6
+        ],
+        [
+          "MLB7512184046",
+          "Garrafa Térmica Vaccum Com Kit 3 Xícaras 500ml Aço Inox",
+          "2026-08-25T19:18:28.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_834816-MLB93846774883_092025-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          null,
+          true,
+          "MIA__STORE",
+          "gold_special",
+          true,
+          "MLB-7512184046",
+          null,
+          32.34,
+          500,
+          219,
+          1,
+          68,
+          16,
+          5
+        ],
+        [
+          "MLB7539914074",
+          "Garrafa Térmica 800ml Agua Café Inox Academia Quente E Frio",
+          "2026-08-28T16:24:25.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_911884-MLB116866402199_082026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          null,
+          true,
+          "GASHOP",
+          "gold_special",
+          true,
+          "MLB-7539914074",
+          null,
+          34.95,
+          500,
+          269,
+          1,
+          169,
+          13,
+          5
+        ],
+        [
+          "MLB7566868506",
+          "Garrafa Térmica Inox 600ml Água C/ Proteção Capinha Borracha",
+          "2026-09-01T12:52:19.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_932379-MLB112420721026_062026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          null,
+          true,
+          "GPSATACADOLTDA",
+          "gold_special",
+          true,
+          "MLB-7566868506",
+          null,
+          43.1,
+          500,
+          389,
+          1,
+          91,
+          9,
+          5
+        ],
+        [
+          "MLB7570735676",
+          "Garrafa Térmica 4 Litros De Aço Inox Agua Gelo Camping Pesca",
+          "2026-09-01T12:53:52.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_864528-MLB112423942768_062026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          null,
+          true,
+          "GPSATACADOLTDA",
+          "gold_special",
+          true,
+          "MLB-7570735676",
+          null,
+          186.4,
+          500,
+          389,
+          1,
+          116,
+          9,
+          4
+        ],
+        [
+          "MLB7577232498",
+          "Cinta Lixa 533x75/76mm P/ Lixadeira Manual - Kit 10 Unidades",
+          "2026-09-03T00:08:21.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_726105-MLB113633734445_062026-O.webp",
+          "Ferramentas",
+          false,
+          "active",
+          true,
+          true,
+          "MANDARIMABRASIVOSS",
+          "gold_special",
+          true,
+          "MLB-7577232498",
+          "DEERFOS",
+          46.4,
+          500,
+          500,
+          1,
+          441,
+          7,
+          4
+        ],
+        [
+          "MLB7577232522",
+          "Cinta Lixa 533x75/76mm P/ Lixadeira Manual - Kit 10 Unidades",
+          "2026-09-03T00:08:21.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_876064-MLB112468821278_062026-O.webp",
+          "Ferramentas",
+          false,
+          "active",
+          true,
+          true,
+          "MANDARIMABRASIVOSS",
+          "gold_special",
+          true,
+          "MLB-7577232522",
+          null,
+          46.4,
+          500,
+          500,
+          1,
+          438,
+          7,
+          4
+        ],
+        [
+          "MLB7380367044",
+          "Kit 2 Blusas Gola Boba Regatas Femininas Suplex Premium",
+          "2026-08-10T17:35:02.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_988203-MLB115893984229_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          null,
+          true,
+          "KOSMOS_STORE",
+          "gold_special",
+          true,
+          "MLB-7380367044",
+          null,
+          38.99,
+          484,
+          113,
+          1,
+          52,
+          31,
+          4.9
+        ],
+        [
+          "MLB7536736876",
+          "Bico para Mangueira 3 em 1 Alta Pressão Níveis Com Engate Rápido Arte da Pesca",
+          "2026-08-06T01:01:33.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_697051-MLA115890442225_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "FRANCA_COMERCE",
+          "gold_pro",
+          true,
+          "MLB76574731",
+          "ARTEDAPESCA",
+          23.65,
+          429,
+          100,
+          4,
+          44,
+          35,
+          4.5
+        ],
+        [
+          "MLB4979257781",
+          "Garrafa Térmica Inox 1 Litro Com Ampola de Vidro Sistema de Pressão Bico Antirespingo Café Chimarrão Chá Cozinha Escritório 1L 1l Preta VIVATUTTO",
+          "2026-07-31T19:03:26.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_656378-MLA115397275455_072026-E.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          null,
+          true,
+          "VIVATUTTO",
+          "gold_special",
+          true,
+          "MLB76142190",
+          "VIVATUTTO",
+          73.99,
+          366,
+          85,
+          1,
+          59,
+          41,
+          4.8
+        ],
+        [
+          "MLB7313981638",
+          "Esmerilhadeira Angular Eletrica Lixadeira 4.1/2 pol 1100W 115mm 11000rpm com 3 discos de lixamento, 2 escovas de carvão, punho e protetor Esmerilhadeira 4 EM 1 cortar, lixar, polir e remover ferrugem",
+          "2026-07-31T10:49:41.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_676842-MLA116009565343_082026-E.webp",
+          "Ferramentas",
+          true,
+          "active",
+          null,
+          true,
+          "GF58660716140608326",
+          "gold_special",
+          true,
+          "MLB76101240",
+          "MOHOR",
+          109.3,
+          366,
+          85,
+          1,
+          76,
+          41,
+          4.6
+        ],
+        [
+          "MLB5035021619",
+          "Garrafa Térmica Inox 1,5l Parede Dupla Com Alça",
+          "2026-08-11T02:19:04.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_730022-MLB114552339798_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "RAZURI",
+          "gold_special",
+          true,
+          "MLB-5035021619",
+          null,
+          64.99,
+          100,
+          23,
+          1,
+          9,
+          30,
+          5
+        ],
+        [
+          "MLB5038209621",
+          "Esmerilhadeira Elétrica Angular Lixadeira 48v 800w Mohor",
+          "2026-08-11T10:32:31.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_697560-MLB114581890030_082026-O.webp",
+          "Ferramentas",
+          false,
+          "active",
+          null,
+          true,
+          "GT58460711130618",
+          "gold_special",
+          true,
+          "MLB-5038209621",
+          null,
+          218.84,
+          100,
+          23,
+          1,
+          11,
+          30,
+          4.7
+        ],
+        [
+          "MLB5047184101",
+          "Kit 3 Blusas Regata Feminina Decote Quadrado Alca Grossa",
+          "2026-08-12T15:14:49.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_610243-MLB114667193416_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          false,
+          true,
+          "MENDES MAGAZINE168961",
+          "gold_special",
+          true,
+          "MLB-5047184101",
+          null,
+          44.66,
+          100,
+          24,
+          1,
+          10,
+          29,
+          5
+        ],
+        [
+          "MLB5049505351",
+          "Kit 3 Garrafas Vidro Canelado Tampa Inox Geladeira Água",
+          "2026-08-13T01:15:32.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_795571-MLB116069203711_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "STELLAHOME",
+          "gold_special",
+          true,
+          "MLB-5049505351",
+          null,
+          88.99,
+          100,
+          25,
+          1,
+          2,
+          28,
+          5
+        ],
+        [
+          "MLB5052368879",
+          "Kit Esmerilhadeira Lixadeira Angular 4.1/2 Pol 900w",
+          "2026-08-13T09:43:06.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_964507-MLB116419141251_082026-O.webp",
+          "Ferramentas",
+          false,
+          "active",
+          null,
+          true,
+          "JACKMAX6688",
+          "gold_pro",
+          true,
+          "MLB-5052368879",
+          null,
+          103.23,
+          100,
+          25,
+          1,
+          144,
+          28,
+          4.7
+        ],
+        [
+          "MLB5063102309",
+          "Esmerilhadeira Lixadeira Angular 850w 115mm Cor Azul-petrol Azul-fio De Cobre 50/60hz",
+          "2026-08-14T16:38:46.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_835262-MLA114827608392_082026-O.webp",
+          "Ferramentas",
+          true,
+          "active",
+          null,
+          true,
+          "ELITE_DOS_ELETRONICOS_",
+          "gold_pro",
+          true,
+          "MLB77339857",
+          null,
+          125.5,
+          100,
+          26,
+          1,
+          323,
+          27,
+          4.8
+        ],
+        [
+          "MLB5064226755",
+          "Kit 4 Blusas Regata Feminina Decote Quadrado Alça Grossa",
+          "2026-08-14T18:04:34.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_765080-MLB114821606798_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          null,
+          true,
+          "MODALY",
+          "gold_special",
+          true,
+          "MLB-5064226755",
+          null,
+          52.37,
+          100,
+          26,
+          1,
+          37,
+          27,
+          5
+        ],
+        [
+          "MLB5069462757",
+          "Kit Máscara Led 7 Cores Fototerapia + Massageador Facial",
+          "2026-08-15T16:44:05.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_795897-MLB114867739528_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          false,
+          "active",
+          null,
+          true,
+          "AURADIHCOSMETICOS",
+          "gold_pro",
+          true,
+          "MLB-5069462757",
+          "MASCARADEFOTOTERAPIAFACIA",
+          119.63,
+          100,
+          27,
+          1,
+          3,
+          26,
+          5
+        ],
+        [
+          "MLB5081657873",
+          "Garrafa Térmica Inox Café Quente Gelado C/ Alça 1 Ou 2 Litro",
+          "2026-08-17T19:53:48.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_946427-MLB114942001380_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "FTNZSTORE",
+          "gold_special",
+          true,
+          "MLB-5081657873",
+          null,
+          62.95,
+          100,
+          29,
+          1,
+          8,
+          24,
+          5
+        ],
+        [
+          "MLB5082859193",
+          "Copo Termico Café Cerveja Chá Garrafa Caneca Inox 510ml Cor",
+          "2026-08-18T02:10:26.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_786988-MLA99582044166_122025-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          null,
+          true,
+          "YLV_ACESSORIOS",
+          "gold_special",
+          true,
+          "MLB-5082859193",
+          null,
+          31.9,
+          100,
+          30,
+          1,
+          null,
+          23,
+          null
+        ],
+        [
+          "MLB5093722899",
+          "Kit 3 Adaptadores de Engate Rápido + 3 Bicos para Torneira 1/2 e 3/4 para Mangueira Jardim Irrigação Lavagem Conexão Hidráulica Uso Doméstico e Externo",
+          "2026-08-18T18:57:44.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_891851-MLA117030578873_092026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "GDS BRASIL",
+          "gold_special",
+          true,
+          "MLB77602692",
+          null,
+          53.7,
+          100,
+          30,
+          1,
+          null,
+          23,
+          null
+        ],
+        [
+          "MLB5094415135",
+          "Lixadeira Politriz 2 em 1 Automotiva Multifunções Profissional 5000rpm Com Mandril 5 Polegadas Furadeira Parafusadeira",
+          "2026-08-17T20:26:24.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_880504-MLA116669203951_082026-O.webp",
+          "Ferramentas",
+          true,
+          "active",
+          null,
+          true,
+          "NEXCOMMERCE",
+          "gold_special",
+          true,
+          "MLB77537345",
+          "ALINEA",
+          119.98,
+          100,
+          29,
+          1,
+          null,
+          24,
+          null
+        ],
+        [
+          "MLB5094578149",
+          "Lixadeira Politriz Automotiva Multifunções Profissional 5000rpm Com Mandril 5 Polegadas Furadeira Parafusadeira",
+          "2026-08-17T20:26:25.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_971672-MLA116669500833_082026-O.webp",
+          "Ferramentas",
+          true,
+          "active",
+          null,
+          true,
+          "NEXCOMMERCE",
+          "gold_special",
+          true,
+          "MLB77537349",
+          null,
+          119.98,
+          100,
+          29,
+          1,
+          null,
+          24,
+          null
+        ],
+        [
+          "MLB5115069743",
+          "Bico Para Bomba De Ar Pneus De Carro Moto Bicicleta Universal Acessório Adaptador Rosca Padrão Mangueira Compressor Inflador Elétrico Portátil Presilha Para Travar Engate Rápido Calibragem da Pressão",
+          "2026-08-22T17:09:51.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_862728-MLA115187760614_082026-O.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          null,
+          true,
+          "OPACOTINHO",
+          "gold_special",
+          true,
+          "MLB78090012",
+          "EQUILIBRAMUNDOPRESENTES",
+          20.99,
+          100,
+          37,
+          1,
+          14,
+          19,
+          4.8
+        ],
+        [
+          "MLB5121971027",
+          "Garrafa Térmica 1000ml Vácuo Quente Frio Inox 316",
+          "2026-08-24T08:49:17.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_935790-MLB116641339767_082026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          null,
+          true,
+          "BADGHCEFB2063",
+          "gold_special",
+          true,
+          "MLB-5121971027",
+          null,
+          35,
+          100,
+          41,
+          1,
+          null,
+          17,
+          null
+        ],
+        [
+          "MLB5124074433",
+          "Lâmpada Led Softbox E27 Bivolt 150w Controle Remoto Bicolor Prateado Branco-quente",
+          "2026-08-13T16:15:47.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_889847-MLA116121037625_082026-O.webp",
+          "Câmeras e Acessórios",
+          true,
+          "active",
+          null,
+          true,
+          "PECKS VARIEDADES",
+          null,
+          true,
+          "MLB77248052",
+          null,
+          109.9,
+          100,
+          25,
+          1,
+          null,
+          28,
+          null
+        ],
+        [
+          "MLB5137230031",
+          "Maquina Polir Orbital Automotiva Lixadeira Elétrica Bateria Preta/azul",
+          "2026-08-15T00:36:15.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_865092-MLA114834648712_082026-E.webp",
+          "Ferramentas",
+          true,
+          "active",
+          null,
+          true,
+          "AELETRO VARIEDADES",
+          "gold_special",
+          true,
+          "MLB77370988",
+          null,
+          188.09,
+          100,
+          27,
+          2,
+          41,
+          26,
+          4.6
+        ],
+        [
+          "MLB5138871307",
+          "Tesoura De Cozinha Cortar Alimentos Multifuncional Faca",
+          "2026-08-26T15:07:14.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_755155-MLB116760777565_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "PAVINSHOP",
+          "gold_special",
+          true,
+          "MLB-5138871307",
+          null,
+          28.4,
+          100,
+          47,
+          1,
+          138,
+          15,
+          5
+        ],
+        [
+          "MLB5142583697",
+          "Tesoura de Cozinha Multiuso para Frango e Peixe de Aço Inox Preta com Quebra-Nozes",
+          "2026-08-27T04:05:56.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_825454-MLA115373088922_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "CLAMARE SHOP",
+          null,
+          true,
+          "MLB78565392",
+          null,
+          24.9,
+          100,
+          50,
+          1,
+          null,
+          14,
+          null
+        ],
+        [
+          "MLB5168750707",
+          "Depilador Intimo Feminino Corporal Recarregável Com Led",
+          "2026-08-31T16:47:52.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_733771-MLA115545135840_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          null,
+          true,
+          "MIXIMPORTACAOEXPORTACAO",
+          "gold_special",
+          true,
+          "MLB78703019",
+          "BMAX",
+          45.9,
+          100,
+          70,
+          2,
+          null,
+          10,
+          null
+        ],
+        [
+          "MLB5173329393",
+          "Garrafa Água Térmica 600ml Inox Flamengo Com Nome Presente",
+          "2026-09-01T13:56:49.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_784332-MLB117025199687_092026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "LEMBRAME",
+          "gold_pro",
+          true,
+          "MLB-5173329393",
+          null,
+          57.97,
+          100,
+          78,
+          1,
+          11,
+          9,
+          4
+        ],
+        [
+          "MLB5175686703",
+          "LUMVA Lixadeira Eletrica Unha Profissional Motor Elétrico 40000rpm(Rosa)",
+          "2026-09-02T08:26:08.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_731647-MLA117064233017_092026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          true,
+          true,
+          "RK20250412079507",
+          "gold_pro",
+          true,
+          "MLB78809113",
+          null,
+          232.75,
+          100,
+          88,
+          1,
+          45,
+          8,
+          null
+        ],
+        [
+          "MLB5192283821",
+          "Prateleira Porta Shampoo com Grade Glasscuban 50x10 cm 8 mm Fumê",
+          "2026-09-06T01:49:02.658",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_916815-MLA115320030842_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "LMCOMERCIODEVIDROSLTDALMC",
+          null,
+          true,
+          "MLB78337757",
+          null,
+          35.16,
+          100,
+          100,
+          1,
+          null,
+          4,
+          null
+        ],
+        [
+          "MLB7389724790",
+          "Lâmpada Le50 Super Led 50w E27 5500k Estúdio Softbox Bivolt",
+          "2026-08-11T17:47:25.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_949423-MLB115956052141_082026-O.webp",
+          "Câmeras e Acessórios",
+          false,
+          "active",
+          null,
+          true,
+          "EDF MAGAZINE_PLATINUM",
+          "gold_special",
+          true,
+          "MLB-7389724790",
+          "LUCASCELL",
+          69.73,
+          100,
+          23,
+          1,
+          2,
+          30,
+          5
+        ],
+        [
+          "MLB7401617782",
+          "Powcan Garrafa Térmica720ml Bebidas Tampa E Canudo 2 Em 1 Pode ser usado para bebidas frias e quentes garrafa termica inox",
+          "2026-08-12T17:46:57.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_698009-MLA114676332294_082026-O.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          null,
+          true,
+          "CT20241122131209",
+          "gold_pro",
+          true,
+          "MLB77140267",
+          null,
+          39.6,
+          100,
+          24,
+          1,
+          51,
+          29,
+          4.9
+        ],
+        [
+          "MLB7404817420",
+          "Kit Esmerilhadeira Lixadeira Angular 4.1/2 Pol 900w",
+          "2026-08-13T09:43:06.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_742723-MLB115029942134_082026-O.webp",
+          "Ferramentas",
+          false,
+          "active",
+          null,
+          true,
+          "JACKMAX6688",
+          "gold_pro",
+          true,
+          "MLB-7404817420",
+          null,
+          105.45,
+          100,
+          25,
+          1,
+          102,
+          28,
+          4.7
+        ],
+        [
+          "MLB7404920316",
+          "Porta Shampoo De Vidro Retangular 10x40 Para Banheiro",
+          "2026-08-13T11:36:15.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_738251-MLB85117537511_052025-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "AC20240916134647",
+          "gold_special",
+          true,
+          "MLB-7404920316",
+          null,
+          39.75,
+          100,
+          25,
+          1,
+          94,
+          28,
+          5
+        ],
+        [
+          "MLB7406865312",
+          "Kit C/ 4 Filtro Coletor Tira Pelos Fiapos Bolinhas Flutuante Máquina Lavar Roupa METOO",
+          "2026-08-12T20:19:30.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_879434-MLA114686022624_082026-O.webp",
+          "Eletrodomésticos",
+          true,
+          "active",
+          null,
+          true,
+          "IMPERATRIX",
+          "gold_special",
+          true,
+          "MLB77167197",
+          null,
+          25.49,
+          100,
+          24,
+          1,
+          null,
+          29,
+          null
+        ],
+        [
+          "MLB7408505714",
+          "Kit 3 Suporte Porta Shampoo Saboneteira Prateleira Banheiro Adesiva Parede Sem Furar Box Luxo Aço Inox Preto Ak Acessórios",
+          "2026-08-12T19:46:36.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_822266-MLA114684543152_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "LUNIX",
+          "gold_special",
+          true,
+          "MLB77160845",
+          "AKACESSORIOS",
+          52.66,
+          100,
+          24,
+          1,
+          332,
+          29,
+          4.7
+        ],
+        [
+          "MLB7408683312",
+          "Bico para Engraxadeira de Aço Inoxidável com Engate Rápido",
+          "2026-08-13T12:42:11.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_948601-MLA116108750129_082026-O.webp",
+          "Ferramentas",
+          true,
+          "active",
+          true,
+          true,
+          "FOURPIX",
+          "gold_special",
+          true,
+          "MLB77235036",
+          null,
+          21.99,
+          100,
+          25,
+          1,
+          2,
+          28,
+          5
+        ],
+        [
+          "MLB7410035068",
+          "Bico De Alta Pressão Para Mangueira 3 Em 1 Com Engate Rápido",
+          "2026-08-13T18:57:34.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_753329-MLB114832136934_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "LUKARIN",
+          "gold_special",
+          true,
+          "MLB-7410035068",
+          "ESGUICHOREGULAVELAJUSTAVE",
+          27.99,
+          100,
+          25,
+          1,
+          12,
+          28,
+          4.3
+        ],
+        [
+          "MLB7420198060",
+          "Blusa Regata Feminina Alça Fina Blusinha Com Forro Casual",
+          "2026-08-14T21:02:12.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_602891-MLB116199583787_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          true,
+          true,
+          "FASTCLICKCOMPANY",
+          "gold_special",
+          true,
+          "MLB-7420198060",
+          null,
+          21.9,
+          100,
+          26,
+          1,
+          53,
+          27,
+          5
+        ],
+        [
+          "MLB7420210768",
+          "Blusa Regata Feminina Alça Fina Blusinha Com Forro Casual",
+          "2026-08-14T21:02:12.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_683495-MLB115864929458_092026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          true,
+          true,
+          "FASTCLICKCOMPANY",
+          "gold_special",
+          true,
+          "MLB-7420210768",
+          null,
+          21.9,
+          100,
+          26,
+          1,
+          60,
+          27,
+          5
+        ],
+        [
+          "MLB7432949010",
+          "Esmerilhadeira Lixadeira Angular 1100w 115mm 11000rpm 3disco",
+          "2026-08-17T02:03:29.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_969823-MLB115081208306_082026-O.webp",
+          "Ferramentas",
+          false,
+          "active",
+          null,
+          true,
+          "GF58660716140608326",
+          "gold_special",
+          true,
+          "MLB-7432949010",
+          null,
+          109.3,
+          100,
+          29,
+          1,
+          26,
+          24,
+          4.7
+        ],
+        [
+          "MLB7435630340",
+          "Tesoura Cozinha Aço Inox Multifuncional Corta Osso Peixe",
+          "2026-08-17T09:45:27.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_912667-MLB116301556885_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "NL20250504174043",
+          "gold_special",
+          true,
+          "MLB-7435630340",
+          "GENERICA",
+          29.98,
+          100,
+          29,
+          1,
+          10,
+          24,
+          5
+        ],
+        [
+          "MLB7436986730",
+          "Kit 2 Garrafas Vidro 1 Litro Tampa Inox Água Suco Geladeira",
+          "2026-08-17T12:22:16.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_731321-MLB114928787676_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "AMARINNE.HOME",
+          "gold_special",
+          true,
+          "MLB-7436986730",
+          null,
+          49.9,
+          100,
+          29,
+          1,
+          4,
+          24,
+          5
+        ],
+        [
+          "MLB7458682668",
+          "Kit 3 Blusas Regata Plus Size Gola Quadrada Casual Estilosa",
+          "2026-08-19T13:46:55.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_647081-MLB88477374634_072025-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          null,
+          true,
+          "MODALY",
+          "gold_special",
+          true,
+          "MLB-7458682668",
+          "MODALY",
+          41.7,
+          100,
+          32,
+          1,
+          607,
+          22,
+          5
+        ],
+        [
+          "MLB7473382024",
+          "Lixadeira Orbital 300w 125mm Velocidade Ajustável 16 Lixas",
+          "2026-08-21T03:33:59.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_716142-MLB116515827881_082026-O.webp",
+          "Ferramentas",
+          false,
+          "active",
+          null,
+          true,
+          "DEKOPROLTDA",
+          "gold_special",
+          true,
+          "MLB-7473382024",
+          null,
+          199,
+          100,
+          35,
+          1,
+          null,
+          20,
+          null
+        ],
+        [
+          "MLB7488682720",
+          "YooY.Air Lixadeira de unha profissional - Branco",
+          "2026-08-21T21:34:30.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_908179-MLA116553825075_082026-E.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          null,
+          true,
+          "PARATIBUMVARIEDADES",
+          "gold_special",
+          true,
+          "MLB78027275",
+          null,
+          29.9,
+          100,
+          35,
+          1,
+          null,
+          20,
+          null
+        ],
+        [
+          "MLB7501825960",
+          "Chave 2 Pino Universal Ajustável P/ Esmerilhadeira Lixadeira Vermelho",
+          "2026-08-24T20:12:01.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_848987-MLA116666415513_082026-E.webp",
+          "Ferramentas",
+          true,
+          "active",
+          null,
+          true,
+          "DMC_BRPRIME",
+          "gold_special",
+          true,
+          "MLB78227354",
+          null,
+          20.93,
+          100,
+          41,
+          1,
+          25,
+          17,
+          5
+        ],
+        [
+          "MLB7512184020",
+          "Garrafa Térmica Com Kit 3 Xícaras 500ml Aço Inox Café Chá",
+          "2026-08-25T19:17:06.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_820368-MLB114651979529_072026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          true,
+          true,
+          "MIA__STORE",
+          "gold_special",
+          true,
+          "MLB-7512184020",
+          null,
+          32.34,
+          100,
+          44,
+          1,
+          40,
+          16,
+          4
+        ],
+        [
+          "MLB7512184040",
+          "Garrafa Térmica Vaccum Com Kit 3 Xícaras 500ml Aço Inox",
+          "2026-08-25T19:18:28.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_603946-MLB93842401649_092025-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          null,
+          true,
+          "MIA__STORE",
+          "gold_special",
+          true,
+          "MLB-7512184040",
+          null,
+          32.34,
+          100,
+          44,
+          1,
+          66,
+          16,
+          5
+        ],
+        [
+          "MLB7512185438",
+          "Garrafa Térmica Inox 800ml Agua Cafe Academia Squeeze Alça",
+          "2026-08-25T19:56:02.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_969877-MLB112467669443_052026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "STARFIXE STORE",
+          "gold_special",
+          true,
+          "MLB-7512185438",
+          null,
+          39.69,
+          100,
+          44,
+          1,
+          598,
+          16,
+          4
+        ],
+        [
+          "MLB7513523170",
+          "Smerihadeira Controle Velocidade/lixadeira Pro 2200w 3 Em 1",
+          "2026-08-26T04:17:06.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_813493-MLB111939692335_052026-O.webp",
+          "Ferramentas",
+          false,
+          "active",
+          true,
+          true,
+          "CC20250218132706",
+          "gold_pro",
+          true,
+          "MLB-7513523170",
+          null,
+          204.25,
+          100,
+          47,
+          1,
+          143,
+          15,
+          4
+        ],
+        [
+          "MLB7513523172",
+          "Smerihadeira Controle Velocidade/lixadeira Pro 2200w 3 Em 1",
+          "2026-08-26T04:17:06.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_859680-MLB110968765348_052026-O.webp",
+          "Ferramentas",
+          false,
+          "active",
+          true,
+          true,
+          "CC20250218132706",
+          "gold_pro",
+          true,
+          "MLB-7513523172",
+          null,
+          232.2,
+          100,
+          47,
+          1,
+          143,
+          15,
+          4
+        ],
+        [
+          "MLB7535843472",
+          "Garrafa Copo Térmico Aco Inox 500 Ml Fria E Quente",
+          "2026-08-28T05:47:11.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_971387-MLB98598847600_112025-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          null,
+          true,
+          "PE20251116212101",
+          "gold_special",
+          true,
+          "MLB-7535843472",
+          null,
+          36.51,
+          100,
+          54,
+          1,
+          91,
+          13,
+          5
+        ],
+        [
+          "MLB7535843480",
+          "Garrafa Copo Térmico Aco Inox 500 Ml Fria E Quente",
+          "2026-08-28T05:47:11.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_699270-MLB99075088523_112025-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          true,
+          true,
+          "PE20251116212101",
+          "gold_special",
+          true,
+          "MLB-7535843480",
+          null,
+          44.27,
+          100,
+          54,
+          1,
+          91,
+          13,
+          5
+        ],
+        [
+          "MLB7539530402",
+          "Garrafa Térmica 100% Inox Revolution 1.9l Com Bomba Termolar",
+          "2026-08-28T11:33:01.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_763539-MLB115433248194_082026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          null,
+          true,
+          "LOJADOPRIMO VARIEDADES",
+          "gold_pro",
+          true,
+          "MLB-7539530402",
+          null,
+          334.8,
+          100,
+          54,
+          1,
+          4,
+          13,
+          5
+        ],
+        [
+          "MLB7545065576",
+          "Modus Garrafas Térmica Inox De Água Parede Dupla 1,7l",
+          "2026-08-29T03:54:27.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_629792-MLB115460373040_082026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          null,
+          true,
+          "ULTRAGLOBALCOMERCIOLTDAULTR",
+          "gold_pro",
+          true,
+          "MLB-7545065576",
+          null,
+          107.9,
+          100,
+          58,
+          1,
+          null,
+          12,
+          null
+        ],
+        [
+          "MLB7558427004",
+          "Porta Shampoo Prateleira Grade Com Vidro Para Banheiro 30 Cm",
+          "2026-08-14T23:29:51.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_798067-MLA114832777620_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "ELETRO-MAJU",
+          "gold_special",
+          true,
+          "MLB77363043",
+          null,
+          25.84,
+          100,
+          26,
+          1,
+          null,
+          27,
+          null
+        ],
+        [
+          "MLB7565592224",
+          "Garrafa Térmica Inox 350ml Agua Capinha Borracha Silicone",
+          "2026-08-31T21:54:28.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_626251-MLB115103565104_082026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          null,
+          true,
+          "GRUPOM4",
+          "gold_special",
+          true,
+          "MLB-7565592224",
+          null,
+          43.33,
+          100,
+          70,
+          1,
+          102,
+          10,
+          4.9
+        ],
+        [
+          "MLB7568051596",
+          "Porta Shampoo Duplo Suporte De Box Banheiro Xampu Sem Furar",
+          "2026-08-31T18:21:21.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_694265-MLA115548076840_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "MXXPETUTIL",
+          "gold_special",
+          true,
+          "MLB78720326",
+          null,
+          37.99,
+          100,
+          70,
+          1,
+          null,
+          10,
+          null
+        ],
+        [
+          "MLB7570735728",
+          "Garrafa Térmica Grande Aço Inox 2 Litros Agua Café Camping",
+          "2026-09-01T12:56:42.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_734656-MLB112420834028_062026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          true,
+          true,
+          "GPSATACADOLTDA",
+          "gold_special",
+          true,
+          "MLB-7570735728",
+          null,
+          132.58,
+          100,
+          78,
+          1,
+          11,
+          9,
+          4
+        ],
+        [
+          "MLB7577232504",
+          "Cinta Lixa 533x75/76mm P/ Lixadeira Manual - Kit 10 Unidades",
+          "2026-09-03T00:08:21.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_935940-MLB113633852377_062026-O.webp",
+          "Ferramentas",
+          false,
+          "active",
+          true,
+          true,
+          "MANDARIMABRASIVOSS",
+          "gold_special",
+          true,
+          "MLB-7577232504",
+          null,
+          46.4,
+          100,
+          100,
+          1,
+          438,
+          7,
+          4
+        ],
+        [
+          "MLB7577232506",
+          "Cinta Lixa 533x75/76mm P/ Lixadeira Manual - Kit 10 Unidades",
+          "2026-09-03T00:08:21.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_752460-MLB113633028903_062026-O.webp",
+          "Ferramentas",
+          false,
+          "active",
+          true,
+          true,
+          "MANDARIMABRASIVOSS",
+          "gold_special",
+          true,
+          "MLB-7577232506",
+          null,
+          46.4,
+          100,
+          100,
+          1,
+          440,
+          7,
+          4
+        ],
+        [
+          "MLB7577232508",
+          "Cinta Lixa 533x75/76mm P/ Lixadeira Manual - Kit 10 Unidades",
+          "2026-09-03T00:08:21.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_646841-MLB112468253744_062026-O.webp",
+          "Ferramentas",
+          false,
+          "active",
+          true,
+          true,
+          "MANDARIMABRASIVOSS",
+          "gold_special",
+          true,
+          "MLB-7577232508",
+          null,
+          46.4,
+          100,
+          100,
+          1,
+          441,
+          7,
+          4
+        ],
+        [
+          "MLB7580237502",
+          "Suporte Organizador De Pia Porta Detergente Esponja Shampoo Sabonete Sabão Multifuncional Fixação em Parede Por Adesivo Ventosa Não Fura Parede Para Cozinha Lavanderia Banheiro Área Gourmet Universal",
+          "2026-09-02T18:24:09.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_601192-MLA117085687691_092026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "LUCKANADANI",
+          "gold_special",
+          true,
+          "MLB78842012",
+          null,
+          37.3,
+          100,
+          88,
+          1,
+          1,
+          8,
+          null
+        ],
+        [
+          "MLB7581476166",
+          "Lixa Cinta P/ Lixadeira Schulz 900w 533x75/76mm Kit 4 Peças",
+          "2026-09-03T12:09:45.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_882287-MLB113633743243_062026-O.webp",
+          "Ferramentas",
+          false,
+          "active",
+          true,
+          true,
+          "MANDARIMABRASIVOSS",
+          "gold_special",
+          true,
+          "MLB-7581476166",
+          "DEERFOS",
+          34.9,
+          100,
+          100,
+          1,
+          205,
+          7,
+          4
+        ],
+        [
+          "MLB7581476184",
+          "Lixa Cinta P/ Lixadeira Schulz 900w 533x75/76mm Kit 4 Peças",
+          "2026-09-03T12:09:45.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_756725-MLB112467821418_062026-O.webp",
+          "Ferramentas",
+          false,
+          "active",
+          true,
+          true,
+          "MANDARIMABRASIVOSS",
+          "gold_special",
+          true,
+          "MLB-7581476184",
+          null,
+          34.9,
+          100,
+          100,
+          1,
+          205,
+          7,
+          4
+        ],
+        [
+          "MLB5028204809",
+          "Garrafa Térmica Vácuo 1000ml Inox 316 Mantém Quente E Frio",
+          "2026-08-10T06:31:46.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_656254-MLB116733871399_082026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          null,
+          true,
+          "THAIIMPORTSLTDA",
+          "gold_special",
+          true,
+          "MLB-5028204809",
+          null,
+          36,
+          97,
+          23,
+          1,
+          null,
+          31,
+          null
+        ],
+        [
+          "MLB5029910413",
+          "Garrafa Térmica 1000ml Aço Inox 316 Vácuo Squeeze Esporte",
+          "2026-08-10T10:31:11.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_800194-MLB115921349397_082026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          null,
+          true,
+          "CABHECGFD26850",
+          "gold_special",
+          true,
+          "MLB-5029910413",
+          null,
+          35,
+          97,
+          23,
+          1,
+          12,
+          31,
+          4.5
+        ],
+        [
+          "MLB5034307825",
+          "Garrafa Café Térmica 1,8L Inox com Ampola de Vidro Sistema de Pressão Antirespingo Preta Café Chá Chimarrão Hotel Escritório Sólar",
+          "2026-08-10T20:01:33.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_649551-MLA116124451791_082026-E.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          null,
+          true,
+          "MEGA TRENDS",
+          "gold_special",
+          true,
+          "MLB77249422",
+          "SOLARVARIEDADESUTENSILIOS",
+          75.74,
+          97,
+          23,
+          1,
+          47,
+          31,
+          4.8
+        ],
+        [
+          "MLB5021392865",
+          "Kit 2 Tesouras De Cozinha Preta We Varejo Multifuncional Para Cortar Osso Carne Frango Peixe Aço Inox Ergonomica 20cm Tesoura Panda Original",
+          "2026-08-08T14:38:25.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_918467-MLA114944044676_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "WEBELITTA",
+          "gold_special",
+          true,
+          "MLB76547217",
+          "WEVAREJO",
+          29.9,
+          91,
+          21,
+          1,
+          1559,
+          33,
+          4.7
+        ],
+        [
+          "MLB5021945425",
+          "Moto Esmeril Lixadeira Bancada 6 Pol 735w 1hp Worker Bivolt",
+          "2026-08-08T19:45:27.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_913817-MLA99401756774_112025-O.webp",
+          "Ferramentas",
+          false,
+          "active",
+          null,
+          true,
+          "MASURASHOP",
+          "gold_special",
+          true,
+          "MLB-5021945425",
+          null,
+          365.54,
+          91,
+          21,
+          1,
+          null,
+          33,
+          null
+        ],
+        [
+          "MLB7359989714",
+          "Garrafa Térmica Inox Homeland Ampola Dupla Vidro 1,9 Litros",
+          "2026-08-08T01:37:16.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_662487-MLB115791205119_082026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          null,
+          true,
+          "CASAEFE",
+          "gold_pro",
+          true,
+          "MLB-7359989714",
+          "HOMELAND",
+          75.04,
+          91,
+          21,
+          1,
+          12,
+          33,
+          5
+        ],
+        [
+          "MLB7349826544",
+          "Bico Mangueira Alta Pressão Esguicho 3 Em 1 Engate Rápido",
+          "2026-08-07T00:10:37.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_729736-MLB115871585264_092026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "TPSTORE171025",
+          "gold_special",
+          true,
+          "MLB-7349826544",
+          "GENERICA",
+          26.87,
+          88,
+          21,
+          1,
+          31,
+          34,
+          4.6
+        ],
+        [
+          "MLB7355081470",
+          "Kit Tereré Garrafa 2,5l Inox Copo E Bomba Com Suporte E Alça",
+          "2026-08-07T11:10:45.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_696379-MLB116311065353_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "MIXSHOP MAGAZINE",
+          "gold_special",
+          true,
+          "MLB-7355081470",
+          null,
+          158.9,
+          88,
+          21,
+          1,
+          6,
+          34,
+          null
+        ],
+        [
+          "MLB7356930658",
+          "Kit Completo Alongamento Polygel Cabine E Lixadeira De Unha",
+          "2026-08-07T14:29:18.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_806121-MLB115772877021_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          false,
+          "active",
+          null,
+          true,
+          "BELLORACOSMETICOS",
+          "gold_special",
+          true,
+          "MLB-7356930658",
+          null,
+          66.9,
+          88,
+          21,
+          1,
+          21,
+          34,
+          4.7
+        ],
+        [
+          "MLB7359349012",
+          "Kit 2 Maçarico Portátil Culinário Profissional Multiuso",
+          "2026-08-07T21:06:03.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_623511-MLB114432688162_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "KATORZ_STORE",
+          "gold_special",
+          true,
+          "MLB-7359349012",
+          "GENERICA",
+          29.99,
+          88,
+          21,
+          1,
+          16,
+          34,
+          4.9
+        ],
+        [
+          "MLB7359543738",
+          "Garrafa Aço Inox 750ml Água Suco Academia Com Alça Premium",
+          "2026-08-07T22:08:41.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_968602-MLB114437756508_082026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          null,
+          true,
+          "ABACATEBRINDES",
+          "gold_special",
+          true,
+          "MLB-7359543738",
+          null,
+          35.68,
+          88,
+          21,
+          1,
+          4,
+          34,
+          5
+        ],
+        [
+          "MLB5006594907",
+          "Lixadeira Profissional Motor Strong Max 211 Ultra 220V Nails Podóloga 35000 RPM Branco Para Unhas BMED",
+          "2026-08-06T13:25:44.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_749186-MLA114374729884_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          null,
+          true,
+          "BMED",
+          "gold_special",
+          true,
+          "MLB76467530",
+          null,
+          314.91,
+          86,
+          20,
+          1,
+          null,
+          35,
+          null
+        ],
+        [
+          "MLB5006630925",
+          "Lixadeira Profissional Motor Strong Max 211 Ultra 110V Nails Podóloga 35000 RPM Branco Para Unhas BMED",
+          "2026-08-06T13:25:44.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_810200-MLA115106036992_082026-E.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          null,
+          true,
+          "BMED",
+          "gold_special",
+          true,
+          "MLB76467531",
+          null,
+          339.4,
+          86,
+          20,
+          1,
+          null,
+          35,
+          null
+        ],
+        [
+          "MLB5007671373",
+          "Blusa Feminina Em Poá Regata Alça Fina De Suplex Básica",
+          "2026-08-06T18:36:20.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_919086-MLB114389890016_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          null,
+          true,
+          "THEKAMO",
+          "gold_special",
+          true,
+          "MLB-5007671373",
+          null,
+          29.04,
+          86,
+          20,
+          1,
+          8,
+          35,
+          4
+        ],
+        [
+          "MLB7346990060",
+          "Garrafa Térmica 800ml Isotermica Água Academia Aço Inox",
+          "2026-08-06T17:32:04.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_607460-MLB114858599055_072026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "MIA__STORE",
+          "gold_pro",
+          true,
+          "MLB-7346990060",
+          "GENERICA",
+          36.22,
+          86,
+          20,
+          1,
+          211,
+          35,
+          5
+        ],
+        [
+          "MLB7349335376",
+          "Kit Máscara Led 7 Cores Fototerapia + Massageador Facial",
+          "2026-08-06T22:14:31.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_867125-MLB115736912509_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          false,
+          "active",
+          true,
+          true,
+          "LDCOMERCIODEVARIEDADES",
+          "gold_special",
+          true,
+          "MLB-7349335376",
+          null,
+          134.46,
+          86,
+          20,
+          1,
+          3,
+          35,
+          5
+        ],
+        [
+          "MLB5000983137",
+          "Nicho Embutir Em Porcelanato Preto Porta Shampoo",
+          "2026-08-05T23:46:02.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_626057-MLB115678910487_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "EHSDIASDECORE",
+          "gold_special",
+          true,
+          "MLB-5000983137",
+          null,
+          130,
+          83,
+          19,
+          1,
+          8,
+          36,
+          3.2
+        ],
+        [
+          "MLB7339964042",
+          "Adaptador Para Lavadora Alta Pressão Karcher, Bicos Engate Rápido Lavadora Alta Pressão Karcher Wap 1/4\" 5 Pcs",
+          "2026-08-05T09:59:42.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_970385-MLA115634740769_082026-O.webp",
+          "Ferramentas",
+          true,
+          "active",
+          true,
+          true,
+          "TECNOSAMPA",
+          "gold_pro",
+          true,
+          "MLB76394583",
+          "BARLINK",
+          40.54,
+          83,
+          19,
+          1,
+          37,
+          36,
+          4.8
+        ],
+        [
+          "MLB7400505366",
+          "Tesoura De Cozinha Multifuncional Em Aço Inoxidável. Prateado",
+          "2026-08-05T22:20:10.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_824321-MLA114334863836_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "FASHION_STREET2",
+          "gold_special",
+          true,
+          "MLB76435610",
+          "YUHUI",
+          78,
+          83,
+          19,
+          1,
+          6,
+          36,
+          5
+        ]
+      ],
+      "dimensionCount": 15,
+      "lastRefreshTime": "2026-09-09T19:02:13.594Z",
+      "slowQuery": false,
+      "totalRows": 100,
+      "types": [
+        "string",
+        "string",
+        "time",
+        "time",
+        "string",
+        "string",
+        "boolean",
+        "string",
+        "boolean",
+        "boolean",
+        "string",
+        "string",
+        "boolean",
+        "string",
+        "string",
+        "number",
+        "number",
+        "number",
+        "number",
+        "number",
+        "number",
+        "number"
+      ]
+    }
+  ]
+}

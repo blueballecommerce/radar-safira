@@ -1,0 +1,3191 @@
+{
+  "lidoEm": "2026-09-09T19:02:23.555Z",
+  "fonte": "JoomPulse / MercadoProductsWeekly",
+  "groups": [
+    [
+      "coador",
+      "filtro"
+    ],
+    [
+      "tampa",
+      "plástico"
+    ],
+    [
+      "esponja",
+      "banho"
+    ],
+    [
+      "mangueira",
+      "jardim"
+    ],
+    [
+      "forma",
+      "papel"
+    ],
+    [
+      "ganchos",
+      "adesivo"
+    ],
+    [
+      "bacia",
+      "retrátil"
+    ],
+    [
+      "sling",
+      "vestir"
+    ],
+    [
+      "adesivo",
+      "invisível"
+    ],
+    [
+      "arandela",
+      "solar"
+    ],
+    [
+      "luminária",
+      "led"
+    ],
+    [
+      "aspirador",
+      "soprador"
+    ],
+    [
+      "pano",
+      "limpeza"
+    ],
+    [
+      "limpador",
+      "vidros"
+    ],
+    [
+      "faca",
+      "cortador"
+    ],
+    [
+      "pente",
+      "quente"
+    ],
+    [
+      "tábua",
+      "corte"
+    ],
+    [
+      "tábua",
+      "alimento"
+    ],
+    [
+      "gotejador",
+      "irrigador"
+    ],
+    [
+      "irrigador",
+      "ultra"
+    ],
+    [
+      "brinquedos",
+      "aquarela"
+    ],
+    [
+      "rolo",
+      "aquecedor"
+    ],
+    [
+      "dominó",
+      "domino"
+    ],
+    [
+      "adesivos",
+      "facial"
+    ],
+    [
+      "maquina",
+      "acabamento"
+    ],
+    [
+      "barbeador",
+      "prova"
+    ],
+    [
+      "maquina",
+      "cortadora"
+    ],
+    [
+      "máquina",
+      "cortar"
+    ],
+    [
+      "máquina",
+      "acabamento"
+    ],
+    [
+      "kemei",
+      "prata"
+    ]
+  ],
+  "pages": [
+    {
+      "query": {
+        "dimensions": [
+          "MercadoProductsWeekly.id",
+          "MercadoProductsWeekly.productName",
+          "MercadoProductsWeekly.adPublishDate",
+          "MercadoProductsWeekly.date",
+          "MercadoProductsWeekly.productImage",
+          "MercadoProductsWeekly.merchantCategoryL1",
+          "MercadoProductsWeekly.catalogProduct",
+          "MercadoProductsWeekly.listingStatus",
+          "MercadoProductsWeekly.isFull",
+          "MercadoProductsWeekly.isFreeShipping",
+          "MercadoProductsWeekly.merchantName",
+          "MercadoProductsWeekly.listingType",
+          "MercadoProductsWeekly.buyBoxWiner",
+          "MercadoProductsWeekly.productId",
+          "MercadoProductsWeekly.brand"
+        ],
+        "measures": [
+          "MercadoProductsWeekly.priceAmount",
+          "MercadoProductsWeekly.orderCount1m",
+          "MercadoProductsWeekly.orderCount1w",
+          "MercadoProductsWeekly.numBuyBoxSellers",
+          "MercadoProductsWeekly.reviewsCount",
+          "MercadoProductsWeekly.daysInAd",
+          "MercadoProductsWeekly.reviewsRating"
+        ],
+        "filters": [
+          {
+            "member": "MercadoProductsWeekly.adPublishDate",
+            "operator": "inDateRange",
+            "values": [
+              "2026-07-31",
+              "2026-09-09"
+            ]
+          },
+          {
+            "member": "MercadoProductsWeekly.listingStatus",
+            "operator": "equals",
+            "values": [
+              "active"
+            ]
+          },
+          {
+            "member": "MercadoProductsWeekly.orderCount1m",
+            "operator": "gt",
+            "values": [
+              "0"
+            ]
+          },
+          {
+            "or": [
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "coador"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "filtro"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "tampa"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "plástico"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "esponja"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "banho"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "mangueira"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "jardim"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "forma"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "papel"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "ganchos"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "adesivo"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "bacia"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "retrátil"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "sling"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "vestir"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "adesivo"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "invisível"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "arandela"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "solar"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "luminária"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "led"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "aspirador"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "soprador"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "pano"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "limpeza"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "limpador"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "vidros"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "faca"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "cortador"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "pente"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "quente"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "tábua"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "corte"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "tábua"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "alimento"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "gotejador"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "irrigador"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "irrigador"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "ultra"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "brinquedos"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "aquarela"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "rolo"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "aquecedor"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "dominó"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "domino"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "adesivos"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "facial"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "maquina"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "acabamento"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "barbeador"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "prova"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "maquina"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "cortadora"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "máquina"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "cortar"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "máquina"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "acabamento"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "kemei"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "prata"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "order": [
+          [
+            "MercadoProductsWeekly.orderCount1m",
+            "desc"
+          ],
+          [
+            "MercadoProductsWeekly.id",
+            "asc"
+          ]
+        ],
+        "limit": 100
+      },
+      "columns": [
+        "id",
+        "productName",
+        "adPublishDate",
+        "date",
+        "productImage",
+        "merchantCategoryL1",
+        "catalogProduct",
+        "listingStatus",
+        "isFull",
+        "isFreeShipping",
+        "merchantName",
+        "listingType",
+        "buyBoxWiner",
+        "productId",
+        "brand",
+        "priceAmount",
+        "orderCount1m",
+        "orderCount1w",
+        "numBuyBoxSellers",
+        "reviewsCount",
+        "daysInAd",
+        "reviewsRating"
+      ],
+      "data": [
+        [
+          "MLB5034439745",
+          "600 Panos Multiuso Perfex Limpeza Rolo Reutilizável 20x40cm",
+          "2026-08-10T20:59:30.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_953876-MLB115899763703_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          false,
+          "SOLEPRIME",
+          "gold_special",
+          true,
+          "MLB-5034439745",
+          "LIFECLEAN",
+          44.5,
+          968,
+          226,
+          1,
+          31,
+          31,
+          5
+        ],
+        [
+          "MLB7348465626",
+          "Plafon Luminária Led Embutir 30x30 Quadrado Branco Frio 6500k 25w Estrutura Branco-frio",
+          "2026-08-09T00:47:20.693",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_688604-MLA82749534233_022025-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "PERSONA90",
+          "gold_special",
+          true,
+          "MLB46494355",
+          null,
+          30.9,
+          938,
+          219,
+          1,
+          225,
+          32,
+          4.7
+        ],
+        [
+          "MLB7359895734",
+          "Máquina De Cortar Cabelo Elétrica Inova Portátil Precisão",
+          "2026-08-08T00:52:05.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_708120-MLB113281287248_072026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          false,
+          "active",
+          true,
+          true,
+          "UC20260323124023",
+          "gold_special",
+          true,
+          "MLB-7359895734",
+          "INOVA",
+          57.51,
+          909,
+          212,
+          1,
+          376,
+          33,
+          4.8
+        ],
+        [
+          "MLB7359895736",
+          "Máquina De Cortar Cabelo Elétrica Inova Portátil Precisão",
+          "2026-08-08T00:51:54.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_636134-MLB114523279957_072026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          false,
+          "active",
+          null,
+          true,
+          "UC20260323124023",
+          "gold_special",
+          true,
+          "MLB-7359895736",
+          "INOVA",
+          58.41,
+          909,
+          212,
+          1,
+          376,
+          33,
+          4.8
+        ],
+        [
+          "MLB7540780990",
+          "Coador De Café Inox 103 Com Filtro Permanente Reutilizável Aço Inox Premium Durável Fácil De Lavar Passador De Café Grande Sem Papel Para Café Tradicional Gourmet Pétalas Douradas",
+          "2026-08-04T13:19:04.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_797528-MLA114240808098_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "LOJAMARIASANTOS",
+          "gold_special",
+          true,
+          "MLB76320149",
+          "PETALASDOURADAS",
+          69.99,
+          811,
+          189,
+          2,
+          159,
+          37,
+          4.7
+        ],
+        [
+          "MLB7316882988",
+          "Luminária Teto Spot Duplo Sobrepor Alumìnio Preto TelhaLed Articulável Industrial Bocal E27 Bivolt",
+          "2026-08-03T13:10:27.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_801547-MLA115515438271_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "RRCASAEDECOR",
+          "gold_pro",
+          true,
+          "MLB76222524",
+          "TELHALED",
+          40.67,
+          789,
+          184,
+          1,
+          310,
+          38,
+          4.8
+        ],
+        [
+          "MLB5040648677",
+          "Limpador De Vidros Magnético Dupla Face Com Ímã Janela",
+          "2026-08-11T16:25:50.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_961025-MLB114604707712_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          false,
+          "POP_STORE",
+          "gold_special",
+          true,
+          "MLB-5040648677",
+          null,
+          38.67,
+          500,
+          117,
+          1,
+          52,
+          30,
+          4.2
+        ],
+        [
+          "MLB5046666595",
+          "Mini Aspirador De Pó Portátil Mini Soprador 3em1 Usb 1 Refil",
+          "2026-08-12T13:39:11.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_721247-MLB115151809912_082026-O.webp",
+          "Acessórios para Veículos",
+          false,
+          "active",
+          null,
+          true,
+          "MEGGA_ESSENCIAL",
+          "gold_special",
+          true,
+          "MLB-5046666595",
+          "MINIASPIRADORPORTATILLIMP",
+          25.99,
+          500,
+          121,
+          1,
+          22,
+          29,
+          4.5
+        ],
+        [
+          "MLB5092965149",
+          "Abajur Luminária Mesa Led Touch Relógio Digital Recarregável Branco",
+          "2026-08-15T02:43:40.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_614327-MLA114838112806_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "EDNAGONCALVES001",
+          "gold_special",
+          true,
+          "MLB77382592",
+          null,
+          38.7,
+          500,
+          135,
+          2,
+          49,
+          26,
+          4.9
+        ],
+        [
+          "MLB5139001821",
+          "Kit 3 Pano Chão Mágico Limpeza Multiuso Microfibra 72,5x85 Cor colorido VARIADO",
+          "2026-08-15T09:24:16.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_717145-MLA114853723586_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "CYCLIST_CLOTHING",
+          "gold_special",
+          true,
+          "MLB77424201",
+          null,
+          41,
+          500,
+          135,
+          1,
+          815,
+          26,
+          4.8
+        ],
+        [
+          "MLB5139001973",
+          "Kit 6 Un Pano Chão Mágico Limpeza Microfibra 72,5x85 Cor Colorido Variado",
+          "2026-08-12T04:07:08.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_924291-MLA115992248525_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "CYCLIST_CLOTHING",
+          "gold_special",
+          true,
+          "MLB76946608",
+          null,
+          62.95,
+          500,
+          121,
+          1,
+          892,
+          29,
+          4.8
+        ],
+        [
+          "MLB5145525257",
+          "5 Capas para Vassoura com Elástico Pano de Chão Reutilizável Lavável Limpeza Casa Sem Fiapos Não Levanta Poeira",
+          "2026-08-27T15:53:40.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_649225-MLA116820186149_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "PETHOMELTDA",
+          "gold_pro",
+          true,
+          "MLB78630695",
+          null,
+          44,
+          500,
+          250,
+          1,
+          5,
+          14,
+          4.5
+        ],
+        [
+          "MLB7459653204",
+          "Pano Limpeza Mecânico Peças Mãos Absorção Oleos E Graxas 5kg Cor Branco",
+          "2026-08-15T02:31:38.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_667667-MLA114837780800_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          false,
+          "MYLOVE COSMETICOS",
+          "gold_pro",
+          true,
+          "MLB77381458",
+          "PANOOFICINAMECANICA",
+          95.26,
+          500,
+          135,
+          1,
+          30,
+          26,
+          4.4
+        ],
+        [
+          "MLB7469337722",
+          "Kit 2 Caixas Organizadoras Grande Plástico Cesto Tampa 17lt",
+          "2026-08-20T17:30:25.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_613237-MLB97912123120_112025-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "IDEIA FACIL",
+          "gold_special",
+          true,
+          "MLB-7469337722",
+          "RAINHA",
+          158.3,
+          500,
+          167,
+          1,
+          303,
+          21,
+          4.9
+        ],
+        [
+          "MLB7586571670",
+          "Barbeador elétrico e máquina de cortar pelos corporais Maxgroom",
+          "2026-09-04T03:48:18.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_762259-MLA98427034860_112025-O.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          true,
+          true,
+          "LZ20260120140524",
+          "gold_special",
+          true,
+          "MLB62350071",
+          null,
+          125.24,
+          500,
+          500,
+          1,
+          917,
+          6,
+          4.6
+        ],
+        [
+          "MLB5005553893",
+          "Kit 2x Plafon Led Quadrado Sobrepor Estrutura Preta Bivolt 110v/220v Painel Luminária Driver 18w Slim 20x20 Modular Alvenaria Concreto Cozinha Corredor Escritório Gesso Madeira 6500K Vmd Homecenter",
+          "2026-08-06T10:10:26.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_615693-MLA115710728653_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "VMD HOMECENTER",
+          "gold_special",
+          true,
+          "MLB76465197",
+          null,
+          48.39,
+          429,
+          100,
+          1,
+          1221,
+          35,
+          4.7
+        ],
+        [
+          "MLB4981696937",
+          "Kit 3 Luminária Barra Led Recarregável Sensor Base Momlulu 3pcs Luz Quente 3000 K / Luz Branca Quente 4500 K / Luz Branca 6000 K",
+          "2026-08-02T10:06:48.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_981070-MLA114139250974_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "HIGOOGOO888",
+          "gold_special",
+          true,
+          "MLB76208932",
+          null,
+          69.99,
+          385,
+          90,
+          1,
+          15,
+          39,
+          4.6
+        ],
+        [
+          "MLB4976861201",
+          "Mini Aspirador Automotivo Soprador Usb Portátil Recarregável Cinza Claro",
+          "2026-08-01T04:50:31.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_685812-MLA115415021753_082026-O.webp",
+          "Eletrodomésticos",
+          true,
+          "active",
+          null,
+          true,
+          "BETAHOME",
+          "gold_special",
+          true,
+          "MLB76190097",
+          null,
+          49.9,
+          375,
+          88,
+          1,
+          13,
+          40,
+          4.3
+        ],
+        [
+          "MLB5094594587",
+          "Coador De Café Inox 103 Filtro Permanente Reutilizável Aço Inoxidável Sem Papel Ecológico Hypefull",
+          "2026-08-01T22:16:27.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_909662-MLA114120372084_082026-O.webp",
+          "Eletrodomésticos",
+          true,
+          "active",
+          null,
+          false,
+          "LUMIVEX",
+          "gold_pro",
+          true,
+          "MLB76204638",
+          null,
+          47.29,
+          375,
+          88,
+          2,
+          56,
+          40,
+          4.8
+        ],
+        [
+          "MLB5036448825",
+          "4x Arandela Externa Luminária Led 4 Facho Parede Ip65 Bivolt",
+          "2026-08-11T07:16:43.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_665294-MLB115919963903_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "DAFEBDHGC28478",
+          "gold_special",
+          true,
+          "MLB-5036448825",
+          null,
+          61.48,
+          100,
+          23,
+          1,
+          2,
+          30,
+          5
+        ],
+        [
+          "MLB5042690929",
+          "Kit 2 Sensor Presença Recarregável Luminárias Led Magnéticas",
+          "2026-08-12T02:55:02.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_936012-MLB115987097029_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "DHDBECFGA64827",
+          "gold_pro",
+          true,
+          "MLB-5042690929",
+          "GENERICA",
+          36.78,
+          100,
+          24,
+          1,
+          4,
+          29,
+          4
+        ],
+        [
+          "MLB5047269275",
+          "Maquina Cortar Cabelo Kemei Sem Fio Profissional Acabamento",
+          "2026-08-12T15:35:35.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_643817-MLB116033050009_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          false,
+          "active",
+          null,
+          true,
+          "WLSTORE7",
+          "gold_pro",
+          true,
+          "MLB-5047269275",
+          null,
+          59.24,
+          100,
+          24,
+          1,
+          3,
+          29,
+          3
+        ],
+        [
+          "MLB5054142179",
+          "Porta Chaves Parede 5 Ganchos Organizador Adesivo Sem Furo",
+          "2026-08-13T13:12:45.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_896864-MLB114938824674_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          false,
+          "OFFPECOMMERCE",
+          "gold_special",
+          true,
+          "MLB-5054142179",
+          null,
+          13.93,
+          100,
+          25,
+          1,
+          7,
+          28,
+          4.9
+        ],
+        [
+          "MLB5057368385",
+          "Luminária Abajur Mesa Led Touch Relógio Digital Recarregável",
+          "2026-08-13T21:04:47.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_924422-MLB114766266640_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "LLONDS_SHOP",
+          "gold_special",
+          true,
+          "MLB-5057368385",
+          null,
+          26.82,
+          100,
+          25,
+          1,
+          7,
+          28,
+          5
+        ],
+        [
+          "MLB5068902115",
+          "Peneira Coador 103 Filtro Inox Permanente Para Café E Chá",
+          "2026-08-15T14:15:58.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_678362-MLB114864261168_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "JVPLANCORP",
+          "gold_special",
+          true,
+          "MLB-5068902115",
+          null,
+          29.28,
+          100,
+          27,
+          1,
+          21,
+          26,
+          5
+        ],
+        [
+          "MLB5080508243",
+          "Mangueira Água 15 Metros Jardim Irrigação Mágica Expansível Retrátil 15m Com Pistola Quintal Multiligui",
+          "2026-08-16T19:58:38.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_812645-MLA116278487519_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "MULTILIGUI",
+          "gold_special",
+          true,
+          "MLB77487774",
+          null,
+          35.9,
+          100,
+          28,
+          1,
+          null,
+          25,
+          null
+        ],
+        [
+          "MLB5081280115",
+          "Kit 10 Mini Vela Led Luminária Decoração Lanterninhas Retrô",
+          "2026-08-17T18:34:34.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_968716-MLB116319105129_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "COMERCIOVYDE20231024081721",
+          "gold_special",
+          true,
+          "MLB-5081280115",
+          null,
+          78.89,
+          100,
+          29,
+          1,
+          3,
+          24,
+          5
+        ],
+        [
+          "MLB5090014397",
+          "Soprador Aspirador De Pó 2 Em 1 Sem Fio 21v Portátil",
+          "2026-08-14T06:44:21.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_850880-MLA116161359481_082026-O.webp",
+          "Ferramentas",
+          true,
+          "active",
+          true,
+          true,
+          "GNITRO",
+          "gold_special",
+          true,
+          "MLB77315159",
+          null,
+          218.25,
+          100,
+          26,
+          1,
+          null,
+          27,
+          null
+        ],
+        [
+          "MLB5093722899",
+          "Kit 3 Adaptadores de Engate Rápido + 3 Bicos para Torneira 1/2 e 3/4 para Mangueira Jardim Irrigação Lavagem Conexão Hidráulica Uso Doméstico e Externo",
+          "2026-08-18T18:57:44.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_891851-MLA117030578873_092026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "GDS BRASIL",
+          "gold_special",
+          true,
+          "MLB77602692",
+          null,
+          53.7,
+          100,
+          30,
+          1,
+          null,
+          23,
+          null
+        ],
+        [
+          "MLB5095436655",
+          "Luminária LED Recarregável 50cm com Sensor de Movimento e USB Para Armário",
+          "2026-08-14T10:11:32.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_627709-MLA116173463227_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "LUAR-SHOP",
+          "gold_special",
+          true,
+          "MLB77319866",
+          null,
+          25.89,
+          100,
+          26,
+          1,
+          null,
+          27,
+          null
+        ],
+        [
+          "MLB5095587359",
+          "150 Filtro Café Individual Descartável Coador Dose Única",
+          "2026-08-19T20:30:33.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_616448-MLB115635642674_092026-O.webp",
+          "Alimentos e Bebidas",
+          false,
+          "active",
+          null,
+          true,
+          "LEUMAX",
+          "gold_special",
+          true,
+          "MLB-5095587359",
+          null,
+          41.61,
+          100,
+          32,
+          1,
+          2,
+          22,
+          5
+        ],
+        [
+          "MLB5096387225",
+          "Luminária Abajur De Mesa Led Recarregável Sem Fio Touch Led Redondo Prata Prateado",
+          "2026-08-12T11:25:07.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_691817-MLA116018661731_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "FAFERCOMERCIO",
+          "gold_special",
+          true,
+          "MLB77089656",
+          null,
+          54.99,
+          100,
+          24,
+          1,
+          16,
+          29,
+          4.8
+        ],
+        [
+          "MLB5113139515",
+          "Luminária LED Aquário Plantado Newpet 35-55cm 53 LEDs Espectro Total Timer Memória 10 Níveis Brilho USB (Requer 5V/2A) Suporte Extensível",
+          "2026-08-21T10:45:44.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_849534-MLA116533649795_082026-E.webp",
+          "Pet Shop",
+          true,
+          "active",
+          null,
+          true,
+          "VE20250611082416",
+          "gold_special",
+          true,
+          "MLB77955490",
+          "NEWPET",
+          62.28,
+          100,
+          35,
+          1,
+          42,
+          20,
+          5
+        ],
+        [
+          "MLB5113139987",
+          "Luminária Aquário Plantado LED Newpet 50-70cm 88 LEDs Espectro Total Timer Função Memória 10 Níveis Brilho USB (Requer 5V/2A) Extensível",
+          "2026-08-21T10:45:45.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_993647-MLA115137631144_082026-E.webp",
+          "Pet Shop",
+          true,
+          "active",
+          null,
+          true,
+          "VE20250611082416",
+          null,
+          true,
+          "MLB77955491",
+          "NEWPET",
+          69.46,
+          100,
+          35,
+          1,
+          null,
+          20,
+          null
+        ],
+        [
+          "MLB5113190195",
+          "Luminária LED Para Aquário Plantado Newpet 60-87cm 118 LEDs Espectro Total Timer 10 Níveis Brilho Memória USB (Requer 5V/3A) Extensível",
+          "2026-08-21T10:45:46.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_991013-MLA116533443017_082026-O.webp",
+          "Pet Shop",
+          true,
+          "active",
+          true,
+          true,
+          "VE20250611082416",
+          null,
+          true,
+          "MLB77955492",
+          "NEWPET",
+          78.61,
+          100,
+          35,
+          1,
+          null,
+          20,
+          null
+        ],
+        [
+          "MLB5114770163",
+          "Luminária Led Para Aquário 50-60cm W.aqua Com 3 Modos De Cor Wrgb Preto",
+          "2026-08-21T20:44:32.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_917630-MLA116552791011_082026-O.webp",
+          "Pet Shop",
+          true,
+          "active",
+          true,
+          true,
+          "MERCADOAQUARIO",
+          "gold_pro",
+          true,
+          "MLB78021650",
+          null,
+          67.08,
+          100,
+          35,
+          1,
+          76,
+          20,
+          4.8
+        ],
+        [
+          "MLB5115005279",
+          "6x Ganchos Adesivo Cabide Parede Rústico Minimalista Madeira Natural",
+          "2026-08-15T02:00:15.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_980470-MLA115631099026_092026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "ABDODIB",
+          "gold_special",
+          true,
+          "MLB77378718",
+          null,
+          71.01,
+          100,
+          27,
+          1,
+          null,
+          26,
+          null
+        ],
+        [
+          "MLB5119911753",
+          "Kit 10 Panos Microfibra 29x29 Limpeza Cozinha Automotivo Sortido",
+          "2026-08-21T21:24:14.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_902123-MLA115156572716_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          false,
+          "HIPERPLAST",
+          null,
+          true,
+          "MLB78026011",
+          null,
+          21,
+          100,
+          35,
+          1,
+          null,
+          20,
+          null
+        ],
+        [
+          "MLB5124734667",
+          "Kit 2 Luminária Plafon LED 25W Alumínio Sobrepor Redondo",
+          "2026-08-24T15:47:05.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_637471-MLA115253762618_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "EZLCOMERCIAL",
+          null,
+          true,
+          "MLB78186305",
+          null,
+          48.4,
+          100,
+          41,
+          1,
+          null,
+          17,
+          null
+        ],
+        [
+          "MLB5124739561",
+          "Kit 10 Luminária Plafon Led 4000k Sobrepor 25w Quadrado Mini Preto",
+          "2026-08-24T16:06:03.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_795236-MLA116658503135_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "Z1 DISTRIBUIDORA",
+          "gold_special",
+          true,
+          "MLB78188454",
+          null,
+          190.59,
+          100,
+          41,
+          1,
+          499,
+          17,
+          4.7
+        ],
+        [
+          "MLB5125177211",
+          "Máquina De Cortar Cabelo Kemei Km-2296 Bivolt Com Base",
+          "2026-08-24T17:46:38.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_761127-MLB116663025185_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          false,
+          "active",
+          true,
+          true,
+          "CROW_LEY",
+          "gold_special",
+          true,
+          "MLB-5125177211",
+          null,
+          119.73,
+          100,
+          41,
+          1,
+          5,
+          17,
+          5
+        ],
+        [
+          "MLB5132556707",
+          "Kit Maquina De Cortar Cabelo Acabamento Barba Profissional Preto",
+          "2026-08-24T20:56:07.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_610064-MLA116667676771_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          null,
+          true,
+          "KELLYSTORELTDA",
+          "gold_pro",
+          true,
+          "MLB78235717",
+          null,
+          293,
+          100,
+          41,
+          3,
+          30,
+          17,
+          4.9
+        ],
+        [
+          "MLB5138938879",
+          "Kit 3 Pano Chão Mágico Limpeza Multiuso Microfibra 72,5x85 Cor Branco",
+          "2026-08-15T09:18:55.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_801343-MLA116229629125_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "CYCLIST_CLOTHING",
+          "gold_special",
+          true,
+          "MLB77423511",
+          null,
+          41,
+          100,
+          27,
+          1,
+          815,
+          26,
+          4.8
+        ],
+        [
+          "MLB5145526763",
+          "Kit 3 Lâmpadas Led Spot Adesiva Luminária Luz Quente Sem Fio Quente Amarelo",
+          "2026-08-15T04:50:22.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_727201-MLA116217866963_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "MRECOMMERCELTDA",
+          "gold_special",
+          true,
+          "MLB77395055",
+          null,
+          53.9,
+          100,
+          27,
+          1,
+          1,
+          26,
+          5
+        ],
+        [
+          "MLB5160466663",
+          "Luminária De Led Sobrepor Quadrada 50w Moderna 3 Em 1 Bivolt Branco",
+          "2026-08-26T20:21:57.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_904419-MLA115358681828_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "PEG COMERCIO-ELETRONICO",
+          "gold_special",
+          true,
+          "MLB78461268",
+          "BALDURILUMINACAO",
+          209,
+          100,
+          47,
+          1,
+          139,
+          15,
+          4.8
+        ],
+        [
+          "MLB5166298221",
+          "Luminária Led 3d Bola De Futebol Decoração Avelar Branco 16 Cores",
+          "2026-08-31T12:41:05.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_917267-MLA112986526613_062026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "KENIAAVELAR",
+          "gold_special",
+          true,
+          "MLB73008598",
+          null,
+          65.45,
+          100,
+          70,
+          1,
+          null,
+          10,
+          null
+        ],
+        [
+          "MLB5171677481",
+          "Luminária Lupa Estética Ring Light Articulada Profissional Mesa Bancada 12W Bivolt Led Manicure Nail Lash Designer Esteticista Cílios Sobrancelha Micropigmentação Tatuagem Facial Lente Vidro Dost Pet",
+          "2026-08-18T16:32:50.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_856732-MLA116375137917_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "SHOPALECRIMDOURADO",
+          "gold_special",
+          true,
+          "MLB77591753",
+          null,
+          93,
+          100,
+          30,
+          1,
+          5,
+          23,
+          5
+        ],
+        [
+          "MLB5179585247",
+          "Mangueira Jardim 10 Metros Trançada Reforçada Completa Verde",
+          "2026-09-02T19:01:29.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_850684-MLB99899735294_122025-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "GRPDISTRIBUIDORA",
+          "gold_pro",
+          true,
+          "MLB-5179585247",
+          null,
+          28.19,
+          100,
+          88,
+          1,
+          null,
+          8,
+          null
+        ],
+        [
+          "MLB5199913323",
+          "Luminária Mesa Abajur Led Dimerizável Sem Fio Recarregável Estrutura Disco Dourado",
+          "2026-09-08T03:46:32.580",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_761758-MLA111166607749_052026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "BK20250717072150",
+          null,
+          true,
+          "MLB69087862",
+          null,
+          39,
+          100,
+          100,
+          1,
+          null,
+          2,
+          null
+        ],
+        [
+          "MLB7391094384",
+          "Kit 10 T5 Led 20w Tubular Luminária 120cm Calha Lâmpada",
+          "2026-08-12T21:32:44.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_929587-MLB88720358744_072025-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "LED.S.OUND",
+          "gold_special",
+          true,
+          "MLB-7391094384",
+          null,
+          294.97,
+          100,
+          24,
+          1,
+          24,
+          29,
+          4.7
+        ],
+        [
+          "MLB7397282408",
+          "Máquina De Cortar Tecidos Direct Drive  4  200w Com Led",
+          "2026-08-12T14:24:45.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_634001-MLB114650002547_072026-O.webp",
+          "Indústria e Comércio",
+          false,
+          "active",
+          null,
+          true,
+          "COSTURAMAK",
+          "gold_pro",
+          true,
+          "MLB-7397282408",
+          null,
+          820,
+          100,
+          24,
+          1,
+          54,
+          29,
+          5
+        ],
+        [
+          "MLB7397609350",
+          "Kit 4 Mini Vela Luminária Led Decoração Rústica Retrô",
+          "2026-08-12T15:20:42.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_705948-MLB114665998918_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "COMERCIOVYDE20231024081721",
+          "gold_special",
+          true,
+          "MLB-7397609350",
+          null,
+          36.99,
+          100,
+          24,
+          1,
+          2,
+          29,
+          5
+        ],
+        [
+          "MLB7402610292",
+          "Kit 4 Luminárias Led 5v Usb Para Impressão 3d Bambu Lab",
+          "2026-08-13T06:35:55.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_717263-MLB116088326901_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "NW55900120115802",
+          "gold_special",
+          true,
+          "MLB-7402610292",
+          null,
+          109.85,
+          100,
+          25,
+          1,
+          9,
+          28,
+          5
+        ],
+        [
+          "MLB7404846774",
+          "Luminária Led 3d | Harry Potter Hogwarts | Abajur 16 Cores",
+          "2026-08-13T16:58:38.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_792994-MLB116752680637_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "3DFANTASY2",
+          "gold_pro",
+          true,
+          "MLB-7404846774",
+          null,
+          86.91,
+          100,
+          25,
+          1,
+          54,
+          28,
+          4
+        ],
+        [
+          "MLB7408684832",
+          "Perfurador Furador De Papel 2 Furos - Em Metal P/ 18 Folhas Cor Vermelho Forma da perfuração Círculo",
+          "2026-08-13T06:44:45.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_888766-MLA116088902803_082026-O.webp",
+          "Arte, Papelaria e Armarinho",
+          true,
+          "active",
+          true,
+          true,
+          "ALTEREGO.SUPPLY",
+          "gold_pro",
+          true,
+          "MLB77211381",
+          null,
+          21,
+          100,
+          25,
+          1,
+          44,
+          28,
+          4.9
+        ],
+        [
+          "MLB7423056538",
+          "Luminária Suspensa Led Dourada, Sala De Estar, Luz Tricolor",
+          "2026-08-15T08:19:30.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_979570-MLB116226145739_082026-O-luminaria-suspensa-led-dourada-sala-de-estar-luz-tricolor.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "HV20260529123236",
+          "gold_pro",
+          true,
+          "MLB-7423056538",
+          "GENERICA",
+          68,
+          100,
+          27,
+          1,
+          4,
+          26,
+          5
+        ],
+        [
+          "MLB7427926288",
+          "Máquina Barbear Profissional Com Visor Elétrica Maquininha Dragão Dourado Recarregável Para Cabelo e barba, Acabamento Hair trimmer",
+          "2026-08-16T02:14:18.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_754324-MLA116256033341_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          null,
+          false,
+          "DLMSTORES",
+          "gold_special",
+          true,
+          "MLB77456210",
+          "HAIRTRIMMER",
+          38.23,
+          100,
+          28,
+          2,
+          15,
+          25,
+          4.9
+        ],
+        [
+          "MLB7432382168",
+          "Máquina de Acabamento Kemei KM 2299 Profissional Sem Fio para Cabelo e Barba",
+          "2026-08-15T00:38:33.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_918106-MLA114939886160_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          true,
+          true,
+          "OMNIGO1",
+          "gold_pro",
+          true,
+          "MLB77371217",
+          null,
+          104.7,
+          100,
+          27,
+          1,
+          null,
+          26,
+          null
+        ],
+        [
+          "MLB7433095088",
+          "Arandela Solar Luminária De Parede Externa Vintage Luz Led",
+          "2026-08-17T02:49:05.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_866486-MLB116284761755_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "DAFEBDHGC28478",
+          "gold_special",
+          true,
+          "MLB-7433095088",
+          null,
+          54.77,
+          100,
+          29,
+          1,
+          3,
+          24,
+          3
+        ],
+        [
+          "MLB7437062250",
+          "Luminária Led 3d Escrever Lousa + Caneta + Controle 16 Cores",
+          "2026-08-17T12:30:26.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_826482-MLB116754997801_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "3DFANTASY_",
+          "gold_pro",
+          true,
+          "MLB-7437062250",
+          null,
+          66.92,
+          100,
+          29,
+          1,
+          null,
+          24,
+          null
+        ],
+        [
+          "MLB7458915726",
+          "Mangueira Jardim Reforçada Magica Expansível 30m Com 7jatos",
+          "2026-08-19T14:49:16.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_942762-MLB116433418171_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "RAISSAROCETTI08",
+          "gold_special",
+          true,
+          "MLB-7458915726",
+          null,
+          47.97,
+          100,
+          32,
+          1,
+          2,
+          22,
+          4.5
+        ],
+        [
+          "MLB7469337694",
+          "Kit 2 Caixas Organizadoras Grande Plástico Cesto Tampa 17lt",
+          "2026-08-20T17:30:11.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_917158-MLB98381192471_112025-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "IDEIA FACIL",
+          "gold_pro",
+          true,
+          "MLB-7469337694",
+          null,
+          186.74,
+          100,
+          33,
+          1,
+          77,
+          21,
+          5
+        ],
+        [
+          "MLB7470755008",
+          "Tábua Churrasco Personalizada Rústica Madeira Teca 39cm Grande Para Corte Cozinha Carne Presente Gravação Nome Frase Brasa Store",
+          "2026-08-20T18:46:48.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_936834-MLA116500616559_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "BRASASTORE",
+          "gold_pro",
+          true,
+          "MLB77866891",
+          "BRASASTORE",
+          73.99,
+          100,
+          33,
+          1,
+          null,
+          21,
+          null
+        ],
+        [
+          "MLB7472883262",
+          "Luminária Pendente, luminaria Teto Pendente Moderno Led，Preto Lustre Pendente 3 Cores 3000K-6000K Para Sala Quarto",
+          "2026-08-21T03:22:39.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_736059-MLA116514441739_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "JU58460630121916",
+          "gold_pro",
+          true,
+          "MLB77924399",
+          null,
+          120.28,
+          100,
+          35,
+          1,
+          null,
+          20,
+          null
+        ],
+        [
+          "MLB7473038354",
+          "Engate Rápido Plástico Para Mangueira Jardim 1/2 Forceline Laranja",
+          "2026-08-15T06:55:09.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_918601-MLA116222850417_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "REMACCONSTRUSHOP",
+          "gold_special",
+          true,
+          "MLB77409302",
+          null,
+          8.54,
+          100,
+          27,
+          4,
+          null,
+          26,
+          null
+        ],
+        [
+          "MLB7473957244",
+          "Arandela Vertical LED de 24W Luz Quente, Luminária de Parede para Jardim e Fachada",
+          "2026-08-20T08:38:50.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_783783-MLA115086117342_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "DOMIAR",
+          null,
+          true,
+          "MLB77819910",
+          null,
+          62.7,
+          100,
+          33,
+          1,
+          null,
+          21,
+          null
+        ],
+        [
+          "MLB7474032944",
+          "Arandela LED Vertical de Parede 24W, Luminária Moderna com Luz Quente 3000K Preta IP65 para Jardim e Fachada",
+          "2026-08-20T08:38:51.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_775795-MLA116477710575_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "DOMIAR",
+          null,
+          true,
+          "MLB77819911",
+          null,
+          62.12,
+          100,
+          33,
+          1,
+          null,
+          21,
+          null
+        ],
+        [
+          "MLB7475213908",
+          "Base Preta Para Luminária De Led",
+          "2026-08-21T16:42:27.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_709909-MLB114335705737_072026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "ACRILICO STORE",
+          "gold_special",
+          true,
+          "MLB-7475213908",
+          null,
+          35.08,
+          100,
+          35,
+          1,
+          15,
+          20,
+          5
+        ],
+        [
+          "MLB7486536768",
+          "Tampa Caixa 12 X 12 De Plástico Morada Das Abelhas Telhado",
+          "2026-08-20T15:40:54.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_852260-MLA115101802482_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "MORADAABELHAS",
+          null,
+          true,
+          "MLB77839016",
+          "MORADADASABELHAS",
+          26,
+          100,
+          33,
+          1,
+          null,
+          21,
+          null
+        ],
+        [
+          "MLB7487191730",
+          "Máquina Cortar Cabelo Profissional Motor Potente Sem Fio Preto Bivolt (110/220v)",
+          "2026-08-20T20:21:29.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_988688-MLA116503264749_082026-E.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          null,
+          true,
+          "VZS_SOLUTIONS",
+          "gold_special",
+          true,
+          "MLB77879725",
+          null,
+          270.77,
+          100,
+          33,
+          1,
+          null,
+          21,
+          null
+        ],
+        [
+          "MLB7494454666",
+          "Kit 10 Panos De Limpeza Microfibra Super Absorvente Multiuso",
+          "2026-08-11T05:56:33.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_732720-MLA114559213910_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "M5.ARMARINHOS",
+          "gold_pro",
+          true,
+          "MLB76712059",
+          "CLINK",
+          22.9,
+          100,
+          23,
+          1,
+          null,
+          30,
+          null
+        ],
+        [
+          "MLB7500541920",
+          "Luminária de Teto LED Linear 18W para Escritório Branco Frio",
+          "2026-08-24T16:55:03.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_765259-MLA116660578429_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "Z1 DISTRIBUIDORA",
+          "gold_pro",
+          true,
+          "MLB78193905",
+          null,
+          18,
+          100,
+          41,
+          1,
+          null,
+          17,
+          null
+        ],
+        [
+          "MLB7501736516",
+          "Luminária Led Sobrepor 25w Quadrado 21x21 4000k Neutro Preto",
+          "2026-08-24T20:15:52.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_928661-MLA116666886249_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "HIGHLIGHTSCOM",
+          null,
+          true,
+          "MLB78228193",
+          null,
+          23.6,
+          100,
+          41,
+          1,
+          null,
+          17,
+          null
+        ],
+        [
+          "MLB7542386140",
+          "Pano De Limpeza Felpudo (50cm X 90cm) Teares Moreira",
+          "2026-08-12T22:20:45.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_830759-MLA116061056523_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "CASALIMPASBC",
+          null,
+          true,
+          "MLB77180999",
+          null,
+          16.43,
+          100,
+          24,
+          2,
+          null,
+          29,
+          null
+        ],
+        [
+          "MLB7565427428",
+          "Kit 20 Balde Plástico Alimentício Tampa Hermética 3,6 Litros Branco",
+          "2026-08-31T15:08:53.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_616686-MLA116977994569_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "LIMAEBORGES PETS",
+          "gold_special",
+          true,
+          "MLB78690538",
+          null,
+          282.98,
+          100,
+          70,
+          1,
+          14,
+          10,
+          4.7
+        ],
+        [
+          "MLB7565593332",
+          "Luminária Pendente Led Retangular Perfil Linear 30w 4000k Pt",
+          "2026-09-01T02:10:27.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_708198-MLB97201519172_112025-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "VIDASHOP RP",
+          "gold_special",
+          true,
+          "MLB-7565593332",
+          null,
+          169.9,
+          100,
+          78,
+          1,
+          16,
+          9,
+          4
+        ],
+        [
+          "MLB7565593334",
+          "Luminária Pendente Led Retangular Perfil Linear 30w 4000k Pt",
+          "2026-09-01T02:10:27.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_968880-MLB97201271300_112025-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "VIDASHOP RP",
+          "gold_special",
+          true,
+          "MLB-7565593334",
+          null,
+          169.9,
+          100,
+          78,
+          1,
+          16,
+          9,
+          4
+        ],
+        [
+          "MLB7576866880",
+          "Bolsa Porta Lenço Umedecido Plástico Com Tampa Para Viagem",
+          "2026-09-02T11:37:46.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_737841-MLA115542673854_082026-O.webp",
+          "Bebês",
+          true,
+          "active",
+          null,
+          true,
+          "THARENZA",
+          "gold_special",
+          true,
+          "MLB78696152",
+          null,
+          19.48,
+          100,
+          88,
+          1,
+          1,
+          8,
+          5
+        ],
+        [
+          "MLB7601952958",
+          "120w LED integrado Luminária Teto Led 120 Watts Ventilador 120w de Teto 3 velocidades com Lampada Led 3 Cores - Branco Plástico",
+          "2026-08-24T18:51:02.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_661962-MLA115259238082_082026-O.webp",
+          "Eletrodomésticos",
+          true,
+          "active",
+          null,
+          true,
+          "LR20260616172925",
+          null,
+          true,
+          "MLB78210652",
+          null,
+          59.99,
+          100,
+          41,
+          2,
+          null,
+          17,
+          null
+        ],
+        [
+          "MLB7379466908",
+          "Luminária Letreiro Led A5 Quadro Light Box Cinema 96 Letras.",
+          "2026-08-10T15:42:26.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_796515-MLB114535561388_082026-O.webp",
+          "Indústria e Comércio",
+          false,
+          "active",
+          null,
+          true,
+          "SW20250222090001",
+          "gold_pro",
+          true,
+          "MLB-7379466908",
+          null,
+          47.4,
+          97,
+          23,
+          1,
+          11,
+          31,
+          5
+        ],
+        [
+          "MLB7381692704",
+          "Luminária G-Speaker Led RGB com Carregador Indução 15w Caixa De Som Bluetooth Usb Bivolt Luz De Mesa Abajur Quarto Multifuncional Radio Fm Bateria Recarregável Branco",
+          "2026-08-10T14:11:04.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_722752-MLA114602655180_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "GDICOMERCIO",
+          "gold_special",
+          true,
+          "MLB76573033",
+          "VISONSPECIALTISSUE",
+          39.5,
+          97,
+          23,
+          1,
+          1,
+          31,
+          4.9
+        ],
+        [
+          "MLB7437195972",
+          "Sling De Bebe Recém Nascido Bebe Canguru De Vestir Preto Ajustável - Marca DE CORAZÓN",
+          "2026-08-10T15:36:18.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_613170-MLA115891940805_082026-O.webp",
+          "Bebês",
+          true,
+          "active",
+          null,
+          true,
+          "FUN_SHOP",
+          "gold_special",
+          true,
+          "MLB76577158",
+          null,
+          77,
+          97,
+          23,
+          2,
+          225,
+          31,
+          4.7
+        ],
+        [
+          "MLB7458928058",
+          "Mangueira Jardim Reforçada Magica Expansível Retratil 30m Com Pistola 7 Jato COR AZUL",
+          "2026-08-10T18:59:44.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_695937-MLA115898525685_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "RAISSAROCETTI08",
+          "gold_special",
+          true,
+          "MLB76585422",
+          null,
+          47.97,
+          97,
+          23,
+          5,
+          34,
+          31,
+          4.5
+        ],
+        [
+          "MLB7366484650",
+          "Luminária Luz Led De Leitura Noturna Cor Preta Para Livro Recarregavel Usb Com Clipe Alínea",
+          "2026-08-08T17:15:19.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_960367-MLA116336965971_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "OKUYAMASTORE",
+          "gold_special",
+          true,
+          "MLB76548770",
+          null,
+          30.94,
+          91,
+          21,
+          1,
+          140,
+          33,
+          4.9
+        ],
+        [
+          "MLB5011083593",
+          "Luminária Lupa 10x Ring Light Profissional Com Garra Led",
+          "2026-08-07T07:38:05.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_667741-MLB115755886251_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          false,
+          "active",
+          null,
+          true,
+          "CI20260302202948",
+          "gold_special",
+          true,
+          "MLB-5011083593",
+          null,
+          58,
+          88,
+          21,
+          1,
+          5,
+          34,
+          5
+        ],
+        [
+          "MLB5013734835",
+          "Mangueira Jardim 30m Trançada Reforçada Não Dobra Antitorção",
+          "2026-08-07T13:15:32.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_974771-MLB114422513460_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "JCNFLEX",
+          "gold_special",
+          true,
+          "MLB-5013734835",
+          null,
+          57.9,
+          88,
+          21,
+          1,
+          7,
+          34,
+          null
+        ],
+        [
+          "MLB5015344611",
+          "Tábua Retangular Antibacteriana Corte Legume Geométrico",
+          "2026-08-07T17:38:07.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_932380-MLB115896907765_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          false,
+          true,
+          "FIREPITBRASIL",
+          "gold_special",
+          true,
+          "MLB-5015344611",
+          "FIREPITBRASIL",
+          15.2,
+          88,
+          21,
+          1,
+          14,
+          34,
+          5
+        ],
+        [
+          "MLB5015414513",
+          "Coador De Café Inox 304 Reultilizável Malha Fina Com Filtro",
+          "2026-08-07T18:15:32.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_667608-MLB114431884478_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "DHUNNAS",
+          "gold_special",
+          true,
+          "MLB-5015414513",
+          null,
+          30.66,
+          88,
+          21,
+          1,
+          24,
+          34,
+          4.3
+        ],
+        [
+          "MLB5015427053",
+          "Coador De Café Inox 304 Reultilizável Malha Fina Com Filtro",
+          "2026-08-07T18:15:33.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_923971-MLB114431884512_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "DHUNNAS",
+          "gold_special",
+          true,
+          "MLB-5015427053",
+          null,
+          36.64,
+          88,
+          21,
+          1,
+          20,
+          34,
+          4.4
+        ],
+        [
+          "MLB5015439679",
+          "Coador De Café Inox 304 Reultilizável Malha Fina Com Filtro",
+          "2026-08-07T18:15:32.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_985720-MLB114431914928_082026-O-coador-de-cafe-inox-304-reultilizavel-malha-fina-com-filtro.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "DHUNNAS",
+          "gold_special",
+          true,
+          "MLB-5015439679",
+          "TYRONSTORE",
+          36.22,
+          88,
+          21,
+          1,
+          26,
+          34,
+          4.4
+        ],
+        [
+          "MLB7358763582",
+          "Máquina De Cortar Profissional Wahl Style Pro Lâmina De Aço",
+          "2026-08-07T18:55:11.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_999177-MLB89221852844_082025-O.webp",
+          "Beleza e Cuidado Pessoal",
+          false,
+          "active",
+          null,
+          true,
+          "GENERAL ELETRO",
+          "gold_pro",
+          true,
+          "MLB-7358763582",
+          null,
+          141.5,
+          88,
+          21,
+          1,
+          21,
+          34,
+          5
+        ],
+        [
+          "MLB7359136816",
+          "Luminária Capivara Abajur LED Recarregavel Quarto Infantil Luz Noturna Silicone Touch Toque USB Decorativa Mesa Bebê Criança Muda De Cor Branco Quente Presente Criativo Timer Katrex",
+          "2026-08-07T18:32:04.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_690140-MLA115780253481_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "KATREX",
+          "gold_special",
+          true,
+          "MLB76528901",
+          null,
+          30.47,
+          88,
+          21,
+          1,
+          null,
+          34,
+          null
+        ],
+        [
+          "MLB7347425526",
+          "Limpador Magnético De Vidros Dupla Face Até 8mm",
+          "2026-08-06T17:06:38.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_624488-MLB114285796403_072026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "VTRXPRESS",
+          "gold_pro",
+          true,
+          "MLB-7347425526",
+          "GLASSCLEANER",
+          75.9,
+          86,
+          20,
+          1,
+          27,
+          35,
+          4
+        ],
+        [
+          "MLB4999460719",
+          "Kit 10 Luminárias Públicas LED de 300W para Poste de Rua, Branco Frio",
+          "2026-08-05T13:18:41.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_613418-MLA115645960167_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "PRACTIVEATACADO",
+          "gold_pro",
+          true,
+          "MLB76396820",
+          "PRANACOISAS",
+          474.99,
+          83,
+          19,
+          1,
+          null,
+          36,
+          null
+        ],
+        [
+          "MLB4999543977",
+          "Kit 2x Plafon Led Quadrado 4000K Branco Neutro Sobrepor Estrutura Preta Bivolt 110v/220v Painel Luminária Driver 18w Slim 20x20 Comercial Residencial Corredor Escritório Forro Gesso Vmd Homecenter",
+          "2026-08-05T14:07:03.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_632270-MLA115648515521_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "VMD HOMECENTER",
+          "gold_special",
+          true,
+          "MLB76400180",
+          null,
+          48.39,
+          83,
+          19,
+          1,
+          1268,
+          36,
+          4
+        ],
+        [
+          "MLB7336440464",
+          "Kit 2x Plafon Led Quadrado Sobrepor Estrutura Preta Bivolt 110v/220v Painel Luminária Com Driver 18w 3000K 20x20 Banheiros Lojas Recepção Teto Quarto Cozinha Corredor Escritório Forro Vmd Homecenter",
+          "2026-08-05T13:15:07.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_699429-MLA114306082766_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "VMD HOMECENTER",
+          "gold_special",
+          true,
+          "MLB76396760",
+          "VMDHOMECENTER",
+          48.39,
+          83,
+          19,
+          1,
+          1297,
+          36,
+          4.7
+        ],
+        [
+          "MLB4992045341",
+          "Kit 2 Luminárias Led Sensor De Presença Recarregáveis Usb Sem Fio Base Magnética Luz Automática Para Armário Closet",
+          "2026-08-04T13:40:26.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_883251-MLA115207987918_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "NEXTHUBMARKET",
+          "gold_special",
+          true,
+          "MLB76321434",
+          "KAPBOM",
+          45,
+          81,
+          19,
+          1,
+          1,
+          37,
+          4
+        ],
+        [
+          "MLB4993793979",
+          "Abajur Cabeceira Quarto Touch 3 Modos De Cor Luminária Led",
+          "2026-08-04T20:38:38.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_839804-MLB115658931583_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "WIUSHOP",
+          "gold_special",
+          true,
+          "MLB-4993793979",
+          "LUMINARIAMESAABAJURLEDREC",
+          26.99,
+          81,
+          19,
+          1,
+          32,
+          37,
+          4.7
+        ],
+        [
+          "MLB4994089901",
+          "Coador De Café Aço Inox 103 Filtro Permanente Reutilizável",
+          "2026-08-04T21:49:25.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_644862-MLB116197306525_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "SEJDISTRIBUIDOR",
+          "gold_special",
+          true,
+          "MLB-4994089901",
+          null,
+          32.9,
+          81,
+          19,
+          1,
+          15,
+          37,
+          3.9
+        ],
+        [
+          "MLB7321307214",
+          "Luminária De Teto Led Plafon Moderno Com Anéis Dourada Sala",
+          "2026-08-04T05:28:27.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_914243-MLB111997357490_062026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "SC42260527110237",
+          "gold_pro",
+          true,
+          "MLB-7321307214",
+          null,
+          269,
+          81,
+          19,
+          1,
+          12,
+          37,
+          5
+        ]
+      ],
+      "dimensionCount": 15,
+      "lastRefreshTime": "2026-09-09T19:02:23.364Z",
+      "slowQuery": false,
+      "totalRows": 100,
+      "types": [
+        "string",
+        "string",
+        "time",
+        "time",
+        "string",
+        "string",
+        "boolean",
+        "string",
+        "boolean",
+        "boolean",
+        "string",
+        "string",
+        "boolean",
+        "string",
+        "string",
+        "number",
+        "number",
+        "number",
+        "number",
+        "number",
+        "number",
+        "number"
+      ]
+    }
+  ]
+}

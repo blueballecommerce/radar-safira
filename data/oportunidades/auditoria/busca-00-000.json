@@ -1,0 +1,2882 @@
+{
+  "lidoEm": "2026-09-09T18:28:29.375Z",
+  "fonte": "JoomPulse / MercadoProductsWeekly",
+  "groups": [
+    [
+      "aparelho",
+      "lifting"
+    ],
+    [
+      "tornozeleira",
+      "compressão"
+    ],
+    [
+      "touca",
+      "toalha"
+    ],
+    [
+      "brinquedo",
+      "espada"
+    ],
+    [
+      "brinquedo",
+      "pato"
+    ],
+    [
+      "capa",
+      "protetora"
+    ],
+    [
+      "bolsa",
+      "impermeável"
+    ],
+    [
+      "frascos",
+      "cosméticos"
+    ],
+    [
+      "espanador",
+      "cabo"
+    ],
+    [
+      "jogo",
+      "stop"
+    ],
+    [
+      "colete",
+      "alinhador"
+    ],
+    [
+      "moedor",
+      "carne"
+    ],
+    [
+      "boneca",
+      "bebê"
+    ],
+    [
+      "brinquedos",
+      "cozinha"
+    ],
+    [
+      "brinquedo",
+      "escavadeira"
+    ],
+    [
+      "brinquedo",
+      "astromóvel"
+    ],
+    [
+      "brinquedo",
+      "foguete"
+    ],
+    [
+      "suporte",
+      "esterilizador"
+    ],
+    [
+      "modelador",
+      "cachos"
+    ],
+    [
+      "depilador",
+      "feminino"
+    ],
+    [
+      "aquecedor",
+      "mamadeira"
+    ],
+    [
+      "calibrador",
+      "auxiliar"
+    ],
+    [
+      "luminária",
+      "barra"
+    ],
+    [
+      "máquina",
+      "aparadora"
+    ],
+    [
+      "pochete",
+      "corrida"
+    ],
+    [
+      "aparador",
+      "pelos"
+    ],
+    [
+      "bolinha",
+      "interativa"
+    ],
+    [
+      "bandeira",
+      "brasil"
+    ],
+    [
+      "luva",
+      "removedora"
+    ],
+    [
+      "canetinhas",
+      "touch"
+    ]
+  ],
+  "pages": [
+    {
+      "query": {
+        "dimensions": [
+          "MercadoProductsWeekly.id",
+          "MercadoProductsWeekly.productName",
+          "MercadoProductsWeekly.adPublishDate",
+          "MercadoProductsWeekly.date",
+          "MercadoProductsWeekly.productImage",
+          "MercadoProductsWeekly.merchantCategoryL1",
+          "MercadoProductsWeekly.catalogProduct",
+          "MercadoProductsWeekly.listingStatus",
+          "MercadoProductsWeekly.isFull",
+          "MercadoProductsWeekly.isFreeShipping",
+          "MercadoProductsWeekly.merchantName",
+          "MercadoProductsWeekly.listingType",
+          "MercadoProductsWeekly.buyBoxWiner"
+        ],
+        "measures": [
+          "MercadoProductsWeekly.priceAmount",
+          "MercadoProductsWeekly.orderCount1m",
+          "MercadoProductsWeekly.orderCount1w",
+          "MercadoProductsWeekly.numBuyBoxSellers",
+          "MercadoProductsWeekly.reviewsCount",
+          "MercadoProductsWeekly.daysInAd"
+        ],
+        "filters": [
+          {
+            "member": "MercadoProductsWeekly.adPublishDate",
+            "operator": "inDateRange",
+            "values": [
+              "2026-07-31",
+              "2026-09-09"
+            ]
+          },
+          {
+            "member": "MercadoProductsWeekly.listingStatus",
+            "operator": "equals",
+            "values": [
+              "active"
+            ]
+          },
+          {
+            "member": "MercadoProductsWeekly.orderCount1m",
+            "operator": "gt",
+            "values": [
+              "0"
+            ]
+          },
+          {
+            "or": [
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "aparelho"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "lifting"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "tornozeleira"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "compressão"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "touca"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "toalha"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "brinquedo"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "espada"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "brinquedo"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "pato"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "capa"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "protetora"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "bolsa"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "impermeável"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "frascos"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "cosméticos"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "espanador"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "cabo"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "jogo"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "stop"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "colete"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "alinhador"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "moedor"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "carne"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "boneca"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "bebê"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "brinquedos"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "cozinha"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "brinquedo"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "escavadeira"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "brinquedo"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "astromóvel"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "brinquedo"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "foguete"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "suporte"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "esterilizador"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "modelador"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "cachos"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "depilador"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "feminino"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "aquecedor"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "mamadeira"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "calibrador"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "auxiliar"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "luminária"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "barra"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "máquina"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "aparadora"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "pochete"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "corrida"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "aparador"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "pelos"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "bolinha"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "interativa"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "bandeira"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "brasil"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "luva"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "removedora"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "canetinhas"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "touch"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "order": [
+          [
+            "MercadoProductsWeekly.orderCount1m",
+            "desc"
+          ],
+          [
+            "MercadoProductsWeekly.id",
+            "asc"
+          ]
+        ],
+        "limit": 100
+      },
+      "columns": [
+        "id",
+        "productName",
+        "adPublishDate",
+        "date",
+        "productImage",
+        "merchantCategoryL1",
+        "catalogProduct",
+        "listingStatus",
+        "isFull",
+        "isFreeShipping",
+        "merchantName",
+        "listingType",
+        "buyBoxWiner",
+        "priceAmount",
+        "orderCount1m",
+        "orderCount1w",
+        "numBuyBoxSellers",
+        "reviewsCount",
+        "daysInAd"
+      ],
+      "data": [
+        [
+          "MLB5034096097",
+          "Pochete Fit Slim Impermeável Corrida Academia Porta Celular Rosa-claro",
+          "2026-08-10T22:53:29.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_838434-MLA114548305002_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          true,
+          true,
+          "ZOU ONE",
+          "gold_special",
+          true,
+          29.9,
+          968,
+          226,
+          1,
+          17,
+          31
+        ],
+        [
+          "MLB7344028306",
+          "Bolsa Transversal Tático Tiracolo Tablet Pochete Impermeável",
+          "2026-08-06T12:40:26.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_705835-MLB91534774764_092025-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          true,
+          true,
+          "HANOKHUTILIDADES",
+          "gold_special",
+          true,
+          42.12,
+          857,
+          200,
+          1,
+          503,
+          35
+        ],
+        [
+          "MLB4974916933",
+          "Espanador De Pó Microfibra Eletrostático Lavável Cabo Longo",
+          "2026-07-31T13:17:38.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_789784-MLB114061888850_072026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "EKEEP",
+          "gold_special",
+          true,
+          16.8,
+          732,
+          171,
+          1,
+          2,
+          41
+        ],
+        [
+          "MLB4976469059",
+          "Bolsa Mala Dobráveis De Viagem Academia Impermeável 11678 Rosa",
+          "2026-07-31T20:56:25.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_687981-MLA115401146903_072026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          null,
+          true,
+          "GLGL20240514203459",
+          "gold_special",
+          true,
+          36.99,
+          732,
+          171,
+          1,
+          87,
+          41
+        ],
+        [
+          "MLB7304551804",
+          "Bolsa Mala Dobráveis De Viagem Academia Impermeável 11678 Preto",
+          "2026-07-31T21:38:45.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_607605-MLA115401936783_072026-E.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          null,
+          true,
+          "GLGL20240514203459",
+          "gold_special",
+          true,
+          36.99,
+          732,
+          171,
+          1,
+          87,
+          41
+        ],
+        [
+          "MLB5127670009",
+          "LMKB Barber Pro Íntimus Aparador De Pelos A Prova Dágua Pro",
+          "2026-08-24T03:15:57.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_645977-MLA115226893232_082026-E.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          null,
+          true,
+          "S20250430133036",
+          "gold_special",
+          true,
+          139.84,
+          500,
+          206,
+          1,
+          6,
+          17
+        ],
+        [
+          "MLB5169657437",
+          "Bolinha Interativa Para Gatos e Cães Pet USB Recarregável Resistente ao Desgaste Brinquedo Automático Vermelho",
+          "2026-09-03T00:43:18.412",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_954736-MLA116984063399_082026-E.webp",
+          "Pet Shop",
+          true,
+          "active",
+          null,
+          false,
+          "L20260302111741",
+          null,
+          true,
+          13,
+          500,
+          500,
+          1,
+          null,
+          7
+        ],
+        [
+          "MLB5171679443",
+          "Aparador De Pelos Nariz Orelha Bigode Ouvido Aparelho Rapido Recarregavel USB C Profissional Portatil Masculino Feminino Sobrancelha Barba Facial Lamina Inox Resistente Agua Silencioso 10000 RPM Corte",
+          "2026-09-01T10:35:41.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_676053-MLA117018676683_092026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          true,
+          true,
+          "CLICK_STORE1",
+          null,
+          true,
+          28.22,
+          500,
+          389,
+          1,
+          null,
+          9
+        ],
+        [
+          "MLB7412775998",
+          "INSMEER Lancheira Termica 20 Litros Expansível 2 Camadas Bolsa Termica Impermeável Ideal para o Trabalho, a Escola ou um Piquenique",
+          "2026-08-13T03:10:17.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_969799-MLA116076766527_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          true,
+          true,
+          "INSMEER",
+          "gold_special",
+          true,
+          117.28,
+          500,
+          125,
+          1,
+          15,
+          28
+        ],
+        [
+          "MLB7440130102",
+          "Case Dura P/ Switch Oled Estojo Bolsa Capa Protetora Console Cor Preto",
+          "2026-08-13T22:00:37.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_730117-MLA116139366657_082026-O.webp",
+          "Games",
+          true,
+          "active",
+          true,
+          true,
+          "JT DISTRIBUIDORA",
+          "gold_special",
+          true,
+          43.92,
+          500,
+          125,
+          1,
+          156,
+          28
+        ],
+        [
+          "MLB7485920228",
+          "4 Bolinha Bola Cravo Anti-stress Interativa Pet Ortopédica Variado",
+          "2026-08-15T04:47:42.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_647162-MLA114843383710_082026-E.webp",
+          "Pet Shop",
+          true,
+          "active",
+          null,
+          true,
+          "JN MULTI",
+          "gold_special",
+          true,
+          19,
+          500,
+          135,
+          1,
+          45,
+          26
+        ],
+        [
+          "MLB7521346506",
+          "Aparador De Pelos Nariz E Orelha Recarregável Usb Sem Fio Azul-marinho",
+          "2026-08-20T19:10:44.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_675099-MLA115108281110_082026-E.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          true,
+          true,
+          "UNIFLUXO",
+          "gold_special",
+          true,
+          19.47,
+          500,
+          167,
+          1,
+          97,
+          21
+        ],
+        [
+          "MLB7524312520",
+          "Boné Tático Militar Bandeira Brasil Bordado Camuflado Preto",
+          "2026-08-26T21:50:17.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_686128-MLB115360772212_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          null,
+          true,
+          "ALPHABRAVOEQUIP",
+          "gold_special",
+          true,
+          57.39,
+          500,
+          233,
+          1,
+          243,
+          15
+        ],
+        [
+          "MLB7532712302",
+          "Capa Protetora Carro Forrada Contra Sol Chuva Poeira Prot Uv",
+          "2026-08-27T14:40:56.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_686509-MLB116815732139_082026-O.webp",
+          "Acessórios para Veículos",
+          false,
+          "active",
+          null,
+          true,
+          "MUNDO EDUCATIVO",
+          "gold_special",
+          true,
+          59.3,
+          500,
+          250,
+          1,
+          34,
+          14
+        ],
+        [
+          "MLB7380901250",
+          "Capa Protetora Para Carregador Cabo Fonte Silicone Luxo",
+          "2026-08-10T22:17:41.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_978694-MLB114921535661_072026-O.webp",
+          "Celulares e Telefones",
+          false,
+          "active",
+          true,
+          true,
+          "SUPPLY__STORE",
+          "gold_special",
+          true,
+          39.97,
+          484,
+          113,
+          1,
+          277,
+          31
+        ],
+        [
+          "MLB4998560515",
+          "Mochila Bolsa Maternidade Grande Térmica Impermeável Bebê",
+          "2026-08-05T12:32:46.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_673917-MLB115642629203_082026-O.webp",
+          "Bebês",
+          false,
+          "active",
+          true,
+          true,
+          "INDOLLE",
+          "gold_pro",
+          true,
+          104.99,
+          417,
+          97,
+          1,
+          4,
+          36
+        ],
+        [
+          "MLB7331742766",
+          "Cacheador Modelador De Cachos Automático Morina Com Rotação",
+          "2026-08-05T07:01:52.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_718171-MLB72635467831_112023-O.webp",
+          "Beleza e Cuidado Pessoal",
+          false,
+          "active",
+          true,
+          true,
+          "VARIEDADESBELEZA20221123071431",
+          "gold_special",
+          true,
+          209.99,
+          417,
+          97,
+          1,
+          742,
+          36
+        ],
+        [
+          "MLB7318351368",
+          "Capa Protetora Para Mala Personalize Com Foto Logo Elástica",
+          "2026-08-03T12:26:26.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_841543-MLB114181425904_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          null,
+          true,
+          "KOF",
+          "gold_special",
+          true,
+          43.29,
+          395,
+          92,
+          1,
+          33,
+          38
+        ],
+        [
+          "MLB7407379470",
+          "Depilador Elétrico Feminino 4 em 1 Recarregável USB Maquininha Aparador Íntimo Corpo Rosto Facial Sobrancelha Nariz Orelhas Removedor de Pelos Trimmer Portátil Sem Dor Alta Precisão SAMZHE",
+          "2026-08-03T20:40:19.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_700160-MLA115971608293_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          null,
+          true,
+          "SC20251219102936",
+          null,
+          true,
+          56.9,
+          395,
+          92,
+          3,
+          54,
+          38
+        ],
+        [
+          "MLB4981696937",
+          "Kit 3 Luminária Barra Led Recarregável Sensor Base Momlulu 3pcs Luz Quente 3000 K / Luz Branca Quente 4500 K / Luz Branca 6000 K",
+          "2026-08-02T10:06:48.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_981070-MLA114139250974_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "HIGOOGOO888",
+          "gold_special",
+          true,
+          69.99,
+          385,
+          90,
+          1,
+          15,
+          39
+        ],
+        [
+          "MLB7299831664",
+          "Mochila Saco Costas Bolsa Trabalho Academia Impermeável Agua",
+          "2026-07-31T16:28:39.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_950163-MLB116140641275_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          true,
+          true,
+          "ORIGINALTNIS",
+          "gold_special",
+          true,
+          59.9,
+          366,
+          85,
+          1,
+          76,
+          41
+        ],
+        [
+          "MLB7301841842",
+          "Capa Cobrir Carro Protetora Lona Grossa Sol Chuva Poeira",
+          "2026-07-31T12:43:53.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_674114-MLB115381234697_072026-O.webp",
+          "Acessórios para Veículos",
+          false,
+          "active",
+          null,
+          true,
+          "NSAECOM",
+          "gold_special",
+          true,
+          48.41,
+          366,
+          85,
+          1,
+          21,
+          41
+        ],
+        [
+          "MLB7304070034",
+          "Capa Cobrir Carro Protetora Lona Grossa Sol Chuva Poeira",
+          "2026-07-31T18:24:21.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_640003-MLB115381171773_072026-O.webp",
+          "Acessórios para Veículos",
+          false,
+          "active",
+          null,
+          true,
+          "NSAECOM",
+          "gold_special",
+          true,
+          48.41,
+          366,
+          85,
+          1,
+          27,
+          41
+        ],
+        [
+          "MLB5039973557",
+          "Capa Protetora De Puff Quadrado Malha Gel Com Elástico 40cm Cor Preto Lisa",
+          "2026-08-11T03:59:06.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_831844-MLA114556054926_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "IBITEXENXOVAIS",
+          "gold_special",
+          true,
+          18.86,
+          100,
+          23,
+          1,
+          166,
+          30
+        ],
+        [
+          "MLB5039973561",
+          "Capa Protetora De Puff Quadrado Malha Gel Com Elástico 40cm Cor Cinza-escuro Lisa",
+          "2026-08-11T04:06:18.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_962432-MLA114556176498_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "IBITEXENXOVAIS",
+          "gold_special",
+          true,
+          18.86,
+          100,
+          23,
+          1,
+          282,
+          30
+        ],
+        [
+          "MLB5049002407",
+          "Mochila Bag Para Motoboy, Mochila Térmica Para Entregas, Mochila Delivery Térmica 50L Reforçada Para Comida E Pizza, Bag Entregador Expansível E Impermeável,Bolsa Reforçada, Expansível E Impermeável",
+          "2026-08-11T14:33:06.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_793777-MLA114587204326_082026-O.webp",
+          "Indústria e Comércio",
+          true,
+          "active",
+          true,
+          true,
+          "WU48260508144937",
+          "gold_special",
+          true,
+          149,
+          100,
+          23,
+          1,
+          null,
+          30
+        ],
+        [
+          "MLB5062881867",
+          "Carrinho Escavadeira Controle Remoto Brinquedo Amarelo Trator Carro Caminhao Solta Fumaca Recarregável Articulada Infantil",
+          "2026-08-13T14:09:48.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_677003-MLA114746018518_082026-O.webp",
+          "Brinquedos e Hobbies",
+          true,
+          "active",
+          null,
+          true,
+          "IMTOYS",
+          "gold_special",
+          true,
+          108.23,
+          100,
+          25,
+          1,
+          6,
+          28
+        ],
+        [
+          "MLB5063203007",
+          "Bomba De Ar Elétrica Portátil Compressor Calibrador De Pneus Digital Para Carro Moto Bicicleta Inflador Recarregável Auxiliar De Partida Bateria Power Bank Celular Emergência Automotiva Quicko",
+          "2026-08-14T12:46:27.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_863869-MLA115253606218_082026-O.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          true,
+          true,
+          "TDX",
+          "gold_special",
+          true,
+          179.89,
+          100,
+          26,
+          1,
+          6,
+          27
+        ],
+        [
+          "MLB5075448103",
+          "Modelador De Cachos Babyliss Cerâmica Profissional Bivolt",
+          "2026-08-16T20:46:51.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_979254-MLB117037663467_092026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          false,
+          "active",
+          true,
+          true,
+          "SAMPEPRMOCAO",
+          "gold_special",
+          true,
+          39.98,
+          100,
+          28,
+          1,
+          14,
+          25
+        ],
+        [
+          "MLB5084824147",
+          "Escova Multifuncional 5 Em 1: Secador E Modelador De Cachos",
+          "2026-08-18T08:01:09.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_879751-MLB116345794561_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          false,
+          "active",
+          null,
+          true,
+          "UNIBOMSTORE",
+          "gold_special",
+          true,
+          97.51,
+          100,
+          30,
+          1,
+          9,
+          23
+        ],
+        [
+          "MLB5086209085",
+          "Capa Controle Remoto Para Tv Samsung Silicone Bn59-01432a Cor Smart Capinha Protetora 2023 Solar Case 4k Qled Cell Cristal Led Serie Impermeável Remote Uhd Solarcell Azul UtilliShop",
+          "2026-08-18T01:01:09.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_830332-MLA114948267142_082026-O.webp",
+          "Eletrônicos, Áudio e Vídeo",
+          true,
+          "active",
+          true,
+          true,
+          "UTILLISHOP_MEGASTORE",
+          "gold_special",
+          true,
+          19,
+          100,
+          30,
+          1,
+          12,
+          23
+        ],
+        [
+          "MLB5087890817",
+          "Toalha Para Secar Cabelo Microfibra Turbante Touca Pós Banho Rosa Toalha",
+          "2026-08-13T22:02:12.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_663912-MLA114769332348_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "VARIEDADESCI",
+          "gold_pro",
+          true,
+          25,
+          100,
+          25,
+          1,
+          7,
+          28
+        ],
+        [
+          "MLB5088203951",
+          "Jogos Infantil Interativo Stop Cara Cara Brinquedo Adivinha",
+          "2026-08-18T20:02:29.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_761437-MLB116452703769_082026-O.webp",
+          "Brinquedos e Hobbies",
+          false,
+          "active",
+          true,
+          true,
+          "VIALIWEB",
+          "gold_special",
+          true,
+          58.9,
+          100,
+          30,
+          1,
+          9,
+          23
+        ],
+        [
+          "MLB5093508445",
+          "Bolsa Transversal Peito Couro Impermeável Ombro Pochete",
+          "2026-08-19T14:12:08.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_955099-MLB84361429916_052025-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          true,
+          true,
+          "CICLÓN ACESSÓRIOS",
+          "gold_special",
+          true,
+          39.9,
+          100,
+          32,
+          1,
+          194,
+          22
+        ],
+        [
+          "MLB5093508447",
+          "Bolsa Transversal Peito Couro Impermeável Ombro Pochete",
+          "2026-08-19T14:12:08.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_705282-MLB84361756910_052025-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          true,
+          true,
+          "CICLÓN ACESSÓRIOS",
+          "gold_special",
+          true,
+          39.9,
+          100,
+          32,
+          1,
+          194,
+          22
+        ],
+        [
+          "MLB5108370139",
+          "Pochete Corrida Academia Impermeável Porta Celular Garrafa Preto Liso",
+          "2026-08-21T19:19:46.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_726702-MLA115153174556_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          null,
+          false,
+          "MAVI_IMPORTADOS",
+          "gold_special",
+          true,
+          18.43,
+          100,
+          35,
+          1,
+          7,
+          20
+        ],
+        [
+          "MLB5120183531",
+          "Pulseira Brasil Copa 7 Nós Verde Amarela Bandeira Prata Dour Pulseira Verde / Pingente Prata 0 Cm 0 Mm",
+          "2026-08-13T01:45:07.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_958730-MLA116071685413_082026-E.webp",
+          "Joias e Relógios",
+          true,
+          "active",
+          null,
+          true,
+          "DIOLI ACESSORIOS",
+          null,
+          true,
+          32.9,
+          100,
+          25,
+          1,
+          null,
+          28
+        ],
+        [
+          "MLB5125131977",
+          "Boneca Gestante Família Mãe Bebê Presente Menina Qualidade",
+          "2026-08-24T17:22:17.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_947214-MLA116661358171_082026-O.webp",
+          "Brinquedos e Hobbies",
+          true,
+          "active",
+          null,
+          true,
+          "SDOFICIAL PLATINUM",
+          "gold_special",
+          true,
+          147.22,
+          100,
+          41,
+          1,
+          null,
+          17
+        ],
+        [
+          "MLB5125841109",
+          "Kit 2 Pçs Capa Protetora E Tampa 3d Canudo Para Copo Stanley",
+          "2026-08-25T12:58:40.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_940141-MLB89201670001_082025-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "YOUFOR",
+          "gold_pro",
+          true,
+          33.17,
+          100,
+          44,
+          1,
+          380,
+          16
+        ],
+        [
+          "MLB5127669533",
+          "Modelador De Cachos Babyliss LONYAN Lonização Ondas Profissional Cacheador Bivolt 9 mm Anti Frizz À Prova Negativos Sem Danos Ao Cabelo Rápido Aquecimento Preto",
+          "2026-08-19T07:47:05.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_823471-MLA115023723688_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          false,
+          true,
+          "JJ20241107114803",
+          null,
+          true,
+          89.4,
+          100,
+          32,
+          2,
+          1,
+          22
+        ],
+        [
+          "MLB5134654973",
+          "Depilador Elétrico Akunbem 3 em 1 Para Mulheres, Sem Fio e À Prova D'água，Aparelho De Depilar Partes Íntimas, Aparador De Pelos Corporal Cor Rosa, Lâminas De Cerâmica, Impermeável Ipx7",
+          "2026-08-25T06:29:51.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_649870-MLA117225922965_092026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          null,
+          true,
+          "DCAHGFDEB91134",
+          "gold_pro",
+          true,
+          93,
+          100,
+          44,
+          1,
+          61,
+          16
+        ],
+        [
+          "MLB5141217425",
+          "Pochete Fitness Impermeável Porta Celular Corrida Academia Cor Azul-celeste Desenho do tecido Lisa",
+          "2026-08-26T20:44:21.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_795846-MLA116773629609_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          true,
+          true,
+          "LUFEMSHOP",
+          null,
+          true,
+          18.81,
+          100,
+          47,
+          1,
+          null,
+          15
+        ],
+        [
+          "MLB5157052861",
+          "Hd Externo 1000gb (1tb) + Capa Estojo Protetora Compatível Com Notebook Pc Ps4 Xbox One Nintendo Ideal Para Jogos E Arquivos",
+          "2026-08-29T15:30:10.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_682802-MLB87793380360_072025-O.webp",
+          "Informática",
+          false,
+          "active",
+          null,
+          true,
+          "INFINITY TECHINFO",
+          "gold_pro",
+          true,
+          475.29,
+          100,
+          58,
+          1,
+          39,
+          12
+        ],
+        [
+          "MLB5168750707",
+          "Depilador Intimo Feminino Corporal Recarregável Com Led",
+          "2026-08-31T16:47:52.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_733771-MLA115545135840_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          null,
+          true,
+          "MIXIMPORTACAOEXPORTACAO",
+          "gold_special",
+          true,
+          45.9,
+          100,
+          70,
+          2,
+          null,
+          10
+        ],
+        [
+          "MLB5169657347",
+          "Bolinha Interativa Para Gatos e Cães Pet USB Recarregável Resistente ao Desgaste Brinquedo Automático",
+          "2026-08-31T18:26:48.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_939110-MLA116984463699_082026-E.webp",
+          "Pet Shop",
+          true,
+          "active",
+          null,
+          false,
+          "L20260302111741",
+          "gold_special",
+          true,
+          16.99,
+          100,
+          70,
+          1,
+          null,
+          10
+        ],
+        [
+          "MLB5175566771",
+          "Kit Capa Protetora Chuva Completo Bike Elétrica E Similares",
+          "2026-09-02T02:41:28.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_790498-MLB117049083587_092026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          null,
+          true,
+          "ZIMILECSTORE",
+          "gold_special",
+          true,
+          139,
+          100,
+          88,
+          1,
+          null,
+          8
+        ],
+        [
+          "MLB5175604383",
+          "Espada De Brinquedo Guerreiro Infantil Com Som Luz Led Laser Cor Verde",
+          "2026-09-02T04:17:48.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_915912-MLA117054065825_092026-O.webp",
+          "Brinquedos e Hobbies",
+          true,
+          "active",
+          null,
+          true,
+          "SUPREMO TOYS",
+          "gold_pro",
+          true,
+          33.25,
+          100,
+          88,
+          1,
+          68,
+          8
+        ],
+        [
+          "MLB5175681983",
+          "Espada De Brinquedo Guerreiro Infantil Com Som Luz Led Laser Cor Azul",
+          "2026-09-02T00:24:53.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_996654-MLA117043490279_092026-O.webp",
+          "Brinquedos e Hobbies",
+          true,
+          "active",
+          null,
+          true,
+          "SUPREMO TOYS",
+          "gold_pro",
+          true,
+          33.25,
+          100,
+          88,
+          1,
+          68,
+          8
+        ],
+        [
+          "MLB7040868164",
+          "Lictin 1:22 Veículo De Brinquedo Escavadeira Controle Remoto 2,4 Ghz E 11 Canais Com Pá De Metal, Luzes, Sons E 2 Cabeças De Pá Sobressalentes, Presente De Natal E Aniversário Para Crianças",
+          "2026-09-08T03:46:35.069",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_843004-MLA84768757886_052025-E.webp",
+          "Brinquedos e Hobbies",
+          false,
+          "active",
+          null,
+          true,
+          "WF33660220091523",
+          null,
+          true,
+          159,
+          100,
+          100,
+          1,
+          null,
+          2
+        ],
+        [
+          "MLB7384253524",
+          "Capa De Tablet Até 11 Polegadas Bolsa Laptop Impermeável",
+          "2026-08-11T07:36:32.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_912657-MLB115921209511_082026-O.webp",
+          "Informática",
+          false,
+          "active",
+          null,
+          true,
+          "HGABFHDCE63874",
+          "gold_special",
+          true,
+          31,
+          100,
+          23,
+          1,
+          14,
+          30
+        ],
+        [
+          "MLB7410881730",
+          "Aparador De Pelos Nariz Orelha Recarregável Sem Fio",
+          "2026-08-13T21:40:22.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_617605-MLB116329045037_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          false,
+          "active",
+          true,
+          true,
+          "BLSTORE_",
+          "gold_special",
+          true,
+          25.38,
+          100,
+          25,
+          1,
+          9,
+          28
+        ],
+        [
+          "MLB7413449588",
+          "Capa Protetora Banco Pet Carro 4 Em 1 Impermeável Antiderrapante Universal para Porta-malas",
+          "2026-08-14T07:30:07.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_825876-MLA116163970001_082026-O.webp",
+          "Acessórios para Veículos",
+          true,
+          "active",
+          true,
+          true,
+          "LIVINGNEXUSLAB",
+          "gold_special",
+          true,
+          159,
+          100,
+          26,
+          1,
+          1,
+          27
+        ],
+        [
+          "MLB7414409450",
+          "Mochila Bolsa Impermeável Para Isca E Equipamento De Pesca",
+          "2026-08-14T08:56:56.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_757625-MLB116168919747_082026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          null,
+          true,
+          "BRMEDOOSI",
+          "gold_special",
+          true,
+          59.9,
+          100,
+          26,
+          1,
+          9,
+          27
+        ],
+        [
+          "MLB7420895392",
+          "Corretor Postura Feminino Masculino Colete Alinhador Coluna",
+          "2026-08-15T02:37:10.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_941010-MLB116209999659_082026-O.webp",
+          "Saúde",
+          false,
+          "active",
+          null,
+          false,
+          "EV20260723110932733",
+          "gold_special",
+          true,
+          47.4,
+          100,
+          27,
+          1,
+          4,
+          26
+        ],
+        [
+          "MLB7425786978",
+          "Maquininha Depilador Elétrico Feminino 4 Em 1 Pelos Íntimos",
+          "2026-08-15T18:08:21.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_938793-MLB116827492989_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          false,
+          "active",
+          true,
+          true,
+          "J2COMERCIAL",
+          "gold_special",
+          true,
+          35.94,
+          100,
+          27,
+          1,
+          16,
+          26
+        ],
+        [
+          "MLB7436054166",
+          "Capa Moto Leve Resistente Protetora Impermeável Sol Chuva",
+          "2026-08-17T11:05:05.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_968253-MLB116673396353_082026-O.webp",
+          "Acessórios para Veículos",
+          false,
+          "active",
+          null,
+          true,
+          "FERGZZ STORE",
+          "gold_special",
+          true,
+          35,
+          100,
+          29,
+          1,
+          10,
+          24
+        ],
+        [
+          "MLB7440130106",
+          "Case Dura P/ Switch Oled Estojo Bolsa Capa Protetora Console Cor Azul",
+          "2026-08-12T01:07:09.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_870025-MLA114619638540_082026-O.webp",
+          "Games",
+          true,
+          "active",
+          true,
+          true,
+          "JT DISTRIBUIDORA",
+          "gold_special",
+          true,
+          43.92,
+          100,
+          24,
+          1,
+          156,
+          29
+        ],
+        [
+          "MLB7440130110",
+          "Case Dura P/ Switch Oled Estojo Bolsa Capa Protetora Console Cor Vermelho",
+          "2026-08-11T03:59:09.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_922630-MLA114556285932_082026-O.webp",
+          "Games",
+          true,
+          "active",
+          true,
+          true,
+          "JT DISTRIBUIDORA",
+          "gold_special",
+          true,
+          43.92,
+          100,
+          23,
+          1,
+          156,
+          30
+        ],
+        [
+          "MLB7465379342",
+          "Bolsa De Ferramentas 14 Pol Impermeável Oxford 1200d Kinetx",
+          "2026-08-20T08:11:59.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_914841-MLB115084467720_082026-O.webp",
+          "Ferramentas",
+          false,
+          "active",
+          null,
+          true,
+          "KINETX",
+          "gold_pro",
+          true,
+          34.82,
+          100,
+          33,
+          1,
+          1,
+          21
+        ],
+        [
+          "MLB7478268858",
+          "Aparador De Pelos Nariz Orelha Depilador + Pilha Sobrancelha Nasal Maquininha Aparelho Portátil Sem Fio Elétrico",
+          "2026-08-21T13:35:15.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_669214-MLA115143257726_082026-E.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          null,
+          true,
+          "VKECOMMERCE",
+          null,
+          true,
+          19,
+          100,
+          35,
+          1,
+          null,
+          20
+        ],
+        [
+          "MLB7479147860",
+          "Aparador De Pelos Mondial Super Groom 10 Em 1 Bg-03 Bivolt",
+          "2026-08-21T18:12:36.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_988074-MLB116547350419_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          false,
+          "active",
+          null,
+          true,
+          "GRANDZ",
+          "gold_special",
+          true,
+          200.69,
+          100,
+          35,
+          1,
+          5,
+          20
+        ],
+        [
+          "MLB7479689292",
+          "Pochete Corrida Porta Celular Fitness Impermeável Academia",
+          "2026-08-21T19:20:46.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_698877-MLB116548519893_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          null,
+          true,
+          "DXL COMERCIAL",
+          "gold_special",
+          true,
+          19.32,
+          100,
+          35,
+          1,
+          7,
+          20
+        ],
+        [
+          "MLB7483052280",
+          "Modelador de Cachos LONYAN de Barril 9mm com Cerâmica e Desligamento Automático",
+          "2026-08-22T01:16:23.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_677931-MLA115161220928_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          true,
+          false,
+          "JJ20241107114803",
+          "gold_special",
+          true,
+          99.9,
+          100,
+          37,
+          1,
+          1,
+          19
+        ],
+        [
+          "MLB7504426988",
+          "Modelador De Cachos Babyliss LONYAN Lonização Ondas Profissional Cacheador Bivolt 9 mm Anti Frizz À Prova Negativos Sem Danos Ao Cabelo Rápido Aquecimento Vermelho",
+          "2026-08-19T09:04:31.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_848972-MLA116415241185_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          true,
+          true,
+          "JJ20241107114803",
+          "gold_special",
+          true,
+          89.4,
+          100,
+          32,
+          2,
+          1,
+          22
+        ],
+        [
+          "MLB7525979180",
+          "Pochete Fitness Impermeável Porta Celular Corrida Academia Cor Lilás Desenho do tecido Lisa",
+          "2026-08-26T21:35:22.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_912913-MLA116775415051_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          true,
+          true,
+          "LUFEMSHOP",
+          null,
+          true,
+          18.81,
+          100,
+          47,
+          1,
+          null,
+          15
+        ],
+        [
+          "MLB7539919882",
+          "Boné Bandeira Brasil Brasileira Patriotismo Casual Direita",
+          "2026-08-29T15:22:11.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_606714-MLB85863119724_062025-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          null,
+          true,
+          "ALPHABRAVOEQUIP",
+          "gold_special",
+          true,
+          59.17,
+          100,
+          58,
+          1,
+          27,
+          12
+        ],
+        [
+          "MLB7549318310",
+          "Bolsa Pochete Praia Viajem A Prova Dagua Impermeável Branco",
+          "2026-08-29T15:04:24.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_899261-MLA115361315128_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          null,
+          true,
+          "SDOFICIAL PLATINUM",
+          "gold_special",
+          true,
+          119.9,
+          100,
+          58,
+          1,
+          4,
+          12
+        ],
+        [
+          "MLB7568045532",
+          "Pato Dançante Brinquedo Musical Dança Anda Mexe Luz E Som",
+          "2026-08-13T10:59:32.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_610141-MLA116102919817_082026-E.webp",
+          "Brinquedos e Hobbies",
+          true,
+          "active",
+          true,
+          true,
+          "THEELEMENTALSTONEAGE",
+          "gold_special",
+          true,
+          39,
+          100,
+          25,
+          1,
+          54,
+          28
+        ],
+        [
+          "MLB7597785250",
+          "Modelador De Cachos Babyliss LONYAN Lonização Ondas Profissional Cacheador Bivolt 9 mm Anti Frizz À Prova Negativos Sem Danos Ao Cabelo Rápido Aquecimento Branco",
+          "2026-08-19T08:41:06.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_628516-MLA117358255395_092026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          true,
+          true,
+          "JP20251001160713",
+          null,
+          true,
+          79.9,
+          100,
+          32,
+          3,
+          1,
+          22
+        ],
+        [
+          "MLB7380901246",
+          "Capa Protetora Para Carregador Cabo Fonte Silicone Luxo",
+          "2026-08-10T22:17:41.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_873338-MLB114915640585_072026-O.webp",
+          "Celulares e Telefones",
+          false,
+          "active",
+          true,
+          true,
+          "SUPPLY__STORE",
+          "gold_special",
+          true,
+          39.97,
+          97,
+          23,
+          1,
+          277,
+          31
+        ],
+        [
+          "MLB7366184824",
+          "Kit Brinquedos Pato Dançante E Caranguejo Fujão Infantil Som",
+          "2026-08-08T17:41:49.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_663214-MLB115254479558_082026-O.webp",
+          "Bebês",
+          false,
+          "active",
+          true,
+          true,
+          "BAUDODAVI",
+          "gold_special",
+          true,
+          58.19,
+          91,
+          21,
+          1,
+          10,
+          33
+        ],
+        [
+          "MLB5015169475",
+          "Kit 4 Frascos Viagem Silicone 90ml Shampoo Cosméticos",
+          "2026-08-07T17:02:34.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_608103-MLB115777205549_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          null,
+          false,
+          "LLONDS_SHOP",
+          "gold_special",
+          true,
+          12.25,
+          88,
+          21,
+          1,
+          3,
+          34
+        ],
+        [
+          "MLB7351658736",
+          "Corretor Postural Colete Alinhador Coluna Unissex Ajustável",
+          "2026-08-07T04:39:59.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_829490-MLB114404929746_082026-O.webp",
+          "Saúde",
+          false,
+          "active",
+          null,
+          true,
+          "PVESSENCE",
+          "gold_special",
+          true,
+          24.9,
+          88,
+          21,
+          1,
+          21,
+          34
+        ],
+        [
+          "MLB7356447812",
+          "Carriola de Praia Carrinho Infantil Rosa Foguete Web Acessorios Pá Rastelo Brinquedo Menina Areia Baldinho Forminha Regador Kit",
+          "2026-08-07T14:10:57.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_618674-MLA114424233544_082026-E.webp",
+          "Brinquedos e Hobbies",
+          true,
+          "active",
+          null,
+          true,
+          "FOGUETE WEB",
+          "gold_special",
+          true,
+          59.85,
+          88,
+          21,
+          1,
+          3,
+          34
+        ],
+        [
+          "MLB7356452808",
+          "Escavadeira Controle Remoto Trator Carrinho Brinquedo Menino Amarelo Carregadeira Construção Foguete Web",
+          "2026-08-07T15:16:25.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_936972-MLA115774289671_082026-E.webp",
+          "Brinquedos e Hobbies",
+          true,
+          "active",
+          null,
+          true,
+          "FOGUETE WEB",
+          "gold_special",
+          true,
+          64.95,
+          88,
+          21,
+          1,
+          null,
+          34
+        ],
+        [
+          "MLB7359571088",
+          "Aparador De Pelos Mondial Super Groom 10 Em 1 Bg-03 Bivolt",
+          "2026-08-07T22:17:19.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_861780-MLB114437401318_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          false,
+          "active",
+          null,
+          true,
+          "GRANDZ",
+          "gold_special",
+          true,
+          280.12,
+          88,
+          21,
+          1,
+          5,
+          34
+        ],
+        [
+          "MLB7521343110",
+          "Bolsa de Quadro Bicicleta com Porta Celular Gps 7'' Visor Touch Porta Objetos Bike 2 Litros Impermeável Saída Fone de Ouvido Tumblr",
+          "2026-08-07T15:41:41.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_718695-MLA114427156880_082026-O.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          null,
+          true,
+          "FERREIRASHOPPING_",
+          null,
+          true,
+          36.9,
+          88,
+          21,
+          1,
+          null,
+          34
+        ],
+        [
+          "MLB5003796771",
+          "Mochila Infantil Escolar Menino Astronauta Impermeável Bolsa",
+          "2026-08-06T08:17:22.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_818981-MLB115706836201_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          null,
+          false,
+          "EGBCDAEHF98255",
+          "gold_special",
+          true,
+          99.89,
+          86,
+          20,
+          1,
+          46,
+          35
+        ],
+        [
+          "MLB5007630175",
+          "Capa Protetora de Silicone para Controle Remoto LG Magic MR25GA com Brilho no Escuro Azul Luminoso",
+          "2026-08-06T18:03:32.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_649686-MLA114384118680_082026-O.webp",
+          "Eletrônicos, Áudio e Vídeo",
+          true,
+          "active",
+          null,
+          true,
+          "UTILLISHOP_MEGASTORE",
+          "gold_special",
+          true,
+          18.62,
+          86,
+          20,
+          2,
+          378,
+          35
+        ],
+        [
+          "MLB5007642337",
+          "Aparador De Pelos Masculino Corpo Barba Cabelo Lâmina Cerâmica À Prova D'água Sem Fio Partes Íntimas Unissex",
+          "2026-08-06T17:52:27.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_664773-MLA114384104932_082026-E.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          null,
+          true,
+          "ARMAZEMMLT",
+          "gold_special",
+          true,
+          68.83,
+          86,
+          20,
+          1,
+          3,
+          35
+        ],
+        [
+          "MLB7344028304",
+          "Bolsa Transversal Tático Tiracolo Tablet Pochete Impermeável",
+          "2026-08-06T12:40:26.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_996537-MLB71394545448_082023-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          true,
+          true,
+          "HANOKHUTILIDADES",
+          "gold_special",
+          true,
+          45.36,
+          86,
+          20,
+          1,
+          503,
+          35
+        ],
+        [
+          "MLB7331746740",
+          "Bolsa Estojo Ideal Maquina De Cartão Capa Impermeável Nilvan",
+          "2026-08-05T18:07:24.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_766246-MLB76963557051_062024-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          true,
+          true,
+          "NILVAN CONFECÇÕES",
+          "gold_pro",
+          true,
+          49.9,
+          83,
+          19,
+          1,
+          80,
+          36
+        ],
+        [
+          "MLB7337866370",
+          "Kit Bobs Grande com Velcro + clips Prisilha bico de pato ondulador Modelador cachos franja autocolante Para Cabelo 6 unidades Marrom",
+          "2026-08-05T13:08:37.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_708030-MLA115645535799_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          true,
+          true,
+          "JUJUBA MEGASTORE",
+          "gold_special",
+          true,
+          19.9,
+          83,
+          19,
+          1,
+          18,
+          36
+        ],
+        [
+          "MLB7337866508",
+          "Kit Bobs Grande com Velcro + clips Prisilha bico de pato ondulador Modelador cachos franja autocolante Para Cabelo 6 unidades Rosa",
+          "2026-08-05T13:08:37.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_680171-MLA115645948073_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          true,
+          true,
+          "JUJUBA MEGASTORE",
+          "gold_special",
+          true,
+          19.9,
+          83,
+          19,
+          1,
+          11,
+          36
+        ],
+        [
+          "MLB4993917563",
+          "Kit Canetinhas 48 Cores + Livro Colorir Pintar Desenho Touch",
+          "2026-08-04T20:51:37.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_783112-MLB115595896755_082026-O.webp",
+          "Arte, Papelaria e Armarinho",
+          false,
+          "active",
+          true,
+          true,
+          "RR..SHOP",
+          "gold_special",
+          true,
+          22.9,
+          81,
+          19,
+          1,
+          35,
+          37
+        ],
+        [
+          "MLB4993939549",
+          "Kit Canetinhas 48 Cores + Livro Colorir Pintar Desenho Touch",
+          "2026-08-04T20:51:37.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_831792-MLB115596130607_082026-O.webp",
+          "Arte, Papelaria e Armarinho",
+          false,
+          "active",
+          true,
+          true,
+          "RR..SHOP",
+          "gold_special",
+          true,
+          22.9,
+          81,
+          19,
+          1,
+          35,
+          37
+        ],
+        [
+          "MLB7322519630",
+          "Capa Bolsa A Prova Dágua Impermeável Universal Para Celular",
+          "2026-08-04T02:24:38.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_638394-MLB115543015175_082026-O.webp",
+          "Celulares e Telefones",
+          false,
+          "active",
+          null,
+          true,
+          "CRIALARELETRO",
+          "gold_special",
+          true,
+          19.49,
+          81,
+          19,
+          1,
+          null,
+          37
+        ],
+        [
+          "MLB7322519632",
+          "Capa Bolsa A Prova Dágua Impermeável Universal Para Celular",
+          "2026-08-04T02:24:38.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_876849-MLB114208267806_082026-O.webp",
+          "Celulares e Telefones",
+          false,
+          "active",
+          null,
+          true,
+          "CRIALARELETRO",
+          "gold_special",
+          true,
+          21.55,
+          81,
+          19,
+          1,
+          null,
+          37
+        ],
+        [
+          "MLB7327479822",
+          "Mochila Bolsa Maternidade Grande Térmica Impermeável Bebê",
+          "2026-08-04T14:45:05.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_662326-MLB114198689100_082026-O.webp",
+          "Bebês",
+          false,
+          "active",
+          true,
+          true,
+          "INDOLLE",
+          "gold_pro",
+          true,
+          116.01,
+          81,
+          19,
+          1,
+          4,
+          37
+        ],
+        [
+          "MLB7328858914",
+          "Kit Bobs com Velcro médio + clips Prisilha bico de pato ondulador Modelador cachos franja autocolante Para Cabelo 10 unidades Marrom",
+          "2026-08-04T14:06:57.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_775591-MLA115578473011_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          true,
+          true,
+          "JUJUBA MEGASTORE",
+          "gold_special",
+          true,
+          19.5,
+          81,
+          19,
+          1,
+          18,
+          37
+        ],
+        [
+          "MLB7328859024",
+          "Kit Bobs com Velcro médio + clips Prisilha bico de pato ondulador Modelador cachos franja autocolante Para Cabelo 10 unidades Rosa",
+          "2026-08-04T14:06:57.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_617166-MLA114242589966_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          true,
+          true,
+          "JUJUBA MEGASTORE",
+          "gold_special",
+          true,
+          19.5,
+          81,
+          19,
+          1,
+          18,
+          37
+        ],
+        [
+          "MLB7328859046",
+          "Kit Bobs com Velcro médio + clips Prisilha bico de pato ondulador Modelador cachos franja autocolante Para Cabelo 10 unidades Verde",
+          "2026-08-04T14:06:57.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_822521-MLA114243143598_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          true,
+          true,
+          "JUJUBA MEGASTORE",
+          "gold_special",
+          true,
+          19,
+          81,
+          19,
+          1,
+          22,
+          37
+        ],
+        [
+          "MLB7329167736",
+          "Aparador De Pelos Mondial Super Groom 10 Em 1 Bg-03 Bivolt",
+          "2026-08-04T16:50:00.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_931485-MLB115774632421_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          false,
+          "active",
+          true,
+          true,
+          "GRANDZ",
+          "gold_special",
+          true,
+          139.99,
+          81,
+          19,
+          1,
+          6,
+          37
+        ],
+        [
+          "MLB4985515923",
+          "Bolsa Peitoral Tática Molle Impermeável Pesca Moto Camping",
+          "2026-08-03T08:46:54.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_810968-MLB114170100458_082026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          true,
+          true,
+          "RS20260414141855",
+          "gold_special",
+          true,
+          78,
+          79,
+          18,
+          1,
+          5,
+          38
+        ],
+        [
+          "MLB4986684181",
+          "Depilador Feminino 4 Em 1 Recarregável Multi Aparador Intimo",
+          "2026-08-03T15:15:08.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_714636-MLB117041401221_092026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          false,
+          "active",
+          true,
+          true,
+          "FINKE",
+          "gold_special",
+          true,
+          34.87,
+          79,
+          18,
+          1,
+          10,
+          38
+        ],
+        [
+          "MLB4987877573",
+          "Bolinha Interativa Automática Para Cachorro Gato Usb",
+          "2026-08-03T22:24:42.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_789411-MLB114201942672_082026-O.webp",
+          "Pet Shop",
+          false,
+          "active",
+          true,
+          false,
+          "BORTULUCI148",
+          "gold_special",
+          true,
+          9.52,
+          79,
+          18,
+          1,
+          15,
+          38
+        ],
+        [
+          "MLB5007632075",
+          "Pochete Perna Coxa Bolsa Lateral Tática Hard Shell Moto Multifuncional Impermeável Motocicleta Eva Casca Rígida Cor Preta Tumblr",
+          "2026-08-03T19:25:43.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_733563-MLA114197423570_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          true,
+          true,
+          "FERREIRASHOPPING_",
+          "gold_special",
+          true,
+          45,
+          79,
+          18,
+          1,
+          null,
+          38
+        ],
+        [
+          "MLB7315248540",
+          "Kit 10 Bobs Cabelo Velcro Modelador Cachos 10 Presilhas Hair",
+          "2026-08-02T23:57:35.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_700059-MLB114433126582_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          false,
+          "active",
+          true,
+          true,
+          "DUOFERA",
+          "gold_pro",
+          true,
+          19.64,
+          77,
+          18,
+          1,
+          32,
+          39
+        ],
+        [
+          "MLB7308276848",
+          "Capa Protetora Para Carregador Cabo Fonte Luxo Silicone",
+          "2026-08-01T13:17:39.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_635871-MLB114106000006_082026-O.webp",
+          "Celulares e Telefones",
+          false,
+          "active",
+          null,
+          true,
+          "QUEENSLTDA",
+          "gold_special",
+          true,
+          20.9,
+          75,
+          18,
+          1,
+          205,
+          40
+        ],
+        [
+          "MLB4976104099",
+          "Depilador Intimo Feminino Aparador De Pelos Elétrico 2 Em 1",
+          "2026-07-31T18:33:23.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_980791-MLB115690274589_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          false,
+          "active",
+          true,
+          true,
+          "AUTOAR_REFRIGERACAO_AUTOMOTIVA",
+          "gold_special",
+          true,
+          29.94,
+          73,
+          17,
+          1,
+          29,
+          41
+        ]
+      ],
+      "dimensionCount": 13,
+      "lastRefreshTime": "2026-09-09T18:28:29.210Z",
+      "slowQuery": false,
+      "totalRows": 100,
+      "types": [
+        "string",
+        "string",
+        "time",
+        "time",
+        "string",
+        "string",
+        "boolean",
+        "string",
+        "boolean",
+        "boolean",
+        "string",
+        "string",
+        "boolean",
+        "number",
+        "number",
+        "number",
+        "number",
+        "number",
+        "number"
+      ]
+    }
+  ]
+}

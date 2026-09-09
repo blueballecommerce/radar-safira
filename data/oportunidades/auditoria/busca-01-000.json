@@ -1,0 +1,3191 @@
+{
+  "lidoEm": "2026-09-09T19:01:10.072Z",
+  "fonte": "JoomPulse / MercadoProductsWeekly",
+  "groups": [
+    [
+      "mochila",
+      "militar"
+    ],
+    [
+      "filtros",
+      "café"
+    ],
+    [
+      "cinto",
+      "tático"
+    ],
+    [
+      "chave",
+      "catraca"
+    ],
+    [
+      "macaco",
+      "hidráulico"
+    ],
+    [
+      "adaptador",
+      "motoserra"
+    ],
+    [
+      "conjunto",
+      "chaves"
+    ],
+    [
+      "furadeira",
+      "bateria"
+    ],
+    [
+      "máquina",
+      "tosa"
+    ],
+    [
+      "espremedor",
+      "laranja"
+    ],
+    [
+      "máquina",
+      "fazer"
+    ],
+    [
+      "lixadeira",
+      "pedal"
+    ],
+    [
+      "brands",
+      "geladeira"
+    ],
+    [
+      "escova",
+      "facial"
+    ],
+    [
+      "escova",
+      "limpeza"
+    ],
+    [
+      "suporte",
+      "pés"
+    ],
+    [
+      "brinquedo",
+      "empilhadeira"
+    ],
+    [
+      "caneta",
+      "impressora"
+    ],
+    [
+      "refil",
+      "filamento"
+    ],
+    [
+      "balão",
+      "coração"
+    ],
+    [
+      "decoração",
+      "festa"
+    ],
+    [
+      "decoração",
+      "feliz"
+    ],
+    [
+      "cortina",
+      "metalizada"
+    ],
+    [
+      "luva",
+      "inverno"
+    ],
+    [
+      "cinta",
+      "amarração"
+    ],
+    [
+      "cadeado",
+      "alarme"
+    ],
+    [
+      "capa",
+      "chuva"
+    ],
+    [
+      "mochila",
+      "camping"
+    ],
+    [
+      "chaves",
+      "catraca"
+    ],
+    [
+      "avental",
+      "impermeável"
+    ]
+  ],
+  "pages": [
+    {
+      "query": {
+        "dimensions": [
+          "MercadoProductsWeekly.id",
+          "MercadoProductsWeekly.productName",
+          "MercadoProductsWeekly.adPublishDate",
+          "MercadoProductsWeekly.date",
+          "MercadoProductsWeekly.productImage",
+          "MercadoProductsWeekly.merchantCategoryL1",
+          "MercadoProductsWeekly.catalogProduct",
+          "MercadoProductsWeekly.listingStatus",
+          "MercadoProductsWeekly.isFull",
+          "MercadoProductsWeekly.isFreeShipping",
+          "MercadoProductsWeekly.merchantName",
+          "MercadoProductsWeekly.listingType",
+          "MercadoProductsWeekly.buyBoxWiner",
+          "MercadoProductsWeekly.productId",
+          "MercadoProductsWeekly.brand"
+        ],
+        "measures": [
+          "MercadoProductsWeekly.priceAmount",
+          "MercadoProductsWeekly.orderCount1m",
+          "MercadoProductsWeekly.orderCount1w",
+          "MercadoProductsWeekly.numBuyBoxSellers",
+          "MercadoProductsWeekly.reviewsCount",
+          "MercadoProductsWeekly.daysInAd",
+          "MercadoProductsWeekly.reviewsRating"
+        ],
+        "filters": [
+          {
+            "member": "MercadoProductsWeekly.adPublishDate",
+            "operator": "inDateRange",
+            "values": [
+              "2026-07-31",
+              "2026-09-09"
+            ]
+          },
+          {
+            "member": "MercadoProductsWeekly.listingStatus",
+            "operator": "equals",
+            "values": [
+              "active"
+            ]
+          },
+          {
+            "member": "MercadoProductsWeekly.orderCount1m",
+            "operator": "gt",
+            "values": [
+              "0"
+            ]
+          },
+          {
+            "or": [
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "mochila"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "militar"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "filtros"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "café"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "cinto"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "tático"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "chave"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "catraca"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "macaco"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "hidráulico"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "adaptador"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "motoserra"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "conjunto"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "chaves"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "furadeira"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "bateria"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "máquina"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "tosa"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "espremedor"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "laranja"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "máquina"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "fazer"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "lixadeira"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "pedal"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "brands"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "geladeira"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "escova"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "facial"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "escova"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "limpeza"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "suporte"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "pés"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "brinquedo"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "empilhadeira"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "caneta"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "impressora"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "refil"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "filamento"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "balão"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "coração"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "decoração"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "festa"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "decoração"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "feliz"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "cortina"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "metalizada"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "luva"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "inverno"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "cinta"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "amarração"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "cadeado"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "alarme"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "capa"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "chuva"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "mochila"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "camping"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "chaves"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "catraca"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "avental"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "impermeável"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "order": [
+          [
+            "MercadoProductsWeekly.orderCount1m",
+            "desc"
+          ],
+          [
+            "MercadoProductsWeekly.id",
+            "asc"
+          ]
+        ],
+        "limit": 100
+      },
+      "columns": [
+        "id",
+        "productName",
+        "adPublishDate",
+        "date",
+        "productImage",
+        "merchantCategoryL1",
+        "catalogProduct",
+        "listingStatus",
+        "isFull",
+        "isFreeShipping",
+        "merchantName",
+        "listingType",
+        "buyBoxWiner",
+        "productId",
+        "brand",
+        "priceAmount",
+        "orderCount1m",
+        "orderCount1w",
+        "numBuyBoxSellers",
+        "reviewsCount",
+        "daysInAd",
+        "reviewsRating"
+      ],
+      "data": [
+        [
+          "MLB7366973722",
+          "Escova Sanitária Inox Vaso Banheiro Limpeza C/ Suporte",
+          "2026-08-08T23:27:03.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_873297-MLB108203806927_032026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "FAFERCOMERCIO",
+          "gold_special",
+          true,
+          "MLB-7366973722",
+          null,
+          24.8,
+          4545,
+          1061,
+          1,
+          996,
+          33,
+          5
+        ],
+        [
+          "MLB7366973728",
+          "Escova Sanitária Inox Vaso Banheiro Limpeza C/ Suporte",
+          "2026-08-08T23:27:03.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_898362-MLB112221980592_062026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "FAFERCOMERCIO",
+          "gold_special",
+          true,
+          "MLB-7366973728",
+          null,
+          31.04,
+          909,
+          212,
+          1,
+          995,
+          33,
+          5
+        ],
+        [
+          "MLB4984139577",
+          "Capa De Chuva Motoqueiro Impermeável Reforçada Moto Motoboy",
+          "2026-08-03T01:02:53.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_966779-MLB112507666664_062026-O-capa-de-chuva-motoqueiro-impermeavel-reforcada-moto-motoboy.webp",
+          "Acessórios para Veículos",
+          false,
+          "active",
+          true,
+          true,
+          "FLSTOREMIX",
+          "gold_special",
+          true,
+          "MLB-4984139577",
+          "MB",
+          44.85,
+          789,
+          184,
+          1,
+          424,
+          38,
+          4.6
+        ],
+        [
+          "MLB4988016521",
+          "Luva Moto Inverno Termica Resistente Agua Motoboy Motoqueiro Couro Sintetico Motociclista Forrada Pelucia Forro Lã Ajustavel Confortavel Frio Uso Diario Unissex Masculina Feminina",
+          "2026-08-03T18:04:15.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_796279-MLA116495501047_082026-E.webp",
+          "Acessórios para Veículos",
+          true,
+          "active",
+          null,
+          true,
+          "TIBAPRIME",
+          "gold_special",
+          true,
+          "MLB76244318",
+          null,
+          26.9,
+          789,
+          184,
+          1,
+          null,
+          38,
+          null
+        ],
+        [
+          "MLB7302733468",
+          "Arco Suporte Fundo Redondo Monte 1,50 Festa Decoração Festas",
+          "2026-07-31T14:43:51.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_877085-MLB114064179594_072026-O.webp",
+          "Festas e Lembrancinhas",
+          false,
+          "active",
+          null,
+          true,
+          "INOVA_HOUSE",
+          "gold_special",
+          true,
+          "MLB-7302733468",
+          null,
+          59.79,
+          732,
+          171,
+          1,
+          282,
+          41,
+          5
+        ],
+        [
+          "MLB5059424079",
+          "Mochila Cargueira 90l Camping Trilha Viagem Montanhismo",
+          "2026-08-14T06:04:34.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_956753-MLB116158959121_082026-O.webp",
+          "Informática",
+          false,
+          "active",
+          null,
+          true,
+          "GI20251024191523",
+          "gold_special",
+          true,
+          "MLB-5059424079",
+          null,
+          115,
+          500,
+          130,
+          1,
+          96,
+          27,
+          4
+        ],
+        [
+          "MLB5068353963",
+          "Capa Cobrir Carro Tamanho G 100% Impermeável Forrada Anti-uv Proteção Sol Chuva Poeira Auto Shield Elástico Ajustável Alta Resistência",
+          "2026-08-15T13:42:27.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_743624-MLA117150796129_092026-O.webp",
+          "Acessórios para Veículos",
+          true,
+          "active",
+          null,
+          true,
+          "AUTO_STYLE_LTDA",
+          "gold_special",
+          true,
+          "MLB78895283",
+          "AUTOSHIELD",
+          57.99,
+          500,
+          135,
+          2,
+          null,
+          26,
+          null
+        ],
+        [
+          "MLB5069216547",
+          "Jogo Soquete Chave Combinada Catraca Kit 61 Pcs Com Maleta",
+          "2026-08-17T16:09:45.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_916834-MLB111701342766_062026-O.webp",
+          "Ferramentas",
+          false,
+          "active",
+          true,
+          true,
+          "DP20241228105501",
+          "gold_special",
+          true,
+          "MLB-5069216547",
+          null,
+          184.99,
+          500,
+          146,
+          1,
+          174,
+          24,
+          null
+        ],
+        [
+          "MLB5180087229",
+          "MINI GELADEIRA + 2 CÁPSULAS BOLA SURPRESA MINI BRANDS QUE FAZ PUDIM",
+          "2026-08-24T18:18:10.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_702811-MLA116663159641_082026-E.webp",
+          "Brinquedos e Hobbies",
+          true,
+          "active",
+          null,
+          true,
+          "VITEX_ACESSORIOS",
+          null,
+          true,
+          "MLB78205274",
+          "MINIGELADEIRAMINIBRANDS",
+          221.91,
+          500,
+          206,
+          4,
+          153,
+          17,
+          4.8
+        ],
+        [
+          "MLB7381851740",
+          "Cadeado Grande Reforçado Resistente Com Alarme Antifurto",
+          "2026-08-11T01:49:28.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_875560-MLB115909901815_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "LR20241013105928",
+          "gold_special",
+          true,
+          "MLB-7381851740",
+          "GENERICA",
+          26.65,
+          500,
+          117,
+          1,
+          34,
+          30,
+          4.4
+        ],
+        [
+          "MLB7393001388",
+          "Parafusadeira 48v Furadeira Profissional 2 Baterias Bivolt",
+          "2026-08-12T06:50:02.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_874937-MLB116329516625_082026-O.webp",
+          "Ferramentas",
+          false,
+          "active",
+          null,
+          true,
+          "SOARFLYOUTDOORBR",
+          "gold_special",
+          true,
+          "MLB-7393001388",
+          "SOARFLY",
+          99.5,
+          500,
+          121,
+          1,
+          34,
+          29,
+          4.8
+        ],
+        [
+          "MLB7410232810",
+          "Bexiga Balão Setembro Amarelo Decoração 25 Unidades",
+          "2026-08-13T19:21:03.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_626393-MLB116130129297_082026-O.webp",
+          "Festas e Lembrancinhas",
+          false,
+          "active",
+          null,
+          true,
+          "LOJAFESTDAY",
+          "gold_special",
+          true,
+          "MLB-7410232810",
+          null,
+          25.9,
+          500,
+          125,
+          1,
+          11,
+          28,
+          4.6
+        ],
+        [
+          "MLB7412342898",
+          "Jogo Soquete Chave Combinada Catraca Kit 61 Pcs Com Maleta",
+          "2026-08-14T07:39:18.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_850925-MLB109915263683_042026-O.webp",
+          "Ferramentas",
+          false,
+          "active",
+          true,
+          true,
+          "OK20250118112509",
+          "gold_special",
+          true,
+          "MLB-7412342898",
+          null,
+          184.99,
+          500,
+          130,
+          1,
+          299,
+          27,
+          4.6
+        ],
+        [
+          "MLB7516426036",
+          "Kit Escova De Limpeza Garrafas Mamadeiras Bicos Portátil Cor Rosa",
+          "2026-08-26T06:55:40.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_653646-MLA115328938580_082026-O.webp",
+          "Bebês",
+          true,
+          "active",
+          true,
+          true,
+          "KINNEKEN RJ",
+          "gold_special",
+          true,
+          "MLB78355922",
+          null,
+          48.36,
+          500,
+          233,
+          1,
+          367,
+          15,
+          5
+        ],
+        [
+          "MLB7532712302",
+          "Capa Protetora Carro Forrada Contra Sol Chuva Poeira Prot Uv",
+          "2026-08-27T14:40:56.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_686509-MLB116815732139_082026-O.webp",
+          "Acessórios para Veículos",
+          false,
+          "active",
+          null,
+          true,
+          "MUNDO EDUCATIVO",
+          "gold_special",
+          true,
+          "MLB-7532712302",
+          null,
+          59.3,
+          500,
+          250,
+          1,
+          34,
+          14,
+          4
+        ],
+        [
+          "MLB7535517546",
+          "Kit Decoração De Festa Escadinha P/ Doces Boleira E Bandeja",
+          "2026-08-27T20:14:30.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_937671-MLB115407207010_082026-O.webp",
+          "Festas e Lembrancinhas",
+          false,
+          "active",
+          true,
+          true,
+          "LM.STORE ME",
+          "gold_special",
+          true,
+          "MLB-7535517546",
+          null,
+          61.11,
+          500,
+          250,
+          1,
+          1446,
+          14,
+          5
+        ],
+        [
+          "MLB7584960254",
+          "Escova De Limpeza Pesada Multiuso Kit Com 3 Escovinhas",
+          "2026-09-03T15:24:09.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_721440-MLB53513792793_012023-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "ALOJADOLEO",
+          "gold_special",
+          true,
+          "MLB-7584960254",
+          null,
+          16.99,
+          500,
+          500,
+          1,
+          164,
+          7,
+          4.7
+        ],
+        [
+          "MLB7359139084",
+          "Inflador De Balões Bomba Elétrica Rápida Máquina De Encher Bexiga Festa Decoração Profissional Bicos Compressor",
+          "2026-08-07T12:50:23.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_898474-MLA115979297649_082026-E.webp",
+          "Festas e Lembrancinhas",
+          true,
+          "active",
+          null,
+          true,
+          "ECOMMERCEBV",
+          "gold_special",
+          true,
+          "MLB76519717",
+          "MACKIEFERRAMENTAS",
+          49.9,
+          441,
+          103,
+          1,
+          9,
+          34,
+          5
+        ],
+        [
+          "MLB7301841842",
+          "Capa Cobrir Carro Protetora Lona Grossa Sol Chuva Poeira",
+          "2026-07-31T12:43:53.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_674114-MLB115381234697_072026-O.webp",
+          "Acessórios para Veículos",
+          false,
+          "active",
+          null,
+          true,
+          "NSAECOM",
+          "gold_special",
+          true,
+          "MLB-7301841842",
+          "NSAECOM",
+          48.41,
+          366,
+          85,
+          1,
+          21,
+          41,
+          4.5
+        ],
+        [
+          "MLB7304070034",
+          "Capa Cobrir Carro Protetora Lona Grossa Sol Chuva Poeira",
+          "2026-07-31T18:24:21.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_640003-MLB115381171773_072026-O.webp",
+          "Acessórios para Veículos",
+          false,
+          "active",
+          null,
+          true,
+          "NSAECOM",
+          "gold_special",
+          true,
+          "MLB-7304070034",
+          null,
+          48.41,
+          366,
+          85,
+          1,
+          27,
+          41,
+          4.5
+        ],
+        [
+          "MLB5045798247",
+          "Kit Higiene Bucal Multi Saúde Irrigador Oral + Escova Dental Elétrica Recarregável Para Limpeza Completa dos Dentes - HC560K",
+          "2026-08-12T10:45:04.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_936033-MLA116438439469_082026-E.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          null,
+          true,
+          "LOJA MMPLACE",
+          "gold_special",
+          true,
+          "MLB77088224",
+          null,
+          234,
+          100,
+          24,
+          1,
+          2,
+          29,
+          5
+        ],
+        [
+          "MLB5050401675",
+          "2 Canudos Substituição + 1 Escova Limpeza Compatível Stanley",
+          "2026-08-13T04:03:49.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_792887-MLB116080437373_082026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          null,
+          true,
+          "VARIEDADES RIO",
+          "gold_special",
+          true,
+          "MLB-5050401675",
+          null,
+          31.99,
+          100,
+          25,
+          1,
+          24,
+          28,
+          5
+        ],
+        [
+          "MLB5054382605",
+          "Kit 4 Cintas Catraca Amarração 3 Metros 800kg Reforçada Poliéster Gancho S Para Carga Caminhão Carreta Moto Mudança Transporte Sólar",
+          "2026-08-11T23:13:31.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_918076-MLA115976097457_082026-O.webp",
+          "Indústria e Comércio",
+          true,
+          "active",
+          true,
+          true,
+          "MEGA TRENDS",
+          "gold_special",
+          true,
+          "MLB76870645",
+          "SOLARVARIEDADESUTENSILIOS",
+          44.84,
+          100,
+          23,
+          1,
+          14,
+          30,
+          4.4
+        ],
+        [
+          "MLB5065403201",
+          "Kit 3 Bolas Capsula Surpresa Mini Geladeira Mini Brands",
+          "2026-08-15T00:05:47.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_813040-MLA113880165973_062026-O.webp",
+          "Brinquedos e Hobbies",
+          false,
+          "active",
+          null,
+          true,
+          "ALIQUELINE_TRE",
+          "gold_special",
+          true,
+          "MLB-5065403201",
+          null,
+          129.99,
+          100,
+          27,
+          1,
+          9,
+          26,
+          4.5
+        ],
+        [
+          "MLB5082359861",
+          "2 Mini Arcos Redondos Dourados 50x50 Painel Decoração Festa",
+          "2026-08-18T00:09:58.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_803029-MLB116327532005_082026-O.webp",
+          "Festas e Lembrancinhas",
+          false,
+          "active",
+          null,
+          true,
+          "ARCOSPORTOFERREIRA",
+          "gold_pro",
+          true,
+          "MLB-5082359861",
+          null,
+          34,
+          100,
+          30,
+          1,
+          6,
+          23,
+          5
+        ],
+        [
+          "MLB5082795235",
+          "Parafusadeira Furadeira de Impacto Brushless Sem Fio 21V 10mm com 2 Baterias, Bolsa e Acessórios ATVERCE CORE-BRD01",
+          "2026-08-11T15:31:59.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_820839-MLA115951097811_082026-E.webp",
+          "Ferramentas",
+          true,
+          "active",
+          true,
+          true,
+          "TO20260129141208",
+          "gold_special",
+          true,
+          "MLB76786610",
+          "ATVERCE",
+          215.62,
+          100,
+          23,
+          1,
+          27,
+          30,
+          5
+        ],
+        [
+          "MLB5095913627",
+          "Escova Sanitária Descartável Banheiro 24 Refis Limpeza Vaso",
+          "2026-08-19T22:42:25.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_839366-MLB115061919070_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "SPLENDOREONLINE",
+          "gold_special",
+          true,
+          "MLB-5095913627",
+          null,
+          44.9,
+          100,
+          32,
+          1,
+          1,
+          22,
+          5
+        ],
+        [
+          "MLB5096700439",
+          "Kit 2 Suporte Balão 70cm Com Led 7 Hastes Decoração Festa",
+          "2026-08-20T02:54:26.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_855305-MLB116459300705_082026-O.webp",
+          "Festas e Lembrancinhas",
+          false,
+          "active",
+          true,
+          true,
+          "KAKAKAKA20230314194218",
+          "gold_special",
+          true,
+          "MLB-5096700439",
+          null,
+          29.93,
+          100,
+          33,
+          1,
+          21,
+          21,
+          5
+        ],
+        [
+          "MLB5107721681",
+          "Parafusadeira Furadeira Impacto Brushless Sem Fio 2 Baterias The Black Tools Com Kit Brocas Bits Soquetes 68 Peças Bosch",
+          "2026-08-21T15:48:26.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_990572-MLA115146870070_082026-O.webp",
+          "Ferramentas",
+          true,
+          "active",
+          null,
+          true,
+          "THE_BLACK_TOOLS_",
+          "gold_special",
+          true,
+          "MLB77974421",
+          null,
+          387.9,
+          100,
+          35,
+          2,
+          8,
+          20,
+          5
+        ],
+        [
+          "MLB5109876085",
+          "Kit 2 Baterias 21v 48vh P/ Parafusadeira Furadeira",
+          "2026-08-22T02:42:14.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_884198-MLB115163421552_082026-O.webp",
+          "Ferramentas",
+          false,
+          "active",
+          null,
+          true,
+          "HF20260427131615",
+          "gold_special",
+          true,
+          "MLB-5109876085",
+          null,
+          59.75,
+          100,
+          37,
+          1,
+          5,
+          19,
+          5
+        ],
+        [
+          "MLB5118630471",
+          "Capa De Chuva Moto Motoqueiro Impermeável Reforçada Preto",
+          "2026-08-23T15:29:56.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_604242-MLB115210871456_082026-O.webp",
+          "Acessórios para Veículos",
+          false,
+          "active",
+          null,
+          true,
+          "BLWMIX",
+          "gold_special",
+          true,
+          "MLB-5118630471",
+          "BEMIX",
+          38.24,
+          100,
+          39,
+          1,
+          9,
+          18,
+          5
+        ],
+        [
+          "MLB5118813357",
+          "Luva Feminina Térmica Touch Screen Forrada Bege Lisa Peluciada Inverno Frio Veludo Quente Elegante Adulta Antiderrapante para Celular Confortável Casual Dia a Dia Proteção Contra o Frio Intenso",
+          "2026-08-21T19:17:55.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_710819-MLA115153257790_082026-E.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          null,
+          true,
+          "DIVERSA_STORE",
+          "gold_special",
+          true,
+          "MLB78010984",
+          "CLEANVISION",
+          29.9,
+          100,
+          35,
+          4,
+          361,
+          20,
+          4.7
+        ],
+        [
+          "MLB5120628791",
+          "Avental Açougueiro Lona Pvc Impermeável 115x67- 10un Cor Branco",
+          "2026-08-15T10:51:18.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_652303-MLA114857350492_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "MAZZADISTRIBUIDORA",
+          "gold_special",
+          true,
+          "MLB77428071",
+          null,
+          207.89,
+          100,
+          27,
+          1,
+          20,
+          26,
+          4.8
+        ],
+        [
+          "MLB5122976935",
+          "Capa Chuva Moto Impermeável Conjunto Reforçado",
+          "2026-08-24T11:55:04.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_685372-MLB116649926239_082026-O.webp",
+          "Acessórios para Veículos",
+          false,
+          "active",
+          true,
+          true,
+          "KW66960119092008",
+          "gold_special",
+          true,
+          "MLB-5122976935",
+          null,
+          168.36,
+          100,
+          41,
+          1,
+          78,
+          17,
+          4.8
+        ],
+        [
+          "MLB5131855805",
+          "Escova Limpeza Eletrica Para Grelha Churrasqueira Sem Fio",
+          "2026-08-25T16:12:03.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_996381-MLB115302275678_082026-O-escova-limpeza-eletrica-para-grelha-churrasqueira-sem-fio.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "BCF2609",
+          "gold_special",
+          true,
+          "MLB-5131855805",
+          "ESCOVALIMPEZAELETRICACHUR",
+          159.9,
+          100,
+          44,
+          1,
+          6,
+          16,
+          5
+        ],
+        [
+          "MLB5132737189",
+          "Brinquedo Bolha Fumaça Varinha Máquina De Fazer Bolhas Luvas Rosa",
+          "2026-08-13T22:15:00.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_757498-MLA116139935295_082026-O.webp",
+          "Brinquedos e Hobbies",
+          true,
+          "active",
+          null,
+          true,
+          "LARIXLOJA",
+          "gold_special",
+          true,
+          "MLB77291132",
+          "ZIPZAP",
+          44.99,
+          100,
+          25,
+          2,
+          7,
+          28,
+          4.4
+        ],
+        [
+          "MLB5133549219",
+          "Escova Elétrica Limpeza De Grelhas Portátil Usb Recarregável",
+          "2026-08-24T22:17:53.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_629284-MLA115265145748_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "DFLSTORE",
+          "gold_pro",
+          true,
+          "MLB78243271",
+          "HAIRTRIMMER",
+          174.22,
+          100,
+          41,
+          1,
+          1,
+          17,
+          5
+        ],
+        [
+          "MLB5169559771",
+          "Arranjo De Girassol Festa Cozinha Mesa Posta Decoração Amarelo",
+          "2026-08-13T13:41:49.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_775208-MLA114745133422_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "VAIDETECH",
+          "gold_special",
+          true,
+          "MLB77238203",
+          null,
+          34.9,
+          100,
+          25,
+          1,
+          null,
+          28,
+          null
+        ],
+        [
+          "MLB5169854447",
+          "Capa Para Moto Impermeável Proteção Uv Sol Chuva P M G",
+          "2026-09-01T01:11:59.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_815109-MLB116996305341_082026-O.webp",
+          "Acessórios para Veículos",
+          false,
+          "active",
+          null,
+          true,
+          "UTILLISHOP_MEGASTORE",
+          "gold_special",
+          true,
+          "MLB-5169854447",
+          null,
+          19,
+          100,
+          78,
+          1,
+          null,
+          9,
+          null
+        ],
+        [
+          "MLB5174493405",
+          "Kit Touca Infantil Inverno Forrada Gorro Kids + Luva Preta Cor Preto Desenho do tecido Dinossauro",
+          "2026-08-14T20:01:41.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_851166-MLA114825909598_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          true,
+          true,
+          "TAMIMU_TOYS",
+          null,
+          true,
+          "MLB77337481",
+          null,
+          17.09,
+          100,
+          26,
+          1,
+          null,
+          27,
+          null
+        ],
+        [
+          "MLB5175566771",
+          "Kit Capa Protetora Chuva Completo Bike Elétrica E Similares",
+          "2026-09-02T02:41:28.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_790498-MLB117049083587_092026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          null,
+          true,
+          "ZIMILECSTORE",
+          "gold_special",
+          true,
+          "MLB-5175566771",
+          null,
+          139,
+          100,
+          88,
+          1,
+          null,
+          8,
+          null
+        ],
+        [
+          "MLB5180167409",
+          "Ezreal Furadeira Parafusadeira Chaves De Impacto Bateria - Vermelho - - 60 Hz",
+          "2026-09-01T12:52:33.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_801165-MLA117022328403_092026-O.webp",
+          "Ferramentas",
+          true,
+          "active",
+          null,
+          true,
+          "KUAFUSOL",
+          "gold_special",
+          true,
+          "MLB78769943",
+          null,
+          248.9,
+          100,
+          78,
+          2,
+          2,
+          9,
+          5
+        ],
+        [
+          "MLB5182922799",
+          "Chave Catraca Combinada 13mm Aço Cromo Vanádio Prateado",
+          "2026-08-13T13:38:38.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_654516-MLA116112707213_082026-E.webp",
+          "Ferramentas",
+          true,
+          "active",
+          null,
+          true,
+          "ONIXTOOLS",
+          null,
+          true,
+          "MLB77237966",
+          null,
+          33.55,
+          100,
+          25,
+          2,
+          null,
+          28,
+          null
+        ],
+        [
+          "MLB5191866489",
+          "Capa Cobrir Carro Tamanho M 100% Impermeável Forrada Anti-uv Proteção Sol Chuva Poeira Auto Shield Elástico Ajustável Alta Resistência",
+          "2026-09-03T20:18:41.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_943171-MLA115699958880_092026-E.webp",
+          "Acessórios para Veículos",
+          true,
+          "active",
+          null,
+          true,
+          "UTILIDADESDAMARA",
+          "gold_special",
+          true,
+          "MLB78895192",
+          "AUTOSHIELD",
+          70,
+          100,
+          100,
+          2,
+          null,
+          7,
+          null
+        ],
+        [
+          "MLB5192078093",
+          "Kit Furadeira Parafusadeira Impacto Sem Fio 2 Baterias 21v",
+          "2026-09-05T17:35:46.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_693012-MLA116719189979_082026-O.webp",
+          "Ferramentas",
+          true,
+          "active",
+          null,
+          false,
+          "ACHADOS_MIX",
+          "gold_pro",
+          true,
+          "MLB78315099",
+          null,
+          263.62,
+          100,
+          100,
+          1,
+          null,
+          5,
+          null
+        ],
+        [
+          "MLB5199807487",
+          "Escova De Limpeza Elétrica 9 Em 1 Recarregável Multiuso Gira Branco",
+          "2026-08-14T21:16:16.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_896568-MLA114829577996_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "CLEMAN_ACESSORIOS",
+          null,
+          true,
+          "MLB77346166",
+          null,
+          93.41,
+          100,
+          26,
+          2,
+          null,
+          27,
+          null
+        ],
+        [
+          "MLB7393870408",
+          "Máquina de Tosa Pet Profissional Inova LFJ-13498 Sem Fio 7500 RPM Silenciosa Display LED 240 Min 4 Pentes Kit Completo Cães e Gatos",
+          "2026-08-12T06:22:17.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_617010-MLA115524682348_082026-O.webp",
+          "Pet Shop",
+          true,
+          "active",
+          null,
+          true,
+          "RE20250315100638",
+          "gold_pro",
+          true,
+          "MLB77006268",
+          null,
+          148.32,
+          100,
+          24,
+          1,
+          5,
+          29,
+          5
+        ],
+        [
+          "MLB7401753680",
+          "2 Canudos Substituição + 1 Escova Limpeza Compatível Stanley",
+          "2026-08-13T04:03:49.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_903763-MLB116079936711_082026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          null,
+          true,
+          "VARIEDADES RIO",
+          "gold_special",
+          true,
+          "MLB-7401753680",
+          null,
+          31.99,
+          100,
+          25,
+          1,
+          24,
+          28,
+          5
+        ],
+        [
+          "MLB7404919108",
+          "Guarda chuva Gigante automático Premium Marca: MultiOn reforçado Portaria abre e fecha resistente com capa ajustavel",
+          "2026-08-12T14:21:17.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_602808-MLA116028733769_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          null,
+          true,
+          "BRASILARUTILIDADES",
+          "gold_special",
+          true,
+          "MLB77101303",
+          null,
+          44.99,
+          100,
+          24,
+          1,
+          null,
+          29,
+          null
+        ],
+        [
+          "MLB7418333284",
+          "Kit De 3 Máquinas Fazer Botões Fotobots 32/44/58 Mm 150 Unid",
+          "2026-08-15T06:37:40.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_955618-MLB111317153796_052026-O.webp",
+          "Arte, Papelaria e Armarinho",
+          false,
+          "active",
+          null,
+          true,
+          "OX20260403132205",
+          "gold_pro",
+          true,
+          "MLB-7418333284",
+          null,
+          461,
+          100,
+          27,
+          1,
+          17,
+          26,
+          4.5
+        ],
+        [
+          "MLB7418333292",
+          "Kit De Máquina De Ímã Fotográfico Para Fazer Botões 50*50mm",
+          "2026-08-15T06:38:38.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_813774-MLB117110589877_092026-O.webp",
+          "Indústria e Comércio",
+          false,
+          "active",
+          true,
+          true,
+          "OX20260403132205",
+          "gold_pro",
+          true,
+          "MLB-7418333292",
+          null,
+          461.42,
+          100,
+          27,
+          1,
+          22,
+          26,
+          5
+        ],
+        [
+          "MLB7419559530",
+          "Caneta 3d Impressora Profissional + Refil Filamento + Usb",
+          "2026-08-14T19:02:13.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_902699-MLB116196109205_082026-O.webp",
+          "Informática",
+          false,
+          "active",
+          null,
+          true,
+          "ZINPRESS2026",
+          "gold_special",
+          true,
+          "MLB-7419559530",
+          null,
+          46.9,
+          100,
+          26,
+          1,
+          null,
+          27,
+          null
+        ],
+        [
+          "MLB7419571636",
+          "Caneta 3d Impressora Profissional + Refil Filamento + Usb",
+          "2026-08-14T19:02:13.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_794658-MLB116196317447_082026-O.webp",
+          "Informática",
+          false,
+          "active",
+          null,
+          true,
+          "ZINPRESS2026",
+          "gold_special",
+          true,
+          "MLB-7419571636",
+          null,
+          46.9,
+          100,
+          26,
+          1,
+          1,
+          27,
+          null
+        ],
+        [
+          "MLB7430355244",
+          "Mini Geladeira Brands Brinquedo Bolinhas Surpresa Led Uv",
+          "2026-08-16T12:42:58.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_756369-MLB116670984567_082026-O.webp",
+          "Brinquedos e Hobbies",
+          false,
+          "active",
+          true,
+          true,
+          "VIALIWEB",
+          "gold_special",
+          true,
+          "MLB-7430355244",
+          "MINISBOLASITENSCOLECIONAV",
+          184.42,
+          100,
+          28,
+          1,
+          12,
+          25,
+          4.9
+        ],
+        [
+          "MLB7436054166",
+          "Capa Moto Leve Resistente Protetora Impermeável Sol Chuva",
+          "2026-08-17T11:05:05.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_968253-MLB116673396353_082026-O.webp",
+          "Acessórios para Veículos",
+          false,
+          "active",
+          null,
+          true,
+          "FERGZZ STORE",
+          "gold_special",
+          true,
+          "MLB-7436054166",
+          null,
+          35,
+          100,
+          29,
+          1,
+          10,
+          24,
+          4.8
+        ],
+        [
+          "MLB7442293876",
+          "Buquê Rosas Artificiais 24rosas Arranjo Decoração Festas15 Cor salmom",
+          "2026-08-18T11:15:56.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_728020-MLA114976754644_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "ABECSTORECOMRCIODEUTILIDA",
+          "gold_pro",
+          true,
+          "MLB77579929",
+          null,
+          46.02,
+          100,
+          30,
+          1,
+          17,
+          23,
+          4.8
+        ],
+        [
+          "MLB7446856668",
+          "Limpa Grelha Escova Elétrica Sem Fio Limpeza Churrasqueira",
+          "2026-08-18T15:02:38.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_780687-MLB114994131122_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "MIMOSTORE",
+          "gold_special",
+          true,
+          "MLB-7446856668",
+          "MIMOSTORE",
+          154.9,
+          100,
+          30,
+          1,
+          4,
+          23,
+          4.4
+        ],
+        [
+          "MLB7450563656",
+          "Avental Profissional De Lona Impermeável Unissex Multiuso",
+          "2026-08-19T01:51:24.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_983313-MLB115007987452_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "FACANHASHOP",
+          "gold_special",
+          true,
+          "MLB-7450563656",
+          null,
+          30.9,
+          100,
+          32,
+          1,
+          26,
+          22,
+          4.9
+        ],
+        [
+          "MLB7459658620",
+          "Par Luva Moto Motoqueiro Térmica Impermeável Frio Touch Screen Para Proteção Inverno Motociclista Forrada Com Algodão Acessório Feminino e Masculino Motoboy Entregador Rívora Unissex Universal",
+          "2026-08-19T18:06:56.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_780052-MLA116442386797_082026-O.webp",
+          "Acessórios para Veículos",
+          true,
+          "active",
+          null,
+          true,
+          "RIVORA",
+          "gold_special",
+          true,
+          "MLB77745499",
+          null,
+          24.9,
+          100,
+          32,
+          1,
+          14,
+          22,
+          4.5
+        ],
+        [
+          "MLB7463345974",
+          "Kit 2 Capa De Chuva Reforçada Impermeável Com Capuz Adulto",
+          "2026-08-20T03:20:05.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_660965-MLB116462697677_082026-O.webp",
+          "Acessórios para Veículos",
+          false,
+          "active",
+          null,
+          true,
+          "JGPWEARCO",
+          "gold_special",
+          true,
+          "MLB-7463345974",
+          null,
+          23.89,
+          100,
+          33,
+          1,
+          5,
+          21,
+          null
+        ],
+        [
+          "MLB7469165350",
+          "Kit 2 Suporte Balão 1,68 M Com Led 19 Hastes Decoração Festa",
+          "2026-08-20T14:54:59.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_900247-MLB116503830607_082026-O.webp",
+          "Festas e Lembrancinhas",
+          false,
+          "active",
+          true,
+          true,
+          "CLICKSHOP 10",
+          "gold_special",
+          true,
+          "MLB-7469165350",
+          null,
+          51.51,
+          100,
+          33,
+          1,
+          1,
+          21,
+          5
+        ],
+        [
+          "MLB7479693336",
+          "Kit Catraca Fixa Sider + Cinta Amarração 9m 3ton Caminhão",
+          "2026-08-21T19:24:03.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_807836-MLB76247475929_052024-E.webp",
+          "Acessórios para Veículos",
+          true,
+          "active",
+          null,
+          true,
+          "REIDOTRECHO",
+          "gold_special",
+          true,
+          "MLB2098782957",
+          null,
+          138,
+          100,
+          35,
+          1,
+          null,
+          20,
+          null
+        ],
+        [
+          "MLB7494542522",
+          "Conjunto Impermeável Pescador Capa De Chuva Pantaneiro Verde",
+          "2026-08-24T12:34:17.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_908735-MLB87587369210_072025-O.webp",
+          "Acessórios para Veículos",
+          false,
+          "active",
+          null,
+          true,
+          "OBAX..",
+          "gold_special",
+          true,
+          "MLB-7494542522",
+          null,
+          114.56,
+          100,
+          41,
+          1,
+          240,
+          17,
+          4.7
+        ],
+        [
+          "MLB7498351410",
+          "Capa De Chuva Impermeavel Pantaneir Verde Conjunto Impermeal",
+          "2026-08-24T14:03:25.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_900474-MLB85115704960_052025-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          null,
+          true,
+          "OBAX..",
+          "gold_special",
+          true,
+          "MLB-7498351410",
+          null,
+          119.9,
+          100,
+          41,
+          1,
+          73,
+          17,
+          null
+        ],
+        [
+          "MLB7501395768",
+          "Bexiga Balão Setembro Amarelo Decoração 25 Unidades Amarelo",
+          "2026-08-24T19:15:00.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_966788-MLB115259469782_082026-O.webp",
+          "Festas e Lembrancinhas",
+          false,
+          "active",
+          null,
+          true,
+          "CANDY.FEST",
+          "gold_special",
+          true,
+          "MLB-7501395768",
+          null,
+          25.9,
+          100,
+          41,
+          1,
+          null,
+          17,
+          null
+        ],
+        [
+          "MLB7501739606",
+          "Máquina de Fazer Sorvete em Rolo Istambul Quality com 2 Espátulas, Multicor",
+          "2026-08-24T20:12:34.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_972723-MLA116666970645_082026-O.webp",
+          "Eletrodomésticos",
+          true,
+          "active",
+          true,
+          true,
+          "FLYSPOT",
+          "gold_special",
+          true,
+          "MLB78227496",
+          null,
+          57,
+          100,
+          41,
+          1,
+          null,
+          17,
+          null
+        ],
+        [
+          "MLB7511086162",
+          "Capa De Chuva Impermeavel Pantaneir Verde Conjunto Impermeal",
+          "2026-08-25T18:46:19.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_923960-MLB85604614595_062025-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          null,
+          true,
+          "OBAX.",
+          "gold_special",
+          true,
+          "MLB-7511086162",
+          null,
+          119.9,
+          100,
+          44,
+          1,
+          49,
+          16,
+          null
+        ],
+        [
+          "MLB7522543564",
+          "Capa De Chuva Motoqueiro Nylon Pantaneiro Com Capuz 1001",
+          "2026-08-26T16:23:37.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_634758-MLB91291818691_082025-O.webp",
+          "Acessórios para Veículos",
+          false,
+          "active",
+          true,
+          true,
+          ".OBAX",
+          "gold_special",
+          true,
+          "MLB-7522543564",
+          null,
+          189,
+          100,
+          47,
+          1,
+          222,
+          15,
+          4.7
+        ],
+        [
+          "MLB7549784130",
+          "Cinto Tático Operacional Militar Cor Preto Tamanho 90",
+          "2026-08-27T02:22:00.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_754076-MLA115368763930_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          null,
+          true,
+          "OPERACIONALZERO1",
+          "gold_special",
+          true,
+          "MLB78535651",
+          null,
+          46,
+          100,
+          50,
+          1,
+          194,
+          14,
+          4.8
+        ],
+        [
+          "MLB7565146102",
+          "Mochila Cargueira Camping Travessia Trilha Impermeável 80l",
+          "2026-08-31T17:15:35.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_679956-MLB79806015067_102024-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          true,
+          true,
+          "INBOX MOBILE",
+          "gold_special",
+          true,
+          "MLB-7565146102",
+          null,
+          118.29,
+          100,
+          70,
+          1,
+          356,
+          10,
+          4
+        ],
+        [
+          "MLB7565146104",
+          "Mochila Cargueira Camping Travessia Trilha Impermeável 80l",
+          "2026-08-31T17:15:36.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_885278-MLB79463984752_102024-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          true,
+          true,
+          "INBOX MOBILE",
+          "gold_special",
+          true,
+          "MLB-7565146104",
+          null,
+          118.29,
+          100,
+          70,
+          1,
+          356,
+          10,
+          4
+        ],
+        [
+          "MLB7565592904",
+          "Capa Chuva Pet Capuz Dog Cão Skapetshop Raças Pequenas",
+          "2026-08-31T23:36:58.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_962226-MLB117077704059_092026-O.webp",
+          "Pet Shop",
+          false,
+          "active",
+          null,
+          true,
+          "SKAPETSHOP OFICIAL",
+          "gold_special",
+          true,
+          "MLB-7565592904",
+          null,
+          126,
+          100,
+          70,
+          1,
+          69,
+          10,
+          4
+        ],
+        [
+          "MLB7565592908",
+          "Capa Chuva Pet Capuz Dog Cão Skapetshop Raças Pequenas",
+          "2026-08-31T23:36:59.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_644185-MLB117077644697_092026-O.webp",
+          "Pet Shop",
+          false,
+          "active",
+          null,
+          true,
+          "SKAPETSHOP OFICIAL",
+          "gold_special",
+          true,
+          "MLB-7565592908",
+          null,
+          144.9,
+          100,
+          70,
+          1,
+          69,
+          10,
+          4
+        ],
+        [
+          "MLB7571153264",
+          "Parafusadeira Furadeira De Impacto A Bateria Brushless 10mm Mandril Bivolt Com 2 Baterias",
+          "2026-08-19T08:07:20.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_708144-MLA115024212770_082026-O.webp",
+          "Ferramentas",
+          true,
+          "active",
+          null,
+          true,
+          "GGBO",
+          "gold_special",
+          true,
+          "MLB77689696",
+          "EZREAL",
+          398,
+          100,
+          32,
+          1,
+          47,
+          22,
+          4.7
+        ],
+        [
+          "MLB7575165202",
+          "Parafusadeira Furadeira Brushless S/fio 2 Baterias Azul-aço Azul-marinho 50/60",
+          "2026-08-13T23:20:09.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_814997-MLA114772913530_082026-O.webp",
+          "Ferramentas",
+          true,
+          "active",
+          true,
+          true,
+          "QUANXING",
+          "gold_special",
+          true,
+          "MLB77300124",
+          null,
+          176.74,
+          100,
+          25,
+          1,
+          null,
+          28,
+          null
+        ],
+        [
+          "MLB7580498922",
+          "Kit 4 Balões Metalizados Borboleta Festa Decoração Rosa/azul Colorido",
+          "2026-08-17T23:05:43.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_990214-MLA116327756387_082026-E.webp",
+          "Festas e Lembrancinhas",
+          true,
+          "active",
+          null,
+          true,
+          "VLIMPORTADORA",
+          "gold_special",
+          true,
+          "MLB77553819",
+          null,
+          39,
+          100,
+          29,
+          1,
+          17,
+          24,
+          4.4
+        ],
+        [
+          "MLB7582055680",
+          "Kit 2 Escova Facial Drenagem Linfática Inchaço Modeladora Massageadora Rosto Pescoço Corpo Reduz Medidas Celulite Massagem Relaxante Estética Beleza Skincare Spa AutoCuidado",
+          "2026-09-03T11:04:01.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_607241-MLA117130887705_092026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          true,
+          "active",
+          null,
+          true,
+          "DLUCCAECOMMERCE",
+          "gold_special",
+          true,
+          "MLB78872458",
+          null,
+          25.65,
+          100,
+          100,
+          1,
+          1,
+          7,
+          5
+        ],
+        [
+          "MLB7585447616",
+          "Vaso Cilíndrico Tubo Acrílico 2,75l Decoração Festa Flores Transparente",
+          "2026-09-05T01:54:12.396",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_670567-MLA110557202877_042026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          false,
+          "POPOFESTASME",
+          null,
+          true,
+          "MLB68241103",
+          null,
+          31,
+          100,
+          100,
+          1,
+          null,
+          5,
+          null
+        ],
+        [
+          "MLB7594423762",
+          "Balão P/ Decoração Bexiga N5 São Roque 50un - Diversas Cores Cor Preto Liso",
+          "2026-09-06T01:47:53.116",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_942950-MLA111356338378_052026-O.webp",
+          "Festas e Lembrancinhas",
+          true,
+          "active",
+          true,
+          true,
+          "STAR FESTAS",
+          null,
+          true,
+          "MLB70444929",
+          null,
+          24,
+          100,
+          100,
+          1,
+          null,
+          4,
+          null
+        ],
+        [
+          "MLB5028024235",
+          "Caneta 3d Impressora Profissional + Refil +cabo Usb",
+          "2026-08-10T05:30:31.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_827382-MLB115868317041_082026-O.webp",
+          "Informática",
+          false,
+          "active",
+          true,
+          true,
+          "JOTAPE_EXPRESS",
+          "gold_special",
+          true,
+          "MLB-5028024235",
+          null,
+          44.9,
+          97,
+          23,
+          1,
+          9,
+          31,
+          4.3
+        ],
+        [
+          "MLB5028201931",
+          "Furadeira Hanabi Sem Fio Brushless 13mm Com 2 Baterias Litio",
+          "2026-08-10T06:17:18.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_737383-MLB114038658347_072026-O.webp",
+          "Ferramentas",
+          false,
+          "active",
+          null,
+          true,
+          "CW20250509011806",
+          "gold_pro",
+          true,
+          "MLB-5028201931",
+          null,
+          409.99,
+          97,
+          23,
+          1,
+          16,
+          31,
+          5
+        ],
+        [
+          "MLB5019481467",
+          "Mochila Masculina Tatica 50l Impermeavel Militar Reforçada",
+          "2026-08-08T11:38:17.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_752182-MLB114459514096_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          null,
+          true,
+          "GUVIVICOMERCIO",
+          "gold_special",
+          true,
+          "MLB-5019481467",
+          null,
+          91.19,
+          91,
+          21,
+          1,
+          1378,
+          33,
+          5
+        ],
+        [
+          "MLB5015020051",
+          "Escova Limpeza Multiuso Cozinha Lavanderia Nylon Cantos Box",
+          "2026-08-07T16:42:51.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_624175-MLB114427748194_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "HCONCEITO",
+          "gold_special",
+          true,
+          "MLB-5015020051",
+          null,
+          23.46,
+          88,
+          21,
+          1,
+          37,
+          34,
+          5
+        ],
+        [
+          "MLB5015702763",
+          "Kit 100 44mm Máquina De Fazer Bottons Redondos Com Prensa",
+          "2026-08-07T19:03:49.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_607874-MLB114432917034_082026-O.webp",
+          "Arte, Papelaria e Armarinho",
+          false,
+          "active",
+          null,
+          true,
+          "BGDBFCAHE73036",
+          "gold_pro",
+          true,
+          "MLB-5015702763",
+          null,
+          47.49,
+          88,
+          21,
+          1,
+          3,
+          34,
+          5
+        ],
+        [
+          "MLB7357446772",
+          "Painel Retangular 2x1 Arco Decoração De Festa Suporte Balão",
+          "2026-08-07T15:23:53.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_722094-MLB114425203434_082026-O.webp",
+          "Festas e Lembrancinhas",
+          false,
+          "active",
+          null,
+          true,
+          "THECHERRYDECOR",
+          "gold_pro",
+          true,
+          "MLB-7357446772",
+          "CASAUTIL",
+          69.9,
+          88,
+          21,
+          1,
+          3,
+          34,
+          5
+        ],
+        [
+          "MLB7359134172",
+          "Kit Chave Catraca Soquete Bits 46 Peças Cromo Vanádio Catraca Reversível Manutenção Carros e Motos The Black Tools",
+          "2026-08-07T18:01:08.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_793033-MLA115779523191_082026-O.webp",
+          "Ferramentas",
+          true,
+          "active",
+          null,
+          true,
+          "THE_BLACK_TOOLS_",
+          "gold_pro",
+          true,
+          "MLB76528145",
+          "THEBLACKTOOLS",
+          49.99,
+          88,
+          21,
+          2,
+          6,
+          34,
+          5
+        ],
+        [
+          "MLB7360661554",
+          "Inflador De Balões Bomba Elétrica Rápida Máquina De Encher Bexiga Festa Decoração Profissional Bicos Compressor",
+          "2026-08-07T22:05:44.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_826772-MLA114618559030_082026-O.webp",
+          "Festas e Lembrancinhas",
+          true,
+          "active",
+          true,
+          true,
+          "ECOMMERCEBV",
+          "gold_special",
+          true,
+          "MLB76537487",
+          "MACKIEFERRAMENTAS",
+          62,
+          88,
+          21,
+          1,
+          55,
+          34,
+          4.9
+        ],
+        [
+          "MLB5002937795",
+          "Cadeado Com Alarme Sonoro Antifurto Prova D'água Haste Grand",
+          "2026-08-06T05:52:25.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_995064-MLB115696366895_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "LR20241013105928",
+          "gold_special",
+          true,
+          "MLB-5002937795",
+          "GENERICA",
+          29.65,
+          86,
+          20,
+          1,
+          20,
+          35,
+          4.8
+        ],
+        [
+          "MLB5006727393",
+          "Limpador De Vidro Escova De Limpeza De Filme De Óleo Parabri",
+          "2026-08-06T15:44:08.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_634010-MLB114569189044_082026-O.webp",
+          "Acessórios para Veículos",
+          false,
+          "active",
+          null,
+          true,
+          "BODYRW_ECOMMERCE_LTDA",
+          "gold_special",
+          true,
+          "MLB-5006727393",
+          null,
+          19.9,
+          86,
+          20,
+          1,
+          6,
+          35,
+          4.8
+        ],
+        [
+          "MLB7348193104",
+          "Escova Limpeza Eletrica Para Grelha Churrasqueira Sem Fio",
+          "2026-08-06T19:12:33.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_829777-MLB114386336018_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "XACA2020706",
+          "gold_special",
+          true,
+          "MLB-7348193104",
+          "ESCOVALIMPEZAELETRICACHUR",
+          151.29,
+          86,
+          20,
+          1,
+          7,
+          35,
+          4.4
+        ],
+        [
+          "MLB7360659084",
+          "Parafusadeira Furadeira de Impacto Atverce, sem Fio, com 2 Baterias e Kit 46 Peças",
+          "2026-08-06T13:43:21.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_652904-MLA116481978367_082026-O.webp",
+          "Ferramentas",
+          true,
+          "active",
+          null,
+          true,
+          "GD20260129123624",
+          "gold_pro",
+          true,
+          "MLB76467981",
+          null,
+          166.05,
+          86,
+          20,
+          1,
+          null,
+          35,
+          null
+        ],
+        [
+          "MLB4995163647",
+          "Capa De Chuva Moto Com Capuz Impermeável Motoqueiro",
+          "2026-08-05T03:04:53.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_759613-MLB114275571380_082026-O.webp",
+          "Acessórios para Veículos",
+          false,
+          "active",
+          null,
+          true,
+          "AADEHCFBG82149",
+          "gold_special",
+          true,
+          "MLB-4995163647",
+          null,
+          198,
+          83,
+          19,
+          1,
+          19,
+          36,
+          5
+        ],
+        [
+          "MLB4996114249",
+          "Chave De Impacto Profissional Com 2 Baterias Furadeira Parafusadeira Profissional Mandril 1,2 Quadrado Torque 350Nm 0-3500Rpm Velocidade Variel Carregador Bivolt Motor Sem Escova E Acessórios Maleta",
+          "2026-08-05T03:46:32.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_857570-MLA115337969594_082026-O.webp",
+          "Ferramentas",
+          true,
+          "active",
+          null,
+          true,
+          "NOVYRABR",
+          "gold_special",
+          true,
+          "MLB76383597",
+          null,
+          269,
+          83,
+          19,
+          1,
+          null,
+          36,
+          null
+        ],
+        [
+          "MLB5097518931",
+          "Mochila 40l Impermeável Para Trilha Montanhismo E Camping Cor Preto",
+          "2026-08-05T19:30:48.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_821773-MLA114326265366_082026-E.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          null,
+          true,
+          "RZ20260313143455",
+          "gold_pro",
+          true,
+          "MLB76430754",
+          null,
+          163.43,
+          83,
+          19,
+          1,
+          28,
+          36,
+          4.5
+        ],
+        [
+          "MLB7345537596",
+          "Capa Painel Romano Para Festa De Aniversario Decoração 2m X 1m - Rosa Bebê/Azul Bebê",
+          "2026-08-05T18:57:22.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_833715-MLA115665005459_082026-O.webp",
+          "Festas e Lembrancinhas",
+          true,
+          "active",
+          true,
+          true,
+          "ATACADORS",
+          "gold_special",
+          true,
+          "MLB76427988",
+          null,
+          44.9,
+          83,
+          19,
+          1,
+          169,
+          36,
+          4.9
+        ],
+        [
+          "MLB7345627184",
+          "Capa Painel Romano Para Festa De Aniversario Decoração 2m X 1m - Verde Oliva/Bege Claro",
+          "2026-08-05T18:57:21.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_601409-MLA115664241147_082026-E.webp",
+          "Festas e Lembrancinhas",
+          true,
+          "active",
+          true,
+          true,
+          "ATACADORS",
+          "gold_special",
+          true,
+          "MLB76427986",
+          null,
+          44.9,
+          83,
+          19,
+          1,
+          140,
+          36,
+          5
+        ],
+        [
+          "MLB4999067815",
+          "Painel Festa Decoração Floresta Rosa Evento Lona Fosca Com Ilhós 3,0 X 2,0 Metros Interno Ou Externo Printoriah",
+          "2026-08-04T21:24:34.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_943999-MLA115597610549_082026-O.webp",
+          "Festas e Lembrancinhas",
+          true,
+          "active",
+          true,
+          true,
+          "SAMARIA_DECORACAO",
+          "gold_pro",
+          true,
+          "MLB76358727",
+          "PRINTORIAH",
+          199.9,
+          81,
+          19,
+          1,
+          82,
+          37,
+          5
+        ],
+        [
+          "MLB5046660525",
+          "Suporte Base Geladeira Prata Inox Com Rodinhas Pés Niveladores Universal Fogão Freezer Lava Seca Louças Máquina Lavar Regulável Ajustável 40-69cm 200kg 12 Rodas Trava Aço Resistente Par Prateado",
+          "2026-08-04T19:57:26.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_981832-MLA114257286794_082026-O.webp",
+          "Eletrodomésticos",
+          true,
+          "active",
+          null,
+          true,
+          "DEXAIMPORTADOS",
+          "gold_special",
+          true,
+          "MLB76353073",
+          "ARTNOVE",
+          38.9,
+          81,
+          19,
+          1,
+          null,
+          37,
+          null
+        ],
+        [
+          "MLB7329675388",
+          "Capa De Chuva Impermeável Motoqueiro Conjunto",
+          "2026-08-04T18:30:49.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_994864-MLB116656003843_082026-O-capa-de-chuva-impermeavel-motoqueiro-conjunto.webp",
+          "Acessórios para Veículos",
+          false,
+          "active",
+          true,
+          true,
+          "FLASHUB",
+          "gold_special",
+          true,
+          "MLB-7329675388",
+          "FLASHUB",
+          51.47,
+          81,
+          19,
+          1,
+          8,
+          37,
+          4.6
+        ],
+        [
+          "MLB7330105642",
+          "Mochila Térmica Cooler Grande Impermeável Reforçada Praia Viagem Camping Trabalho Marmita Alimentos Bebidas Preto",
+          "2026-08-04T14:00:03.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_918876-MLA115578494921_082026-O.webp",
+          "Indústria e Comércio",
+          true,
+          "active",
+          null,
+          true,
+          "MAVI_IMPORTADOS",
+          "gold_pro",
+          true,
+          "MLB76322607",
+          "PETPROJECT",
+          49,
+          81,
+          19,
+          1,
+          2,
+          37,
+          4.9
+        ]
+      ],
+      "dimensionCount": 15,
+      "lastRefreshTime": "2026-09-09T19:01:09.712Z",
+      "slowQuery": false,
+      "totalRows": 100,
+      "types": [
+        "string",
+        "string",
+        "time",
+        "time",
+        "string",
+        "string",
+        "boolean",
+        "string",
+        "boolean",
+        "boolean",
+        "string",
+        "string",
+        "boolean",
+        "string",
+        "string",
+        "number",
+        "number",
+        "number",
+        "number",
+        "number",
+        "number",
+        "number"
+      ]
+    }
+  ]
+}

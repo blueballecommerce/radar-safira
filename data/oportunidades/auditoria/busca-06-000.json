@@ -1,0 +1,3191 @@
+{
+  "lidoEm": "2026-09-09T19:01:39.727Z",
+  "fonte": "JoomPulse / MercadoProductsWeekly",
+  "groups": [
+    [
+      "luminária",
+      "gabinete"
+    ],
+    [
+      "luminária",
+      "monocromática"
+    ],
+    [
+      "luminária",
+      "sensor"
+    ],
+    [
+      "tesoura",
+      "unha"
+    ],
+    [
+      "alicate",
+      "unha"
+    ],
+    [
+      "tesoura",
+      "pinça"
+    ],
+    [
+      "higiene",
+      "pessoal"
+    ],
+    [
+      "pinças",
+      "sobrancelha"
+    ],
+    [
+      "pássaro",
+      "decorativo"
+    ],
+    [
+      "tapete",
+      "cozinha"
+    ],
+    [
+      "espelho",
+      "adesivado"
+    ],
+    [
+      "espelho",
+      "oval"
+    ],
+    [
+      "balde",
+      "silicone"
+    ],
+    [
+      "forma",
+      "gelo"
+    ],
+    [
+      "forma",
+      "cubo"
+    ],
+    [
+      "estojo",
+      "maquiagem"
+    ],
+    [
+      "estojo",
+      "maleta"
+    ],
+    [
+      "chuveirinho",
+      "adaptador"
+    ],
+    [
+      "varal",
+      "andares"
+    ],
+    [
+      "suporte",
+      "telefone"
+    ],
+    [
+      "fita",
+      "vedação"
+    ],
+    [
+      "amplificador",
+      "celular"
+    ],
+    [
+      "forma",
+      "silicone"
+    ],
+    [
+      "cesto",
+      "organizador"
+    ],
+    [
+      "dispenser",
+      "detergente"
+    ],
+    [
+      "lixeira",
+      "sensor"
+    ],
+    [
+      "talher",
+      "infantil"
+    ],
+    [
+      "escorredor",
+      "talheres"
+    ],
+    [
+      "filtro",
+      "coador"
+    ],
+    [
+      "fixadores",
+      "lençol"
+    ]
+  ],
+  "pages": [
+    {
+      "query": {
+        "dimensions": [
+          "MercadoProductsWeekly.id",
+          "MercadoProductsWeekly.productName",
+          "MercadoProductsWeekly.adPublishDate",
+          "MercadoProductsWeekly.date",
+          "MercadoProductsWeekly.productImage",
+          "MercadoProductsWeekly.merchantCategoryL1",
+          "MercadoProductsWeekly.catalogProduct",
+          "MercadoProductsWeekly.listingStatus",
+          "MercadoProductsWeekly.isFull",
+          "MercadoProductsWeekly.isFreeShipping",
+          "MercadoProductsWeekly.merchantName",
+          "MercadoProductsWeekly.listingType",
+          "MercadoProductsWeekly.buyBoxWiner",
+          "MercadoProductsWeekly.productId",
+          "MercadoProductsWeekly.brand"
+        ],
+        "measures": [
+          "MercadoProductsWeekly.priceAmount",
+          "MercadoProductsWeekly.orderCount1m",
+          "MercadoProductsWeekly.orderCount1w",
+          "MercadoProductsWeekly.numBuyBoxSellers",
+          "MercadoProductsWeekly.reviewsCount",
+          "MercadoProductsWeekly.daysInAd",
+          "MercadoProductsWeekly.reviewsRating"
+        ],
+        "filters": [
+          {
+            "member": "MercadoProductsWeekly.adPublishDate",
+            "operator": "inDateRange",
+            "values": [
+              "2026-07-31",
+              "2026-09-09"
+            ]
+          },
+          {
+            "member": "MercadoProductsWeekly.listingStatus",
+            "operator": "equals",
+            "values": [
+              "active"
+            ]
+          },
+          {
+            "member": "MercadoProductsWeekly.orderCount1m",
+            "operator": "gt",
+            "values": [
+              "0"
+            ]
+          },
+          {
+            "or": [
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "luminária"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "gabinete"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "luminária"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "monocromática"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "luminária"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "sensor"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "tesoura"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "unha"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "alicate"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "unha"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "tesoura"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "pinça"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "higiene"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "pessoal"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "pinças"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "sobrancelha"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "pássaro"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "decorativo"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "tapete"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "cozinha"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "espelho"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "adesivado"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "espelho"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "oval"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "balde"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "silicone"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "forma"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "gelo"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "forma"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "cubo"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "estojo"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "maquiagem"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "estojo"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "maleta"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "chuveirinho"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "adaptador"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "varal"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "andares"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "suporte"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "telefone"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "fita"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "vedação"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "amplificador"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "celular"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "forma"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "silicone"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "cesto"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "organizador"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "dispenser"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "detergente"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "lixeira"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "sensor"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "talher"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "infantil"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "escorredor"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "talheres"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "filtro"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "coador"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "fixadores"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "lençol"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "order": [
+          [
+            "MercadoProductsWeekly.orderCount1m",
+            "desc"
+          ],
+          [
+            "MercadoProductsWeekly.id",
+            "asc"
+          ]
+        ],
+        "limit": 100
+      },
+      "columns": [
+        "id",
+        "productName",
+        "adPublishDate",
+        "date",
+        "productImage",
+        "merchantCategoryL1",
+        "catalogProduct",
+        "listingStatus",
+        "isFull",
+        "isFreeShipping",
+        "merchantName",
+        "listingType",
+        "buyBoxWiner",
+        "productId",
+        "brand",
+        "priceAmount",
+        "orderCount1m",
+        "orderCount1w",
+        "numBuyBoxSellers",
+        "reviewsCount",
+        "daysInAd",
+        "reviewsRating"
+      ],
+      "data": [
+        [
+          "MLB7374608060",
+          "Kit 2 Cestos Organizadores de Rattan Pretos com Tampa e Alças de 7 Litros",
+          "2026-08-10T12:12:42.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_953529-MLA114429577802_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "UTILTOP",
+          "gold_special",
+          true,
+          "MLB76526793",
+          "UTILTOP",
+          30.92,
+          4839,
+          1129,
+          1,
+          219,
+          31,
+          4.8
+        ],
+        [
+          "MLB7299827642",
+          "Adesivo Fita Vedação Fresta Anti Ruido Acústico Porta janela",
+          "2026-07-31T10:57:15.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_942352-MLB114511353745_072026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "MEGA BAHIA",
+          "gold_special",
+          true,
+          "MLB-7299827642",
+          "MEGABAHIA",
+          23.9,
+          3659,
+          854,
+          1,
+          1282,
+          41,
+          4
+        ],
+        [
+          "MLB5007033835",
+          "Cesto Organizador Roupa Suja Dobrável Multiuso 50l Quadrado",
+          "2026-08-06T18:01:18.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_775934-MLB85854976206_062025-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "FACT IMPORTADOS",
+          "gold_special",
+          true,
+          "MLB-5007033835",
+          null,
+          32.1,
+          857,
+          200,
+          1,
+          215,
+          35,
+          4
+        ],
+        [
+          "MLB7347103490",
+          "Cesto Organizador Roupa Suja Dobrável Multiuso 40l",
+          "2026-08-06T17:51:34.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_662804-MLB86218616375_062025-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "FACT IMPORTADOS",
+          "gold_special",
+          true,
+          "MLB-7347103490",
+          null,
+          30.24,
+          857,
+          200,
+          1,
+          538,
+          35,
+          5
+        ],
+        [
+          "MLB7347103508",
+          "Cesto Organizador Roupa Suja Dobrável Multiuso 20l",
+          "2026-08-06T17:52:02.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_608381-MLB86281019921_062025-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "FACT IMPORTADOS",
+          "gold_special",
+          true,
+          "MLB-7347103508",
+          null,
+          25.79,
+          857,
+          200,
+          1,
+          256,
+          35,
+          5
+        ],
+        [
+          "MLB7540780990",
+          "Coador De Café Inox 103 Com Filtro Permanente Reutilizável Aço Inox Premium Durável Fácil De Lavar Passador De Café Grande Sem Papel Para Café Tradicional Gourmet Pétalas Douradas",
+          "2026-08-04T13:19:04.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_797528-MLA114240808098_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "LOJAMARIASANTOS",
+          "gold_special",
+          true,
+          "MLB76320149",
+          "PETALASDOURADAS",
+          69.99,
+          811,
+          189,
+          2,
+          159,
+          37,
+          4.7
+        ],
+        [
+          "MLB5042693361",
+          "Cestos Organizadores Bambu Kit 3 Multiuso Com Forro Casa",
+          "2026-08-11T16:33:53.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_624189-MLA114593821826_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "AC20260114162815",
+          "gold_special",
+          true,
+          "MLB76796817",
+          null,
+          47.99,
+          500,
+          117,
+          1,
+          213,
+          30,
+          4.9
+        ],
+        [
+          "MLB5087705381",
+          "Tapete Bar Mat Barman 45x30cm Escorredor de Silicone para Copos Drinks Cerveja Coquetel Bartender Balcão Bar Restaurante Cafeteria Apoio para Taças Utensílio Profissional Acessório para Bar e Cozinhas",
+          "2026-08-17T18:53:07.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_953254-MLA116320767121_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "R4 VARIEDADESS",
+          "gold_special",
+          true,
+          "MLB77527485",
+          null,
+          39.99,
+          500,
+          146,
+          1,
+          2,
+          24,
+          5
+        ],
+        [
+          "MLB5132554167",
+          "Forma Silicone Sabonete Oval 15 Cavidades Sabão Saboaria Roxo",
+          "2026-08-13T08:51:33.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_777660-MLA114727663882_082026-E.webp",
+          "Arte, Papelaria e Armarinho",
+          true,
+          "active",
+          null,
+          true,
+          "THINGS NERD",
+          "gold_special",
+          true,
+          "MLB77220326",
+          null,
+          54.99,
+          500,
+          125,
+          1,
+          null,
+          28,
+          null
+        ],
+        [
+          "MLB5147118941",
+          "Lixeira Automática C/ Sensor Sem Toque 20l Higiênica Cozinha Cinza",
+          "2026-08-13T06:55:49.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_666363-MLA116088918241_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "SHRIMPORTADOR",
+          null,
+          true,
+          "MLB77211754",
+          null,
+          78.99,
+          500,
+          125,
+          3,
+          9,
+          28,
+          4.7
+        ],
+        [
+          "MLB5171684253",
+          "Jogo Talheres Faqueiro Tramontina 24 Peças + Escorredor Inox Prateado",
+          "2026-08-28T09:16:52.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_745528-MLA116853569023_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "PRIME ALARMS",
+          "gold_pro",
+          true,
+          "MLB78655126",
+          null,
+          113.05,
+          500,
+          269,
+          1,
+          152,
+          13,
+          5
+        ],
+        [
+          "MLB7469337722",
+          "Kit 2 Caixas Organizadoras Grande Plástico Cesto Tampa 17lt",
+          "2026-08-20T17:30:25.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_613237-MLB97912123120_112025-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "IDEIA FACIL",
+          "gold_special",
+          true,
+          "MLB-7469337722",
+          "RAINHA",
+          158.3,
+          500,
+          167,
+          1,
+          303,
+          21,
+          4.9
+        ],
+        [
+          "MLB7481340746",
+          "Fita Eva Espuma Borracha Vedação Autocolante Adesiva 3d Pvc",
+          "2026-08-22T00:47:49.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_912625-MLB116556979535_082026-O.webp",
+          "Arte, Papelaria e Armarinho",
+          false,
+          "active",
+          null,
+          true,
+          "ACADI",
+          "gold_special",
+          true,
+          "MLB-7481340746",
+          null,
+          48.17,
+          500,
+          184,
+          1,
+          107,
+          19,
+          5
+        ],
+        [
+          "MLB7493892058",
+          "Dispenser Para Detergente Suporte Bucha Porta Esponja Branco Branco",
+          "2026-08-14T20:01:30.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_691879-MLA116199393575_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "CRVENDAS_",
+          "gold_special",
+          true,
+          "MLB77337467",
+          null,
+          27.9,
+          500,
+          130,
+          1,
+          215,
+          27,
+          4
+        ],
+        [
+          "MLB7501826764",
+          "Conjunto 4 Cestos De Bambu Organizadores C/ Um Redondo Maxx Bege",
+          "2026-08-24T20:16:45.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_847334-MLA115261703998_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "MAXXNASUACASA",
+          "gold_special",
+          true,
+          "MLB78228379",
+          null,
+          42.9,
+          500,
+          206,
+          1,
+          2,
+          17,
+          5
+        ],
+        [
+          "MLB7574778222",
+          "Forma Molde De Sabonete Artesanal Silicone 90g A 95g Grande Rosa",
+          "2026-09-01T19:49:45.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_810265-MLA114804274502_082026-O.webp",
+          "Arte, Papelaria e Armarinho",
+          true,
+          "active",
+          true,
+          true,
+          "THINGS NERD",
+          "gold_special",
+          true,
+          "MLB77321143",
+          null,
+          46.95,
+          500,
+          389,
+          1,
+          null,
+          9,
+          null
+        ],
+        [
+          "MLB7575047192",
+          "Formas De Gelo 64 Cubos Bandeja Caixa Tampa Colher Anti Odor Cor Verde",
+          "2026-08-31T16:58:02.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_840383-MLA115545207202_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          false,
+          "ALTIXGROUP",
+          "gold_special",
+          true,
+          "MLB78703829",
+          null,
+          25,
+          500,
+          350,
+          2,
+          492,
+          10,
+          4.5
+        ],
+        [
+          "MLB7580196362",
+          "2 Fita Selante Vedação Pvc À Prova D 'água Cozinha Banheiro Branco Liso",
+          "2026-08-13T19:44:16.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_908148-MLA116132345035_082026-E.webp",
+          "Arte, Papelaria e Armarinho",
+          true,
+          "active",
+          null,
+          true,
+          "TIONATOELETRONICOS",
+          "gold_special",
+          true,
+          "MLB77274473",
+          null,
+          19.99,
+          500,
+          125,
+          1,
+          214,
+          28,
+          4.3
+        ],
+        [
+          "MLB7359794984",
+          "Kit 4 Formas De Gelo Redonda Esfera Grande Para Drink Whisky",
+          "2026-08-07T23:52:13.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_725066-MLB78037045503_072024-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "MFINA BRASIL",
+          "gold_special",
+          true,
+          "MLB-7359794984",
+          "GENERICA",
+          31.9,
+          441,
+          103,
+          1,
+          137,
+          34,
+          4.9
+        ],
+        [
+          "MLB5007033833",
+          "Cesto Organizador Roupa Suja Dobrável Multiuso 50l Quadrado",
+          "2026-08-06T18:01:18.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_661441-MLB85855075306_062025-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "FACT IMPORTADOS",
+          "gold_special",
+          true,
+          "MLB-5007033833",
+          null,
+          37.99,
+          429,
+          100,
+          1,
+          215,
+          35,
+          4
+        ],
+        [
+          "MLB5007034937",
+          "Porta Jóias Caixa Maleta Viagem Couro Estojo Maquiagem",
+          "2026-08-06T19:02:09.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_917822-MLB83208786289_032025-O.webp",
+          "Joias e Relógios",
+          false,
+          "active",
+          true,
+          true,
+          "MCCI COMERCIO.IMPORTACOES",
+          "gold_special",
+          true,
+          "MLB-5007034937",
+          "MCCIPRIMEGIFTS",
+          75.77,
+          429,
+          100,
+          1,
+          586,
+          35,
+          5
+        ],
+        [
+          "MLB5007034943",
+          "Porta Jóias Caixa Maleta Viagem Couro Estojo Maquiagem",
+          "2026-08-06T19:02:10.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_624393-MLB83279899465_032025-O.webp",
+          "Joias e Relógios",
+          false,
+          "active",
+          true,
+          true,
+          "MCCI COMERCIO.IMPORTACOES",
+          "gold_special",
+          true,
+          "MLB-5007034943",
+          null,
+          71.9,
+          429,
+          100,
+          1,
+          586,
+          35,
+          5
+        ],
+        [
+          "MLB7348978044",
+          "Lixeira Com Sensor Inteligente 13l Banheiro Cozinha Branca",
+          "2026-08-06T21:05:16.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_617007-MLB114390975388_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "FM20250527140119",
+          "gold_special",
+          true,
+          "MLB-7348978044",
+          null,
+          78.99,
+          429,
+          100,
+          1,
+          66,
+          35,
+          4.9
+        ],
+        [
+          "MLB4981696937",
+          "Kit 3 Luminária Barra Led Recarregável Sensor Base Momlulu 3pcs Luz Quente 3000 K / Luz Branca Quente 4500 K / Luz Branca 6000 K",
+          "2026-08-02T10:06:48.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_981070-MLA114139250974_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "HIGOOGOO888",
+          "gold_special",
+          true,
+          "MLB76208932",
+          null,
+          69.99,
+          385,
+          90,
+          1,
+          15,
+          39,
+          4.6
+        ],
+        [
+          "MLB5094594587",
+          "Coador De Café Inox 103 Filtro Permanente Reutilizável Aço Inoxidável Sem Papel Ecológico Hypefull",
+          "2026-08-01T22:16:27.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_909662-MLA114120372084_082026-O.webp",
+          "Eletrodomésticos",
+          true,
+          "active",
+          null,
+          false,
+          "LUMIVEX",
+          "gold_pro",
+          true,
+          "MLB76204638",
+          null,
+          47.29,
+          375,
+          88,
+          2,
+          56,
+          40,
+          4.8
+        ],
+        [
+          "MLB4897776067",
+          "Forma De Silicone Em Forma De Limão 3d Para Mousse E Confeit",
+          "2026-08-31T02:37:05.130",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_837739-CBT113131035733_062026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "CNXINYUSHIJINGJUMAOYIYOBRR",
+          null,
+          true,
+          "MLB2108527998",
+          "GENERIC",
+          49.1,
+          100,
+          70,
+          4,
+          null,
+          10,
+          null
+        ],
+        [
+          "MLB5035029431",
+          "Varal De Chão Grande 3 Andares 100% Aço Inoxidável Dobrável",
+          "2026-08-11T02:40:26.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_665908-MLB115910993773_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "SX20260429145237",
+          "gold_special",
+          true,
+          "MLB-5035029431",
+          "GENERICA",
+          180.49,
+          100,
+          23,
+          1,
+          12,
+          30,
+          4.5
+        ],
+        [
+          "MLB5042208963",
+          "Kit 2 Formas De Silicone Air Fryer Reutilizável Antiaderente",
+          "2026-08-12T01:13:09.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_755180-MLB115980838941_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "RC DIGITAIS",
+          "gold_special",
+          true,
+          "MLB-5042208963",
+          null,
+          15.12,
+          100,
+          24,
+          1,
+          5,
+          29,
+          5
+        ],
+        [
+          "MLB5042690929",
+          "Kit 2 Sensor Presença Recarregável Luminárias Led Magnéticas",
+          "2026-08-12T02:55:02.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_936012-MLB115987097029_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "DHDBECFGA64827",
+          "gold_pro",
+          true,
+          "MLB-5042690929",
+          "GENERICA",
+          36.78,
+          100,
+          24,
+          1,
+          4,
+          29,
+          4
+        ],
+        [
+          "MLB5048454971",
+          "Kit Forma Teflon 12 Cavidades+12 Forminhas Silicone Cupcake",
+          "2026-08-16T22:37:06.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_626680-MLB116048141045_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "BM ATACADISTA",
+          "gold_special",
+          true,
+          "MLB2096275347",
+          "FORMAASSADEIRAANTIADERENT",
+          38.96,
+          100,
+          28,
+          2,
+          19,
+          25,
+          4.9
+        ],
+        [
+          "MLB5049002121",
+          "Fita Adesiva Vedação Box Pia Pvc Impermeável Selante Rejunte Adesivo Branco",
+          "2026-08-12T03:47:44.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_787427-MLA115990872557_082026-O.webp",
+          "Construção",
+          true,
+          "active",
+          true,
+          true,
+          "LOADINGCOSTORE",
+          "gold_special",
+          true,
+          "MLB76943921",
+          null,
+          13.92,
+          100,
+          24,
+          1,
+          4,
+          29,
+          4.6
+        ],
+        [
+          "MLB5049150105",
+          "Lixeira Sensor Zulker 16l Escritório Cozinha Automática",
+          "2026-08-13T05:40:33.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_656335-MLB113003369323_062026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "EACFGDHBE64202",
+          "gold_pro",
+          true,
+          "MLB-5049150105",
+          null,
+          77.52,
+          100,
+          25,
+          1,
+          65,
+          28,
+          5
+        ],
+        [
+          "MLB5049317197",
+          "Organizador Pia Com Dispenser Inox Porta Detergente E Bucha",
+          "2026-08-12T23:51:06.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_825432-MLB116064371205_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "ERSUTILIDADES",
+          "gold_special",
+          true,
+          "MLB-5049317197",
+          null,
+          38.02,
+          100,
+          24,
+          1,
+          6,
+          29,
+          4.8
+        ],
+        [
+          "MLB5053747829",
+          "Lixeira Automática com Sensor de 13 L para Banheiro e Cozinha",
+          "2026-08-13T01:04:08.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_836042-MLA116069555699_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "CASAONSHOPBR",
+          "gold_special",
+          true,
+          "MLB77190344",
+          null,
+          78.9,
+          100,
+          25,
+          1,
+          8,
+          28,
+          5
+        ],
+        [
+          "MLB5062879779",
+          "Kit 2 Toalhas de Microfibra para Rosto Seca Rápido Academia Fitness Esporte Treino Ginástica Higiene Pessoal Uso Diário Leve e Prática Rosa",
+          "2026-08-14T11:48:53.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_634183-MLA116179174553_082026-O.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          false,
+          true,
+          "CRVENDAS_",
+          "gold_special",
+          true,
+          "MLB77322022",
+          null,
+          30.9,
+          100,
+          26,
+          1,
+          288,
+          27,
+          4.5
+        ],
+        [
+          "MLB5062879791",
+          "Kit 2 Toalhas de Microfibra para Rosto Seca Rápido Academia Fitness Esporte Treino Ginástica Higiene Pessoal Uso Diário Leve e Prática Cinza",
+          "2026-08-14T11:48:54.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_644428-MLA114807145486_082026-E.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          true,
+          true,
+          "CRVENDAS_",
+          "gold_special",
+          true,
+          "MLB77322028",
+          null,
+          27.99,
+          100,
+          26,
+          1,
+          286,
+          27,
+          4.5
+        ],
+        [
+          "MLB5063105153",
+          "ALENKO Escorredor de Louça Preto 2 Andares Organizador de Pia e Cozinha para Pratos Copos e Talheres com Bandeja Porta Talheres Porta Copos e Drenagem 360 Graus Ajustável Revestimento Inoxidável",
+          "2026-08-14T17:48:07.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_935259-MLA114783656360_082026-O.webp",
+          "Indústria e Comércio",
+          false,
+          "active",
+          null,
+          true,
+          "GUILHERME S.D.S",
+          "gold_special",
+          true,
+          "MLB-5063105153",
+          null,
+          87.08,
+          100,
+          26,
+          1,
+          8,
+          27,
+          null
+        ],
+        [
+          "MLB5063108325",
+          "Escorredor de Louças 2 Andares Aço Carbono Preto para Pratos Copos Talheres Organizador Pia Cozinha",
+          "2026-08-14T18:31:09.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_713301-MLA114822926706_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "UTENSILIZE",
+          "gold_special",
+          true,
+          "MLB77332983",
+          null,
+          105.73,
+          100,
+          26,
+          1,
+          62,
+          27,
+          4.5
+        ],
+        [
+          "MLB5068902115",
+          "Peneira Coador 103 Filtro Inox Permanente Para Café E Chá",
+          "2026-08-15T14:15:58.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_678362-MLB114864261168_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "JVPLANCORP",
+          "gold_special",
+          true,
+          "MLB-5068902115",
+          null,
+          29.28,
+          100,
+          27,
+          1,
+          21,
+          26,
+          5
+        ],
+        [
+          "MLB5077718995",
+          "Cesto Organizador Roupa Suja Dobrável Multiuso 82l Banheiro",
+          "2026-08-17T08:03:27.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_935558-MLB114917216728_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "BCFEADHGB47580",
+          "gold_pro",
+          true,
+          "MLB-5077718995",
+          null,
+          34.92,
+          100,
+          29,
+          1,
+          4,
+          24,
+          5
+        ],
+        [
+          "MLB5081377599",
+          "Suporte Articolado Para Telefone De Carro Com Ventosa Preto",
+          "2026-08-16T01:46:34.992",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_750963-CBT101659014343_122025-O.webp",
+          "Celulares e Telefones",
+          true,
+          "active",
+          null,
+          true,
+          "CNGUANGZHOUMUXIAMAOYIYO1BRR",
+          "gold_special",
+          true,
+          "MLB2099175575",
+          "GENERIC",
+          108.77,
+          100,
+          28,
+          3,
+          null,
+          25,
+          null
+        ],
+        [
+          "MLB5093924511",
+          "Kit 7 Peças Ferramentas Manual Jogo Chave De Fenda e Phillips Imantadas Testador De Voltagem Martelo Unha 270g Alicate Universal 8 Polegadas",
+          "2026-08-12T05:48:19.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_801401-MLA115997920713_082026-O.webp",
+          "Ferramentas",
+          true,
+          "active",
+          true,
+          true,
+          "LDJVENDAS",
+          "gold_special",
+          true,
+          "MLB76992879",
+          null,
+          58.19,
+          100,
+          24,
+          2,
+          null,
+          29,
+          null
+        ],
+        [
+          "MLB5095436655",
+          "Luminária LED Recarregável 50cm com Sensor de Movimento e USB Para Armário",
+          "2026-08-14T10:11:32.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_627709-MLA116173463227_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "LUAR-SHOP",
+          "gold_special",
+          true,
+          "MLB77319866",
+          null,
+          25.89,
+          100,
+          26,
+          1,
+          null,
+          27,
+          null
+        ],
+        [
+          "MLB5095587359",
+          "150 Filtro Café Individual Descartável Coador Dose Única",
+          "2026-08-19T20:30:33.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_616448-MLB115635642674_092026-O.webp",
+          "Alimentos e Bebidas",
+          false,
+          "active",
+          null,
+          true,
+          "LEUMAX",
+          "gold_special",
+          true,
+          "MLB-5095587359",
+          null,
+          41.61,
+          100,
+          32,
+          1,
+          2,
+          22,
+          5
+        ],
+        [
+          "MLB5113195551",
+          "Molde Forma De Silicone Sabonete Oval Retangular 6 Cavidades Lilás",
+          "2026-08-13T16:49:42.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_748735-MLA116122341943_082026-E.webp",
+          "Arte, Papelaria e Armarinho",
+          true,
+          "active",
+          null,
+          true,
+          "MURD0K",
+          "gold_special",
+          true,
+          "MLB77252800",
+          "PAKEWAY",
+          29.9,
+          100,
+          25,
+          1,
+          null,
+          28,
+          null
+        ],
+        [
+          "MLB5115686847",
+          "Forma De Ovo De Páscoa Com Silicone 3 Partes Bwb 500g",
+          "2026-08-13T23:21:22.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_762956-MLA114772593070_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "GERO_FESTAS",
+          "gold_special",
+          true,
+          "MLB77300486",
+          "BWB",
+          29.99,
+          100,
+          25,
+          1,
+          5,
+          28,
+          4.6
+        ],
+        [
+          "MLB5117001869",
+          "Cesto De Palha Cachepot Organizador Fibra Natural Forro Boho Palha Natural",
+          "2026-08-21T16:42:05.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_647393-MLA115148170876_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "WL PRESENTES",
+          "gold_special",
+          true,
+          "MLB77983790",
+          null,
+          107.91,
+          100,
+          35,
+          1,
+          null,
+          20,
+          null
+        ],
+        [
+          "MLB5118915267",
+          "Lixeira Com Sensor Automatico 14l Banheiro E Cozinha Premium Cor Preto",
+          "2026-08-15T09:15:20.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_955022-MLA114854325136_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "INOVEX",
+          "gold_special",
+          true,
+          "MLB77423271",
+          "INOVEX",
+          124.39,
+          100,
+          27,
+          1,
+          71,
+          26,
+          4.9
+        ],
+        [
+          "MLB5124080291",
+          "Forma De Picolé 12 Cavidades Sorvetes Fitness Silicone Verde",
+          "2026-08-21T21:03:20.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_717672-MLA115156636594_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "MELINA_COMERCIO",
+          "gold_pro",
+          true,
+          "MLB78022996",
+          null,
+          78,
+          100,
+          35,
+          1,
+          1,
+          20,
+          4.9
+        ],
+        [
+          "MLB5125840255",
+          "Dispenser Porta Detergente E Bucha Luxo Cozinha",
+          "2026-08-25T12:16:28.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_860406-MLB114958942121_072026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "SELLNEEDS_",
+          "gold_special",
+          true,
+          "MLB-5125840255",
+          null,
+          42.99,
+          100,
+          44,
+          1,
+          340,
+          16,
+          4.6
+        ],
+        [
+          "MLB5125933889",
+          "Kit 2 Caixas Cesto Organizadores Multiuso Com Tampa 5 Litros Cor Branco",
+          "2026-08-24T19:21:55.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_940076-MLA116665201539_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "ARMAZÉMDO BÁSICO",
+          "gold_special",
+          true,
+          "MLB78217332",
+          null,
+          49.9,
+          100,
+          41,
+          1,
+          131,
+          17,
+          4.8
+        ],
+        [
+          "MLB5125941163",
+          "Caixa Organizadora Com Tampa 17 Litros Cesto Rattan Azul Cor Preto",
+          "2026-08-24T20:06:18.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_705189-MLA116666845897_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "JGM SUALOJAONLINE",
+          "gold_special",
+          true,
+          "MLB78225995",
+          null,
+          49.9,
+          100,
+          41,
+          1,
+          160,
+          17,
+          5
+        ],
+        [
+          "MLB5137232761",
+          "Carrinho Organizador Cesto Auxiliar 4 Prateleiras Multiuso Translúcido",
+          "2026-08-12T07:30:56.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_753686-MLA116002253593_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "RATELSHOP",
+          "gold_special",
+          true,
+          "MLB77035678",
+          null,
+          69.9,
+          100,
+          24,
+          1,
+          53,
+          29,
+          4.6
+        ],
+        [
+          "MLB5144707793",
+          "Kit 3 Caixa Cesto Organizador Bambu Tampa Linho 33 36 39cm",
+          "2026-08-13T01:18:47.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_772509-MLA116070246545_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "VENICCI HOME",
+          "gold_special",
+          true,
+          "MLB77190759",
+          "VENICCIHOME",
+          189.9,
+          100,
+          25,
+          1,
+          4,
+          28,
+          5
+        ],
+        [
+          "MLB5144707933",
+          "Kit 2 Cesto Organizador Bambu Linho E Corda 28x18x14cm",
+          "2026-08-13T12:52:06.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_766106-MLA114742429786_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "VENICCI HOME",
+          "gold_pro",
+          true,
+          "MLB77235446",
+          "VENICCIHOME",
+          78.9,
+          100,
+          25,
+          1,
+          2,
+          28,
+          5
+        ],
+        [
+          "MLB5147119737",
+          "Kit 6 Cestos Organizadores Quadratta 27cm Multiuso 893 Branco",
+          "2026-08-27T06:00:16.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_915003-MLA115376475628_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "CASANAWEB.NET",
+          "gold_pro",
+          true,
+          "MLB78581839",
+          null,
+          113.63,
+          100,
+          50,
+          1,
+          null,
+          14,
+          null
+        ],
+        [
+          "MLB5166471945",
+          "Kit 5 Cesto Caixa Organizadora 6lts Transparente Plástica Transparente Lisa",
+          "2026-08-13T09:00:02.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_873451-MLA116096620105_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "LOJASCLICOU",
+          "gold_special",
+          true,
+          "MLB77220695",
+          null,
+          78.9,
+          100,
+          25,
+          1,
+          22,
+          28,
+          4.5
+        ],
+        [
+          "MLB5169852269",
+          "Cesto de Roupa Suja Bambu 72L Quadrado com Tampa e Forro Removível Dobrável Organizador para Lavanderia Banheiro Quarto",
+          "2026-08-21T12:08:32.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_751690-MLA116536296787_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "CF20260423223125",
+          "gold_special",
+          true,
+          "MLB77958497",
+          null,
+          76.8,
+          100,
+          35,
+          2,
+          10,
+          20,
+          4.7
+        ],
+        [
+          "MLB5173694259",
+          "Cesto Vaso Cachepô Tipo Palha Decorativo Organizador Multiuso Sala Varanda Jardim Tendência Para Planta Natural Decoração Piquenique Artesanal Trançado Alça Rústico Porta Trecos Kit Vazado Elegante",
+          "2026-08-31T21:39:06.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_761424-MLA116990384861_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          false,
+          "HESTIA QUALIDADE",
+          "gold_special",
+          true,
+          "MLB78750882",
+          null,
+          61.8,
+          100,
+          70,
+          1,
+          null,
+          10,
+          null
+        ],
+        [
+          "MLB5179353085",
+          "Dispenser Porta Detergente Liquido Bucha 600ml Pia Cozinha Cor Preto",
+          "2026-09-02T18:21:17.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_728507-MLA117087478483_092026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "MERCADOINBOX",
+          null,
+          true,
+          "MLB78843686",
+          null,
+          28.45,
+          100,
+          88,
+          1,
+          null,
+          8,
+          null
+        ],
+        [
+          "MLB5188168175",
+          "Cesto Organizador Multiuso Para Lavanderia Divisórias Ou Cor Bege",
+          "2026-09-04T15:18:38.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_880624-MLA94056408073_102025-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "SEVEN GLASS.",
+          "gold_special",
+          true,
+          "MLB58881984",
+          null,
+          65.46,
+          100,
+          100,
+          1,
+          995,
+          6,
+          4.9
+        ],
+        [
+          "MLB6972328518",
+          "Kit Tapete Cozinha Bege Linho Antiderrapante Passadeira",
+          "2026-08-11T17:42:34.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_900812-MLB113308376183_062026-O-kit-tapete-cozinha-bege-linho-antiderrapante-passadeira.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "SOPHISHOMEDECOR",
+          null,
+          true,
+          "MLB76808910",
+          "SOPHISHOMEDECOR",
+          139.99,
+          100,
+          23,
+          1,
+          2,
+          30,
+          4.5
+        ],
+        [
+          "MLB7406822212",
+          "Balde Dobravel Retrátil 10L Flexível Silicone Reforçado Multiuso Compacto 10 Litros Verde METOO",
+          "2026-08-12T20:25:07.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_714126-MLA116052814023_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "IMPERATRIX",
+          "gold_special",
+          true,
+          "MLB77168038",
+          null,
+          27.6,
+          100,
+          24,
+          1,
+          112,
+          29,
+          4.9
+        ],
+        [
+          "MLB7406829382",
+          "Amplificador De Imagem Tela Do Celular Lupa 3d 8 Polegadas",
+          "2026-08-13T12:59:22.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_739127-MLB116109438687_082026-O.webp",
+          "Celulares e Telefones",
+          false,
+          "active",
+          null,
+          true,
+          "SAMIXS",
+          "gold_special",
+          true,
+          "MLB-7406829382",
+          null,
+          28.9,
+          100,
+          25,
+          1,
+          8,
+          28,
+          3
+        ],
+        [
+          "MLB7413460180",
+          "Kit 2 Toalhas de Microfibra para Rosto Seca Rápido Academia Fitness Esporte Treino Ginástica Higiene Pessoal Uso Diário Leve e Prática Roxo",
+          "2026-08-14T11:48:54.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_973917-MLA116179202429_082026-O.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          false,
+          true,
+          "CRVENDAS_",
+          "gold_special",
+          true,
+          "MLB77322026",
+          null,
+          30.9,
+          100,
+          26,
+          1,
+          288,
+          27,
+          4.5
+        ],
+        [
+          "MLB7413460190",
+          "Kit 2 Toalhas de Microfibra para Rosto Seca Rápido Academia Fitness Esporte Treino Ginástica Higiene Pessoal Uso Diário Leve e Prática Lilás",
+          "2026-08-14T11:48:53.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_864517-MLA116179202341_082026-O.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          false,
+          true,
+          "CRVENDAS_",
+          "gold_special",
+          true,
+          "MLB77322021",
+          null,
+          30.9,
+          100,
+          26,
+          1,
+          288,
+          27,
+          4
+        ],
+        [
+          "MLB7413460206",
+          "Kit 2 Toalhas de Microfibra para Rosto Seca Rápido Academia Fitness Esporte Treino Ginástica Higiene Pessoal Uso Diário Leve e Prática Azul",
+          "2026-08-14T11:48:54.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_915679-MLA114806972804_082026-O.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          false,
+          true,
+          "CRVENDAS_",
+          "gold_special",
+          true,
+          "MLB77322030",
+          null,
+          30.9,
+          100,
+          26,
+          1,
+          286,
+          27,
+          4.5
+        ],
+        [
+          "MLB7413460214",
+          "Kit 2 Toalhas de Microfibra para Rosto Seca Rápido Academia Fitness Esporte Treino Ginástica Higiene Pessoal Uso Diário Leve e Prática Verde",
+          "2026-08-14T11:48:53.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_706879-MLA114807002712_082026-O.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          false,
+          true,
+          "CRVENDAS_",
+          "gold_special",
+          true,
+          "MLB77322023",
+          null,
+          30.9,
+          100,
+          26,
+          1,
+          288,
+          27,
+          4.5
+        ],
+        [
+          "MLB7422388196",
+          "18l Lixeira Inteligente Automático Sensor  Banheiro Cozinha",
+          "2026-08-15T06:54:31.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_812349-MLB116222695987_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "BHBGCADEF69283",
+          "gold_special",
+          true,
+          "MLB-7422388196",
+          null,
+          89.72,
+          100,
+          27,
+          1,
+          null,
+          26,
+          null
+        ],
+        [
+          "MLB7447554272",
+          "2 Forma Molde De Sabonete Artesanal Silicone 90g 95g Grande Rosa",
+          "2026-08-13T16:37:29.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_877665-MLA116121503685_082026-E.webp",
+          "Arte, Papelaria e Armarinho",
+          true,
+          "active",
+          null,
+          true,
+          "THINGS NERD",
+          "gold_special",
+          true,
+          "MLB77250324",
+          null,
+          74.95,
+          100,
+          25,
+          1,
+          2,
+          28,
+          5
+        ],
+        [
+          "MLB7456329708",
+          "Forma Molde Margarida 1 Cavidade Silicone Sabonete Resina Rosa",
+          "2026-08-15T08:23:46.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_920867-MLA114851874138_082026-O.webp",
+          "Arte, Papelaria e Armarinho",
+          true,
+          "active",
+          true,
+          true,
+          "NANDE_BOTANICA",
+          "gold_special",
+          true,
+          "MLB77418514",
+          null,
+          19,
+          100,
+          27,
+          1,
+          2,
+          26,
+          5
+        ],
+        [
+          "MLB7461637178",
+          "Porta Óculos Escuro Sol Organizador Estojo 4 Divisórias Case Óculos Leitura Organizador Multiuso Para Maquiagem Jóias Acessórios Case Empilhável de Acrílico Moderno Expositor Vitrine Para Lupa Esporte",
+          "2026-08-19T01:30:48.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_960085-MLA115007019858_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          true,
+          true,
+          "HESTIA QUALIDADE",
+          "gold_special",
+          true,
+          "MLB77665779",
+          null,
+          63.01,
+          100,
+          32,
+          1,
+          null,
+          22,
+          null
+        ],
+        [
+          "MLB7468173080",
+          "Kit 2 Fitas Adesiva Vedação Impermeável Banheiro Pia Box Pvc Branco Liso",
+          "2026-08-14T21:51:21.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_794341-MLA116202947069_082026-O.webp",
+          "Arte, Papelaria e Armarinho",
+          true,
+          "active",
+          null,
+          true,
+          "LÍDER COMERCIOS",
+          "gold_special",
+          true,
+          "MLB77350538",
+          "LIDERCOMERCIOS",
+          19.08,
+          100,
+          26,
+          1,
+          5,
+          27,
+          4.5
+        ],
+        [
+          "MLB7469337694",
+          "Kit 2 Caixas Organizadoras Grande Plástico Cesto Tampa 17lt",
+          "2026-08-20T17:30:11.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_917158-MLB98381192471_112025-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "IDEIA FACIL",
+          "gold_pro",
+          true,
+          "MLB-7469337694",
+          null,
+          186.74,
+          100,
+          33,
+          1,
+          77,
+          21,
+          5
+        ],
+        [
+          "MLB7469337706",
+          "Kit 3 Caixas Cestos Organizadora Rattan Baixa 11l C Tampa",
+          "2026-08-20T17:30:28.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_709765-MLB96891857606_112025-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "IDEIA FACIL",
+          "gold_special",
+          true,
+          "MLB-7469337706",
+          null,
+          209.98,
+          100,
+          33,
+          1,
+          129,
+          21,
+          5
+        ],
+        [
+          "MLB7469337708",
+          "Kit 3 Caixas Cestos Organizadoras Rattan Baixa 11l C/ Tampa",
+          "2026-08-20T17:30:28.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_787462-MLB97348706765_112025-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "IDEIA FACIL",
+          "gold_special",
+          true,
+          "MLB-7469337708",
+          null,
+          158.41,
+          100,
+          33,
+          1,
+          129,
+          21,
+          5
+        ],
+        [
+          "MLB7471597384",
+          "Varal de Chão Vertical 3 Andares Dobrável com Rodinhas Suporta 30kg Grande Capacidade para Roupas Toalhas Apartamento Lavanderia 3 Níveis",
+          "2026-08-19T20:59:46.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_750386-MLA116449321881_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "PRECINHOQUECABE",
+          null,
+          true,
+          "MLB77770487",
+          null,
+          78.5,
+          100,
+          32,
+          1,
+          null,
+          22,
+          null
+        ],
+        [
+          "MLB7493653308",
+          "Jogo De Tapetes Cozinha 3 Peças Básica Algodão Decolab Comprimento 1.6 m Cor Amarelo-mostarda/Branco-cru Largura 42 cm",
+          "2026-08-20T16:16:04.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_693030-MLA116495093243_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "DECOLAB OFICIAL",
+          "gold_special",
+          true,
+          "MLB77845180",
+          null,
+          59.9,
+          100,
+          33,
+          1,
+          47,
+          21,
+          4.9
+        ],
+        [
+          "MLB7501193348",
+          "Dispenser Detergente Embutir Pia Cozinha 300ml Inox Escovado Prateado",
+          "2026-08-12T11:44:42.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_622364-MLA114656597718_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "DESTAKACABAMENTOS",
+          "gold_special",
+          true,
+          "MLB77094423",
+          null,
+          29.52,
+          100,
+          24,
+          1,
+          1,
+          29,
+          5
+        ],
+        [
+          "MLB7501828346",
+          "Espelho Oval Base Reta Led Salão Luxo 70x50 Touch Branco Neutro 4000k",
+          "2026-08-24T20:29:25.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_786798-MLA116666961065_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "IDEAMIRROR",
+          "gold_pro",
+          true,
+          "MLB78230611",
+          null,
+          256.9,
+          100,
+          41,
+          1,
+          null,
+          17,
+          null
+        ],
+        [
+          "MLB7510662642",
+          "Kit Maleta Pesca 3 Bandejas Caixa Grande + Estojo Multiuso Preto",
+          "2026-08-25T15:33:37.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_971092-MLA115301177284_082026-O.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          null,
+          true,
+          "APEXVENDAS",
+          "gold_special",
+          true,
+          "MLB78286662",
+          null,
+          70.63,
+          100,
+          44,
+          1,
+          2,
+          16,
+          5
+        ],
+        [
+          "MLB7512542418",
+          "Kit 2 Caixas Cesto Organizadores Multiuso Com Tampa 5 Litros Cor Cinza",
+          "2026-08-25T19:51:26.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_924804-MLA116718184735_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "ARMAZÉMDO BÁSICO",
+          "gold_special",
+          true,
+          "MLB78311786",
+          null,
+          49.9,
+          100,
+          44,
+          1,
+          131,
+          16,
+          4.8
+        ],
+        [
+          "MLB7531522998",
+          "Caixa Organizadora Bambu Com Tampa Cesto Retangular 32x20cm",
+          "2026-08-13T00:18:06.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_776642-MLA114701987764_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "VENICCI HOME",
+          "gold_pro",
+          true,
+          "MLB77187667",
+          "VENICCIHOME",
+          49.3,
+          100,
+          25,
+          1,
+          27,
+          28,
+          4.9
+        ],
+        [
+          "MLB7574920568",
+          "Forma Silicone Barra De Chocolate Dubai Dupla Confeitaria Marrom",
+          "2026-09-01T19:51:59.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_628745-MLA116099613011_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "DEASSIS UTENSILIOS-PRESENTES",
+          "gold_special",
+          true,
+          "MLB77224542",
+          "PRIMECHEF",
+          31.36,
+          100,
+          78,
+          1,
+          17,
+          9,
+          5
+        ],
+        [
+          "MLB7576867840",
+          "Tapete Meia Lua Antiderrapante Decoração 70x34 Porta Entrada Quarto Sala Cozinha Apartamento Isoprene Mandala Colorido",
+          "2026-09-05T02:06:32.970",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_909049-MLA115581671268_092026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "IMPORTADOSEGIFTS",
+          null,
+          true,
+          "MLB78769487",
+          "ISOPRENE",
+          40,
+          100,
+          100,
+          1,
+          null,
+          5,
+          null
+        ],
+        [
+          "MLB7579595334",
+          "Cestos Caixa Organizadora De Bambu 24x18 Com Tampa E Forro P Bambu",
+          "2026-08-13T14:15:36.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_609549-MLA114746230402_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "WL PRESENTES",
+          "gold_special",
+          true,
+          "MLB77240251",
+          null,
+          53.07,
+          100,
+          25,
+          1,
+          39,
+          28,
+          null
+        ],
+        [
+          "MLB7581707322",
+          "Forma de Picolé Sorvete Molde Silicone Antiaderente Desenforma Facil Formato ZigZag Com Tampa E 50 Palitos de Madeira Geladinho Caseiro Freezer Receitas Divertidas Razuri",
+          "2026-09-03T00:31:22.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_603250-MLA115654212188_092026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "RAZURI",
+          "gold_special",
+          true,
+          "MLB78856720",
+          null,
+          19.1,
+          100,
+          100,
+          1,
+          59,
+          7,
+          4.8
+        ],
+        [
+          "MLB7584463270",
+          "Molde De Silicone Sabonete 90g Artesanal Desenhado Forma",
+          "2026-09-03T13:33:51.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_898437-MLB87217212749_072025-O.webp",
+          "Arte, Papelaria e Armarinho",
+          false,
+          "active",
+          true,
+          true,
+          "EZY_HOME",
+          "gold_special",
+          true,
+          "MLB-7584463270",
+          "TUDODESILICONE",
+          32.9,
+          100,
+          100,
+          1,
+          38,
+          7,
+          5
+        ],
+        [
+          "MLB5049004497",
+          "Kit 6 Cesto Multiuso Organizador Gaveta Lavanderia (29x20,5) Cor Preto",
+          "2026-08-10T22:42:10.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_722092-MLA114547929664_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "ALLPLASTIC",
+          "gold_special",
+          true,
+          "MLB76599665",
+          null,
+          64.5,
+          97,
+          23,
+          1,
+          null,
+          31,
+          null
+        ],
+        [
+          "MLB7380963358",
+          "Caixa Maleta Estojo Porta Relógios Organizadora P/ 6 Lugares",
+          "2026-08-10T19:20:29.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_841605-MLB114541162184_082026-O.webp",
+          "Joias e Relógios",
+          false,
+          "active",
+          null,
+          true,
+          "MARTINHAOMARCOSMARTINHAO",
+          "gold_pro",
+          true,
+          "MLB-7380963358",
+          "QUALITYHOME",
+          149.9,
+          97,
+          23,
+          1,
+          10,
+          31,
+          5
+        ],
+        [
+          "MLB7381696136",
+          "Lixeira Inteligente Automática 12L Com Sensor para Cozinha e Banheiro",
+          "2026-08-10T17:58:07.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_887341-MLA114539670100_082026-O.webp",
+          "Indústria e Comércio",
+          true,
+          "active",
+          true,
+          true,
+          "MI20260516131828",
+          "gold_special",
+          true,
+          "MLB76583681",
+          null,
+          59.72,
+          97,
+          23,
+          1,
+          null,
+          31,
+          null
+        ],
+        [
+          "MLB7390040668",
+          "Kit Introdução Alimentar Bebê 8 Peças Burby Silicone Verde Prato Ventosa Bowl Babador Talheres Copo Papinha Infantil Unissex",
+          "2026-08-10T14:26:30.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_712316-MLA115890513263_082026-O.webp",
+          "Bebês",
+          true,
+          "active",
+          null,
+          true,
+          "AQUITEMVENDAS3",
+          "gold_special",
+          true,
+          "MLB76573811",
+          null,
+          38.99,
+          97,
+          23,
+          1,
+          null,
+          31,
+          null
+        ],
+        [
+          "MLB7509153528",
+          "Escorredor de Louça Inox 2 Andares Empolar Preto Porta Talheres Copos Pratos Cozinha Bancada Pia Organizador Secador",
+          "2026-08-10T13:41:29.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_740710-MLA115888842143_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "DECOLAB OFICIAL",
+          null,
+          true,
+          "MLB76572205",
+          "EMPOLAR",
+          107.91,
+          97,
+          23,
+          2,
+          30,
+          31,
+          4
+        ],
+        [
+          "MLB5011100181",
+          "Formas Silicone Picolé Com 300 Palitos Madeira Com Tampa",
+          "2026-08-07T06:40:03.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_984075-MLB114408467282_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          false,
+          "DOMIAR",
+          "gold_special",
+          true,
+          "MLB-5011100181",
+          null,
+          68.62,
+          88,
+          21,
+          1,
+          9,
+          34,
+          5
+        ],
+        [
+          "MLB5015414513",
+          "Coador De Café Inox 304 Reultilizável Malha Fina Com Filtro",
+          "2026-08-07T18:15:32.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_667608-MLB114431884478_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "DHUNNAS",
+          "gold_special",
+          true,
+          "MLB-5015414513",
+          null,
+          30.66,
+          88,
+          21,
+          1,
+          24,
+          34,
+          4.3
+        ],
+        [
+          "MLB5015427053",
+          "Coador De Café Inox 304 Reultilizável Malha Fina Com Filtro",
+          "2026-08-07T18:15:33.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_923971-MLB114431884512_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "DHUNNAS",
+          "gold_special",
+          true,
+          "MLB-5015427053",
+          null,
+          36.64,
+          88,
+          21,
+          1,
+          20,
+          34,
+          4.4
+        ],
+        [
+          "MLB5015439679",
+          "Coador De Café Inox 304 Reultilizável Malha Fina Com Filtro",
+          "2026-08-07T18:15:32.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_985720-MLB114431914928_082026-O-coador-de-cafe-inox-304-reultilizavel-malha-fina-com-filtro.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "DHUNNAS",
+          "gold_special",
+          true,
+          "MLB-5015439679",
+          "TYRONSTORE",
+          36.22,
+          88,
+          21,
+          1,
+          26,
+          34,
+          4.4
+        ],
+        [
+          "MLB5015834141",
+          "Balde Dobrável Retrátil Silicone C/ Rodinhas Multiuso 13l",
+          "2026-08-07T20:03:33.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_937158-MLB115783770605_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "BC20241015204333",
+          "gold_special",
+          true,
+          "MLB-5015834141",
+          null,
+          28.99,
+          88,
+          21,
+          1,
+          14,
+          34,
+          5
+        ],
+        [
+          "MLB5007033989",
+          "Cesto Organizador Roupa Suja Dobrável Multiuso 30l Listrado",
+          "2026-08-06T18:05:33.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_747926-MLB85914741862_062025-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "FACT IMPORTADOS",
+          "gold_special",
+          true,
+          "MLB-5007033989",
+          null,
+          40.99,
+          86,
+          20,
+          1,
+          112,
+          35,
+          5
+        ],
+        [
+          "MLB5007556819",
+          "Varal De Chão Dobrável 3andares Rodinha Aba Lateral Retrátil",
+          "2026-08-06T17:56:05.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_638938-MLB115726449855_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "CLIQLAR",
+          "gold_special",
+          true,
+          "MLB-5007556819",
+          null,
+          70.2,
+          86,
+          20,
+          1,
+          20,
+          35,
+          4.8
+        ]
+      ],
+      "dimensionCount": 15,
+      "lastRefreshTime": "2026-09-09T19:01:39.489Z",
+      "slowQuery": false,
+      "totalRows": 100,
+      "types": [
+        "string",
+        "string",
+        "time",
+        "time",
+        "string",
+        "string",
+        "boolean",
+        "string",
+        "boolean",
+        "boolean",
+        "string",
+        "string",
+        "boolean",
+        "string",
+        "string",
+        "number",
+        "number",
+        "number",
+        "number",
+        "number",
+        "number",
+        "number"
+      ]
+    }
+  ]
+}

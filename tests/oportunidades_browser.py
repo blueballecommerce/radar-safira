@@ -71,7 +71,7 @@ try:
       const base=structuredClone(forn.data.produtos.find(p=>p.nome==='Caneta Impressora 3D'));
       const now=new Date(); const created=new Date(now.getTime()-20*864e5).toISOString().slice(0,10);
       base.nome='Caso promissor';base.url='fixture:promissor';base.unit=10;
-      base.anuncios=[{id:'MLBTEST1',nome:'Teste',veredito:'igual',qtd:1,preco:60,vendas_mes:20,vendas_sem:7,vendas_desde_criacao:20,criadoEm:created,lidoEm:now.toISOString(),catalogo:false,avaliacoes:2,frete_gratis:true,l1:'Brinquedos e Hobbies'}];
+      base.anuncios=[{id:'MLBTEST1',nome:'Teste',revisadoEm:now.toISOString(),veredito:'igual',qtd:1,preco:60,vendas_mes:20,vendas_sem:7,vendas_desde_criacao:20,criadoEm:created,lidoEm:now.toISOString(),catalogo:false,avaliacoes:2,frete_gratis:true,l1:'Brinquedos e Hobbies'}];
       const pending=structuredClone(base);pending.nome='Caso pendente';pending.url='fixture:pendente';pending.anuncios[0].criadoEm=null;
       const closed=structuredClone(base);closed.nome='Caso fechado';closed.url='fixture:fechado';closed.anuncios[0].catalogo=true;closed.anuncios[0].bb=6;closed.anuncios[0].preco_min=60;
       forn.data.produtos=[base,pending,closed];

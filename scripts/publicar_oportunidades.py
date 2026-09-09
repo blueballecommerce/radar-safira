@@ -17,6 +17,9 @@ ASSETS=['pytest.ini','docs/oportunidades.js','docs/oportunidades.css','docs/opor
         'scripts/publicar_oportunidades.py','scripts/publicar.ps1','scripts/veredito.py','radar/fornecedor_export.py',
         'tests/test_oportunidades.py','tests/oportunidades_rules.cjs','tests/oportunidades_ui.test.cjs',
         'tests/oportunidades_browser.py','data/oportunidades/NOTAS.md','data/oportunidades/FECHAMENTO.md','data/oportunidades/confirmados.json','data/oportunidades/pendentes.json']
+ASSETS += ['scripts/auditar_oportunidades.py','scripts/revisar_pares_oportunidades.py','scripts/atualizar_catalogo_oportunidades.py','data/oportunidades/pareamentos-revisados.json']
+ASSETS += ['scripts/triar_referencias_oportunidades.py','data/oportunidades/auditoria/status.json']
+ASSETS += [str(p.relative_to(ROOT)).replace('\\','/') for pattern in ['busca-*.json','detalhes-*.json','plano.json','catalogo-site.json'] for p in (ROOT/'data/oportunidades/auditoria').glob(pattern)]
 INPUTS=['fornecedor.json','fornecedor_busca.json','fornecedor_categorias.json','fornecedor_veredito.json','fornecedor_logospan.json','fornecedor_logospan_busca.json']
 def sha(b):return hashlib.sha256(b).hexdigest()
 

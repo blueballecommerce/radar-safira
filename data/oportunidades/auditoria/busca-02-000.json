@@ -1,0 +1,3191 @@
+{
+  "lidoEm": "2026-09-09T19:01:14.483Z",
+  "fonte": "JoomPulse / MercadoProductsWeekly",
+  "groups": [
+    [
+      "figurinhas",
+      "álbum"
+    ],
+    [
+      "guarda",
+      "chuva"
+    ],
+    [
+      "touca",
+      "infantil"
+    ],
+    [
+      "luva",
+      "touch"
+    ],
+    [
+      "touca",
+      "cachecol"
+    ],
+    [
+      "rolo",
+      "removedor"
+    ],
+    [
+      "varal",
+      "inox"
+    ],
+    [
+      "bike",
+      "ergométrica"
+    ],
+    [
+      "triciclo",
+      "pars"
+    ],
+    [
+      "palitos",
+      "fio"
+    ],
+    [
+      "bolsa",
+      "transversal"
+    ],
+    [
+      "carteira",
+      "masculina"
+    ],
+    [
+      "mochila",
+      "térmica"
+    ],
+    [
+      "poltrona",
+      "puff"
+    ],
+    [
+      "bebedouro",
+      "inox"
+    ],
+    [
+      "bolsa",
+      "transporte"
+    ],
+    [
+      "bolsa",
+      "tote"
+    ],
+    [
+      "mochila",
+      "multifuncional"
+    ],
+    [
+      "saia",
+      "caipirinha"
+    ],
+    [
+      "vestido",
+      "caipirinha"
+    ],
+    [
+      "espantalhos",
+      "cesto"
+    ],
+    [
+      "espantalho",
+      "palito"
+    ],
+    [
+      "isqueiro",
+      "acendedor"
+    ],
+    [
+      "copo",
+      "quencher"
+    ],
+    [
+      "camiseta",
+      "seleção"
+    ],
+    [
+      "cabide",
+      "multifuncional"
+    ],
+    [
+      "garrafa",
+      "dobrável"
+    ],
+    [
+      "máquina",
+      "corte"
+    ],
+    [
+      "escova",
+      "anti"
+    ],
+    [
+      "escova",
+      "vapor"
+    ]
+  ],
+  "pages": [
+    {
+      "query": {
+        "dimensions": [
+          "MercadoProductsWeekly.id",
+          "MercadoProductsWeekly.productName",
+          "MercadoProductsWeekly.adPublishDate",
+          "MercadoProductsWeekly.date",
+          "MercadoProductsWeekly.productImage",
+          "MercadoProductsWeekly.merchantCategoryL1",
+          "MercadoProductsWeekly.catalogProduct",
+          "MercadoProductsWeekly.listingStatus",
+          "MercadoProductsWeekly.isFull",
+          "MercadoProductsWeekly.isFreeShipping",
+          "MercadoProductsWeekly.merchantName",
+          "MercadoProductsWeekly.listingType",
+          "MercadoProductsWeekly.buyBoxWiner",
+          "MercadoProductsWeekly.productId",
+          "MercadoProductsWeekly.brand"
+        ],
+        "measures": [
+          "MercadoProductsWeekly.priceAmount",
+          "MercadoProductsWeekly.orderCount1m",
+          "MercadoProductsWeekly.orderCount1w",
+          "MercadoProductsWeekly.numBuyBoxSellers",
+          "MercadoProductsWeekly.reviewsCount",
+          "MercadoProductsWeekly.daysInAd",
+          "MercadoProductsWeekly.reviewsRating"
+        ],
+        "filters": [
+          {
+            "member": "MercadoProductsWeekly.adPublishDate",
+            "operator": "inDateRange",
+            "values": [
+              "2026-07-31",
+              "2026-09-09"
+            ]
+          },
+          {
+            "member": "MercadoProductsWeekly.listingStatus",
+            "operator": "equals",
+            "values": [
+              "active"
+            ]
+          },
+          {
+            "member": "MercadoProductsWeekly.orderCount1m",
+            "operator": "gt",
+            "values": [
+              "0"
+            ]
+          },
+          {
+            "or": [
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "figurinhas"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "álbum"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "guarda"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "chuva"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "touca"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "infantil"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "luva"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "touch"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "touca"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "cachecol"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "rolo"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "removedor"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "varal"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "inox"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "bike"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "ergométrica"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "triciclo"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "drift"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "palitos"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "fio"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "bolsa"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "transversal"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "carteira"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "masculina"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "mochila"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "térmica"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "poltrona"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "puff"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "bebedouro"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "inox"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "bolsa"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "transporte"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "bolsa"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "tote"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "mochila"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "multifuncional"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "saia"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "caipirinha"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "vestido"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "caipirinha"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "espantalhos"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "cesto"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "espantalho"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "palito"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "isqueiro"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "acendedor"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "copo"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "quencher"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "camiseta"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "seleção"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "cabide"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "multifuncional"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "garrafa"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "dobrável"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "máquina"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "corte"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "escova"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "anti"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "escova"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "vapor"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "order": [
+          [
+            "MercadoProductsWeekly.orderCount1m",
+            "desc"
+          ],
+          [
+            "MercadoProductsWeekly.id",
+            "asc"
+          ]
+        ],
+        "limit": 100
+      },
+      "columns": [
+        "id",
+        "productName",
+        "adPublishDate",
+        "date",
+        "productImage",
+        "merchantCategoryL1",
+        "catalogProduct",
+        "listingStatus",
+        "isFull",
+        "isFreeShipping",
+        "merchantName",
+        "listingType",
+        "buyBoxWiner",
+        "productId",
+        "brand",
+        "priceAmount",
+        "orderCount1m",
+        "orderCount1w",
+        "numBuyBoxSellers",
+        "reviewsCount",
+        "daysInAd",
+        "reviewsRating"
+      ],
+      "data": [
+        [
+          "MLB7344028306",
+          "Bolsa Transversal Tático Tiracolo Tablet Pochete Impermeável",
+          "2026-08-06T12:40:26.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_705835-MLB91534774764_092025-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          true,
+          true,
+          "HANOKHUTILIDADES",
+          "gold_special",
+          true,
+          "MLB-7344028306",
+          null,
+          42.12,
+          857,
+          200,
+          1,
+          503,
+          35,
+          4
+        ],
+        [
+          "MLB5108374719",
+          "Carteira Masculina Slim Couro-legítimo-rfid-vertical-duravel Cor Dark black Desenho do tecido Liso",
+          "2026-08-21T19:55:12.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_609159-MLA115154171824_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          true,
+          true,
+          "MERCADO JLOU",
+          "gold_pro",
+          true,
+          "MLB78017183",
+          null,
+          62.57,
+          500,
+          175,
+          1,
+          352,
+          20,
+          4.8
+        ],
+        [
+          "MLB5138936859",
+          "Carteira Masculina Dólar Couro Legítmo Cowboy Trava Country Cor Café Desenho do tecido Estampa dollar",
+          "2026-08-15T00:57:05.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_646380-MLA116208014995_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          true,
+          true,
+          "LANVAN IMPORTZ",
+          null,
+          true,
+          "MLB77372939",
+          null,
+          45.52,
+          500,
+          135,
+          1,
+          null,
+          26,
+          null
+        ],
+        [
+          "MLB7385806970",
+          "Varal De Chão Roupas Dobrável Grande Aço Inoxidável 80kg",
+          "2026-08-11T10:45:18.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_687862-MLB116881311077_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "SX20260429145237",
+          "gold_special",
+          true,
+          "MLB-7385806970",
+          "GENERICA",
+          163.32,
+          500,
+          117,
+          1,
+          34,
+          30,
+          4.5
+        ],
+        [
+          "MLB7487492886",
+          "Bolsas Feminina Pequena Transversal Porta Celular Carteira Cor Marfim",
+          "2026-08-13T20:20:47.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_940441-MLA116133861881_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          true,
+          true,
+          "LUISA_RINALDI",
+          "gold_special",
+          true,
+          "MLB77278387",
+          null,
+          39.9,
+          500,
+          125,
+          1,
+          1454,
+          28,
+          4.8
+        ],
+        [
+          "MLB7510895508",
+          "Bolsa Transporte Viagem Secador Cabelo Escova Dyson Shark",
+          "2026-08-25T16:24:04.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_673855-MLB97081475436_112025-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          true,
+          true,
+          "UVVIPA",
+          "gold_special",
+          true,
+          "MLB-7510895508",
+          null,
+          59.9,
+          500,
+          219,
+          1,
+          127,
+          16,
+          5
+        ],
+        [
+          "MLB7511086240",
+          "Touca De Natação Silicone Infantil Kids Peixinho Impermeável",
+          "2026-08-25T18:49:27.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_945705-MLB111030961774_052026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          true,
+          true,
+          "KALLOMBY SPORTS",
+          "gold_special",
+          true,
+          "MLB-7511086240",
+          null,
+          19.99,
+          500,
+          219,
+          1,
+          120,
+          16,
+          4.7
+        ],
+        [
+          "MLB7581483844",
+          "Guarda Chuva Automático Reforçado Proteção Uv Cabe Na Bolsa",
+          "2026-09-03T18:31:44.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_929675-MLB93543979857_092025-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          true,
+          true,
+          "GAROAARTIGOSDECHUVA",
+          "gold_special",
+          true,
+          "MLB-7581483844",
+          null,
+          37.9,
+          500,
+          500,
+          1,
+          7066,
+          7,
+          4
+        ],
+        [
+          "MLB4998560515",
+          "Mochila Bolsa Maternidade Grande Térmica Impermeável Bebê",
+          "2026-08-05T12:32:46.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_673917-MLB115642629203_082026-O.webp",
+          "Bebês",
+          false,
+          "active",
+          true,
+          true,
+          "INDOLLE",
+          "gold_pro",
+          true,
+          "MLB-4998560515",
+          "ESTLINY",
+          104.99,
+          417,
+          97,
+          1,
+          4,
+          36,
+          5
+        ],
+        [
+          "MLB7328522640",
+          "Kit Cuba Pia Cozinha Gourmet Quadrada Aço Inox 304 Escovada 60x45cm Embutir ou Sobrepor Completa Com Acessórios e Torneira Gourmet 4 Jatos em Metal Multifuncional Luxo Moderna Anti Ruído - Softinox",
+          "2026-08-04T14:53:03.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_945773-MLA115583913559_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "SOFTINOX MGA",
+          "gold_pro",
+          true,
+          "MLB76332058",
+          null,
+          899.99,
+          405,
+          95,
+          1,
+          444,
+          37,
+          5
+        ],
+        [
+          "MLB7330177134",
+          "Fonte Bebedouro Agua Inox Gato Bomba Filtro 3.2l Silencioso",
+          "2026-08-04T19:55:44.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_783431-MLB88782350332_082025-O.webp",
+          "Pet Shop",
+          false,
+          "active",
+          true,
+          true,
+          "LOJINHARB",
+          "gold_pro",
+          true,
+          "MLB-7330177134",
+          null,
+          183.95,
+          405,
+          95,
+          1,
+          175,
+          37,
+          5
+        ],
+        [
+          "MLB7299827818",
+          "Guarda Chuva Automático Reforçado Grande Proteção Uv",
+          "2026-07-31T11:50:00.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_626181-MLB110943849179_042026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          null,
+          true,
+          "GODESHSTORE",
+          "gold_special",
+          true,
+          "MLB-7299827818",
+          null,
+          32.27,
+          366,
+          85,
+          1,
+          194,
+          41,
+          4.8
+        ],
+        [
+          "MLB5035029431",
+          "Varal De Chão Grande 3 Andares 100% Aço Inoxidável Dobrável",
+          "2026-08-11T02:40:26.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_665908-MLB115910993773_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "SX20260429145237",
+          "gold_special",
+          true,
+          "MLB-5035029431",
+          "GENERICA",
+          180.49,
+          100,
+          23,
+          1,
+          12,
+          30,
+          4.5
+        ],
+        [
+          "MLB5035308997",
+          "Carteira Personalizada Masculina Time De Futebol E Chaveiro Carteira Palmeiras",
+          "2026-08-11T03:07:04.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_774873-MLA114554875272_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          true,
+          true,
+          "RLSPRESENTES",
+          "gold_special",
+          true,
+          "MLB76679617",
+          null,
+          25.99,
+          100,
+          23,
+          1,
+          59,
+          30,
+          4.5
+        ],
+        [
+          "MLB5040709235",
+          "Bolsa Porta Garrafa Copo Térmico Squeeze Alça Transversal",
+          "2026-08-11T16:49:26.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_833044-MLB115395176680_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "COMPREMANIA",
+          "gold_special",
+          true,
+          "MLB-5040709235",
+          null,
+          31.27,
+          100,
+          23,
+          1,
+          38,
+          30,
+          4
+        ],
+        [
+          "MLB5049002407",
+          "Mochila Bag Para Motoboy, Mochila Térmica Para Entregas, Mochila Delivery Térmica 50L Reforçada Para Comida E Pizza, Bag Entregador Expansível E Impermeável,Bolsa Reforçada, Expansível E Impermeável",
+          "2026-08-11T14:33:06.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_793777-MLA114587204326_082026-O.webp",
+          "Indústria e Comércio",
+          true,
+          "active",
+          true,
+          true,
+          "WU48260508144937",
+          "gold_special",
+          true,
+          "MLB76780540",
+          null,
+          149,
+          100,
+          23,
+          1,
+          null,
+          30,
+          null
+        ],
+        [
+          "MLB5087176265",
+          "Squeeze Corrida Silicone Mole Garrafa De Água Dobrável Verde-limão",
+          "2026-08-21T15:24:30.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_787575-MLA115146324364_082026-E.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          null,
+          true,
+          "DEVSHOP",
+          null,
+          true,
+          "MLB77970886",
+          "TECWELL",
+          25.9,
+          100,
+          35,
+          1,
+          179,
+          20,
+          4.8
+        ],
+        [
+          "MLB5089301177",
+          "Estojo Case Térmico C/ Bolsa Gelo Viagem Transporte Insulina Preto",
+          "2026-08-13T16:51:06.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_951374-MLA114755093222_082026-E.webp",
+          "Indústria e Comércio",
+          true,
+          "active",
+          null,
+          true,
+          "CLICKZOOM",
+          "gold_special",
+          true,
+          "MLB77253061",
+          null,
+          147.87,
+          100,
+          25,
+          1,
+          null,
+          28,
+          null
+        ],
+        [
+          "MLB5093508445",
+          "Bolsa Transversal Peito Couro Impermeável Ombro Pochete",
+          "2026-08-19T14:12:08.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_955099-MLB84361429916_052025-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          true,
+          true,
+          "CICLÓN ACESSÓRIOS",
+          "gold_special",
+          true,
+          "MLB-5093508445",
+          null,
+          39.9,
+          100,
+          32,
+          1,
+          194,
+          22,
+          5
+        ],
+        [
+          "MLB5093508447",
+          "Bolsa Transversal Peito Couro Impermeável Ombro Pochete",
+          "2026-08-19T14:12:08.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_705282-MLB84361756910_052025-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          true,
+          true,
+          "CICLÓN ACESSÓRIOS",
+          "gold_special",
+          true,
+          "MLB-5093508447",
+          "CICLON",
+          39.9,
+          100,
+          32,
+          1,
+          194,
+          22,
+          5
+        ],
+        [
+          "MLB5104657235",
+          "Bolsa De Transporte Pet Para Cães Gatos Viagem Avião52x23x35",
+          "2026-08-21T08:59:37.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_886993-MLB116950077759_082026-O.webp",
+          "Pet Shop",
+          false,
+          "active",
+          null,
+          true,
+          "FQ20260303140100",
+          "gold_pro",
+          true,
+          "MLB-5104657235",
+          "GENERICA",
+          139.15,
+          100,
+          35,
+          1,
+          24,
+          20,
+          5
+        ],
+        [
+          "MLB5107718733",
+          "Guarda Chuva Grande Automatico Reforçado Contra Vento Origi. Cor Verde-musgo Desenho do tecido Liso",
+          "2026-08-21T16:19:56.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_988269-MLA116543988777_082026-E.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          null,
+          true,
+          "MKSARMARINHOS",
+          "gold_special",
+          true,
+          "MLB77979549",
+          null,
+          32,
+          100,
+          35,
+          1,
+          1981,
+          20,
+          4.7
+        ],
+        [
+          "MLB5113193745",
+          "Varal Suspenso Multiuso Aço Inox, 60 Prendedores Anti‑Vento para Meias, Calcinhas, Roupas Íntimas e Peças Pequenas",
+          "2026-08-22T14:13:37.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_953123-MLA116582210781_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "EG20260410072723",
+          "gold_pro",
+          true,
+          "MLB78082282",
+          null,
+          37.24,
+          100,
+          37,
+          1,
+          null,
+          19,
+          null
+        ],
+        [
+          "MLB5114492809",
+          "Kit Frio Touca Gorro + Luva Touch Celular + Cachecol Echarpe Cor Azul-marinho Tamanho UN",
+          "2026-08-20T17:55:48.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_634834-MLA115105737844_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          null,
+          true,
+          "EXPRESSOMODAS 02",
+          "gold_special",
+          true,
+          "MLB77859467",
+          "EXPRESSOMODAS",
+          35.65,
+          100,
+          33,
+          1,
+          232,
+          21,
+          4.6
+        ],
+        [
+          "MLB5114522569",
+          "Bolsa Transversal Hello Griff Bia de Couro Sintético na Cor Caramelo",
+          "2026-08-20T18:22:52.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_723510-MLA116499899183_082026-E.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          null,
+          true,
+          "HELLO GRIFF",
+          null,
+          true,
+          "MLB77864009",
+          "HELLOGRIFF",
+          37.9,
+          100,
+          33,
+          1,
+          null,
+          21,
+          null
+        ],
+        [
+          "MLB5114769375",
+          "Carteira Masculina Slim Couro-legítimo-rfid-vertical-duravel Cor Crazy horse Desenho do tecido Liso",
+          "2026-08-12T06:24:46.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_998881-MLA115999827623_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          true,
+          true,
+          "MERCADO JLOU",
+          null,
+          true,
+          "MLB77008661",
+          null,
+          62.57,
+          100,
+          24,
+          1,
+          null,
+          29,
+          null
+        ],
+        [
+          "MLB5117083085",
+          "Bolsa De Transporte Pet Cinza Cães Gatos Carro Avião 12kg",
+          "2026-08-23T08:51:50.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_637540-MLB115235415492_082026-O.webp",
+          "Pet Shop",
+          false,
+          "active",
+          null,
+          true,
+          "ST20251107101109",
+          "gold_pro",
+          true,
+          "MLB-5117083085",
+          null,
+          139.15,
+          100,
+          39,
+          1,
+          67,
+          18,
+          5
+        ],
+        [
+          "MLB5118813357",
+          "Luva Feminina Térmica Touch Screen Forrada Bege Lisa Peluciada Inverno Frio Veludo Quente Elegante Adulta Antiderrapante para Celular Confortável Casual Dia a Dia Proteção Contra o Frio Intenso",
+          "2026-08-21T19:17:55.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_710819-MLA115153257790_082026-E.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          null,
+          true,
+          "DIVERSA_STORE",
+          "gold_special",
+          true,
+          "MLB78010984",
+          "CLEANVISION",
+          29.9,
+          100,
+          35,
+          4,
+          361,
+          20,
+          4.7
+        ],
+        [
+          "MLB5123146073",
+          "Kit Bolsa Feminina Transversal De Ombro Baguete + Carteira Acambamento dos ferragens Ouro Cor Branco",
+          "2026-08-15T05:09:11.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_642667-MLA114844099296_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          true,
+          true,
+          "DÉBORA BOLSAS",
+          "gold_special",
+          true,
+          "MLB77397131",
+          "DEBORARIBEIRO",
+          62.9,
+          100,
+          27,
+          1,
+          179,
+          26,
+          4.6
+        ],
+        [
+          "MLB5125787465",
+          "Guarda Chuva Grande Reforçado Dobravel Automatico Portaria Cor Azul Desenho do tecido Preto liso",
+          "2026-08-24T18:40:40.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_705813-MLA116664032267_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          null,
+          true,
+          "LOJA_OFICIAL_JM_ECOMMERCE",
+          "gold_special",
+          true,
+          "MLB78208931",
+          null,
+          43.99,
+          100,
+          41,
+          1,
+          null,
+          17,
+          null
+        ],
+        [
+          "MLB5126372655",
+          "Chapéu Guarda Chuva Cabeça Proteção Uv Sol Camuflagem Pesca Verde Camuflado",
+          "2026-08-13T12:38:14.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_930368-MLA116109158655_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          true,
+          true,
+          "DNCDIGITALSTORE",
+          "gold_special",
+          true,
+          "MLB77234675",
+          null,
+          30.49,
+          100,
+          25,
+          1,
+          2,
+          28,
+          4.3
+        ],
+        [
+          "MLB5129602255",
+          "Varal Gigante Inox Dobrável Retrátil Para Ambientes Pequenos Azul",
+          "2026-08-24T18:58:10.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_686420-MLA116664422269_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "SINNAI_BRANDS_GROUP",
+          null,
+          true,
+          "MLB78211998",
+          null,
+          245,
+          100,
+          41,
+          1,
+          null,
+          17,
+          null
+        ],
+        [
+          "MLB5139000001",
+          "Carteira Masculina Dólar Couro Legítmo Cowboy Trava Country Cor Preto Desenho do tecido Estampa dollar",
+          "2026-08-13T22:49:20.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_843616-MLA114771603710_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          null,
+          true,
+          "LANVAN IMPORTZ",
+          "gold_pro",
+          true,
+          "MLB77295877",
+          null,
+          48.68,
+          100,
+          25,
+          1,
+          1042,
+          28,
+          4.6
+        ],
+        [
+          "MLB5142592955",
+          "Bolsa Transversal Pochete Com Alça Regulável Shouder Bag Cor Bag Transversal Dourado",
+          "2026-08-27T06:05:03.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_756570-MLA115376749148_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          null,
+          true,
+          "GAZZ BEAUTY",
+          "gold_special",
+          true,
+          "MLB78582099",
+          "GAZZONESBEAUTY",
+          55.9,
+          100,
+          50,
+          1,
+          771,
+          14,
+          4.7
+        ],
+        [
+          "MLB5155434083",
+          "Guarda Chuva Auto Abre Reforçado Contra Dobrável Proteção Uv",
+          "2026-08-29T09:10:03.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_704509-MLB116964886153_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          null,
+          true,
+          "VRAEMBALAGENS",
+          "gold_special",
+          true,
+          "MLB-5155434083",
+          null,
+          34.82,
+          100,
+          58,
+          1,
+          35,
+          12,
+          4.9
+        ],
+        [
+          "MLB5163399659",
+          "Patinete Elétrico Triciclo Infantil Drift 250w Com Bluetooth",
+          "2026-08-30T23:02:18.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_608333-MLB116946096855_082026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          true,
+          true,
+          "MILANO ECOM",
+          "gold_special",
+          true,
+          "MLB-5163399659",
+          null,
+          863.2,
+          100,
+          64,
+          1,
+          10,
+          11,
+          4
+        ],
+        [
+          "MLB5174493405",
+          "Kit Touca Infantil Inverno Forrada Gorro Kids + Luva Preta Cor Preto Desenho do tecido Dinossauro",
+          "2026-08-14T20:01:41.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_851166-MLA114825909598_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          true,
+          true,
+          "TAMIMU_TOYS",
+          null,
+          true,
+          "MLB77337481",
+          null,
+          17.09,
+          100,
+          26,
+          1,
+          null,
+          27,
+          null
+        ],
+        [
+          "MLB5175683075",
+          "Scooter Elétrico Triciclo Infantil Drift Bluetooth 350w 36v Azul-aço",
+          "2026-08-12T06:53:49.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_871103-MLA115096480672_082026-O.webp",
+          "Brinquedos e Hobbies",
+          true,
+          "active",
+          null,
+          true,
+          "AMBITO DLUX",
+          "gold_special",
+          true,
+          "MLB77830484",
+          "AMBITODLUX",
+          1047.6,
+          100,
+          24,
+          1,
+          3,
+          29,
+          5
+        ],
+        [
+          "MLB5179060821",
+          "Varal 20 Clips Inox Prendedores Pratico E Retrátil Cabide Prateado",
+          "2026-09-07T02:08:34.873",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_690017-MLA116204138381_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "SWEET HOMESTORE",
+          null,
+          true,
+          "MLB77354004",
+          null,
+          22.28,
+          100,
+          100,
+          1,
+          null,
+          3,
+          null
+        ],
+        [
+          "MLB7381759554",
+          "Escova Elétrica Infantil Dental Macia Recarregável Usb",
+          "2026-08-11T00:52:40.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_674776-MLB115503549288_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          false,
+          "active",
+          null,
+          true,
+          "TECNO_PRIMER",
+          "gold_special",
+          true,
+          "MLB-7381759554",
+          null,
+          24.65,
+          100,
+          23,
+          1,
+          11,
+          30,
+          4.6
+        ],
+        [
+          "MLB7400626900",
+          "Par Luva Motoqueiro Com Touch Moto Proteção Impermeável",
+          "2026-08-13T00:10:29.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_644340-MLB117212877497_092026-O.webp",
+          "Acessórios para Veículos",
+          false,
+          "active",
+          true,
+          true,
+          "ORIZON_STORE",
+          "gold_special",
+          true,
+          "MLB-7400626900",
+          null,
+          34.42,
+          100,
+          25,
+          1,
+          19,
+          28,
+          4
+        ],
+        [
+          "MLB7402501530",
+          "Par Luva Motoqueiro Térmica Com Touch Screen Tamanho Único",
+          "2026-08-13T06:50:25.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_746932-MLB115237099009_072026-O.webp",
+          "Acessórios para Veículos",
+          false,
+          "active",
+          null,
+          true,
+          "DAECFBHGD5603",
+          "gold_special",
+          true,
+          "MLB-7402501530",
+          null,
+          24.69,
+          100,
+          25,
+          1,
+          28,
+          28,
+          4.8
+        ],
+        [
+          "MLB7402501534",
+          "Par Luva Motoqueiro Térmica Com Touch Screen Tamanho Único",
+          "2026-08-13T06:50:25.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_746932-MLB115237099009_072026-O.webp",
+          "Acessórios para Veículos",
+          false,
+          "active",
+          true,
+          true,
+          "DAECFBHGD5603",
+          "gold_special",
+          true,
+          "MLB-7402501534",
+          "INICO",
+          24.69,
+          100,
+          25,
+          1,
+          28,
+          28,
+          4.7
+        ],
+        [
+          "MLB7404525582",
+          "Triciclo Elétrico Infantil Drift Oficial Ice Fire Led",
+          "2026-08-13T10:02:26.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_777855-MLB114731250420_082026-O.webp",
+          "Brinquedos e Hobbies",
+          false,
+          "active",
+          null,
+          true,
+          "QUALISHOPBRA",
+          "gold_special",
+          true,
+          "MLB-7404525582",
+          null,
+          905,
+          100,
+          25,
+          1,
+          11,
+          28,
+          4.8
+        ],
+        [
+          "MLB7404919108",
+          "Guarda chuva Gigante automático Premium Marca: MultiOn reforçado Portaria abre e fecha resistente com capa ajustavel",
+          "2026-08-12T14:21:17.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_602808-MLA116028733769_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          null,
+          true,
+          "BRASILARUTILIDADES",
+          "gold_special",
+          true,
+          "MLB77101303",
+          null,
+          44.99,
+          100,
+          24,
+          1,
+          null,
+          29,
+          null
+        ],
+        [
+          "MLB7425135960",
+          "Kit 4 Pentes Universal Para Máquina De Corte No 1; 2; 3 E 4",
+          "2026-08-15T15:47:32.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_877765-MLB114866330900_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          false,
+          "active",
+          null,
+          true,
+          "BARBER SHOPP62",
+          "gold_pro",
+          true,
+          "MLB-7425135960",
+          null,
+          26.99,
+          100,
+          27,
+          1,
+          4,
+          26,
+          4.5
+        ],
+        [
+          "MLB7438969830",
+          "Bolsa Feminina Transversal Ombro Baguete Metalizada Festa Y2 Preto",
+          "2026-08-12T19:51:26.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_694304-MLA114685197512_082026-E.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          null,
+          true,
+          "ELOYSEBOLSAS",
+          "gold_special",
+          true,
+          "MLB77161713",
+          null,
+          76.62,
+          100,
+          24,
+          1,
+          293,
+          29,
+          4.7
+        ],
+        [
+          "MLB7440704232",
+          "Varal Aço Inox Suspenso 40 Prendedores Meia Roupas Íntima",
+          "2026-08-17T22:31:40.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_745861-MLB114944442020_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "J2COMERCIAL",
+          "gold_special",
+          true,
+          "MLB-7440704232",
+          null,
+          27.99,
+          100,
+          29,
+          1,
+          8,
+          24,
+          5
+        ],
+        [
+          "MLB7448208834",
+          "Varal Inox 20 Prendedores Clipes Roupa Meia Cabide Suspenso",
+          "2026-08-18T18:17:57.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_636034-MLB116378917185_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "X20250517020135",
+          "gold_special",
+          true,
+          "MLB-7448208834",
+          "ANJGG",
+          14.99,
+          100,
+          30,
+          1,
+          2,
+          23,
+          5
+        ],
+        [
+          "MLB7448936910",
+          "Guarda-chuva Automático Reforçado Anti Vento Uv Preto Liso",
+          "2026-08-11T21:38:58.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_623176-MLA115970270307_082026-E.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          null,
+          true,
+          "SILVIASTOER",
+          "gold_special",
+          true,
+          "MLB76852956",
+          null,
+          30.99,
+          100,
+          23,
+          1,
+          82,
+          30,
+          4.8
+        ],
+        [
+          "MLB7459658620",
+          "Par Luva Moto Motoqueiro Térmica Impermeável Frio Touch Screen Para Proteção Inverno Motociclista Forrada Com Algodão Acessório Feminino e Masculino Motoboy Entregador Rívora Unissex Universal",
+          "2026-08-19T18:06:56.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_780052-MLA116442386797_082026-O.webp",
+          "Acessórios para Veículos",
+          true,
+          "active",
+          null,
+          true,
+          "RIVORA",
+          "gold_special",
+          true,
+          "MLB77745499",
+          null,
+          24.9,
+          100,
+          32,
+          1,
+          14,
+          22,
+          4.5
+        ],
+        [
+          "MLB7479245456",
+          "Guarda Chuva Grande Automatico Reforçado Contra Vento Origi. Cor Verde-matcha Desenho do tecido Liso",
+          "2026-08-21T17:18:51.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_738614-MLA115149775084_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          null,
+          true,
+          "MKSARMARINHOS",
+          "gold_special",
+          true,
+          "MLB77989513",
+          null,
+          32,
+          100,
+          35,
+          1,
+          1981,
+          20,
+          4.7
+        ],
+        [
+          "MLB7498499448",
+          "Kit Bolsa Feminina Transversal De Ombro Baguete + Carteira Acambamento dos ferragens Ouro Cor Preto",
+          "2026-08-15T05:24:36.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_834033-MLA114843998062_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          true,
+          true,
+          "DÉBORA BOLSAS",
+          "gold_special",
+          true,
+          "MLB77398645",
+          "DEBORARIBEIRO",
+          62.9,
+          100,
+          27,
+          1,
+          179,
+          26,
+          4.6
+        ],
+        [
+          "MLB7500535658",
+          "Kit Frio Touca Gorro + Luva Touch Celular + Cachecol Echarpe Cor Preto Tamanho UN",
+          "2026-08-24T16:40:20.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_852917-MLA115255233968_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          null,
+          true,
+          "EXPRESSOMODAS 02",
+          null,
+          true,
+          "MLB78191847",
+          "EXPRESSOMODAS",
+          35.65,
+          100,
+          41,
+          1,
+          null,
+          17,
+          null
+        ],
+        [
+          "MLB7501823374",
+          "Bolsa Celular Crossbody Transversal Couro Genuíno Carteira Cor Preto Desenho do tecido Liso",
+          "2026-08-24T19:56:24.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_898632-MLA115261340410_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          true,
+          true,
+          "FERRON SPORT",
+          "gold_pro",
+          true,
+          "MLB78223646",
+          null,
+          112.24,
+          100,
+          41,
+          1,
+          149,
+          17,
+          4.7
+        ],
+        [
+          "MLB7510673592",
+          "Bolsa Feminina Luxo Alça Corrente De Mão E Transversal Cor Branco",
+          "2026-08-13T02:28:35.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_643051-MLA116074358841_082026-E.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          null,
+          true,
+          "EXCLUSIVE BAGS",
+          "gold_pro",
+          true,
+          "MLB77196241",
+          null,
+          42.65,
+          100,
+          25,
+          1,
+          46,
+          28,
+          4.3
+        ],
+        [
+          "MLB7525158624",
+          "Kit 10 guarda chuva Automatico Grande Premium Reforçado empresa atacado super resistente pegada anatomica sombrinha MultiOn",
+          "2026-08-25T18:13:04.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_629490-MLA116714643247_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          null,
+          true,
+          "BRASILARUTILIDADES",
+          "gold_special",
+          true,
+          "MLB78301278",
+          null,
+          379.99,
+          100,
+          44,
+          1,
+          null,
+          16,
+          null
+        ],
+        [
+          "MLB7525979832",
+          "Mochila Viagem Expansivel Grande Impermeavel Multifuncional Cor Preto Desenho do tecido Liso",
+          "2026-08-26T19:28:23.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_863131-MLA115356493352_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          null,
+          true,
+          "BREVANO2",
+          null,
+          true,
+          "MLB78448317",
+          "BREVANO",
+          123.4,
+          100,
+          47,
+          1,
+          22,
+          15,
+          5
+        ],
+        [
+          "MLB7532329726",
+          "Cabide Multifuncional Madeira Escura 8 Ganchos Acessórios",
+          "2026-08-27T14:01:19.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_711292-MLA79653493253_092024-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "25DEMARCONANETI",
+          "gold_special",
+          true,
+          "MLB-7532329726",
+          null,
+          19.9,
+          100,
+          50,
+          1,
+          2,
+          14,
+          4
+        ],
+        [
+          "MLB7537967886",
+          "Bolsa Transversal Gazzone's Beauty Antirroubo Vermelha com Zíper",
+          "2026-08-27T08:34:38.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_812924-MLA115382287584_082026-E.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          null,
+          true,
+          "GAZZ BEAUTY",
+          "gold_special",
+          true,
+          "MLB78604249",
+          "GAZZONESBEAUTY",
+          55.9,
+          100,
+          50,
+          1,
+          771,
+          14,
+          4.7
+        ],
+        [
+          "MLB7542202710",
+          "Bicicleta Ergométrica Spinning Bike Ergométrica Spinning IT'S Fitness X11",
+          "2026-08-14T16:03:48.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_730814-MLA116189443767_082026-O.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          null,
+          true,
+          "ITS IMPORTS",
+          "gold_special",
+          true,
+          "MLB77329097",
+          null,
+          474.33,
+          100,
+          26,
+          1,
+          113,
+          27,
+          4
+        ],
+        [
+          "MLB7579600412",
+          "Banqueta Mini Puff Poltrona Courino Pé Palito - Mjl Móveis Acabamento da estrutura Lacado Assento Marrom",
+          "2026-09-06T02:29:17.650",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_773392-MLA117084143705_092026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "MJL MÓVEIS",
+          null,
+          true,
+          "MLB78838037",
+          null,
+          269,
+          100,
+          100,
+          1,
+          null,
+          4,
+          null
+        ],
+        [
+          "MLB7583921302",
+          "Touca Gorro + Cachecol Forrada Lã Frio Unissex Inverno",
+          "2026-09-03T11:51:24.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_696530-MLB110608125718_052026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          true,
+          true,
+          "ECOMBRASIL",
+          "gold_special",
+          true,
+          "MLB-7583921302",
+          null,
+          14.99,
+          100,
+          100,
+          1,
+          52,
+          7,
+          4
+        ],
+        [
+          "MLB7585944940",
+          "Triciclo Drift Elétrico Infantil Bluetooth Buzina Led 3 Roda Cor Pintado Colorido",
+          "2026-09-03T20:56:02.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_880727-MLA111822471371_052026-E.webp",
+          "Brinquedos e Hobbies",
+          true,
+          "active",
+          null,
+          true,
+          "DINETINFO",
+          "gold_pro",
+          true,
+          "MLB69846746",
+          null,
+          1199,
+          100,
+          100,
+          1,
+          190,
+          7,
+          4.7
+        ],
+        [
+          "MLB7585974136",
+          "Luva Segunda Pele Térmica Frio Extremo Touch Screen Unissex",
+          "2026-09-04T19:12:12.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_947789-MLB31097250154_062019-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          null,
+          true,
+          "ROUPAS TÉRMICAS",
+          "gold_special",
+          true,
+          "MLB-7585974136",
+          null,
+          149,
+          100,
+          100,
+          1,
+          58,
+          6,
+          3.9
+        ],
+        [
+          "MLB7590391016",
+          "Luva Segunda Pele Térmica Frio Extremo Touch Screen Unissex",
+          "2026-09-04T19:11:52.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_947789-MLB31097250154_062019-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          null,
+          true,
+          "LOJAROUPASTERMICAS",
+          "gold_special",
+          true,
+          "MLB-7590391016",
+          null,
+          149,
+          100,
+          100,
+          1,
+          51,
+          6,
+          4
+        ],
+        [
+          "MLB5031598275",
+          "Banqueta Banco Banquinho Dobrável Camping Praia Pesca Acampamento Com Bolsa de transporte Cor Preto",
+          "2026-08-10T12:11:24.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_744189-MLA114534955962_082026-O.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          true,
+          true,
+          "ALPHA ELETRONIC",
+          "gold_special",
+          true,
+          "MLB76570577",
+          "LUXENA",
+          39.9,
+          97,
+          23,
+          1,
+          1,
+          31,
+          4.6
+        ],
+        [
+          "MLB7379011194",
+          "Bolsa Térmica para Insulina até 2 Canetas com Gelo Reutilizável Porta Agulhas Compacta para Viagem Trabalho Passeio Transporte Seguro Conservação 6 a 8 Horas",
+          "2026-08-10T12:18:51.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_820395-MLA114535936592_082026-O.webp",
+          "Saúde",
+          true,
+          "active",
+          null,
+          true,
+          "BRWEG",
+          "gold_special",
+          true,
+          "MLB76570646",
+          null,
+          23.23,
+          97,
+          23,
+          1,
+          32,
+          31,
+          4.5
+        ],
+        [
+          "MLB5022350175",
+          "Guarda Chuva Automático Portátil Resistente Alta Qualidade",
+          "2026-08-09T17:10:43.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_774825-MLB109321491374_042026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          null,
+          true,
+          "LUBULU",
+          "gold_pro",
+          true,
+          "MLB-5022350175",
+          null,
+          38.79,
+          94,
+          22,
+          1,
+          23,
+          32,
+          5
+        ],
+        [
+          "MLB5022350181",
+          "Guarda Chuva Automático Portátil Resistente Alta Qualidade",
+          "2026-08-09T17:10:43.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_789153-MLA114470115818_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          null,
+          true,
+          "LUBULU",
+          "gold_pro",
+          true,
+          "MLB-5022350181",
+          null,
+          37.95,
+          94,
+          22,
+          1,
+          24,
+          32,
+          5
+        ],
+        [
+          "MLB7349909224",
+          "Bolsa Pochete Transversal Feminina Colors Shoulder Bag",
+          "2026-08-07T01:05:32.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_664013-MLB114763108520_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          true,
+          true,
+          "HOME_ZEN",
+          "gold_pro",
+          true,
+          "MLB-7349909224",
+          null,
+          48.4,
+          88,
+          21,
+          1,
+          null,
+          34,
+          null
+        ],
+        [
+          "MLB7356908548",
+          "Garrafa Água Silicone Soft Flask Squeeze 250ml Dobrável",
+          "2026-08-07T14:33:05.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_608103-MLB114423163600_082026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          true,
+          true,
+          "GPC_STOREE",
+          "gold_special",
+          true,
+          "MLB-7356908548",
+          "GPCSTORE",
+          24.41,
+          88,
+          21,
+          1,
+          12,
+          34,
+          5
+        ],
+        [
+          "MLB7356934032",
+          "Garrafa Água Silicone Soft Flask Squeeze 250ml Dobrável",
+          "2026-08-07T14:33:05.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_746442-MLB114425153168_082026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          null,
+          true,
+          "GPC_STOREE",
+          "gold_special",
+          true,
+          "MLB-7356934032",
+          null,
+          24.41,
+          88,
+          21,
+          1,
+          12,
+          34,
+          5
+        ],
+        [
+          "MLB7359144542",
+          "Cadeira Camping Dobrável Portátil Preta Oxford 600D Estrutura Metálica Resistente com Bolsa Transporte para Camping Praia e Pesca Winda",
+          "2026-08-07T13:19:46.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_872974-MLA114422648150_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "WINDA",
+          "gold_special",
+          true,
+          "MLB76520433",
+          "WINDA",
+          65.96,
+          88,
+          21,
+          1,
+          null,
+          34,
+          null
+        ],
+        [
+          "MLB7344028304",
+          "Bolsa Transversal Tático Tiracolo Tablet Pochete Impermeável",
+          "2026-08-06T12:40:26.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_996537-MLB71394545448_082023-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          true,
+          true,
+          "HANOKHUTILIDADES",
+          "gold_special",
+          true,
+          "MLB-7344028304",
+          null,
+          45.36,
+          86,
+          20,
+          1,
+          503,
+          35,
+          4
+        ],
+        [
+          "MLB5086611739",
+          "Luva Impermeavel Chuva Térmica Touch Screen Motoboy Celular Preto Unico",
+          "2026-08-05T22:52:05.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_866131-MLA115678705265_082026-O.webp",
+          "Acessórios para Veículos",
+          true,
+          "active",
+          true,
+          true,
+          "TARSLOJA",
+          "gold_special",
+          true,
+          "MLB76438470",
+          "TARSLOJA",
+          23.91,
+          83,
+          19,
+          1,
+          67,
+          36,
+          4.7
+        ],
+        [
+          "MLB7339018440",
+          "Bicicleta Ergométrica Spinning Semi Profissional Bike Sport Preto",
+          "2026-08-05T22:41:53.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_603352-MLA115677258417_082026-O.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          null,
+          true,
+          "PROMOLARUTILIDADES",
+          "gold_special",
+          true,
+          "MLB76437466",
+          null,
+          589,
+          83,
+          19,
+          1,
+          null,
+          36,
+          null
+        ],
+        [
+          "MLB7322093786",
+          "Mochila Térmica Oxford 30l Conserva Até 16h Impermeável",
+          "2026-08-04T00:58:02.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_774369-MLB114205867602_082026-O.webp",
+          "Indústria e Comércio",
+          false,
+          "active",
+          null,
+          true,
+          "VB20260407101014",
+          "gold_special",
+          true,
+          "MLB-7322093786",
+          "VIRTUSIMPORTSBRASIL",
+          65.99,
+          81,
+          19,
+          1,
+          22,
+          37,
+          5
+        ],
+        [
+          "MLB7327479822",
+          "Mochila Bolsa Maternidade Grande Térmica Impermeável Bebê",
+          "2026-08-04T14:45:05.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_662326-MLB114198689100_082026-O.webp",
+          "Bebês",
+          false,
+          "active",
+          true,
+          true,
+          "INDOLLE",
+          "gold_pro",
+          true,
+          "MLB-7327479822",
+          null,
+          116.01,
+          81,
+          19,
+          1,
+          4,
+          37,
+          5
+        ],
+        [
+          "MLB7330105642",
+          "Mochila Térmica Cooler Grande Impermeável Reforçada Praia Viagem Camping Trabalho Marmita Alimentos Bebidas Preto",
+          "2026-08-04T14:00:03.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_918876-MLA115578494921_082026-O.webp",
+          "Indústria e Comércio",
+          true,
+          "active",
+          null,
+          true,
+          "MAVI_IMPORTADOS",
+          "gold_pro",
+          true,
+          "MLB76322607",
+          "PETPROJECT",
+          49,
+          81,
+          19,
+          1,
+          2,
+          37,
+          4.9
+        ],
+        [
+          "MLB7331421908",
+          "Varal Multiuso Aço Inox Cabideiro com Pregadores Cor Prateado",
+          "2026-08-04T15:40:29.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_659216-MLA115582753693_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "PP20250612024947",
+          "gold_pro",
+          true,
+          "MLB76330668",
+          null,
+          30.9,
+          81,
+          19,
+          1,
+          1,
+          37,
+          5
+        ],
+        [
+          "MLB7315274560",
+          "Suporte De Galão Garrafão Água 10l 20l Inox Bebedouro",
+          "2026-08-03T00:00:01.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_700131-MLB114145307468_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "CLARIFONTE",
+          "gold_special",
+          true,
+          "MLB-7315274560",
+          null,
+          74.9,
+          79,
+          18,
+          1,
+          11,
+          38,
+          4.7
+        ],
+        [
+          "MLB7316870710",
+          "Bolsa Transversal Feminina de Nylon Preta com Zíper e Acabamento Níquel",
+          "2026-08-03T06:39:10.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_778459-MLA115494930885_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          null,
+          true,
+          "UNISTARMODAS",
+          "gold_special",
+          true,
+          "MLB76220037",
+          "UNISTAR",
+          39.99,
+          79,
+          18,
+          1,
+          null,
+          38,
+          null
+        ],
+        [
+          "MLB7318797266",
+          "Torneira De Aço Inox Com Alavanca Para Bebedouro/ Dispenser",
+          "2026-08-03T13:30:04.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_914047-MLB115826673215_082026-O.webp",
+          "Eletrodomésticos",
+          false,
+          "active",
+          null,
+          true,
+          "ELO_AGIL",
+          "gold_special",
+          true,
+          "MLB-7318797266",
+          "GENERICO",
+          71.01,
+          79,
+          18,
+          1,
+          17,
+          38,
+          4.8
+        ],
+        [
+          "MLB4975508159",
+          "Mesa Camping Dobrável Portátil Acampamento Resistente Praia Churrasco C/ Bolsa De Transporte Cor Preto",
+          "2026-07-31T12:41:42.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_840554-MLA114060625792_072026-O.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          true,
+          true,
+          "MODALARSC",
+          "gold_special",
+          true,
+          "MLB76109402",
+          "USD",
+          74.9,
+          73,
+          17,
+          1,
+          3,
+          41,
+          4.9
+        ],
+        [
+          "MLB4975931837",
+          "Luva Moto Motociclista Impermeável Proteção Touch Motoqueiro Preto Unico",
+          "2026-07-31T17:53:34.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_732231-MLB111243810097_052026-O.webp",
+          "Acessórios para Veículos",
+          false,
+          "active",
+          false,
+          true,
+          "HFDGEBCAH80141",
+          "gold_special",
+          true,
+          "MLB-4975931837",
+          null,
+          36.76,
+          73,
+          17,
+          1,
+          12,
+          41,
+          3.8
+        ],
+        [
+          "MLB4975939111",
+          "Kit Motociclista Luva Proteção Touch Balaclava Motoqueiro Preto Unico",
+          "2026-07-31T17:49:10.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_870140-MLB112507184350_062026-O.webp",
+          "Acessórios para Veículos",
+          false,
+          "active",
+          null,
+          true,
+          "HFDGEBCAH80141",
+          "gold_special",
+          true,
+          "MLB-4975939111",
+          "MOTOCROSSMOTOBOYMAOCICLIS",
+          50.29,
+          73,
+          17,
+          1,
+          13,
+          41,
+          4.8
+        ],
+        [
+          "MLB4981699571",
+          "Carteira Masculina Slim Porta Cartões Rfid Antifurto Fininha Porta Cartão de Credito",
+          "2026-07-31T10:44:20.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_781870-MLA114056787892_072026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          true,
+          true,
+          "LHP IMPORTS",
+          "gold_special",
+          true,
+          "MLB76101016",
+          null,
+          17.46,
+          73,
+          17,
+          1,
+          11,
+          41,
+          4.7
+        ],
+        [
+          "MLB7299827828",
+          "Guarda Chuva Automático Reforçado Grande Proteção Uv",
+          "2026-07-31T11:49:59.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_703336-MLB99731236301_112025-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          true,
+          true,
+          "GODESHSTORE",
+          "gold_special",
+          true,
+          "MLB-7299827828",
+          null,
+          30.37,
+          73,
+          17,
+          1,
+          208,
+          41,
+          5
+        ],
+        [
+          "MLB7301916582",
+          "Torneira De Aço Inox Com Alavanca Para Bebedouro/ Dispenser",
+          "2026-07-31T12:58:15.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_748316-MLB115516325971_082026-O.webp",
+          "Eletrodomésticos",
+          false,
+          "active",
+          null,
+          true,
+          "ELO_AGIL",
+          "gold_special",
+          true,
+          "MLB-7301916582",
+          null,
+          175,
+          73,
+          17,
+          1,
+          17,
+          41,
+          4.8
+        ],
+        [
+          "MLB7304232738",
+          "Drift Trike Elétrico Triciclo Elétrico Infantil Recarregável",
+          "2026-07-31T19:03:36.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_886892-MLB114209014572_082026-O.webp",
+          "Brinquedos e Hobbies",
+          false,
+          "active",
+          null,
+          true,
+          "AMBITODLUX",
+          "gold_special",
+          true,
+          "MLB-7304232738",
+          null,
+          958.36,
+          73,
+          17,
+          1,
+          6,
+          41,
+          5
+        ],
+        [
+          "MLB7304557500",
+          "Carteira Masculina Couro Legítimo + Relógio E Óculos Cor Preto Desenho do tecido Liso",
+          "2026-07-31T23:07:38.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_611804-MLA114080195886_072026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          true,
+          true,
+          "LIMA_SHOP_PREMIUM",
+          "gold_special",
+          true,
+          "MLB76170056",
+          null,
+          78.9,
+          73,
+          17,
+          1,
+          163,
+          41,
+          4.6
+        ],
+        [
+          "MLB5040683857",
+          "Bolsa Porta Garrafa Copo Térmico Squeeze Alça Transversal",
+          "2026-08-11T16:49:26.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_617172-MLB116583008145_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "COMPREMANIA",
+          "gold_special",
+          true,
+          "MLB-5040683857",
+          null,
+          28,
+          50,
+          12,
+          1,
+          43,
+          30,
+          4
+        ],
+        [
+          "MLB5041835503",
+          "Mini Guarda Chuva De Bolso Anti-uv Portátil Dobrável Estojo",
+          "2026-08-11T21:49:42.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_711719-MLB115061109240_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          true,
+          true,
+          "VIVA_STORE_PG",
+          "gold_special",
+          true,
+          "MLB-5041835503",
+          null,
+          29.99,
+          50,
+          12,
+          1,
+          3,
+          30,
+          5
+        ],
+        [
+          "MLB5047334449",
+          "Varal Aço Inox Suspenso Roupa Íntima 40 Prendedor Premium",
+          "2026-08-12T15:42:33.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_607267-MLB116320749125_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "TRABUCOS_STORE",
+          "gold_special",
+          true,
+          "MLB-5047334449",
+          null,
+          24.65,
+          50,
+          12,
+          1,
+          6,
+          29,
+          4.5
+        ],
+        [
+          "MLB5049007321",
+          "Varal Retratil De Parede Aco Inox 5 Metros Corda Invisivel Dobravel Economiza Espaco Para Apartamento Lavanderia Sacada Varanda Banheiro Varal Extensivel Compacto Alta Qualidade",
+          "2026-08-12T18:51:15.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_819883-MLA116046511247_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "CFGBECADH45257",
+          "gold_pro",
+          true,
+          "MLB77153495",
+          null,
+          43.53,
+          50,
+          12,
+          1,
+          null,
+          29,
+          null
+        ],
+        [
+          "MLB5051885951",
+          "Kit Óculos Natação Infantil Com Touca Silicone Criança",
+          "2026-08-13T08:51:37.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_869833-MLB114727089330_082026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          null,
+          true,
+          "DOOSI",
+          "gold_special",
+          true,
+          "MLB-5051885951",
+          null,
+          41.34,
+          50,
+          13,
+          1,
+          null,
+          28,
+          null
+        ],
+        [
+          "MLB5057081649",
+          "Bolsa Academia Mala Mão Viagem Transversal Blogueira Grande",
+          "2026-08-13T14:12:13.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_679931-MLA114746344226_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          true,
+          true,
+          "PONTODOPRESENTE",
+          "gold_special",
+          true,
+          "MLB77240111",
+          "ROSALIMAOMODAINFANTIL",
+          48.49,
+          50,
+          13,
+          1,
+          null,
+          28,
+          null
+        ],
+        [
+          "MLB5057425855",
+          "Patinete Elétrico Triciclo Drift Infantil 36v 350w 100kg Led",
+          "2026-08-13T21:18:45.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_644186-MLB116137349215_082026-O.webp",
+          "Brinquedos e Hobbies",
+          false,
+          "active",
+          null,
+          true,
+          "MUNDOFACIL",
+          "gold_pro",
+          true,
+          "MLB-5057425855",
+          null,
+          957.62,
+          50,
+          13,
+          1,
+          6,
+          28,
+          4.9
+        ],
+        [
+          "MLB5068990155",
+          "Cera Pomada Stick Antifrizz Cabelo Escova Frizz Hair Bastão",
+          "2026-08-15T14:41:37.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_976387-MLB116243113127_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          false,
+          "active",
+          true,
+          true,
+          "ABLESTOREBR",
+          "gold_pro",
+          true,
+          "MLB-5068990155",
+          null,
+          29.93,
+          50,
+          13,
+          1,
+          3,
+          26,
+          5
+        ]
+      ],
+      "dimensionCount": 15,
+      "lastRefreshTime": "2026-09-09T19:01:14.185Z",
+      "slowQuery": false,
+      "totalRows": 100,
+      "types": [
+        "string",
+        "string",
+        "time",
+        "time",
+        "string",
+        "string",
+        "boolean",
+        "string",
+        "boolean",
+        "boolean",
+        "string",
+        "string",
+        "boolean",
+        "string",
+        "string",
+        "number",
+        "number",
+        "number",
+        "number",
+        "number",
+        "number",
+        "number"
+      ]
+    }
+  ]
+}

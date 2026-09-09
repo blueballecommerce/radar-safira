@@ -1,0 +1,566 @@
+{
+  "lidoEm": "2026-09-09T18:27:17Z",
+  "fonte": "JoomPulse / MercadoProductsWeekly",
+  "pages": [
+    {
+      "columns": [
+        "id",
+        "productName",
+        "adPublishDate",
+        "date",
+        "orderCount1m",
+        "priceAmount"
+      ],
+      "data": [
+        [
+          "MLB7419559530",
+          "Caneta 3d Impressora Profissional + Refil Filamento + Usb",
+          "2026-08-14T19:02:13.000",
+          "2026-09-08T00:00:00.000",
+          100,
+          46.9
+        ],
+        [
+          "MLB7419571636",
+          "Caneta 3d Impressora Profissional + Refil Filamento + Usb",
+          "2026-08-14T19:02:13.000",
+          "2026-09-08T00:00:00.000",
+          100,
+          46.9
+        ],
+        [
+          "MLB7437062250",
+          "Luminária Led 3d Escrever Lousa + Caneta + Controle 16 Cores",
+          "2026-08-17T12:30:26.000",
+          "2026-09-08T00:00:00.000",
+          100,
+          66.92
+        ],
+        [
+          "MLB5028024235",
+          "Caneta 3d Impressora Profissional + Refil +cabo Usb",
+          "2026-08-10T05:30:31.000",
+          "2026-09-08T00:00:00.000",
+          97,
+          44.9
+        ],
+        [
+          "MLB4974976113",
+          "Caneta 3d Adulto Infantil  Refil E Cabo Usb Criativa Bivolt",
+          "2026-07-31T13:27:59.000",
+          "2026-09-08T00:00:00.000",
+          73,
+          41.18
+        ],
+        [
+          "MLB4974988389",
+          "Caneta 3d Adulto Infantil  Refil E Cabo Usb Criativa Bivolt",
+          "2026-07-31T13:38:06.000",
+          "2026-09-08T00:00:00.000",
+          73,
+          41.18
+        ],
+        [
+          "MLB5125572767",
+          "Caneta 3d Impressora Profissional + Refil + Cabo Usb",
+          "2026-08-24T18:48:24.000",
+          "2026-09-08T00:00:00.000",
+          50,
+          75.04
+        ],
+        [
+          "MLB7419571638",
+          "Caneta 3d Impressora Profissional + Refil Filamento + Usb",
+          "2026-08-14T19:02:13.000",
+          "2026-09-08T00:00:00.000",
+          50,
+          46.9
+        ],
+        [
+          "MLB5107750147",
+          "Caneta 3d Impressora Profissional + Refil Filamento + Usb",
+          "2026-08-21T17:38:20.000",
+          "2026-09-08T00:00:00.000",
+          50,
+          45.99
+        ],
+        [
+          "MLB7358369786",
+          "Caneta 3d Impressora Profissional Infantil + Cabo Usb+refil",
+          "2026-08-07T17:49:59.000",
+          "2026-09-08T00:00:00.000",
+          44,
+          40.45
+        ],
+        [
+          "MLB7302273388",
+          "Caneta 3d Adulto Infantil  Refil E Cabo Usb Criativa Bivolt",
+          "2026-07-31T13:38:06.000",
+          "2026-09-08T00:00:00.000",
+          37,
+          41.18
+        ],
+        [
+          "MLB5131485663",
+          "Canetas Acrílicas Multifila 24 Unidades Para Impressão 3d 24 Cores",
+          "2026-08-20T20:47:32.000",
+          "2026-09-08T00:00:00.000",
+          25,
+          65.97
+        ],
+        [
+          "MLB7488094396",
+          "Canetas Acrílicas Multifila 48 Unidades Para Impressão 3d 48 Cores",
+          "2026-08-20T17:30:48.000",
+          "2026-09-08T00:00:00.000",
+          25,
+          124.97
+        ],
+        [
+          "MLB5070579131",
+          "Caneta 3d Impressora Profissional + Cabo Usb + Refil Brinde",
+          "2026-08-15T23:08:03.000",
+          "2026-09-08T00:00:00.000",
+          25,
+          58.8
+        ],
+        [
+          "MLB5069700897",
+          "Caneta Acrílica Multfila 3d Marker - 24 Unidades",
+          "2026-08-15T17:49:02.000",
+          "2026-09-08T00:00:00.000",
+          25,
+          65.99
+        ],
+        [
+          "MLB5028024233",
+          "Caneta 3d Impressora Profissional + Refil +cabo Usb Infantil",
+          "2026-08-10T05:30:31.000",
+          "2026-09-08T00:00:00.000",
+          24,
+          44.9
+        ],
+        [
+          "MLB5047838987",
+          "Caneta 3d Impressora Profissional + Refil Filamento + Usb",
+          "2026-08-12T17:39:31.000",
+          "2026-09-08T00:00:00.000",
+          5,
+          55.99
+        ],
+        [
+          "MLB5131015583",
+          "Caneta 3d Profissional Kit Completo Filamentos Usb Criativa Cor Lilás",
+          "2026-08-13T23:01:07.000",
+          "2026-09-08T00:00:00.000",
+          5,
+          49.9
+        ],
+        [
+          "MLB7399295850",
+          "Caneta 3d Impressora Profissional Infantil + Refil Filamento",
+          "2026-08-12T19:22:15.000",
+          "2026-09-08T00:00:00.000",
+          5,
+          49.75
+        ],
+        [
+          "MLB5180076643",
+          "Caneta 3D Impressora Profissional Infantil + Refil Filamento 9m + Cabo Usb - Rosa",
+          "2026-08-13T21:01:46.000",
+          "2026-09-08T00:00:00.000",
+          5,
+          48.22
+        ],
+        [
+          "MLB7398517864",
+          "Caneta 3d Impressora Profissional + Refil Filamento + Usb",
+          "2026-08-12T17:39:31.000",
+          "2026-09-08T00:00:00.000",
+          5,
+          55.99
+        ],
+        [
+          "MLB5070579133",
+          "Caneta 3d Impressora Profissional + Cabo Usb + Refil Brinde",
+          "2026-08-15T23:08:03.000",
+          "2026-09-08T00:00:00.000",
+          5,
+          59.15
+        ],
+        [
+          "MLB7373568998",
+          "Caneta 3d Impressora Profissional + Refil +cabo Usb",
+          "2026-08-10T05:30:31.000",
+          "2026-09-08T00:00:00.000",
+          5,
+          44.9
+        ],
+        [
+          "MLB7509699840",
+          "Caneta 3d Profissional Kit Completo Filamentos Usb Criativa Cor Azul-celeste",
+          "2026-08-14T21:11:29.000",
+          "2026-09-08T00:00:00.000",
+          5,
+          49.9
+        ],
+        [
+          "MLB7410416970",
+          "Caneta Profissional 3d Kit Refil Filamento Educativo Escolar",
+          "2026-08-13T19:45:12.000",
+          "2026-09-08T00:00:00.000",
+          5,
+          38.84
+        ],
+        [
+          "MLB7399275670",
+          "Caneta 3d Impressora Profissional Infantil C/ Filamento",
+          "2026-08-12T19:22:15.000",
+          "2026-09-08T00:00:00.000",
+          5,
+          49.75
+        ],
+        [
+          "MLB5039415221",
+          "Kit Presente Oficial Flamengo | Caneca 3d 270ml + Caneta + C",
+          "2026-08-11T13:00:32.000",
+          "2026-09-08T00:00:00.000",
+          5,
+          85.19
+        ],
+        [
+          "MLB7492064942",
+          "Caneta 3d Impressora Profissional Infantil + Cabo Usb+refil",
+          "2026-08-23T14:33:19.000",
+          "2026-09-08T00:00:00.000",
+          5,
+          40.85
+        ],
+        [
+          "MLB5061700335",
+          "Caneta Yzs Sobrancelha Fio A Fio 3d Multi Pontas",
+          "2026-08-14T10:55:24.000",
+          "2026-09-08T00:00:00.000",
+          5,
+          56.98
+        ],
+        [
+          "MLB5158796777",
+          "Caneta 3D Impressora Profissional Infantil Refil Cabo Desenho Filamentos Impressão Cores Resina Pen - Azul",
+          "2026-08-06T13:50:55.000",
+          "2026-09-08T00:00:00.000",
+          4,
+          59.99
+        ],
+        [
+          "MLB7431520420",
+          "Caneta 3D Impressora Profissional Infantil + Refil Filamento 9m + Cabo Usb - Amarelo",
+          "2026-08-16T17:27:07.000",
+          "2026-09-08T00:00:00.000",
+          4,
+          48.04
+        ],
+        [
+          "MLB5180076639",
+          "Caneta 3D Impressora Profissional Infantil + Refil Filamento 9m + Cabo Usb - Azul",
+          "2026-08-07T13:11:51.000",
+          "2026-09-08T00:00:00.000",
+          4,
+          48.22
+        ],
+        [
+          "MLB7351678752",
+          "Caneta 3d Impressora Infantil Recarregável Com Refil 10cores",
+          "2026-08-07T05:54:11.000",
+          "2026-09-08T00:00:00.000",
+          4,
+          99.19
+        ],
+        [
+          "MLB4992702787",
+          "Caneta Impressora 3d Pen Profissional E Infantil",
+          "2026-08-04T15:56:46.000",
+          "2026-09-08T00:00:00.000",
+          4,
+          42.9
+        ],
+        [
+          "MLB7461780406",
+          "Canetas Acrílicas Multifila 48 Unidades Para Impressão 3d",
+          "2026-08-20T00:19:31.000",
+          "2026-09-08T00:00:00.000",
+          4,
+          124.97
+        ],
+        [
+          "MLB5131484349",
+          "Canetas Acrílicas Multifila 12 Unidades Para Impressão 3d Multi Cor",
+          "2026-08-20T17:31:27.000",
+          "2026-09-08T00:00:00.000",
+          4,
+          41.97
+        ],
+        [
+          "MLB4977763925",
+          "Kit Filamento Pla Premium Para Caneta 3d Infantil 10 Cores",
+          "2026-08-01T08:02:03.000",
+          "2026-09-08T00:00:00.000",
+          4,
+          28.79
+        ],
+        [
+          "MLB7318796466",
+          "Kit Caneta 3d Infantil Tapete Silicone Livro 3d Pen Impresso",
+          "2026-08-03T13:28:46.000",
+          "2026-09-08T00:00:00.000",
+          4,
+          165.77
+        ],
+        [
+          "MLB7509699830",
+          "Caneta 3d Profissional Kit Completo Filamentos Usb Criativa Cor Amarelo",
+          "2026-08-15T05:23:50.000",
+          "2026-09-08T00:00:00.000",
+          4,
+          49.9
+        ],
+        [
+          "MLB5135318217",
+          "Caneta Artística Topacme 3d Relief, Canetas De Pipoca Puffy, 1 Bag",
+          "2026-08-06T09:18:17.000",
+          "2026-09-08T00:00:00.000",
+          3,
+          33.33
+        ],
+        [
+          "MLB5022225011",
+          "Caneta Canetinha Stylus Para Nintendo 3ds Old Preta",
+          "2026-08-08T23:30:34.000",
+          "2026-09-08T00:00:00.000",
+          3,
+          18.99
+        ],
+        [
+          "MLB7568503340",
+          "Kit 12 Canetas Marcador Acrílico Pincel Vidro Madeira 3d Cor",
+          "2026-08-31T22:00:48.000",
+          "2026-09-08T00:00:00.000",
+          3,
+          33.43
+        ],
+        [
+          "MLB7389052956",
+          "Caneta 3d Impressora Infantil + Refil Filamento + Cabo Usb",
+          "2026-08-11T15:39:33.000",
+          "2026-09-08T00:00:00.000",
+          3,
+          45
+        ],
+        [
+          "MLB7431035236",
+          "Canetas Acrílicas Multifila 12 Unidades Para Impressão 3d",
+          "2026-08-16T15:12:14.000",
+          "2026-09-08T00:00:00.000",
+          3,
+          41.97
+        ],
+        [
+          "MLB7433095258",
+          "Caneta 3d Impressão Azul Com Filamento Refil Infantil",
+          "2026-08-17T02:49:41.000",
+          "2026-09-08T00:00:00.000",
+          2,
+          49.79
+        ],
+        [
+          "MLB5150816215",
+          "Kit 24 Canetas Marcadoras Impressão 3d Multfila Coloridas",
+          "2026-08-28T14:24:13.000",
+          "2026-09-08T00:00:00.000",
+          2,
+          93.9
+        ],
+        [
+          "MLB4979899351",
+          "Caneta 3d Impressora Infantil Kit Filamento Cabo Usb",
+          "2026-08-01T16:25:49.000",
+          "2026-09-08T00:00:00.000",
+          2,
+          45.43
+        ],
+        [
+          "MLB5088597443",
+          "Caneta 3d Impressora Infantil Com Filamento E Cabo Usb",
+          "2026-08-18T22:02:14.000",
+          "2026-09-08T00:00:00.000",
+          2,
+          79.9
+        ],
+        [
+          "MLB5145206885",
+          "Caneta 3d Infantil Impressora 3d Criativa Com Filamentos Pla",
+          "2026-08-27T14:37:50.000",
+          "2026-09-08T00:00:00.000",
+          1,
+          52.9
+        ],
+        [
+          "MLB7418995494",
+          "Caneta 3d Caneta De Impressão Pintura Desenho",
+          "2026-08-14T17:28:02.000",
+          "2026-09-08T00:00:00.000",
+          1,
+          43.55
+        ],
+        [
+          "MLB7309903100",
+          "Recargas De Filamento Pcl Para Caneta De Impressão 3d De 1,7",
+          "2026-08-01T18:16:40.000",
+          "2026-09-08T00:00:00.000",
+          1,
+          142.91
+        ],
+        [
+          "MLB5174471223",
+          "Kit Caneta 3d Impressora Infantil + Filamento 100m 20 Cores",
+          "2026-09-01T18:13:23.000",
+          "2026-09-08T00:00:00.000",
+          1,
+          148.72
+        ],
+        [
+          "MLB7565420938",
+          "Caneta 3d Impressora Profissional + Refil Filamento + Usb Índigo",
+          "2026-08-15T01:22:50.000",
+          "2026-09-08T00:00:00.000",
+          1,
+          53.53
+        ],
+        [
+          "MLB5078342061",
+          "Molde Caneta 3d Placa Rastreio Grade Guias 220mm",
+          "2026-08-17T09:42:27.000",
+          "2026-09-08T00:00:00.000",
+          1,
+          73.53
+        ],
+        [
+          "MLB7543709602",
+          "Caneta 3d Impressora Profissional + Refil +cabo Usb Infantil",
+          "2026-08-29T00:16:45.000",
+          "2026-09-08T00:00:00.000",
+          1,
+          47.34
+        ],
+        [
+          "MLB7553277812",
+          "Porta Caneta Moletons Com Nome Personalizado 3d",
+          "2026-08-29T22:48:54.000",
+          "2026-09-08T00:00:00.000",
+          1,
+          45
+        ],
+        [
+          "MLB4997603093",
+          "Caneta De Arte Em Relevo 3d, Canetas De Pipoca Funcionam Em ",
+          "2026-08-05T10:17:05.000",
+          "2026-09-08T00:00:00.000",
+          1,
+          54.27
+        ],
+        [
+          "MLB5192686831",
+          "Caneta 3d Impressora Profissional Filamento Pla Com Refil",
+          "2026-09-06T01:02:25.000",
+          "2026-09-08T00:00:00.000",
+          1,
+          189
+        ],
+        [
+          "MLB7411169978",
+          "Caneta Impressora 3d Profissional Infantil 3 Refil Filamento",
+          "2026-08-13T22:54:24.000",
+          "2026-09-08T00:00:00.000",
+          1,
+          74.9
+        ],
+        [
+          "MLB7351144560",
+          "Canetas Artísticas 3d Magic Popcorn, 12 Unidades E 6 Cores,  2pcs",
+          "2026-08-16T06:26:53.000",
+          "2026-09-08T00:00:00.000",
+          1,
+          43.4
+        ],
+        [
+          "MLB5125102389",
+          "Caneta 3d Infantil Impressora 3d Criativa Com Filamentos Pla",
+          "2026-08-24T17:38:52.000",
+          "2026-09-08T00:00:00.000",
+          1,
+          52.9
+        ],
+        [
+          "MLB5083300565",
+          "Filamento De Caneta 3d Pcl De Baixa Temperatura De 1,75 Mm,",
+          "2026-08-18T03:45:22.000",
+          "2026-09-08T00:00:00.000",
+          1,
+          36.84
+        ],
+        [
+          "MLB7474842222",
+          "Canetas De Arte Em Relevo 3d Para Várias Superfícies",
+          "2026-08-07T09:29:36.000",
+          "2026-09-08T00:00:00.000",
+          1,
+          109.34
+        ],
+        [
+          "MLB7307751904",
+          "Nome Personalizado Para Lápis Ou Caneta 3d",
+          "2026-08-01T11:24:26.000",
+          "2026-09-08T00:00:00.000",
+          1,
+          39
+        ],
+        [
+          "MLB7578516506",
+          "Abajur Lousa Led 3d Acrílico Caneta Mágica Recados Mesa",
+          "2026-08-12T04:49:47.000",
+          "2026-09-08T00:00:00.000",
+          1,
+          38.9
+        ],
+        [
+          "MLB5180043591",
+          "Caneta 3D Impressora Profissional Infantil + Refil Filamento 9m + Cabo Usb - Lilás",
+          "2026-08-18T21:24:47.000",
+          "2026-09-08T00:00:00.000",
+          1,
+          78
+        ],
+        [
+          "MLB7551491392",
+          "Caneta 3D Impressora Profissional Infantil Refil Cabo Desenho Filamentos Impressão Cores Resina Pen - Rosa",
+          "2026-08-13T14:30:00.000",
+          "2026-09-08T00:00:00.000",
+          1,
+          50.99
+        ]
+      ],
+      "dimensionCount": 4,
+      "lastRefreshTime": "2026-09-09T18:27:17.702Z",
+      "slowQuery": false,
+      "totalRows": 67,
+      "types": [
+        "string",
+        "string",
+        "time",
+        "time",
+        "number",
+        "number"
+      ]
+    }
+  ]
+}

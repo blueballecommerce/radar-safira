@@ -1,0 +1,3191 @@
+{
+  "lidoEm": "2026-09-09T19:02:32.026Z",
+  "fonte": "JoomPulse / MercadoProductsWeekly",
+  "groups": [
+    [
+      "ring",
+      "light"
+    ],
+    [
+      "joelheira",
+      "compressão"
+    ],
+    [
+      "elástico",
+      "extensor"
+    ],
+    [
+      "livro",
+      "cenário"
+    ],
+    [
+      "cartela",
+      "carrinhos"
+    ],
+    [
+      "hand",
+      "grip"
+    ],
+    [
+      "utensílios",
+      "650g"
+    ],
+    [
+      "carregador",
+      "bateria"
+    ],
+    [
+      "necessarie",
+      "organizadora"
+    ],
+    [
+      "balança",
+      "cozinha"
+    ],
+    [
+      "moedor",
+      "grãos"
+    ],
+    [
+      "shorts",
+      "feminino"
+    ],
+    [
+      "abridor",
+      "vinho"
+    ],
+    [
+      "papa",
+      "bolinhas"
+    ],
+    [
+      "cadeado",
+      "tsa"
+    ],
+    [
+      "oxímetro",
+      "digital"
+    ],
+    [
+      "canetinha",
+      "touch"
+    ],
+    [
+      "porta",
+      "jóias"
+    ],
+    [
+      "formas",
+      "silicone"
+    ],
+    [
+      "jogo",
+      "memória"
+    ],
+    [
+      "pipoqueira",
+      "110v"
+    ],
+    [
+      "sacos",
+      "lavar"
+    ],
+    [
+      "chave",
+      "precisão"
+    ],
+    [
+      "spray",
+      "vidro"
+    ],
+    [
+      "máquina",
+      "smart"
+    ],
+    [
+      "dispenser",
+      "spray"
+    ],
+    [
+      "tapete",
+      "absorvente"
+    ],
+    [
+      "cachecol",
+      "brasil"
+    ],
+    [
+      "copo",
+      "térmico"
+    ],
+    [
+      "filtro",
+      "inox"
+    ]
+  ],
+  "pages": [
+    {
+      "query": {
+        "dimensions": [
+          "MercadoProductsWeekly.id",
+          "MercadoProductsWeekly.productName",
+          "MercadoProductsWeekly.adPublishDate",
+          "MercadoProductsWeekly.date",
+          "MercadoProductsWeekly.productImage",
+          "MercadoProductsWeekly.merchantCategoryL1",
+          "MercadoProductsWeekly.catalogProduct",
+          "MercadoProductsWeekly.listingStatus",
+          "MercadoProductsWeekly.isFull",
+          "MercadoProductsWeekly.isFreeShipping",
+          "MercadoProductsWeekly.merchantName",
+          "MercadoProductsWeekly.listingType",
+          "MercadoProductsWeekly.buyBoxWiner",
+          "MercadoProductsWeekly.productId",
+          "MercadoProductsWeekly.brand"
+        ],
+        "measures": [
+          "MercadoProductsWeekly.priceAmount",
+          "MercadoProductsWeekly.orderCount1m",
+          "MercadoProductsWeekly.orderCount1w",
+          "MercadoProductsWeekly.numBuyBoxSellers",
+          "MercadoProductsWeekly.reviewsCount",
+          "MercadoProductsWeekly.daysInAd",
+          "MercadoProductsWeekly.reviewsRating"
+        ],
+        "filters": [
+          {
+            "member": "MercadoProductsWeekly.adPublishDate",
+            "operator": "inDateRange",
+            "values": [
+              "2026-07-31",
+              "2026-09-09"
+            ]
+          },
+          {
+            "member": "MercadoProductsWeekly.listingStatus",
+            "operator": "equals",
+            "values": [
+              "active"
+            ]
+          },
+          {
+            "member": "MercadoProductsWeekly.orderCount1m",
+            "operator": "gt",
+            "values": [
+              "0"
+            ]
+          },
+          {
+            "or": [
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "ring"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "light"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "joelheira"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "compressão"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "elástico"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "extensor"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "livro"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "cenário"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "cartela"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "carrinhos"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "hand"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "grip"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "utensílios"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "silicone"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "carregador"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "bateria"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "necessarie"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "organizadora"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "balança"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "cozinha"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "moedor"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "grãos"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "shorts"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "feminino"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "abridor"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "vinho"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "papa"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "bolinhas"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "cadeado"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "tsa"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "oxímetro"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "digital"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "canetinha"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "touch"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "porta"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "jóias"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "formas"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "silicone"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "jogo"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "memória"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "pipoqueira"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "110v"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "sacos"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "lavar"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "chave"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "precisão"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "spray"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "vidro"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "máquina"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "smart"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "dispenser"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "spray"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "tapete"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "absorvente"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "cachecol"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "brasil"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "copo"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "térmico"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "filtro"
+                    ]
+                  },
+                  {
+                    "member": "MercadoProductsWeekly.productName",
+                    "operator": "contains",
+                    "values": [
+                      "inox"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "order": [
+          [
+            "MercadoProductsWeekly.orderCount1m",
+            "desc"
+          ],
+          [
+            "MercadoProductsWeekly.id",
+            "asc"
+          ]
+        ],
+        "limit": 100
+      },
+      "columns": [
+        "id",
+        "productName",
+        "adPublishDate",
+        "date",
+        "productImage",
+        "merchantCategoryL1",
+        "catalogProduct",
+        "listingStatus",
+        "isFull",
+        "isFreeShipping",
+        "merchantName",
+        "listingType",
+        "buyBoxWiner",
+        "productId",
+        "brand",
+        "priceAmount",
+        "orderCount1m",
+        "orderCount1w",
+        "numBuyBoxSellers",
+        "reviewsCount",
+        "daysInAd",
+        "reviewsRating"
+      ],
+      "data": [
+        [
+          "MLB5000378031",
+          "Ring Light LED de 10\" com Tripé e Suporte para Celular, para Maquiagem e Gravações",
+          "2026-08-05T20:20:31.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_909029-MLA114996872870_082026-E.webp",
+          "Câmeras e Acessórios",
+          true,
+          "active",
+          null,
+          true,
+          "IRONVAULT",
+          "gold_special",
+          true,
+          "MLB77607200",
+          null,
+          59.99,
+          8333,
+          1944,
+          1,
+          null,
+          36,
+          null
+        ],
+        [
+          "MLB7540780990",
+          "Coador De Café Inox 103 Com Filtro Permanente Reutilizável Aço Inox Premium Durável Fácil De Lavar Passador De Café Grande Sem Papel Para Café Tradicional Gourmet Pétalas Douradas",
+          "2026-08-04T13:19:04.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_797528-MLA114240808098_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "LOJAMARIASANTOS",
+          "gold_special",
+          true,
+          "MLB76320149",
+          "PETALASDOURADAS",
+          69.99,
+          811,
+          189,
+          2,
+          159,
+          37,
+          4.7
+        ],
+        [
+          "MLB7353905696",
+          "Carregador Inteligente de Bateria 12V 6A, Bivolt Portátil, para Carro e Moto",
+          "2026-08-03T15:42:03.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_983932-MLA114189633362_082026-E.webp",
+          "Acessórios para Veículos",
+          true,
+          "active",
+          null,
+          true,
+          "JD20260409181336",
+          "gold_special",
+          true,
+          "MLB76231462",
+          "COMERCIORW",
+          53.59,
+          789,
+          184,
+          4,
+          19,
+          38,
+          4.8
+        ],
+        [
+          "MLB5034466055",
+          "Shorts Feminino Elastano E Poliéster  Academia Praia Laser",
+          "2026-08-11T15:05:33.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_823499-MLB99287151698_112025-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          null,
+          true,
+          "OHEMM",
+          "gold_pro",
+          true,
+          "MLB-5034466055",
+          null,
+          31.47,
+          500,
+          117,
+          1,
+          1432,
+          30,
+          4
+        ],
+        [
+          "MLB5085249359",
+          "Copo Térmico 1.2l Inox Tampa Flip Canudo Alça Carro Academia",
+          "2026-08-18T09:33:57.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_645712-MLB115531937950_082026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          null,
+          true,
+          "CU20260313080138",
+          "gold_special",
+          true,
+          "MLB-5085249359",
+          null,
+          48.99,
+          500,
+          152,
+          1,
+          25,
+          23,
+          4.9
+        ],
+        [
+          "MLB5131489185",
+          "Ring Light Led Portátil Para Celular Anel De Luz 20w 3 Cores Preto",
+          "2026-08-25T15:36:23.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_990619-MLA115300953880_082026-O.webp",
+          "Celulares e Telefones",
+          true,
+          "active",
+          true,
+          true,
+          "AQMAGAZINE",
+          "gold_special",
+          true,
+          "MLB78286856",
+          null,
+          139.9,
+          500,
+          219,
+          1,
+          2,
+          16,
+          4.6
+        ],
+        [
+          "MLB5167952411",
+          "Tapete Banheiro Soft Super Absorvente 700gm2 50 X 80 Algodão",
+          "2026-08-31T16:58:36.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_892505-MLB115545317682_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "COMERCIALTEXTILSTORE",
+          "gold_special",
+          true,
+          "MLB-5167952411",
+          null,
+          28.32,
+          500,
+          350,
+          1,
+          21,
+          10,
+          4
+        ],
+        [
+          "MLB5167983651",
+          "Tapete Banheiro Soft Super Absorvente 700gm2 50 X 80 Algodão",
+          "2026-08-31T16:58:36.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_687264-MLB116980577451_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "COMERCIALTEXTILSTORE",
+          "gold_special",
+          true,
+          "MLB-5167983651",
+          null,
+          28.32,
+          500,
+          350,
+          1,
+          21,
+          10,
+          4.2
+        ],
+        [
+          "MLB5168706183",
+          "Jogo 6 Copos Térmicos Parede Dupla 450ml Vidro Borossilicato",
+          "2026-08-31T18:20:16.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_815167-MLA116983883175_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "CASACASA20230321144340",
+          "gold_pro",
+          true,
+          "MLB78719710",
+          null,
+          137.56,
+          500,
+          350,
+          1,
+          1,
+          10,
+          5
+        ],
+        [
+          "MLB5179791145",
+          "Luz Led Para Celular Portátil Self Vídeos Ring Light Flash Branco",
+          "2026-08-31T20:39:17.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_719506-MLA116988899397_082026-O.webp",
+          "Celulares e Telefones",
+          true,
+          "active",
+          true,
+          true,
+          "MEGA_MIX_UTILIDADES",
+          "gold_special",
+          true,
+          "MLB78746131",
+          null,
+          30.9,
+          500,
+          350,
+          1,
+          115,
+          10,
+          4.6
+        ],
+        [
+          "MLB5188879273",
+          "Copo Térmico Inox 473ml Flamengo Personalizado Nome Laser Preto Flamengo",
+          "2026-09-04T20:05:58.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_610196-MLA115753312322_092026-E.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          null,
+          true,
+          "SUADEMANDA",
+          "gold_pro",
+          true,
+          "MLB78928756",
+          null,
+          33.59,
+          500,
+          500,
+          1,
+          8,
+          6,
+          4.9
+        ],
+        [
+          "MLB7383428044",
+          "Carregador 21v Bivolt Fonte P/ Parafusadeira Bateria Litio",
+          "2026-08-11T05:54:22.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_883589-MLB115921208691_082026-O.webp",
+          "Ferramentas",
+          false,
+          "active",
+          null,
+          true,
+          "DINGMAX",
+          "gold_special",
+          true,
+          "MLB-7383428044",
+          null,
+          26.98,
+          500,
+          117,
+          1,
+          55,
+          30,
+          4.8
+        ],
+        [
+          "MLB7407182068",
+          "Bule de Vidro Borossilicato 1L 1000ml Chaleira com Tampa de Bambu Filtro Infusor Inox para Chá Café Água Quente Transparente Sólar",
+          "2026-08-12T03:01:05.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_653385-MLA116448486611_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "MEGA TRENDS",
+          "gold_special",
+          true,
+          "MLB76927158",
+          "SOLARVARIEDADESUTENSILIOS",
+          21.77,
+          500,
+          121,
+          1,
+          64,
+          29,
+          4.8
+        ],
+        [
+          "MLB7477349344",
+          "Saca Rolha Abridor De Vinho Profissional 2 Estágios Preto",
+          "2026-08-15T08:41:37.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_848783-MLA114852096712_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          false,
+          "PROTHEU_UTILIDADES",
+          "gold_special",
+          true,
+          "MLB77420055",
+          "PROTHEUS",
+          17.26,
+          500,
+          135,
+          1,
+          20,
+          26,
+          4.7
+        ],
+        [
+          "MLB7534180156",
+          "Moedor De Grãos De Café Elétrico Com Regulagem Precisa",
+          "2026-08-27T17:33:59.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_874952-MLB116822658647_082026-O.webp",
+          "Eletrodomésticos",
+          false,
+          "active",
+          null,
+          true,
+          "MEGAMIX_IMPORTS",
+          "gold_special",
+          true,
+          "MLB-7534180156",
+          null,
+          99.1,
+          500,
+          250,
+          1,
+          128,
+          14,
+          5
+        ],
+        [
+          "MLB7379021590",
+          "Soprador de Folhas Hardline 48V, Kit com 2 Baterias e Carregador para Jardim e Carro",
+          "2026-08-10T17:33:12.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_674295-MLA114539121506_082026-O.webp",
+          "Ferramentas",
+          true,
+          "active",
+          null,
+          true,
+          "VBUTILIDADESLTDA",
+          "gold_special",
+          true,
+          "MLB76582644",
+          "HARDLINE",
+          99.12,
+          484,
+          113,
+          1,
+          46,
+          31,
+          4.6
+        ],
+        [
+          "MLB7384617812",
+          "Tapete Higiênico para Cães Pratitudo Essencial Slim 50x60 cm com 50 Unidades Descartável Super Absorvente com Fitas Adesivas nos 4 Cantos e Controle de Odores para Treinamento e Apartamento",
+          "2026-08-10T22:51:00.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_776570-MLA117195036481_092026-O.webp",
+          "Pet Shop",
+          true,
+          "active",
+          true,
+          true,
+          "FAVORITODAWEB",
+          "gold_special",
+          true,
+          "MLB76601635",
+          "PRATITUDOESSENCIAL",
+          45.9,
+          484,
+          113,
+          3,
+          35,
+          31,
+          4.8
+        ],
+        [
+          "MLB7356893584",
+          "Moedor Café Triturador Elétrico De Grãos Sementes Ervas Usb",
+          "2026-08-07T14:30:16.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_785146-MLB115771641789_082026-O.webp",
+          "Indústria e Comércio",
+          false,
+          "active",
+          true,
+          true,
+          "TELLANSHOP",
+          "gold_special",
+          true,
+          "MLB-7356893584",
+          "MOEDORGRAOSCAFEPORTATIL12",
+          111,
+          441,
+          103,
+          1,
+          123,
+          34,
+          4.8
+        ],
+        [
+          "MLB5007034937",
+          "Porta Jóias Caixa Maleta Viagem Couro Estojo Maquiagem",
+          "2026-08-06T19:02:09.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_917822-MLB83208786289_032025-O.webp",
+          "Joias e Relógios",
+          false,
+          "active",
+          true,
+          true,
+          "MCCI COMERCIO.IMPORTACOES",
+          "gold_special",
+          true,
+          "MLB-5007034937",
+          "MCCIPRIMEGIFTS",
+          75.77,
+          429,
+          100,
+          1,
+          586,
+          35,
+          5
+        ],
+        [
+          "MLB5007034943",
+          "Porta Jóias Caixa Maleta Viagem Couro Estojo Maquiagem",
+          "2026-08-06T19:02:10.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_624393-MLB83279899465_032025-O.webp",
+          "Joias e Relógios",
+          false,
+          "active",
+          true,
+          true,
+          "MCCI COMERCIO.IMPORTACOES",
+          "gold_special",
+          true,
+          "MLB-5007034943",
+          null,
+          71.9,
+          429,
+          100,
+          1,
+          586,
+          35,
+          5
+        ],
+        [
+          "MLB7322391018",
+          "Copo Térmico Inóx Com Canudo E Tampa Grande 1200ml 1.2litros",
+          "2026-08-04T02:01:46.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_985503-MLB114208249948_082026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          null,
+          true,
+          "CHAMPIONSROX",
+          "gold_special",
+          true,
+          "MLB-7322391018",
+          "GARRAFATERMICA",
+          32.34,
+          405,
+          95,
+          1,
+          12,
+          37,
+          4
+        ],
+        [
+          "MLB7330177134",
+          "Fonte Bebedouro Agua Inox Gato Bomba Filtro 3.2l Silencioso",
+          "2026-08-04T19:55:44.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_783431-MLB88782350332_082025-O.webp",
+          "Pet Shop",
+          false,
+          "active",
+          true,
+          true,
+          "LOJINHARB",
+          "gold_pro",
+          true,
+          "MLB-7330177134",
+          null,
+          183.95,
+          405,
+          95,
+          1,
+          175,
+          37,
+          5
+        ],
+        [
+          "MLB5094594587",
+          "Coador De Café Inox 103 Filtro Permanente Reutilizável Aço Inoxidável Sem Papel Ecológico Hypefull",
+          "2026-08-01T22:16:27.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_909662-MLA114120372084_082026-O.webp",
+          "Eletrodomésticos",
+          true,
+          "active",
+          null,
+          false,
+          "LUMIVEX",
+          "gold_pro",
+          true,
+          "MLB76204638",
+          null,
+          47.29,
+          375,
+          88,
+          2,
+          56,
+          40,
+          4.8
+        ],
+        [
+          "MLB7305246794",
+          "Shorts Feminino Academia Cós Alto Zero Transparência Fitness",
+          "2026-08-01T01:52:36.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_758635-MLB114084180926_072026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          null,
+          true,
+          "CICLICO ESPORTES",
+          "gold_special",
+          true,
+          "MLB-7305246794",
+          "CICLICOESPORTES",
+          49.92,
+          375,
+          88,
+          1,
+          88,
+          40,
+          4.9
+        ],
+        [
+          "MLB5034829481",
+          "Hand Grip Fortalecedor Antebraço E Mãos Ajustável Até 165kg",
+          "2026-08-11T01:31:18.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_638958-MLB114639828670_082026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          true,
+          true,
+          "ADFGACHBE81683",
+          "gold_special",
+          true,
+          "MLB-5034829481",
+          null,
+          38.75,
+          100,
+          23,
+          1,
+          5,
+          30,
+          5
+        ],
+        [
+          "MLB5040709235",
+          "Bolsa Porta Garrafa Copo Térmico Squeeze Alça Transversal",
+          "2026-08-11T16:49:26.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_833044-MLB115395176680_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "COMPREMANIA",
+          "gold_special",
+          true,
+          "MLB-5040709235",
+          null,
+          31.27,
+          100,
+          23,
+          1,
+          38,
+          30,
+          4
+        ],
+        [
+          "MLB5042208963",
+          "Kit 2 Formas De Silicone Air Fryer Reutilizável Antiaderente",
+          "2026-08-12T01:13:09.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_755180-MLB115980838941_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "RC DIGITAIS",
+          "gold_special",
+          true,
+          "MLB-5042208963",
+          null,
+          15.12,
+          100,
+          24,
+          1,
+          5,
+          29,
+          5
+        ],
+        [
+          "MLB5060820475",
+          "Moedor De Café Elétrico Triturador Aço Inox Grãos Temperos",
+          "2026-08-14T09:36:49.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_711739-MLB116169518447_082026-O.webp",
+          "Eletrodomésticos",
+          false,
+          "active",
+          null,
+          true,
+          "NL20250504174043",
+          "gold_special",
+          true,
+          "MLB-5060820475",
+          "GENERICA",
+          48.98,
+          100,
+          26,
+          1,
+          5,
+          27,
+          4.6
+        ],
+        [
+          "MLB5062891417",
+          "Jogo de Memória Cores para Crianças de Madeira com 24 Pinos",
+          "2026-08-13T12:39:20.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_721140-MLA116110048345_082026-O.webp",
+          "Brinquedos e Hobbies",
+          true,
+          "active",
+          true,
+          true,
+          "INBOARDGAMESTORE",
+          "gold_special",
+          true,
+          "MLB77234843",
+          null,
+          29.9,
+          100,
+          25,
+          1,
+          null,
+          28,
+          null
+        ],
+        [
+          "MLB5068902115",
+          "Peneira Coador 103 Filtro Inox Permanente Para Café E Chá",
+          "2026-08-15T14:15:58.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_678362-MLB114864261168_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "JVPLANCORP",
+          "gold_special",
+          true,
+          "MLB-5068902115",
+          null,
+          29.28,
+          100,
+          27,
+          1,
+          21,
+          26,
+          5
+        ],
+        [
+          "MLB5081888247",
+          "Ring Light Iluminador Led Estabilizador Suporte 20w Bicolor",
+          "2026-08-17T20:56:54.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_725000-MLB114941932412_082026-O.webp",
+          "Câmeras e Acessórios",
+          false,
+          "active",
+          null,
+          true,
+          "LEONVIXX",
+          "gold_special",
+          true,
+          "MLB-5081888247",
+          null,
+          73.63,
+          100,
+          29,
+          1,
+          8,
+          24,
+          4.7
+        ],
+        [
+          "MLB5088060555",
+          "Carregador De Baterias 150/a.12/24v Com Auxiliar De Partida",
+          "2026-08-18T19:21:58.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_834425-MLB82355322834_022025-O.webp",
+          "Acessórios para Veículos",
+          false,
+          "active",
+          null,
+          true,
+          "AUTOMOTIVOFR",
+          "gold_special",
+          true,
+          "MLB-5088060555",
+          "MAXFORT",
+          1779.9,
+          100,
+          30,
+          1,
+          49,
+          23,
+          5
+        ],
+        [
+          "MLB5108290279",
+          "Hand Grip Fortalecedor Do Punho Mão Antebraço Flexor 165kg Preto",
+          "2026-08-21T18:55:39.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_920898-MLA116549521885_082026-O.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          null,
+          true,
+          "BEXX_BRASIL",
+          "gold_special",
+          true,
+          "MLB78006379",
+          "BEZZTER",
+          29.9,
+          100,
+          35,
+          1,
+          null,
+          20,
+          null
+        ],
+        [
+          "MLB5117092595",
+          "Hand Grip Fortalecimento 60kg Ajustável Handgrip Exercício Preto",
+          "2026-08-13T23:33:26.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_719859-MLA116142842153_082026-O.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          null,
+          true,
+          "SPORTWAG",
+          "gold_special",
+          true,
+          "MLB77303114",
+          null,
+          19,
+          100,
+          25,
+          1,
+          41,
+          28,
+          4.7
+        ],
+        [
+          "MLB5117514551",
+          "Caixa Bau Cofre Urna Porta Jóias Com Cadeado Mdf Cru Não Possui",
+          "2026-08-15T04:39:15.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_902906-MLA114843088272_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "HIRATA DISCOS",
+          null,
+          true,
+          "MLB77394002",
+          null,
+          67.41,
+          100,
+          27,
+          1,
+          null,
+          26,
+          null
+        ],
+        [
+          "MLB5124740941",
+          "Copo Papel Branco 90ml Biodegradável Térmico Café 100 Un",
+          "2026-08-24T15:59:24.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_880833-MLA116658869103_082026-O.webp",
+          "Festas e Lembrancinhas",
+          true,
+          "active",
+          null,
+          true,
+          "FIESTAPARTYFESTA",
+          "gold_special",
+          true,
+          "MLB78187697",
+          "BELLOFESTAS",
+          30.5,
+          100,
+          41,
+          1,
+          null,
+          17,
+          null
+        ],
+        [
+          "MLB5134357887",
+          "Kit 2 Sacos Lavar Tênis Maquina Reutilizável Zíper + Brinde",
+          "2026-08-26T00:27:11.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_698028-MLB115315593262_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "VMCOMERCIAL",
+          "gold_special",
+          true,
+          "MLB-5134357887",
+          "SACOLAVARTENISSACOLAVAROU",
+          40.99,
+          100,
+          47,
+          1,
+          4,
+          15,
+          5
+        ],
+        [
+          "MLB5141677191",
+          "Moedor de Café Elétrico Inox 150W Portátil Triturador de Grãos e Temperos Multifuncional Grãos Pimentas Sementes",
+          "2026-08-26T17:33:59.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_780441-MLA115352229948_082026-O.webp",
+          "Indústria e Comércio",
+          true,
+          "active",
+          null,
+          true,
+          "VIPONEECOM",
+          "gold_special",
+          true,
+          "MLB78423101",
+          null,
+          49.9,
+          100,
+          47,
+          2,
+          null,
+          15,
+          null
+        ],
+        [
+          "MLB5158800829",
+          "Carregador De Bateria 12v Até 150 Amperes Inteligente",
+          "2026-08-29T21:56:37.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_774783-MLB115488265334_082026-O.webp",
+          "Acessórios para Veículos",
+          false,
+          "active",
+          null,
+          true,
+          "RLD ACESSORIOS",
+          "gold_special",
+          true,
+          "MLB-5158800829",
+          "RLD",
+          68.88,
+          100,
+          58,
+          1,
+          130,
+          12,
+          4
+        ],
+        [
+          "MLB5171677481",
+          "Luminária Lupa Estética Ring Light Articulada Profissional Mesa Bancada 12W Bivolt Led Manicure Nail Lash Designer Esteticista Cílios Sobrancelha Micropigmentação Tatuagem Facial Lente Vidro Dost Pet",
+          "2026-08-18T16:32:50.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_856732-MLA116375137917_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "SHOPALECRIMDOURADO",
+          "gold_special",
+          true,
+          "MLB77591753",
+          null,
+          93,
+          100,
+          30,
+          1,
+          5,
+          23,
+          5
+        ],
+        [
+          "MLB5173696841",
+          "Power Bank 10000mah Carregador Portátil 4 Cabos Integrados Visor Digital Lanterna Led Usb Tipo C Compatível iPhone Samsung Xiaomi Android Bateria Externa Carrega 4 Dispositivos Preto",
+          "2026-08-31T23:18:21.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_908888-MLA116993575251_082026-O.webp",
+          "Celulares e Telefones",
+          true,
+          "active",
+          null,
+          true,
+          "PLENO1",
+          "gold_special",
+          true,
+          "MLB78753894",
+          null,
+          55.9,
+          100,
+          70,
+          1,
+          null,
+          10,
+          null
+        ],
+        [
+          "MLB5188883759",
+          "Copo Térmico Inox 891ml Para Esporte E Carro Antiderrapante Cor Azul-petróleo",
+          "2026-09-04T21:03:52.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_961760-MLA117208863181_092026-O.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          true,
+          true,
+          "T20250618045710",
+          "gold_special",
+          true,
+          "MLB78932835",
+          null,
+          79,
+          100,
+          100,
+          1,
+          3601,
+          6,
+          4.8
+        ],
+        [
+          "MLB5188931825",
+          "Carregador De Bateria Bivolt P/ 14.4 e 18v Dc18wc (bivolt) Makita",
+          "2026-08-31T20:40:41.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_860252-MLA116988929895_082026-O.webp",
+          "Ferramentas",
+          true,
+          "active",
+          null,
+          true,
+          "LEVANTIMAQUINAS",
+          "gold_pro",
+          true,
+          "MLB78746325",
+          null,
+          339,
+          100,
+          70,
+          4,
+          1,
+          10,
+          5
+        ],
+        [
+          "MLB5189123507",
+          "Kit Flamengo Copo Térmico Abridor E Sacola Personalizado Vermelho Flamengo",
+          "2026-09-08T02:59:33.102",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_925830-MLA115756494072_092026-E.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          null,
+          true,
+          "SUADEMANDA",
+          null,
+          true,
+          "MLB78934247",
+          null,
+          33.92,
+          100,
+          100,
+          1,
+          null,
+          2,
+          null
+        ],
+        [
+          "MLB7347051904",
+          "Bateria Carregador Portátil 2x Usb-c, 10000mah, 25w",
+          "2026-08-12T17:26:39.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_647506-MLB114380430896_082026-O-bateria-carregador-portatil-2x-usbc-10000mah-25w.webp",
+          "Celulares e Telefones",
+          true,
+          "active",
+          null,
+          true,
+          "SAMSUNGLOJAOFICIAL",
+          null,
+          true,
+          "MLB77133387",
+          "SAMSUNG",
+          249,
+          100,
+          24,
+          1,
+          3,
+          29,
+          4.9
+        ],
+        [
+          "MLB7384253334",
+          "Copo Térmico Gigante 1,2l Inox Com Tampa Inox Canudo Escova",
+          "2026-08-11T07:35:37.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_666110-MLB115920851185_082026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          true,
+          true,
+          "CU20260313080138",
+          "gold_special",
+          true,
+          "MLB-7384253334",
+          null,
+          46,
+          100,
+          23,
+          1,
+          62,
+          30,
+          5
+        ],
+        [
+          "MLB7397084914",
+          "Rodo Limpa Vidros 3 Em 1 Spray Mop Borrifador Casa Trabalho",
+          "2026-08-12T13:51:54.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_889744-MLB114771803110_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "CLASO_UTILIDADES",
+          "gold_special",
+          true,
+          "MLB-7397084914",
+          null,
+          25.56,
+          100,
+          24,
+          1,
+          9,
+          29,
+          4
+        ],
+        [
+          "MLB7404844354",
+          "Copo Térmico 350ml Inox Com Tampa Alça Bebidas Quentes",
+          "2026-08-13T14:37:54.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_890662-MLB105353861067_012026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          null,
+          true,
+          "DEY__COMERCIO",
+          "gold_special",
+          true,
+          "MLB-7404844354",
+          "GENERICA",
+          26.99,
+          100,
+          25,
+          1,
+          224,
+          28,
+          5
+        ],
+        [
+          "MLB7410570242",
+          "Luz de Preenchimento Rgb Ring Light Led Profissional Iluminador Foto Vídeo Iluminação Portátil Fotografia Recarregável USB Luz Branca Quente Fria Para Celular Câmera Notebook 3000k 6500k Art Light",
+          "2026-08-13T18:22:53.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_959376-MLA116127172355_082026-O.webp",
+          "Câmeras e Acessórios",
+          true,
+          "active",
+          true,
+          true,
+          "CASADAILUMINACAO",
+          "gold_special",
+          true,
+          "MLB77263031",
+          "ARTLIGHT",
+          25.89,
+          100,
+          25,
+          1,
+          2,
+          28,
+          4.8
+        ],
+        [
+          "MLB7421312318",
+          "Kit Gravacao Youtuber Ring Light Iluminador Tripe Microfone",
+          "2026-08-15T04:26:26.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_988600-MLB116491736943_082026-E.webp",
+          "Câmeras e Acessórios",
+          true,
+          "active",
+          null,
+          true,
+          "IMPORTACOMERCIOONLINELTDA",
+          "gold_special",
+          true,
+          "MLB2097092515",
+          null,
+          105.45,
+          100,
+          27,
+          1,
+          null,
+          26,
+          null
+        ],
+        [
+          "MLB7442651652",
+          "Cadeado Tsa Aço Viagem Mala Cabo Senha Aeroporto Mochila Seg",
+          "2026-08-18T04:49:06.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_707967-MLB114955203802_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          true,
+          true,
+          "TT20250131213418",
+          "gold_special",
+          true,
+          "MLB-7442651652",
+          null,
+          28.79,
+          100,
+          30,
+          1,
+          3,
+          23,
+          5
+        ],
+        [
+          "MLB7444704050",
+          "Copo Térmico 1.2l Inox Tampa Flip Canudo Alça Carro Academia",
+          "2026-08-18T09:33:57.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_813683-MLB115415654612_082026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          true,
+          true,
+          "CU20260313080138",
+          "gold_special",
+          true,
+          "MLB-7444704050",
+          null,
+          48.99,
+          100,
+          30,
+          1,
+          25,
+          23,
+          5
+        ],
+        [
+          "MLB7461637178",
+          "Porta Óculos Escuro Sol Organizador Estojo 4 Divisórias Case Óculos Leitura Organizador Multiuso Para Maquiagem Jóias Acessórios Case Empilhável de Acrílico Moderno Expositor Vitrine Para Lupa Esporte",
+          "2026-08-19T01:30:48.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_960085-MLA115007019858_082026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          true,
+          "active",
+          true,
+          true,
+          "HESTIA QUALIDADE",
+          "gold_special",
+          true,
+          "MLB77665779",
+          null,
+          63.01,
+          100,
+          32,
+          1,
+          null,
+          22,
+          null
+        ],
+        [
+          "MLB7463385280",
+          "Joelheira Proteção Articulada Compressão Haste Silicone 1pcs",
+          "2026-08-20T03:27:26.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_692691-MLB116461310343_082026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          null,
+          true,
+          "HACGHDEBF47708",
+          "gold_pro",
+          true,
+          "MLB-7463385280",
+          null,
+          15.95,
+          100,
+          33,
+          1,
+          3,
+          21,
+          5
+        ],
+        [
+          "MLB7463385630",
+          "Joelheira Proteção Articulada Compressão Haste Silicone 1pcs",
+          "2026-08-20T03:28:54.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_798289-MLB115072640804_082026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          null,
+          true,
+          "HACGHDEBF47708",
+          "gold_pro",
+          true,
+          "MLB-7463385630",
+          null,
+          15.95,
+          100,
+          33,
+          1,
+          3,
+          21,
+          5
+        ],
+        [
+          "MLB7465594672",
+          "Carregador Bateria Carro Moto Bivolt Inteligente Kinetx",
+          "2026-08-20T08:25:50.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_693197-MLB115084478662_082026-O.webp",
+          "Acessórios para Veículos",
+          false,
+          "active",
+          null,
+          true,
+          "KINETX",
+          "gold_pro",
+          true,
+          "MLB-7465594672",
+          null,
+          47.34,
+          100,
+          33,
+          1,
+          10,
+          21,
+          5
+        ],
+        [
+          "MLB7470511254",
+          "Ring Light LED de 20W RGB com Suporte para Celular e Bateria Recarregável",
+          "2026-08-14T05:49:52.468",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_826972-MLA116446571147_082026-O.webp",
+          "Câmeras e Acessórios",
+          true,
+          "active",
+          null,
+          true,
+          "CASAONSHOPBR",
+          "gold_special",
+          true,
+          "MLB77762087",
+          null,
+          78.9,
+          100,
+          26,
+          1,
+          5,
+          27,
+          4.6
+        ],
+        [
+          "MLB7472424002",
+          "Tapete Higiênico Absorvente 60x50 Cães Pet Grande 30uni",
+          "2026-08-21T00:48:26.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_970412-MLB116508908223_082026-O.webp",
+          "Pet Shop",
+          false,
+          "active",
+          true,
+          true,
+          "IMPORTS293",
+          "gold_pro",
+          true,
+          "MLB-7472424002",
+          "GENERICA",
+          39.9,
+          100,
+          35,
+          1,
+          2,
+          20,
+          5
+        ],
+        [
+          "MLB7472436070",
+          "Copo Personalizado Térmico 473ml Nome, Logo Tampa C/ Abridor",
+          "2026-08-21T00:52:22.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_831816-MLB116508919503_082026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          null,
+          true,
+          "ZORNIX2_OFICIAL",
+          "gold_special",
+          true,
+          "MLB-7472436070",
+          null,
+          29.99,
+          100,
+          35,
+          1,
+          4,
+          20,
+          5
+        ],
+        [
+          "MLB7477000486",
+          "Oxímetro Digital Dedo Mede Batimentos Cardíacos Saturação Azul E Branco",
+          "2026-08-15T02:26:37.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_942281-MLA114837775724_082026-O.webp",
+          "Saúde",
+          true,
+          "active",
+          null,
+          true,
+          "IMPERIOCOMPRAS",
+          "gold_special",
+          true,
+          "MLB77381061",
+          null,
+          29.9,
+          100,
+          27,
+          1,
+          null,
+          26,
+          null
+        ],
+        [
+          "MLB7479243712",
+          "Kit Chaves de Precisão 16 Peças para Abrir Celular Smartphone iPhone Android Notebook Tablet Ferramentas Manutenção Assistência Técnica Conserto Eletrônicos Hypefull",
+          "2026-08-19T23:59:29.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_786325-MLA116454438149_082026-O.webp",
+          "Celulares e Telefones",
+          true,
+          "active",
+          true,
+          true,
+          "HYPEFULL",
+          "gold_special",
+          true,
+          "MLB77787568",
+          null,
+          23.59,
+          100,
+          32,
+          1,
+          null,
+          22,
+          null
+        ],
+        [
+          "MLB7486367494",
+          "Kit 5 Faixa Elástica Miniband Extensor Elástico Treino Casa",
+          "2026-08-22T15:18:11.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_756939-MLB115403715722_082026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          null,
+          true,
+          "5COMPRAFACIL",
+          "gold_special",
+          true,
+          "MLB-7486367494",
+          "SUPERBRASILEIRINHO",
+          18.9,
+          100,
+          37,
+          1,
+          null,
+          19,
+          null
+        ],
+        [
+          "MLB7531515806",
+          "10 Extensor Elástico Fixação Com Gancho Lona 35cm/caminhão Vermelho",
+          "2026-08-12T08:20:40.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_628904-MLA116006602279_082026-O.webp",
+          "Acessórios para Veículos",
+          true,
+          "active",
+          null,
+          true,
+          "BOUTIQUE VERANO",
+          null,
+          true,
+          "MLB77056397",
+          null,
+          29.75,
+          100,
+          24,
+          1,
+          null,
+          29,
+          null
+        ],
+        [
+          "MLB7534275524",
+          "Hand Grip Crossfit Luva Fuel Competition Extreme - Titan Cor Preto Tamanho P/M",
+          "2026-08-24T16:27:44.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_777025-MLA116659475123_082026-O.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          null,
+          true,
+          "FUEL SPORTS",
+          null,
+          true,
+          "MLB78190451",
+          null,
+          269.89,
+          100,
+          41,
+          1,
+          null,
+          17,
+          null
+        ],
+        [
+          "MLB7535843472",
+          "Garrafa Copo Térmico Aco Inox 500 Ml Fria E Quente",
+          "2026-08-28T05:47:11.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_971387-MLB98598847600_112025-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          null,
+          true,
+          "PE20251116212101",
+          "gold_special",
+          true,
+          "MLB-7535843472",
+          null,
+          36.51,
+          100,
+          54,
+          1,
+          91,
+          13,
+          5
+        ],
+        [
+          "MLB7535843480",
+          "Garrafa Copo Térmico Aco Inox 500 Ml Fria E Quente",
+          "2026-08-28T05:47:11.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_699270-MLB99075088523_112025-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          true,
+          true,
+          "PE20251116212101",
+          "gold_special",
+          true,
+          "MLB-7535843480",
+          null,
+          44.27,
+          100,
+          54,
+          1,
+          91,
+          13,
+          5
+        ],
+        [
+          "MLB7559453526",
+          "Conjunto Saída Praia Kimono E Shorts Verão 2 Peças Feminino",
+          "2026-08-30T20:28:05.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_827555-MLB109295510595_032026-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          null,
+          true,
+          "SSIMPORTSS",
+          "gold_special",
+          true,
+          "MLB-7559453526",
+          null,
+          54.99,
+          100,
+          64,
+          1,
+          25,
+          11,
+          5
+        ],
+        [
+          "MLB7562220852",
+          "Carregador Bateria 15a Lítio Lifepo4 Chumbo Agm Gel 12v 24v",
+          "2026-08-26T13:20:59.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_635256-MLA116755667115_082026-E.webp",
+          "Acessórios para Veículos",
+          true,
+          "active",
+          true,
+          true,
+          "ATMBJ",
+          "gold_special",
+          true,
+          "MLB78389859",
+          null,
+          213.39,
+          100,
+          47,
+          1,
+          10,
+          15,
+          4.9
+        ],
+        [
+          "MLB7562883474",
+          "Shorts Praia Sunkini Feminino Confortavel Regulagem Uv50+",
+          "2026-08-31T13:52:39.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_781015-MLB85304619491_052025-O.webp",
+          "Calçados, Roupas e Bolsas",
+          false,
+          "active",
+          true,
+          true,
+          "DASRO STORE",
+          "gold_special",
+          true,
+          "MLB-7562883474",
+          null,
+          43.99,
+          100,
+          70,
+          1,
+          5,
+          10,
+          4
+        ],
+        [
+          "MLB7568053196",
+          "Hand Grip Crossfit Competition 2.0 Skyhill Lpo Wods Cor Verde-musgo Tamanho G",
+          "2026-08-31T18:27:36.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_925819-MLA116984464585_082026-O.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          null,
+          true,
+          "RNEMBALAGENS",
+          "gold_pro",
+          true,
+          "MLB78723184",
+          null,
+          319,
+          100,
+          70,
+          1,
+          683,
+          10,
+          4.9
+        ],
+        [
+          "MLB7569449090",
+          "Jogo de Utensílios de Silicone Tramontina Softta, 5 Peças, Cinza",
+          "2026-08-19T18:54:30.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_741603-MLA116658780497_082026-E.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          true,
+          "OBAFENIECOMMERCECOMERCIAL",
+          "gold_special",
+          true,
+          "MLB78187577",
+          "TRAMONTINA",
+          114,
+          100,
+          32,
+          3,
+          2,
+          22,
+          5
+        ],
+        [
+          "MLB7570739342",
+          "Bolsa Porta Garrafa E Copo Térmico  Com Compartimento",
+          "2026-09-01T19:13:52.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_952066-MLB115346357223_072026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          false,
+          true,
+          "LOJABALUARTETECH",
+          "gold_special",
+          true,
+          "MLB-7570739342",
+          "PORTAGARRAFABOLSAPORTAGAR",
+          32.97,
+          100,
+          78,
+          1,
+          null,
+          9,
+          null
+        ],
+        [
+          "MLB7570739344",
+          "Bolsa Porta Garrafa E Copo Térmico  Com Compartimento",
+          "2026-09-01T19:13:52.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_726852-MLB115347119903_072026-O-bolsa-porta-garrafa-e-copo-termico--com-compartimento.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "LOJABALUARTETECH",
+          "gold_special",
+          true,
+          "MLB-7570739344",
+          "PORTAGARRAFABOLSAPORTAGAR",
+          28.22,
+          100,
+          78,
+          1,
+          32,
+          9,
+          5
+        ],
+        [
+          "MLB7577227220",
+          "Taça E Copo Térmico De Aço Inoxidável 2 Em 1 Cocktail 410ml",
+          "2026-09-02T18:51:48.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_622527-MLB95029339442_102025-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          null,
+          true,
+          "HGE_COMERCIO_GARRAFAS_ACESSORI",
+          "gold_pro",
+          true,
+          "MLB-7577227220",
+          null,
+          24.69,
+          100,
+          88,
+          1,
+          44,
+          8,
+          4
+        ],
+        [
+          "MLB7579591366",
+          "Kit Ferramenta 115 Chaves Precisão Celular Tablet Notebook",
+          "2026-09-02T15:49:36.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_635136-MLA115637268588_092026-O.webp",
+          "Celulares e Telefones",
+          true,
+          "active",
+          null,
+          true,
+          "WKWAKA",
+          "gold_special",
+          true,
+          "MLB78829035",
+          null,
+          28.4,
+          100,
+          88,
+          1,
+          null,
+          8,
+          null
+        ],
+        [
+          "MLB7582056540",
+          "Oxímetro Dedo Digital Saturação Oxigênio Portátil Doméstico",
+          "2026-09-06T02:37:11.363",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_941402-MLA112272426533_052026-O.webp",
+          "Saúde",
+          true,
+          "active",
+          null,
+          true,
+          "SHOPSALE0981",
+          null,
+          true,
+          "MLB70319387",
+          null,
+          31.98,
+          100,
+          100,
+          1,
+          null,
+          4,
+          null
+        ],
+        [
+          "MLB7585958244",
+          "Kit Cadeado Tsa Cabo Aço Senha Mala Viagem Aeroporto Mochila",
+          "2026-09-04T02:06:30.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_763709-MLB111616553735_052026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "UW58751223123933",
+          "gold_special",
+          true,
+          "MLB-7585958244",
+          null,
+          29.77,
+          100,
+          100,
+          1,
+          3,
+          6,
+          null
+        ],
+        [
+          "MLB7590654136",
+          "Tapete Higiênico para Cachorro 50 Unidades 50x60cm com Gel Super Absorvente Fitas Adesivas Anti Odor e Atrativo Canino Fralda Manta Pet Cães PREMIONE",
+          "2026-09-04T19:31:44.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_685708-MLA115749177926_092026-O.webp",
+          "Pet Shop",
+          true,
+          "active",
+          true,
+          true,
+          "PREMIONE",
+          "gold_special",
+          true,
+          "MLB78921254",
+          null,
+          44.48,
+          100,
+          100,
+          1,
+          null,
+          6,
+          null
+        ],
+        [
+          "MLB7590657612",
+          "Copo Térmico 1l Inox Com Canudo E Trava Antivazamento Canec Preto",
+          "2026-09-06T02:35:16.459",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_875884-MLA117206655521_092026-O.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          true,
+          true,
+          "MEEKY",
+          null,
+          true,
+          "MLB78929496",
+          null,
+          78,
+          100,
+          100,
+          1,
+          null,
+          4,
+          null
+        ],
+        [
+          "MLB5028264341",
+          "Elástico Treino Extensor Exercícios Academia Em Casa",
+          "2026-08-10T06:19:53.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_619446-MLB116464244309_082026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          null,
+          true,
+          "FCBGFDHEA38457",
+          "gold_special",
+          true,
+          "MLB-5028264341",
+          "ISTORY",
+          63,
+          97,
+          23,
+          1,
+          null,
+          31,
+          null
+        ],
+        [
+          "MLB5029103993",
+          "Elástico Extensor Treino Fitness Multifuncional Exercícios",
+          "2026-08-10T08:46:42.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_818311-MLB114523032832_082026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          true,
+          true,
+          "FCBGFDHEA38457",
+          "gold_special",
+          true,
+          "MLB-5029103993",
+          "ISTORY",
+          28.13,
+          97,
+          23,
+          1,
+          5,
+          31,
+          5
+        ],
+        [
+          "MLB5034035809",
+          "Elástico Extensor Exercícios Multifuncional Com Apoio Pés",
+          "2026-08-10T18:38:29.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_631271-MLB115897282691_082026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          null,
+          true,
+          "MONTE_SINAI_LTDA",
+          "gold_special",
+          true,
+          "MLB-5034035809",
+          null,
+          26.9,
+          97,
+          23,
+          1,
+          46,
+          31,
+          4.9
+        ],
+        [
+          "MLB7381692704",
+          "Luminária G-Speaker Led RGB com Carregador Indução 15w Caixa De Som Bluetooth Usb Bivolt Luz De Mesa Abajur Quarto Multifuncional Radio Fm Bateria Recarregável Branco",
+          "2026-08-10T14:11:04.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_722752-MLA114602655180_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          true,
+          true,
+          "GDICOMERCIO",
+          "gold_special",
+          true,
+          "MLB76573033",
+          "VISONSPECIALTISSUE",
+          39.5,
+          97,
+          23,
+          1,
+          1,
+          31,
+          4.9
+        ],
+        [
+          "MLB5011083593",
+          "Luminária Lupa 10x Ring Light Profissional Com Garra Led",
+          "2026-08-07T07:38:05.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_667741-MLB115755886251_082026-O.webp",
+          "Beleza e Cuidado Pessoal",
+          false,
+          "active",
+          null,
+          true,
+          "CI20260302202948",
+          "gold_special",
+          true,
+          "MLB-5011083593",
+          null,
+          58,
+          88,
+          21,
+          1,
+          5,
+          34,
+          5
+        ],
+        [
+          "MLB5011093421",
+          "Copo Térmico Gigante 1,2l Inox Com Tampa E Inox Canudo",
+          "2026-08-07T07:21:33.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_727743-MLB116835709197_082026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          true,
+          true,
+          "3R20260721230659566",
+          "gold_special",
+          true,
+          "MLB-5011093421",
+          null,
+          45.99,
+          88,
+          21,
+          1,
+          6,
+          34,
+          5
+        ],
+        [
+          "MLB5011100181",
+          "Formas Silicone Picolé Com 300 Palitos Madeira Com Tampa",
+          "2026-08-07T06:40:03.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_984075-MLB114408467282_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          false,
+          "DOMIAR",
+          "gold_special",
+          true,
+          "MLB-5011100181",
+          null,
+          68.62,
+          88,
+          21,
+          1,
+          9,
+          34,
+          5
+        ],
+        [
+          "MLB5015031091",
+          "Kit Hand Grip 5 Pçs Exercício Aperto Dedos Mãos Punho",
+          "2026-08-07T16:40:44.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_879267-MLB115775474945_082026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          true,
+          true,
+          "MAUDRI",
+          "gold_special",
+          true,
+          "MLB-5015031091",
+          null,
+          38.99,
+          88,
+          21,
+          1,
+          9,
+          34,
+          5
+        ],
+        [
+          "MLB5015414513",
+          "Coador De Café Inox 304 Reultilizável Malha Fina Com Filtro",
+          "2026-08-07T18:15:32.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_667608-MLB114431884478_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "DHUNNAS",
+          "gold_special",
+          true,
+          "MLB-5015414513",
+          null,
+          30.66,
+          88,
+          21,
+          1,
+          24,
+          34,
+          4.3
+        ],
+        [
+          "MLB5015427053",
+          "Coador De Café Inox 304 Reultilizável Malha Fina Com Filtro",
+          "2026-08-07T18:15:33.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_923971-MLB114431884512_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "DHUNNAS",
+          "gold_special",
+          true,
+          "MLB-5015427053",
+          null,
+          36.64,
+          88,
+          21,
+          1,
+          20,
+          34,
+          4.4
+        ],
+        [
+          "MLB5015439679",
+          "Coador De Café Inox 304 Reultilizável Malha Fina Com Filtro",
+          "2026-08-07T18:15:32.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_985720-MLB114431914928_082026-O-coador-de-cafe-inox-304-reultilizavel-malha-fina-com-filtro.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          true,
+          true,
+          "DHUNNAS",
+          "gold_special",
+          true,
+          "MLB-5015439679",
+          "TYRONSTORE",
+          36.22,
+          88,
+          21,
+          1,
+          26,
+          34,
+          4.4
+        ],
+        [
+          "MLB7572757284",
+          "Kit 5 Sacos Protetores para Lavar Roupas Delicadas 30x40 cm, com Zíper Reforçado",
+          "2026-08-07T18:09:56.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_874458-MLA114431455518_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          true,
+          "active",
+          null,
+          false,
+          "DO13SHOPS",
+          "gold_special",
+          true,
+          "MLB76528323",
+          null,
+          33.2,
+          88,
+          21,
+          2,
+          3,
+          34,
+          4.3
+        ],
+        [
+          "MLB5154478751",
+          "Copo Térmico Gigante 1,2l Inox Com Tampa E Inox Canudo Cor Preto Cor Pura / Material Fosco Lisa",
+          "2026-08-06T06:18:55.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_974293-MLA114355040814_082026-O.webp",
+          "Esportes e Fitness",
+          true,
+          "active",
+          null,
+          true,
+          "CU20260313080138",
+          null,
+          true,
+          "MLB76462200",
+          "ROMANTICCROWN",
+          36.98,
+          86,
+          20,
+          3,
+          69543,
+          35,
+          4.9
+        ],
+        [
+          "MLB4996114249",
+          "Chave De Impacto Profissional Com 2 Baterias Furadeira Parafusadeira Profissional Mandril 1,2 Quadrado Torque 350Nm 0-3500Rpm Velocidade Variel Carregador Bivolt Motor Sem Escova E Acessórios Maleta",
+          "2026-08-05T03:46:32.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_857570-MLA115337969594_082026-O.webp",
+          "Ferramentas",
+          true,
+          "active",
+          null,
+          true,
+          "NOVYRABR",
+          "gold_special",
+          true,
+          "MLB76383597",
+          null,
+          269,
+          83,
+          19,
+          1,
+          null,
+          36,
+          null
+        ],
+        [
+          "MLB4997013103",
+          "Carregador Bateria 15a Lítio Lifepo4 Chumbo Agm Gel 12v 24v",
+          "2026-08-05T09:08:34.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_790362-MLB115632268081_082026-O.webp",
+          "Acessórios para Veículos",
+          false,
+          "active",
+          true,
+          true,
+          "ATMBJ",
+          "gold_special",
+          true,
+          "MLB-4997013103",
+          null,
+          213.39,
+          83,
+          19,
+          1,
+          12,
+          36,
+          5
+        ],
+        [
+          "MLB7331420602",
+          "Jogo Memória Eletrônico Genius Infantil Mesa Interativo Luz Som Cores Raciocínio Lógico Portátil Kizumba",
+          "2026-08-05T00:35:15.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_Q_NP_2X_601328-MLA115605618833_082026-E.webp",
+          "Brinquedos e Hobbies",
+          true,
+          "active",
+          null,
+          true,
+          ".ABCOMPRAS",
+          "gold_special",
+          true,
+          "MLB76371553",
+          null,
+          76.53,
+          83,
+          19,
+          2,
+          13,
+          36,
+          4.9
+        ],
+        [
+          "MLB7331497596",
+          "Par Joelheira Compressão Ortopédica Ajustável Tensor Treino",
+          "2026-08-05T01:26:45.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_866437-MLB115608001375_082026-O.webp",
+          "Esportes e Fitness",
+          false,
+          "active",
+          true,
+          true,
+          "LUFEMSHOP",
+          "gold_special",
+          true,
+          "MLB-7331497596",
+          null,
+          26.5,
+          83,
+          19,
+          1,
+          53,
+          36,
+          4.7
+        ],
+        [
+          "MLB7337681838",
+          "Kit Chaves de Precisão 115 Peças Magnético com Pontas Cruzada, Fenda, Estrela e Y, Extensores e Estojo para Celular, Notebook, Computador, Tablet e Eletrônicos Hardline",
+          "2026-08-05T17:01:00.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_673425-MLA114317965608_082026-O.webp",
+          "Celulares e Telefones",
+          true,
+          "active",
+          null,
+          true,
+          "BUSCAECOMPRA",
+          "gold_special",
+          true,
+          "MLB76417084",
+          null,
+          25.73,
+          83,
+          19,
+          1,
+          5,
+          36,
+          4.8
+        ],
+        [
+          "MLB4993917563",
+          "Kit Canetinhas 48 Cores + Livro Colorir Pintar Desenho Touch",
+          "2026-08-04T20:51:37.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_783112-MLB115595896755_082026-O.webp",
+          "Arte, Papelaria e Armarinho",
+          false,
+          "active",
+          true,
+          true,
+          "RR..SHOP",
+          "gold_special",
+          true,
+          "MLB-4993917563",
+          null,
+          22.9,
+          81,
+          19,
+          1,
+          35,
+          37,
+          4.8
+        ],
+        [
+          "MLB4993939549",
+          "Kit Canetinhas 48 Cores + Livro Colorir Pintar Desenho Touch",
+          "2026-08-04T20:51:37.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_831792-MLB115596130607_082026-O.webp",
+          "Arte, Papelaria e Armarinho",
+          false,
+          "active",
+          true,
+          true,
+          "RR..SHOP",
+          "gold_special",
+          true,
+          "MLB-4993939549",
+          "RRSHOP",
+          22.9,
+          81,
+          19,
+          1,
+          35,
+          37,
+          4
+        ],
+        [
+          "MLB4994089901",
+          "Coador De Café Aço Inox 103 Filtro Permanente Reutilizável",
+          "2026-08-04T21:49:25.000",
+          "2026-09-08T00:00:00.000",
+          "https://http2.mlstatic.com/D_NQ_NP_644862-MLB116197306525_082026-O.webp",
+          "Casa, Móveis e Decoração",
+          false,
+          "active",
+          null,
+          true,
+          "SEJDISTRIBUIDOR",
+          "gold_special",
+          true,
+          "MLB-4994089901",
+          null,
+          32.9,
+          81,
+          19,
+          1,
+          15,
+          37,
+          3.9
+        ]
+      ],
+      "dimensionCount": 15,
+      "lastRefreshTime": "2026-09-09T19:02:31.639Z",
+      "slowQuery": false,
+      "totalRows": 100,
+      "types": [
+        "string",
+        "string",
+        "time",
+        "time",
+        "string",
+        "string",
+        "boolean",
+        "string",
+        "boolean",
+        "boolean",
+        "string",
+        "string",
+        "boolean",
+        "string",
+        "string",
+        "number",
+        "number",
+        "number",
+        "number",
+        "number",
+        "number",
+        "number"
+      ]
+    }
+  ]
+}
