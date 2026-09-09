@@ -135,8 +135,7 @@ Estado e log da rotina:
 
 ```powershell
 ~/.claude/radar-mcp.cmd status          # no Git Bash do Claude Code
-Get-Content data
-odada_mcp.log -Tail 20
+Get-Content data\rodada_mcp.log -Tail 20
 ```
 
 ### A coleta antiga pelo navegador (notebook, desligada)
