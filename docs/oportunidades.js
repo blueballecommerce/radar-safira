@@ -228,23 +228,22 @@
   function selected(){const query=state.q.toLocaleLowerCase('pt-BR');return state.rows.filter(r=>(state.all||(r.status!=='Não vale o teste'&&!r.researchOnly))&&(!state.supplier||r.supplierId===state.supplier)&&(!state.unit||r.unit)&&(!state.own||r.catalog===false)&&(!state.color||r.radar?.cor===state.color)&&(!state.september||r.september)&&(!query||(r.name+' '+r.supplier).toLocaleLowerCase('pt-BR').includes(query)));}
   const provenance=(source,date)=>`<small class="ot-source">${esc(source)} · ${date?'exportado/lido em '+dateText(date):'leitura não coletada'}</small>`;
   const metric=(label,value,detail,source,date)=>`<div class="ot-metric"><span>${label}</span><strong>${value}</strong><div>${detail}</div>${provenance(source,date)}</div>`;
-  function card(r){
-    const d=r.demand,cls=r.status==='Promissor'?'good':r.status==='Não vale o teste'?'bad':'warn';
-    const capital=r.unit?'Compra após a venda':`Caixa de ${num(r.box)} = ${money(r.capital)}`;
-    const daily=d.daily==null?'não coletada':(d.lowerBound?'ao menos ':'')+num(d.daily)+'/dia';
-    const pending=[...r.pending,...(r.status==='Precisa de mais análise'?[r.reason]:[])];
-    const radio=r.radar?`<div class="ot-radar ${esc(r.radar.cor)}"><b>Radar ${esc(r.radar.cor)} · ${num(r.radar.nota)}</b><span>${esc(r.radar.motivo)}</span><small>${esc(r.radar.conta)}</small>${provenance('Semáforo do Radar',r.exported)}</div>`:`<div class="ot-radar">Semáforo do Radar: não coletado para referência aproximada.</div>`;
-    return `<article class="ot-card" data-url="${esc(r.url)}" data-status="${esc(r.status)}"><header>${r.img?`<img src="${esc(r.img)}" alt="" loading="lazy">`:''}<div><span class="ot-supplier">${esc(r.supplier)}</span><h3>${esc(r.name)}</h3><span class="ot-badge ${cls}">${esc(r.status)}</span>${r.approximate?'<span class="ot-badge warn">Referência aproximada</span>':''}${!r.unit&&r.status==='Promissor'?'<span class="ot-badge warn">Com condição</span>':''}</div></header>
-      <div class="ot-evidence"><figure>${r.img?`<img src="${esc(r.img)}" alt="Produto do fornecedor" loading="lazy">`:'<p>Foto não coletada</p>'}<figcaption>Fornecedor · ${money(r.unitCost)} por unidade</figcaption></figure><figure>${r.ref.img?`<img src="${esc(r.ref.img)}" alt="Anúncio usado na conta" loading="lazy">`:'<p>Foto não coletada</p>'}<figcaption>Referência · ${esc(r.ref.id)} · ${money(r.price)}</figcaption></figure></div><p class="ot-match">${esc(r.reviewPending||r.ref.obs||'Pareamento herdado do cadastro; detalhes de modelo e kit ainda precisam ser conferidos.')}</p>${r.leader&&r.leader.id!==r.ref.id?`<p class="ot-leader">Líder de mercado: ${esc(r.leader.id)}, ${num(r.leader.vendas_mes)} vendas/mês a ${money(r.leader.preco)}. A conta abaixo usa outro anúncio, que foi avaliado separadamente para entrada.</p>`:''}${radio}<p class="ot-reading">${esc(r.reading)}</p>
-      <div class="ot-metrics">${metric('Vende por',money(r.price),'Faixa comparável: '+money(r.low)+' a '+money(r.high)+(r.catalog?'<br>Piso do catálogo: '+money(r.floor):'')+'<br>'+num(r.quantity)+' unidade(s) por anúncio','JoomPulse / fornecedor',r.exported)}
-      ${metric('Sobra',money(r.classic?.profit),'Clássico '+pct(r.classic?.margin)+'<br>Premium '+money(r.premium?.profit)+' · '+pct(r.premium?.margin)+'<br>No piso: '+money(r.floorResult?.profit)+' · '+pct(r.floorResult?.margin),'Simulador do Radar / FEES · premissas atuais',r.exported)}
-      ${metric('Demanda',num(r.monthly)+' / mês',num(r.weekly)+' / semana<br>Média desde criação: '+daily+'<br>Criação: '+dateText(d.created)+' · idade '+num(d.age)+' dias<br>Dias no ar: '+num(r.activityDays)+'<br>Estabilidade: '+r.stability,'JoomPulse; exportação não é data de leitura',r.exported)}
-      ${metric('Concorrência',r.catalog===true?'Catálogo':r.catalog===false?'Anúncio próprio':'não coletado','Entrada '+r.entrance+'<br>'+num(r.rc)+' avaliações da referência · nota '+num(r.ref.nota)+'/5'+(r.catalog?'<br>'+num(r.bb)+' vendedores no catálogo':'')+'<br>Full: '+(r.ref.full==null?'não coletado':r.ref.full?'sim':'não')+' · Frete grátis: '+(r.ref.frete_gratis==null?'não coletado':r.ref.frete_gratis?'sim':'não'),'JoomPulse / limites do Radar',r.exported)}
-      ${metric('Custo do teste',esc(capital),r.unit?'Risco zero de estoque antecipado: compra 1 depois da venda (ou '+num(r.quantity)+' se for kit). Frete, devolução e disponibilidade ainda contam.':'Decidir antes de publicar como atender a primeira venda sem comprar a caixa. Sem teto fixo de capital.','Fornecedor / regra confirmada por João',r.supplierDate)}</div>
-      <p class="ot-stock">${esc(r.stock)} · custo unitário ${money(r.unitCost)}${r.siteBox!=null&&r.siteBox!==r.box?' · site informa caixa com '+num(r.siteBox):''}${provenance('Fornecedor / catálogo e etiqueta',r.supplierDate)}</p>
-      <div class="ot-blocks"><section><h4>Por que anunciar</h4><p>${esc(r.status==='Promissor'?r.reason:'Ainda não priorizar: '+r.reason)}</p><p>Para margem de 20%, dá para pagar até <b>${money(r.maxCost)}</b> pelos produtos do anúncio, contra custo de <b>${money(r.cost)}</b>. No piso: <b>${money(r.maxFloor)}</b>.</p>${provenance('custoMaximo / Simulador do Radar',r.exported)}</section><section><h4>O que falta</h4><ul>${pending.map(x=>'<li>Pendente · '+esc(x)+'</li>').join('')}</ul></section></div>
-      <details><summary>Ver conta, fontes e anúncios de referência</summary><p>${esc(r.math)}</p><p>Critério: ${CONFIG.idade} dias de criação, ${CONFIG.diaria} venda/dia e ${pct(CONFIG.margem)} de margem. ${esc(r.reason)}</p><p>Média: ${num(d.sales)} vendas em ${d.windowDays?num(d.windowDays)+' dias de janela':'toda a vida do anúncio'} ÷ ${num(d.ageAtReading)} dias desde a criação na observação. ${d.lowerBound?'É um limite inferior, não a média exata.':''} Fonte: ${esc(d.source)}; leitura ${dateText(d.read)}. Quando a leitura falta, usa-se a idade na exportação conservadoramente.</p><p>Plano da QuickBuy: ${esc(OPT_PLANO)}</p><p>Regras de envio: Mercado Livre, consulta de 09/09/2026; entrega padrão confirmada por João. QuickBuy amarela, sem Full; desconto de frete não confirmado (0% por padrão). Peso, taxas e embalagem são premissas do Simulador, não medidas verificadas.</p><ul>${(r.evaluated||[]).map(a=>`<li>${esc(a.id)} · ${esc(a.status)} · ${num(a.age)} dias · ${esc(a.reason)}</li>`).join('')}</ul><ul>${r.ads.map(a=>`<li>${esc(a.id)} · ${esc(a.nome)} · ${esc(a.vendedor||'não coletado')} · ${money(a.preco)} · ${num(a.vendas_mes)} vendas/mês. Sem somar anúncios ou variações.</li>`).join('')}</ul></details>
-      <footer><button class="btn" data-sheet="${esc(r.url)}">Ver ficha</button><a class="btn primary" href="https://produto.mercadolivre.com.br/${esc(String(r.ref.id).replace('MLB','MLB-'))}" target="_blank" rel="noopener">Mercado Livre ↗</a></footer></article>`;
+  function card(r,index){
+    const cls=r.status==='Promissor'?'good':r.status==='Não vale o teste'?'bad':'warn';
+    return `<article class="ot-card ot-compact" data-url="${esc(r.url)}" data-sheet="${esc(r.url)}" data-status="${esc(r.status)}" tabindex="0" role="link" aria-label="Ver ficha de ${esc(r.name)}">
+      <span class="ot-rank">${index+1}</span><img class="ot-thumbnail" src="${esc(r.img||'')}" alt="" loading="lazy">
+      <div class="ot-card-name"><h3>${esc(r.name)}</h3><span class="ot-supplier">${esc(r.supplier)}</span><div class="tags"><span class="tag">${r.catalog===true?'Catálogo':r.catalog===false?'Anúncio próprio':'Tipo não coletado'}</span><span class="tag">${num(r.demand.age)} dias de criação</span>${r.approximate?'<span class="tag">Referência aproximada</span>':''}</div></div>
+      <div class="ot-card-status"><span class="ot-badge ${cls}">${esc(r.status)}</span><small>${r.unit?'Aceita unidade':num(r.box)+' un. por caixa'}${r.radar?' · Radar '+esc(r.radar.cor):''}</small></div>
+      <div class="ot-card-value"><small>Vendas/mês</small><b>${num(r.monthly)}</b><small>estimativa da referência</small></div>
+      <div class="ot-card-value"><small>Preço de venda</small><b>${money(r.price)}</b><small>Custo ${money(r.cost)}</small></div>
+      <div class="ot-card-value"><small>Sobra Clássico</small><b>${money(r.classic?.profit)}</b><small>${pct(r.classic?.margin)} de margem</small></div>
+      <div class="ot-card-action"><span>Ver ficha →</span><a href="https://produto.mercadolivre.com.br/${esc(String(r.ref.id).replace('MLB','MLB-'))}" target="_blank" rel="noopener">Mercado Livre ↗</a></div></article>`;
+  }
+  function openSheet(url){
+    const r=state.rows.find(x=>x.url===url);
+    const product=forn.data.produtos.find(p=>p.url===url);
+    if(r&&product&&r.price!=null&&r.quantity>0)forn.calc[url]={tipo:'c',cat:environment().cat(r.ref,product),preco:r.price/r.quantity};
+    abrirNoFornecedor(url);
   }
   function renderCards(){
     const list=document.querySelector('#ot-results');if(!list)return;
@@ -280,7 +279,8 @@
     root.querySelector('#ot-all').onclick=e=>{state.all=!state.all;e.target.textContent=state.all?'Só potenciais':'Mostrar tudo';e.target.setAttribute('aria-pressed',state.all);state.limit=20;renderCards();};
     root.querySelector('#ot-more').onclick=()=>{state.limit+=20;renderCards();};
     root.querySelector('#ot-csv').onclick=()=>{const url=URL.createObjectURL(new Blob(['\ufeff'+csv(selected())],{type:'text/csv;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='oportunidades-fornecedores.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
-    root.onclick=e=>{const b=e.target.closest('[data-sheet]');if(b)abrirNoFornecedor(b.dataset.sheet);};
+    root.onclick=e=>{if(e.target.closest('a'))return;const b=e.target.closest('[data-sheet]');if(b)openSheet(b.dataset.sheet);};
+    root.onkeydown=e=>{if(e.target.closest('a,button,input,select'))return;const b=e.target.closest('[data-sheet]');if(b&&(e.key==='Enter'||e.key===' ')){e.preventDefault();openSheet(b.dataset.sheet);}};
     renderCards();
   }
   async function load(){
@@ -289,7 +289,7 @@
     catch(e){document.getElementById('oport-root').innerHTML='<p role="alert">Não foi possível carregar as oportunidades. Recarregue a página. '+esc(e.message)+'</p>';}
   }
   function refresh(){if(state.data){state.rows=build(state.data,environment());if(!document.getElementById('tab-oport').hidden)render();}}
-  const api={load,refresh,build,analyze,classify,demand,age,csv,enrich,withReadings,latestReadings,discover,CONFIG,rows:()=>state.rows};
+  const api={context:environment,load,refresh,build,analyze,classify,demand,age,csv,enrich,withReadings,latestReadings,discover,CONFIG,rows:()=>state.rows};
   if(typeof module!=='undefined'&&module.exports)module.exports=api;
   if(global)global.RadarOportunidades=api;
 })(typeof window==='undefined'?null:window);

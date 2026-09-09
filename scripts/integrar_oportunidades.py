@@ -11,9 +11,13 @@ def replace_once(text, before, after):
 
 
 def readings_hook(source):
-    source=re.sub(r'oportunidades\.(js|css)\?v=[^"\s]+',r'oportunidades.\1?v=20260909r2',source)
+    source=re.sub(r'oportunidades\.(js|css)\?v=[^"\s]+',r'oportunidades.\1?v=20260909r3',source)
     if 'await window.RadarOportunidades.withReadings(forn.data)' not in source:
         source=replace_once(source,'    forn.data = await r.json();','    forn.data = await r.json();\n    try { forn.data = await window.RadarOportunidades.withReadings(forn.data); } catch(e) { /* Base original disponível; a aba exibe a falha da leitura. */ }')
+    if 'src="oportunidades-ficha.js?' not in source:
+        source=replace_once(source,'<script src="oportunidades.js?', '<script src="oportunidades-ficha.js?v=20260909r3"></script>\n<script src="oportunidades.js?')
+    if 'window.RadarFichaOportunidades?.decorate(root,p)' not in source:
+        source=replace_once(source,'  renderAlvos(p); renderCalc(p);', '  renderAlvos(p); renderCalc(p);\n  window.RadarFichaOportunidades?.decorate(root,p);')
     return source
 
 def integrate(source):

@@ -2,17 +2,21 @@
 
 [Tailnet](https://dojoo.tailce25ed.ts.net:8444/#oportunidades) · [Pública](https://blueballecommerce.github.io/radar-safira/#oportunidades). Commit informado na conversa e no histórico da pasta viva.
 
-**A seleção anterior foi corrigida.** Os três aprovados anteriores foram retirados: suporte UV e power bank não correspondiam ao modelo do fornecedor; a taça incluía personalização sem custo validado. As fotos dos dois lados e as observações agora ficam no cartão.
+**A seleção anterior foi corrigida.** Os três aprovados anteriores foram retirados: suporte UV e power bank não correspondiam ao modelo do fornecedor; a taça incluía personalização sem custo validado. As fotos dos dois lados e as observações ficam na ficha, acessível pelo cartão.
 
 Foram relidos os 687 produtos da listagem pública da Flexx, sem mudanças nos preços e caixas publicados. O cadastro tem 750 Flexx (incluindo itens somente do catálogo) e 20 Logospan. Todas as famílias dos 770 itens foram incluídas nas buscas; a base anterior tinha apenas 219 pesquisados. Foram registradas 57 comparações visuais. Há 2010 anúncios com leituras pontuais disponíveis; não são produtos fornecedores distintos.
 
 **Limite real da entrega:** a JoomPulse atingiu o limite mensal e informou renovação em 06/10/2026. As buscas amplas que retornaram 100 linhas continuam parciais. Nenhum candidato por nome virou aprovação automática. A aba revela cobertura e pendências. A Etapa 1 permanece aberta para revisar as opções; não avançamos para a Etapa 2.
 
+## Revisão de apresentação
+
+Cartões compactos abrem a ficha existente com preço, custo, quanto pagar, margens e concorrentes individualizados. Comparar fotos mostra fornecedor e concorrente lado a lado, sem alterar vereditos. Criação, atividade e início das vendas ficam separados; dados ausentes são indicados. A seleção e as regras abaixo foram preservadas.
+
 ## Regra aplicada
 
 Até 40 dias desde a criação, pelo menos uma venda estimada por dia e margem de 20% no Clássico. Cada anúncio tem sua própria conta; vendas de anúncios e variações não são somadas. Um líder antigo não elimina uma oferta recente. Similares são aceitos nos dois fornecedores, identificados como aproximados, conforme a autorização posterior de João. Caixa fechada não tem teto fixo e exige plano de atendimento antes de publicar. QuickBuy amarela, entrega padrão confirmada, sem Full, desconto de frete acima de R$ 79 não confirmado (0%).
 
-## Promissor — leitura copiada dos cartões
+## Promissor — leitura disponível na ficha
 
 ### Bolsa Transversal 3 Zíperes
 

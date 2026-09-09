@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
-<link rel="stylesheet" href="oportunidades.css?v=20260909r2">
+<link rel="stylesheet" href="oportunidades.css?v=20260909r3">
 <link rel="stylesheet" href="concorrentes.css?v=20260908-dates">
 <link rel="stylesheet" href="pedidos.css?v=20260908-pedidos">
 <title>Radar Safira</title>
@@ -798,7 +798,8 @@ ul.ext li b{font-family:var(--mono);font-weight:500;white-space:nowrap}
 </div>
 <div class="toast" id="toast"></div>
 
-<script src="oportunidades.js?v=20260909r2"></script>
+<script src="oportunidades-ficha.js?v=20260909r3"></script>
+<script src="oportunidades.js?v=20260909r3"></script>
 <script src="concorrentes.js?v=20260908-dates"></script>
 <script src="pedidos.js?v=20260908-pedidos"></script>
 <script>
@@ -2112,6 +2113,7 @@ function fornProduto(root, F){
   if ($('#f-foto') && ((p.fotos||[]).length || p.img)) $('#f-foto').onclick = abrirFoto;
   $('#f-back1').onclick=()=>{ forn.view='produtos'; fornRender(); };
   renderAlvos(p); renderCalc(p);
+  window.RadarFichaOportunidades?.decorate(root,p);
   const todos = [...p.anuncios, ...(p.mesma_categoria||[])];
   root.querySelectorAll('.an[data-id]').forEach(el=>{
     /* a tabela de concorrentes abre e fecha por conta própria: clique nela não

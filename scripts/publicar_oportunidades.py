@@ -13,7 +13,7 @@ from veredito import registrar_direto
 
 ROOT=Path(__file__).resolve().parents[1]
 SERVER=Path('C:/Projeto - Radar Safira')
-ASSETS=['pytest.ini','docs/oportunidades.js','docs/oportunidades.css','docs/oportunidades.json','radar/oportunidades.py','data/oportunidades/datas-2026-09-09.json','scripts/integrar_oportunidades.py',
+ASSETS=['docs/oportunidades-ficha.js','pytest.ini','docs/oportunidades.js','docs/oportunidades.css','docs/oportunidades.json','radar/oportunidades.py','data/oportunidades/datas-2026-09-09.json','scripts/integrar_oportunidades.py',
         'scripts/publicar_oportunidades.py','scripts/publicar.ps1','scripts/veredito.py','radar/fornecedor_export.py',
         'tests/test_oportunidades.py','tests/oportunidades_rules.cjs','tests/oportunidades_ui.test.cjs',
         'tests/oportunidades_browser.py','data/oportunidades/NOTAS.md','data/oportunidades/FECHAMENTO.md','data/oportunidades/confirmados.json','data/oportunidades/pendentes.json']
@@ -66,7 +66,10 @@ def publish():
     payload['GUIA.md']=guide.encode('utf-8')
     briefing=before['BRIEFING_ASSISTENTE.md'].decode('utf-8-sig')
     line='| `oportunidades.js`, `oportunidades.css` | Aba Oportunidade de fornecedores: Etapa 1, contas compartilhadas, até 40 dias de criação e 1 venda/dia. Integração/publicação: `scripts/integrar_oportunidades.py` e `scripts/publicar_oportunidades.py`. |'
-    if '`oportunidades.js`, `oportunidades.css`' not in briefing:
+    line=line.replace('`oportunidades.css`','`oportunidades.css`, `oportunidades-ficha.js`').replace('Etapa 1, contas compartilhadas','Etapa 1, cartões compactos que abrem a ficha e comparação de fotos por anúncio, contas compartilhadas')
+    if '`oportunidades.js`, `oportunidades.css`' in briefing:
+        briefing='\n'.join(line if row.startswith('| `oportunidades.js`,') else row for row in briefing.split('\n'))
+    else:
         anchor='| `data.json` (~1,8 MB) |';pos=briefing.find(anchor)
         if pos<0:raise RuntimeError('Mapa do briefing mudou')
         briefing=briefing[:pos]+line+'\n'+briefing[pos:]

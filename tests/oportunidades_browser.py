@@ -49,8 +49,28 @@ try:
     card=page.locator('.ot-card').first
     assert card.locator('a').count()==1 and card.locator('a').inner_text()=='Mercado Livre ↗'
     page.screenshot(path=str(OUT/'oportunidades-desktop.png'),full_page=True)
-    card.locator('[data-sheet]').click()
+    assert card.locator('.ot-metrics').count()==0
+    assert card.bounding_box()['height']<240
+    card.focus();page.keyboard.press('Enter')
     assert page.locator('#tab-forn').is_visible()
+    page.wait_for_selector('.ot-sheet-summary')
+    expected=page.evaluate('forn.data.produtos.find(p=>p.url===forn.prod).anuncios.length')
+    assert page.locator('.ot-rival').count()>=expected
+    assert 'somando' not in page.locator('.ot-sheet-summary').inner_text()
+    rival=page.locator('.ot-rival').first
+    assert 'Vendas desde: não coletada' in rival.inner_text()
+    assert 'Nota ' in rival.inner_text() and 'Criado em ' in rival.inner_text()
+    rival.locator('button[data-compare]').last.click()
+    assert page.locator('#ot-compare').is_visible()
+    assert page.locator('#ot-compare img').count()==2
+    page.set_viewport_size({'width':390,'height':844})
+    assert page.evaluate('document.documentElement.scrollWidth<=innerWidth'), page.evaluate("[...document.querySelectorAll('body *')].filter(e=>e.getBoundingClientRect().right>innerWidth+1).slice(0,10).map(e=>[e.tagName,e.id,e.className,e.getBoundingClientRect().width])")
+    page.keyboard.press('Escape')
+    assert page.evaluate('document.documentElement.scrollWidth<=innerWidth'), page.evaluate("[...document.querySelectorAll('body *')].filter(e=>e.getBoundingClientRect().right>innerWidth+1).slice(0,10).map(e=>[e.tagName,e.id,e.className,e.getBoundingClientRect().width])")
+    page.screenshot(path=str(OUT/'ficha-mobile.png'))
+    page.locator('.ot-back').click();page.wait_for_selector('.ot-card')
+    assert page.locator('#ot-query').input_value()=='Caneta Impressora 3D'
+    page.set_viewport_size({'width':1440,'height':950})
     page.locator('[data-tab=oport]').click();page.wait_for_selector('.ot-card')
     before=page.evaluate('RadarOportunidades.rows().find(r=>r.name==="Caneta Impressora 3D").classic?.profit')
     page.locator('[data-tab=sim]').click()
@@ -66,6 +86,10 @@ try:
     (OUT/'resultado-real.json').write_text(json.dumps({'rows':rows,'baseline':baseline,'radar':page.evaluate('FORN_ROWS.map(r=>({nome:r.n,url:r._forn.url,opp:r.opp}))')},ensure_ascii=False,indent=2),'utf-8')
     page.set_viewport_size({'width':390,'height':844});page.screenshot(path=str(OUT/'oportunidades-mobile.png'),full_page=True)
     assert page.evaluate('document.documentElement.scrollWidth<=window.innerWidth'), 'Rolagem horizontal'
+    page.locator('#ot-query').fill('Bolsa Transversal 3 Zíperes')
+    page.locator('.ot-card').first.click();page.wait_for_selector('.ot-sheet-summary')
+    assert page.evaluate('document.documentElement.scrollWidth<=innerWidth'), 'Calculadora da bolsa excede a largura'
+    page.locator('.ot-back').click();page.wait_for_selector('.ot-card')
     # Três classificações reais na tela, com um conjunto pequeno e determinístico.
     page.evaluate('''() => {
       const base=structuredClone(forn.data.produtos.find(p=>p.nome==='Caneta Impressora 3D'));
