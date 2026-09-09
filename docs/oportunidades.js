@@ -227,7 +227,8 @@
     data=enrich(data,env.extra);
     const suppliers=Object.fromEntries((data.fornecedores||[]).map(f=>[f.id,f]));
     const order={'Promissor':0,'Precisa de mais análise':1,'Não vale o teste':2};
-    return (data.produtos||[]).map(p=>analyze(p,suppliers[p.fornecedor],env)).filter(Boolean).sort((a,b)=>order[a.status]-order[b.status]||b.score-a.score||a.name.localeCompare(b.name));
+    const marketRank=r=>(n(r.market?.strong)||0)*100+(n(r.market?.growing)||0)*20+(r.market?.complete?10:0)+(r.market?.coverage?.candidatos?Math.min(1,(n(r.market.coverage.revisados)||0)/r.market.coverage.candidatos):0);
+    return (data.produtos||[]).map(p=>analyze(p,suppliers[p.fornecedor],env)).filter(Boolean).sort((a,b)=>order[a.status]-order[b.status]||marketRank(b)-marketRank(a)||b.score-a.score||a.name.localeCompare(b.name));
   }
   const state={sheet:null,rows:[],data:null,extra:null,discovery:{},all:false,q:'',supplier:'',unit:false,own:false,color:'',september:false,limit:20};
   let extraPromise=null;
@@ -265,7 +266,7 @@
     return {...extra,anuncios:entries};
   }
   async function withReadings(data){
-    if(!extraPromise)extraPromise=fetch('oportunidades.json?v=20260909r3').then(r=>{if(!r.ok)throw new Error('Leitura pontual indisponível');return r.json();}).catch(e=>{extraPromise=null;throw e;});
+    if(!extraPromise)extraPromise=fetch('oportunidades.json?v=20260909r4').then(r=>{if(!r.ok)throw new Error('Leitura pontual indisponível');return r.json();}).catch(e=>{extraPromise=null;throw e;});
     state.extra=latestReadings(await extraPromise,typeof S==='undefined'?null:S);
     const enriched=enrich(data,state.extra);
     if(typeof tokensNome!=='undefined'&&typeof parecidos!=='undefined')state.discovery=discover(enriched,typeof S==='undefined'?null:S,tokensNome,parecidos);
@@ -278,15 +279,27 @@
     return {extrato,max:custoMaximo,cat:(a,p)=>{const c=catDe(a,p);return a.l1&&FEES.comm[a.l1]?c:p.categoria?.l1&&FEES.comm[p.categoria.l1]?p.categoria.l1:null;},
       score:pontosDe,rows:FORN_ROWS,dates,extra:state.extra,missing:state.extra?.naoRetornados,exported:forn.data.geradoEm,now:today(),catalogLimits:OPP_CATALOGO,ownLimits:OPP_PROPRIO};
   }
-  function selected(){const query=state.q.toLocaleLowerCase('pt-BR');return state.rows.filter(r=>r.demand.age!=null&&r.demand.age<CONFIG.idade&&(state.all||(r.status!=='Não vale o teste'&&!r.researchOnly))&&(!state.supplier||r.supplierId===state.supplier)&&(!state.unit||r.unit)&&(!state.own||r.catalog===false)&&(!state.color||r.radar?.cor===state.color)&&(!state.september||r.september)&&(!query||(r.name+' '+r.supplier).toLocaleLowerCase('pt-BR').includes(query)));}
+  function selected(){
+    const query=state.q.toLocaleLowerCase('pt-BR');
+    const hasMarketSignal=r=>{
+      if(r.status==='Promissor')return true;
+      const viableMargin=n(r.classic?.margin)!=null&&r.classic.margin>=CONFIG.margem;
+      const viableEntrance=r.entrance!=='fechada'&&(!r.catalog||(r.entrance==='aberta'&&n(r.maxFloor)!=null&&r.maxFloor>r.cost));
+      return r.status==='Precisa de mais análise'&&!r.researchOnly&&(n(r.market?.strong)||0)>0&&viableMargin&&viableEntrance&&!r.reviewPending&&!r.reviewRequired;
+    };
+    return state.rows.filter(r=>r.demand.age!=null&&r.demand.age<CONFIG.idade&&(state.all||hasMarketSignal(r))&&(!state.supplier||r.supplierId===state.supplier)&&(!state.unit||r.unit)&&(!state.own||r.catalog===false)&&(!state.color||r.radar?.cor===state.color)&&(!state.september||r.september)&&(!query||(r.name+' '+r.supplier).toLocaleLowerCase('pt-BR').includes(query)));
+  }
   const provenance=(source,date)=>`<small class="ot-source">${esc(source)} · ${date?'exportado/lido em '+dateText(date):'leitura não coletada'}</small>`;
   const metric=(label,value,detail,source,date)=>`<div class="ot-metric"><span>${label}</span><strong>${value}</strong><div>${detail}</div>${provenance(source,date)}</div>`;
   function card(r,index){
     const cls=r.status==='Promissor'?'good':r.status==='Não vale o teste'?'bad':'warn';
+    const strong=n(r.market?.strong),growing=n(r.market?.growing);
+    const strongText=strong==null?'não coletado':num(strong)+' vendedor'+(strong===1?'':'es')+' forte'+(strong===1?'':'s');
+    const growingText=growing==null?'não coletado':num(growing)+' em crescimento';
     return `<article class="ot-card ot-compact" data-url="${esc(r.url)}" data-sheet="${esc(r.url)}" data-status="${esc(r.status)}" tabindex="0" role="link" aria-label="Ver ficha de ${esc(r.name)}">
       <span class="ot-rank">${index+1}</span><img class="ot-thumbnail" src="${esc(r.img||'')}" alt="" loading="lazy">
       <div class="ot-card-name"><h3>${esc(r.name)}</h3><span class="ot-supplier">${esc(r.supplier)}</span><div class="tags"><span class="tag">${r.catalog===true?'Catálogo':r.catalog===false?'Anúncio próprio':'Tipo não coletado'}</span><span class="tag">${num(r.demand.age)} dias de criação</span>${r.approximate?'<span class="tag">Referência aproximada</span>':''}</div></div>
-      <div class="ot-card-status"><span class="ot-badge ${cls}">${esc(r.status)}</span><small>${r.unit?'Aceita unidade':num(r.box)+' un. por caixa'}${r.radar?' · Radar '+esc(r.radar.cor):''}</small><small class="ot-market-line">${num(r.market?.strong)} vendedores fortes · ${num(r.market?.growing)} em crescimento · ${r.market?.complete?'busca concluída':'busca parcial'}</small></div>
+      <div class="ot-card-status"><span class="ot-badge ${cls}">${esc(r.status)}</span><small>${r.unit?'Aceita unidade':num(r.box)+' un. por caixa'}${r.radar?' · Radar '+esc(r.radar.cor):''}</small><small class="ot-market-line">${strongText} · ${growingText} · ${r.market?.complete?'busca concluída':'busca parcial'}</small></div>
       <div class="ot-card-value"><small>Vendas/mês</small><b>${num(r.monthly)}</b><small>estimativa da referência</small></div>
       <div class="ot-card-value"><small>Preço de venda</small><b>${money(r.price)}</b><small>Custo ${money(r.cost)}</small></div>
       <div class="ot-card-value"><small>Sobra Clássico</small><b>${money(r.classic?.profit)}</b><small>${pct(r.classic?.margin)} de margem</small></div>
@@ -327,9 +340,9 @@
   }
   function renderCards(){
     const list=document.querySelector('#ot-results');if(!list)return;
-    const rows=selected();document.querySelector('#ot-count').textContent=rows.length+' produtos com referência recente · '+state.rows.filter(r=>r.status==='Promissor').length+' Promissor no universo pesquisado';
+    const rows=selected();document.querySelector('#ot-count').textContent=rows.length+(state.all?' produtos analisados com referência recente':' candidatos com ao menos um sinal de mercado revisado')+' · '+state.rows.filter(r=>r.status==='Promissor').length+' Promissor no universo pesquisado';
     const strong=state.rows.filter(r=>r.status==='Promissor');document.getElementById('ot-selection-note').textContent=strong.length?strong.length+' candidatos atendem às regras na base coletada. Isso indica potencial para anúncio, não venda garantida.':'Nenhum produto tem evidência suficiente para ser Promissor na base coletada. Não há indicação de teste aprovada neste momento.';
-    list.innerHTML=rows.slice(0,state.limit).map(card).join('')||'<p class="empty">Nenhum produto com estes filtros. Use Ver também reprovados para ver os descartados e seus motivos.</p>';
+    list.innerHTML=rows.slice(0,state.limit).map(card).join('')||'<p class="empty">Nenhum produto com estes filtros. Use Ver todos os analisados para consultar casos fracos, pendentes e reprovados.</p>';
     document.querySelector('#ot-more').hidden=rows.length<=state.limit;
   }
   function csv(rows){
@@ -342,7 +355,7 @@
     if(state.sheet){renderSheet();return;}
     const root=document.getElementById('oport-root');
     root.innerHTML=`<div class="ot-intro"><span>QUICKBUY · ETAPA 1</span><h2>Oportunidade de fornecedores</h2><p>Produtos para investir tempo no anúncio. Comprar estoque só depois de validar a venda e avaliar o pedido.</p><p>Menos de ${CONFIG.idade} dias desde a criação · pelo menos ${CONFIG.diaria} venda/dia em ${CONFIG.repeticao} vendedores comparáveis · crescimento mínimo de ${pct(CONFIG.crescimento)} no ritmo semanal · margem de ${pct(CONFIG.margem)} no Clássico · pesquisa concluída.</p><small>O crescimento compara a última semana com a média mensal do mesmo anúncio; não soma anúncios e não substitui histórico. Catálogo exportado em ${dateText(state.data.geradoEm)}. Vendas estimadas pela JoomPulse. Exportação não renova a leitura do mercado. A aba usa somente JSONs, sem tokens ou coleta.</small></div>
-    <div class="ot-filters"><label>Buscar<input id="ot-query" type="search" value="${esc(state.q)}" placeholder="Nome do produto"></label><label>Fornecedor<select id="ot-supplier"><option value="">Todos</option>${state.data.fornecedores.map(f=>`<option value="${esc(f.id)}" ${state.supplier===f.id?'selected':''}>${esc(f.nome)}</option>`).join('')}</select></label><label>Semáforo<select id="ot-color"><option value="">Todos</option>${['verde','amarelo','vermelho'].map(c=>`<option ${state.color===c?'selected':''}>${c}</option>`).join('')}</select></label><label class="ot-toggle"><input id="ot-unit" type="checkbox" ${state.unit?'checked':''}> Aceita unidade</label><label class="ot-toggle"><input id="ot-own" type="checkbox" ${state.own?'checked':''}> Anúncio próprio</label><label class="ot-toggle"><input id="ot-september" type="checkbox" ${state.september?'checked':''}> Catálogo de setembro</label><button class="btn" id="ot-all" aria-pressed="${state.all}">${state.all?'Só oportunidades':'Ver também reprovados'}</button><button class="btn" id="ot-csv">Baixar CSV</button></div><p id="ot-count" role="status"></p><p id="ot-selection-note" class="ot-selection-note"></p><div id="ot-results"></div><button class="btn" id="ot-more">Mostrar mais produtos</button>`;
+    <div class="ot-filters"><label>Buscar<input id="ot-query" type="search" value="${esc(state.q)}" placeholder="Nome do produto"></label><label>Fornecedor<select id="ot-supplier"><option value="">Todos</option>${state.data.fornecedores.map(f=>`<option value="${esc(f.id)}" ${state.supplier===f.id?'selected':''}>${esc(f.nome)}</option>`).join('')}</select></label><label>Semáforo<select id="ot-color"><option value="">Todos</option>${['verde','amarelo','vermelho'].map(c=>`<option ${state.color===c?'selected':''}>${c}</option>`).join('')}</select></label><label class="ot-toggle"><input id="ot-unit" type="checkbox" ${state.unit?'checked':''}> Aceita unidade</label><label class="ot-toggle"><input id="ot-own" type="checkbox" ${state.own?'checked':''}> Anúncio próprio</label><label class="ot-toggle"><input id="ot-september" type="checkbox" ${state.september?'checked':''}> Catálogo de setembro</label><button class="btn" id="ot-all" aria-pressed="${state.all}">${state.all?'Só candidatos com sinal':'Ver todos os analisados'}</button><button class="btn" id="ot-csv">Baixar CSV</button></div><p id="ot-count" role="status"></p><p id="ot-selection-note" class="ot-selection-note"></p><div id="ot-results"></div><button class="btn" id="ot-more">Mostrar mais produtos</button>`;
     const readDates=Object.values(state.extra?.anuncios||{}).map(x=>x.lidoEm).filter(Boolean).sort();
     const collection=state.extra?.auditoria?.coleta;
     if(collection)root.querySelector('.ot-intro').insertAdjacentHTML('beforeend',`<details class="ot-research"><summary>Limite da pesquisa desta rodada</summary><p>${esc(collection.mensagem)}</p><p>Renovação informada pela JoomPulse: ${dateText(collection.retomaEm)}.</p></details>`);
@@ -358,7 +371,7 @@
     audit.className='ot-research';summary.textContent=num(state.data.produtos.length)+' produtos no cadastro · '+num((state.extra?.pareamentos||[]).length)+' comparações visuais · cobertura, fontes e limites';
     audit.append(summary);[...intro.children].slice(4).forEach(el=>audit.append(el));intro.append(audit);
     for(const [id,key,kind] of [['ot-query','q','value'],['ot-supplier','supplier','value'],['ot-color','color','value'],['ot-unit','unit','checked'],['ot-own','own','checked'],['ot-september','september','checked']]) root.querySelector('#'+id).addEventListener('input',e=>{state[key]=e.target[kind];state.limit=20;renderCards();});
-    root.querySelector('#ot-all').onclick=e=>{state.all=!state.all;e.target.textContent=state.all?'Só oportunidades':'Ver também reprovados';e.target.setAttribute('aria-pressed',state.all);state.limit=20;renderCards();};
+    root.querySelector('#ot-all').onclick=e=>{state.all=!state.all;e.target.textContent=state.all?'Só candidatos com sinal':'Ver todos os analisados';e.target.setAttribute('aria-pressed',state.all);state.limit=20;renderCards();};
     root.querySelector('#ot-more').onclick=()=>{state.limit+=20;renderCards();};
     root.querySelector('#ot-csv').onclick=()=>{const url=URL.createObjectURL(new Blob(['\ufeff'+csv(selected())],{type:'text/csv;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='oportunidades-fornecedores.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
     root.onclick=e=>{if(e.target.closest('a'))return;const b=e.target.closest('[data-sheet]');if(b)openSheet(b.dataset.sheet);};
