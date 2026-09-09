@@ -3,10 +3,10 @@
 Este arquivo é lido pela sessão do Claude Code que roda sozinha **às 5h** (modo `novos`: traz
 produtos novos, relê o que estava na página e não reapareceu, e reordena o ranking) e **às
 15h** (modo `atualiza`: relê pelo id **todos** os produtos da página — vendas, dias no ar,
-vendedores no catálogo, preço, avaliações — e reordena). Cada modo tem execuções de
-continuação na hora seguinte (6h02/7h02 e 16h02/17h02) por causa do limite por hora da
-JoomPulse. Ele existe para a sessão não precisar pensar: é seguir os passos. Quem quiser
-entender o desenho lê `GUIA.md` (seção "O que acontece sozinho") e `radar/mcp.py`.
+vendedores no catálogo, preço, avaliações — e reordena). Cada uma é uma execução só: quando
+o limite por hora da JoomPulse chega, a sessão espera a hora virar (`esperar`) e continua. Ele
+existe para a sessão não precisar pensar: é seguir os passos. Quem quiser entender o desenho
+lê `GUIA.md` (seção "O que acontece sozinho") e `radar/mcp.py`.
 
 ## Regras
 
@@ -22,36 +22,36 @@ entender o desenho lê `GUIA.md` (seção "O que acontece sozinho") e `radar/mcp
   ingira o grupo inteiro com um único comando `ingerir`. Não leia o conteúdo dos arquivos de
   resposta: o script lê.
 
-## O limite por hora da JoomPulse (por que a rodada das 5h são três execuções)
+## O limite por hora da JoomPulse (por que cada rodada leva uma hora e pouco)
 
 A JoomPulse aceita **cerca de 40 pedidos ao MCP por hora** (relógio UTC, zera na hora cheia);
 o 41º volta `Hourly request limit for your plan reached`. Uma rodada `novos` precisa de 54
-consultas de descoberta mais 3 a 6 lotes de acompanhamento — não cabe numa hora. Por isso:
+consultas de descoberta mais uns 10 lotes de acompanhamento; a `atualiza`, de uns 45 lotes.
+Nenhuma cabe numa hora. Por isso:
 
 - `plano` só lista o que cabe no **orçamento da hora** (36 consultas, `RADAR_MCP_MAX_POR_HORA`)
-  e conta cada ingestão. Quando o orçamento acaba ele imprime **`LIMITE DA HORA`**: pare de
-  consultar e encerre a execução. A rodada fica aberta em `data/live/estado.json`.
-- A execução seguinte (agendada para a hora seguinte: 6h02, e 7h02 por garantia) roda
-  `plano novos` **sem `--reiniciar`** e continua de onde parou; quando nada falta, fecha.
-- Nunca insista depois do `LIMITE DA HORA`: a JoomPulse só devolve erro até a hora virar, e a
-  sessão agendada não pode esperar (não há `sleep` na lista de comandos permitidos).
+  e conta cada ingestão. Quando o orçamento acaba ele imprime **`LIMITE DA HORA`**.
+- Aí a sessão roda **`~/.claude/radar-mcp.cmd esperar`** (Bash com timeout de 600000 ms) e
+  repete até ler **`HORA NOVA`**: cada chamada dorme até 10 minutos, até a hora cheia seguinte.
+  Depois é `plano` de novo, que volta a listar. A rodada fica aberta em
+  `data/live/<modo>/estado.json` o tempo todo.
+- Se a JoomPulse cortar antes do orçamento (outra sessão gastou a hora), é
+  `esperar --forcar`, que ignora o contador.
+- Nunca insista depois do `LIMITE DA HORA`: a JoomPulse só devolve erro até a hora virar.
 
 ## Passo a passo
 
 1. Abra o plano do dia:
 
-       ~/.claude/radar-mcp.cmd plano novos --reiniciar        (5h — só a primeira execução do dia)
-       ~/.claude/radar-mcp.cmd plano novos                    (6h02 e 7h02 — continuação)
-       ~/.claude/radar-mcp.cmd plano atualiza --reiniciar     (15h — só a primeira execução)
-       ~/.claude/radar-mcp.cmd plano atualiza                 (16h02 e 17h02 — continuação)
-
-   Os lotes `track/n` saem de 12 em 12 por `plano` (cada um carrega 100 ids); ingira e rode
-   `plano` de novo para receber os próximos.
+       ~/.claude/radar-mcp.cmd plano novos --reiniciar        (5h)
+       ~/.claude/radar-mcp.cmd plano atualiza --reiniciar     (15h)
 
    Ele imprime a lista do que falta **e cabe nesta hora** (`top/<slug>`, `new/<slug>`,
    `track/<n>`, `cat/…`), o nome exato de cada categoria e o modelo JSON de cada tipo de
-   consulta. Se imprimir `LIMITE DA HORA`, encerre. Se imprimir `Nada pendente`, vá ao passo 4.
-   Se disser `já foi fechada`, a rodada de hoje está pronta: encerre dizendo isso.
+   consulta. Os lotes `track/n` saem de 12 em 12 (cada um carrega 100 ids); ingira e rode
+   `plano` de novo para receber os próximos. Se imprimir `LIMITE DA HORA`, espere (acima).
+   Se imprimir `Nada pendente`, vá ao passo 4. Se disser `já foi fechada`, a rodada de hoje
+   está pronta: encerre dizendo isso.
 
 2. Para cada passo listado, chame a ferramenta. Uma resposta cheia (100 linhas, ~60 KB) **não
    entra no contexto**: a ferramenta responde algo como
@@ -71,7 +71,8 @@ consultas de descoberta mais 3 a 6 lotes de acompanhamento — não cabe numa ho
    lista a próxima leva que cabe na hora; quando a descoberta terminar, passa a imprimir os
    lotes de acompanhamento (`track/1`, `track/2`, …) **com a consulta já pronta**, ids
    incluídos. Faça e ingira igual, e repita até ele dizer `Nada pendente` (feche) ou
-   `LIMITE DA HORA` (encerre). Em `atualiza` não há descoberta: o primeiro `plano` já traz os lotes.
+   `LIMITE DA HORA` (espere com `esperar` até `HORA NOVA` e volte ao `plano`). Em `atualiza`
+   não há descoberta: o primeiro `plano` já traz os lotes.
 
 4. Feche a rodada:
 
@@ -93,7 +94,7 @@ consultas de descoberta mais 3 a 6 lotes de acompanhamento — não cabe numa ho
 | `sem rodada aberta` | rode `plano <modo>` primeiro |
 | `fechar` diz que faltam consultas | rode `plano <modo>` (sem `--reiniciar`) e complete o que ele lista |
 | a consulta devolve erro da JoomPulse (`not found for path`, `too large`) | tente uma vez mais; se persistir, pule o passo e cite no resumo — não invente colunas nem reduza o `limit` |
-| `Hourly request limit for your plan reached` | o limite da hora chegou antes do orçamento: pare de consultar, ingira o que já tem e encerre; a próxima execução continua |
+| `Hourly request limit for your plan reached` | o limite da hora chegou antes do orçamento: pare de consultar, ingira o que já tem, rode `esperar --forcar` até `HORA NOVA` e volte ao `plano` |
 | `AVISO: push … falhou` | a página da tailnet já está no ar; o GitHub sai no próximo `scripts\publicar.ps1`. Cite no resumo |
 | `a rodada … já foi fechada` | a rodada de hoje nesse modo já aconteceu; não repita. Diga isso no resumo e pare |
 

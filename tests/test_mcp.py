@@ -188,11 +188,13 @@ def test_ingerir_and_plano_flow(tmp_env, capsys, monkeypatch):
 
     tr = tmp_env / "track.txt"
     tr.write_text(json.dumps(doc([_row("MLB2", "MLB20", w=5)])), "utf-8")
-    # limite da hora estourado: o plano manda parar em vez de listar o lote
+    # limite da hora estourado: o plano manda esperar em vez de listar o lote
     monkeypatch.setattr(mcp, "MAX_POR_HORA", 2)
     mcp.main(["plano", "novos"])
     assert "LIMITE DA HORA" in capsys.readouterr().out
     monkeypatch.setattr(mcp, "MAX_POR_HORA", 36)
+    mcp.main(["esperar"])                                  # com orçamento, volta na hora
+    assert "HORA NOVA" in capsys.readouterr().out
     mcp.main(["ingerir", f"track/1={tr}"])
     mcp.main(["plano", "novos"])
     assert "Nada pendente" in capsys.readouterr().out

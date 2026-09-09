@@ -38,7 +38,7 @@ import re
 import subprocess
 import sys
 import time
-from datetime import date, datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 from . import config, queries
@@ -54,8 +54,8 @@ NOVOS_MAX_DIAS = int(os.environ.get("RADAR_MCP_NOVOS_DIAS", "90"))
 LIMITE = 100                                                 # o servidor corta em 100 de qualquer jeito
 # A JoomPulse limita os pedidos ao MCP por hora (relógio UTC): em 09/09/2026 a 36ª consulta da
 # hora voltou "Hourly request limit for your plan reached". Uma rodada `novos` inteira (54 de
-# descoberta + lotes) não cabe numa hora, então `plano` só entrega o que cabe no orçamento e a
-# rodada fica aberta para a próxima execução agendada continuar.
+# descoberta + lotes) não cabe numa hora, então `plano` só entrega o que cabe no orçamento; a
+# sessão espera a hora virar (`esperar`) e continua a mesma rodada.
 MAX_POR_HORA = int(os.environ.get("RADAR_MCP_MAX_POR_HORA", "36"))
 # cada lote `track` impresso carrega 100 ids (~1,5 KB); mais que isto por `plano` estoura o que
 # a sessão consegue ler de uma vez — ela roda `plano` de novo depois de ingerir
@@ -274,13 +274,13 @@ def cmd_plano(modo: str, reiniciar: bool) -> None:
     orcamento = MAX_POR_HORA - _uso_na_hora(e)
     if orcamento <= 0:
         print(f"\nLIMITE DA HORA: já foram {_uso_na_hora(e)} consultas nesta hora (limite do plano JoomPulse, "
-              f"orçamento {MAX_POR_HORA}). NÃO consulte mais agora. Encerre esta execução: a rodada fica aberta e "
-              f"a próxima execução agendada continua de onde parou ({len(fase1) + len(fase2)} passo(s) restantes).")
+              f"orçamento {MAX_POR_HORA}). NÃO consulte agora. Rode `python -m radar mcp esperar` (repita até ele "
+              f"dizer HORA NOVA) e depois `plano` de novo. Faltam {len(fase1) + len(fase2)} passo(s); a rodada fica aberta.")
         return
     print(f"Ferramenta: {FERRAMENTA}. Cada resposta grande vira um arquivo .txt (o Claude Code avisa o caminho);")
     print("depois: python -m radar mcp ingerir \"<passo>=<caminho do arquivo>\" (vários pares por comando).")
     print(f"Orçamento desta hora: {orcamento} consulta(s) (limite do plano JoomPulse). Faça SÓ as listadas abaixo; "
-          "depois rode `plano` de novo. Se ele disser LIMITE DA HORA, encerre — a próxima execução continua.")
+          "depois rode `plano` de novo. Se ele disser LIMITE DA HORA, rode `esperar` até HORA NOVA e volte ao `plano`.")
     if fase1:
         sobra = max(0, len(fase1) - orcamento)
         fase1 = fase1[:orcamento]
@@ -506,6 +506,31 @@ def cmd_fechar(modo: str) -> None:
     _log("=== rodada concluida ===")
 
 
+def cmd_esperar(forcar: bool = False) -> None:
+    """Espera a hora da JoomPulse virar (relógio UTC, hora cheia) — em fatias de até 590 s,
+    porque cada chamada do Bash do Claude Code tem um teto de 10 minutos. A sessão repete o
+    comando até ler HORA NOVA. `forcar` ignora o contador (quando a JoomPulse cortou antes
+    do orçamento, por uso de outra sessão na mesma hora)."""
+    e = _estado()
+    agora = datetime.now(timezone.utc)
+    if not forcar and (not e or _uso_na_hora(e) < MAX_POR_HORA):
+        print("HORA NOVA: há orçamento nesta hora. Rode `plano` de novo.")
+        return
+    prox = agora.replace(minute=0, second=0, microsecond=0) + timedelta(hours=1, seconds=45)
+    falta = (prox - agora).total_seconds()
+    dorme = max(0, min(falta, 590))
+    print(f"esperando {int(dorme)} s — a hora da JoomPulse vira às {prox.astimezone():%H:%M} (hora local); "
+          f"faltam {int(falta)} s no total", flush=True)
+    time.sleep(dorme)
+    if datetime.now(timezone.utc) >= prox:
+        if e:
+            e["janela"] = {"hora": _hora_utc(), "consultas": 0}
+            _grava_estado(e)
+        print("HORA NOVA: o orçamento voltou. Rode `plano` de novo.")
+    else:
+        print(f"AINDA NÃO: faltam {int((prox - datetime.now(timezone.utc)).total_seconds())} s. Rode `esperar` de novo.")
+
+
 def cmd_status() -> None:
     e = _estado()
     if not e:
@@ -541,6 +566,8 @@ def main(argv=None) -> None:
     c = sub.add_parser("consulta", help="imprime a consulta CubeJS de um passo")
     c.add_argument("passo")
     sub.add_parser("status")
+    w = sub.add_parser("esperar", help="espera a hora da JoomPulse virar (repita até HORA NOVA)")
+    w.add_argument("--forcar", action="store_true", help="espera mesmo que o contador diga que há orçamento")
     a = ap.parse_args(argv)
     if a.op == "plano":
         cmd_plano(a.modo, a.reiniciar)
@@ -552,6 +579,8 @@ def main(argv=None) -> None:
         print(_json(consulta_do_passo(a.passo)))
     elif a.op == "status":
         cmd_status()
+    elif a.op == "esperar":
+        cmd_esperar(a.forcar)
 
 
 if __name__ == "__main__":
