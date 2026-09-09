@@ -22,8 +22,10 @@ Passos (o nome de cada consulta; o slug é o da fixture, sem acento):
     track/<n>              lote n de até 100 ids que já estão no radar (ml_track.json)
     cat/<nível>/<página>   categorias do mês, só quando o mês virou (cat_l<nível>.json)
 
-O estado da rodada do dia fica em data/live/estado.json; `plano` de novo mostra só o que falta,
-então uma rodada interrompida continua de onde parou.
+O estado da rodada do dia fica em data/live/<modo>/estado.json (um por modo, para a rodada das
+15h não atropelar uma das 5h que ficou aberta); `plano` de novo mostra só o que falta, então uma
+rodada interrompida continua de onde parou — é assim que ela atravessa o limite por hora da
+JoomPulse (ver MAX_POR_HORA).
 """
 from __future__ import annotations
 
@@ -35,20 +37,25 @@ import re
 import subprocess
 import sys
 import time
-from datetime import date, datetime
+from datetime import date, datetime, timezone
 from pathlib import Path
 
 from . import config, queries
 from .db import DB
 from .run import FixtureSource, run_once, slug
 
-LIVE = config.DATA_DIR / "live"
+LIVE = config.DATA_DIR / "live"          # data/live/<modo>/ guarda os arquivos e o estado de cada modo
 INBOX = LIVE / "inbox"
-ESTADO = LIVE / "estado.json"
+ATUAL = LIVE / "atual.json"              # qual modo está em andamento (para `ingerir` e `status`)
 LOG = config.DATA_DIR / "rodada_mcp.log"
 LOTE = 100                                                   # ids por consulta de acompanhamento
 NOVOS_MAX_DIAS = int(os.environ.get("RADAR_MCP_NOVOS_DIAS", "90"))
 LIMITE = 100                                                 # o servidor corta em 100 de qualquer jeito
+# A JoomPulse limita os pedidos ao MCP por hora (relógio UTC): em 09/09/2026 a 36ª consulta da
+# hora voltou "Hourly request limit for your plan reached". Uma rodada `novos` inteira (54 de
+# descoberta + lotes) não cabe numa hora, então `plano` só entrega o que cabe no orçamento e a
+# rodada fica aberta para a próxima execução agendada continuar.
+MAX_POR_HORA = int(os.environ.get("RADAR_MCP_MAX_POR_HORA", "36"))
 PAGINAS_CAT = {2: 6, 3: config.CATEGORY_L3_MAX_PAGES}
 FERRAMENTA = "query_cubejs_meli (conector JoomPulse, MCP)"
 MODOS = ("novos", "atualiza")
@@ -64,21 +71,61 @@ def _log(msg: str) -> None:
         f.write(f"{_agora()}  {msg}\n")
 
 
-def _estado() -> dict:
-    if ESTADO.exists():
-        return json.loads(ESTADO.read_text("utf-8"))
+def _dir(modo: str) -> Path:
+    return LIVE / modo
+
+
+def _modo_atual() -> str | None:
+    if ATUAL.exists():
+        return json.loads(ATUAL.read_text("utf-8")).get("modo")
+    return None
+
+
+def _estado(modo: str | None = None) -> dict:
+    modo = modo or _modo_atual()
+    if not modo:
+        return {}
+    p = _dir(modo) / "estado.json"
+    if p.exists():
+        e = json.loads(p.read_text("utf-8"))
+        e.setdefault("modo", modo)
+        return e
     return {}
 
 
 def _grava_estado(e: dict) -> None:
+    d = _dir(e["modo"])
+    d.mkdir(parents=True, exist_ok=True)
+    (d / "estado.json").write_text(json.dumps(e, ensure_ascii=False, indent=1), "utf-8")
     LIVE.mkdir(parents=True, exist_ok=True)
-    ESTADO.write_text(json.dumps(e, ensure_ascii=False, indent=1), "utf-8")
+    ATUAL.write_text(json.dumps({"modo": e["modo"]}), "utf-8")
 
 
-def _limpa_live() -> None:
-    LIVE.mkdir(parents=True, exist_ok=True)
-    for p in LIVE.glob("*.json"):
+def _limpa_live(modo: str) -> None:
+    d = _dir(modo)
+    d.mkdir(parents=True, exist_ok=True)
+    for p in d.glob("*.json"):
         p.unlink()
+
+
+# ---------------------------------------------------------------- orçamento por hora
+def _hora_utc() -> str:
+    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H")
+
+
+def _uso_na_hora(e: dict) -> int:
+    j = e.get("janela") or {}
+    return int(j.get("consultas", 0)) if j.get("hora") == _hora_utc() else 0
+
+
+def _conta_consulta(e: dict, n: int = 1) -> None:
+    """Uma consulta ingerida = um pedido à JoomPulse nesta hora (aproximação: erros e
+    repetições não entram, por isso o orçamento padrão fica abaixo do limite real)."""
+    j = e.get("janela") or {}
+    if j.get("hora") != _hora_utc():
+        j = {"hora": _hora_utc(), "consultas": 0}
+    j["consultas"] = int(j.get("consultas", 0)) + n
+    e["janela"] = j
 
 
 # ---------------------------------------------------------------- os passos
@@ -94,18 +141,19 @@ def _l1_do_slug(s: str) -> str:
     raise ValueError(f"categoria desconhecida: {s!r} (use o slug que `plano` imprime)")
 
 
-def _arquivo_do_passo(passo: str) -> tuple[Path, str]:
+def _arquivo_do_passo(passo: str, modo: str) -> tuple[Path, str]:
     """(arquivo de fixture, chave de deduplicação) — chave vazia = o arquivo é substituído."""
     tipo, _, resto = passo.partition("/")
+    d = _dir(modo)
     if tipo == "top":
-        return LIVE / f"ml_main_{_slug_l1(_l1_do_slug(resto))}.json", ""
+        return d / f"ml_main_{_slug_l1(_l1_do_slug(resto))}.json", ""
     if tipo == "new":
-        return LIVE / f"ml_new_{_slug_l1(_l1_do_slug(resto))}.json", ""
+        return d / f"ml_new_{_slug_l1(_l1_do_slug(resto))}.json", ""
     if tipo == "track":
-        return LIVE / "ml_track.json", "id"
+        return d / "ml_track.json", "id"
     if tipo == "cat":
         nivel = resto.split("/")[0]
-        return LIVE / f"cat_l{nivel}.json", "categoryId"
+        return d / f"cat_l{nivel}.json", "categoryId"
     raise SystemExit(f"passo desconhecido: {passo!r} (esperava top/…, new/…, track/n ou cat/nível/página)")
 
 
@@ -126,9 +174,10 @@ def _passos_categorias(db: DB) -> list[str]:
     return [f"cat/{n}/{p}" for n in (2, 3) for p in range(1, PAGINAS_CAT[n] + 1)]
 
 
-def _ids_descobertos() -> set[str]:
+def _ids_descobertos(modo: str) -> set[str]:
     ids: set[str] = set()
-    for p in list(LIVE.glob("ml_main_*.json")) + list(LIVE.glob("ml_new_*.json")):
+    d = _dir(modo)
+    for p in list(d.glob("ml_main_*.json")) + list(d.glob("ml_new_*.json")):
         try:
             ids.update(r["id"] for r in json.loads(p.read_text("utf-8")) if r.get("id"))
         except (ValueError, KeyError, TypeError):
@@ -142,7 +191,7 @@ def _lotes_track(modo: str, db: DB, e: dict) -> list[list[str]]:
         return e["lotes"]
     ids = db.tracked_ids()
     if modo == "novos":
-        vistos = _ids_descobertos()
+        vistos = _ids_descobertos(modo)
         ids = [i for i in ids if i not in vistos]
     ids = sorted(set(ids))
     lotes = [ids[k:k + LOTE] for k in range(0, len(ids), LOTE)]
@@ -164,6 +213,8 @@ def consulta_do_passo(passo: str, e: dict | None = None) -> dict:
         return queries.products_new(_l1_do_slug(resto), LIMITE, fat=True, max_days=NOVOS_MAX_DIAS)
     if tipo == "track":
         e = e if e is not None else _estado()
+        if not e:
+            raise SystemExit("sem rodada aberta; rode `plano` antes")
         n = int(resto)
         lotes = e.get("lotes") or []
         if n < 1 or n > len(lotes):
@@ -194,12 +245,19 @@ def _pendentes(modo: str, db: DB, e: dict) -> tuple[list[str], list[str]]:
 # ---------------------------------------------------------------- comandos
 def cmd_plano(modo: str, reiniciar: bool) -> None:
     hoje = date.today().isoformat()
-    e = _estado()
-    if reiniciar or e.get("modo") != modo or e.get("dia") != hoje or e.get("fechado"):
-        _limpa_live()
+    e = _estado(modo)
+    if reiniciar or not e or e.get("dia") != hoje:
+        _limpa_live(modo)
         e = {"dia": hoje, "modo": modo, "inicio": _agora(), "feitos": {}}
         _grava_estado(e)
         _log(f"=== plano {modo} iniciado ===")
+    elif e.get("fechado"):
+        # continuação agendada de uma rodada que já terminou: não há o que fazer
+        _grava_estado(e)                                  # só aponta `atual` para este modo
+        print(f"A rodada de hoje ({modo}) já foi fechada às {e['fechado']}. Nada a fazer — encerre.")
+        return
+    else:
+        _grava_estado(e)
     db = DB()
     fase1, fase2 = _pendentes(modo, db, e)
     db.close()
@@ -209,10 +267,22 @@ def cmd_plano(modo: str, reiniciar: bool) -> None:
     if not fase1 and not fase2:
         print("Nada pendente. Feche a rodada com:  python -m radar mcp fechar " + modo)
         return
+    orcamento = MAX_POR_HORA - _uso_na_hora(e)
+    if orcamento <= 0:
+        print(f"\nLIMITE DA HORA: já foram {_uso_na_hora(e)} consultas nesta hora (limite do plano JoomPulse, "
+              f"orçamento {MAX_POR_HORA}). NÃO consulte mais agora. Encerre esta execução: a rodada fica aberta e "
+              f"a próxima execução agendada continua de onde parou ({len(fase1) + len(fase2)} passo(s) restantes).")
+        return
     print(f"Ferramenta: {FERRAMENTA}. Cada resposta grande vira um arquivo .txt (o Claude Code avisa o caminho);")
     print("depois: python -m radar mcp ingerir \"<passo>=<caminho do arquivo>\" (vários pares por comando).")
+    print(f"Orçamento desta hora: {orcamento} consulta(s) (limite do plano JoomPulse). Faça SÓ as listadas abaixo; "
+          "depois rode `plano` de novo. Se ele disser LIMITE DA HORA, encerre — a próxima execução continua.")
     if fase1:
-        print(f"\nFALTAM {len(fase1)} consulta(s) de descoberta/categorias, nesta ordem (passo → nome exato da L1):")
+        sobra = max(0, len(fase1) - orcamento)
+        fase1 = fase1[:orcamento]
+        print(f"\nFALTAM {len(fase1)} consulta(s) de descoberta/categorias agora"
+              + (f" (mais {sobra} ficam para a próxima hora)" if sobra else "")
+              + ", nesta ordem (passo → nome exato da L1):")
         for p in fase1:
             tipo, _, resto = p.partition("/")
             print(f"  {p:34} {_l1_do_slug(resto) if tipo in ('top', 'new') else ''}")
@@ -231,11 +301,14 @@ def cmd_plano(modo: str, reiniciar: bool) -> None:
             print(_json(q).replace('"{OFFSET}"', "{OFFSET}"))
         print("\nQuando terminar estas, rode `plano` de novo: ele calcula os lotes de acompanhamento.")
     else:
-        print(f"\nDescoberta completa. FALTAM {len(fase2)} lote(s) de acompanhamento (consulta pronta, é só copiar):")
+        sobra = max(0, len(fase2) - orcamento)
+        fase2 = fase2[:orcamento]
+        print(f"\nDescoberta completa. FALTAM {len(fase2)} lote(s) de acompanhamento agora"
+              + (f" (mais {sobra} na próxima hora)" if sobra else "") + " (consulta pronta, é só copiar):")
         for p in fase2:
             print(f"\n{p}:")
             print(_json(consulta_do_passo(p, e)))
-        print("\nDepois de ingerir todos: python -m radar mcp fechar " + modo)
+        print("\nDepois de ingerir: python -m radar mcp plano " + modo + "  (e, quando nada faltar, fechar " + modo + ")")
 
 
 def _linhas(doc) -> tuple[list[dict], str | None]:
@@ -302,8 +375,9 @@ def _valida(passo: str, rows: list[dict], e: dict) -> str:
 
 def cmd_ingerir(pares: list[str]) -> None:
     e = _estado()
-    if not e:
+    if not e or e.get("fechado"):
         raise SystemExit("sem rodada aberta: rode `python -m radar mcp plano novos|atualiza` antes")
+    modo = e["modo"]
     erros = 0
     for par in pares:
         passo, sep, caminho = par.partition("=")
@@ -315,7 +389,7 @@ def cmd_ingerir(pares: list[str]) -> None:
         try:
             rows, refresh = _linhas(_le_resposta(caminho))
             aviso = _valida(passo, rows, e)
-            destino, chave = _arquivo_do_passo(passo)
+            destino, chave = _arquivo_do_passo(passo, modo)
             if chave:
                 atuais = json.loads(destino.read_text("utf-8")) if destino.exists() else []
                 por_chave = {r.get(chave): r for r in atuais}
@@ -327,6 +401,7 @@ def cmd_ingerir(pares: list[str]) -> None:
             destino.write_text(json.dumps(rows_out, ensure_ascii=False), "utf-8")
             e.setdefault("feitos", {})[passo] = {"linhas": len(rows), "arquivo": caminho, "em": _agora(),
                                                   "refresh": refresh, "aviso": aviso}
+            _conta_consulta(e)
             _grava_estado(e)
             print(f"OK {passo}: {len(rows)} linhas -> {destino.name}" + (f"  (aviso: {aviso})" if aviso else ""))
             _log(f"ingerido {passo}: {len(rows)} linhas{' — ' + aviso if aviso else ''}")
@@ -388,25 +463,26 @@ def _resumo(res: dict, modo: str) -> str:
 
 
 def cmd_fechar(modo: str) -> None:
-    e = _estado()
-    if not e or e.get("modo") != modo:
-        raise SystemExit(f"não há rodada `{modo}` aberta — rode `plano {modo}` antes")
+    e = _estado(modo)
+    if not e or e.get("dia") != date.today().isoformat():
+        raise SystemExit(f"não há rodada `{modo}` aberta hoje — rode `plano {modo}` antes")
     if e.get("fechado"):
         raise SystemExit(f"a rodada de {e.get('dia')} ({modo}) já foi fechada às {e['fechado']}")
     db = DB()
     fase1, fase2 = _pendentes(modo, db, e)
     if fase1 or fase2:
         db.close()
-        print("Ainda faltam consultas — rode `plano` para ver o modelo de cada uma:")
-        for p in fase1 + fase2:
+        print(f"Ainda faltam {len(fase1) + len(fase2)} consulta(s) — rode `plano {modo}` (sem --reiniciar) para "
+              "ver o que cabe nesta hora. A rodada continua aberta; nada foi perdido.")
+        for p in (fase1 + fase2)[:12]:
             print("  " + p)
         raise SystemExit(2)
-    if modo == "novos" and not list(LIVE.glob("ml_main_*.json")):
+    if modo == "novos" and not list(_dir(modo).glob("ml_main_*.json")):
         db.close()
-        raise SystemExit("modo novos sem nenhum arquivo de descoberta em data/live")
+        raise SystemExit(f"modo novos sem nenhum arquivo de descoberta em {_dir(modo)}")
     _log(f"fechando rodada {modo}: {len(e.get('feitos', {}))} consultas ingeridas")
     try:
-        res = asyncio.run(run_once(FixtureSource(LIVE), db, discover=(modo == "novos")))
+        res = asyncio.run(run_once(FixtureSource(_dir(modo)), db, discover=(modo == "novos")))
     finally:
         db.close()
     _log(f"rodada #{res['run_id']} ok: {res['ranked']} no ranking, tracked={res['tracked']} missing={res['missing']}")
@@ -429,9 +505,14 @@ def cmd_status() -> None:
     if not e:
         print("sem rodada aberta")
         return
+    outro = "atualiza" if e["modo"] == "novos" else "novos"
+    eo = _estado(outro)
+    if eo and eo.get("dia") == date.today().isoformat() and not eo.get("fechado"):
+        print(f"(há também uma rodada `{outro}` de hoje aberta, com {len(eo.get('feitos', {}))} consulta(s))")
     feitos = e.get("feitos", {})
     print(f"{e.get('dia')} · modo {e.get('modo')} · início {e.get('inicio')} · fechada: {e.get('fechado') or 'não'}")
-    print(f"{len(feitos)} consulta(s) ingerida(s), {sum(f['linhas'] for f in feitos.values())} linhas")
+    print(f"{len(feitos)} consulta(s) ingerida(s), {sum(f['linhas'] for f in feitos.values())} linhas; "
+          f"nesta hora (UTC {_hora_utc()[-2:]}h): {_uso_na_hora(e)} de {MAX_POR_HORA}")
     avisos = [(p, f["aviso"]) for p, f in feitos.items() if f.get("aviso")]
     for p, a in avisos:
         print(f"  aviso {p}: {a}")

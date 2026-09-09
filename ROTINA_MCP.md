@@ -20,15 +20,32 @@ sessão não precisar pensar: é seguir os passos. Quem quiser entender o desenh
   ingira o grupo inteiro com um único comando `ingerir`. Não leia o conteúdo dos arquivos de
   resposta: o script lê.
 
+## O limite por hora da JoomPulse (por que a rodada das 5h são três execuções)
+
+A JoomPulse aceita **cerca de 40 pedidos ao MCP por hora** (relógio UTC, zera na hora cheia);
+o 41º volta `Hourly request limit for your plan reached`. Uma rodada `novos` precisa de 54
+consultas de descoberta mais 3 a 6 lotes de acompanhamento — não cabe numa hora. Por isso:
+
+- `plano` só lista o que cabe no **orçamento da hora** (36 consultas, `RADAR_MCP_MAX_POR_HORA`)
+  e conta cada ingestão. Quando o orçamento acaba ele imprime **`LIMITE DA HORA`**: pare de
+  consultar e encerre a execução. A rodada fica aberta em `data/live/estado.json`.
+- A execução seguinte (agendada para a hora seguinte: 6h02, e 7h02 por garantia) roda
+  `plano novos` **sem `--reiniciar`** e continua de onde parou; quando nada falta, fecha.
+- Nunca insista depois do `LIMITE DA HORA`: a JoomPulse só devolve erro até a hora virar, e a
+  sessão agendada não pode esperar (não há `sleep` na lista de comandos permitidos).
+
 ## Passo a passo
 
 1. Abra o plano do dia:
 
-       ~/.claude/radar-mcp.cmd plano novos --reiniciar        (5h)
+       ~/.claude/radar-mcp.cmd plano novos --reiniciar        (5h — só a primeira execução do dia)
+       ~/.claude/radar-mcp.cmd plano novos                    (6h02 e 7h02 — continuação)
        ~/.claude/radar-mcp.cmd plano atualiza --reiniciar     (15h)
 
-   Ele imprime a lista do que falta (`top/<slug>`, `new/<slug>`, `track/<n>`, `cat/…`), o nome
-   exato de cada categoria e o modelo JSON de cada tipo de consulta.
+   Ele imprime a lista do que falta **e cabe nesta hora** (`top/<slug>`, `new/<slug>`,
+   `track/<n>`, `cat/…`), o nome exato de cada categoria e o modelo JSON de cada tipo de
+   consulta. Se imprimir `LIMITE DA HORA`, encerre. Se imprimir `Nada pendente`, vá ao passo 4.
+   Se disser `já foi fechada`, a rodada de hoje está pronta: encerre dizendo isso.
 
 2. Para cada passo listado, chame a ferramenta. Uma resposta cheia (100 linhas, ~60 KB) **não
    entra no contexto**: a ferramenta responde algo como
@@ -44,9 +61,11 @@ sessão não precisar pensar: é seguir os passos. Quem quiser entender o desenh
      é dessa consulta (categoria trocada, `top` no lugar de `new`): refaça a consulta certa e
      ingira de novo. Um `aviso` (poucas linhas, ids que não voltaram) é só informação.
 
-3. Quando a descoberta terminar, rode `plano novos` de novo: agora ele imprime os lotes de
-   acompanhamento (`track/1`, `track/2`, …) **com a consulta já pronta**, ids incluídos. Faça e
-   ingira igual. Em `atualiza` não há descoberta: o primeiro `plano` já traz os lotes.
+3. Depois de ingerir o que o `plano` listou, rode `plano` de novo (sem `--reiniciar`). Ele
+   lista a próxima leva que cabe na hora; quando a descoberta terminar, passa a imprimir os
+   lotes de acompanhamento (`track/1`, `track/2`, …) **com a consulta já pronta**, ids
+   incluídos. Faça e ingira igual, e repita até ele dizer `Nada pendente` (feche) ou
+   `LIMITE DA HORA` (encerre). Em `atualiza` não há descoberta: o primeiro `plano` já traz os lotes.
 
 4. Feche a rodada:
 
@@ -68,6 +87,7 @@ sessão não precisar pensar: é seguir os passos. Quem quiser entender o desenh
 | `sem rodada aberta` | rode `plano <modo>` primeiro |
 | `fechar` diz que faltam consultas | rode `plano <modo>` (sem `--reiniciar`) e complete o que ele lista |
 | a consulta devolve erro da JoomPulse (`not found for path`, `too large`) | tente uma vez mais; se persistir, pule o passo e cite no resumo — não invente colunas nem reduza o `limit` |
+| `Hourly request limit for your plan reached` | o limite da hora chegou antes do orçamento: pare de consultar, ingira o que já tem e encerre; a próxima execução continua |
 | `AVISO: push … falhou` | a página da tailnet já está no ar; o GitHub sai no próximo `scripts\publicar.ps1`. Cite no resumo |
 | `a rodada … já foi fechada` | a rodada de hoje nesse modo já aconteceu; não repita. Diga isso no resumo e pare |
 

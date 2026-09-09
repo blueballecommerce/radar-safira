@@ -142,6 +142,13 @@ def test_ingerir_and_plano_flow(tmp_env, capsys, monkeypatch):
     db.commit()
     db.close()
 
+    # orçamento por hora: com limite 1, o plano só entrega um passo e avisa que sobra outro
+    monkeypatch.setattr(mcp, "MAX_POR_HORA", 1)
+    mcp.main(["plano", "novos", "--reiniciar"])
+    out = capsys.readouterr().out
+    assert "top/pet_shop" in out and "new/pet_shop" not in out.split("Modelo de")[0] and "mais 1 ficam" in out
+    monkeypatch.setattr(mcp, "MAX_POR_HORA", 36)
+
     mcp.main(["plano", "novos", "--reiniciar"])
     out = capsys.readouterr().out
     assert "top/pet_shop" in out and "new/pet_shop" in out and "MercadoProductsWeekly.bestsellersInfo" in out
@@ -161,18 +168,31 @@ def test_ingerir_and_plano_flow(tmp_env, capsys, monkeypatch):
     with pytest.raises(SystemExit):        # `new` com anúncio de 500 dias: passo trocado
         mcp.main(["ingerir", f"new/pet_shop={errado}"])
     mcp.main(["ingerir", f"top/pet_shop={top}", f"new/pet_shop={new}"])
-    assert (tmp_env / "data" / "live" / "ml_main_pet_shop.json").exists()
+    assert (tmp_env / "data" / "live" / "novos" / "ml_main_pet_shop.json").exists()
     capsys.readouterr()
 
     # descoberta completa: o plano passa ao acompanhamento — só o MLB2 (o MLB1 foi descoberto)
     mcp.main(["plano", "novos"])
     out = capsys.readouterr().out
     assert "track/1" in out and '"MLB2"' in out and '"MLB1"' not in out.split("track/1")[1]
-    estado = json.loads((tmp_env / "data" / "live" / "estado.json").read_text("utf-8"))
+    estado = json.loads((tmp_env / "data" / "live" / "novos" / "estado.json").read_text("utf-8"))
     assert estado["lotes"] == [["MLB2"]]
+
+    # a rodada `atualiza` tem estado próprio: abrir uma não apaga a `novos` em andamento
+    mcp.main(["plano", "atualiza", "--reiniciar"])
+    out = capsys.readouterr().out
+    assert "track/1" in out and '"MLB1"' in out            # relê todos os ativos, sem descontar a descoberta
+    assert (tmp_env / "data" / "live" / "novos" / "ml_main_pet_shop.json").exists()
+    mcp.main(["plano", "novos"])                            # volta para a novos, que continua aberta
+    assert "track/1" in capsys.readouterr().out
 
     tr = tmp_env / "track.txt"
     tr.write_text(json.dumps(doc([_row("MLB2", "MLB20", w=5)])), "utf-8")
+    # limite da hora estourado: o plano manda parar em vez de listar o lote
+    monkeypatch.setattr(mcp, "MAX_POR_HORA", 2)
+    mcp.main(["plano", "novos"])
+    assert "LIMITE DA HORA" in capsys.readouterr().out
+    monkeypatch.setattr(mcp, "MAX_POR_HORA", 36)
     mcp.main(["ingerir", f"track/1={tr}"])
     mcp.main(["plano", "novos"])
     assert "Nada pendente" in capsys.readouterr().out
@@ -186,3 +206,6 @@ def test_ingerir_and_plano_flow(tmp_env, capsys, monkeypatch):
     assert data["products"][0]["key"] == "MLB10"      # continua vendendo mais
     with pytest.raises(SystemExit):                    # não fecha duas vezes
         mcp.main(["fechar", "novos"])
+    mcp.main(["plano", "novos"])                       # continuação agendada depois de fechada: só avisa
+    assert "já foi fechada" in capsys.readouterr().out
+    assert (tmp_env / "data" / "live" / "novos" / "ml_main_pet_shop.json").exists()
