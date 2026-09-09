@@ -11,7 +11,8 @@
 # (plano B), troque $Desligada para $false.
 $Desligada = $true
 if ($Desligada) {
-    $logDesligada = Join-Path (Split-Path -Parent $PSScriptRoot) "dataodada.log"
+    $logDesligada = Join-Path (Split-Path -Parent $PSScriptRoot) "data
+odada.log"
     Add-Content -Path $logDesligada -Value "$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')  DESLIGADA - a coleta e a rotina MCP no Predator (GUIA.md)" -Encoding utf8
     exit 0
 }
