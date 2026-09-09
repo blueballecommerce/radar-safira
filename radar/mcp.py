@@ -1,0 +1,471 @@
+"""Rotina pelo conector MCP da JoomPulse — o Claude consulta, este módulo faz o resto.
+
+A JoomPulse não aceita programa nosso no MCP dela, mas aceita o Claude. Então a rodada
+automática (5h: produtos novos; 15h: releitura dos que já estão no radar) é uma sessão do
+Claude Code agendada, e a divisão de trabalho é esta:
+
+    python -m radar mcp plano novos      → o que falta consultar (e o modelo de cada consulta)
+    <o Claude roda cada consulta na ferramenta query_cubejs_meli>
+    python -m radar mcp ingerir passo=arquivo …   → converte o resultado para data/live/*.json
+    python -m radar mcp fechar novos     → rodada (score, ranking, histórico), data.json, commit, push
+
+O truque que deixa isso barato: as consultas pedem colunas suficientes para a resposta passar
+de ~37 KB (MAX_MCP_OUTPUT_TOKENS=12000 em ~/.claude/settings.json). Aí o Claude Code não põe o
+resultado no contexto — grava num arquivo e mostra o caminho — e o dado vai do arquivo para o
+banco sem passar pelo modelo. (Acima de ~80 KB a JoomPulse recusa; as consultas ficam em
+~60 KB.) Se uma resposta vier pequena (poucas linhas), o Claude salva o JSON num arquivo em
+data/live/inbox/ e ingere do mesmo jeito.
+
+Passos (o nome de cada consulta; o slug é o da fixture, sem acento):
+    top/<slug da L1>       100 mais vendidos da categoria (fixture ml_main_<slug>.json)
+    new/<slug da L1>       100 mais vendidos com até NOVOS_MAX_DIAS no ar (ml_new_<slug>.json)
+    track/<n>              lote n de até 100 ids que já estão no radar (ml_track.json)
+    cat/<nível>/<página>   categorias do mês, só quando o mês virou (cat_l<nível>.json)
+
+O estado da rodada do dia fica em data/live/estado.json; `plano` de novo mostra só o que falta,
+então uma rodada interrompida continua de onde parou.
+"""
+from __future__ import annotations
+
+import argparse
+import asyncio
+import json
+import os
+import re
+import subprocess
+import sys
+import time
+from datetime import date, datetime
+from pathlib import Path
+
+from . import config, queries
+from .db import DB
+from .run import FixtureSource, run_once, slug
+
+LIVE = config.DATA_DIR / "live"
+INBOX = LIVE / "inbox"
+ESTADO = LIVE / "estado.json"
+LOG = config.DATA_DIR / "rodada_mcp.log"
+LOTE = 100                                                   # ids por consulta de acompanhamento
+NOVOS_MAX_DIAS = int(os.environ.get("RADAR_MCP_NOVOS_DIAS", "90"))
+LIMITE = 100                                                 # o servidor corta em 100 de qualquer jeito
+PAGINAS_CAT = {2: 6, 3: config.CATEGORY_L3_MAX_PAGES}
+FERRAMENTA = "query_cubejs_meli (conector JoomPulse, MCP)"
+MODOS = ("novos", "atualiza")
+
+
+def _agora() -> str:
+    return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+
+def _log(msg: str) -> None:
+    LOG.parent.mkdir(parents=True, exist_ok=True)
+    with LOG.open("a", encoding="utf-8") as f:
+        f.write(f"{_agora()}  {msg}\n")
+
+
+def _estado() -> dict:
+    if ESTADO.exists():
+        return json.loads(ESTADO.read_text("utf-8"))
+    return {}
+
+
+def _grava_estado(e: dict) -> None:
+    LIVE.mkdir(parents=True, exist_ok=True)
+    ESTADO.write_text(json.dumps(e, ensure_ascii=False, indent=1), "utf-8")
+
+
+def _limpa_live() -> None:
+    LIVE.mkdir(parents=True, exist_ok=True)
+    for p in LIVE.glob("*.json"):
+        p.unlink()
+
+
+# ---------------------------------------------------------------- os passos
+def _slug_l1(l1: str) -> str:
+    """O mesmo slug que a FixtureSource usa para achar o arquivo da categoria."""
+    return FixtureSource.SLUGS.get(l1, slug(l1))
+
+
+def _l1_do_slug(s: str) -> str:
+    for l1 in config.L1_CATEGORIES:
+        if _slug_l1(l1) == s:
+            return l1
+    raise ValueError(f"categoria desconhecida: {s!r} (use o slug que `plano` imprime)")
+
+
+def _arquivo_do_passo(passo: str) -> tuple[Path, str]:
+    """(arquivo de fixture, chave de deduplicação) — chave vazia = o arquivo é substituído."""
+    tipo, _, resto = passo.partition("/")
+    if tipo == "top":
+        return LIVE / f"ml_main_{_slug_l1(_l1_do_slug(resto))}.json", ""
+    if tipo == "new":
+        return LIVE / f"ml_new_{_slug_l1(_l1_do_slug(resto))}.json", ""
+    if tipo == "track":
+        return LIVE / "ml_track.json", "id"
+    if tipo == "cat":
+        nivel = resto.split("/")[0]
+        return LIVE / f"cat_l{nivel}.json", "categoryId"
+    raise SystemExit(f"passo desconhecido: {passo!r} (esperava top/…, new/…, track/n ou cat/nível/página)")
+
+
+def _passos_descoberta(modo: str) -> list[str]:
+    if modo != "novos":
+        return []
+    out = []
+    for l1 in config.L1_CATEGORIES:
+        out += [f"top/{_slug_l1(l1)}", f"new/{_slug_l1(l1)}"]
+    return out
+
+
+def _passos_categorias(db: DB) -> list[str]:
+    cats = db.categories()
+    mes = cats[0].get("month") if cats else None
+    if mes == date.today().strftime("%Y-%m"):
+        return []
+    return [f"cat/{n}/{p}" for n in (2, 3) for p in range(1, PAGINAS_CAT[n] + 1)]
+
+
+def _ids_descobertos() -> set[str]:
+    ids: set[str] = set()
+    for p in list(LIVE.glob("ml_main_*.json")) + list(LIVE.glob("ml_new_*.json")):
+        try:
+            ids.update(r["id"] for r in json.loads(p.read_text("utf-8")) if r.get("id"))
+        except (ValueError, KeyError, TypeError):
+            continue
+    return ids
+
+
+def _lotes_track(modo: str, db: DB, e: dict) -> list[list[str]]:
+    """Os lotes de acompanhamento, calculados uma vez por rodada e guardados no estado."""
+    if "lotes" in e:
+        return e["lotes"]
+    ids = db.tracked_ids()
+    if modo == "novos":
+        vistos = _ids_descobertos()
+        ids = [i for i in ids if i not in vistos]
+    ids = sorted(set(ids))
+    lotes = [ids[k:k + LOTE] for k in range(0, len(ids), LOTE)]
+    # o último lote completa com ids do primeiro: resposta cheia é resposta que cai em
+    # arquivo em vez de entrar no contexto; a ingestão ignora as repetições
+    if len(lotes) > 1 and len(lotes[-1]) < LOTE:
+        extra = [i for i in lotes[0] if i not in lotes[-1]][:LOTE - len(lotes[-1])]
+        lotes[-1] = lotes[-1] + extra
+    e["lotes"] = lotes
+    _grava_estado(e)
+    return lotes
+
+
+def consulta_do_passo(passo: str, e: dict | None = None) -> dict:
+    tipo, _, resto = passo.partition("/")
+    if tipo == "top":
+        return queries.products_top(_l1_do_slug(resto), LIMITE, fat=True)
+    if tipo == "new":
+        return queries.products_new(_l1_do_slug(resto), LIMITE, fat=True, max_days=NOVOS_MAX_DIAS)
+    if tipo == "track":
+        e = e if e is not None else _estado()
+        n = int(resto)
+        lotes = e.get("lotes") or []
+        if n < 1 or n > len(lotes):
+            raise SystemExit(f"lote {n} não existe (há {len(lotes)}); rode `plano` antes")
+        return queries.products_by_ids(lotes[n - 1], fat=True)
+    if tipo == "cat":
+        nivel, pagina = (int(x) for x in resto.split("/"))
+        return queries.categories(nivel, fat=True, offset=(pagina - 1) * LIMITE, limit=LIMITE)
+    raise SystemExit(f"passo desconhecido: {passo!r}")
+
+
+def _json(q: dict) -> str:
+    return json.dumps(q, ensure_ascii=False, separators=(",", ":"))
+
+
+def _pendentes(modo: str, db: DB, e: dict) -> tuple[list[str], list[str]]:
+    """(descoberta/categorias pendentes, acompanhamento pendente). O acompanhamento só é
+    calculado depois que a descoberta acabou — os ids descobertos não precisam de releitura."""
+    feitos = e.get("feitos", {})
+    fase1 = [p for p in _passos_descoberta(modo) + _passos_categorias(db) if p not in feitos]
+    if fase1:
+        return fase1, []
+    lotes = _lotes_track(modo, db, e)
+    fase2 = [f"track/{i + 1}" for i in range(len(lotes)) if f"track/{i + 1}" not in feitos]
+    return [], fase2
+
+
+# ---------------------------------------------------------------- comandos
+def cmd_plano(modo: str, reiniciar: bool) -> None:
+    hoje = date.today().isoformat()
+    e = _estado()
+    if reiniciar or e.get("modo") != modo or e.get("dia") != hoje or e.get("fechado"):
+        _limpa_live()
+        e = {"dia": hoje, "modo": modo, "inicio": _agora(), "feitos": {}}
+        _grava_estado(e)
+        _log(f"=== plano {modo} iniciado ===")
+    db = DB()
+    fase1, fase2 = _pendentes(modo, db, e)
+    db.close()
+    feitos = len(e.get("feitos", {}))
+
+    print(f"Rodada MCP · modo {modo} · {hoje} · {feitos} consulta(s) já ingerida(s)")
+    if not fase1 and not fase2:
+        print("Nada pendente. Feche a rodada com:  python -m radar mcp fechar " + modo)
+        return
+    print(f"Ferramenta: {FERRAMENTA}. Cada resposta grande vira um arquivo .txt (o Claude Code avisa o caminho);")
+    print("depois: python -m radar mcp ingerir \"<passo>=<caminho do arquivo>\" (vários pares por comando).")
+    if fase1:
+        print(f"\nFALTAM {len(fase1)} consulta(s) de descoberta/categorias, nesta ordem (passo → nome exato da L1):")
+        for p in fase1:
+            tipo, _, resto = p.partition("/")
+            print(f"  {p:34} {_l1_do_slug(resto) if tipo in ('top', 'new') else ''}")
+        tipos = {p.partition("/")[0] for p in fase1}
+        if "top" in tipos:
+            print("\nModelo de `top/<slug>` (troque {L1} pelo nome exato da categoria, com acentos):")
+            print(_json(queries.products_top("{L1}", LIMITE, fat=True)))
+        if "new" in tipos:
+            print(f"\nModelo de `new/<slug>` (até {NOVOS_MAX_DIAS} dias no ar; troque {{L1}} pelo nome exato):")
+            print(_json(queries.products_new("{L1}", LIMITE, fat=True, max_days=NOVOS_MAX_DIAS)))
+        if "cat" in tipos:
+            print("\nModelo de `cat/<nível>/<página>` (troque {N} pelo nível e {OFFSET} por (página−1)×100):")
+            q = queries.categories(2, fat=True)
+            q["filters"][1]["values"] = ["{N}"]
+            q["offset"] = "{OFFSET}"
+            print(_json(q).replace('"{OFFSET}"', "{OFFSET}"))
+        print("\nQuando terminar estas, rode `plano` de novo: ele calcula os lotes de acompanhamento.")
+    else:
+        print(f"\nDescoberta completa. FALTAM {len(fase2)} lote(s) de acompanhamento (consulta pronta, é só copiar):")
+        for p in fase2:
+            print(f"\n{p}:")
+            print(_json(consulta_do_passo(p, e)))
+        print("\nDepois de ingerir todos: python -m radar mcp fechar " + modo)
+
+
+def _linhas(doc) -> tuple[list[dict], str | None]:
+    docs = doc if isinstance(doc, list) else [doc]
+    out: list[dict] = []
+    refresh = None
+    for d in docs:
+        if not isinstance(d, dict) or "columns" not in d or "data" not in d:
+            raise ValueError("JSON sem 'columns'/'data' — não é uma resposta do MCP")
+        cols = [re.sub(r"^[A-Za-z]+\.", "", c) for c in d["columns"]]
+        out.extend(dict(zip(cols, r)) for r in d["data"])
+        refresh = refresh or d.get("lastRefreshTime")
+    return out, refresh
+
+
+def _le_resposta(caminho: str):
+    p = Path(caminho)
+    if not p.exists():
+        raise ValueError(f"arquivo não existe: {caminho}")
+    texto = p.read_text("utf-8")
+    try:
+        return json.loads(texto)
+    except ValueError:
+        # o Claude Code às vezes grava uma linha de cabeçalho antes do JSON
+        i = texto.find("{")
+        if i < 0:
+            raise
+        return json.loads(texto[i:])
+
+
+def _valida(passo: str, rows: list[dict], e: dict) -> str:
+    """Confere se o arquivo é mesmo a consulta que o passo diz. Devolve um aviso (ou '')."""
+    tipo, _, resto = passo.partition("/")
+    if not rows:
+        raise ValueError("resposta sem linhas")
+    if tipo in ("top", "new"):
+        l1 = _l1_do_slug(resto)
+        l1s = {r.get("merchantCategoryL1") for r in rows}
+        if l1s != {l1}:
+            raise ValueError(f"as linhas são de {sorted(map(str, l1s))}, não de {l1!r} — passo trocado?")
+        if tipo == "new":
+            dias = [r.get("daysInAd") for r in rows if r.get("daysInAd") is not None]
+            if dias and max(dias) > NOVOS_MAX_DIAS:
+                raise ValueError(f"há anúncio com {max(dias)} dias no ar — isto não é a consulta `new`")
+        if "id" not in rows[0] or "orderCount1w" not in rows[0]:
+            raise ValueError("faltam colunas básicas (id, orderCount1w) — consulta errada?")
+        return "" if len(rows) >= LIMITE else f"só {len(rows)} linhas"
+    if tipo == "track":
+        n = int(resto)
+        esperados = set((e.get("lotes") or [[]] * n)[n - 1]) if e.get("lotes") and n <= len(e["lotes"]) else set()
+        ids = {r.get("id") for r in rows}
+        if esperados and not ids & esperados:
+            raise ValueError("nenhum id deste lote veio na resposta — arquivo de outro lote?")
+        faltam = len(esperados - ids)
+        return f"{faltam} id(s) do lote não voltaram (anúncio pausado/encerrado)" if faltam else ""
+    if tipo == "cat":
+        nivel = int(resto.split("/")[0])
+        niveis = {r.get("level") for r in rows}
+        if niveis != {nivel}:
+            raise ValueError(f"as linhas são de nível {sorted(map(str, niveis))}, não {nivel}")
+        return ""
+    return ""
+
+
+def cmd_ingerir(pares: list[str]) -> None:
+    e = _estado()
+    if not e:
+        raise SystemExit("sem rodada aberta: rode `python -m radar mcp plano novos|atualiza` antes")
+    erros = 0
+    for par in pares:
+        passo, sep, caminho = par.partition("=")
+        passo, caminho = passo.strip(), caminho.strip().strip('"')
+        if not sep or not caminho:
+            print(f"IGNORADO {par!r}: use passo=caminho")
+            erros += 1
+            continue
+        try:
+            rows, refresh = _linhas(_le_resposta(caminho))
+            aviso = _valida(passo, rows, e)
+            destino, chave = _arquivo_do_passo(passo)
+            if chave:
+                atuais = json.loads(destino.read_text("utf-8")) if destino.exists() else []
+                por_chave = {r.get(chave): r for r in atuais}
+                for r in rows:
+                    por_chave[r.get(chave)] = r          # a leitura mais nova vale
+                rows_out = list(por_chave.values())
+            else:
+                rows_out = rows
+            destino.write_text(json.dumps(rows_out, ensure_ascii=False), "utf-8")
+            e.setdefault("feitos", {})[passo] = {"linhas": len(rows), "arquivo": caminho, "em": _agora(),
+                                                  "refresh": refresh, "aviso": aviso}
+            _grava_estado(e)
+            print(f"OK {passo}: {len(rows)} linhas -> {destino.name}" + (f"  (aviso: {aviso})" if aviso else ""))
+            _log(f"ingerido {passo}: {len(rows)} linhas{' — ' + aviso if aviso else ''}")
+        except Exception as ex:                          # noqa: BLE001 — o motivo vai para o Claude
+            erros += 1
+            print(f"ERRO {passo}: {ex}")
+            _log(f"ERRO ao ingerir {passo}: {ex}")
+    if erros:
+        raise SystemExit(1)
+
+
+def _git(*args: str) -> tuple[int, str]:
+    r = subprocess.run(["git", *args], cwd=config.ROOT, capture_output=True, text=True, encoding="utf-8",
+                       errors="replace", timeout=300)
+    return r.returncode, (r.stdout + r.stderr).strip()
+
+
+def _publica(modo: str) -> list[str]:
+    """Commit dos dados e push para os remotes que existirem. Devolve as linhas do relato."""
+    relato = []
+    _git("add", "data/radar.db", "docs/data.json")
+    if _git("diff", "--cached", "--quiet")[0] == 0:
+        relato.append("nada mudou nos dados, sem commit")
+        return relato
+    msg = f"radar: rodada MCP {modo} {datetime.now():%Y-%m-%d %H:%M}"
+    rc, out = _git("-c", "user.name=radar-bot", "-c", "user.email=radar-bot@users.noreply.github.com",
+                   "commit", "-q", "-m", msg)
+    if rc != 0:
+        relato.append(f"FALHA no commit: {out[:300]}")
+        return relato
+    relato.append(f"commit: {msg}")
+    remotos = _git("remote")[1].split()
+    for nome, rotulo in (("origin", "GitHub Pages (página pública)"), ("central", "repositório central do Predator")):
+        if nome not in remotos:
+            continue
+        rc, out = _git("push", "-q", nome, "main")
+        relato.append(f"publicado em {rotulo}" if rc == 0 else f"AVISO: push para {nome} falhou: {out[:300]}")
+    return relato
+
+
+def _resumo(res: dict, modo: str) -> str:
+    dados = json.loads((config.DOCS_DIR / "data.json").read_text("utf-8"))
+    prods = dados["products"]
+    novos = [p for p in prods if (p.get("runs") or 1) <= 1]
+    subiram = sorted((p for p in prods if p.get("prev") and p["prev"] - p["rank"] > 0),
+                     key=lambda p: p["rank"] - p["prev"])[:5]
+    linhas = [
+        f"Rodada #{res['run_id']} ({modo}) fechada: {res['ranked']} produtos no ranking, "
+        f"{len(novos)} entraram agora, {res['tracked']} relidos, {res['missing']} sumiram do ML, "
+        f"{res.get('rekeyed', 0)} chaves migradas.",
+        "Top 5 do radar: " + "; ".join(f"#{p['rank']} {p['n'][:50]} ({p['score']:.0f} pts)" for p in prods[:5]),
+    ]
+    if novos:
+        linhas.append("Novos com maior score: " + "; ".join(
+            f"#{p['rank']} {p['n'][:50]} ({p['score']:.0f} pts, {p.get('d', '?')} dias no ar)" for p in novos[:5]))
+    if subiram:
+        linhas.append("Quem mais subiu: " + "; ".join(f"{p['n'][:40]} {p['prev']}→{p['rank']}" for p in subiram))
+    return "\n".join(linhas)
+
+
+def cmd_fechar(modo: str) -> None:
+    e = _estado()
+    if not e or e.get("modo") != modo:
+        raise SystemExit(f"não há rodada `{modo}` aberta — rode `plano {modo}` antes")
+    if e.get("fechado"):
+        raise SystemExit(f"a rodada de {e.get('dia')} ({modo}) já foi fechada às {e['fechado']}")
+    db = DB()
+    fase1, fase2 = _pendentes(modo, db, e)
+    if fase1 or fase2:
+        db.close()
+        print("Ainda faltam consultas — rode `plano` para ver o modelo de cada uma:")
+        for p in fase1 + fase2:
+            print("  " + p)
+        raise SystemExit(2)
+    if modo == "novos" and not list(LIVE.glob("ml_main_*.json")):
+        db.close()
+        raise SystemExit("modo novos sem nenhum arquivo de descoberta em data/live")
+    _log(f"fechando rodada {modo}: {len(e.get('feitos', {}))} consultas ingeridas")
+    try:
+        res = asyncio.run(run_once(FixtureSource(LIVE), db, discover=(modo == "novos")))
+    finally:
+        db.close()
+    _log(f"rodada #{res['run_id']} ok: {res['ranked']} no ranking, tracked={res['tracked']} missing={res['missing']}")
+    relato = _publica(modo)
+    for linha in relato:
+        _log(linha)
+    e["fechado"] = _agora()
+    e["resultado"] = res
+    _grava_estado(e)
+    print(_resumo(res, modo))
+    print("Publicação: " + " · ".join(relato))
+    refresh = next((f.get("refresh") for f in e.get("feitos", {}).values() if f.get("refresh")), None)
+    if refresh:
+        print(f"Dados da JoomPulse atualizados em (lastRefreshTime): {refresh}")
+    _log("=== rodada concluida ===")
+
+
+def cmd_status() -> None:
+    e = _estado()
+    if not e:
+        print("sem rodada aberta")
+        return
+    feitos = e.get("feitos", {})
+    print(f"{e.get('dia')} · modo {e.get('modo')} · início {e.get('inicio')} · fechada: {e.get('fechado') or 'não'}")
+    print(f"{len(feitos)} consulta(s) ingerida(s), {sum(f['linhas'] for f in feitos.values())} linhas")
+    avisos = [(p, f["aviso"]) for p, f in feitos.items() if f.get("aviso")]
+    for p, a in avisos:
+        print(f"  aviso {p}: {a}")
+
+
+def main(argv=None) -> None:
+    try:
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    except AttributeError:
+        pass
+    ap = argparse.ArgumentParser(prog="radar mcp", description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    sub = ap.add_subparsers(dest="op", required=True)
+    p = sub.add_parser("plano", help="o que falta consultar")
+    p.add_argument("modo", choices=MODOS)
+    p.add_argument("--reiniciar", action="store_true", help="apaga o estado do dia e começa do zero")
+    i = sub.add_parser("ingerir", help="passo=arquivo … (resposta do MCP -> data/live)")
+    i.add_argument("pares", nargs="+")
+    f = sub.add_parser("fechar", help="roda a rodada com o que foi ingerido, gera data.json e publica")
+    f.add_argument("modo", choices=MODOS)
+    c = sub.add_parser("consulta", help="imprime a consulta CubeJS de um passo")
+    c.add_argument("passo")
+    sub.add_parser("status")
+    a = ap.parse_args(argv)
+    if a.op == "plano":
+        cmd_plano(a.modo, a.reiniciar)
+    elif a.op == "ingerir":
+        cmd_ingerir(a.pares)
+    elif a.op == "fechar":
+        cmd_fechar(a.modo)
+    elif a.op == "consulta":
+        print(_json(consulta_do_passo(a.passo)))
+    elif a.op == "status":
+        cmd_status()
+
+
+if __name__ == "__main__":
+    main()

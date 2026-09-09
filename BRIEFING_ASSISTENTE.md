@@ -59,6 +59,12 @@
 
 ## 3. O ciclo diário (o que acontece sozinho)
 
+> **Desde 09/09/2026 o ciclo diário é a rotina pelo MCP:** duas sessões do Claude Code agendadas
+> no Predator (5h `novos`, 15h `atualiza`) consultam a JoomPulse pelo conector MCP e o script
+> `radar/mcp.py` ingere, roda a rodada e publica. Passo a passo em `ROTINA_MCP.md`; explicação
+> para o João no `GUIA.md`, seção "O que acontece sozinho". A tarefa do notebook descrita abaixo
+> ficou como plano B e deve permanecer **desligada** enquanto a rotina pelo MCP estiver ativa.
+
 `scripts\rodada.ps1`, disparado pela **Tarefa Agendada do Windows "Radar Safira"** (5h, no notebook):
 
 1. `python -m radar check-browser` — se a sessão da JoomPulse expirou, **para** e escreve
@@ -226,9 +232,13 @@ este briefing também.
    do João logado na JoomPulse junto com o coletor) derruba a sessão e força novo login (código no
    telefone do sócio). Antes de `run --browser`, `fornecedor pesquisar` ou `fornecedor categorias`,
    confira `tasklist | findstr /i python`.
-2. **Zero tokens na rotina.** Nada de IA na coleta diária. Ler pranchas de fotos é a exceção aceita
-   (~4–5 mil tokens por prancha), sempre avisando antes.
-3. **Não contatar a JoomPulse** em nome do João e **não tentar o caminho OAuth/MCP de novo**.
+2. **Tokens só onde o João aprovou.** A rotina pelo MCP (5h/15h) gasta tokens de propósito — é o
+   Claude que faz as consultas —, mas o dado não passa pelo modelo (resposta grande vira arquivo,
+   ver `radar/mcp.py`). Fora disso, nada de IA na coleta; ler pranchas de fotos é a exceção
+   aceita (~4–5 mil tokens por prancha), sempre avisando antes.
+3. **Não contatar a JoomPulse** em nome do João e **não tentar o caminho OAuth com client_id
+   próprio de novo** (`pulse.py`/`auth.py`). O conector MCP **do Claude** é o caminho oficial
+   desde 09/09/2026 — é ele que a rotina usa.
 4. **`git pull` no Predator só com `--ff-only`**; nunca `tailscale serve reset`; nunca mexer no Nexo
    (PM2, portas 4000/4001, 443, 8443).
 5. **Nunca `run --fixtures` na pasta real** (só com `RADAR_ROOT`). Nunca commitar `.secrets/`.

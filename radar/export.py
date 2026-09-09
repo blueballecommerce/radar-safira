@@ -25,7 +25,7 @@ def export_json(db: DB, out: Path = config.DOCS_DIR / "data.json") -> Path:
             "l1": r["l1"], "l2": r["l2"], "l3": r["l3"], "md": r["medal"], "rep": r["reputation"],
             "full": bool(r["is_full"]), "fs": bool(r["free_ship"]), "lt": r["listing_type"], "cl": r["comp_level"],
             "pr": cur["price"], "w": cur["w"], "m": cur["m"], "g": cur["gmv"], "rc": cur["reviews"], "rr": cur["rating"],
-            "d": cur["days"], "bb": cur["bb"],
+            "d": cur["days"], "bb": cur["bb"], "pub": r["published"],
             "score": cur["score"], "sd": cur["s_demand"], "sc": cur["s_comp"], "sg": cur["s_growth"], "sn": cur["s_nov"],
             "rank": cur["rank"], "prev": db.rank_in_run(r["key"], prev_run), "best": r["best_rank"],
             "status": r["status"], "first": r["first_seen_at"], "runs": r["runs_seen"],

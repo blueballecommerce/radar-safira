@@ -48,6 +48,8 @@ def product_from_row(r: dict, src: str) -> dict | None:
         "g": _num(r.get("orderGmv1m")), "rc": r.get("reviewsCount"), "rr": _num(r.get("reviewsRating")),
         "d": None if r.get("daysInAd") is None else int(round(r["daysInAd"])),
         "bb": r.get("numBuyBoxSellers"), "src": src,
+        # data de criação do anúncio (só o MCP informa); a página calcula a idade na hora
+        "pub": (r.get("adPublishDate") or None) and str(r["adPublishDate"])[:10],
         "riv": r.get("rivals") or [],       # outros anúncios do mesmo catálogo
     }
     p["key"] = p["p"] or p["i"]

@@ -25,6 +25,7 @@ CREATE TABLE IF NOT EXISTS products (
   best_rank INTEGER, runs_seen INTEGER DEFAULT 0, zero_sales_runs INTEGER DEFAULT 0,
   out_of_top_runs INTEGER DEFAULT 0
 );
+CREATE INDEX IF NOT EXISTS ix_products_id ON products(id);
 CREATE TABLE IF NOT EXISTS product_runs (
   run_id INTEGER NOT NULL, key TEXT NOT NULL,
   rank INTEGER, score REAL, s_demand REAL, s_comp REAL, s_growth REAL, s_nov REAL,
@@ -49,10 +50,14 @@ class DB:
         self.conn = sqlite3.connect(str(path))
         self.conn.row_factory = sqlite3.Row
         self.conn.executescript(SCHEMA)
-        # bancos criados antes da coluna `rivals` continuam funcionando
+        # bancos criados antes destas colunas continuam funcionando
         cols = {r[1] for r in self.conn.execute("PRAGMA table_info(product_runs)")}
         if "rivals" not in cols:
             self.conn.execute("ALTER TABLE product_runs ADD COLUMN rivals TEXT")
+        pcols = {r[1] for r in self.conn.execute("PRAGMA table_info(products)")}
+        if "published" not in pcols:
+            # data de criação do anúncio no ML (vem do MCP; a coleta pelo site não informa)
+            self.conn.execute("ALTER TABLE products ADD COLUMN published TEXT")
 
     # --- meta ---
     def get_meta(self, k: str, default=None):
@@ -87,8 +92,44 @@ class DB:
     def product(self, key: str) -> sqlite3.Row | None:
         return self.conn.execute("SELECT * FROM products WHERE key=?", (key,)).fetchone()
 
+    def products_by_listing(self, listing_id: str) -> list[sqlite3.Row]:
+        return self.conn.execute("SELECT * FROM products WHERE id=?", (listing_id,)).fetchall()
+
     def all_products(self) -> list[sqlite3.Row]:
         return self.conn.execute("SELECT * FROM products").fetchall()
+
+    def rekey(self, old_key: str, new_key: str) -> None:
+        """Troca a chave de um produto sem perder o histórico.
+
+        A coleta pelo site inventava a chave (`cat:<hash>` da foto+título, ou o id do
+        anúncio); a coleta pelo MCP usa o `productId` real do Mercado Livre. Quando o
+        mesmo anúncio volta com a chave nova, o histórico (posições, rodadas, melhor
+        posição) passa para ela. Se a chave nova já existe, os dois registros são
+        fundidos: fica o mais antigo como primeira aparição e a melhor posição das duas.
+        """
+        if old_key == new_key:
+            return
+        old = self.product(old_key)
+        if old is None:
+            return
+        new = self.product(new_key)
+        if new is None:
+            self.conn.execute("UPDATE products SET key=? WHERE key=?", (new_key, old_key))
+            self.conn.execute("UPDATE product_runs SET key=? WHERE key=?", (new_key, old_key))
+            return
+        first_run = min(x for x in (old["first_seen_run"], new["first_seen_run"]) if x is not None) \
+            if (old["first_seen_run"] is not None or new["first_seen_run"] is not None) else None
+        first_at = min(x for x in (old["first_seen_at"], new["first_seen_at"]) if x) \
+            if (old["first_seen_at"] or new["first_seen_at"]) else None
+        best = min((x for x in (old["best_rank"], new["best_rank"]) if x is not None), default=None)
+        # rodadas em que só o registro antigo apareceu passam para o novo; onde os dois
+        # apareceram (mesma rodada), fica a linha do novo
+        self.conn.execute("UPDATE OR IGNORE product_runs SET key=? WHERE key=?", (new_key, old_key))
+        self.conn.execute("DELETE FROM product_runs WHERE key=?", (old_key,))
+        runs_seen = self.conn.execute("SELECT COUNT(*) FROM product_runs WHERE key=?", (new_key,)).fetchone()[0]
+        self.conn.execute("UPDATE products SET first_seen_run=?, first_seen_at=?, best_rank=?, runs_seen=? WHERE key=?",
+                          (first_run, first_at, best, max(runs_seen, new["runs_seen"] or 0), new_key))
+        self.conn.execute("DELETE FROM products WHERE key=?", (old_key,))
 
     def upsert_product(self, p: dict, run_id: int, rank: int | None, status: str) -> None:
         old = self.product(p["key"])
@@ -97,22 +138,30 @@ class DB:
         runs_seen = (old["runs_seen"] if old else 0) + 1
         zero = 0 if (p.get("w") or 0) > 0 else ((old["zero_sales_runs"] if old else 0) + 1)
         oot = 0 if status == "active" else ((old["out_of_top_runs"] if old else 0) + 1)
+        # os campos descritivos só mudam quando a leitura trouxe valor: uma releitura mais
+        # magra (ou uma coluna que sumiu do cubo) não apaga nome, foto ou categoria
         self.conn.execute("""
         INSERT INTO products(key,id,product_id,user_product_id,catalog,name,image,seller,brand,category_id,l2_id,l1,l2,l3,
           medal,reputation,is_full,free_ship,listing_type,comp_level,status,first_seen_run,last_seen_run,first_seen_at,last_seen_at,
-          best_rank,runs_seen,zero_sales_runs,out_of_top_runs)
-        VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
-        ON CONFLICT(key) DO UPDATE SET id=excluded.id, product_id=excluded.product_id, user_product_id=excluded.user_product_id,
-          catalog=excluded.catalog, name=excluded.name, image=excluded.image, seller=excluded.seller, brand=excluded.brand,
-          category_id=excluded.category_id, l2_id=excluded.l2_id, l1=excluded.l1, l2=excluded.l2, l3=excluded.l3,
-          medal=excluded.medal, reputation=excluded.reputation, is_full=excluded.is_full, free_ship=excluded.free_ship,
-          listing_type=excluded.listing_type, comp_level=excluded.comp_level, status=excluded.status,
+          best_rank,runs_seen,zero_sales_runs,out_of_top_runs,published)
+        VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+        ON CONFLICT(key) DO UPDATE SET id=excluded.id, product_id=excluded.product_id,
+          user_product_id=COALESCE(excluded.user_product_id, products.user_product_id),
+          catalog=excluded.catalog, name=COALESCE(excluded.name, products.name), image=COALESCE(excluded.image, products.image),
+          seller=COALESCE(excluded.seller, products.seller), brand=COALESCE(excluded.brand, products.brand),
+          category_id=COALESCE(excluded.category_id, products.category_id), l2_id=COALESCE(excluded.l2_id, products.l2_id),
+          l1=COALESCE(excluded.l1, products.l1), l2=COALESCE(excluded.l2, products.l2), l3=COALESCE(excluded.l3, products.l3),
+          medal=COALESCE(excluded.medal, products.medal), reputation=COALESCE(excluded.reputation, products.reputation),
+          is_full=excluded.is_full, free_ship=excluded.free_ship,
+          listing_type=COALESCE(excluded.listing_type, products.listing_type),
+          comp_level=COALESCE(excluded.comp_level, products.comp_level), status=excluded.status,
           last_seen_run=excluded.last_seen_run, last_seen_at=excluded.last_seen_at, best_rank=excluded.best_rank,
-          runs_seen=excluded.runs_seen, zero_sales_runs=excluded.zero_sales_runs, out_of_top_runs=excluded.out_of_top_runs
+          runs_seen=excluded.runs_seen, zero_sales_runs=excluded.zero_sales_runs, out_of_top_runs=excluded.out_of_top_runs,
+          published=COALESCE(excluded.published, products.published)
         """, (p["key"], p["i"], p["p"], p["u"], int(bool(p["c"])), p["n"], p["img"], p["s"], p["b"], p["cid"], p["l2id"],
               p["l1"], p["l2"], p["l3"], p["md"], p["rep"], int(bool(p["full"])), int(bool(p["fs"])), p["lt"], p["cl"],
               status, old["first_seen_run"] if old else run_id, run_id, old["first_seen_at"] if old else ts, ts,
-              best, runs_seen, zero, oot))
+              best, runs_seen, zero, oot, p.get("pub")))
         riv = p.get("riv") or []
         self.conn.execute("""INSERT OR REPLACE INTO product_runs(run_id,key,rank,score,s_demand,s_comp,s_growth,s_nov,
             price,w,m,gmv,reviews,rating,days,bb,rivals) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",

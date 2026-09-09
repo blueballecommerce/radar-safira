@@ -14,6 +14,7 @@
   python -m radar fornecedor cruzar     # cruza o catálogo com o radar -> data/pares.json
   python -m radar pedidos fila          # os pedidos feitos pela aba "Pedir pesquisa"
   python -m radar pedidos pesquisar     # roda a busca dos pedidos que estão na fila
+  python -m radar mcp plano novos       # rotina pelo MCP (5h/15h): o que consultar, ingerir, fechar
 """
 from __future__ import annotations
 
@@ -85,7 +86,7 @@ async def cmd_run(a):
         elif a.fixtures:
             src = FixtureSource(Path(a.fixtures))
             res = await run_once(src, db, force_categories=a.force_categories, force_joompro=a.force_joompro,
-                                 l1s=a.l1 or None)
+                                 l1s=a.l1 or None, discover=not a.sem_descoberta)
         else:
             from .pulse import Pulse
             storage = auth.FileTokenStorage()
@@ -208,7 +209,11 @@ def main(argv=None):
     r.add_argument("--force-categories", action="store_true")
     r.add_argument("--force-joompro", action="store_true")
     r.add_argument("--l1", action="append", help="limita a coleta a uma categoria L1 (repetível)")
+    r.add_argument("--sem-descoberta", action="store_true",
+                   help="só relê o que já está no radar (ml_track.json) e reordena — a rodada das 15h")
     sub.add_parser("export")
+    m = sub.add_parser("mcp", help="rotina pelo conector MCP (o Claude consulta, o script ingere e fecha)")
+    m.add_argument("resto", nargs=argparse.REMAINDER)
     t = sub.add_parser("token")
     t.add_argument("op", choices=["encrypt", "decrypt"])
     sub.add_parser("client-metadata")
@@ -237,6 +242,9 @@ def main(argv=None):
         cmd_fornecedor(a)
     elif a.cmd == "pedidos":
         cmd_pedidos(a)
+    elif a.cmd == "mcp":
+        from . import mcp as M
+        M.main(a.resto)
 
 
 if __name__ == "__main__":

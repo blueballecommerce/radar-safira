@@ -142,7 +142,7 @@ odada_mcp.log -Tail 20
 ### A coleta antiga pelo navegador (notebook, desligada)
 
 Fica registrada porque continua no código, como plano B. Se a rotina pelo MCP parar, dá para
-religar com `.\scriptsgendar.ps1` no notebook (e desligar as tarefas do Claude).
+religar com `.\scripts\agendar.ps1` no notebook (e desligar as tarefas do Claude).
 
 Você não precisa fazer nada. Esta é a sequência:
 

@@ -920,7 +920,7 @@ function fmtDT(iso){ if(!iso) return '—'; const d=new Date(iso); return d.toLo
 function fmtMonth(ym){ if(!ym) return '—'; const [y,m]=ym.split('-'); return ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'][+m-1]+'/'+y; }
 function renderFresh(live){
   const temJp = (S.joompro||[]).length > 0;
-  $('#fresh').innerHTML = `Rodada <b>#${S.meta.runId??'—'}</b> · produtos ML <b>${fmtDT(S.meta.generatedAt)}</b> · categorias <b>${fmtMonth(S.meta.catMonth)}</b>${temJp?` · JoomPro <b>${S.meta.joomproAsOf||'—'}</b>`:''}<br><span class="live">automático</span> uma vez por dia · ${S.meta.counts.new_this_run??0} novos nesta rodada`;
+  $('#fresh').innerHTML = `Rodada <b>#${S.meta.runId??'—'}</b> · produtos ML <b>${fmtDT(S.meta.generatedAt)}</b> · categorias <b>${fmtMonth(S.meta.catMonth)}</b>${temJp?` · JoomPro <b>${S.meta.joomproAsOf||'—'}</b>`:''}<br><span class="live">automático</span> 5h produtos novos · 15h releitura dos que estão no radar · ${S.meta.counts.new_this_run??0} novos nesta rodada`;
   $('#foot').textContent = `Vendas e receitas são estimativas da JoomPulse a partir de dados públicos dos anúncios — não são números oficiais do Mercado Livre. Preços são reais (buy box no momento da coleta). Dados de categoria têm até um mês de atraso; dados de produto, até 24 horas. ${S.meta.counts.products} produtos, ${S.meta.counts.categories} subcategorias e ${S.meta.counts.joompro} pares JoomPro nesta leitura.`;
 }
 
@@ -1072,6 +1072,9 @@ function foraHTML(p){
     ${fs.length>6?`<div class="small muted" style="margin-top:6px">+ ${fs.length-6} outro${fs.length-6>1?'s':''}</div>`:''}
   </div>`;
 }
+
+/* "2026-03-13" -> "13/03/2026" (data de criação do anúncio, que só a leitura pelo MCP informa) */
+function fmtDia(s){ if(!s) return ''; const [a,m,d]=String(s).slice(0,10).split('-'); return `${d}/${m}/${a}`; }
 
 /* "38 dias no ar" para anúncios recentes; acima de um ano, meses e anos leem melhor */
 function idade(d){
@@ -1357,7 +1360,7 @@ function mlProduto(p){
           <div><div class="k">Vendedor</div><div class="v">${esc(p.s||'—')}${p.md?' · '+(MEDAL[p.md]||p.md):''}</div></div>
           <div><div class="k">Tipo de anúncio</div><div class="v">${{gold_pro:'Premium',gold_special:'Clássico',silver:'Clássico',free:'Grátis'}[p.lt]||p.lt||'—'}${p.full?' · Full':''}${p.fs?' · Frete grátis':''}</div></div>
           <div><div class="k">Catálogo</div><div class="v">${p.c?(p.bb||'?')+' vendedor(es) disputando · −'+OPP_CATALOGO_TAXA+' pontos':'anúncio próprio (sem catálogo)'}</div></div>
-          <div><div class="k">Tempo no ar</div><div class="v">${p.d??'—'} dias · no radar desde ${fmtDT(p.first)}</div></div>
+          <div><div class="k">Tempo no ar</div><div class="v">${p.d??'—'} dias${p.pub?' · criado em '+fmtDia(p.pub):''} · no radar desde ${fmtDT(p.first)}</div></div>
         </div></div></div>
     <div class="why">Por que está aqui: ${why.join(' · ')}.</div>
     <div class="break">
@@ -1511,7 +1514,7 @@ function openProductDrawer(id){
       <div><div class="k">Preço atual</div><div class="v">${fmtBRL(p.pr)}</div></div>
       <div><div class="k">Receita est. / mês</div><div class="v">${fmtBRL(p.g)}</div></div>
       <div><div class="k">Vendas est. / mês</div><div class="v">${fmtN(p.m)}</div></div>
-      <div><div class="k">Tempo no ar</div><div class="v">${p.d??'—'} dias</div></div>
+      <div><div class="k">Tempo no ar</div><div class="v">${p.d??'—'} dias${p.pub?' · criado em '+fmtDia(p.pub):''}</div></div>
       <div><div class="k">Avaliações</div><div class="v">${p.rc?fmtN(p.rc)+(p.rr?' · '+p.rr.toFixed(1)+'★':''):'sem avaliações'}</div></div>
       <div><div class="k">Vendedor</div><div class="v">${esc(p.s||'—')}${p.md?' · '+(MEDAL[p.md]||p.md):''}</div></div>
       <div><div class="k">Tipo de anúncio</div><div class="v">${{gold_pro:'Premium',gold_special:'Clássico',silver:'Clássico',free:'Grátis'}[p.lt]||p.lt||'—'}${p.full?' · Full':''}${p.fs?' · Frete grátis':''}</div></div>

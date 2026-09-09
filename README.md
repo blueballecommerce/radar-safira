@@ -1,8 +1,11 @@
 # Radar Safira
 
-Máquina de oportunidades do Mercado Livre: consulta a JoomPulse por conta própria (sem IA no meio),
-mantém um ranking vivo com histórico e publica uma página estática. Roda sozinha todo dia às 8h,
-pela Tarefa Agendada do Windows, sem consumir tokens de IA.
+Máquina de oportunidades do Mercado Livre: consulta a JoomPulse, mantém um ranking vivo com
+histórico e publica uma página estática. Desde 09/09/2026 roda sozinha duas vezes por dia
+(5h produtos novos, 15h releitura) em sessões agendadas do Claude Code, que consultam a JoomPulse
+pelo conector MCP; o script `radar/mcp.py` ingere as respostas (gravadas em arquivo pelo Claude
+Code, sem passar pelo modelo), roda a rodada e publica. Passo a passo em `ROTINA_MCP.md`. A coleta
+pelo navegador (`radar run --browser`, tarefa do Windows) continua no código como plano B.
 
 ```
 JoomPulse (site, sessão do navegador)  ──►  radar/browser.py (Playwright)
