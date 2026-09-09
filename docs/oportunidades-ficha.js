@@ -10,6 +10,32 @@
   const verdict={igual:'Mesmo produto',parecido:'Referência aproximada',diferente:'Produto diferente'};
   const metric=(label,value)=>`<div><span>${label}</span><b>${value}</b></div>`;
 
+  function categoryChoices(p){
+    const choices=new Map();
+    const add=(path,source)=>{
+      const clean=(path||[]).filter(Boolean),l1=clean[0];
+      if(!l1||!FEES.comm[l1])return;
+      const current=choices.get(l1)||{l1,path:[l1],sources:new Set(),evidence:0};
+      if(clean.length>current.path.length)current.path=clean;
+      current.sources.add(source);current.evidence+=1;choices.set(l1,current);
+    };
+    const stored=p.categoria?.caminho?.length?p.categoria.caminho:[p.categoria?.l1,p.categoria?.l2,p.categoria?.l3];
+    add(stored,'categoria associada pelo Radar');
+    for(const a of p.anuncios||[]){
+      if(!['igual','parecido'].includes(a.veredito))continue;
+      add([a.l1,a.l2,a.l3],a.veredito==='igual'?'anúncio conferido do mesmo produto':'referência aproximada conferida');
+    }
+    return [...choices.values()].sort((a,b)=>b.evidence-a.evidence||a.l1.localeCompare(b.l1,'pt-BR')).map(c=>({...c,sources:[...c.sources],fees:FEES.comm[c.l1]}));
+  }
+
+  function marketTools(p){
+    const categories=categoryChoices(p),query=String(p.nome||'').trim().replace(/\s+/g,'-');
+    const search='https://lista.mercadolivre.com.br/'+encodeURIComponent(query);
+    const cards=categories.map((c,i)=>`<article class="ot-category-card"><div class="ot-category-index">${i+1}</div><div class="ot-category-copy"><h4>${esc(c.path.join(' › '))}</h4><p>${esc(c.sources.join(' · '))} · ${num(c.evidence)} evidência(s)</p></div><div class="ot-category-fee"><span>Clássico</span><b>${num(c.fees[0])}%</b><small>do preço da venda</small></div><div class="ot-category-fee premium"><span>Premium</span><b>${num(c.fees[1])}%</b><small>do preço da venda</small></div></article>`).join('');
+    return `<section class="ot-market-search"><div><span class="ot-kicker">PESQUISA DIRETA</span><h3>Veja todo o mercado deste produto</h3><p>A busca abrirá com “${esc(p.nome)}”. Use os resultados para encontrar outros vendedores, preços e formas de apresentar o produto.</p></div><a class="btn primary" href="${esc(search)}" target="_blank" rel="noopener">Pesquisar no Mercado Livre ↗</a></section>
+      <details class="ot-category-panel"><summary><div><span class="ot-kicker">CATEGORIAS POSSÍVEIS</span><b>${categories.length?num(categories.length)+' opção'+(categories.length>1?'ões':'')+' encontrada'+(categories.length>1?'s':''):'Categoria não coletada'}</b><small>${categories.length?'Clique para ver caminhos e comissões':'Falta categoria nos dados do Radar e dos anúncios recentes'}</small></div><span class="ot-category-open">Ver taxas</span></summary>${categories.length?`<div class="ot-category-list">${cards}</div><p class="ot-category-note">Estas são categorias observadas nos dados, não uma autorização automática para anunciar. A comissão muda por categoria; custo fixo, imposto, frete e embalagem continuam na conta do Simulador.</p>`:''}</details>`;
+  }
+
   function competitor(a,p,env){
     const extra=env.dates[a.id],created=a.criadoEm||extra?.created;
     const days=RadarOportunidades.age(created,env.now),q=number(a.qtd),cost=number(p.unit),price=number(a.preco),cat=env.cat(a,p);
@@ -47,10 +73,12 @@
     // Mantém a ficha existente e sua calculadora. O fornecedor não abre site externo.
     const supplierLink=root.querySelector('.fhead a[target="_blank"]');
     if(supplierLink)supplierLink.replaceWith(document.createTextNode(r?.stock||'Catálogo do fornecedor'));
+    const calculator=root.querySelector('#f-calc');
+    if(calculator)calculator.insertAdjacentHTML('afterend',marketTools(p));
     const all=[...(p.anuncios||[]),...(p.mesma_categoria||[])];
     root.querySelectorAll('.an[data-id]').forEach(el=>{const a=all.find(x=>x.id===el.dataset.id);if(a)el.outerHTML=competitor(a,p,env);});
     root.querySelectorAll('[data-compare]').forEach(b=>b.onclick=()=>compare(p,all.find(a=>a.id===b.dataset.compare)));
     if(number(p.unit)==null){for(const id of ['f-alvos','f-calc']){const el=root.querySelector('#'+id);if(el)el.textContent='Custo do fornecedor não coletado. A conta fica pendente.';}}
   }
-  window.RadarFichaOportunidades={decorate};
+  window.RadarFichaOportunidades={decorate,categoryChoices};
 })();

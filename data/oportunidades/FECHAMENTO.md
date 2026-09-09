@@ -123,3 +123,7 @@ Nenhum Logospan aprovado nesta rodada. A nova sereia musical não comprova a mes
 ## Correção após conferência de João
 
 Fichas mantêm a aba e o produto no endereço, com restauração ao recarregar. Filtros escuros com seleção/foco neon. A partir de 45 dias o anúncio é antigo e não entra na lista nem nos concorrentes desta aba; sem data de criação comprovada também fica fora. Os 5 Promissor permanecem, todos com referências entre 9 e 37 dias, sendo duas aproximadas. Pesquisa existente reavaliada sem novas consultas. Testes: fronteira de 44/45 dias, referência recente priorizada, ficha na mesma aba, retorno, recarga, teclado e celular.
+
+## Busca geral e categorias na ficha
+
+Cada ficha agora oferece a busca geral do Mercado Livre com o nome do produto preenchido e um painel expansível de categorias observadas. As categorias vêm do Radar e de anúncios recentes conferidos como iguais ou parecidos, agrupadas pela categoria principal. Clássico e Premium mostram as comissões da tabela do Simulador. A ausência de categoria é indicada sem sugestão inventada. O teste de navegador confere destino da busca, abertura do painel, taxas, teclado, celular e console.

@@ -63,6 +63,17 @@ try:
     assert page.locator('#ot-sheet .ot-rival').count()>=expected
     assert page.evaluate("[...document.querySelectorAll('#ot-sheet .ot-rival')].every(e=>{const a=forn.data.produtos.find(p=>p.url===forn.prod).anuncios.find(a=>a.id===e.dataset.rival);return !a||RadarOportunidades.isRecent(a,RadarOportunidades.context())})")
     assert 'somando' not in page.locator('.ot-sheet-summary').inner_text()
+    market_search=page.locator('.ot-market-search a')
+    assert market_search.inner_text()=='Pesquisar no Mercado Livre ↗'
+    assert market_search.get_attribute('href').startswith('https://lista.mercadolivre.com.br/Caneta-Impressora-3D')
+    assert market_search.get_attribute('target')=='_blank'
+    categories=page.locator('.ot-category-panel')
+    assert categories.count()==1 and not categories.get_attribute('open')
+    categories.locator('summary').click()
+    assert categories.locator('.ot-category-card').count()>=1
+    assert all('Clássico' in categories.locator('.ot-category-card').nth(i).inner_text() and 'Premium' in categories.locator('.ot-category-card').nth(i).inner_text() for i in range(categories.locator('.ot-category-card').count()))
+    assert page.evaluate("[...document.querySelectorAll('.ot-category-card')].every(e=>{const l1=e.querySelector('h4').textContent.split(' › ')[0];const values=[...e.querySelectorAll('.ot-category-fee b')].map(x=>Number(x.textContent.replace('%','').replace(',','.')));return FEES.comm[l1]&&values[0]===FEES.comm[l1][0]&&values[1]===FEES.comm[l1][1]})")
+    page.screenshot(path=str(OUT/'ficha-pesquisa-categorias.png'),full_page=True)
     original_url=page.url
     page.locator('[data-tab=sim]').click()
     page.locator('[data-tab=oport]').click();page.wait_for_selector('#ot-sheet .ot-rival')
@@ -77,6 +88,8 @@ try:
     assert page.evaluate('document.documentElement.scrollWidth<=innerWidth'), page.evaluate("[...document.querySelectorAll('body *')].filter(e=>e.getBoundingClientRect().right>innerWidth+1).slice(0,10).map(e=>[e.tagName,e.id,e.className,e.getBoundingClientRect().width])")
     page.keyboard.press('Escape')
     assert page.evaluate('document.documentElement.scrollWidth<=innerWidth'), page.evaluate("[...document.querySelectorAll('body *')].filter(e=>e.getBoundingClientRect().right>innerWidth+1).slice(0,10).map(e=>[e.tagName,e.id,e.className,e.getBoundingClientRect().width])")
+    page.locator('.ot-category-panel summary').click()
+    assert page.evaluate('document.documentElement.scrollWidth<=innerWidth'), 'Categorias excedem a largura no celular'
     page.screenshot(path=str(OUT/'ficha-mobile.png'))
     page.locator('.ot-back').click();page.wait_for_selector('.ot-card')
     assert page.locator('#ot-query').input_value()=='Caneta Impressora 3D'

@@ -66,7 +66,7 @@ def publish():
     payload['GUIA.md']=guide.encode('utf-8')
     briefing=before['BRIEFING_ASSISTENTE.md'].decode('utf-8-sig')
     line='| `oportunidades.js`, `oportunidades.css` | Aba Oportunidade de fornecedores: Etapa 1, contas compartilhadas, menos de 45 dias desde a criação e 1 venda/dia. Integração/publicação: `scripts/integrar_oportunidades.py` e `scripts/publicar_oportunidades.py`. |'
-    line=line.replace('`oportunidades.css`','`oportunidades.css`, `oportunidades-ficha.js`').replace('Etapa 1, contas compartilhadas','Etapa 1, cartões compactos que abrem a ficha e comparação de fotos por anúncio, contas compartilhadas')
+    line=line.replace('`oportunidades.css`','`oportunidades.css`, `oportunidades-ficha.js`').replace('Etapa 1, contas compartilhadas','Etapa 1, cartões compactos que abrem a ficha, busca geral do Mercado Livre, categorias com taxas e comparação de fotos por anúncio, contas compartilhadas')
     if '`oportunidades.js`, `oportunidades.css`' in briefing:
         briefing='\n'.join(line if row.startswith('| `oportunidades.js`,') else row for row in briefing.split('\n'))
     else:
