@@ -265,7 +265,7 @@
     return {...extra,anuncios:entries};
   }
   async function withReadings(data){
-    if(!extraPromise)extraPromise=fetch('oportunidades.json?v=20260909r2').then(r=>{if(!r.ok)throw new Error('Leitura pontual indisponível');return r.json();}).catch(e=>{extraPromise=null;throw e;});
+    if(!extraPromise)extraPromise=fetch('oportunidades.json?v=20260909r3').then(r=>{if(!r.ok)throw new Error('Leitura pontual indisponível');return r.json();}).catch(e=>{extraPromise=null;throw e;});
     state.extra=latestReadings(await extraPromise,typeof S==='undefined'?null:S);
     const enriched=enrich(data,state.extra);
     if(typeof tokensNome!=='undefined'&&typeof parecidos!=='undefined')state.discovery=discover(enriched,typeof S==='undefined'?null:S,tokensNome,parecidos);

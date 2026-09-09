@@ -17,12 +17,12 @@ def readings_hook(source):
     if 'function fornProduto(root, F, productOverride=null)' not in source:
         source=replace_once(source,'function fornProduto(root, F){','function fornProduto(root, F, productOverride=null){')
         source=replace_once(source,"  const p = D.produtos.find(x=>x.url===forn.prod); if(!p)","  const p = productOverride || D.produtos.find(x=>x.url===forn.prod); if(!p)")
-    source=re.sub(r'oportunidades\.(js|css)\?v=[^"\s]+',r'oportunidades.\1?v=20260909r6',source)
-    source=re.sub(r'oportunidades-ficha.js\?v=[^"\s]+','oportunidades-ficha.js?v=20260909r6',source)
+    source=re.sub(r'oportunidades\.(js|css)\?v=[^"\s]+',r'oportunidades.\1?v=20260909r7',source)
+    source=re.sub(r'oportunidades-ficha.js\?v=[^"\s]+','oportunidades-ficha.js?v=20260909r7',source)
     if 'await window.RadarOportunidades.withReadings(forn.data)' not in source:
         source=replace_once(source,'    forn.data = await r.json();','    forn.data = await r.json();\n    try { forn.data = await window.RadarOportunidades.withReadings(forn.data); } catch(e) { /* Base original disponível; a aba exibe a falha da leitura. */ }')
     if 'src="oportunidades-ficha.js?' not in source:
-        source=replace_once(source,'<script src="oportunidades.js?', '<script src="oportunidades-ficha.js?v=20260909r6"></script>\n<script src="oportunidades.js?')
+        source=replace_once(source,'<script src="oportunidades.js?', '<script src="oportunidades-ficha.js?v=20260909r7"></script>\n<script src="oportunidades.js?')
     if 'window.RadarFichaOportunidades?.decorate(root,p)' not in source:
         source=replace_once(source,'  renderAlvos(p); renderCalc(p);', '  renderAlvos(p); renderCalc(p);\n  window.RadarFichaOportunidades?.decorate(root,p);')
     return source
