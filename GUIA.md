@@ -93,23 +93,30 @@ aplicativo Claude Code deste PC (o Predator, que fica ligado 24h):
 
 | Hora | Modo | O que faz |
 |---|---|---|
-| **5h** | `novos` | lê os 100 mais vendidos e os 100 anúncios com até 90 dias no ar que já vendem, em cada uma das 27 categorias do ML (54 consultas); relê pelo id o que já estava no radar e não apareceu; dá nota a tudo e reordena. É o que traz produto novo. |
-| **15h** | `atualiza` | relê pelo id todo produto ativo ou em observação (3 a 6 consultas): vendas da semana e do mês, preço, dias no ar, quantos vendedores disputam o catálogo, avaliações. Reordena. Não traz produto novo. |
+| **5h, 6h02 e 7h02** | `novos` | lê os 100 mais vendidos e os 100 anúncios com até 90 dias no ar que já vendem, em cada uma das 27 categorias do ML (54 consultas); relê pelo id o que já estava no radar e não apareceu; dá nota a tudo e reordena. É o que traz produto novo. São três execuções porque a JoomPulse só aceita **~40 consultas por hora**: a das 5h faz 36, a das 6h02 continua a mesma rodada e fecha; a das 7h02 é garantia (se já fechou, não faz nada). |
+| **15h03** | `atualiza` | relê pelo id todo produto ativo ou em observação (3 a 6 consultas): vendas da semana e do mês, preço, dias no ar, quantos vendedores disputam o catálogo, avaliações. Reordena. Não traz produto novo. |
 
-Nas duas, no fim: `data/radar.db` (histórico), `docs/data.json` (a página), commit e publicação
-no GitHub Pages e no repositório central. A página da tailnet muda na hora; a pública em 1–2 min.
-O cabeçalho da página mostra a rodada e a hora.
+No fim de cada rodada: `data/radar.db` (histórico), `docs/data.json` (a página), commit e
+publicação no GitHub Pages e no repositório central. A página da tailnet muda na hora; a
+pública em 1–2 min. O cabeçalho da página mostra a rodada e a hora.
 
 **O que precisa estar de pé:** o aplicativo Claude Code aberto neste PC — as tarefas agendadas
 só disparam com ele aberto; se estiver fechado no horário, rodam assim que abrir. Elas aparecem
-em "Scheduled" na barra lateral: `radar-novos-5h` e `radar-atualiza-15h`. Na primeira vez,
-clique em "Run now" numa delas e aprove o que ela pedir (o conector JoomPulse e o atalho
-`radar-mcp.cmd`); a aprovação fica guardada na tarefa.
+em "Scheduled" na barra lateral: `radar-novos-5h`, `radar-novos-6h`, `radar-novos-7h` e
+`radar-atualiza-15h`. As permissões que elas usam (conector JoomPulse e o atalho
+`radar-mcp.cmd`) já estão liberadas em `~/.claude/settings.json`; se uma execução ficar parada
+em "running", é um pedido de permissão esperando — abra a sessão na lista e aprove.
 
-**Custo:** a rodada das 5h gasta uns 60 mil tokens de saída (são 54 consultas escritas pelo
-Claude), a das 15h uns 10 mil. O dado em si **não passa pelo modelo**: cada resposta da
-JoomPulse (~60 KB) é gravada em arquivo pelo Claude Code e vai para o banco por script
-(`radar/mcp.py`). O passo a passo que a sessão segue está em `ROTINA_MCP.md`.
+**Custo:** a rodada `novos` inteira gasta uns 60 mil tokens de saída (são 54 consultas
+escritas pelo Claude, mais os lotes), a das 15h uns 10 mil. O dado em si **não passa pelo
+modelo**: cada resposta da JoomPulse (~60 KB) é gravada em arquivo pelo Claude Code e vai para
+o banco por script (`radar/mcp.py`). O passo a passo que a sessão segue está em `ROTINA_MCP.md`.
+
+**Limite por hora da JoomPulse.** Em 09/09/2026 a 36ª consulta da hora voltou "Hourly request
+limit for your plan reached" (o plano atual). O `plano` respeita um orçamento de 36 por hora
+(`RADAR_MCP_MAX_POR_HORA`) e, quando acaba, manda a sessão encerrar; a rodada fica aberta em
+`data/live/novos/estado.json` e a execução seguinte continua de onde parou. Se um dia o plano da
+JoomPulse mudar, é só ajustar o número — com 60 por hora a rodada cabe numa execução só.
 
 **A tarefa antiga do notebook** ("Radar Safira", 5h, coleta pelo navegador) **deve ficar
 desligada** — as duas publicariam no mesmo repositório e brigariam:
@@ -130,6 +137,8 @@ A coleta pelo navegador continua no código (`radar run --browser`) como plano B
 - A ficha mostra a **data de criação** do anúncio ("criado em"), que o site não informava.
 - Os dados da JoomPulse mudam uma vez por dia; se a das 15h não encontrar nada diferente, ela
   não faz commit ("nada mudou nos dados").
+- Cada modo tem a sua pasta de trabalho (`data/live/novos`, `data/live/atualiza`): a rodada
+  das 15h nunca atropela uma das 5h que ficou aberta.
 
 Estado e log da rotina:
 
