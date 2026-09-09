@@ -5,6 +5,17 @@
 # Instalar o agendamento:  .\scripts\agendar.ps1
 # Rodar na mão:            .\scripts\rodada.ps1
 
+# DESLIGADA em 09/09/2026: a coleta agora e feita pela rotina MCP no Predator (ver GUIA.md,
+# "O que acontece sozinho, duas vezes por dia"). Este script sai sem fazer nada para a tarefa do
+# notebook nao publicar por cima da rodada do Predator. Para religar a coleta pelo navegador
+# (plano B), troque $Desligada para $false.
+$Desligada = $true
+if ($Desligada) {
+    $logDesligada = Join-Path (Split-Path -Parent $PSScriptRoot) "dataodada.log"
+    Add-Content -Path $logDesligada -Value "$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')  DESLIGADA - a coleta e a rotina MCP no Predator (GUIA.md)" -Encoding utf8
+    exit 0
+}
+
 $ErrorActionPreference = "Stop"
 $raiz = Split-Path -Parent $PSScriptRoot
 Set-Location $raiz
