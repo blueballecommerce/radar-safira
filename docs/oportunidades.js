@@ -227,7 +227,7 @@
     data=enrich(data,env.extra);
     const suppliers=Object.fromEntries((data.fornecedores||[]).map(f=>[f.id,f]));
     const order={'Promissor':0,'Precisa de mais análise':1,'Não vale o teste':2};
-    const marketRank=r=>(n(r.market?.strong)||0)*100+(n(r.market?.growing)||0)*20+(r.market?.complete?10:0)+(r.market?.coverage?.candidatos?Math.min(1,(n(r.market.coverage.revisados)||0)/r.market.coverage.candidatos):0);
+    const marketRank=r=>(n(r.market?.strong)||0)*100+(n(r.market?.growing)||0)*20+(r.market?.complete?10:0)+(r.approximate?0:5)+(r.market?.coverage?.candidatos?Math.min(1,(n(r.market.coverage.revisados)||0)/r.market.coverage.candidatos):0);
     return (data.produtos||[]).map(p=>analyze(p,suppliers[p.fornecedor],env)).filter(Boolean).sort((a,b)=>order[a.status]-order[b.status]||marketRank(b)-marketRank(a)||b.score-a.score||a.name.localeCompare(b.name));
   }
   const state={sheet:null,rows:[],data:null,extra:null,discovery:{},all:false,q:'',supplier:'',unit:false,own:false,color:'',september:false,limit:20};
