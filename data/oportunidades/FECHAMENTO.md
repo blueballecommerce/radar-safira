@@ -10,17 +10,17 @@ Foram relidos os 687 produtos da listagem pública da Flexx, sem mudanças nos p
 
 ## Revisão de apresentação
 
-Cartões compactos abrem a ficha existente com preço, custo, quanto pagar, margens e concorrentes individualizados. Comparar fotos mostra fornecedor e concorrente lado a lado, sem alterar vereditos. Criação, atividade e início das vendas ficam separados; dados ausentes são indicados. A seleção e as regras abaixo foram preservadas.
+Cartões compactos abrem a ficha dentro da própria aba Oportunidade de fornecedores com preço, custo, quanto pagar, margens e concorrentes individualizados. Comparar fotos mostra fornecedor e concorrente lado a lado, sem alterar vereditos. Criação, atividade e início das vendas ficam separados; dados ausentes são indicados. A seleção e as regras abaixo foram preservadas.
 
 ## Regra aplicada
 
-Até 40 dias desde a criação, pelo menos uma venda estimada por dia e margem de 20% no Clássico. Cada anúncio tem sua própria conta; vendas de anúncios e variações não são somadas. Um líder antigo não elimina uma oferta recente. Similares são aceitos nos dois fornecedores, identificados como aproximados, conforme a autorização posterior de João. Caixa fechada não tem teto fixo e exige plano de atendimento antes de publicar. QuickBuy amarela, entrega padrão confirmada, sem Full, desconto de frete acima de R$ 79 não confirmado (0%).
+Menos de 45 dias desde a criação, pelo menos uma venda estimada por dia e margem de 20% no Clássico. Cada anúncio tem sua própria conta; vendas de anúncios e variações não são somadas. Um líder antigo não elimina uma oferta recente. Similares são aceitos nos dois fornecedores, identificados como aproximados, conforme a autorização posterior de João. Caixa fechada não tem teto fixo e exige plano de atendimento antes de publicar. QuickBuy amarela, entrega padrão confirmada, sem Full, desconto de frete acima de R$ 79 não confirmado (0%).
 
 ## Promissor — leitura disponível na ficha
 
 ### Bolsa Transversal 3 Zíperes
 
-Anúncio próprio com entrada aberta. Referência a R$ 42,12, 857 vendas mensais estimadas; sobra R$ 10,20 (24,21%) no Clássico. Até 40 dias de criação, média mínima de uma venda por dia e margem de pelo menos 20% no Clássico. Referência aproximada. Condição: definir como atender a primeira venda sem comprar a caixa antecipadamente.
+Anúncio próprio com entrada aberta. Referência a R$ 42,12, 857 vendas mensais estimadas; sobra R$ 10,20 (24,21%) no Clássico. Menos de 45 dias desde a criação, média mínima de uma venda por dia e margem de pelo menos 20% no Clássico. Referência aproximada. Condição: definir como atender a primeira venda sem comprar a caixa antecipadamente.
 
 Ambas são bolsas transversais de um ombro. O fornecedor tem formato triangular de 30 × 18 × 8 cm; referência retangular tática, com bolsos e alça de mão diferentes. Testar o modelo do fornecedor sem copiar capacidade ou benefícios.
 
@@ -28,7 +28,7 @@ Custo unitário: R$ 15,50; caixa: 120 = R$ 1.860,00. Premium: R$ 8,09 (19.21%). 
 
 ### Repetidor de Wifi
 
-Anúncio próprio com entrada aberta. Referência a R$ 61,33, 79 vendas mensais estimadas; sobra R$ 18,65 (30,42%) no Clássico. Até 40 dias de criação, média mínima de uma venda por dia e margem de pelo menos 20% no Clássico. Condição: definir como atender a primeira venda sem comprar a caixa antecipadamente.
+Anúncio próprio com entrada aberta. Referência a R$ 61,33, 79 vendas mensais estimadas; sobra R$ 18,65 (30,42%) no Clássico. Menos de 45 dias desde a criação, média mínima de uma venda por dia e margem de pelo menos 20% no Clássico. Condição: definir como atender a primeira venda sem comprar a caixa antecipadamente.
 
 Mesmo corpo curvo Wireless-N de tomada, posição dos LEDs e botão frontal. A alegação 1200m do concorrente não é especificação confirmada: verificar velocidade, alcance, plugue e homologação do fornecedor.
 
@@ -38,7 +38,7 @@ Atenção: nota 3.1/5 na referência; verificar reclamações e qualidade antes 
 
 ### Cercado Pet M
 
-Anúncio próprio com entrada aberta. Referência a R$ 112,96, 100 vendas mensais estimadas; sobra R$ 27,66 (24,49%) no Clássico. Até 40 dias de criação, média mínima de uma venda por dia e margem de pelo menos 20% no Clássico. Condição: definir como atender a primeira venda sem comprar a caixa antecipadamente.
+Anúncio próprio com entrada aberta. Referência a R$ 112,96, 100 vendas mensais estimadas; sobra R$ 27,66 (24,49%) no Clássico. Menos de 45 dias desde a criação, média mínima de uma venda por dia e margem de pelo menos 20% no Clássico. Condição: definir como atender a primeira venda sem comprar a caixa antecipadamente.
 
 Mesmo cercado portátil octogonal dobrável com telas, porta com zíper, teto removível e estampa de patas. Referência para porte pequeno. Confirmar medidas do M e medidas embaladas: não equiparar aos tamanhos G/GG ou cercas metálicas.
 
@@ -46,7 +46,7 @@ Custo unitário: R$ 42,00; caixa: 40 = R$ 1.680,00. Premium: R$ 22,01 (19.49%). 
 
 ### Caneta Impressora 3D
 
-Anúncio próprio com entrada aberta. Referência a R$ 58,80, 25 vendas mensais estimadas; sobra R$ 17,05 (29%) no Clássico. Até 40 dias de criação, média mínima de uma venda por dia e margem de pelo menos 20% no Clássico. Condição: definir como atender a primeira venda sem comprar a caixa antecipadamente.
+Anúncio próprio com entrada aberta. Referência a R$ 58,80, 25 vendas mensais estimadas; sobra R$ 17,05 (29%) no Clássico. Menos de 45 dias desde a criação, média mínima de uma venda por dia e margem de pelo menos 20% no Clássico. Condição: definir como atender a primeira venda sem comprar a caixa antecipadamente.
 
 Mesmo formato de caneta 3D com visor, dois botões laterais, ponteira preta e alimentação por cabo. Anúncio inclui refil; confirmar metragem e cores do refil fornecido antes de anunciar. A referência de R$ 75,04 mostra versão camuflada; disponibilidade dessa cor não confirmada no fornecedor.
 
@@ -54,7 +54,7 @@ Custo unitário: R$ 23,50; caixa: 120 = R$ 2.820,00. Premium: R$ 14,11 (24.0%). 
 
 ### BOLSA TÉRMICA DE MARMITA 25*13*23CM
 
-Anúncio próprio com entrada aberta. Referência a R$ 27,93, 81 vendas mensais estimadas; sobra R$ 5,59 (20,03%) no Clássico. Até 40 dias de criação, média mínima de uma venda por dia e margem de pelo menos 20% no Clássico. Referência aproximada. Condição: definir como atender a primeira venda sem comprar a caixa antecipadamente.
+Anúncio próprio com entrada aberta. Referência a R$ 27,93, 81 vendas mensais estimadas; sobra R$ 5,59 (20,03%) no Clássico. Menos de 45 dias desde a criação, média mínima de uma venda por dia e margem de pelo menos 20% no Clássico. Referência aproximada. Condição: definir como atender a primeira venda sem comprar a caixa antecipadamente.
 
 Ambas são bolsas térmicas para marmita. Fornecedor 25 × 13 × 23 cm, alças de mão e formato simples; referência tem alça de ombro e bolsos adicionais. Não copiar capacidade, acessórios nem tempo de conservação.
 
@@ -75,7 +75,7 @@ Abridor KGQ03 continua contestado e não pode ser Promissor. Os quatro pares que
 - **Abridor de Lata**: Precisa de mais análise — Falta margem para ficar abaixo do piso em catálogo aberto. Abridor KGQ03: cabeça e cabos diferentes; conferir na lupa. Falta reconferir visualmente modelo e kit antes de aprovar esta referência.
 - **Massageador Elétrico Corporal Redutor de Medidas**: Precisa de mais análise — Margem no Clássico abaixo de 20%. Falta margem para ficar abaixo do piso em catálogo aberto. Falta reconferir visualmente modelo e kit antes de aprovar esta referência.
 - **Munição Bolinhas Gel 7-8mm Arma Elétrica**: Precisa de mais análise — Data de criação não coletada; dias no ar não substituem criação. Ainda falta comprovar média de uma venda por dia desde a criação. Falta reconferir visualmente modelo e kit antes de aprovar esta referência. Quantidade do kit de munição ainda precisa de confirmação.
-- **Caneta Impressora 3D**: Promissor — Até 40 dias de criação, média mínima de uma venda por dia e margem de pelo menos 20% no Clássico. Condição: definir como atender a primeira venda sem comprar a caixa antecipadamente.
+- **Caneta Impressora 3D**: Promissor — Menos de 45 dias desde a criação, média mínima de uma venda por dia e margem de pelo menos 20% no Clássico. Condição: definir como atender a primeira venda sem comprar a caixa antecipadamente.
 - **Pistola de Bolhas**: Precisa de mais análise — As referências conferidas são antigas ou não têm criação coletada. Falta confirmar um anúncio recente; isso não reprova o produto inteiro.
 - **Pulverizador Manual**: Sem referência elegível no cadastro atual; pareamento confirmado como diferente ou pesquisa pendente.
 - **Cercado Pet GG**: Precisa de mais análise — Margem no Clássico abaixo de 20%. Falta reconferir visualmente modelo e kit antes de aprovar esta referência.
@@ -118,3 +118,8 @@ Nenhum Logospan aprovado nesta rodada. A nova sereia musical não comprova a mes
 - Testes Python, regras de classificação e Chromium limpo: validação registrada no fechamento da conversa. A aba usa a mesma extrato/FEES de Fornecedores e do Simulador.
 
 **Continuamos somente na Etapa 1.** A revisão foi publicada para João avaliar as evidências, sem compra de estoque nem publicação de anúncios.
+
+
+## Correção após conferência de João
+
+Fichas mantêm a aba e o produto no endereço, com restauração ao recarregar. Filtros escuros com seleção/foco neon. A partir de 45 dias o anúncio é antigo e não entra na lista nem nos concorrentes desta aba; sem data de criação comprovada também fica fora. Os 5 Promissor permanecem, todos com referências entre 9 e 37 dias, sendo duas aproximadas. Pesquisa existente reavaliada sem novas consultas. Testes: fronteira de 44/45 dias, referência recente priorizada, ficha na mesma aba, retorno, recarga, teclado e celular.

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
-<link rel="stylesheet" href="oportunidades.css?v=20260909r3">
+<link rel="stylesheet" href="oportunidades.css?v=20260909r4">
 <link rel="stylesheet" href="concorrentes.css?v=20260908-dates">
 <link rel="stylesheet" href="pedidos.css?v=20260908-pedidos">
 <title>Radar Safira</title>
@@ -798,8 +798,8 @@ ul.ext li b{font-family:var(--mono);font-weight:500;white-space:nowrap}
 </div>
 <div class="toast" id="toast"></div>
 
-<script src="oportunidades-ficha.js?v=20260909r3"></script>
-<script src="oportunidades.js?v=20260909r3"></script>
+<script src="oportunidades-ficha.js?v=20260909r4"></script>
+<script src="oportunidades.js?v=20260909r4"></script>
 <script src="concorrentes.js?v=20260908-dates"></script>
 <script src="pedidos.js?v=20260908-pedidos"></script>
 <script>
@@ -932,10 +932,11 @@ function renderFresh(live){
 /* ===================== tabs ===================== */
 $$('nav.tabs button').forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.tab)));
 function showTab(t){
+  window.RadarOportunidades?.leave(t);
   // a aba pode ser restaurada da última visita antes do código dela ter rodado;
   // adiar um ciclo garante que `forn` já exista
   if (t==='forn') setTimeout(fornLoad, 0);
-  if (t==='oport') { history.replaceState(null,'','#oportunidades'); setTimeout(()=>window.RadarOportunidades.load(), 0); }
+  if (t==='oport') { if(!location.hash.startsWith('#oportunidades')) history.replaceState(null,'','#oportunidades'); setTimeout(()=>window.RadarOportunidades.load(), 0); }
   else if(location.hash.startsWith('#oportunidades')) history.replaceState(null,'',location.pathname+location.search);
   if (t==='ped') setTimeout(()=>window.RadarPedidos.load(), 0);
   if (t==='conc') setTimeout(()=>window.RadarConcorrentes.load(), 0);
@@ -2042,9 +2043,9 @@ function fornRender(){
 }
 
 /* ---------- detalhe do produto do fornecedor ---------- */
-function fornProduto(root, F){
+function fornProduto(root, F, productOverride=null){
   const D = forn.data;
-  const p = D.produtos.find(x=>x.url===forn.prod); if(!p){ forn.view='produtos'; return fornRender(); }
+  const p = productOverride || D.produtos.find(x=>x.url===forn.prod); if(!p){ forn.view='produtos'; return fornRender(); }
   const custo = p.unit||0;
   const st = forn.calc[p.url] || (forn.calc[p.url] = { tipo:'c', cat:catDe(null,p), preco:null });
   const cc = concorrencia(p);

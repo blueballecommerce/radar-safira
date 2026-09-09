@@ -10,7 +10,7 @@ const supplier={id:'flexx',nome:'Flexx',regra:'Vende apenas caixa fechada'};
 const env={extrato:shared.extrato,max:shared.custoMaximo,cat:()=> 'Brinquedos e Hobbies',score:(m,v)=>({pontos:(m||0)*60+Math.log1p(v||0)*40}),rows:[],dates:{},exported:'2026-09-09',now:'2026-09-09',catalogLimits:[3,6],ownLimits:[1000,10000]};
 function product(changes={}){return {url:'test:item',nome:'Produto',fornecedor:'flexx',pesquisado:true,unit:23.5,caixa:120,tags:[],anuncios:[{id:'MLB1',preco:61.49,qtd:1,veredito:'igual',catalogo:false,avaliacoes:3314,vendas_mes:40,vendas_sem:10,vendas_desde_criacao:40,criadoEm:'2026-07-31',lidoEm:'2026-09-09',frete_gratis:true,...changes}]};}
 let r=api.analyze(product(),supplier,env);assert.equal(r.status,'Promissor');assert.ok(Math.abs(r.classic.profit-18.97925)<1e-6);assert.equal(r.capital,2820);assert.equal(r.demand.daily,1);assert.equal(r.entrance,'disputada');
-assert.equal(api.analyze(product({criadoEm:'2026-07-30'}),supplier,env).status,'Precisa de mais análise'); // anúncio antigo sozinho não reprova a família
+assert.equal(api.analyze(product({criadoEm:'2026-07-26'}),supplier,env).status,'Precisa de mais análise'); // anúncio antigo sozinho não reprova a família
 assert.equal(api.analyze(product({criadoEm:null,dias:7}),supplier,env).status,'Precisa de mais análise');
 assert.equal(api.analyze(product({vendas_desde_criacao:0}),supplier,env).status,'Não vale o teste');
 assert.equal(api.analyze(product({vendas_desde_criacao:null,vendas_mes:20,vendas_sem:5}),supplier,env).status,'Precisa de mais análise'); // janela parcial não comprova fracasso
@@ -56,3 +56,14 @@ const market={products:[{i:'NEW',n:'Caneta impressora 3D',pub:'2026-08-20',m:30,
 const suggestions=api.discover(catalog,market,s=>new Set(s.toLowerCase().split(' ')),()=>false,'2026-09-09');
 assert.deepEqual(suggestions['supplier:1'].map(x=>x.id),['NEW']);assert.equal(catalog.produtos[0].anuncios.length,0);
 console.log('Regras, janelas, kits, campos ausentes e fronteiras de frete: OK');
+
+// 45 dias já é antigo. Dias de atividade não substituem data de criação.
+assert.equal(api.CONFIG.idade,45);
+assert.equal(api.isRecent({criadoEm:'2026-07-27'},env),true);
+assert.equal(api.isRecent({criadoEm:'2026-07-26'},env),false);
+assert.equal(api.isRecent({criadoEm:null,dias:2},env),false);
+assert.equal(api.analyze(product({criadoEm:'2026-07-27',vendas_desde_criacao:44}),supplier,env).status,'Promissor');
+// Uma referência antiga pendente não ocupa o lugar da referência recente, mesmo reprovada.
+const wrongChoice=product({id:'OLD',criadoEm:'2025-01-01',vendas_mes:5000});
+wrongChoice.anuncios.push({...product().anuncios[0],id:'RECENT',preco:5});
+assert.equal(api.analyze(wrongChoice,supplier,env).ref.id,'RECENT');

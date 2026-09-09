@@ -3,7 +3,7 @@
   'use strict';
   const OPT_MARGEM_MIN = .20;
   const OPT_DEMANDA_DIA_MIN = 1;
-  const OPT_IDADE_MAX = 40;
+  const OPT_IDADE_MAX = 45;
   const OPT_CAPITAL_ALERTA = null; // João: avaliar caso a caso, sem teto fixo.
   const OPT_APROXIMADOS = true;
   const OPT_PLANO = 'Após a primeira venda, observar se surgem outras; avaliar a compra pelo investimento e pelo prazo dos pedidos. Mais vendas reforçam o sinal, mas não autorizam automaticamente comprar a caixa.';
@@ -61,7 +61,7 @@
     if(r.catalog && r.entrance==='fechada') why.push('Catálogo fechado: '+num(r.bb)+' vendedores disputam a Compra Ganha.');
     if(n(r.maxFloor)!=null&&r.catalog&&n(r.cost)!=null&&r.maxFloor<r.cost) why.push('No piso do catálogo, o custo supera o máximo para margem de 20%.');
     if(n(r.classic?.profit)!=null&&r.classic.profit<=0) why.push('A sobra no preço de referência é zero ou negativa.');
-    if(r.demand.age!=null&&r.demand.age>CONFIG.idade) why.push('Criado há '+num(r.demand.age)+' dias: excede o limite de '+CONFIG.idade+' dias.');
+    if(r.demand.age!=null&&r.demand.age>=CONFIG.idade) why.push('Criado há '+num(r.demand.age)+' dias: excede o limite de '+CONFIG.idade+' dias.');
     if(r.demand.fails) why.push('A média desde a criação é menor que uma venda por dia.');
     if(why.length) return {status:'Não vale o teste',reason:why.join(' ')};
     const missing=[];
@@ -77,7 +77,7 @@
     if(r.quantityPending) missing.push('Quantidade do kit de munição ainda precisa de confirmação.');
     if(r.missingReading) missing.push('O anúncio não retornou na consulta pontual; revalidar disponibilidade.');
     if(missing.length) return {status:'Precisa de mais análise',reason:missing.join(' ')};
-    return {status:'Promissor',reason:'Até 40 dias de criação, média mínima de uma venda por dia e margem de pelo menos 20% no Clássico.'+(r.approximate?' Referência aproximada.':'')+(!r.unit?' Condição: definir como atender a primeira venda sem comprar a caixa antecipadamente.':'')};
+    return {status:'Promissor',reason:'Menos de 45 dias desde a criação, média mínima de uma venda por dia e margem de pelo menos 20% no Clássico.'+(r.approximate?' Referência aproximada.':'')+(!r.unit?' Condição: definir como atender a primeira venda sem comprar a caixa antecipadamente.':'')};
   }
 
   function analyze(p,f,env,referenceId){
@@ -91,14 +91,14 @@
     if(!referenceId){
       const candidates=ads.map(a=>analyze(p,f,env,a.id));
       const order={'Promissor':0,'Precisa de mais análise':1,'Não vale o teste':2};
-      const evidence=r=>(r.ref.revisadoEm?4:0)+(r.demand.age!=null&&r.demand.age<=CONFIG.idade?2:0)+(r.demand.passes?1:0);
-      candidates.sort((a,b)=>order[a.status]-order[b.status]||(a.status==='Promissor'?0:evidence(b)-evidence(a))||(b.monthly??-1)-(a.monthly??-1)||a.ref.id.localeCompare(b.ref.id));
+      const evidence=r=>(r.ref.revisadoEm?4:0)+(r.demand.age!=null&&r.demand.age<CONFIG.idade?2:0)+(r.demand.passes?1:0);
+      candidates.sort((a,b)=>Number(isRecent(b.ref,env))-Number(isRecent(a.ref,env))||order[a.status]-order[b.status]||(a.status==='Promissor'?0:evidence(b)-evidence(a))||(b.monthly??-1)-(a.monthly??-1)||a.ref.id.localeCompare(b.ref.id));
       const chosen=candidates[0];
       chosen.evaluated=candidates.map(r=>({id:r.ref.id,status:r.status,reason:r.reason,age:r.demand.age,monthly:r.monthly,price:r.price,margin:r.classic?.margin}));
       chosen.leader=ads[0];
       chosen.coverage=p._coverage||null;
-      chosen.researchOnly=candidates.every(r=>r.demand.age==null||r.demand.age>CONFIG.idade);
-      if(chosen.status==='Não vale o teste' && candidates.every(r=>r.demand.age==null||r.demand.age>CONFIG.idade)){
+      chosen.researchOnly=candidates.every(r=>r.demand.age==null||r.demand.age>=CONFIG.idade);
+      if(chosen.status==='Não vale o teste' && candidates.every(r=>r.demand.age==null||r.demand.age>=CONFIG.idade)){
         chosen.status='Precisa de mais análise';
         chosen.reason='As referências conferidas são antigas ou não têm criação coletada. Falta confirmar um anúncio recente; isso não reprova o produto inteiro.';
         chosen.reading='Mercado com referência de '+num(monthly(ads[0]))+' vendas/mês a '+money(ads[0].preco)+'. '+chosen.reason;
@@ -111,7 +111,7 @@
     const totalCost=quantity!=null&&cost!=null?cost*quantity:null;
     const price=n(a.preco);
     const fs=typeof a.frete_gratis==='boolean'?a.frete_gratis:null;
-    const comparable=ads.filter(x=>n(x.qtd)===quantity&&x.veredito===a.veredito);
+    const comparable=ads.filter(x=>n(x.qtd)===quantity&&x.veredito===a.veredito&&(!isRecent(a,env)||isRecent(x,env)));
     const prices=comparable.map(x=>n(x.preco)).filter(x=>x!=null);
     const low=prices.length?Math.min(...prices):null, high=prices.length?Math.max(...prices):null;
     const floor=a.catalogo?n(a.preco_min):low;
@@ -176,13 +176,13 @@
     const order={'Promissor':0,'Precisa de mais análise':1,'Não vale o teste':2};
     return (data.produtos||[]).map(p=>analyze(p,suppliers[p.fornecedor],env)).filter(Boolean).sort((a,b)=>order[a.status]-order[b.status]||b.score-a.score||a.name.localeCompare(b.name));
   }
-  const state={rows:[],data:null,extra:null,discovery:{},all:false,q:'',supplier:'',unit:false,own:false,color:'',september:false,limit:20};
+  const state={sheet:null,rows:[],data:null,extra:null,discovery:{},all:false,q:'',supplier:'',unit:false,own:false,color:'',september:false,limit:20};
   let extraPromise=null;
   function discover(data,radar,tokenize,match,now=today()){
     const index=new Map(),results={};
     for(const p of radar?.products||[]){
       const days=age(p.pub,now);
-      if(days==null||days<1||days>CONFIG.idade||n(p.m)==null||p.m/days<CONFIG.diaria)continue;
+      if(days==null||days<1||days>=CONFIG.idade||n(p.m)==null||p.m/days<CONFIG.diaria)continue;
       const candidate={...p,_tk:tokenize(p.n)};
       for(const token of candidate._tk){if(!index.has(token))index.set(token,[]);index.get(token).push(candidate);}
     }
@@ -225,7 +225,7 @@
     return {extrato,max:custoMaximo,cat:(a,p)=>{const c=catDe(a,p);return a.l1&&FEES.comm[a.l1]?c:p.categoria?.l1&&FEES.comm[p.categoria.l1]?p.categoria.l1:null;},
       score:pontosDe,rows:FORN_ROWS,dates,extra:state.extra,missing:state.extra?.naoRetornados,exported:forn.data.geradoEm,now:today(),catalogLimits:OPP_CATALOGO,ownLimits:OPP_PROPRIO};
   }
-  function selected(){const query=state.q.toLocaleLowerCase('pt-BR');return state.rows.filter(r=>(state.all||(r.status!=='Não vale o teste'&&!r.researchOnly))&&(!state.supplier||r.supplierId===state.supplier)&&(!state.unit||r.unit)&&(!state.own||r.catalog===false)&&(!state.color||r.radar?.cor===state.color)&&(!state.september||r.september)&&(!query||(r.name+' '+r.supplier).toLocaleLowerCase('pt-BR').includes(query)));}
+  function selected(){const query=state.q.toLocaleLowerCase('pt-BR');return state.rows.filter(r=>r.demand.age!=null&&r.demand.age<CONFIG.idade&&(state.all||(r.status!=='Não vale o teste'&&!r.researchOnly))&&(!state.supplier||r.supplierId===state.supplier)&&(!state.unit||r.unit)&&(!state.own||r.catalog===false)&&(!state.color||r.radar?.cor===state.color)&&(!state.september||r.september)&&(!query||(r.name+' '+r.supplier).toLocaleLowerCase('pt-BR').includes(query)));}
   const provenance=(source,date)=>`<small class="ot-source">${esc(source)} · ${date?'exportado/lido em '+dateText(date):'leitura não coletada'}</small>`;
   const metric=(label,value,detail,source,date)=>`<div class="ot-metric"><span>${label}</span><strong>${value}</strong><div>${detail}</div>${provenance(source,date)}</div>`;
   function card(r,index){
@@ -239,16 +239,44 @@
       <div class="ot-card-value"><small>Sobra Clássico</small><b>${money(r.classic?.profit)}</b><small>${pct(r.classic?.margin)} de margem</small></div>
       <div class="ot-card-action"><span>Ver ficha →</span><a href="https://produto.mercadolivre.com.br/${esc(String(r.ref.id).replace('MLB','MLB-'))}" target="_blank" rel="noopener">Mercado Livre ↗</a></div></article>`;
   }
+  function isRecent(a,env){
+    const days=age(a.criadoEm||a.adPublishDate||env.dates?.[a.id]?.created,env.now);
+    return days!=null&&days<CONFIG.idade;
+  }
+  function closeSheet(){
+    state.sheet=null;history.replaceState(null,'','#oportunidades');render();
+  }
+  function leave(t){
+    if(t!=='oport')document.getElementById('ot-sheet')?.remove();
+  }
+  function renderSheet(){
+    const product=state.data.produtos.find(p=>p.url===state.sheet);
+    if(!product){closeSheet();return;}
+    const env=environment(),r=state.rows.find(x=>x.url===state.sheet);
+    const recent=(product.anuncios||[]).filter(a=>isRecent(a,env));
+    const root=document.getElementById('oport-root');
+    root.innerHTML='<div class="ot-sheet-heading"><span>QUICKBUY · ETAPA 1</span><h2>Oportunidade de fornecedores</h2></div><div id="ot-sheet"></div>';
+    document.getElementById('forn-root').replaceChildren();
+    const sheet=document.getElementById('ot-sheet');
+    if(!recent.length){sheet.innerHTML='<button class="btn ot-back">← Voltar às oportunidades</button><p>Nenhum anúncio com criação comprovada há menos de 45 dias. Este produto não tem referência recente para o teste.</p>';sheet.querySelector('button').onclick=closeSheet;return;}
+    forn.sup=product.fornecedor;forn.prod=product.url;forn.view='produto';
+    if(!forn.calc[product.url]&&r?.price!=null&&r.quantity>0)forn.calc[product.url]={tipo:'c',cat:env.cat(r.ref,product),preco:r.price/r.quantity};
+    const filtered={...product,anuncios:recent,mesma_categoria:(product.mesma_categoria||[]).filter(a=>isRecent(a,env))};
+    fornProduto(sheet,state.data.fornecedores.find(f=>f.id===product.fornecedor),filtered);
+    const excluded=(product.anuncios||[]).filter(a=>!isRecent(a,env));
+    const old=excluded.filter(a=>age(a.criadoEm||a.adPublishDate||env.dates?.[a.id]?.created,env.now)!=null).length;
+    sheet.querySelector('.ot-back').insertAdjacentHTML('afterend',`<p class="ot-age-note">Concorrentes com menos de 45 dias desde a criação. ${old} antigos e ${excluded.length-old} sem data comprovada ficaram fora desta ficha.</p>`);
+    sheet.querySelector('.crumb').innerHTML=`<span>Oportunidade de fornecedores</span><span>›</span><b>${esc(product.nome)}</b>`;
+    history.replaceState(null,'','#oportunidades/produto/'+encodeURIComponent(product.url));
+  }
   function openSheet(url){
-    const r=state.rows.find(x=>x.url===url);
-    const product=forn.data.produtos.find(p=>p.url===url);
-    if(r&&product&&r.price!=null&&r.quantity>0)forn.calc[url]={tipo:'c',cat:environment().cat(r.ref,product),preco:r.price/r.quantity};
-    abrirNoFornecedor(url);
+    state.sheet=url;renderSheet();window.scrollTo({top:0});
   }
   function renderCards(){
     const list=document.querySelector('#ot-results');if(!list)return;
-    const rows=selected();document.querySelector('#ot-count').textContent=rows.length+' produtos · '+state.rows.filter(r=>r.status==='Promissor').length+' Promissor no universo pesquisado';
-    list.innerHTML=rows.slice(0,state.limit).map(card).join('')||'<p class="empty">Nenhum produto com estes filtros. Use Mostrar tudo para ver os descartados e seus motivos.</p>';
+    const rows=selected();document.querySelector('#ot-count').textContent=rows.length+' produtos com referência recente · '+state.rows.filter(r=>r.status==='Promissor').length+' Promissor no universo pesquisado';
+    const strong=state.rows.filter(r=>r.status==='Promissor');document.getElementById('ot-selection-note').textContent=strong.length?strong.length+' candidatos atendem às regras na base coletada. Isso indica potencial para anúncio, não venda garantida.':'Nenhum produto tem evidência suficiente para ser Promissor na base coletada. Não há indicação de teste aprovada neste momento.';
+    list.innerHTML=rows.slice(0,state.limit).map(card).join('')||'<p class="empty">Nenhum produto com estes filtros. Use Ver também reprovados para ver os descartados e seus motivos.</p>';
     document.querySelector('#ot-more').hidden=rows.length<=state.limit;
   }
   function csv(rows){
@@ -258,9 +286,10 @@
     return [keys.map(q).join(';'),...objects.map(o=>keys.map(k=>q(o[k])).join(';'))].join('\r\n');
   }
   function render(){
+    if(state.sheet){renderSheet();return;}
     const root=document.getElementById('oport-root');
-    root.innerHTML=`<div class="ot-intro"><span>QUICKBUY · ETAPA 1</span><h2>Oportunidade de fornecedores</h2><p>Produtos para investir tempo no anúncio. Comprar estoque só depois de validar a venda e avaliar o pedido.</p><p>Até ${CONFIG.idade} dias desde a criação · pelo menos ${CONFIG.diaria} venda/dia · margem de ${pct(CONFIG.margem)} no Clássico · capital avaliado caso a caso.</p><small>Catálogo exportado em ${dateText(state.data.geradoEm)}. Vendas estimadas pela JoomPulse. Exportação não renova a leitura do mercado. A aba usa somente JSONs, sem tokens ou coleta.</small></div>
-    <div class="ot-filters"><label>Buscar<input id="ot-query" type="search" value="${esc(state.q)}" placeholder="Nome do produto"></label><label>Fornecedor<select id="ot-supplier"><option value="">Todos</option>${state.data.fornecedores.map(f=>`<option value="${esc(f.id)}" ${state.supplier===f.id?'selected':''}>${esc(f.nome)}</option>`).join('')}</select></label><label>Semáforo<select id="ot-color"><option value="">Todos</option>${['verde','amarelo','vermelho'].map(c=>`<option ${state.color===c?'selected':''}>${c}</option>`).join('')}</select></label><label><input id="ot-unit" type="checkbox" ${state.unit?'checked':''}> Aceita unidade</label><label><input id="ot-own" type="checkbox" ${state.own?'checked':''}> Anúncio próprio</label><label><input id="ot-september" type="checkbox" ${state.september?'checked':''}> Catálogo de setembro</label><button class="btn" id="ot-all" aria-pressed="${state.all}">${state.all?'Só potenciais':'Mostrar tudo'}</button><button class="btn" id="ot-csv">Baixar CSV</button></div><p id="ot-count" role="status"></p><div id="ot-results"></div><button class="btn" id="ot-more">Mostrar mais produtos</button>`;
+    root.innerHTML=`<div class="ot-intro"><span>QUICKBUY · ETAPA 1</span><h2>Oportunidade de fornecedores</h2><p>Produtos para investir tempo no anúncio. Comprar estoque só depois de validar a venda e avaliar o pedido.</p><p>Menos de ${CONFIG.idade} dias desde a criação · pelo menos ${CONFIG.diaria} venda/dia · margem de ${pct(CONFIG.margem)} no Clássico · capital avaliado caso a caso.</p><small>Catálogo exportado em ${dateText(state.data.geradoEm)}. Vendas estimadas pela JoomPulse. Exportação não renova a leitura do mercado. A aba usa somente JSONs, sem tokens ou coleta.</small></div>
+    <div class="ot-filters"><label>Buscar<input id="ot-query" type="search" value="${esc(state.q)}" placeholder="Nome do produto"></label><label>Fornecedor<select id="ot-supplier"><option value="">Todos</option>${state.data.fornecedores.map(f=>`<option value="${esc(f.id)}" ${state.supplier===f.id?'selected':''}>${esc(f.nome)}</option>`).join('')}</select></label><label>Semáforo<select id="ot-color"><option value="">Todos</option>${['verde','amarelo','vermelho'].map(c=>`<option ${state.color===c?'selected':''}>${c}</option>`).join('')}</select></label><label class="ot-toggle"><input id="ot-unit" type="checkbox" ${state.unit?'checked':''}> Aceita unidade</label><label class="ot-toggle"><input id="ot-own" type="checkbox" ${state.own?'checked':''}> Anúncio próprio</label><label class="ot-toggle"><input id="ot-september" type="checkbox" ${state.september?'checked':''}> Catálogo de setembro</label><button class="btn" id="ot-all" aria-pressed="${state.all}">${state.all?'Só oportunidades':'Ver também reprovados'}</button><button class="btn" id="ot-csv">Baixar CSV</button></div><p id="ot-count" role="status"></p><p id="ot-selection-note" class="ot-selection-note"></p><div id="ot-results"></div><button class="btn" id="ot-more">Mostrar mais produtos</button>`;
     const readDates=Object.values(state.extra?.anuncios||{}).map(x=>x.lidoEm).filter(Boolean).sort();
     const collection=state.extra?.auditoria?.coleta;
     if(collection)root.querySelector('.ot-intro').insertAdjacentHTML('beforeend',`<details class="ot-research"><summary>Limite da pesquisa desta rodada</summary><p>${esc(collection.mensagem)}</p><p>Renovação informada pela JoomPulse: ${dateText(collection.retomaEm)}.</p></details>`);
@@ -276,7 +305,7 @@
     audit.className='ot-research';summary.textContent=num(state.data.produtos.length)+' produtos no cadastro · '+num((state.extra?.pareamentos||[]).length)+' comparações visuais · cobertura, fontes e limites';
     audit.append(summary);[...intro.children].slice(4).forEach(el=>audit.append(el));intro.append(audit);
     for(const [id,key,kind] of [['ot-query','q','value'],['ot-supplier','supplier','value'],['ot-color','color','value'],['ot-unit','unit','checked'],['ot-own','own','checked'],['ot-september','september','checked']]) root.querySelector('#'+id).addEventListener('input',e=>{state[key]=e.target[kind];state.limit=20;renderCards();});
-    root.querySelector('#ot-all').onclick=e=>{state.all=!state.all;e.target.textContent=state.all?'Só potenciais':'Mostrar tudo';e.target.setAttribute('aria-pressed',state.all);state.limit=20;renderCards();};
+    root.querySelector('#ot-all').onclick=e=>{state.all=!state.all;e.target.textContent=state.all?'Só oportunidades':'Ver também reprovados';e.target.setAttribute('aria-pressed',state.all);state.limit=20;renderCards();};
     root.querySelector('#ot-more').onclick=()=>{state.limit+=20;renderCards();};
     root.querySelector('#ot-csv').onclick=()=>{const url=URL.createObjectURL(new Blob(['\ufeff'+csv(selected())],{type:'text/csv;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='oportunidades-fornecedores.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
     root.onclick=e=>{if(e.target.closest('a'))return;const b=e.target.closest('[data-sheet]');if(b)openSheet(b.dataset.sheet);};
@@ -284,12 +313,12 @@
     renderCards();
   }
   async function load(){
-    try{await fornLoad(true);if(!forn.data)throw new Error('Catálogo indisponível');
+    try{const route=location.hash.match(/^#oportunidades\/produto\/(.+)$/);if(route)state.sheet=decodeURIComponent(route[1]);await fornLoad(true);if(!forn.data)throw new Error('Catálogo indisponível');
       forn.data=await withReadings(forn.data);fornParaRadar();state.data=forn.data;state.rows=build(state.data,environment());render();}
     catch(e){document.getElementById('oport-root').innerHTML='<p role="alert">Não foi possível carregar as oportunidades. Recarregue a página. '+esc(e.message)+'</p>';}
   }
   function refresh(){if(state.data){state.rows=build(state.data,environment());if(!document.getElementById('tab-oport').hidden)render();}}
-  const api={context:environment,load,refresh,build,analyze,classify,demand,age,csv,enrich,withReadings,latestReadings,discover,CONFIG,rows:()=>state.rows};
+  const api={isRecent,closeSheet,leave,context:environment,load,refresh,build,analyze,classify,demand,age,csv,enrich,withReadings,latestReadings,discover,CONFIG,rows:()=>state.rows};
   if(typeof module!=='undefined'&&module.exports)module.exports=api;
   if(global)global.RadarOportunidades=api;
 })(typeof window==='undefined'?null:window);

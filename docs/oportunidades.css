@@ -7,3 +7,36 @@
 @media(max-width:650px){.ot-compact{grid-template-columns:48px repeat(2,minmax(0,1fr));gap:12px;padding:14px}.ot-rank{display:none}.ot-thumbnail{width:48px;height:64px}.ot-card-name{grid-column:2 / -1}.ot-compact h3{font-size:16px}.ot-card-status{grid-column:1 / -1;grid-row:auto}.ot-card-value{grid-column:auto}.ot-card-value b{font-size:14px}.ot-card-action{grid-column:1 / -1;grid-row:auto;justify-content:space-between}.ot-rival-values{grid-template-columns:repeat(2,minmax(0,1fr))}.ot-rival-bottom{align-items:stretch;flex-direction:column}.ot-rival-bottom>div{flex-wrap:wrap}.ot-rival-main{grid-template-columns:52px minmax(0,1fr)}.ot-photo{width:52px;height:62px}.ot-comparison{padding:12px}.ot-comparison .ot-evidence img{height:160px}.ot-comparison .btn{font-size:12px}.ot-comparison h3{font-size:17px}}
 .ot-product-sheet .fhead>div{min-width:0}.ot-product-sheet .fhead .kv .v{white-space:normal;overflow-wrap:anywhere}.ot-product-sheet .kv{min-width:0}
 .ot-product-sheet .calc>div{min-width:0;overflow-wrap:anywhere}@media(max-width:900px){.ot-product-sheet .calc{grid-template-columns:minmax(0,1fr)}}
+
+/* Controles escuros, com as cores de destaque do tema noturno do Radar. */
+#tab-oport .ot-intro{max-width:none;margin:18px 0 22px}
+#tab-oport .ot-intro h2{font-size:clamp(25px,3vw,34px);margin:8px 0 12px}
+#tab-oport .ot-intro p{margin:6px 0;color:var(--ink2);font-size:14px}
+#tab-oport .ot-filters{--ot-black:#12141c;--ot-panel:#1a1d27;--ot-line:#3a3f52;--ot-neon:#7c96ff;background:var(--ot-panel);border:1px solid var(--ot-line);border-radius:12px;padding:18px;gap:12px;color:#eceef5;box-shadow:0 3px 14px rgba(0,0,0,.12)}
+#tab-oport .ot-filters label:has(select),#tab-oport .ot-filters label:has(input[type=search]){gap:7px;color:#b3b7c6;font-size:12px}
+#tab-oport .ot-filters label:has(input[type=search]){flex:1 1 230px}
+#tab-oport .ot-filters input[type=search],#tab-oport .ot-filters select{appearance:none;background:var(--ot-black);color:#eceef5;border:1px solid var(--ot-line);border-radius:8px;padding:11px 14px;min-height:44px;width:100%;min-width:0;outline-offset:3px}
+#tab-oport .ot-filters input::placeholder{color:#7f8497}
+#tab-oport .ot-filters select{padding-right:34px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237c96ff' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
+#tab-oport .ot-filters select option{background:var(--ot-black);color:#eceef5}
+#tab-oport .ot-filters .ot-toggle{position:relative;min-height:44px;border:1px solid var(--ot-line);border-radius:999px;background:var(--ot-black);padding:10px 14px;cursor:pointer;color:#b3b7c6;gap:8px;white-space:nowrap}
+#tab-oport .ot-toggle input{position:absolute;opacity:0;width:1px;height:1px}
+#tab-oport .ot-toggle::before{content:'';width:7px;height:7px;border-radius:50%;background:#3a3f52;flex:none}
+#tab-oport .ot-toggle:has(:checked){color:var(--ot-neon);border-color:var(--ot-neon);background:#232b4d;box-shadow:inset 0 0 0 1px rgba(124,150,255,.12)}
+#tab-oport .ot-toggle:has(:checked)::before{background:var(--ot-neon);box-shadow:0 0 9px rgba(124,150,255,.6)}
+#tab-oport .ot-filters :focus-visible,#tab-oport .ot-toggle:has(:focus-visible){outline:2px solid var(--ot-neon);outline-offset:3px}
+#tab-oport .ot-filters .btn{min-height:44px;background:var(--ot-black);color:#eceef5;border-color:var(--ot-line);font-size:13px}
+#tab-oport .ot-filters .btn:hover,#tab-oport .ot-filters input:hover,#tab-oport .ot-filters select:hover,#tab-oport .ot-toggle:hover{border-color:var(--ot-neon)}
+#tab-oport .ot-filters .btn[aria-pressed=true]{border-color:var(--ot-neon);color:var(--ot-neon);background:#232b4d}
+#tab-oport #ot-csv{color:var(--ot-neon)}
+.ot-selection-note{font-size:13px;color:var(--ink2);border-left:2px solid var(--acc);padding-left:12px;margin:12px 0 20px}
+#tab-oport .ot-compact{border-radius:12px;transition:border-color .15s,box-shadow .15s}
+#tab-oport .ot-compact:hover{box-shadow:0 0 0 1px var(--acc)}
+#tab-oport .ot-card-status .ot-badge{border-radius:6px;background:var(--bg);padding:7px 9px}
+#tab-oport .ot-card-status .ot-badge.good{background:var(--goodBg)}
+#tab-oport .ot-card-status .ot-badge.warn{background:var(--warnBg)}
+.ot-sheet-heading{margin:20px 0}.ot-sheet-heading>span{font:12px var(--mono);color:var(--ink3)}
+.ot-sheet-heading h2{font-size:24px;margin:6px 0}.ot-age-note{padding:12px 15px;background:var(--acc2);border:1px solid var(--line);border-radius:8px;color:var(--ink2);font-size:13px;margin:4px 0 18px}
+@media(max-width:650px){#tab-oport .ot-filters{padding:12px;gap:10px}#tab-oport .ot-filters label:has(select){flex:1 1 120px}#tab-oport .ot-filters select{max-width:none}#tab-oport .ot-filters .ot-toggle{font-size:12px;min-height:40px;padding:8px 11px}#tab-oport .ot-intro h2{font-size:25px}#tab-oport .ot-intro p{font-size:13px}}
+@media(prefers-reduced-motion:reduce){#tab-oport .ot-compact{transition:none}}
+@media(max-width:650px){#tab-oport .ot-compact{grid-template-columns:repeat(3,minmax(0,1fr))}#tab-oport .ot-card-value{align-self:start}#tab-oport .ot-card-value small{font-size:11px;overflow-wrap:normal}}

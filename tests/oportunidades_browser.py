@@ -20,7 +20,7 @@ threading.Thread(target=server.serve_forever,daemon=True).start()
 try:
  with sync_playwright() as p:
     browser=p.chromium.launch(headless=True)
-    context=browser.new_context(viewport={'width':1440,'height':950},timezone_id='America/Sao_Paulo')
+    context=browser.new_context(viewport={'width':1440,'height':950},timezone_id='America/Sao_Paulo',color_scheme='dark')
     page=context.new_page();errors=[]
     page.on('pageerror',lambda e:errors.append(str(e)))
     page.on('console',lambda m:errors.append(m.text) if m.type=='error' else None)
@@ -43,6 +43,9 @@ try:
       S=saved;$('#s-rep').value=rep;FEES.standardFree=free;fornParaRadar();return rows;}''',historic)
     assert page.locator('[data-tab=oport]').get_attribute('aria-selected')=='true'
     assert page.locator('.ot-card[data-status="Não vale o teste"]').count()==0
+    page.locator('#ot-own').focus();page.keyboard.press('Space')
+    assert page.locator('#ot-own').is_checked()
+    page.keyboard.press('Space')
     page.locator('#ot-all').click()
     page.locator('#ot-query').fill('Caneta Impressora 3D')
     page.wait_for_selector('.ot-card')
@@ -52,12 +55,19 @@ try:
     assert card.locator('.ot-metrics').count()==0
     assert card.bounding_box()['height']<240
     card.focus();page.keyboard.press('Enter')
-    assert page.locator('#tab-forn').is_visible()
+    assert page.locator('#tab-oport').is_visible()
+    assert page.locator('[data-tab=oport]').get_attribute('aria-selected')=='true'
+    assert '#oportunidades/produto/' in page.url
     page.wait_for_selector('.ot-sheet-summary')
-    expected=page.evaluate('forn.data.produtos.find(p=>p.url===forn.prod).anuncios.length')
-    assert page.locator('.ot-rival').count()>=expected
+    expected=page.evaluate('forn.data.produtos.find(p=>p.url===forn.prod).anuncios.filter(a=>RadarOportunidades.isRecent(a,RadarOportunidades.context())).length')
+    assert page.locator('#ot-sheet .ot-rival').count()>=expected
+    assert page.evaluate("[...document.querySelectorAll('#ot-sheet .ot-rival')].every(e=>{const a=forn.data.produtos.find(p=>p.url===forn.prod).anuncios.find(a=>a.id===e.dataset.rival);return !a||RadarOportunidades.isRecent(a,RadarOportunidades.context())})")
     assert 'somando' not in page.locator('.ot-sheet-summary').inner_text()
-    rival=page.locator('.ot-rival').first
+    original_url=page.url
+    page.locator('[data-tab=sim]').click()
+    page.locator('[data-tab=oport]').click();page.wait_for_selector('#ot-sheet .ot-rival')
+    assert page.url==original_url
+    rival=page.locator('#ot-sheet .ot-rival').first
     assert 'Vendas desde: não coletada' in rival.inner_text()
     assert 'Nota ' in rival.inner_text() and 'Criado em ' in rival.inner_text()
     rival.locator('button[data-compare]').last.click()
@@ -96,7 +106,7 @@ try:
       const now=new Date(); const created=new Date(now.getTime()-20*864e5).toISOString().slice(0,10);
       base.nome='Caso promissor';base.url='fixture:promissor';base.unit=10;
       base.anuncios=[{id:'MLBTEST1',nome:'Teste',revisadoEm:now.toISOString(),veredito:'igual',qtd:1,preco:60,vendas_mes:20,vendas_sem:7,vendas_desde_criacao:20,criadoEm:created,lidoEm:now.toISOString(),catalogo:false,avaliacoes:2,frete_gratis:true,l1:'Brinquedos e Hobbies'}];
-      const pending=structuredClone(base);pending.nome='Caso pendente';pending.url='fixture:pendente';pending.anuncios[0].criadoEm=null;
+      const pending=structuredClone(base);pending.nome='Caso pendente';pending.url='fixture:pendente';pending.anuncios[0].qtd=null;
       const closed=structuredClone(base);closed.nome='Caso fechado';closed.url='fixture:fechado';closed.anuncios[0].catalogo=true;closed.anuncios[0].bb=6;closed.anuncios[0].preco_min=60;
       forn.data.produtos=[base,pending,closed];
     }''')
@@ -105,6 +115,17 @@ try:
         assert page.locator('.ot-card[data-status="'+classification+'"]').count()==1,classification
     page.locator('#ot-all').click();assert page.locator('.ot-card[data-status="Não vale o teste"]').count()==0
     assert page.evaluate('document.documentElement.scrollWidth<=window.innerWidth')
+    # Links da ficha reabrem no mesmo produto e na mesma aba, inclusive após recarregar.
+    restored=context.new_page();restored.route('**/*',external)
+    restored.on('pageerror',lambda e:errors.append(str(e)))
+    restored.goto(original_url);restored.wait_for_selector('#ot-sheet .ot-rival')
+    restored.reload();restored.wait_for_selector('#ot-sheet .ot-rival')
+    assert restored.locator('[data-tab=oport]').get_attribute('aria-selected')=='true'
+    assert restored.locator('#tab-forn').is_hidden()
+    assert restored.url==original_url
+    restored.locator('[data-tab=forn]').click();restored.wait_for_selector('#forn-root .ot-rival')
+    assert restored.locator('#ot-sheet').count()==0
+    restored.close()
     assert not errors, errors
     print('Chromium limpo: aba, 3 classificações, Ver ficha, recálculo de frete, celular e console OK.')
     print('Resultado e capturas: '+str(OUT))
