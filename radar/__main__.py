@@ -77,7 +77,7 @@ async def cmd_run(a):
     try:
         if a.browser:
             from . import browser as B
-            src, close = await B.open_source(B.L1_IDS)
+            src, close = await B.open_source(B.L1_IDS, conhecidas=db.categories())
             try:
                 res = await run_once(src, db, force_categories=a.force_categories,
                                      force_joompro=a.force_joompro, l1s=a.l1 or None)

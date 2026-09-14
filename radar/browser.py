@@ -18,6 +18,7 @@ import logging
 import os
 import re
 import time
+from collections import Counter
 from datetime import date as _date
 from pathlib import Path
 
@@ -35,7 +36,7 @@ CATEGORIES = f"{BASE}/dashboard/categories"
 # então a coleta anda em ritmo humano em vez de disparar tudo de uma vez.
 PAGE_PAUSE_S = float(os.environ.get("RADAR_BROWSER_PAUSE", "2.5"))
 # Teto para abrir a árvore de categorias — ela é grande e só interessa até o 3º nível.
-EXPAND_BUDGET_S = float(os.environ.get("RADAR_EXPAND_BUDGET", "150"))
+EXPAND_BUDGET_S = float(os.environ.get("RADAR_EXPAND_BUDGET", "300"))
 # Varredura por subcategoria: são centenas, então cada uma rende poucos produtos.
 # 0 em RADAR_L2_LIMIT = todas as subcategorias.
 L2_LIMIT = int(os.environ.get("RADAR_L2_LIMIT", "0"))
@@ -327,6 +328,8 @@ async def scrape_search(page, params: dict, max_rows: int, agrupado: bool = Fals
     url = f"{SEARCH}?{urlencode(params, doseq=True)}"
     await page.goto(url, timeout=NAV_TIMEOUT_MS, wait_until="domcontentloaded")
     if not await _rows_ready(page):
+        if "/auth" in page.url:
+            raise SessaoExpirada("a sessão da JoomPulse caiu no meio da coleta")
         log.warning("sem resultados para %s", params)
         return []
     await _periodo_mes(page)
@@ -535,6 +538,57 @@ def cat_to_row(c: dict, l1: str, l2: str | None, l3: str | None = None, depth: i
     }
 
 
+class SessaoExpirada(RuntimeError):
+    """A JoomPulse mandou para o login no meio da coleta.
+
+    Não pode virar "sem resultados": a rodada seguiria com as categorias restantes
+    vazias e publicaria uma página pela metade. Sobe até o run_once, que marca a rodada
+    como erro — e o rodada.ps1 não publica.
+    """
+
+
+_FILHAS = "() => document.querySelectorAll('tr.ant-table-row-level-1').length"
+
+
+async def _expandida(linha) -> bool:
+    cls = await linha.locator(".ant-table-row-expand-icon").get_attribute("class", timeout=4000) or ""
+    return "expanded" in cls
+
+
+async def _fechar_l1(page, linha) -> None:
+    try:
+        await linha.scroll_into_view_if_needed(timeout=4000)
+        if await _expandida(linha):
+            await linha.locator(".ant-table-row-expand-icon").click(timeout=4000)
+            await page.wait_for_timeout(400)
+    except Exception:
+        pass
+
+
+async def _abrir_l1(page, linha, tentativas: int = 3) -> bool:
+    """Abre uma categoria de nível 1 e espera as subcategorias aparecerem.
+
+    Até 14/09/2026 a coleta clicava e lia 0,9 s depois. Quando o site demorava, a
+    categoria ficava sem subcategorias e a rodada caía na busca geral (100 produtos):
+    a cada varredura 3 ou 4 categorias diferentes se perdiam assim. Agora espera as
+    linhas filhas (até ~8 s) e, se não vierem, fecha e tenta de novo.
+    """
+    for _ in range(tentativas):
+        try:
+            await linha.scroll_into_view_if_needed(timeout=6000)
+            if not await _expandida(linha):
+                await linha.locator(".ant-table-row-expand-icon").click(timeout=6000)
+            for _ in range(16):
+                await page.wait_for_timeout(500)
+                if await page.evaluate(_FILHAS):
+                    await page.wait_for_timeout(400)      # deixa a leva inteira renderizar
+                    return True
+        except Exception as e:
+            log.debug("abrindo categoria: %s", type(e).__name__)
+        await _fechar_l1(page, linha)
+    return False
+
+
 async def scrape_categories(page, expand_l2: bool = True) -> list[dict]:
     """Abre a página de Categorias e expande as linhas para pegar L2 (e L3)."""
     await page.goto(CATEGORIES, timeout=NAV_TIMEOUT_MS, wait_until="domcontentloaded")
@@ -584,12 +638,8 @@ async def scrape_categories(page, expand_l2: bool = True) -> list[dict]:
             # "a i-ésima linha" é a i-ésima RENDERIZADA — ao rolar, o índice deixa
             # de corresponder à categoria e as subcategorias vão para o pai errado.
             linha = page.locator("tr.ant-table-row-level-0").filter(has_text=nome).first
-            try:
-                await linha.scroll_into_view_if_needed(timeout=6000)
-                await linha.locator(".ant-table-row-expand-icon").click(timeout=6000)
-                await page.wait_for_timeout(900)
-            except Exception:
-                log.debug("não abriu %s", nome)
+            if not await _abrir_l1(page, linha):
+                log.warning("subcategorias de %s não apareceram na árvore", nome)
                 continue
             guardar(await page.evaluate(_SCRAPE_CATS), nome)
             for _ in range(10):
@@ -602,12 +652,7 @@ async def scrape_categories(page, expand_l2: bool = True) -> list[dict]:
                     break
             # fecha antes da próxima: garante que o que estiver aberto no DOM
             # pertence sempre à categoria que acabamos de nomear
-            try:
-                await linha.scroll_into_view_if_needed(timeout=4000)
-                await linha.locator(".ant-table-row-expand-icon").click(timeout=4000)
-                await page.wait_for_timeout(400)
-            except Exception:
-                pass
+            await _fechar_l1(page, linha)
             await page.evaluate("() => window.scrollTo(0, 0)")
             await page.wait_for_timeout(250)
         log.info("categorias no DOM após varredura: %d", len(raw))
@@ -679,9 +724,12 @@ class BrowserSource:
 
     rele_por_id = False
 
-    def __init__(self, page, l1_ids: dict[str, str] | None = None):
+    def __init__(self, page, l1_ids: dict[str, str] | None = None, conhecidas: list[dict] | None = None):
         self.page = page
         self.l1_ids = l1_ids or {}
+        # subcategorias já guardadas no banco (db.categories()): reserva para a categoria
+        # que a árvore do site não abrir nesta rodada
+        self.conhecidas = conhecidas or []
         self.calls = 0
 
     def _params(self, l1: str, extra: dict | None = None) -> dict:
@@ -705,8 +753,19 @@ class BrowserSource:
         alvos = [(c["merchantCategoryL1"], c["merchantCategoryL2"], c["categoryId"])
                  for c in self._cats
                  if c["level"] == 2 and str(c["categoryId"]).startswith("MLB")]
-        # maiores primeiro: se o tempo apertar, o que fica de fora é o que menos pesa
         peso = {c["categoryId"]: (c.get("orderGmv") or 0) for c in self._cats}
+        # categoria que a árvore não abriu: usa as subcategorias guardadas no banco, senão
+        # a rodada cai na busca geral da categoria (100 produtos no lugar de ~1.000)
+        abertas = {t[0] for t in alvos}
+        reserva = [c for c in self.conhecidas
+                   if c.get("lv") == 2 and str(c.get("id")).startswith("MLB")
+                   and c.get("l1") in self.l1_ids and c.get("l1") not in abertas]
+        if reserva:
+            log.warning("subcategorias do banco para o que a árvore não abriu: %s",
+                        dict(Counter(c["l1"] for c in reserva)))
+            alvos += [(c["l1"], c.get("l2") or c.get("name"), c["id"]) for c in reserva]
+            peso.update({c["id"]: (c.get("gmv") or 0) for c in reserva})
+        # maiores primeiro: se o tempo apertar, o que fica de fora é o que menos pesa
         alvos.sort(key=lambda t: -peso.get(t[2], 0))
         if L2_LIMIT:
             alvos = alvos[:L2_LIMIT]
@@ -718,6 +777,8 @@ class BrowserSource:
         try:
             params = {"monthlySalesFrom": "30", "category": f"2,{cid}", "sort": ORDEM_VENDAS, **extra}
             raw = await scrape_search(self.page, params, limit, agrupado=True)
+        except SessaoExpirada:
+            raise
         except Exception as e:
             log.warning("falha lendo %s › %s: %s", l1, l2, type(e).__name__)
             return []
@@ -727,6 +788,8 @@ class BrowserSource:
         self.calls += 1
         try:
             raw = await scrape_search(self.page, self._params(l1, extra), limit, agrupado=True)
+        except SessaoExpirada:
+            raise
         except Exception as e:
             # o site às vezes engasga numa categoria; seguir com as outras vale
             # mais do que perder a rodada inteira
@@ -766,7 +829,7 @@ class BrowserSource:
         return []                            # o pareamento JoomPro não está na tela de busca
 
 
-async def open_source(l1_ids: dict[str, str] | None = None):
+async def open_source(l1_ids: dict[str, str] | None = None, conhecidas: list[dict] | None = None):
     """Contexto que devolve (BrowserSource, fechar) com a sessão guardada."""
     from playwright.async_api import async_playwright
 
@@ -782,4 +845,4 @@ async def open_source(l1_ids: dict[str, str] | None = None):
         await ctx.close()
         await pw.stop()
 
-    return BrowserSource(page, l1_ids), close
+    return BrowserSource(page, l1_ids, conhecidas), close
