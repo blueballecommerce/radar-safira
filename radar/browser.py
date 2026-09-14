@@ -419,16 +419,6 @@ def to_product(r: dict, l1: str | None = None, l2: str | None = None, l3: str | 
     }
 
 
-def _buybox_agrupado(rows: list[dict]) -> dict[str, int | None]:
-    """Concorrentes por anúncio na tabela agrupada.
-
-    A linha do catálogo resume todos os vendedores sem dizer quantos são: fica None
-    (neutro no Scorer). Contar linhas daria 1 e o catálogo pareceria sem concorrência.
-    O anúncio fora de catálogo é um vendedor só.
-    """
-    return {r["id"]: (None if r.get("catalogo") else 1) for r in rows}
-
-
 # ------------------------------------------------------------- categorias
 # "R$ 2,7 bi" -> 2700000000 ; "17 mi" -> 17000000 ; "186 mil" -> 186000
 _MULT = {"bi": 1e9, "mi": 1e6, "mil": 1e3, "k": 1e3}
@@ -679,7 +669,10 @@ class BrowserSource:
     """Implementa a mesma interface de radar.run.Source, mas lendo o site.
 
     Diferenças em relação ao MCP, todas por limitação do que a tela mostra:
-      * a tabela agrupada não diz vendedor nem quantos disputam o catálogo (`bb` = None);
+      * a tabela agrupada não diz vendedor nem quantos disputam o catálogo: `bb` fica None
+        para TODOS. Dar 1 ao anúncio fora de catálogo e None ao catálogo valia 1,0 contra
+        0,6 no Scorer e virou o top 300 (em 14/09/2026: 195 fora × 105 catálogo, contra
+        105 × 195 em 09/09);
       * não há releitura por id — quem não volta na descoberta fica sem dados nesta
         rodada, mas não é dado como encerrado (`rele_por_id`).
     """
@@ -728,8 +721,7 @@ class BrowserSource:
         except Exception as e:
             log.warning("falha lendo %s › %s: %s", l1, l2, type(e).__name__)
             return []
-        bb = _buybox_agrupado(raw)
-        return [to_product(r, l1=l1, l2=l2, bb=bb.get(r["id"]), l2id=cid) for r in raw]
+        return [to_product(r, l1=l1, l2=l2, l2id=cid) for r in raw]
 
     async def _search(self, l1: str, extra: dict, limit: int) -> list[dict]:
         self.calls += 1
@@ -740,8 +732,7 @@ class BrowserSource:
             # mais do que perder a rodada inteira
             log.warning("falha lendo %s (%s): %s", l1, extra or "top", type(e).__name__)
             return []
-        bb = _buybox_agrupado(raw)
-        return [to_product(r, l1=l1, bb=bb.get(r["id"])) for r in raw]
+        return [to_product(r, l1=l1) for r in raw]
 
     async def _por_subcategoria(self, l1: str, extra: dict, limit: int) -> list[dict]:
         alvos = [t for t in await self.l2_targets() if t[0] == l1]
