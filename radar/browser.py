@@ -39,11 +39,16 @@ EXPAND_BUDGET_S = float(os.environ.get("RADAR_EXPAND_BUDGET", "150"))
 # Varredura por subcategoria: são centenas, então cada uma rende poucos produtos.
 # 0 em RADAR_L2_LIMIT = todas as subcategorias.
 L2_LIMIT = int(os.environ.get("RADAR_L2_LIMIT", "0"))
-L2_MAIN_LIMIT = int(os.environ.get("RADAR_L2_MAIN", "25"))
+# 100 = a primeira página inteira da tabela agrupada: não custa uma leitura a mais que 25.
+L2_MAIN_LIMIT = int(os.environ.get("RADAR_L2_MAIN", "100"))
 # Segunda varredura só para anúncios novos: dobra o tempo da rodada e rende pouco,
 # porque num recorte de subcategoria os novos que vendem já sobem no top. 0 = desligada.
 L2_NEW_LIMIT = int(os.environ.get("RADAR_L2_NEW", "0"))
 NAV_TIMEOUT_MS = 60_000
+# A busca abre ordenada pela receita do último mês fechado: um produto que disparou no mês
+# corrente fica fora das 100 primeiras. O radar mede vendas do mês, então ordena por elas
+# (a URL aceita "sort=descend&sort=averageSalesMonthly", sem clique no cabeçalho).
+ORDEM_VENDAS = ["descend", "averageSalesMonthly"]
 
 
 def _ctx(pw, headless: bool):
@@ -85,10 +90,23 @@ async def login() -> bool:
         print("=" * 68 + "\n")
         await page.goto(f"{BASE}/auth", timeout=NAV_TIMEOUT_MS)
 
-        for _ in range(120):                      # até 10 minutos
-            await page.wait_for_timeout(5000)
-            if "/auth" not in page.url and "/dashboard" in page.url:
-                await page.wait_for_timeout(2000)
+        # Ao validar o código o site pode trocar de aba ou recarregar a página: vigiar só a
+        # aba inicial derrubava o login bem na hora do código. Aqui olha-se qualquer aba do
+        # contexto, e só a janela inteira fechada (o usuário desistiu) encerra a espera.
+        for _ in range(300):                      # até 10 minutos
+            await asyncio.sleep(2)
+            try:
+                pages = [p for p in ctx.pages if not p.is_closed()]
+            except Exception:
+                pages = []
+            if not pages:
+                try:
+                    pages = [await ctx.new_page()]
+                except Exception:
+                    print("A janela foi fechada antes do login.")
+                    return False
+            if any("/dashboard" in p.url and "/auth" not in p.url for p in pages):
+                await asyncio.sleep(3)            # deixa o site gravar os cookies
                 print("Login guardado. Pode fechar a janela.")
                 await ctx.close()
                 return True
@@ -110,8 +128,10 @@ async def check() -> bool:
 
 
 # ---------------------------------------------------------------- extração
-# Colunas da tabela de "Busca de produtos", na ordem em que aparecem.
-# As duas primeiras são a caixa de seleção e o menu de contexto.
+# Colunas da tabela de "Busca de produtos" ATÉ 09/09/2026, na ordem em que apareciam.
+# As duas primeiras são a caixa de seleção e o menu de contexto. Hoje o _SCRAPE acha cada
+# campo pelo cabeçalho; esta ordem só vale quando o cabeçalho não é reconhecido. Em 10/09
+# vieram "Receita <mês>" e "Vendas <mês>" depois de "nome", deslocando o resto em duas casas.
 COLS = ["_sel", "_menu", "img", "nome", "receita", "vendas_media", "vendas_total", "categoria",
         "preco", "listagem", "marca", "dias", "vendedor", "vend_detalhe", "imagens",
         "avaliacoes", "classificacao"]
@@ -140,28 +160,55 @@ def _int(txt: str | None) -> int | None:
 # JS que lê a tabela inteira de uma vez — devolve uma lista de objetos por linha.
 # Roda dentro da página, então nada disso passa pelo modelo: o Python recebe o
 # resultado pronto e grava em disco.
+# Os campos saem pelo NOME do cabeçalho, não pela posição. Em 10/09/2026 a JoomPulse
+# enfiou "Receita <mês>" e "Vendas <mês>" logo depois do nome: tudo andou duas casas e
+# o "preço" lido passou a ser o total de vendas (R$ 100, R$ 1.000...). Sem cabeçalho
+# reconhecível, vale a ordem antiga (COLS).
 _SCRAPE = """
 () => {
+  const limpa = s => (s || '').replace(/\\u00a0/g, ' ').trim();
+  const chave = s => limpa(s).toLowerCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g, '').replace(/\\s+/g, ' ');
+  const CAMPOS = [
+    ['img', /^imagem$/], ['nome', /^nome$/], ['receita', /^receita media/],
+    ['vendas_media', /^media de vendas/], ['vendas_total', /^total de vendas/],
+    ['categoria', /^categoria$/], ['preco', /^preco$/], ['listagem', /^detalhes da listagem/],
+    ['marca', /^marca$/], ['dias', /^tempo do anuncio/], ['vendedor', /^vendedor$/],
+    ['vend_detalhe', /^detalhes do vendedor/], ['imagens', /^imagens$/],
+    ['avaliacoes', /^avaliacoes$/], ['classificacao', /^classificacao$/],
+  ];
+  const ANTIGA = {img: 2, nome: 3, receita: 4, vendas_media: 5, vendas_total: 6, categoria: 7,
+    preco: 8, listagem: 9, marca: 10, dias: 11, vendedor: 12, vend_detalhe: 13, imagens: 14,
+    avaliacoes: 15, classificacao: 16};
+  let pos = null;
+  for (const tr of document.querySelectorAll('tr')) {
+    const cels = [...tr.querySelectorAll('th, td')].map(c => chave(c.innerText));
+    if (!cels.includes('nome') || !cels.includes('preco')) continue;
+    pos = {};
+    for (const [k, re] of CAMPOS) { const i = cels.findIndex(c => re.test(c)); if (i >= 0) pos[k] = i; }
+    break;
+  }
+  if (!pos || pos.nome == null || pos.preco == null) pos = ANTIGA;
   const out = [];
   for (const tr of document.querySelectorAll('tr')) {
     const tds = tr.querySelectorAll('td');
     if (tds.length < 15) continue;
-    const txt = i => (tds[i]?.innerText || '').replace(/\\u00a0/g, ' ').trim();
-    const nome = txt(3);
-    const mlb = (nome.match(/MLB\\d{6,}/) || [])[0];
+    const txt = k => pos[k] == null ? '' : limpa(tds[pos[k]]?.innerText);
+    const nome = txt('nome');
+    // anúncio fora de catálogo vem como "MLB-3913659391" (desde 10/09/2026); o de catálogo, "MLB52845211"
+    const mlb = ((nome.match(/MLB-?\\d{6,}/) || [])[0] || '').replace('-', '');
     if (!mlb) continue;
-    const img = tds[2]?.querySelector('img');
+    const img = tds[pos.img ?? 2]?.querySelector('img');
     const link = [...tr.querySelectorAll('a')].map(a => a.href).find(h => /mercadolivre|mercadolibre/.test(h)) || null;
     out.push({
       id: mlb,
       nome: nome.split('\\n')[0].trim(),
       img: img ? (img.currentSrc || img.src) : null,
       link,
-      catalogo: /Abrir catálogo|Catálogo total/.test(nome + txt(4)),
-      receita: txt(4), vendas_media: txt(5), vendas_total: txt(6),
-      categoria: txt(7), preco: txt(8), listagem: txt(9), marca: txt(10),
-      dias: txt(11), vendedor: txt(12), vend_detalhe: txt(13),
-      imagens: txt(14), avaliacoes: txt(15), classificacao: txt(16),
+      catalogo: /Abrir catálogo|Catálogo total/.test(nome + txt('receita')),
+      receita: txt('receita'), vendas_media: txt('vendas_media'), vendas_total: txt('vendas_total'),
+      categoria: txt('categoria'), preco: txt('preco'), listagem: txt('listagem'), marca: txt('marca'),
+      dias: txt('dias'), vendedor: txt('vendedor'), vend_detalhe: txt('vend_detalhe'),
+      imagens: txt('imagens'), avaliacoes: txt('avaliacoes'), classificacao: txt('classificacao'),
     });
   }
   return out;
@@ -201,12 +248,22 @@ async def _goto_page(page, n: int) -> bool:
 
 
 async def _rows_ready(page, tries: int = 12) -> bool:
-    """A tabela é preenchida depois do HTML; espera aparecer linha com id MLB."""
-    for _ in range(tries):
+    """A tabela é preenchida depois do HTML; espera aparecer linha com id MLB.
+
+    O id do anúncio fora de catálogo tem hífen (MLB-3913659391): sem aceitar o hífen, uma
+    subcategoria só com esses anúncios parecia vazia — foram 107 de 354 em 14/09/2026.
+    """
+    for i in range(tries):
         n = await page.evaluate(
-            "() => [...document.querySelectorAll('tr')].filter(t => /MLB\\d{6,}/.test(t.innerText)).length")
+            "() => [...document.querySelectorAll('tr')].filter(t => /MLB-?\\d{6,}/.test(t.innerText)).length")
         if n:
             return True
+        # busca realmente vazia: não adianta esperar os 30 s inteiros. Só depois de algumas
+        # voltas e sem nada carregando, para um "0" provisório da tela não encerrar cedo.
+        if i >= 3 and await page.evaluate(
+                "() => !document.querySelector('.ant-spin-spinning') && "
+                "/(^|\\D)0 produtos encontrados/.test(document.body.innerText)"):
+            return False
         await page.wait_for_timeout(2500)
     return False
 
@@ -227,7 +284,8 @@ async def _periodo_mes(page) -> None:
 
 async def _ungroup(page) -> None:
     """'Desagrupar catálogos': sem isso o vendedor, o tipo de anúncio e as
-    avaliações vêm vazios, porque a linha representa o catálogo e não o anúncio."""
+    avaliações vêm vazios, porque a linha representa o catálogo e não o anúncio.
+    É o que a busca do fornecedor e os pedidos querem: os vendedores de cada produto."""
     try:
         btn = page.locator("text=Desagrupar catálogos").first
         if await btn.count():
@@ -237,17 +295,42 @@ async def _ungroup(page) -> None:
         log.debug("não deu para desagrupar: %s", e)
 
 
-async def scrape_search(page, params: dict, max_rows: int) -> list[dict]:
-    """Abre a busca com os filtros dados e lê a tabela, paginando até max_rows."""
+async def _agrupar(page) -> None:
+    """Fixa 'Catálogos de grupo': uma linha por produto — é o que a rodada do radar quer.
+
+    Até 14/09/2026 a rodada também desagrupava, mas aí o mesmo catálogo ocupa uma linha
+    por vendedor — em "Cuidado da Saúde" as 100 primeiras linhas eram só 2 produtos — e o
+    recorte por subcategoria perdia quase tudo. Agrupado, a linha do catálogo traz o id
+    real do catálogo e as vendas do catálogo inteiro; o vendedor e o número de
+    concorrentes ficam vazios (o Scorer trata como neutro).
+    """
+    try:
+        btn = page.locator("label.ant-radio-button-wrapper:has-text('Catálogos de grupo'), "
+                           ".ant-segmented-item:has-text('Catálogos de grupo')").first
+        if await btn.count():
+            cls = await btn.get_attribute("class") or ""
+            if "checked" not in cls and "selected" not in cls:
+                await btn.click(timeout=10_000)
+                await page.wait_for_timeout(int(PAGE_PAUSE_S * 1000) + 3000)
+    except Exception as e:
+        log.debug("não deu para agrupar: %s", e)
+
+
+async def scrape_search(page, params: dict, max_rows: int, agrupado: bool = False) -> list[dict]:
+    """Abre a busca com os filtros dados e lê a tabela, paginando até max_rows.
+
+    `agrupado=True`: uma linha por produto (rodada do radar). Sem ele, uma linha por
+    anúncio/vendedor (busca do fornecedor e pedidos, que comparam os vendedores).
+    """
     from urllib.parse import urlencode
 
-    url = f"{SEARCH}?{urlencode(params)}"
+    url = f"{SEARCH}?{urlencode(params, doseq=True)}"
     await page.goto(url, timeout=NAV_TIMEOUT_MS, wait_until="domcontentloaded")
     if not await _rows_ready(page):
         log.warning("sem resultados para %s", params)
         return []
     await _periodo_mes(page)
-    await _ungroup(page)
+    await (_agrupar(page) if agrupado else _ungroup(page))
     await _set_page_size(page)
 
     rows: list[dict] = []
@@ -295,16 +378,18 @@ def to_product(r: dict, l1: str | None = None, l2: str | None = None, l3: str | 
     cat = (r.get("categoria") or "").strip()
     listing = (r.get("listagem") or "").lower()
     tipo = next((v for k, v in _LISTING.items() if k in listing), None)
+    catalogo = "no catálogo" in listing or bool(r.get("catalogo"))
     return {
         "id": r["id"],
-        # catálogo: todos os anúncios do mesmo produto compartilham a chave, e o
-        # dedupe do engine fica com o que mais vende
-        "productId": catalog_key(r) if ("no catálogo" in listing or r.get("catalogo")) else None,
+        # na tabela agrupada a linha do catálogo já traz o id real dele (MLB52845211) — o
+        # mesmo productId que o MCP usa, então o histórico do produto continua o mesmo
+        "productId": r["id"] if catalogo else None,
         "userProductId": None,
-        "catalogProduct": "no catálogo" in listing or bool(r.get("catalogo")),
+        "catalogProduct": catalogo,
         "productName": r.get("nome"),
         "productImage": r.get("img"),
-        "merchantName": (r.get("vendedor") or "").split("\n")[0].strip() or None,
+        # a linha agrupada do catálogo mostra "–" no vendedor
+        "merchantName": (r.get("vendedor") or "").split("\n")[0].strip().strip("–-").strip() or None,
         "brand": (r.get("marca") or "").strip() or None,
         "categoryId": l2id,
         # o Scorer casa a subcategoria por este id — é ele que liga o produto aos
@@ -334,41 +419,14 @@ def to_product(r: dict, l1: str | None = None, l2: str | None = None, l3: str | 
     }
 
 
-def rivals_by_id(rows: list[dict]) -> dict[str, list[dict]]:
-    """Para cada anúncio, os outros que disputam o mesmo catálogo.
+def _buybox_agrupado(rows: list[dict]) -> dict[str, int | None]:
+    """Concorrentes por anúncio na tabela agrupada.
 
-    O ranking guarda um anúncio por produto (o que mais vende), mas os demais são
-    justamente a concorrência que interessa olhar: quem vende o mesmo item, por
-    quanto, e há quanto tempo.
+    A linha do catálogo resume todos os vendedores sem dizer quantos são: fica None
+    (neutro no Scorer). Contar linhas daria 1 e o catálogo pareceria sem concorrência.
+    O anúncio fora de catálogo é um vendedor só.
     """
-    grupos: dict[str, list[dict]] = {}
-    for r in rows:
-        grupos.setdefault(catalog_key(r), []).append(r)
-    saida: dict[str, list[dict]] = {}
-    for irmaos in grupos.values():
-        if len(irmaos) < 2:
-            continue
-        for r in irmaos:
-            saida[r["id"]] = [
-                {"id": o["id"], "s": (o.get("vendedor") or "").splitlines()[0].strip() or None,
-                 "pr": _num(o.get("preco")), "d": _int(o.get("dias"))}
-                for o in irmaos if o["id"] != r["id"]
-            ]
-    return saida
-
-
-def count_buybox(rows: list[dict]) -> dict[str, int]:
-    """Quantos anúncios disputam o mesmo produto.
-
-    No modo desagrupado o mesmo catálogo aparece uma vez por vendedor, então
-    contar as linhas que repetem título+imagem dá o número de concorrentes —
-    que é justamente o `numBuyBoxSellers` que o site não mostra em coluna.
-    """
-    tally: dict[str, int] = {}
-    for r in rows:
-        k = catalog_key(r)
-        tally[k] = tally.get(k, 0) + 1
-    return {r["id"]: tally[catalog_key(r)] for r in rows}
+    return {r["id"]: (None if r.get("catalogo") else 1) for r in rows}
 
 
 # ------------------------------------------------------------- categorias
@@ -621,10 +679,12 @@ class BrowserSource:
     """Implementa a mesma interface de radar.run.Source, mas lendo o site.
 
     Diferenças em relação ao MCP, todas por limitação do que a tela mostra:
-      * o produto vem com a categoria de nível 1 apenas (a busca é feita por L1);
-      * `numBuyBoxSellers` é contado pelas repetições do catálogo, não informado;
-      * não há releitura por id — quem sai da descoberta é tratado como ausente.
+      * a tabela agrupada não diz vendedor nem quantos disputam o catálogo (`bb` = None);
+      * não há releitura por id — quem não volta na descoberta fica sem dados nesta
+        rodada, mas não é dado como encerrado (`rele_por_id`).
     """
+
+    rele_por_id = False
 
     def __init__(self, page, l1_ids: dict[str, str] | None = None):
         self.page = page
@@ -632,7 +692,7 @@ class BrowserSource:
         self.calls = 0
 
     def _params(self, l1: str, extra: dict | None = None) -> dict:
-        p: dict[str, str] = {"monthlySalesFrom": "30"}
+        p: dict = {"monthlySalesFrom": "30", "sort": ORDEM_VENDAS}
         cid = self.l1_ids.get(l1)
         if cid:
             p["category"] = f"1,{cid}"
@@ -663,26 +723,25 @@ class BrowserSource:
     async def _search_l2(self, l1: str, l2: str, cid: str, extra: dict, limit: int) -> list[dict]:
         self.calls += 1
         try:
-            params = {"monthlySalesFrom": "30", "category": f"2,{cid}", **extra}
-            raw = await scrape_search(self.page, params, limit)
+            params = {"monthlySalesFrom": "30", "category": f"2,{cid}", "sort": ORDEM_VENDAS, **extra}
+            raw = await scrape_search(self.page, params, limit, agrupado=True)
         except Exception as e:
             log.warning("falha lendo %s › %s: %s", l1, l2, type(e).__name__)
             return []
-        bb, riv = count_buybox(raw), rivals_by_id(raw)
-        return [to_product(r, l1=l1, l2=l2, bb=bb.get(r["id"]), l2id=cid, rivais=riv.get(r["id"]))
-                for r in raw]
+        bb = _buybox_agrupado(raw)
+        return [to_product(r, l1=l1, l2=l2, bb=bb.get(r["id"]), l2id=cid) for r in raw]
 
     async def _search(self, l1: str, extra: dict, limit: int) -> list[dict]:
         self.calls += 1
         try:
-            raw = await scrape_search(self.page, self._params(l1, extra), limit)
+            raw = await scrape_search(self.page, self._params(l1, extra), limit, agrupado=True)
         except Exception as e:
             # o site às vezes engasga numa categoria; seguir com as outras vale
             # mais do que perder a rodada inteira
             log.warning("falha lendo %s (%s): %s", l1, extra or "top", type(e).__name__)
             return []
-        bb, riv = count_buybox(raw), rivals_by_id(raw)
-        return [to_product(r, l1=l1, bb=bb.get(r["id"]), rivais=riv.get(r["id"])) for r in raw]
+        bb = _buybox_agrupado(raw)
+        return [to_product(r, l1=l1, bb=bb.get(r["id"])) for r in raw]
 
     async def _por_subcategoria(self, l1: str, extra: dict, limit: int) -> list[dict]:
         alvos = [t for t in await self.l2_targets() if t[0] == l1]

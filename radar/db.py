@@ -184,12 +184,20 @@ class DB:
              p.get("pr"), p.get("w"), p.get("m"), p.get("g"), p.get("rc"), p.get("rr"), p.get("d"), p.get("bb"),
              json.dumps(riv, ensure_ascii=False) if riv else None))
 
-    def mark_missing(self, keys_seen: set[str], run_id: int) -> int:
-        """Produtos rastreados que não voltaram nesta rodada (anúncio pausado/removido)."""
+    def mark_missing(self, keys_seen: set[str], run_id: int, releu: bool = True) -> int:
+        """Produtos rastreados que não voltaram nesta rodada.
+
+        `releu=True` (MCP): o id foi consultado e não voltou — anúncio pausado/removido.
+        `releu=False` (navegador): o id nem foi consultado, então só saiu do recorte da
+        busca; fica em observação. Em 14/09/2026 a rodada pelo navegador deu 1.513
+        produtos como encerrados por isso.
+        """
+        status = "dropped" if releu else "watching"
         n = 0
         for r in self.conn.execute("SELECT key FROM products WHERE status IN ('active','watching')").fetchall():
             if r["key"] not in keys_seen:
-                self.conn.execute("UPDATE products SET status='dropped', out_of_top_runs=out_of_top_runs+1 WHERE key=?", (r["key"],))
+                self.conn.execute("UPDATE products SET status=?, out_of_top_runs=out_of_top_runs+1 WHERE key=?",
+                                  (status, r["key"]))
                 n += 1
         return n
 

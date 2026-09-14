@@ -123,10 +123,13 @@ def dedupe(products: list[dict]) -> list[dict]:
     seen: set[tuple[str, str]] = set()
     out: list[dict] = []
     for p in sorted(by_key.values(), key=lambda x: -x["w"]):
-        k2 = (norm(p["s"]), norm(p["n"]))
-        if k2 in seen:
-            continue
-        seen.add(k2)
+        # sem vendedor (catálogo lido na tabela agrupada do site) não dá para dizer que é
+        # o mesmo anúncio repetido: dois catálogos de mesmo título seguem separados
+        if norm(p["s"]):
+            k2 = (norm(p["s"]), norm(p["n"]))
+            if k2 in seen:
+                continue
+            seen.add(k2)
         out.append(p)
     return out
 

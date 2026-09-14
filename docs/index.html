@@ -852,8 +852,10 @@ function foraDoCatalogo(){
   }
 }
 function oportunidade(p){
-  const rc = p.rc || 0, bb = p.bb || 1;
-  const entrada = p.c ? (bb>=OPP_CATALOGO[1] ? 'fechada' : bb>=OPP_CATALOGO[0] ? 'disputada' : 'aberta')
+  /* bb vazio = a coleta pelo site (tabela agrupada) não diz quantos vendem o catálogo:
+     conta como disputada, para não anunciar entrada aberta sem saber */
+  const rc = p.rc || 0, bb = p.bb;
+  const entrada = p.c ? (bb==null ? 'disputada' : bb>=OPP_CATALOGO[1] ? 'fechada' : bb>=OPP_CATALOGO[0] ? 'disputada' : 'aberta')
                       : (rc>=OPP_PROPRIO[1] ? 'fechada' : rc>=OPP_PROPRIO[0] ? 'disputada' : 'aberta');
   const taxa = p.c ? OPP_CATALOGO_TAXA : 0;
   /* produto que já tem fornecedor: a margem que sobra no preço praticado hoje é parte
@@ -863,7 +865,7 @@ function oportunidade(p){
   const pen = OPP_PENALIDADE[entrada] + penM, nota = p.score - taxa - pen;
   const cor = nota>=OPP_VERDE ? 'verde' : nota>=OPP_AMARELO ? 'amarelo' : 'vermelho';
   const sd = p.sd ?? 0, demanda = sd>=.8 ? 'Vende muito' : sd>=.5 ? 'Vende bem' : 'Vende pouco';
-  const porta = p.c ? `catálogo com ${bb} vendedor${bb>1?'es':''}${taxa?` (−${taxa})`:''}`
+  const porta = p.c ? `${bb==null ? 'catálogo, vendedores não informados' : `catálogo com ${bb} vendedor${bb>1?'es':''}`}${taxa?` (−${taxa})`:''}`
                     : rc>=OPP_PROPRIO[0] ? `anúncio próprio, líder com ${fmtN(rc)} aval.` : 'anúncio próprio sem líder forte';
   const label = cor==='verde' ? 'Oportunidade forte' : cor==='amarelo' ? 'Oportunidade média' : 'Oportunidade fraca';
   const nf = (p.fora||[]).length;
@@ -1367,7 +1369,7 @@ function mlProduto(p){
           <div><div class="k">Avaliações</div><div class="v">${p.rc?fmtN(p.rc)+(p.rr?' · '+p.rr.toFixed(1)+'★':''):'sem avaliações'}</div></div>
           <div><div class="k">Vendedor</div><div class="v">${esc(p.s||'—')}${p.md?' · '+(MEDAL[p.md]||p.md):''}</div></div>
           <div><div class="k">Tipo de anúncio</div><div class="v">${{gold_pro:'Premium',gold_special:'Clássico',silver:'Clássico',free:'Grátis'}[p.lt]||p.lt||'—'}${p.full?' · Full':''}${p.fs?' · Frete grátis':''}</div></div>
-          <div><div class="k">Catálogo</div><div class="v">${p.c?(p.bb||'?')+' vendedor(es) disputando · −'+OPP_CATALOGO_TAXA+' pontos':'anúncio próprio (sem catálogo)'}</div></div>
+          <div><div class="k">Catálogo</div><div class="v">${p.c?(p.bb?p.bb+' vendedor(es) disputando':'vendedores não informados')+' · −'+OPP_CATALOGO_TAXA+' pontos':'anúncio próprio (sem catálogo)'}</div></div>
           <div><div class="k">Tempo no ar</div><div class="v">${p.d??'—'} dias${p.pub?' · criado em '+fmtDia(p.pub):''} · no radar desde ${fmtDT(p.first)}</div></div>
         </div></div></div>
     <div class="why">Por que está aqui: ${why.join(' · ')}.</div>
@@ -1438,7 +1440,7 @@ function renderCalcML(p){
       <div class="field"><label>Categoria (comissão)</label><select id="mc-cat">${L1S.map(x=>`<option value="${esc(x)}"${x===st.cat?' selected':''}>${esc(x)}</option>`).join('')}</select></div>
       <div class="field"><label>Preço de venda</label><input id="mc-preco" type="number" step="0.01" value="${P}"></div>
       <div class="field"><label>Seu custo por unidade</label><input id="mc-custo" type="number" step="0.01" min="0" value="${C||''}" placeholder="quanto o fornecedor cobra"></div>
-      <div class="cmp"><div class="k">Concorrente que mais vende</div><div class="v">${fmtBRL(ref)} · ${fmtN(p.w)} vendas/sem</div><div class="k">${esc(p.s||'')}${p.c?` · catálogo com ${p.bb||1} vendedor${(p.bb||1)>1?'es':''}`:' · anúncio próprio'}</div></div>
+      <div class="cmp"><div class="k">Concorrente que mais vende</div><div class="v">${fmtBRL(ref)} · ${fmtN(p.w)} vendas/sem</div><div class="k">${esc(p.s||'')}${p.c?(p.bb?` · catálogo com ${p.bb} vendedor${p.bb>1?'es':''}`:' · catálogo, vendedores não informados'):' · anúncio próprio'}</div></div>
     </div>
     <div class="calc-out">${leitura}<div class="ext-card">${extratoHTML(e, P, st.tipo, C)}</div></div>`;
   const cursor = (id, fn) => ev => { const pos = ev.target.selectionStart; fn(ev); const i=$(id); if(i){ i.focus(); try{ i.setSelectionRange(pos,pos);}catch(_){} } };
@@ -1450,7 +1452,9 @@ function renderCalcML(p){
 function renderListasML(p){
   const mesmo = [radarRow(p, p, true)];
   (p.riv||[]).slice().sort((a,b)=>(a.pr??9e9)-(b.pr??9e9)).forEach(r => mesmo.push(rivRow(r, p)));
-  if (p.c && !(p.riv||[]).length) mesmo.push(`<div class="small muted" style="margin:-2px 0 10px">Nenhum outro vendedor deste catálogo apareceu nesta rodada: o radar lê os mais vendidos de cada subcategoria, e daqui só este anúncio entrou.</div>`);
+  if (p.c && !(p.riv||[]).length) mesmo.push(p.bb==null
+    ? `<div class="small muted" style="margin:-2px 0 10px">A leitura desta rodada traz o catálogo inteiro numa linha só, sem a lista de vendedores: veja quem vende no Mercado Livre.</div>`
+    : `<div class="small muted" style="margin:-2px 0 10px">Nenhum outro vendedor deste catálogo apareceu nesta rodada: o radar lê os mais vendidos de cada subcategoria, e daqui só este anúncio entrou.</div>`);
   $('#m-mesmo').innerHTML = mesmo.join('');
   const sim = p._sim || [];
   $('#m-sim').innerHTML = sim.length ? sim.map(q=>radarRow(q, p, false)).join('')
@@ -1465,7 +1469,7 @@ function radarRow(q, p, ref){
   return `<div class="an ${ref?'igual':'parecido'}" ${ref?'':`data-radar="${esc(q.i)}" tabindex="0" role="button"`}>
       <img class="thumb" loading="lazy" src="${esc(q.img||'')}" alt="">
       <div><div class="name">${esc(q.n)}</div>
-        <div class="path">${q.c?`catálogo com <b>${q.bb||1} vendedor${(q.bb||1)>1?'es':''}</b> · quem mais vende: ${esc(q.s||'—')}`:`anúncio próprio de ${esc(q.s||'—')}`} · ${tipoNome(tipo)}${q.full?' · Full':''}${q.fs?' · frete grátis':''}${ref?' · <b>este anúncio, o que mais vende</b>':''}</div>
+        <div class="path">${q.c?(q.bb?`catálogo com <b>${q.bb} vendedor${q.bb>1?'es':''}</b> · quem mais vende: ${esc(q.s||'—')}`:'catálogo · vendedores não informados'):`anúncio próprio de ${esc(q.s||'—')}`} · ${tipoNome(tipo)}${q.full?' · Full':''}${q.fs?' · frete grátis':''}${ref?' · <b>este anúncio, o que mais vende</b>':''}</div>
         <div class="tags"><span class="tag ${(q.d??999)<=NEW_MAX_DAYS?'good':''}">${idade(q.d)}</span>${q.rc?`<span class="tag">${fmtN(q.rc)} aval.${q.rr?' · '+q.rr.toFixed(1)+'★':''}</span>`:'<span class="tag">sem avaliações</span>'}${fora?'<span class="tag good">vende fora do catálogo</span>':''}${!ref&&q.opp?`<span class="tag ${corOpp}">${q.opp.label}</span>`:''}${!ref&&q.rank?`<span class="tag">#${q.rank} no radar</span>`:''}</div></div>
       <div class="cell"><div class="k">Preço no ML</div><div class="v big">${fmtBRL(q.pr)}</div></div>
       <div class="cell"><div class="k">Vendas/mês</div><div class="v big">${fmtN(q.m)}</div><div class="k">${fmtN(q.w)}/sem · fatura ${fmtBRLc(q.g)}/mês</div></div>
@@ -1526,7 +1530,7 @@ function openProductDrawer(id){
       <div><div class="k">Avaliações</div><div class="v">${p.rc?fmtN(p.rc)+(p.rr?' · '+p.rr.toFixed(1)+'★':''):'sem avaliações'}</div></div>
       <div><div class="k">Vendedor</div><div class="v">${esc(p.s||'—')}${p.md?' · '+(MEDAL[p.md]||p.md):''}</div></div>
       <div><div class="k">Tipo de anúncio</div><div class="v">${{gold_pro:'Premium',gold_special:'Clássico',silver:'Clássico',free:'Grátis'}[p.lt]||p.lt||'—'}${p.full?' · Full':''}${p.fs?' · Frete grátis':''}</div></div>
-      <div><div class="k">Catálogo</div><div class="v">${p.c?(p.bb||'?')+' vendedor(es) disputando · −'+OPP_CATALOGO_TAXA+' pontos':'anúncio próprio (sem catálogo)'}</div></div>
+      <div><div class="k">Catálogo</div><div class="v">${p.c?(p.bb?p.bb+' vendedor(es) disputando':'vendedores não informados')+' · −'+OPP_CATALOGO_TAXA+' pontos':'anúncio próprio (sem catálogo)'}</div></div>
     </div>
     ${c?`<div class="kv">
       <div><div class="k">Categoria (${c.lv===3?'nível 3':'nível 2'})</div><div class="v">${esc(c.name)}</div></div>

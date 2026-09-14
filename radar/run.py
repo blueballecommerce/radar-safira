@@ -196,7 +196,7 @@ async def run_once(src: Source, db: DB, *, force_categories: bool = False, force
                 status = "dropped" if (old and old["zero_sales_runs"] + 1 >= config.DROP_AFTER_ZERO_SALES_RUNS) else "watching"
             db.upsert_product(p, run_id, p["rank"], status)
             seen.add(p["key"])
-        missing = db.mark_missing(seen, run_id)
+        missing = db.mark_missing(seen, run_id, releu=getattr(src, "rele_por_id", True))
 
         db.finish_run(run_id, "ok", len(products), src.calls,
                       f"tracked={len(to_track)} missing={missing} month={month} rekeyed={rekeyed} discover={int(discover)}")
